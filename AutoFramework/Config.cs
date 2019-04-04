@@ -1,75 +1,46 @@
-﻿namespace AutoFramework
+﻿using OpenQA.Selenium;
+using System;
+using AutoFramework.Pages.PageElements;
+
+namespace AutoFramework
 {
+   
     public static class Config
     {
+        //public static string schoolname = Driver.driver.FindElement(By.XPath("/html/body/div/main/h1")).Text;
+
         public static int ElementsWaitingTimeout = 10;
         public static string BaseURL = "https://as-t1dv-sfb.azurewebsites.net/";
+       
 
         public static object AlertsTexts { get; internal set; }
 
         public static class Credentials
         {
-            public static class Valid
-            {
 
-                public static string Username = "internal";
-                public static string Password = "sfb_pwesepss";
+            public static class QuickComparisonMessage
+            {
+                public static string ComapringToMessage = "Sir John Cass's Foundation Primary School";
+
+
             }
 
-            //    public static class Invalid
-            //    {
-            //        public static class Email
-            //        {
-            //            public static string NoUser = "@example.com";
-            //            public static string NoAt = "exampleexample.com";
-            //            public static string NoDomain = "example@";
-            //            public static string NoExtension = "example@example";
-            //        }
+            public static class PostCode
+            {
+                public  static string Postcode = "DA7 5SS";
 
-            //        public static class Username
-            //        {
-            //            public static string FourCharacters = "abcd";
-            //            public static string ThirteenCharacters = "abcdabcdabcda";
-            //            public static string OnlyLetters = "abcdabcd";
-            //            public static string OnlyNumbers = "123456789";
-            //            public static string OnlySpecialSymbols = "$#@%)(*$%#%?><";
-            //            public static string NoSpecialSymbol = "asd1234";
-            //        }
+                
 
-            //        public static class Password
-            //        {
-            //            public static string FourCharacters = "abcd";
-            //            public static string ThirteenCharacters = "abcdabcdabcda";
-            //            public static string OnlyLetters = "abcdabcd";
-            //            public static string OnlyNumbers = "123456789";
-            //            public static string OnlySpecialSymbols = "$#@%)(*$%#%?><";
-            //            public static string NoSpecialSymbol = "asd1234";
-            //        }
-            //    }
-            //}
+                            }
 
-            //public static class MenuElements
-            //{
-            //    public static string Introduction = "Introduction";
-            //    public static string Selectors = "Selectors";
-            //    public static string SpecialElements = "Special Elements";
-            //    public static string TestCases = "Test Cases";
-            //    public static string TestScenarios = "Test Scenarios";
-            //    public static string About = "About";
-            //}
 
-            //public static class TestMessages
-            //{
 
-            //}
 
-            //public static class AlertsTexts
-            //{
-            //    public static string UsernameLengthOutOfRange = "User Id should not be empty / length be between 5 to 12";
-            //    public static string PasswordLenghtOutOfRange = "Password should not be empty / length be between 5 to 12";
-            //    public static string SuccessfulLogin = "Succesful login!";
-            //}
+
+
+
         }
     }
-}
 
+
+}

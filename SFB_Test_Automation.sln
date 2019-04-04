@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.421
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFB_Test_Automation", "SFB_Test_Automation.csproj", "{C0633C8C-5138-4E4A-B705-E1C3E1934DFC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C0633C8C-5138-4E4A-B705-E1C3E1934DFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0633C8C-5138-4E4A-B705-E1C3E1934DFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0633C8C-5138-4E4A-B705-E1C3E1934DFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0633C8C-5138-4E4A-B705-E1C3E1934DFC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F336638C-510D-4564-B60E-3DB03182EF47}
+	EndGlobalSection
+EndGlobal

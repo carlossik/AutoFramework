@@ -21,8 +21,28 @@
 
         [FindsBy(How = How.CssSelector, Using = "li.guidance__list__item:nth-child(3) > a:nth-child(1)")]
         public IWebElement DataSources { get; set; }
+
+        [FindsBy(How =How.XPath,Using = "/html/body/div/main/h1")]
+        public IWebElement SchoolName { get; set; }
+
+        [FindsBy(How =How.ClassName,Using = "home-link")]
+        public IWebElement HomeLink { get; set; }
     }
+    public static class SchoolNameText
+        
+    {
+        public static string schooltext = "Sir John Cass's Foundation Primary School";
+        
+    }
+    public  class getSchoolName
+
+    {
+        public string SchoolName = Driver.driver.FindElement(By.XPath("/html/body/div/main/h1")).Text;
 
     }
+
+
+}
+    
 
 //li.guidance__list__item:nth-child(1) > a:nth-child(1)

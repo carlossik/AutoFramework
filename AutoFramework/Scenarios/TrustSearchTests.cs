@@ -3,11 +3,11 @@
     using OpenQA.Selenium;
     using NUnit.Framework;
 
-    public class LoginInvalidUsername
+    public class TrustSearchScenarios
     {
         IAlert alert;
 
-        public LoginInvalidUsername()
+        public TrustSearchScenarios()
         {     
         }
 
@@ -15,9 +15,31 @@
         public void Initialize()
         {
             Actions.InitializeDriver();
-            NavigateTo.LoginFormScenarioThroughTestCases();
+            //NavigateTo.LoginFormScenarioThroughTestCases();
+            Actions.FillLoginForm();
         }
 
-        
+
+        [Test]
+        public void TrustSearch()
+        {
+            Actions.TrustSearch();
+        }
+       [Test]
+        public void TrustSearchwithUrnNo()
+        {
+            Actions.TrustSearchWithTrustnumber();
+
+        }
+
+
+
+
+
+        [OneTimeTearDown]
+        public void CleanUp()
+        {
+            Driver.driver.Quit();
+        }
     }
 }

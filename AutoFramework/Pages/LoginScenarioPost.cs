@@ -7,7 +7,9 @@
     {
         public LoginScenarioPost()
         {
+#pragma warning disable CS0618 // Type or member is obsolete
             PageFactory.InitElements(Driver.driver, this);
+#pragma warning restore CS0618 // Type or member is obsolete
         }
 
         [FindsBy(How = How.Id, Using = "Username")]

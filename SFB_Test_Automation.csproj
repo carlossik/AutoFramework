@@ -1,0 +1,295 @@
+﻿<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\NUnit.3.11.0\build\NUnit.props" Condition="Exists('packages\NUnit.3.11.0\build\NUnit.props')" />
+  <Import Project="packages\NUnit3TestAdapter.3.13.0\build\net35\NUnit3TestAdapter.props" Condition="Exists('packages\NUnit3TestAdapter.3.13.0\build\net35\NUnit3TestAdapter.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C0633C8C-5138-4E4A-B705-E1C3E1934DFC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <NoStandardLibraries>false</NoStandardLibraries>
+    <AssemblyName>ClassLibrary</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>CS0618</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>SFB_Test_Automation</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Ionic.Zip, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
+      <HintPath>packages\Selenium.WebDriver.PhantomJS.Xplatform.2.45.0.1\lib\net40\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Selenium.WebDriver.PhantomJS.Xplatform.2.45.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=3.11.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>packages\NUnit.3.11.0\lib\net40\nunit.framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Selenium.WebDriver.Extensions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Selenium.WebDriver.Extensions.3.3.0\lib\net40\Selenium.WebDriver.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="SeleniumExtras.PageObjects, Version=3.12.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\DotNetSeleniumExtras.PageObjects.Core.3.12.0\lib\net40\SeleniumExtras.PageObjects.dll</HintPath>
+    </Reference>
+    <Reference Include="SeleniumExtras.WaitHelpers, Version=3.11.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\DotNetSeleniumExtras.WaitHelpers.3.11.0\lib\net40\SeleniumExtras.WaitHelpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebDriver, Version=2.45.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Selenium.WebDriver.PhantomJS.Xplatform.2.45.0.1\lib\net40\WebDriver.dll</HintPath>
+    </Reference>
+    <Reference Include="WebDriver.Support, Version=3.141.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Selenium.Support.3.141.0\lib\net40\WebDriver.Support.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".gitattributes" />
+    <Content Include=".gitignore" />
+    <Content Include=".git\ms-persist.xml" />
+    <Content Include="AutoFramework\AutoFramework.csproj" />
+    <Content Include="AutoFramework\AutoFramework.csproj.user" />
+    <Content Include="AutoFramework\obj\Debug\AutoFramework.csproj.FileListAbsolute.txt" />
+    <Content Include="AutoFramework\obj\Debug\AutoFramework.exe" />
+    <Content Include="AutoFramework\obj\Debug\AutoFramework.pdb" />
+    <Content Include="AutoFramework\obj\Release\AutoFramework.csproj.FileListAbsolute.txt" />
+    <Content Include="AutoFramework\obj\Release\AutoFramework.exe" />
+    <Content Include="AutoFramework\obj\Release\AutoFramework.pdb" />
+    <Content Include="packages\NUnit.3.11.0\lib\net20\nunit.framework.dll" />
+    <Content Include="packages\NUnit.3.11.0\lib\net20\nunit.framework.pdb" />
+    <Content Include="packages\NUnit.3.11.0\lib\net20\nunit.framework.xml" />
+    <Content Include="packages\NUnit.3.11.0\lib\net20\NUnit.System.Linq.dll" />
+    <Content Include="packages\NUnit.3.11.0\lib\net35\nunit.framework.dll" />
+    <Content Include="packages\NUnit.3.11.0\lib\net35\nunit.framework.pdb" />
+    <Content Include="packages\NUnit.3.11.0\lib\net35\nunit.framework.xml" />
+    <Content Include="packages\NUnit.3.11.0\lib\net40\nunit.framework.dll" />
+    <Content Include="packages\NUnit.3.11.0\lib\net40\nunit.framework.pdb" />
+    <Content Include="packages\NUnit.3.11.0\lib\net40\nunit.framework.xml" />
+    <Content Include="packages\NUnit.3.11.0\lib\net45\nunit.framework.dll" />
+    <Content Include="packages\NUnit.3.11.0\lib\net45\nunit.framework.pdb" />
+    <Content Include="packages\NUnit.3.11.0\lib\net45\nunit.framework.xml" />
+    <Content Include="packages\NUnit.3.11.0\lib\netstandard1.4\nunit.framework.dll" />
+    <Content Include="packages\NUnit.3.11.0\lib\netstandard1.4\nunit.framework.pdb" />
+    <Content Include="packages\NUnit.3.11.0\lib\netstandard1.4\nunit.framework.xml" />
+    <Content Include="packages\NUnit.3.11.0\lib\netstandard2.0\nunit.framework.dll" />
+    <Content Include="packages\NUnit.3.11.0\lib\netstandard2.0\nunit.framework.pdb" />
+    <Content Include="packages\NUnit.3.11.0\lib\netstandard2.0\nunit.framework.xml" />
+    <Content Include="packages\NUnit.3.11.0\LICENSE.txt" />
+    <Content Include="packages\NUnit.3.11.0\NOTICES.txt" />
+    <Content Include="packages\NUnit3TestAdapter.3.13.0\build\net35\nunit.engine.api.dll" />
+    <Content Include="packages\NUnit3TestAdapter.3.13.0\build\net35\nunit.engine.dll" />
+    <Content Include="packages\NUnit3TestAdapter.3.13.0\build\net35\NUnit3.TestAdapter.dll" />
+    <Content Include="packages\NUnit3TestAdapter.3.13.0\build\net35\NUnit3.TestAdapter.pdb" />
+    <Content Include="packages\NUnit3TestAdapter.3.13.0\build\netcoreapp1.0\nunit.engine.netstandard.dll" />
+    <Content Include="packages\NUnit3TestAdapter.3.13.0\build\netcoreapp1.0\NUnit3.TestAdapter.dll" />
+    <Content Include="packages\NUnit3TestAdapter.3.13.0\build\netcoreapp1.0\NUnit3.TestAdapter.pdb" />
+    <Content Include="packages\NUnit3TestAdapter.3.13.0\LICENSE.txt" />
+    <Content Include="packages\Selenium.Support.3.141.0\lib\net35\WebDriver.Support.dll" />
+    <Content Include="packages\Selenium.Support.3.141.0\lib\net35\WebDriver.Support.xml" />
+    <Content Include="packages\Selenium.Support.3.141.0\lib\net40\WebDriver.Support.dll" />
+    <Content Include="packages\Selenium.Support.3.141.0\lib\net40\WebDriver.Support.xml" />
+    <Content Include="packages\Selenium.Support.3.141.0\lib\net45\WebDriver.Support.dll" />
+    <Content Include="packages\Selenium.Support.3.141.0\lib\net45\WebDriver.Support.xml" />
+    <Content Include="packages\Selenium.Support.3.141.0\lib\netstandard2.0\WebDriver.Support.dll" />
+    <Content Include="packages\Selenium.Support.3.141.0\lib\netstandard2.0\WebDriver.Support.xml" />
+    <Content Include="packages\Selenium.WebDriver.3.141.0\lib\net35\WebDriver.dll" />
+    <Content Include="packages\Selenium.WebDriver.3.141.0\lib\net35\WebDriver.xml" />
+    <Content Include="packages\Selenium.WebDriver.3.141.0\lib\net40\WebDriver.dll" />
+    <Content Include="packages\Selenium.WebDriver.3.141.0\lib\net40\WebDriver.xml" />
+    <Content Include="packages\Selenium.WebDriver.3.141.0\lib\net45\WebDriver.dll" />
+    <Content Include="packages\Selenium.WebDriver.3.141.0\lib\net45\WebDriver.xml" />
+    <Content Include="packages\Selenium.WebDriver.3.141.0\lib\netstandard2.0\WebDriver.dll" />
+    <Content Include="packages\Selenium.WebDriver.3.141.0\lib\netstandard2.0\WebDriver.xml" />
+    <Content Include="packages\Selenium.WebDriver.ChromeDriver.73.0.3683.68\driver\win32\chromedriver.exe" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".git\COMMIT_EDITMSG" />
+    <None Include=".git\config" />
+    <None Include=".git\description" />
+    <None Include=".git\FETCH_HEAD" />
+    <None Include=".git\HEAD" />
+    <None Include=".git\hooks\applypatch-msg.sample" />
+    <None Include=".git\hooks\commit-msg.sample" />
+    <None Include=".git\hooks\post-update.sample" />
+    <None Include=".git\hooks\pre-applypatch.sample" />
+    <None Include=".git\hooks\pre-commit.sample" />
+    <None Include=".git\hooks\pre-push.sample" />
+    <None Include=".git\hooks\pre-rebase.sample" />
+    <None Include=".git\hooks\pre-receive.sample" />
+    <None Include=".git\hooks\prepare-commit-msg.sample" />
+    <None Include=".git\hooks\update.sample" />
+    <None Include=".git\index" />
+    <None Include=".git\info\exclude" />
+    <None Include=".git\logs\HEAD" />
+    <None Include=".git\logs\refs\heads\master" />
+    <None Include=".git\objects\07\a6f7079941a048ef4b13cc8e74278e7a983d73" />
+    <None Include=".git\objects\08\985cff5cd40e4455eff654406b24789392a8b0" />
+    <None Include=".git\objects\1f\f0c423042b46cb1d617b81efb715defbe8054d" />
+    <None Include=".git\objects\2b\b3bd9456cc4a4147b9cad23c453364ac53f5d6" />
+    <None Include=".git\objects\2d\a63ae690dbc2803103eb0482d3c8e3297565c1" />
+    <None Include=".git\objects\30\bb1ec95e7b335bc788b89fa2c34ce1f0957dd7" />
+    <None Include=".git\objects\30\d6199c012dbdc12391f8e1f9672aa0a34b61de" />
+    <None Include=".git\objects\34\b93759039245994508a989c5ef654702e9cd99" />
+    <None Include=".git\objects\37\8df62e6f32b9e3b4c6934235b46f96383bb550" />
+    <None Include=".git\objects\3c\4efe206bd0e7230ad0ae8396a3c883c8207906" />
+    <None Include=".git\objects\57\e7fd484d930a29b453c36eb881f13a97418fb7" />
+    <None Include=".git\objects\69\81d274d91c57cce5b41046b5d0f0147a005467" />
+    <None Include=".git\objects\77\6a8df28d265164ffac909d167cf19cda57fc5f" />
+    <None Include=".git\objects\7c\4f5c221829294ce2a9811256f0b35ee710bd51" />
+    <None Include=".git\objects\83\500cfb532eb1ee8642214dc92832c15a508f29" />
+    <None Include=".git\objects\88\e05a6efcbdb032b695f7406231e9e9b2782a66" />
+    <None Include=".git\objects\88\fa4027bda397de6bf19f0940e5dd6026c877f9" />
+    <None Include=".git\objects\91\e3470e1645e6e8d0de6fe9f6b242f366e9a393" />
+    <None Include=".git\objects\94\1c68fb5d25f420815ef9637a3bc4916f66908c" />
+    <None Include=".git\objects\95\5ec290ce6c08470952a90e9b3af3540225227e" />
+    <None Include=".git\objects\a2\6e9c9a517ba025d11795ae475879151a6acae1" />
+    <None Include=".git\objects\a3\9b74c2eb027ae70432c61a1d752f99bfa211dd" />
+    <None Include=".git\objects\a8\789ed31e1d9a8bb7dc1bd46e5c9d06338fe7ce" />
+    <None Include=".git\objects\aa\eaafaf111ee483c54be441e050778877d25a18" />
+    <None Include=".git\objects\ab\bf847d452b2cb25749a15aa0ffffba5eee3c8d" />
+    <None Include=".git\objects\af\d93c1862ca4fe94a01d4b32af786db3af5ead3" />
+    <None Include=".git\objects\b0\a1cf763142dc0f782ad44c1abdfd5c513b0ca6" />
+    <None Include=".git\objects\b0\e984bde304f33fd924f21a8e98a45375cd7da7" />
+    <None Include=".git\objects\bb\f532fff61a9c1b138d5bcd05024774e7fa68b4" />
+    <None Include=".git\objects\bf\38815593106b8531257b64808ea1bf01a3a3c0" />
+    <None Include=".git\objects\c2\07a9406ccd4903e95d3eb72c019aecfce0608d" />
+    <None Include=".git\objects\c4\fa117844e2b362e01a4ce40190220714466e07" />
+    <None Include=".git\objects\e1\bf80ac34063a23a277135262eadac232627a9c" />
+    <None Include=".git\objects\ea\3ea9e31cd13c80648e959aaeb143d1452cc33d" />
+    <None Include=".git\objects\ee\1ed83ec521334783946e97ffffae73a36047dc" />
+    <None Include=".git\objects\f0\574c931b026efad795079a9eaeb997c97dfe00" />
+    <None Include=".git\objects\f3\3ed0c9060e2dd309ff5333ed46975e7ca55b86" />
+    <None Include=".git\ORIG_HEAD" />
+    <None Include=".git\refs\heads\master" />
+    <None Include=".vs\AutoFramework\v14\.suo" />
+    <None Include=".vs\AutoFramework\v15\.suo" />
+    <None Include=".vs\AutoFramework\v15\Server\sqlite3\db.lock" />
+    <None Include=".vs\AutoFramework\v15\Server\sqlite3\storage.ide" />
+    <None Include=".vs\AutoFramework\v15\Server\sqlite3\storage.ide-shm" />
+    <None Include=".vs\AutoFramework\v15\Server\sqlite3\storage.ide-wal" />
+    <None Include=".vs\slnx.sqlite" />
+    <None Include=".vs\VSWorkspaceState.json" />
+    <None Include="AutoFramework\.vs\AutoFramework\v15\.suo" />
+    <None Include="AutoFramework\.vs\slnx.sqlite" />
+    <None Include="AutoFramework\.vs\VSWorkspaceState.json" />
+    <None Include="AutoFramework\App.config" />
+    <None Include="AutoFramework\obj\Debug\AutoFramework.csproj.CopyComplete" />
+    <None Include="AutoFramework\obj\Debug\AutoFramework.csproj.CoreCompileInputs.cache" />
+    <None Include="AutoFramework\obj\Debug\AutoFramework.csprojResolveAssemblyReference.cache" />
+    <None Include="AutoFramework\obj\Debug\CoreCompileInputs.cache" />
+    <None Include="AutoFramework\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="AutoFramework\obj\Release\AutoFramework.csproj.CopyComplete" />
+    <None Include="AutoFramework\obj\Release\AutoFramework.csproj.CoreCompileInputs.cache" />
+    <None Include="AutoFramework\obj\Release\AutoFramework.csprojAssemblyReference.cache" />
+    <None Include="AutoFramework\obj\Release\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="AutoFramework\packages.config" />
+    <None Include="packages.config" />
+    <None Include="packages\NUnit.3.11.0\.signature.p7s" />
+    <None Include="packages\NUnit.3.11.0\build\NUnit.props" />
+    <None Include="packages\NUnit.3.11.0\CHANGES.md" />
+    <None Include="packages\NUnit.3.11.0\NUnit.3.11.0.nupkg" />
+    <None Include="packages\NUnit3TestAdapter.3.13.0\.signature.p7s" />
+    <None Include="packages\NUnit3TestAdapter.3.13.0\build\net35\NUnit3TestAdapter.props" />
+    <None Include="packages\NUnit3TestAdapter.3.13.0\build\netcoreapp1.0\NUnit3TestAdapter.props" />
+    <None Include="packages\NUnit3TestAdapter.3.13.0\NUnit3TestAdapter.3.13.0.nupkg" />
+    <None Include="packages\Selenium.Support.3.141.0\.signature.p7s" />
+    <None Include="packages\Selenium.Support.3.141.0\Selenium.Support.3.141.0.nupkg" />
+    <None Include="packages\Selenium.WebDriver.3.141.0\.signature.p7s" />
+    <None Include="packages\Selenium.WebDriver.3.141.0\Selenium.WebDriver.3.141.0.nupkg" />
+    <None Include="packages\Selenium.WebDriver.ChromeDriver.73.0.3683.68\.signature.p7s" />
+    <None Include="packages\Selenium.WebDriver.ChromeDriver.73.0.3683.68\build\Selenium.WebDriver.ChromeDriver.targets" />
+    <None Include="packages\Selenium.WebDriver.ChromeDriver.73.0.3683.68\driver\linux64\chromedriver" />
+    <None Include="packages\Selenium.WebDriver.ChromeDriver.73.0.3683.68\driver\mac64\chromedriver" />
+    <None Include="packages\Selenium.WebDriver.ChromeDriver.73.0.3683.68\Selenium.WebDriver.ChromeDriver.73.0.3683.68.nupkg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AutoFramework\FilterActions.cs" />
+    <Compile Include="AutoFramework\Pages\FiltersPage.cs" />
+    <Compile Include="AutoFramework\Pages\IntepretingTheChartsPage.cs" />
+    <Compile Include="AutoFramework\Pages\PageElements\Helpers\UrnHelper.cs" />
+    <Compile Include="AutoFramework\Actions.cs" />
+    <Compile Include="AutoFramework\Config.cs" />
+    <Compile Include="AutoFramework\Driver.cs" />
+    <Compile Include="AutoFramework\EntryPoint.cs" />
+    <Compile Include="AutoFramework\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="AutoFramework\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="AutoFramework\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="AutoFramework\obj\Release\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="AutoFramework\obj\Release\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="AutoFramework\obj\Release\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="AutoFramework\Pages\PageElements\BestInClass.cs" />
+    <Compile Include="AutoFramework\Pages\HomePage.cs" />
+    <Compile Include="AutoFramework\Pages\LoginPage.cs" />
+    <Compile Include="AutoFramework\Pages\LoginScenarioPost.cs" />
+    <Compile Include="AutoFramework\Pages\PageElements\Menu.cs" />
+    <Compile Include="AutoFramework\Pages\SchoolDetailPage.cs" />
+    <Compile Include="AutoFramework\Pages\SearchResultsPage.cs" />
+    <Compile Include="AutoFramework\Pages\SelectorsPage.cs" />
+    <Compile Include="AutoFramework\Pages\SpecialElementsPage.cs" />
+    <Compile Include="AutoFramework\Pages\TrustComparisonPage.cs" />
+    <Compile Include="AutoFramework\Properties\AssemblyInfo.cs" />
+    <Compile Include="AutoFramework\Scenarios\ComparisonTests.cs" />
+    <Compile Include="AutoFramework\Scenarios\FiltersTest.cs" />
+    <Compile Include="AutoFramework\Scenarios\SchoolSearchTests.cs" />
+    <Compile Include="AutoFramework\Scenarios\TrustSearchTests.cs" />
+    <Compile Include="ExtentReport.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include=".git\logs\refs\remotes\" />
+    <Folder Include=".git\objects\info\" />
+    <Folder Include=".git\objects\pack\" />
+    <Folder Include=".git\refs\remotes\" />
+    <Folder Include=".git\refs\tags\" />
+    <Folder Include=".vs\SFB_Test_Automation\v15\" />
+    <Folder Include="AutoFramework\Cases\" />
+    <Folder Include="AutoFramework\obj\Debug\TempPE\" />
+    <Folder Include="AutoFramework\obj\Release\TempPE\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSHARP.Targets" />
+  <ProjectExtensions>
+    <VisualStudio AllowExistingFolder="true" />
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\NUnit3TestAdapter.3.13.0\build\net35\NUnit3TestAdapter.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\NUnit3TestAdapter.3.13.0\build\net35\NUnit3TestAdapter.props'))" />
+    <Error Condition="!Exists('packages\Selenium.WebDriver.ChromeDriver.73.0.3683.68\build\Selenium.WebDriver.ChromeDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Selenium.WebDriver.ChromeDriver.73.0.3683.68\build\Selenium.WebDriver.ChromeDriver.targets'))" />
+    <Error Condition="!Exists('packages\Selenium.Chrome.WebDriver.2.45\build\Selenium.Chrome.WebDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Selenium.Chrome.WebDriver.2.45\build\Selenium.Chrome.WebDriver.targets'))" />
+    <Error Condition="!Exists('packages\NUnit.3.11.0\build\NUnit.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\NUnit.3.11.0\build\NUnit.props'))" />
+    <Error Condition="!Exists('packages\Selenium.Firefox.WebDriver.0.23.0\build\Selenium.Firefox.WebDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Selenium.Firefox.WebDriver.0.23.0\build\Selenium.Firefox.WebDriver.targets'))" />
+    <Error Condition="!Exists('packages\Selenium.WebDriver.PhantomJS.CrossPlatform.2.1.1\build\Selenium.WebDriver.PhantomJS.CrossPlatform.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Selenium.WebDriver.PhantomJS.CrossPlatform.2.1.1\build\Selenium.WebDriver.PhantomJS.CrossPlatform.targets'))" />
+  </Target>
+  <Import Project="packages\Selenium.WebDriver.ChromeDriver.73.0.3683.68\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('packages\Selenium.WebDriver.ChromeDriver.73.0.3683.68\build\Selenium.WebDriver.ChromeDriver.targets')" />
+  <Import Project="packages\Selenium.Chrome.WebDriver.2.45\build\Selenium.Chrome.WebDriver.targets" Condition="Exists('packages\Selenium.Chrome.WebDriver.2.45\build\Selenium.Chrome.WebDriver.targets')" />
+  <Import Project="packages\Selenium.Firefox.WebDriver.0.23.0\build\Selenium.Firefox.WebDriver.targets" Condition="Exists('packages\Selenium.Firefox.WebDriver.0.23.0\build\Selenium.Firefox.WebDriver.targets')" />
+  <Import Project="packages\Selenium.WebDriver.PhantomJS.CrossPlatform.2.1.1\build\Selenium.WebDriver.PhantomJS.CrossPlatform.targets" Condition="Exists('packages\Selenium.WebDriver.PhantomJS.CrossPlatform.2.1.1\build\Selenium.WebDriver.PhantomJS.CrossPlatform.targets')" />
+</Project>

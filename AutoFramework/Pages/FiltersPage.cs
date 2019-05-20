@@ -70,16 +70,34 @@ namespace SFB_Test_Automation.AutoFramework.Pages
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector,Using = "div.govuk-option-select:nth-child(8) > div:nth-child(1) > div:nth-child(1)")]
         public IWebElement OfstedSelector { get; set; }
 
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath,Using = "//*[@id=\"DistanceRadius\"]/option[2]")]
+        public IWebElement FilterBy3Miles { get; set; }
+
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//*[@id=\"DistanceRadius\"]/option[1]")]
+        public IWebElement FilterBy1Mile { get; set; }
+
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//*[@id=\"DistanceRadius\"]/option[3]")]
+        public IWebElement FilterBy5Miles { get; set; }
 
 
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//*[@id=\"DistanceRadius\"]/option[4]")]
+        public IWebElement FilterBy10Miles { get; set; }
 
 
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//*[@id=\"DistanceRadius\"]/option[5]")]
+        public IWebElement FilterBy15Miles { get; set; }
 
 
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//*[@id=\"DistanceRadius\"]/option[6]")]
+        public IWebElement FilterBy20Miles { get; set; }
 
 
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//*[@id=\"DistanceRadius\"]/option[7]")]
+        public IWebElement FilterBy25Miles { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id,Using = "OrderByControl")]
+        public IWebElement SortedBy { get; set; }
 
-
-
+       
+       
     }
 }

@@ -13,19 +13,22 @@
             PageFactory.InitElements(Driver.driver, this);
 #pragma warning restore CS0618 // Type or member is obsolete
         }
-
+        [FindsBy(How = How.XPath,Using = "//*[@id=\"js - search - results - info\"]/div/p/span")]
+        [CacheLookup]
+        public IWebElement SearchResults { get; set; }
         [FindsBy(How = How.CssSelector, Using = "#SchoolOrCollegeNameId")]
+
         [CacheLookup]
         public IWebElement School { get; set; }
         [FindsBy(How = How.CssSelector, Using = "#FindByNameId")]
         public IWebElement Id { get; set; }
         [FindsBy(How = How.ClassName, Using = "search-button")]
         public IWebElement SearchSubmit { get; set; }
-        [FindsBy(How = How.Id, Using = "FindByNameId")]
+        [FindsBy(How = How.CssSelector, Using = "#FindByNameId")]
         public IWebElement SchoolsearchField { get; set; }
         [FindsBy(How = How.Id,Using = "trustNameId")]
         public IWebElement TrustTickBox { get; set; }
-        [FindsBy(How = How.Id, Using = "FindByTrustName")]
+        [FindsBy(How = How.CssSelector, Using = "#FindByTrustName")]
         public IWebElement TrustSearchInput { get; set; }
         [FindsBy(How = How.Id, Using = "TownOrCity")]
         public IWebElement LocationButton { get; set; }
@@ -45,6 +48,7 @@
         public IWebElement LacodeSearchButton { get; set; }
         [FindsBy(How = How.CssSelector, Using = "#SearchByTrustNameFieldset > button:nth-child(4)")]
         public IWebElement TrustSubmit { get; set; }
+       
 
 
 
@@ -53,6 +57,7 @@
             SearchSubmit.Click();
 
         }
-
+       
+      
     }
 }

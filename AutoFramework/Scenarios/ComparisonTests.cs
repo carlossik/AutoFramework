@@ -6,6 +6,7 @@
     using AutoFramework.Pages;
     using System;
     using AutoFramework.Pages.PageElements;
+    
 
 
 
@@ -19,7 +20,7 @@
         {
             Actions.InitializeDriver();
             
-            Actions.FillLoginForm();
+            //Actions.FillLoginForm();
         }
 
         [Test]
@@ -27,15 +28,16 @@
         public void QuickCompare()
         {
             Actions.CallingClass.QuickCompareWithOtherSchools();
-            Assert.AreEqual(Config.Credentials.QuickComparisonMessage.ComapringToMessage, Driver.driver.FindElement(By.XPath("/html/body/div/main/div[1]/div/div/span")).Text);
+           
             Assert.IsTrue(Driver.driver.FindElement(By.Id("fsm")).Selected);
             Assert.IsTrue(Driver.driver.FindElement(By.Id("sen")).Selected);
             Assert.IsTrue(Driver.driver.FindElement(By.Id("eal")).Selected);
             Assert.IsFalse(Driver.driver.FindElement(By.Id("la")).Selected);
             Actions.CallingClass.ContinuetoBenchmarkCharts();
+            //Actions.GoHome();
 
         }
-        [Test]
+        //[Test]
         public void ContinueToCharts()
         {
             Actions.CallingClass.QuickCompareWithOtherSchools();
@@ -44,9 +46,16 @@
         }
    
         [Test]
-        public void BestInClassComparison()
+        public void zBestInClassComparison()
         {
             Actions.CallingClass.BestInClassComparison();
+            SchoolDetailPage detailspage = new SchoolDetailPage();
+            BestInClass bestinclasspage = new BestInClass();
+            //System.Diagnostics.Debug.Print((bestinclasspage.comparing_to_text).Text);
+            //System.Diagnostics.Debug.Print((detailspage.School_Name).Text);
+            //Assert.IsTrue(((bestinclasspage.comparing_to_text).Text).Contains(" Plumcroft Primary School "));
+                
+
 
             
         }

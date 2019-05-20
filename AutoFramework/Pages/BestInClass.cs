@@ -39,8 +39,25 @@ namespace AutoFramework.Pages
         public IWebElement PupilseligibleFreemeals { get; set; }
         [FindsBy(How = How.ClassName, Using = "button")]
         public IWebElement ContinueToBenchMarkChartsBurtton { get; set; }
+        [FindsBy(How = How.CssSelector, Using = "button.link-button:nth-child(4)")]
+        public IWebElement EditComparison_Link { get; set; }
+        [FindsBy(How = How.CssSelector,Using = "#comparing > span:nth-child(3)")]
+        public IWebElement comparing_to_text { get; set; }
+        [FindsBy(How = How.CssSelector,Using = ".criteria-details > summary:nth-child(1) > span:nth-child(1)")]
+        public IWebElement ViewCharacteristicsUsed { get; set; }
+        [FindsBy(How = How.CssSelector, Using = "#Expenditure > a:nth-child(1)")]
+        public IWebElement ExpenditureTab { get; set; }
+        [FindsBy(How = How.CssSelector, Using = "#Income > a:nth-child(1)")]
+        public IWebElement IncomeTab { get; set; }
+        [FindsBy(How = How.CssSelector, Using = "#Balance > a:nth-child(1)")]
+        public IWebElement BalanceTab { get; set; }
+        [FindsBy(How = How.CssSelector, Using = "#Workforce > a:nth-child(1)")]
+        public IWebElement WorkForceTab { get; set; }
+        [FindsBy(How = How.CssSelector, Using = ".custom > span:nth-child(1)")]
+        public IWebElement YourChartTab { get; set; }
+        [FindsBy(How = How.CssSelector, Using = "#BestInClass > a:nth-child(1)")]
+        public IWebElement ComparisonSchoolsTab { get; set; }
     }
 }
 
 
-//ContinueToHigherProgressSchoolBenchmark

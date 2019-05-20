@@ -23,7 +23,7 @@ namespace SFB_Test_Automation.AutoFramework.Pages
         public IWebElement Compare_withOtherTrusts { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector,Using = ".result-list-summary > a:nth-child(2)")]
         public IWebElement SchoolsToCompare { get; set; }
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id,Using = "manualButton")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector,Using = "#manualButton")]
         public IWebElement ViewBenchMarkingCharts { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".column - one - third > a:nth - child(1)")]
         public IWebElement BackButton { get; set; }
@@ -32,6 +32,9 @@ namespace SFB_Test_Automation.AutoFramework.Pages
 
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "EnterChars")]
         public IWebElement SelectCharacteristicsButton { get; set; }
+
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".heading-xlarge")]
+        public IWebElement TrustName { get; set; }
 
 
 

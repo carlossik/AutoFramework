@@ -24,5 +24,7 @@ namespace AutoFramework.Pages
         public IWebElement ClearBasket { get; set; }
         [FindsBy(How = How.CssSelector, Using = "a.button")]
         public IWebElement ViewBenchMarkCharts { get; set; }
+        [FindsBy(How = How.CssSelector, Using = "a.bold-small")]
+        public IWebElement FirstElementPresented { get; set; }
     }
 }

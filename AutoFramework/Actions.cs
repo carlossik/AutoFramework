@@ -7,14 +7,10 @@
     using Pages;
     using SFB_Test_Automation.AutoFramework.Pages;
     using SFB_Test_Automation.AutoFramework.vs.AutoFramework.Helpers;
+    using System.Collections;
     using System.Collections.Generic;
     using System.Threading;
-    
-    using OpenQA.Selenium.Interactions;
-    using OpenQA.Selenium.IE;
-    using OpenQA.Selenium.Firefox;
-    using OpenQA.Selenium.Safari;
-    using OpenQA.Selenium.Support.UI;
+
 
     public static class Actions
     {
@@ -261,26 +257,26 @@
         public class CallingClass // This will have to be refactored in future when tests are stable
         {
 
-            UrnHelper myUrns = new UrnHelper();
+           
 
-            public void GetList()
-            {
-                List<string> calledList = myUrns.GetList();
-                ///More code here...
-                int count = 0;
-                foreach (string urn in calledList)
-                {
-                    HomePage homepage = new HomePage();
-                    GoHome();
-                    homepage.School.Click();
-                    homepage.SchoolsearchField.SendKeys(urn);
-                    homepage.ClickOnSearchButton();
-                    SchoolDetailPage Schooldetails = new SchoolDetailPage();
-                    Schooldetails.AddToBenchMarkBasket.Click();
-                    //Thread.Sleep(3000);
-                }
+            //public void GetList()
+            //{
+            //    List<string> calledList = myUrns.GetList();
+            //    ///More code here...
+            //    int count = 0;
+            //    foreach (string urn in calledList)
+            //    {
+            //        HomePage homepage = new HomePage();
+            //        GoHome();
+            //        homepage.School.Click();
+            //        homepage.SchoolsearchField.SendKeys(urn);
+            //        homepage.ClickOnSearchButton();
+            //        SchoolDetailPage Schooldetails = new SchoolDetailPage();
+            //        Schooldetails.AddToBenchMarkBasket.Click();
+            //        //Thread.Sleep(3000);
+            //    }
 
-            }
+            //}
             public static void SearchByLaCode(string lacode)
             {
                 HomePage homepage = new HomePage();
@@ -318,17 +314,55 @@
                 SearchSchoolViaName("plumcroft primary school");
                 Thread.Sleep(3000);
                 SchoolDetailPage Schooldetails = new SchoolDetailPage();
-                //Schooldetails.FirstOptionOnSchoolsearch.Click();
+                
                 SearchResultsPage resultspage = new SearchResultsPage();
                 resultspage.FirstElementPresented.Click();
                 Thread.Sleep(3000);
                 Schooldetails.AddToBenchMarkBasket.Click();
+                Thread.Sleep(1000);
+               }
+            public static void Verifybasketcapacity()
+            {
+                GoHome();
+                SchoolDetailPage Schooldetails = new SchoolDetailPage();
+                SearchResultsPage resultspage = new SearchResultsPage();
+                URNHelper helpers = new URNHelper();
+                IList urns = helpers.Urns;
+               
+                    foreach (string urn in urns) {
+                    try
+                    {
+                        SearchSchoolViaName(urn);
 
-                Thread.Sleep(3000);
-              
-                Thread.Sleep(3000);
+                        Schooldetails.AddToBenchMarkBasket.Click();
+                        Thread.Sleep(1000);
+                    }
+                    catch (NoSuchElementException ){ continue; }
+
+
+                        //SchoolDetailPage Schooldetails = new SchoolDetailPage();
+
+                        //SearchResultsPage resultspage = new SearchResultsPage();
+                        //resultspage.FirstElementPresented.Click();
+                        //Thread.Sleep(3000);
+                        //Schooldetails.AddToBenchMarkBasket.Click();
+                        //Thread.Sleep(1000);
+
+                    }
+
+
+                    //SearchSchoolViaName("plumcroft primary school");
+                    //Thread.Sleep(3000);
+                    //SchoolDetailPage Schooldetails = new SchoolDetailPage();
+
+                    //SearchResultsPage resultspage = new SearchResultsPage();
+                    //resultspage.FirstElementPresented.Click();
+                    //Thread.Sleep(3000);
+                    //Schooldetails.AddToBenchMarkBasket.Click();
+                    //Thread.Sleep(1000);
                 
-            }
+                }
+
             public static void SearchViaSchoolurn( string urn)
             {
                 GoHome();
@@ -362,15 +396,14 @@
             {
                 BestInClass bestinclass = new BestInClass();
                 bestinclass.ContinueToBenchMarkChartsBurtton.Click();
-                Thread.Sleep(3000);
+                Thread.Sleep(1000);
             }
             public static void ViewCharts()
             {
                 ContinuetoBenchmarkCharts();
                 BestInClass bestinclass = new BestInClass();
                 bestinclass.YourChartTab.Click();
-                Thread.Sleep(7000);
-
+                Thread.Sleep(2000);
 
             }
 
@@ -395,11 +428,7 @@
             {
                 SearchViaSchoolurn("142253");
                 SchoolDetailPage detailspage = new SchoolDetailPage();
-                //detailspage.OfstedRating.Text();
-
-                //Thread.Sleep(5000);//should be removed once stable
-
-                Thread.Sleep(5000);//to be removed
+                                             
             }
             public static void SchoolMap()
             {
@@ -465,16 +494,7 @@
                 SchoolDetailPage detailpage = new SchoolDetailPage();
                 detailpage.EditBasket.Click();
                 BenchMarkBasketPage basketpage = new BenchMarkBasketPage();
-                //basketpage.AddSchools.Click();
-                //HomePage home = new HomePage();
-                //home.School.Click();
-                //home.SchoolsearchField.SendKeys("100000");
-                //home.SearchSubmit.Click();
-
-                //Thread.Sleep(10000);
-                //SchoolDetailPage detailspage = new SchoolDetailPage();
-                //detailspage.AddToBenchMarkBasket.Click();
-                //Thread.Sleep(10000);
+                
                 basketpage.ClearBasket.Click();
                 Thread.Sleep(10000);
 

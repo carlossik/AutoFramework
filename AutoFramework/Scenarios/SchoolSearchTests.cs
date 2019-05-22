@@ -222,7 +222,7 @@
         [Test]
         public void TestBasketCapacity()
         {
-            //Actions.CallingClass.();
+            Actions.CallingClass.Verifybasketcapacity();
             //Assert.That(Driver.driver.FindElement(By.CssSelector("dd.metadata-school-detail__dd:nth-child(16)")).Text, Does.Contain("Not rated"));
 
         }

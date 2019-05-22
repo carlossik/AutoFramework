@@ -25,13 +25,25 @@ namespace SFB_Test_Automation.AutoFramework.Pages
         public IWebElement SchoolsToCompare { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector,Using = "#manualButton")]
         public IWebElement ViewBenchMarkingCharts { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "button.button:nth-child(1)")]
+        public IWebElement ViewBenchMarkingChartsbutton { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".column - one - third > a:nth - child(1)")]
         public IWebElement BackButton { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "removeAllTrusts")]
         public IWebElement RemoveAllTrusts { get; set; }
 
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "EnterChars")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "#EnterChars")]
         public IWebElement SelectCharacteristicsButton { get; set; }
+
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "#checkbox-MinNoSchools")]
+        public IWebElement NumberOfSchoolscheckbox { get; set; }
+
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "#MinNoSchools")]
+        public IWebElement MinNumOfScools { get; set; }
+
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "#MaxNoSchools")]
+        public IWebElement MaxNumofschools { get; set; }
+
 
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".heading-xlarge")]
         public IWebElement TrustName { get; set; }

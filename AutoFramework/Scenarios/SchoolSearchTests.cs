@@ -21,7 +21,7 @@
         {
             Actions.InitializeDriver();
             
-            //Actions.FillLoginForm();
+            Actions.FillLoginForm();
         }
 
         [Test]

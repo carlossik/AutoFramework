@@ -23,7 +23,7 @@ namespace AutoFramework
         {
             Actions.InitializeDriver();
            
-            //Actions.FillLoginForm();
+            Actions.FillLoginForm();
         }
 
 
@@ -68,7 +68,20 @@ namespace AutoFramework
             Assert.IsTrue(trustcharts.CentralFinancingDropdown.Displayed);
 
         }
-        
+
+        [Test]
+        public void Trustcomparisonwithmorethan25schools()
+        {
+            Actions.TrustComparisonWithMultipleTrusts();
+            TrustBenchmarkChartsPage trustcharts = new TrustBenchmarkChartsPage();
+            Assert.IsTrue(trustcharts.BalanceTab.Displayed);
+            Assert.IsTrue(trustcharts.ExpenditureTab.Displayed);
+            Assert.IsTrue(trustcharts.IncomeTab.Displayed);
+            Assert.IsTrue(trustcharts.ShowValueDropDown.Displayed);
+            Assert.IsTrue(trustcharts.CentralFinancingDropdown.Displayed);
+
+        }
+
 
         [OneTimeTearDown]
         public void CleanUp()

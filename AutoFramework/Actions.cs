@@ -43,9 +43,9 @@
 
 
 
-            var currentTestEnv = Config.BaseURLHiddenLive;
+            
             Driver.driver = new ChromeDriver();
-            Driver.driver.Navigate().GoToUrl(currentTestEnv);
+            Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
             Driver.driver.Manage().Window.Maximize();
             //Driver.driver.Manage().Cookies.DeleteAllCookies();
             Driver.WaitForElementUpTo(Config.ElementsWaitingTimeout);
@@ -54,7 +54,7 @@
         {
             
             
-            Driver.driver.Navigate().GoToUrl(Config.BaseURLHiddenLive);
+            Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
         }
         public static void  OnclickReportingTest()
         {
@@ -230,15 +230,30 @@
         }
         public static void TrustComparison()
         {
-            //GoHome();
+            GoHome();
             TrustSearchWitName("Kaleidoscope Learning Trust ");
             TrustComparisonPage trustComaprison = new TrustComparisonPage();
 
             trustComaprison.Compare_withOtherTrusts.Click();
             Thread.Sleep(5000);
             trustComaprison.ViewBenchMarkingCharts.Click();
-            Thread.Sleep(5000);
-            Thread.Sleep(50000);
+            Thread.Sleep(1000);
+        }
+            
+        public static void TrustComparisonWithMultipleTrusts()
+        {
+            GoHome();
+            TrustSearchWitName("Kaleidoscope Learning Trust ");
+            TrustComparisonPage trustComaprison = new TrustComparisonPage();
+            trustComaprison.Compare_withOtherTrusts.Click();
+            Thread.Sleep(1000);
+            trustComaprison.SelectCharacteristicsButton.Click();
+            trustComaprison.NumberOfSchoolscheckbox.Click();
+            trustComaprison.MinNumOfScools.SendKeys("30");
+            trustComaprison.MaxNumofschools.SendKeys("35");
+            Thread.Sleep(2000);
+            trustComaprison.ViewBenchMarkingChartsbutton.Click();
+            Thread.Sleep(2000);
 
         }
         

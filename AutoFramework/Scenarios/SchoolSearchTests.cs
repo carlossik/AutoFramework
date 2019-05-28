@@ -5,7 +5,7 @@
     using System;
     using AutoFramework.Pages.PageElements;
     using AutoFramework.Pages;
-
+    using System.Threading;
 
     public class Schoolsearchtests
     {
@@ -223,7 +223,7 @@
         public void TestBasketCapacity()
         {
             Actions.CallingClass.Verifybasketcapacity();
-            //Assert.That(Driver.driver.FindElement(By.CssSelector("dd.metadata-school-detail__dd:nth-child(16)")).Text, Does.Contain("Not rated"));
+         
 
         }
         [Test]
@@ -282,14 +282,27 @@
         public void test_School_OfstedRating()
 
         {
-
             Actions.schoolSearchwithLaestab("9362489");
             SchoolDetailPage detailspage = new SchoolDetailPage();
             Assert.IsTrue(detailspage.Telephone_Number.Displayed);
-
         }
 
+        [Test]
+        [Category("QuickTests")]
+        public void test_trust_finance_displayed()
 
+        {
+            Actions.TrustSearchWithCompanynumber("6982127");
+            SchoolDetailPage detailspage = new SchoolDetailPage();
+            detailspage.FinanceDropdown.Click();
+
+            Thread.Sleep(1000);
+            detailspage.FinanceDropdown_Trust_Only.Click();
+            Thread.Sleep(1000);
+
+
+            Assert.IsFalse((detailspage.FinanceDisplayed.Text) == "0");
+        }
 
         [OneTimeTearDown]
         public void CleanUp()

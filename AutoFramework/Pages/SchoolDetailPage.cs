@@ -70,8 +70,16 @@ namespace AutoFramework.Pages.PageElements
         public IWebElement schooldetailnotfoundmessage { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = ".sticky-div__comparison-list-info-panel__count")]
         public IWebElement SchooldetailInfoPanel { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = "#Financing")]
+        public IWebElement FinanceDropdown { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = "#Financing > option:nth-child(2)")]
+        public IWebElement FinanceDropdown_Trust_Only { get; set; }
 
-        //.sticky-div__comparison-list-info-panel__count
+        [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = "div.charts-section__chart-container:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > abbr:nth-child(1)")]
+
+        public IWebElement FinanceDisplayed { get; set; }
+        
+
     }
 
 

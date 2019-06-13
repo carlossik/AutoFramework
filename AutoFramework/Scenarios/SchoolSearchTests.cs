@@ -170,7 +170,6 @@
         {
             Actions.CallingClass.SearchViaSchoolurn("144406");
             Assert.That(Driver.driver.FindElement(By.CssSelector("dd.metadata-school-detail__dd:nth-child(14)")).Text, Does.Contain("Not rated"));
-
         }
         [Test]
         public void OnclickReportingTest()
@@ -208,7 +207,6 @@
         public void TestDownloadCsv()
         {
             Actions.downloadcsv();
-
         }
             
         [Test]
@@ -223,6 +221,7 @@
         public void TestBasketCapacity()
         {
             Actions.CallingClass.Verifybasketcapacity();
+            Assert.IsTrue(Driver.driver.FindElement(By.Id("modal-title")).Text.Contains("Not enough space in basket"));
          
 
         }
@@ -238,22 +237,18 @@
         public void test_School_schoolname()
 
         {
-
             Actions.schoolSearchwithLaestab("8604084");
             SchoolDetailPage detailspage = new SchoolDetailPage();
             Assert.IsTrue(detailspage.School_Name.Displayed);
-
         }
         [Test]
         [Category("QuickTests")]
         public void test_School_telephoneNumber()
 
         {
-
             Actions.schoolSearchwithLaestab("8782446");
             SchoolDetailPage detailspage = new SchoolDetailPage();
             Assert.IsTrue(detailspage.Telephone_Number.Displayed);
-
         }
         [Test]
         [Category("QuickTests")]

@@ -212,13 +212,17 @@
         {
             OnclickReportingTest();
             BenchMarkChartPage benchmarkpage = new BenchMarkChartPage();
+            Thread.Sleep(1000);
             benchmarkpage.DownloadPdf.Click();
+            Thread.Sleep(1000);
+
         }
         public static void downloadcsv()
         {
             OnclickReportingTest();
             BenchMarkChartPage benchmarkpage = new BenchMarkChartPage();
             benchmarkpage.Downloadbenchmarkdata_CSV.Click();
+            Thread.Sleep(1000);
         }
         public static void FillBasket()
         {
@@ -326,6 +330,7 @@
                 GoHome();
                 SchoolDetailPage Schooldetails = new SchoolDetailPage();
                 SearchResultsPage resultspage = new SearchResultsPage();
+                //Schooldetails.ClearBasket.Click();
                 URNHelper helpers = new URNHelper();
                 IList urns = helpers.Urns;
                

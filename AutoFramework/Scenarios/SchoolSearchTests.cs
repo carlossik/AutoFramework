@@ -6,6 +6,8 @@
     using AutoFramework.Pages.PageElements;
     using AutoFramework.Pages;
     using System.Threading;
+    using SFB_Test_Automation.AutoFramework.vs.AutoFramework.Helpers;
+    using System.Collections;
 
     public class Schoolsearchtests
     {
@@ -292,6 +294,9 @@
         public void test_trust_finance_displayed()
 
         {
+            URNHelper helpers = new URNHelper();
+            IList urns = helpers.Urns;
+
             Actions.TrustSearchWithCompanynumber("6982127");
             SchoolDetailPage detailspage = new SchoolDetailPage();
             detailspage.FinanceDropdown.Click();

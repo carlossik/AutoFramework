@@ -24,8 +24,8 @@ namespace AutoFramework.Pages.PageElements
 
 
 
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "#PdfLink > span:nth-child(2)")]
-        [SeleniumExtras.PageObjects.CacheLookup]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "PdfLinkText")]
+        //[SeleniumExtras.PageObjects.CacheLookup]
         public IWebElement DownloadPdf { get; set; }
 
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "#DownloadLinkText")]

@@ -39,8 +39,10 @@
 
 
 
-            
-            Driver.driver = new ChromeDriver();
+            ChromeOptions options = new ChromeOptions();
+           // options.AddArgument("user-agent (iPad; CPU OS 6_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/10A5355d Safari/8536.25");
+            //IWebDriver driver = new ChromeDriver(options);
+            Driver.driver = new ChromeDriver(options);
             Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
             Driver.driver.Manage().Window.Maximize();
             //Driver.driver.Manage().Cookies.DeleteAllCookies();
@@ -212,6 +214,7 @@
         {
             OnclickReportingTest();
             BenchMarkChartPage benchmarkpage = new BenchMarkChartPage();
+            Thread.Sleep(10000);
             benchmarkpage.DownloadPdf.Click();
         }
         public static void downloadcsv()

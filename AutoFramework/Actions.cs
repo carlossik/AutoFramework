@@ -4,6 +4,8 @@
     using NUnit.Framework;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Chrome;
+    using OpenQA.Selenium.Firefox;
+    using OpenQA.Selenium.IE;
     using Pages;
     using SFB_Test_Automation.AutoFramework.Pages;
     using SFB_Test_Automation.AutoFramework.vs.AutoFramework.Helpers;
@@ -39,12 +41,12 @@
 
 
 
-            ChromeOptions options = new ChromeOptions();
+            //ChromeOptions options = new ChromeOptions();
            // options.AddArgument("user-agent (iPad; CPU OS 6_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/10A5355d Safari/8536.25");
             //IWebDriver driver = new ChromeDriver(options);
-            Driver.driver = new ChromeDriver(options);
+            Driver.driver = new ChromeDriver();
             Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
-            Driver.driver.Manage().Window.Maximize();
+            //Driver.driver.Manage().Window.Maximize();
             //Driver.driver.Manage().Cookies.DeleteAllCookies();
             Driver.WaitForElementUpTo(Config.ElementsWaitingTimeout);
         }

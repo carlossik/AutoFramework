@@ -6,8 +6,8 @@
     using AutoFramework.Pages.PageElements;
     using AutoFramework.Pages;
     using System.Threading;
-    using SFB_Test_Automation.AutoFramework.vs.AutoFramework.Helpers;
-    using System.Collections;
+
+    [TestFixture]
 
     public class Schoolsearchtests
     {
@@ -16,13 +16,14 @@
         public void SchoolsearchTest()
         {
         }
+        [SetUp]
+        public void SetupBeforeEachTest()
+        //[OneTimeSetUp]
 
-        [OneTimeSetUp]
-
-        public void Initialize()
+        //public void Initialize()
         {
             Actions.InitializeDriver();
-            
+
             Actions.FillLoginForm();
         }
 
@@ -31,7 +32,7 @@
         public void SearchSchool()
 
         {
-            
+
             Actions.schoolSearchwithLaestab("8782446");
             SchoolDetailPage detailspage = new SchoolDetailPage();
             Assert.IsTrue(detailspage.School_Name.Displayed);
@@ -46,12 +47,12 @@
         [Test]
         public void SearchSchool_closed_school()
         {
-            
+
             Actions.SearchClosedschool("101405");
             SchoolDetailPage detailspage = new SchoolDetailPage();
             Assert.IsTrue(detailspage.Date_Of_Closure.Displayed);
             Assert.IsFalse(detailspage.CompareWithOtherSchools.Displayed);
-           
+
             Assert.IsTrue(detailspage.DealsForSchools_Link.Displayed);
 
         }
@@ -62,8 +63,8 @@
             Actions.SearchClosedschool("3032004");
             SchoolDetailPage detailspage = new SchoolDetailPage();
             Assert.IsTrue(detailspage.schooldetailnotfoundmessage.Text.Contains("We found no matches for"));
-            
-           
+
+
 
         }
         [Test]
@@ -120,6 +121,8 @@
         [Test]
         public void EditBasketAddSchools()
         {
+            //Initialize();
+
             Actions.CallingClass.AddSchools();
             SchoolDetailPage detailspage = new SchoolDetailPage();
             Assert.AreEqual(detailspage.SchooldetailInfoPanel.Text, "2 schools");
@@ -127,7 +130,7 @@
         [Test]
         public void EditBasketClearSchools()
         {
-            
+
             Actions.CallingClass.ClearSchools();
             BenchMarkBasketPage basketpage = new BenchMarkBasketPage();
             Assert.That((basketpage.benchmarkbasketmessage.Text), Does.Contain("0"));
@@ -140,7 +143,7 @@
             Assert.IsTrue(detailspage.School_Location_Map.Displayed);
 
         }
-            
+
         [Test]
         [Category("QuickTests")]
         public void SearchViaLocationManualEntry()
@@ -148,7 +151,7 @@
             Actions.SearchByLocationManualEntry();
             Assert.That(Driver.driver.FindElement(By.CssSelector(".heading-xlarge")).Text, Does.Contain("Schools in and near First Avenue"));
             Assert.AreEqual(Driver.driver.FindElement(By.CssSelector("#js-search-results-info > div > p > span")).Text, "109");
-                   }
+        }
 
         [Test]
         [Category("QuickTests")]
@@ -172,7 +175,6 @@
         {
             Actions.CallingClass.SearchViaSchoolurn("144406");
             Assert.That(Driver.driver.FindElement(By.CssSelector("dd.metadata-school-detail__dd:nth-child(14)")).Text, Does.Contain("Not rated"));
-
         }
         [Test]
         public void OnclickReportingTest()
@@ -202,7 +204,7 @@
             Assert.AreEqual(londonweighting, "Neither");
         }
         [Test]
-       public void TestDownloadPdf()
+        public void TestDownloadPdf()
         {
             Actions.downloadpdf();
         }
@@ -210,9 +212,8 @@
         public void TestDownloadCsv()
         {
             Actions.downloadcsv();
-
         }
-            
+
         [Test]
         public void FlipBetweencharts()
         {
@@ -222,10 +223,12 @@
             Assert.IsTrue(Driver.driver.FindElement(By.Id("PrintLinkText")).Displayed);
         }
         [Test]
-        public void TestBasketCapacity()
+        public void ATestBasketCapacity()
         {
             Actions.CallingClass.Verifybasketcapacity();
-         
+            Assert.IsTrue(Driver.driver.FindElement(By.Id("modal-title")).Text.Contains("Not enough space in basket"));
+            Driver.driver.Quit();
+
 
         }
         [Test]
@@ -240,22 +243,18 @@
         public void test_School_schoolname()
 
         {
-
             Actions.schoolSearchwithLaestab("8604084");
             SchoolDetailPage detailspage = new SchoolDetailPage();
             Assert.IsTrue(detailspage.School_Name.Displayed);
-
         }
         [Test]
         [Category("QuickTests")]
         public void test_School_telephoneNumber()
 
         {
-
             Actions.schoolSearchwithLaestab("8782446");
             SchoolDetailPage detailspage = new SchoolDetailPage();
             Assert.IsTrue(detailspage.Telephone_Number.Displayed);
-
         }
         [Test]
         [Category("QuickTests")]
@@ -294,9 +293,6 @@
         public void test_trust_finance_displayed()
 
         {
-            URNHelper helpers = new URNHelper();
-            IList urns = helpers.Urns;
-
             Actions.TrustSearchWithCompanynumber("6982127");
             SchoolDetailPage detailspage = new SchoolDetailPage();
             detailspage.FinanceDropdown.Click();
@@ -309,8 +305,11 @@
             Assert.IsFalse((detailspage.FinanceDisplayed.Text) == "0");
         }
 
-        [OneTimeTearDown]
-        public void CleanUp()
+        //[OneTimeTearDown]
+        [TearDown]
+        public void TeardownAfterEachTest()
+        //public void CleanUp()
+
         {
             Driver.driver.Quit();
         }

@@ -14,6 +14,7 @@ namespace AutoFramework
         public static string BaseURLPreProd = "https://as-t1pp-sfb.azurewebsites.net/";
         public static string BaseURLHiddenLive = "https://as-t1pr-sfb-b.azurewebsites.net/";
         public static string currentTestEnv = BaseURL;
+        public static string firefoxlocation = "C://Users//kwaku//OneDrive//Desktop//C#//AutoFramework//bin//Debug//firefox.exe";
 
 
         public static object AlertsTexts { get; internal set; }
@@ -49,7 +50,10 @@ namespace AutoFramework
                  IWebElement SearchResults = Driver.driver.FindElement(By.CssSelector("#js-search-results-info > div > p > span"));
                 
             }
+            public class FireFoxDriver
+            {
 
+            }
 
 
         }

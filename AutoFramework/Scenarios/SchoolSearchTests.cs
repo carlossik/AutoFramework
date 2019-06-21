@@ -7,6 +7,8 @@
     using AutoFramework.Pages;
     using System.Threading;
 
+    [TestFixture]
+
     public class Schoolsearchtests
     {
 
@@ -14,10 +16,11 @@
         public void SchoolsearchTest()
         {
         }
+        [SetUp]
+        public void SetupBeforeEachTest()
+        //[OneTimeSetUp]
 
-        [OneTimeSetUp]
-
-        public void Initialize()
+        //public void Initialize()
         {
             Actions.InitializeDriver();
             
@@ -118,6 +121,8 @@
         [Test]
         public void EditBasketAddSchools()
         {
+            //Initialize();
+            
             Actions.CallingClass.AddSchools();
             SchoolDetailPage detailspage = new SchoolDetailPage();
             Assert.AreEqual(detailspage.SchooldetailInfoPanel.Text, "2 schools");
@@ -218,10 +223,11 @@
             Assert.IsTrue(Driver.driver.FindElement(By.Id("PrintLinkText")).Displayed);
         }
         [Test]
-        public void TestBasketCapacity()
+        public void ATestBasketCapacity()
         {
             Actions.CallingClass.Verifybasketcapacity();
             Assert.IsTrue(Driver.driver.FindElement(By.Id("modal-title")).Text.Contains("Not enough space in basket"));
+            Driver.driver.Quit();
          
 
         }
@@ -299,8 +305,11 @@
             Assert.IsFalse((detailspage.FinanceDisplayed.Text) == "0");
         }
 
-        [OneTimeTearDown]
-        public void CleanUp()
+        //[OneTimeTearDown]
+        [TearDown]
+        public void TeardownAfterEachTest()
+        //public void CleanUp()
+            
         {
             Driver.driver.Quit();
         }

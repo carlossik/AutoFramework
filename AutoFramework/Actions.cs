@@ -10,47 +10,34 @@
     using System.Collections;
     using System.Collections.Generic;
     using System.Threading;
-
+    using OpenQA.Selenium.Firefox;
+    using OpenQA.Selenium.IE;
+    using System;
 
     public static class Actions
     {
         
-        //public static IEnumerable<string> BrowserToRunWith()
-        //{
-        //    string[] browsers = { "chrome", "firefox" };
-        //    foreach (string b in browsers)
-        //    {
-        //        yield return b;
-        //    }
-        //}
+       
         public static void InitializeDriver()
         {
-            //if (browsername.Equals("ie"))
-            //   Driver.driver = new InternetExplorerDriver();
-
-            //else if (browsername.Equals("firefox"))
-
-            //    Driver.driver = new FirefoxDriver();
-            //else if (browsername.Equals("safari"))
-            //    Driver.driver = new SafariDriver();
-            //else
-            //    Driver.driver = new ChromeDriver();
-
-
-
-
             
+
+           
+           
             Driver.driver = new ChromeDriver();
-            Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
+            Driver.driver.Navigate().GoToUrl(Config.BaseURL);
             Driver.driver.Manage().Window.Maximize();
             //Driver.driver.Manage().Cookies.DeleteAllCookies();
             Driver.WaitForElementUpTo(Config.ElementsWaitingTimeout);
         }
+
+       
+
         public static void GoHome()
         {
             
             
-            Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
+            Driver.driver.Navigate().GoToUrl(Config.BaseURL);
         }
         public static void  OnclickReportingTest()
         {
@@ -159,11 +146,12 @@
         {
             GoHome();
             HomePage homepage = new HomePage();
+            Thread.Sleep(100);
             homepage.TrustTickBox.Click();
             homepage.TrustSearchInput.SendKeys(TrustName);
             homepage.TrustSubmit.Click();
             Driver.driver.FindElement(By.CssSelector(".bold-small")).Click();
-            Thread.Sleep(1000);
+            Thread.Sleep(100);
         }
         public static void TrustSearchWithCompanynumber(string companynumber)
         {
@@ -230,14 +218,14 @@
         }
         public static void TrustComparison()
         {
-            GoHome();
+            //GoHome();
             TrustSearchWitName("Kaleidoscope Learning Trust ");
             TrustComparisonPage trustComaprison = new TrustComparisonPage();
 
             trustComaprison.Compare_withOtherTrusts.Click();
-            Thread.Sleep(5000);
+            Thread.Sleep(500);
             trustComaprison.ViewBenchMarkingCharts.Click();
-            Thread.Sleep(1000);
+            
         }
             
         public static void TrustComparisonWithMultipleTrusts()
@@ -246,14 +234,14 @@
             TrustSearchWitName("Kaleidoscope Learning Trust ");
             TrustComparisonPage trustComaprison = new TrustComparisonPage();
             trustComaprison.Compare_withOtherTrusts.Click();
-            Thread.Sleep(1000);
+            Thread.Sleep(100);
             trustComaprison.SelectCharacteristicsButton.Click();
             trustComaprison.NumberOfSchoolscheckbox.Click();
             trustComaprison.MinNumOfScools.SendKeys("30");
             trustComaprison.MaxNumofschools.SendKeys("35");
-            Thread.Sleep(2000);
+            Thread.Sleep(1000);
             trustComaprison.ViewBenchMarkingChartsbutton.Click();
-            Thread.Sleep(2000);
+            
 
         }
         
@@ -323,7 +311,7 @@
                 resultspage.FirstElementPresented.Click();
                 Thread.Sleep(3000);
                 Schooldetails.AddToBenchMarkBasket.Click();
-                Thread.Sleep(1000);
+               
                }
             public static void Verifybasketcapacity()
             {
@@ -376,7 +364,7 @@
                 homepage.School.Click();
                 homepage.SchoolsearchField.SendKeys(urn);
                 homepage.ClickOnSearchButton();
-                Thread.Sleep(2000);
+                Thread.Sleep(1000);
             }
             public static void QuickCompareWithOtherSchools()
             {
@@ -387,7 +375,7 @@
                 SchoolDetailPage detailspage = new SchoolDetailPage();
                 detailspage.CompareWithOtherSchools.Click();
                 BestInClass bestinclass = new BestInClass();
-                Thread.Sleep(2000);
+                Thread.Sleep(200);
                 bestinclass.QuckComparisonButton.Click();
                 bestinclass.NextButton.Click();
                 bestinclass.DefaultChoice.Click();
@@ -401,14 +389,14 @@
             {
                 BestInClass bestinclass = new BestInClass();
                 bestinclass.ContinueToBenchMarkChartsBurtton.Click();
-                Thread.Sleep(1000);
+                Thread.Sleep(100);
             }
             public static void ViewCharts()
             {
                 ContinuetoBenchmarkCharts();
                 BestInClass bestinclass = new BestInClass();
                 bestinclass.YourChartTab.Click();
-                Thread.Sleep(2000);
+                Thread.Sleep(1000);
 
             }
 
@@ -416,17 +404,17 @@
             {
                 GoHome();
                 SearchViaSchoolurn("109776");
-                Thread.Sleep(5000);
+                Thread.Sleep(2000);
                 SchoolDetailPage detailspage = new SchoolDetailPage();
                 detailspage.CompareWithOtherSchools.Click();
-                Thread.Sleep(5000);
+                Thread.Sleep(3000);
                 BestInClass bestinclass = new BestInClass();
                 bestinclass.BestInClassComparisonButton.Click();
-                Thread.Sleep(5000);
+                Thread.Sleep(3000);
                 bestinclass.ContinueToHigherProgressSchoolBenchmark.Click();
-                Thread.Sleep(5000);
+                Thread.Sleep(3000);
                 bestinclass.NextButton.Click();
-                Thread.Sleep(5000);
+                Thread.Sleep(3000);
 
             }
             public static void SchoohSearchOfstedRating()
@@ -477,8 +465,11 @@
             }
             public static void AddSchools()
             {
+                
                 Verifybasket();
                 SchoolDetailPage detailpage = new SchoolDetailPage();
+                //detailpage.ClearBasket.Click();
+                //Verifybasket();
                 detailpage.EditBasket.Click();
                 BenchMarkBasketPage basketpage = new BenchMarkBasketPage();
                 basketpage.AddSchools.Click();
@@ -487,10 +478,10 @@
                 home.SchoolsearchField.SendKeys("100000");
                 home.SearchSubmit.Click();
 
-                Thread.Sleep(10000);
+                Thread.Sleep(1000);
                 SchoolDetailPage detailspage = new SchoolDetailPage();
                 detailspage.AddToBenchMarkBasket.Click();
-                Thread.Sleep(10000);
+                Thread.Sleep(1000);
 
             }
             public static void ClearSchools()
@@ -501,7 +492,7 @@
                 BenchMarkBasketPage basketpage = new BenchMarkBasketPage();
                 
                 basketpage.ClearBasket.Click();
-                Thread.Sleep(10000);
+                Thread.Sleep(1000);
 
             }
 

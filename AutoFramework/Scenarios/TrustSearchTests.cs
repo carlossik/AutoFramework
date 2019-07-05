@@ -23,7 +23,7 @@ namespace AutoFramework
         {
             Actions.InitializeDriver();
            
-            Actions.FillLoginForm();
+            //Actions.FillLoginForm();
         }
 
 

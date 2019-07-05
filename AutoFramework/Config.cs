@@ -11,6 +11,7 @@ namespace AutoFramework
 
         public static int ElementsWaitingTimeout = 100;
         public static string BaseURL = "https://as-t1dv-sfb.azurewebsites.net/";
+        public static string Prodlive = "https://schools-financial-benchmarking.service.gov.uk/";
         public static string BaseURLPreProd = "https://as-t1pp-sfb.azurewebsites.net/";
         public static string BaseURLHiddenLive = "https://as-t1pr-sfb-b.azurewebsites.net/";
         public static string currentTestEnv = BaseURL;

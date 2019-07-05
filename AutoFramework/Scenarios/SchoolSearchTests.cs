@@ -6,6 +6,9 @@
     using AutoFramework.Pages.PageElements;
     using AutoFramework.Pages;
     using System.Threading;
+    using Selenium.WebDriver.Extensions;
+    using By = Selenium.WebDriver.Extensions.By;
+    using SFB_Test_Automation.AutoFramework.Pages;
 
     [TestFixture]
 
@@ -24,7 +27,7 @@
         {
             Actions.InitializeDriver();
             
-            Actions.FillLoginForm();
+            //Actions.FillLoginForm();
         }
 
         [Test]
@@ -62,7 +65,7 @@
 
             Actions.SearchClosedschool("3032004");
             SchoolDetailPage detailspage = new SchoolDetailPage();
-            Assert.IsTrue(detailspage.schooldetailnotfoundmessage.Text.Contains("We found no matches for"));
+            Assert.IsTrue(detailspage.schooldetailnotfoundmessage.Text.Contains("No schools found"));
             
            
 
@@ -91,12 +94,28 @@
         }
         [Test]
         [Category("QuickTests")]
-        public void TestLinks()
+        public void TestDatasourcesLink()
         {
-            Actions.CallingClass.TestLinks();
+            Actions.CallingClass.TestDatasourcesLink();
+            Assert.AreEqual(Driver.driver.Url,  Config.currentTestEnv+ "Help/DataSources");
+
 
         }
         [Test]
+        public static void TestIntepreTingTheChartsLinks()
+        {
+            Actions.CallingClass.TestIntepreTingTheChartsLinks();
+            Assert.AreEqual(Driver.driver.Url,Config.currentTestEnv + "Help/InterpretingCharts");
+        }
+        [Test]
+        public void TestHelpUsingSiteLink()
+        {
+            Actions.CallingClass.TestHelpUsingSiteLinks();
+            Assert.AreEqual(Driver.driver.Url, Config.currentTestEnv+"Help/Guidance");
+        }
+       
+
+        //[Test]
         [Category("QuickTests")]
         public void TestButtonsOnDetailsPage()
         {
@@ -118,7 +137,7 @@
 
 
         }
-        [Test]
+       // [Test]
         public void EditBasketAddSchools()
         {
             //Initialize();
@@ -128,12 +147,20 @@
             Assert.AreEqual(detailspage.SchooldetailInfoPanel.Text, "2 schools");
         }
         [Test]
-        public void EditBasketClearSchools()
+        public void Testtextoncomparisonpage()
         {
-            
-            Actions.CallingClass.ClearSchools();
-            BenchMarkBasketPage basketpage = new BenchMarkBasketPage();
-            Assert.That((basketpage.benchmarkbasketmessage.Text), Does.Contain("0"));
+
+            BenchMarkActions.CreateBenchmarkViaDetailComparison("100000");
+            DetailComparisonPage detatilscomparison = new DetailComparisonPage();
+            Assert.IsTrue(detatilscomparison.General_Header.Displayed);
+            Assert.IsTrue(detatilscomparison.Sen_Header.Displayed);
+            Assert.IsTrue(detatilscomparison.Performance_Header.Displayed);
+            Assert.IsTrue(detatilscomparison.WorkForce_Header.Displayed);
+            Assert.AreEqual(detatilscomparison.SchooNameLink.Text, detatilscomparison.ComparingToText.Text);
+            Assert.AreEqual(detatilscomparison.BodyText1.Text, "Which characteristics would you like to use for your comparison?");
+
+
+
         }
         [Test]
         public void IsmapDisplayed()
@@ -141,6 +168,20 @@
             Actions.CallingClass.SchoolMap();
             SchoolDetailPage detailspage = new SchoolDetailPage();
             Assert.IsTrue(detailspage.School_Location_Map.Displayed);
+
+        }
+        [Test]
+        public void testrefineto30schools()
+        {
+            BenchMarkActions.refineto30schools("135747");
+            Assert.IsTrue(Driver.driver.FindElement(By.Id("modal-content")).Displayed);
+        }
+        [Test]
+        public void testrefineZeroschoolsfound()
+        {
+            BenchMarkActions.testrefinezerofound("135747");
+            Assert.IsTrue(Driver.driver.FindElement(By.Id("modal-content")).Displayed);
+            Assert.IsTrue(Driver.driver.FindElement(By.Id("modal-content")).Text == "Please refine the characteristics entered until there are between 1 and 30 matched schools.");
 
         }
             
@@ -158,7 +199,7 @@
         public void SearchViaLocationUsingLocationLink()
         {
             Actions.SearchByLocationUsingLink();
-            Assert.That(Driver.driver.FindElement(By.CssSelector(".heading-xlarge")).Text, Does.Contain("Schools in and near"));
+            Assert.That(Driver.driver.FindElement(By.CssSelector(".heading-xlarge")).Text, Does.Contain(" Schools in and near DA7 5"));
             Assert.AreEqual(Driver.driver.FindElement(By.CssSelector("#js-search-results-info > div > p > span")).Text, "109");
         }
 
@@ -204,6 +245,14 @@
             Assert.AreEqual(londonweighting, "Neither");
         }
         [Test]
+        public void TestAddschoolVianameorlocationlink()
+        {
+            Actions.CallingClass.addanotherschoolvianameorlocationlink();
+            Assert.AreEqual(Driver.driver.Url, Config.currentTestEnv + "schoolsearch/addschools");
+           
+
+        }
+        [Test]
        public void TestDownloadPdf()
         {
             Actions.downloadpdf();
@@ -212,6 +261,12 @@
         public void TestDownloadCsv()
         {
             Actions.downloadcsv();
+            //sert.IsTrue()
+        }
+        [Test]
+        public void Savebenchmarkbasket()
+        {
+            Actions.savebenchmarkbasket();
         }
             
         [Test]
@@ -222,7 +277,7 @@
             Assert.IsTrue(Driver.driver.FindElement(By.Id("DownloadLinkText")).Displayed);
             Assert.IsTrue(Driver.driver.FindElement(By.Id("PrintLinkText")).Displayed);
         }
-        [Test]
+        //[Test]
         public void ATestBasketCapacity()
         {
             Actions.CallingClass.Verifybasketcapacity();

@@ -17,7 +17,7 @@ namespace AutoFramework
             Actions.InitializeDriver();
            
 
-            Actions.FillLoginForm();
+            //Actions.FillLoginForm();
         }
        
 
@@ -25,7 +25,7 @@ namespace AutoFramework
         public void FilterBy1mile()
         {
             FilterActions.FilterBy1Mile();
-            Assert.That(Driver.driver.Url, Does.Contain("azurewebsites.net/SchoolSearch/Search?radius=1"));
+            Assert.That(Driver.driver.Url, Does.Contain("/SchoolSearch/Search?radius=1"));
         }
 
         [Test]
@@ -34,26 +34,26 @@ namespace AutoFramework
            
             
             FilterActions.FilterBy3Miles();
-            Assert.That(Driver.driver.Url, Does.Contain("azurewebsites.net/SchoolSearch/Search?radius=3"));
+            Assert.That(Driver.driver.Url, Does.Contain("/SchoolSearch/Search?radius=3"));
         }
         [Test]
         public void FilterBy5miles()
         {
             FilterActions.FilterBy5Miles();
-            Assert.That(Driver.driver.Url, Does.Contain("azurewebsites.net/SchoolSearch/Search?radius=5"));
+            Assert.That(Driver.driver.Url, Does.Contain("/SchoolSearch/Search?radius=5"));
         }
 
         [Test]
         public void FilterBy10miles()
         {
             FilterActions.FilterBy10Miles();
-            Assert.That(Driver.driver.Url, Does.Contain("azurewebsites.net/SchoolSearch/Search?radius=10"));
+            Assert.That(Driver.driver.Url, Does.Contain("/SchoolSearch/Search?radius=10"));
         }
         [Test]
         public void FilterBy15miles()
         {
             FilterActions.FilterBy15Miles();
-            Assert.That(Driver.driver.Url, Does.Contain("azurewebsites.net/SchoolSearch/Search?radius=15"));
+            Assert.That(Driver.driver.Url, Does.Contain("/SchoolSearch/Search?radius=15"));
         }
         [Test]
         public void FilterByEducationPasePrimary()

@@ -19,6 +19,9 @@ namespace AutoFramework.Pages
 
         [FindsBy(How = How.Id, Using = "radio-3")]
         public IWebElement BestInClassComparisonButton { get; set; }
+        [FindsBy(How = How.Id, Using = "radio-4")]
+        public IWebElement ManualComaprisonButton { get; set; }
+
         [FindsBy(How = How.CssSelector,Using = ".button")]
         public IWebElement ContinueToHigherProgressSchoolBenchmark { get; set; }
 
@@ -57,6 +60,8 @@ namespace AutoFramework.Pages
         public IWebElement YourChartTab { get; set; }
         [FindsBy(How = How.CssSelector, Using = "#BestInClass > a:nth-child(1)")]
         public IWebElement ComparisonSchoolsTab { get; set; }
+        [FindsBy(How = How.CssSelector, Using = ".sticky-div__comparison-list-info-panel__count")]
+        public IWebElement BasketCount { get; set; }
     }
 }
 

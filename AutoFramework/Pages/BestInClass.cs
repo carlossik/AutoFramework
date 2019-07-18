@@ -32,16 +32,16 @@ namespace AutoFramework.Pages
         public IWebElement BackButton { get; set; }
         [FindsBy(How = How.Id,Using = "DefaultBasketSize")]
         public IWebElement DefaultChoice { get; set; }
-        [FindsBy(How = How.Id, Using = "radio-1")]
+        [FindsBy(How = How.Id, Using = "Maintained")]
         public IWebElement MaintainedSchoolsChoice { get; set; }
         [FindsBy(How = How.Id, Using = "radio-2")]
         public IWebElement AcadamiesChoice { get; set; }
-        [FindsBy(How = How.Id, Using = "radio-3")]
+        [FindsBy(How = How.Id, Using = "All")]
         public IWebElement AllSchoolsChoice { get; set; }
         [FindsBy(How = How.Id, Using = "fsm")]
         public IWebElement PupilseligibleFreemeals { get; set; }
         [FindsBy(How = How.ClassName, Using = "button")]
-        public IWebElement ContinueToBenchMarkChartsBurtton { get; set; }
+        public IWebElement ContinueToBenchMarkChartsButton { get; set; }
         [FindsBy(How = How.CssSelector, Using = "button.link-button:nth-child(4)")]
         public IWebElement EditComparison_Link { get; set; }
         [FindsBy(How = How.CssSelector,Using = "#comparing > span:nth-child(3)")]
@@ -60,7 +60,7 @@ namespace AutoFramework.Pages
         public IWebElement YourChartTab { get; set; }
         [FindsBy(How = How.CssSelector, Using = "#BestInClass > a:nth-child(1)")]
         public IWebElement ComparisonSchoolsTab { get; set; }
-        [FindsBy(How = How.CssSelector, Using = ".sticky-div__comparison-list-info-panel__count")]
+        [FindsBy(How = How.CssSelector, Using = ".banner__comparison-list-info-panel__count")]
         public IWebElement BasketCount { get; set; }
     }
 }

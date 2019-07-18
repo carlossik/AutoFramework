@@ -31,7 +31,7 @@ namespace AutoFramework.Pages.PageElements
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "#DownloadLinkText")]
         public IWebElement Downloadbenchmarkdata_CSV { get;set; }
 
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "#content > div.charts-section > div.grid-row > div > button.view-charts-tables.tables.no-underline.link-button.font-xsmall > span")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "button.view-charts-tables:nth-child(2) > span:nth-child(2)")]
         public IWebElement ViewAsTables { get; set; }
 
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "button.view-charts-tables:nth-child(1) > span:nth-child(2)")]
@@ -54,6 +54,8 @@ namespace AutoFramework.Pages.PageElements
         public IWebElement KanesHillPrimarySch { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector,Using = "[href=https://www.gov.uk/government/publications/deals-for-schools/deals-for-schools]")]
         public IWebElement DealforSchoolsLink { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "clip-button")]
+        public IWebElement CopyLinkToClipboard { get; set; }
 
         //.criteria-details > summary:nth-child(1) > span:nth-child(1)
         //#criteriaTable > tbody:nth-child(2) > tr:nth-child(9) > td:nth-child(1)

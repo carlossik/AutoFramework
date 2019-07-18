@@ -28,8 +28,17 @@
             Driver.driver = new ChromeDriver();
             Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
             Driver.driver.Manage().Window.Maximize();
+
             //Driver.driver.Manage().Cookies.DeleteAllCookies();
             Driver.WaitForElementUpTo(Config.ElementsWaitingTimeout);
+            if (Driver.driver.Url.Contains("Login"))
+            {
+                Actions.FillLoginForm();
+            }
+            else
+            {
+                
+            }
         }
 
        
@@ -60,6 +69,7 @@
             Thread.Sleep(2000);
 
         }
+       
         public static void OnclickReportingNonLondonTest(string NonLondonSchool)
         {
             GoHome();
@@ -140,7 +150,7 @@
         }
         public static void schoolSearchwithLaestab(string LAESTAB)
         {
-            GoHome();
+            //GoHome();
             HomePage homepage = new HomePage();
             homepage.School.Click();
             homepage.SchoolsearchField.Click();
@@ -202,6 +212,17 @@
             Thread.Sleep(200);
 
         }
+        public static void addtobasketviaresultspage()
+        {
+            SearchByLocationUsingLink();
+            SearchResultsPage resultspage = new SearchResultsPage();
+            resultspage.AddFirstResult.Click();
+            Thread.Sleep(20000);
+            resultspage.EditBasket.Click();
+            BenchMarkBasketPage basketpage = new BenchMarkBasketPage();
+            basketpage.CloseBasket.Click();
+
+        }
         public static void downloadpdf()
         {
             OnclickReportingTest();
@@ -223,7 +244,8 @@
             OnclickReportingTest();
             BenchMarkChartPage benchmarkpage = new BenchMarkChartPage();
             benchmarkpage.Savebenchmarkbasket.Click();
-            Thread.Sleep(1000);
+            benchmarkpage.CopyLinkToClipboard.Click();
+            Thread.Sleep(300);
         }
         public static void TrustComparison()
         {
@@ -317,7 +339,7 @@
                }
             public static void Verifybasketcapacity()
             {
-                GoHome();
+                
                 SchoolDetailPage Schooldetails = new SchoolDetailPage();
                 SearchResultsPage resultspage = new SearchResultsPage();
                 URNHelper helpers = new URNHelper();
@@ -339,7 +361,28 @@
                     
                 
                 }
+            public static void verifylalink()
+            {
+                SchoolDetailPage Schooldetails = new SchoolDetailPage();
+                SearchResultsPage resultspage = new SearchResultsPage();
+                URNHelper helpers = new URNHelper();
+                IList urns = helpers.Urns;
+                foreach (string urn in urns)
+                {
+                    try
+                    {
+                        SearchSchoolViaName(urn);
 
+                        Schooldetails.LocalAuthorityLink.Click();
+                        //Thread.Sleep(10000);
+                        //Assert.IsTrue(Driver.driver.Url.Contains(Config.currentTestEnv+ "SchoolSearch/Search?nameId=&suggestionUrn=&trustnameid=&trustsuggestionUrn=&locationorpostcode=&LocationCoordinates=&openOnly=true&lacodename=330&SelectedLocalAuthorityId=&searchtype=search-by-la-code-name"));
+
+                    }
+                    catch (NoSuchElementException) { continue; }
+
+                }
+
+            }
             public static void SearchViaSchoolurn( string urn)
             {
                 GoHome();
@@ -366,7 +409,7 @@
                 bestinclass.NextButton.Click();
                 bestinclass.MaintainedSchoolsChoice.Click();
                 bestinclass.NextButton.Click();
-                bestinclass.ContinueToBenchMarkChartsBurtton.Click();
+                bestinclass.ContinueToBenchMarkChartsButton.Click();
                 Thread.Sleep(100);
 
             }
@@ -382,8 +425,8 @@
                 bestinclass.NextButton.Click();
                 bestinclass.NextButton.Click();
                 bestinclass.AllSchoolsChoice.Click();
-                bestinclass.NextButton.Click();
-                bestinclass.ContinueToBenchMarkChartsBurtton.Click();
+               // bestinclass.NextButton.Click();
+                bestinclass.ContinueToBenchMarkChartsButton.Click();
                 BenchMarkChartPage chartpage = new BenchMarkChartPage();
                 Thread.Sleep(3000);
                 IJavaScriptExecutor executor = (IJavaScriptExecutor)Driver.driver;
@@ -400,7 +443,7 @@
             public static void ContinuetoBenchmarkCharts()
             {
                 BestInClass bestinclass = new BestInClass();
-                bestinclass.ContinueToBenchMarkChartsBurtton.Click();
+                bestinclass.ContinueToBenchMarkChartsButton.Click();
                 Thread.Sleep(100);
             }
             public static void ViewCharts()

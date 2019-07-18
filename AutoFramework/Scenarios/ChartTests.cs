@@ -27,12 +27,15 @@
         public void QuickCompareChartsTest()
         {
             Actions.CallingClass.QuickCompareWithOtherSchools();
+            Assert.IsTrue(Driver.driver.FindElement(By.Id("BCHeader")).Text == "Benchmarking charts");
+           // Assert.IsTrue(Driver.driver.FindElement(By.Id("comparing-text")).Text.Contains "Comparing Foxfield Primary School to schools matching your chosen characteristics.");
 
-            Actions.CallingClass.ViewCharts();
-            
+
+            //comparing-text
+
         }
 
-        [Test]
+        //[Test]
         [Category("QuickTests")]
         public void TestIncompleteFinanceCharts()
         {

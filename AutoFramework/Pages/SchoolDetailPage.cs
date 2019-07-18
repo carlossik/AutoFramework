@@ -62,8 +62,8 @@ namespace AutoFramework.Pages.PageElements
         public IWebElement Date_Of_Closure { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = "dd.metadata-school-detail__dd:nth-child(12)")]
         public IWebElement NumberOfPupils { get; set; }
-        [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = ".govuk-box-highlight__link")]
-        public IWebElement DealsForSchools_Link { get; set; }
+        //[SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = ".govuk-box-highlight__link")]
+        //public IWebElement DealsForSchools_Link { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = "span.twitter-typeahead:nth-child(3) > div:nth-child(4)")]
         public IWebElement FirstOptionOnSchoolsearch { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = ".heading-xlarge")]
@@ -79,6 +79,8 @@ namespace AutoFramework.Pages.PageElements
 
         public IWebElement FinanceDisplayed { get; set; }
 
+        [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector,Using = "dd.metadata-school-detail__dd:nth-child(6) > a:nth-child(1)")]
+        public IWebElement LocalAuthorityLink { get; set; }
 
     }
 

@@ -7,13 +7,16 @@
     using System;
     using AutoFramework.Pages.PageElements;
     using SFB_Test_Automation.AutoFramework.Pages;
+    using SFB_Test_Automation.AutoFramework.Pages.PageElements.Helpers;
     using SFB_Test_Automation.AutoFramework;
 
     [TestFixture]
     public class BenchmarkingTests
     {
+       
+
         //[OneTimeSetUp]
-        [SetUp]
+          [SetUp]
         public void SetupBeforeEachTest()
         //public void Initialize()
         {
@@ -25,7 +28,8 @@
         [Category("QuickTests")]
         public void ManualBenchMarkCreationViaSchool()
         {
-            BenchMarkActions.CreateManualBenchMark();
+            
+                       BenchMarkActions.CreateManualBenchMark();
 
 
         }
@@ -94,7 +98,7 @@
             ComparingSimilarSchoolsPage similar = new ComparingSimilarSchoolsPage();
             ReplaceCurrentBenchmarkbasketPage replace = new ReplaceCurrentBenchmarkbasketPage();
             replace.Cancelt.Click();
-            Assert.IsTrue(Driver.driver.Url == "https://as-t1dv-sfb.azurewebsites.net/");
+            Assert.IsTrue(Driver.driver.Url == Config.currentTestEnv);
 
         }
         [Test]
@@ -104,7 +108,7 @@
             BenchMarkActions.getclipboardTextmaximum();
             ReplaceCurrentBenchmarkbasketPage replace = new ReplaceCurrentBenchmarkbasketPage();
             replace.Cancelt.Click();
-            Assert.IsTrue(Driver.driver.Url == "https://as-t1dv-sfb.azurewebsites.net/");
+            Assert.IsTrue(Driver.driver.Url == Config.currentTestEnv);
         }
         [Test]
         public static void ExcludeschoolswithIncFinanceMaintainedAllEngland()

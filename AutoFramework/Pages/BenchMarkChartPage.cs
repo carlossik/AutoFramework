@@ -24,12 +24,12 @@ namespace AutoFramework.Pages.PageElements
 
 
 
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "#PdfLink > span:nth-child(3)")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "#PdfLinkText")]
         [SeleniumExtras.PageObjects.CacheLookup]
-        public IWebElement DownloadPdf { get; set; }
+        public IWebElement DownloadPage { get; set; }
 
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "#DownloadLinkText")]
-        public IWebElement Downloadbenchmarkdata_CSV { get;set; }
+        public IWebElement Downloadata { get;set; }
 
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "button.view-charts-tables:nth-child(2) > span:nth-child(2)")]
         public IWebElement ViewAsTables { get; set; }
@@ -56,11 +56,14 @@ namespace AutoFramework.Pages.PageElements
         public IWebElement DealforSchoolsLink { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "clip-button")]
         public IWebElement CopyLinkToClipboard { get; set; }
-
-        //.criteria-details > summary:nth-child(1) > span:nth-child(1)
-        //#criteriaTable > tbody:nth-child(2) > tr:nth-child(9) > td:nth-child(1)
-        //#criteriaTable > tbody:nth-child(2) > tr:nth-child(9) > td:nth-child(2)
-        //#criteriaTable > tbody:nth-child(2) > tr:nth-child(9) > td:nth-child(3)
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector,Using = "#radio-1")]
+        public IWebElement PDFFormat { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "#radio-2")]
+        public IWebElement PowerPointFormat { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".button")]
+        public IWebElement DownloadButton { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "div.column-one-third:nth-child(2) > button:nth-child(1)")]
+        public IWebElement CancellButton { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "#Expenditure > a:nth-child(1)")]
         public IWebElement ExpenditureTab { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "#Income > a:nth-child(1)")]
@@ -73,7 +76,14 @@ namespace AutoFramework.Pages.PageElements
         public IWebElement YourChartsTab { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector,Using = "#benchmarkBasket > div > div > div > a.add-schools > span")]
         public IWebElement AddanotherschoolLink { get; set; }
-
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id,Using = "ChartGroup")]
+        public IWebElement TotalExpenditureDropdown { get; set; }
+        
+        ////*[@id=\"DistanceRadius\"]/option[3]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector,Using = "#ChartGroup > option:nth-child(7)")]
+   
+        public IWebElement costOfFinance { get; set; }
+        
 
         private Boolean existsElement(String id)
         {
@@ -87,11 +97,11 @@ namespace AutoFramework.Pages.PageElements
             }
             return true;
         }
-
+           
 
     }
 
-    
+
 
 
 }

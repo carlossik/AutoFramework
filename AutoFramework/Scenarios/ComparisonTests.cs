@@ -7,6 +7,7 @@
     using System;
     using AutoFramework.Pages.PageElements;
     using System.Diagnostics;
+    using SFB_Test_Automation.AutoFramework;
 
     [TestFixture]
     public class ComparisonTests
@@ -74,10 +75,50 @@
         {
             Actions.TrustComparison();
         }
-        //[OneTimeTearDown]
+        [Test]
+        public void TestToAndFromFieldsNumOfPupils()
+        {
+            DetailedComparisonActions.IncludeschoolswithIncFinanceAcademiesAllEngland("144407", "64", "50");
+            string errorText = "'From' value can not be greater than the 'To' value";
+
+
+            Assert.IsTrue(Driver.driver.PageSource.Contains(errorText));
+        }
+        [Test]
+        [Ignore("Ignore a test")]
+
+        public void TestToAndFromFieldsEligibilityFreeschmeals()
+        {
+            DetailedComparisonActions.IncludeschoolswithIncFinanceAcademiesAllEngland("144407", "64", "50");
+            string errorText = "'From' value can not be greater than the 'To' value";
+
+
+            Assert.IsTrue(Driver.driver.PageSource.Contains(errorText));
+        }
+        [Test]
+        [Ignore("Ignore a test")]
+        public void TestToAndFromFieldsNumOfPupilsEduNeeds()
+        {
+            DetailedComparisonActions.IncludeschoolswithIncFinanceAcademiesAllEngland("144407", "64", "50");
+            string errorText = "'From' value can not be greater than the 'To' value";
+
+
+            Assert.IsTrue(Driver.driver.PageSource.Contains(errorText));
+        }
+        [Test]
+        [Ignore("Ignore a test")]
+        public void TestToAndFromFieldsNumInSixthForm()
+        {
+            DetailedComparisonActions.IncludeschoolswithIncFinanceAcademiesAllEngland("144407", "64", "50");
+            string errorText = "'From' value can not be greater than the 'To' value";
+
+
+            Assert.IsTrue(Driver.driver.PageSource.Contains(errorText));
+        }
+
         [TearDown]
         public void TeardownAfterEachTest()
-        //public void CleanUp()
+       
         {
             Driver.driver.Quit();
         }

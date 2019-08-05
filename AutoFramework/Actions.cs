@@ -13,6 +13,8 @@
     using OpenQA.Selenium.Firefox;
     using OpenQA.Selenium.IE;
     using System;
+    
+
 
     public static class Actions
     {
@@ -217,7 +219,7 @@
             SearchByLocationUsingLink();
             SearchResultsPage resultspage = new SearchResultsPage();
             resultspage.AddFirstResult.Click();
-            Thread.Sleep(20000);
+            Thread.Sleep(2000);
             resultspage.EditBasket.Click();
             BenchMarkBasketPage basketpage = new BenchMarkBasketPage();
             basketpage.CloseBasket.Click();
@@ -228,15 +230,49 @@
             OnclickReportingTest();
             BenchMarkChartPage benchmarkpage = new BenchMarkChartPage();
             Thread.Sleep(1000);
-            benchmarkpage.DownloadPdf.Click();
+            benchmarkpage.DownloadPage.Click();
             Thread.Sleep(1000);
+            //Driver.driver.SwitchTo().Window(Driver.driver.WindowHandles.Last());
+            //Driver.driver.SwitchTo().Window(Driver.driver.CurrentWindowHandle);
+
+            benchmarkpage.PDFFormat.Click();
+            Thread.Sleep(1000);
+            Driver.driver.SwitchTo().Window(Driver.driver.WindowHandles[0]);
+            IJavaScriptExecutor ex = (IJavaScriptExecutor)Driver.driver;
+            //ex.ExecuteScript("arguments[0].scrollIntoView();", benchmarkpage.DownloadButton);
+            benchmarkpage.PDFFormat.SendKeys(Keys.Tab);
+            benchmarkpage.PDFFormat.SendKeys(Keys.Tab);
+            benchmarkpage.PDFFormat.SendKeys(Keys.Tab);
+            IWebElement DownloadButton = Driver.driver.FindElement(By.CssSelector(".button"));
+            //ex.ExecuteScript("arguments[0].click();", benchmarkpage.DownloadButton);
+            ex.ExecuteScript("document.getElementByClassName('button next-button').click();", DownloadButton);
+
+           // DownloadButton.Click();
+
+            //IWebElement element = Driver.driver();
+            //benchmarkpage.DownloadButton.Click();
+            Thread.Sleep(10000);
+
+
+//#/html/body/dialog/div/div/div/div/button[1]
+
+
+
 
         }
         public static void downloadcsv()
         {
             OnclickReportingTest();
             BenchMarkChartPage benchmarkpage = new BenchMarkChartPage();
-            benchmarkpage.Downloadbenchmarkdata_CSV.Click();
+            benchmarkpage.Downloadata.Click();
+            Thread.Sleep(1000);
+        }
+        public static void downloadppt()
+        {
+            OnclickReportingTest();
+            BenchMarkChartPage benchmarkpage = new BenchMarkChartPage();
+            Thread.Sleep(1000);
+            benchmarkpage.DownloadPage.Click();
             Thread.Sleep(1000);
         }
         public static void savebenchmarkbasket()
@@ -375,7 +411,7 @@
 
                         Schooldetails.LocalAuthorityLink.Click();
                         //Thread.Sleep(10000);
-                        //Assert.IsTrue(Driver.driver.Url.Contains(Config.currentTestEnv+ "SchoolSearch/Search?nameId=&suggestionUrn=&trustnameid=&trustsuggestionUrn=&locationorpostcode=&LocationCoordinates=&openOnly=true&lacodename=330&SelectedLocalAuthorityId=&searchtype=search-by-la-code-name"));
+                        Assert.IsTrue(Driver.driver.Url.Contains(Config.currentTestEnv+ "SchoolSearch/Search?nameId=&suggestionUrn=&trustnameid=&trustsuggestionUrn=&locationorpostcode=&LocationCoordinates=&openOnly=true&lacodename=330&SelectedLocalAuthorityId=&searchtype=search-by-la-code-name"));
 
                     }
                     catch (NoSuchElementException) { continue; }

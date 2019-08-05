@@ -87,6 +87,12 @@ namespace SFB_Test_Automation.AutoFramework.Pages
 
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector,Using = "#countPart")]
         public IWebElement SearchResultsCount { get; set; }
-
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id,Using = "checkbox-MinPerFSM")]
+        public IWebElement EligibilityFressSchoolMealsCheckBox { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "MinPerFSM")]
+        public IWebElement EligibilityFressSchoolMealsfromInput { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "MaxPerFSM")]
+        public IWebElement EligibilityFressSchoolMealsToInput { get; set; }
     }
 }
+

@@ -3,7 +3,7 @@ namespace AutoFramework
 {
     using OpenQA.Selenium;
     using NUnit.Framework;
-
+    using System.Drawing.Imaging;
 
     public class FiltersTest
     {
@@ -96,8 +96,15 @@ namespace AutoFramework
         [OneTimeTearDown]
         public void CleanUp()
         {
+            //if (TestContext.CurrentContext.Result.Outcome != NUnit.Framework.Interfaces.ResultState.Success)
+            //{
+            //    var screenshot = ((ITakesScreenshot)Driver.driver).GetScreenshot();
+            //    screenshot.SaveAsFile(@"C:\Users\kwaku\OneDrive\Pictures\Screenshots", ImageFormat.Jpeg);
+            //}
             Driver.driver.Quit();
         }
+        //Driver.driver.Quit();
+        
     }
 
              

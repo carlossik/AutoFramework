@@ -39,7 +39,7 @@
             Actions.schoolSearchwithLaestab("8782446");
             SchoolDetailPage detailspage = new SchoolDetailPage();
             Assert.IsTrue(detailspage.School_Name.Displayed);
-            Assert.AreEqual((detailspage.School_Name).Text, Driver.driver.FindElement(By.XPath("/html/body/div/main/h1")).Text);
+            Assert.AreEqual((detailspage.School_Name).Text, Driver.driver.FindElement(By.XPath("/html/body/div/div[9]/main/h1")).Text);
             Assert.IsTrue(detailspage.Telephone_Number.Displayed);
             Assert.IsTrue(detailspage.OfstedRating.Displayed);
             Assert.IsTrue(detailspage.DataFromOtherSources.Displayed);
@@ -107,9 +107,10 @@
         {
             
             Actions.addtobasketviaresultspage();
-            Thread.Sleep(20000);
+            Assert.IsTrue(Driver.driver.Url.Contains(Config.currentTestEnv + "SchoolSearch/Search?nameId="));
+            
 
-            //Assert.IsTrue(Driver.driver.FindElement(By.Id("SchoolLocationMap")).Displayed);
+            
         }
         [Test]
         public static void TestIntepreTingTheChartsLinks()

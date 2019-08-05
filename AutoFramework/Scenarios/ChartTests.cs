@@ -6,21 +6,21 @@
     using AutoFramework.Pages;
     using System;
     using AutoFramework.Pages.PageElements;
-
-
-
+    using SFB_Test_Automation.AutoFramework;
 
     public class Charttests
     {
 
 
 
-        [OneTimeSetUp]
-        public void Initialize()
+        
+        [SetUp]
+        public void SetupBeforeEachTest()
+        
         {
             Actions.InitializeDriver();
 
-            //Actions.FillLoginForm();
+           
         }
         [Test]
         [Category("QuickTests")]
@@ -31,7 +31,7 @@
            // Assert.IsTrue(Driver.driver.FindElement(By.Id("comparing-text")).Text.Contains "Comparing Foxfield Primary School to schools matching your chosen characteristics.");
 
 
-            //comparing-text
+            
 
         }
 
@@ -53,13 +53,42 @@
             Assert.IsTrue(Driver.driver.FindElement(By.CssSelector("div.chart-container:nth-child(6) > div:nth-child(1) > div:nth-child(3) > a:nth-child(1)")).Displayed);
             
         }
+        [Test]
+        public void CostOffinanceTestQuickComparison()
+        {
+            Actions.CallingClass.QuickCompareWithOtherSchools();
+            BenchMarkActions.costoffinance();
+            Assert.IsFalse(Driver.driver.FindElement(By.CssSelector("div.chart-container:nth-child(3) > div:nth-child(1) > div:nth-child(3) > details:nth-child(2) > summary:nth-child(1) > span:nth-child(1)")).Displayed);
+
+
+        }
+
+        [Test]
+        public void CostOffinanceTestDetailComparison()
+        {
+            DetailedComparisonActions.IncludechoolswithIncFinanceAllSchoolsAllEngland("145789");
+            BenchMarkActions.costoffinance();
+            Assert.IsFalse(Driver.driver.FindElement(By.CssSelector("div.chart-container:nth-child(3) > div:nth-child(1) > div:nth-child(3) > details:nth-child(2) > summary:nth-child(1) > span:nth-child(1)")).Displayed);
+
+        }
+
+        [Test]
+        public void CostOffinanceTestBICComparison()
+        {
+            Actions.CallingClass.BestInClassComparison();
+            BenchMarkActions.costoffinance();
+            Assert.IsFalse(Driver.driver.FindElement(By.CssSelector("div.chart-container:nth-child(3) > div:nth-child(1) > div:nth-child(3) > details:nth-child(2) > summary:nth-child(1) > span:nth-child(1)")).Displayed);
+
+
+
+        }
 
 
 
 
-
-        [OneTimeTearDown]
-        public void CleanUp()
+       
+        [TearDown]
+        public void TeardownAfterEachTest()
         {
             Driver.driver.Quit();
         }

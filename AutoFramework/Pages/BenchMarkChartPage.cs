@@ -78,11 +78,13 @@ namespace AutoFramework.Pages.PageElements
         public IWebElement AddanotherschoolLink { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id,Using = "ChartGroup")]
         public IWebElement TotalExpenditureDropdown { get; set; }
-        
-        ////*[@id=\"DistanceRadius\"]/option[3]
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector,Using = "#ChartGroup > option:nth-child(7)")]
-   
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "#ChartGroup > option:nth-child(7)")]
         public IWebElement costOfFinance { get; set; }
+
+        //public IWebDriver hitEnter = Driver.driver.FindElement(By.CssSelector(".button")).SendKeys(Keys.Enter)
+        
+        
+        
         
 
         private Boolean existsElement(String id)

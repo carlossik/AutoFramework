@@ -279,7 +279,12 @@
         public void TestDownloadCsv()
         {
             Actions.downloadcsv();
-            //sert.IsTrue()
+            
+        }
+        [Test]
+        public void TestDownloadPPT()
+        {
+            Actions.downloadppt();
         }
         [Test]
         public void Savebenchmarkbasket()
@@ -375,7 +380,7 @@
             Thread.Sleep(1000);
 
 
-            Assert.IsFalse((detailspage.FinanceDisplayed.Text) == "0");
+            Assert.IsFalse((detailspage.FinanceDisplayed.Text) == "£0");
         }
 
         //[OneTimeTearDown]

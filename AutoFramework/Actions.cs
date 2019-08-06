@@ -232,29 +232,31 @@
             Thread.Sleep(1000);
             benchmarkpage.DownloadPage.Click();
             Thread.Sleep(1000);
-            //Driver.driver.SwitchTo().Window(Driver.driver.WindowHandles.Last());
-            //Driver.driver.SwitchTo().Window(Driver.driver.CurrentWindowHandle);
+           
+            Driver.driver.SwitchTo().Window(Driver.driver.CurrentWindowHandle);
 
             benchmarkpage.PDFFormat.Click();
             Thread.Sleep(1000);
             Driver.driver.SwitchTo().Window(Driver.driver.WindowHandles[0]);
-            IJavaScriptExecutor ex = (IJavaScriptExecutor)Driver.driver;
-            //ex.ExecuteScript("arguments[0].scrollIntoView();", benchmarkpage.DownloadButton);
+           
             benchmarkpage.PDFFormat.SendKeys(Keys.Tab);
             benchmarkpage.PDFFormat.SendKeys(Keys.Tab);
             benchmarkpage.PDFFormat.SendKeys(Keys.Tab);
-            IWebElement DownloadButton = Driver.driver.FindElement(By.CssSelector(".button"));
-            //ex.ExecuteScript("arguments[0].click();", benchmarkpage.DownloadButton);
-            ex.ExecuteScript("document.getElementByClassName('button next-button').click();", DownloadButton);
-
-           // DownloadButton.Click();
-
-            //IWebElement element = Driver.driver();
-            //benchmarkpage.DownloadButton.Click();
             Thread.Sleep(10000);
+            Driver.driver.SwitchTo().Window(Driver.driver.WindowHandles[0]);
+            Driver.driver.SwitchTo().Window(Driver.driver.CurrentWindowHandle);
+            IWebElement element = Driver.driver.FindElement(By.CssSelector(".button"));
+            IJavaScriptExecutor executor = (IJavaScriptExecutor)Driver.driver;
+            executor.ExecuteScript("arguments[0].scrollIntoView()", element);
+            executor.ExecuteScript("arguments[0].click()", element);
+
+            
+            Thread.Sleep(10000);
+            
+            
 
 
-//#/html/body/dialog/div/div/div/div/button[1]
+
 
 
 
@@ -274,6 +276,27 @@
             Thread.Sleep(1000);
             benchmarkpage.DownloadPage.Click();
             Thread.Sleep(1000);
+
+            //Driver.driver.SwitchTo().Window(Driver.driver.CurrentWindowHandle);
+            
+
+            benchmarkpage.PowerPointFormat.Click();
+            //benchmarkpage.DownloadButton.Click();
+            //Thread.Sleep(1000);
+          
+            //Thread.Sleep(10000);
+           
+            IWebElement element = Driver.driver.FindElement(By.CssSelector(".button"));
+            IJavaScriptExecutor executor = (IJavaScriptExecutor)Driver.driver;
+            executor.ExecuteScript("arguments[0].scrollIntoView()", element);
+            Thread.Sleep(10000);
+            executor.ExecuteScript("arguments[0].click()", element);
+
+
+            Thread.Sleep(1000);
+
+
+
         }
         public static void savebenchmarkbasket()
         {
@@ -411,8 +434,7 @@
 
                         Schooldetails.LocalAuthorityLink.Click();
                         //Thread.Sleep(10000);
-                        Assert.IsTrue(Driver.driver.Url.Contains(Config.currentTestEnv+ "SchoolSearch/Search?nameId=&suggestionUrn=&trustnameid=&trustsuggestionUrn=&locationorpostcode=&LocationCoordinates=&openOnly=true&lacodename=330&SelectedLocalAuthorityId=&searchtype=search-by-la-code-name"));
-
+                        Assert.IsTrue(Driver.driver.Url.Contains(Config.currentTestEnv + "SchoolSearch/Search?nameId=&suggestionUrn=&trustnameid=&trustsuggestionUrn=&locationorpostcode=&LocationCoordinates=&openOnly=true&lacodename="));
                     }
                     catch (NoSuchElementException) { continue; }
 

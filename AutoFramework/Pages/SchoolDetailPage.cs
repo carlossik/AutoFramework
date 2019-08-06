@@ -75,7 +75,7 @@ namespace AutoFramework.Pages.PageElements
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = "#Financing > option:nth-child(2)")]
         public IWebElement FinanceDropdown_Trust_Only { get; set; }
 
-        [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = "div.charts-section__chart-container:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > abbr:nth-child(1)")]
+        [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = ".exp-total")]
 
         public IWebElement FinanceDisplayed { get; set; }
 

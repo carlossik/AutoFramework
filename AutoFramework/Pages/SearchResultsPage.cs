@@ -18,7 +18,7 @@ namespace AutoFramework.Pages
         [FindsBy(How = How.XPath, Using = "/html/body/div/main/h1")]
         [CacheLookup]
         public  IWebElement SchooSearchResults { get; set; }
-        [FindsBy(How = How.CssSelector, Using = ".sticky-div__comparison-list-info-panel__edit-basket")]
+        [FindsBy(How = How.CssSelector, Using = ".banner__comparison-list-info-panel__edit-basket")]
         public IWebElement EditBasket { get; set; }
         [FindsBy(How = How.CssSelector, Using = ".sticky-div__comparison-list-info-panel__clear-basket")]
         public IWebElement ClearBasket { get; set; }
@@ -26,5 +26,9 @@ namespace AutoFramework.Pages
         public IWebElement ViewBenchMarkCharts { get; set; }
         [FindsBy(How = How.CssSelector, Using = "a.bold-small")]
         public IWebElement FirstElementPresented { get; set; }
+        [FindsBy(How = How.XPath,Using = "/html/body/div/div[9]/main/div[2]/div[2]/div[4]/div[1]/div/ul/li[1]/div/div[2]/div/button[2]")]
+        public IWebElement AddFirstResult { get; set; }
+        [FindsBy(How = How.CssSelector ,Using = "a.button")]
+        public IWebElement ViewBenchmarkChartsButton { get; set; }
     }
 }

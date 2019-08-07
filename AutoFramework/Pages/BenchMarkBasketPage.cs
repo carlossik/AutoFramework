@@ -33,8 +33,33 @@ namespace AutoFramework.Pages.PageElements
         public IWebElement ViewBenchMarkingCharts { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "strong.bold-small")]
         public IWebElement benchmarkbasketmessage { get; set; }
-        //strong.bold-small
 
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id,Using = "modal - title")]
+        public IWebElement SavebenchmarkModal { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".button")]
+        public IWebElement copylinktoclipboard { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "a.bold-xsmall:nth-child(5)")]
+        public IWebElement emailLink { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".add-schools > span:nth-child(2)")]
+        public IWebElement add_schools { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "button.benchmarkControls")]
+        public IWebElement clear_basket { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".back-link")]
+        public IWebElement close_basket { get; set; }
 
+        //a.benchmarkControls
+
+        public Boolean existsElement(String id)
+        {
+            try
+            {
+                Driver.driver.FindElement(By.Id(id));
+            }
+            catch (NoSuchElementException e)
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }

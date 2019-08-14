@@ -27,18 +27,14 @@
             BestInClass bestinclass = new BestInClass();
             bestinclass.ManualComaprisonButton.Click();
             bestinclass.NextButton.Click();
-            bestinclass.NextButton.Click();
+            //bestinclass.NextButton.Click();
 
             ManualPage manualaddition = new ManualPage();
             manualaddition.AddSchoolByNameRadio.Click();
+            bestinclass.NextButton.Click();
             manualaddition.NewSchoolNameField.SendKeys("plumcroft Primary School");
-            //addschool.schoolinputField.SendKeys("100000");
-            //addschool.searchButton.Click();
-            SchoolDetailPage schooldetail = new SchoolDetailPage();
-            Thread.Sleep(3000);
-            schooldetail.AddToBenchMarkBasket.Click();
-            Thread.Sleep(3000);
-            schooldetail.ViewBenchMarkCharts.Click();
+            manualaddition.ContinueToBenchMarkChartsButton.Click();
+            
             Thread.Sleep(10000);
 
 

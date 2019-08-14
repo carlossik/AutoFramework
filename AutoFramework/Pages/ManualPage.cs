@@ -21,6 +21,8 @@ namespace SFB_Test_Automation.AutoFramework.Pages
         public IWebElement NewSchoolNameField { get; set; }
         [FindsBy(How = How.CssSelector,Using = "#SchoolOrCollegeNameId")]
         public IWebElement AddSchoolByNameRadio { get; set; }
+        [FindsBy(How = How.CssSelector,Using = "#manualButton")]
+        public IWebElement ContinueToBenchMarkChartsButton { get; set; }
 
 
         

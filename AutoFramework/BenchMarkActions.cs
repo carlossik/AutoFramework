@@ -17,20 +17,23 @@
 
     public static class BenchMarkActions
     {
-        public static void CreateManualBenchMark()
+        public static void CreateManualBenchMarkViaName(String urn)
         {
             Actions.GoHome();
 
-            Actions.CallingClass.SearchViaSchoolurn("143592");
+            Actions.CallingClass.SearchViaSchoolurn(urn);
             SchoolDetailPage detailspage = new SchoolDetailPage();
             detailspage.CompareWithOtherSchools.Click();
             BestInClass bestinclass = new BestInClass();
             bestinclass.ManualComaprisonButton.Click();
             bestinclass.NextButton.Click();
-            AddSchool addschool = new AddSchool();
-            addschool.AddSchoolBySchool.Click();
-            addschool.schoolinputField.SendKeys("100000");
-            addschool.searchButton.Click();
+            bestinclass.NextButton.Click();
+
+            ManualPage manualaddition = new ManualPage();
+            manualaddition.AddSchoolByNameRadio.Click();
+            manualaddition.NewSchoolNameField.SendKeys("plumcroft Primary School");
+            //addschool.schoolinputField.SendKeys("100000");
+            //addschool.searchButton.Click();
             SchoolDetailPage schooldetail = new SchoolDetailPage();
             Thread.Sleep(3000);
             schooldetail.AddToBenchMarkBasket.Click();
@@ -42,11 +45,11 @@
 
 
         }
-        public static void CreateManualBenchMarkViaLocation()
+        public static void CreateManualBenchMarkViaLocation(String urn)
         {
             Actions.GoHome();
 
-            Actions.CallingClass.SearchViaSchoolurn("143592");
+            Actions.CallingClass.SearchViaSchoolurn(urn);
             SchoolDetailPage detailspage = new SchoolDetailPage();
             detailspage.CompareWithOtherSchools.Click();
             BestInClass bestinclass = new BestInClass();

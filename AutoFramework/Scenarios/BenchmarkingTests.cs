@@ -25,26 +25,33 @@
             //Actions.FillLoginForm();
         }
         [Test]
+        
         [Category("QuickTests")]
+        //[Ignore("Ignore a test")]
         public void ManualBenchMarkCreationViaSchool()
         {
             
-                       BenchMarkActions.CreateManualBenchMark();
+            BenchMarkActions.CreateManualBenchMarkViaName("143592");
+            BenchMarkChartPage chartpage = new BenchMarkChartPage();
+
+            Assert.AreEqual(chartpage.PageTitle.Text, "Benchmarking charts");
 
 
         }
         [Test]
         public void ManualBenchmarkViaLocation()
         {
-            BenchMarkActions.CreateManualBenchMarkViaLocation();
+            BenchMarkActions.CreateManualBenchMarkViaLocation("143592");
             BenchMarkChartPage chartpage = new BenchMarkChartPage();
 
             Assert.AreEqual(chartpage.PageTitle.Text, "Benchmarking charts");
         }
-        //[Test]
+        [Test]
         public void ManualBenchmarkViaLACode()
         {
-
+            BenchMarkActions.CreateManualBenchMarkviaLACode();
+            BenchMarkChartPage chartpage = new BenchMarkChartPage();
+            Assert.AreEqual(chartpage.PageTitle.Text, "Benchmarking charts");
         }
         [Test]
         public void AddAnotherSchoolByNameOrLocationLink()

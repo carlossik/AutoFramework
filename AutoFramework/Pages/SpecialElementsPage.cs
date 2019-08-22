@@ -16,10 +16,10 @@
         public IWebElement HideMessageLink { get; set; }
         [FindsBy(How = How.CssSelector, Using = "li.guidance__list__item:nth-child(1) > a:nth-child(1)")]
         public IWebElement HelpUsingSiteLink { get; set; }
-        [FindsBy(How = How.CssSelector, Using = "li.guidance__list__item:nth-child(2) > a:nth-child(1)")]
+        [FindsBy(How = How.CssSelector, Using = "li.guidance__list__item:nth-child(3) > a:nth-child(1)")]
         public IWebElement IntepreTingTheChartsLinks { get; set; }
 
-        [FindsBy(How = How.CssSelector, Using = "li.guidance__list__item:nth-child(3) > a:nth-child(1)")]
+        [FindsBy(How = How.CssSelector, Using = "li.guidance__list__item:nth-child(4) > a:nth-child(1)")]
         public IWebElement DataSources { get; set; }
 
         [FindsBy(How =How.XPath,Using = "/html/body/div/main/h1")]

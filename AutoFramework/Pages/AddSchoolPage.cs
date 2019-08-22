@@ -30,7 +30,7 @@ namespace SFB_Test_Automation.AutoFramework.Pages
         public IWebElement schoolinputField { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "FindSchoolByTown")]
         public IWebElement LocationinputField { get; set; }
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "FindSchoolByLaCodeName")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "FindSchoolManuallyByLaCodeName")]
         public IWebElement LocalAuthorityinputField { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id,Using = "FindCurrentPosition")]
         public IWebElement CurrentLocationLink { get; set; }
@@ -39,7 +39,7 @@ namespace SFB_Test_Automation.AutoFramework.Pages
             public IWebElement AddSchoolByLocalAuthority { get; set; }
             [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".back-button > a:nth-child(1)")]
             public IWebElement BackLink { get; set; }
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.ClassName,Using = "search-button")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector,Using = "#SearchByLaCodeNameFieldset > div:nth-child(3) > button:nth-child(3)")]
         public IWebElement searchButton { get; set; }
 
         

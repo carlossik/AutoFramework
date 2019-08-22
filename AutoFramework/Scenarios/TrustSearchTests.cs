@@ -37,6 +37,11 @@ namespace AutoFramework
             Assert.AreEqual(trustname, "Kaleidoscope Learning Trust");
 
         }
+        [Test]
+        public void TrustValidationToandFrom()
+        {
+            //todo
+        }
        [Test]
         public void TrustSearchwithName()
         {
@@ -80,6 +85,11 @@ namespace AutoFramework
             Assert.IsTrue(trustcharts.ShowValueDropDown.Displayed);
             Assert.IsTrue(trustcharts.CentralFinancingDropdown.Displayed);
 
+        }
+        [Test]
+        public void trustcompanylink()
+        {
+            //test company number links to gias 
         }
 
        

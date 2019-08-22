@@ -67,7 +67,7 @@
         public void TestIntepretingTheCharts()
         {
             Actions.CallingClass.InterpretingTheChartsTest();
-            Assert.IsTrue(Driver.driver.Url == Config.currentTestEnv+"Help/InterpretingCharts");
+            Assert.IsTrue(Driver.driver.Url == Config.currentTestEnv+ "Help/InterpretingCharts");
             //need to add some assertions on the links present and the order
         }
         [Test]

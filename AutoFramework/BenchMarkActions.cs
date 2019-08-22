@@ -73,13 +73,13 @@
             bestinclass.NextButton.Click();
             AddSchool addschool = new AddSchool();
             addschool.AddSchoolByLocalAuthority.Click();
-            addschool.schoolinputField.SendKeys("303");
+            addschool.LocalAuthorityinputField.SendKeys("303");
             addschool.searchButton.Click();
             SchoolDetailPage schooldetail = new SchoolDetailPage();
             Thread.Sleep(3000);
-            schooldetail.AddToBenchMarkBasket.Click();
+            schooldetail.FirstSearchItem.Click();
             Thread.Sleep(3000);
-            schooldetail.ViewBenchMarkCharts.Click();
+            schooldetail.ContinueToManualBenchMarkCharts.Click();
             Thread.Sleep(10000);
            }
         public static void CreateBenchmarkViaDetailComparison(String urn)

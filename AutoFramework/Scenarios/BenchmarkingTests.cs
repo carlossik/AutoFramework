@@ -39,6 +39,7 @@
 
         }
         [Test]
+        [Ignore("Ignore a test")]
         public void ManualBenchmarkViaLocation()
         {
             BenchMarkActions.CreateManualBenchMarkViaLocation("143592");

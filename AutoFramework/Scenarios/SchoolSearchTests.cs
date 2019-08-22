@@ -382,6 +382,17 @@
 
             Assert.IsFalse((detailspage.FinanceDisplayed.Text) == "£0");
         }
+        [Test]
+        public void testemailsuccess()
+        {
+
+        }
+
+        [Test]
+        public void testemailfailures()
+        {
+
+        }
 
         //[OneTimeTearDown]
         [TearDown]

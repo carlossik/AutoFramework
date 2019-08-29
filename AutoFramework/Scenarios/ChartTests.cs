@@ -44,6 +44,7 @@
 
         [Test]
         [Category("QuickTests")]
+        [Ignore("Ignore a test")]
         public void DealsForSchoolsLink()
         {
             Actions.dealforswchools();

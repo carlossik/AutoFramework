@@ -115,6 +115,7 @@
         [Test]
         public static void TestIntepreTingTheChartsLinks()
         {
+            Actions.clearPopup();
             Actions.CallingClass.TestIntepreTingTheChartsLinks();
             Assert.AreEqual(Driver.driver.Url,Config.currentTestEnv + "Help/InterpretingCharts");
         }

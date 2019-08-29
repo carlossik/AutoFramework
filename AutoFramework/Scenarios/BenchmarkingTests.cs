@@ -78,7 +78,7 @@
             ComparingSimilarSchoolsPage similar = new ComparingSimilarSchoolsPage();
             similar.AddToExistingBasket.Click();
             similar.NextButton.Click();
-            Thread.Sleep(30);
+            Thread.Sleep(300);
             Assert.IsTrue(Driver.driver.FindElement(By.CssSelector(".message")).Text == "Showing the 15 schools in your benchmark basket");
 
 
@@ -205,7 +205,7 @@
         [Test]
         public static void IncludechoolswithIncFinanceAllSchoolsLaCode()
         {
-            DetailedComparisonActions.IncludechoolswithIncFinanceAllSchoolsLaCode("142974");
+            DetailedComparisonActions.IncludechoolswithIncFinanceAllSchoolsLaCode("144407");
             string errorText = "Some schools don't have a complete set of financial data for this period";
             Assert.IsTrue(Driver.driver.PageSource.Contains(errorText));
         }
@@ -248,10 +248,16 @@
         [Test]
         public static void IncludechoolswithIncFinanceAllSchoolsLaName()
         {
-            DetailedComparisonActions.IncludechoolswithIncFinanceAllSchoolsLaName("144407","Greenwich","20","201");
+            DetailedComparisonActions.IncludechoolswithIncFinanceAllSchoolsLaName("144407", "Greenwich", "20", "201");
             string errorText = "Some schools don't have a complete set of financial data for this period";
             Assert.IsTrue(Driver.driver.PageSource.Contains(errorText));
         }
+        [Test]
+        public static void Include16plusSchoolsInComparison()
+        {
+            
+        }
+        
         [TearDown]
         public void TeardownAfterEachTest()
         {

@@ -17,40 +17,35 @@
 
     public static class BenchMarkActions
     {
-        public static void CreateManualBenchMark()
+        public static void CreateManualBenchMarkViaName(String urn)
         {
             Actions.GoHome();
 
-            Actions.CallingClass.SearchViaSchoolurn("143592");
-            
+            Actions.CallingClass.SearchViaSchoolurn(urn);
             SchoolDetailPage detailspage = new SchoolDetailPage();
             detailspage.CompareWithOtherSchools.Click();
             BestInClass bestinclass = new BestInClass();
             bestinclass.ManualComaprisonButton.Click();
-            
             bestinclass.NextButton.Click();
-            AddSchool addschool = new AddSchool();
-            Thread.Sleep(3000);
-            addschool.AddSchoolBySchool.Click();
-            addschool.schoolinputField.SendKeys("100000");
-            Thread.Sleep(3000);
-            addschool.searchButton.Click();
-            SchoolDetailPage schooldetail = new SchoolDetailPage();
-           
-            schooldetail.AddToBenchMarkBasket.Click();
+            //bestinclass.NextButton.Click();
+
+            ManualPage manualaddition = new ManualPage();
+            manualaddition.AddSchoolByNameRadio.Click();
+            bestinclass.NextButton.Click();
+            manualaddition.NewSchoolNameField.SendKeys("plumcroft Primary School");
+            manualaddition.ContinueToBenchMarkChartsButton.Click();
             
-            schooldetail.ViewBenchMarkCharts.Click();
-            Thread.Sleep(3000);
+            Thread.Sleep(10000);
 
 
 
 
         }
-        public static void CreateManualBenchMarkViaLocation()
+        public static void CreateManualBenchMarkViaLocation(String urn)
         {
             Actions.GoHome();
 
-            Actions.CallingClass.SearchViaSchoolurn("143592");
+            Actions.CallingClass.SearchViaSchoolurn(urn);
             SchoolDetailPage detailspage = new SchoolDetailPage();
             detailspage.CompareWithOtherSchools.Click();
             BestInClass bestinclass = new BestInClass();
@@ -78,13 +73,13 @@
             bestinclass.NextButton.Click();
             AddSchool addschool = new AddSchool();
             addschool.AddSchoolByLocalAuthority.Click();
-            addschool.schoolinputField.SendKeys("303");
+            addschool.LocalAuthorityinputField.SendKeys("303");
             addschool.searchButton.Click();
             SchoolDetailPage schooldetail = new SchoolDetailPage();
             Thread.Sleep(3000);
-            schooldetail.AddToBenchMarkBasket.Click();
+            schooldetail.FirstSearchItem.Click();
             Thread.Sleep(3000);
-            schooldetail.ViewBenchMarkCharts.Click();
+            schooldetail.ContinueToManualBenchMarkCharts.Click();
             Thread.Sleep(10000);
            }
         public static void CreateBenchmarkViaDetailComparison(String urn)

@@ -36,6 +36,8 @@ namespace AutoFramework.Pages.PageElements
         public IWebElement CompareWithOtherSchools { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = " a.add-remove-js:nth-child(3)")]
         public IWebElement AddToBenchMarkBasket { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector,Using = "#\\31 44406desktop > button:nth-child(2)")]
+        public IWebElement FirstSearchItem { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "dd.metadata-school-detail__dd:nth-child(14)")]
         public IWebElement OfstedRating { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".heading-xlarge")]
@@ -44,6 +46,8 @@ namespace AutoFramework.Pages.PageElements
         public IWebElement School_Location_Map { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".view-benchmark-charts-wrapper > a:nth-child(1)")]
         public IWebElement ViewBenchMarkCharts { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector,Using = "#manualButton")]
+        public IWebElement ContinueToManualBenchMarkCharts { get; set; }
         //[SeleniumExtras.PageObjects.FindsBy(How =How.ClassName,Using = "button compare-buttons-panel__button--compare")]
         //public IWebElement Compare { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = "a.button:nth-child(1)")]

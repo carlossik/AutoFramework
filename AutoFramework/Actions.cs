@@ -143,6 +143,11 @@
             //chartpage.DealforSchoolsLink.Click();
 
         }
+        public static void clearPopup()
+        {
+            IWebElement closeButton = Driver.driver.FindElement(By.Id("js-modal-close"));
+            closeButton.Click();
+        }
 
         public static void GetSearchText()
         {
@@ -154,6 +159,8 @@
         {
             //GoHome();
             HomePage homepage = new HomePage();
+            clearPopup();
+            Thread.Sleep(2000);
             homepage.School.Click();
             homepage.SchoolsearchField.Click();
             //Thread.Sleep(2000);
@@ -363,7 +370,9 @@
                 Thread.Sleep(1000);
             }
             public static void TestDatasourcesLink()
+
             {
+                clearPopup();
                 SpecialElementsPage links = new SpecialElementsPage();
                 links.DataSources.Click();
                 Thread.Sleep(1000);

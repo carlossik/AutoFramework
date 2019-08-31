@@ -115,6 +115,7 @@
         [Test]
         public static void TestIntepreTingTheChartsLinks()
         {
+            Actions.clearPopup();
             Actions.CallingClass.TestIntepreTingTheChartsLinks();
             Assert.AreEqual(Driver.driver.Url,Config.currentTestEnv + "Help/InterpretingCharts");
         }
@@ -381,6 +382,17 @@
 
 
             Assert.IsFalse((detailspage.FinanceDisplayed.Text) == "£0");
+        }
+        [Test]
+        public void testemailsuccess()
+        {
+
+        }
+
+        [Test]
+        public void testemailfailures()
+        {
+
         }
 
         //[OneTimeTearDown]

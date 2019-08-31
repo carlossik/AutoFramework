@@ -46,7 +46,7 @@ namespace SFB_Test_Automation.AutoFramework
             detailpage.NumberOfPupilsCheckBox.Click();
             detailpage.MinNumberOfPupilsInputField.SendKeys("64");
             detailpage.MaxNumberOfPupilsInputBox.SendKeys("64");
-            Thread.Sleep(1000);
+            Thread.Sleep(3000);
             string resultsnumbers = detailpage.SearchResultsCount.Text;
             int resultsdisplayed = int.Parse(resultsnumbers);
             Assert.IsTrue(resultsdisplayed < 31);
@@ -303,9 +303,9 @@ namespace SFB_Test_Automation.AutoFramework
 
             detailpage.General_Header.Click();
             detailpage.NumberOfPupilsCheckBox.Click();
-            detailpage.MinNumberOfPupilsInputField.SendKeys("221.15");
+            detailpage.MinNumberOfPupilsInputField.SendKeys("705");
             Thread.Sleep(6000);
-            detailpage.MaxNumberOfPupilsInputBox.SendKeys("240");
+            detailpage.MaxNumberOfPupilsInputBox.SendKeys("1000");
             Thread.Sleep(2000);
             detailpage.ViewBenchMarkCharts.Click();
         }

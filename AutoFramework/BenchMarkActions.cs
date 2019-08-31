@@ -22,21 +22,25 @@
             Actions.GoHome();
 
             Actions.CallingClass.SearchViaSchoolurn("143592");
+            
             SchoolDetailPage detailspage = new SchoolDetailPage();
             detailspage.CompareWithOtherSchools.Click();
             BestInClass bestinclass = new BestInClass();
             bestinclass.ManualComaprisonButton.Click();
+            
             bestinclass.NextButton.Click();
             AddSchool addschool = new AddSchool();
+            Thread.Sleep(3000);
             addschool.AddSchoolBySchool.Click();
             addschool.schoolinputField.SendKeys("100000");
+            Thread.Sleep(3000);
             addschool.searchButton.Click();
             SchoolDetailPage schooldetail = new SchoolDetailPage();
-            Thread.Sleep(3000);
+           
             schooldetail.AddToBenchMarkBasket.Click();
-            Thread.Sleep(3000);
+            
             schooldetail.ViewBenchMarkCharts.Click();
-            Thread.Sleep(10000);
+            Thread.Sleep(3000);
 
 
 

@@ -30,6 +30,8 @@
         {
             
                        BenchMarkActions.CreateManualBenchMark();
+            BenchMarkChartPage chartpage = new BenchMarkChartPage();
+            Assert.IsTrue(chartpage.ExpenditureTab.Displayed);
 
 
         }

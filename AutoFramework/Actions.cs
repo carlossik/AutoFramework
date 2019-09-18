@@ -152,7 +152,7 @@
         public static void GetSearchText()
         {
             SearchResultsPage searchresults = new SearchResultsPage();
-            var results = searchresults.SchooSearchResults.Text;
+            var results = searchresults.SchoolSearchResults.Text;
             return;
         }
         public static void schoolSearchwithLaestab(string LAESTAB)
@@ -163,9 +163,9 @@
             Thread.Sleep(2000);
             homepage.School.Click();
             homepage.SchoolsearchField.Click();
-            //Thread.Sleep(2000);
+           
             homepage.SchoolsearchField.SendKeys(LAESTAB);
-            //Thread.Sleep(3000);
+           
             homepage.SearchSubmit.Click();
             Thread.Sleep(3000);
         }
@@ -219,6 +219,24 @@
             homepage.LocationSearchSubmitButton.Click();
            
             Thread.Sleep(200);
+
+        }
+        public static void select16plus()
+        {
+            SearchResultsPage resultspage = new SearchResultsPage();
+            resultspage.Checkbox_16plus.Click();
+            Thread.Sleep(3000);
+            resultspage.AddFirstResult.Click();
+            Thread.Sleep(3000);
+        }
+        public static void navigatepagination()
+        {
+            SearchResultsPage resultspage = new SearchResultsPage();
+            resultspage.paginationSecondPage.Click();
+            resultspage.paginationThirdPage.Click();
+            resultspage.paginationSecondPage.Click();
+            resultspage.paginationNextButton.Click();
+            resultspage.paginationPreviousButton.Click();
 
         }
         public static void addtobasketviaresultspage()
@@ -313,10 +331,10 @@
             benchmarkpage.CopyLinkToClipboard.Click();
             Thread.Sleep(300);
         }
-        public static void TrustComparison()
+        public static void TrustComparison(String TrustName)
         {
             //GoHome();
-            TrustSearchWitName("Kaleidoscope Learning Trust ");
+            TrustSearchWitName(TrustName);
             TrustComparisonPage trustComaprison = new TrustComparisonPage();
 
             trustComaprison.Compare_withOtherTrusts.Click();
@@ -537,7 +555,7 @@
                 bestinclass.ContinueToHigherProgressSchoolBenchmark.Click();
                 Thread.Sleep(3000);
                 bestinclass.NextButton.Click();
-                Thread.Sleep(3000);
+                Thread.Sleep(6000);
 
             }
             public static void SchoohSearchOfstedRating()

@@ -73,7 +73,7 @@
         [Test]
         public void CompareTrusts()
         {
-            Actions.TrustComparison();
+            Actions.TrustComparison("Portswood Primary Academy Trust");
         }
         [Test]
         public void TestToAndFromFieldsNumOfPupils()

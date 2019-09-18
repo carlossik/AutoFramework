@@ -11,13 +11,13 @@ namespace AutoFramework.Pages
     public class SearchResultsPage
     {
         public SearchResultsPage()
-         {
+        {
             PageFactory.InitElements(Driver.driver, this);
         }
 
-        [FindsBy(How = How.XPath, Using = "/html/body/div/main/h1")]
+        [FindsBy(How = How.CssSelector, Using = "p.summary")]
         [CacheLookup]
-        public  IWebElement SchooSearchResults { get; set; }
+        public IWebElement SchoolSearchResults { get; set; }
         [FindsBy(How = How.CssSelector, Using = ".banner__comparison-list-info-panel__edit-basket")]
         public IWebElement EditBasket { get; set; }
         [FindsBy(How = How.CssSelector, Using = ".sticky-div__comparison-list-info-panel__clear-basket")]
@@ -26,9 +26,19 @@ namespace AutoFramework.Pages
         public IWebElement ViewBenchMarkCharts { get; set; }
         [FindsBy(How = How.CssSelector, Using = "a.bold-small")]
         public IWebElement FirstElementPresented { get; set; }
-        [FindsBy(How = How.XPath,Using = "/html/body/div/div[9]/main/div[2]/div[2]/div[4]/div[1]/div/ul/li[1]/div/div[2]/div/button[2]")]
+        [FindsBy(How = How.CssSelector, Using = "button.desktop-button:nth-child(2)")]
         public IWebElement AddFirstResult { get; set; }
-        [FindsBy(How = How.CssSelector ,Using = "a.button")]
+        [FindsBy(How = How.CssSelector, Using = "a.button")]
         public IWebElement ViewBenchmarkChartsButton { get; set; }
+        [FindsBy(How = How.Id, Using = "schoollevel_16plus")]
+        public IWebElement Checkbox_16plus { get;set;}
+        [FindsBy(How = How.CssSelector,Using = "div.pagination-container:nth-child(1) > div:nth-child(1) > div:nth-child(2) > a:nth-child(2)")]
+        public IWebElement paginationSecondPage { get; set; }
+        [FindsBy(How = How.CssSelector, Using = "div.pagination-container:nth-child(1) > div:nth-child(1) > div:nth-child(2) > a:nth-child(4)")]
+        public IWebElement paginationThirdPage { get; set; }
+        [FindsBy(How = How.CssSelector, Using = "div.pagination-container:nth-child(1) > div:nth-child(1) > div:nth-child(2) > a:nth-child(4)")]
+        public IWebElement paginationNextButton { get; set; }
+        [FindsBy(How = How.CssSelector, Using = "div.pagination-container:nth-child(1) > div:nth-child(1) > div:nth-child(2) > a:nth-child(1)")]
+        public IWebElement paginationPreviousButton { get; set; }
     }
 }

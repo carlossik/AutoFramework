@@ -64,7 +64,7 @@ namespace AutoFramework
         [Test]
         public void Trustcomparison()
         {
-            Actions.TrustComparison();
+            Actions.TrustComparison("Harvey Academy");
             TrustBenchmarkChartsPage trustcharts = new TrustBenchmarkChartsPage();
             Assert.IsTrue(trustcharts.BalanceTab.Displayed);
             Assert.IsTrue(trustcharts.ExpenditureTab.Displayed);
@@ -73,6 +73,30 @@ namespace AutoFramework
             Assert.IsTrue(trustcharts.CentralFinancingDropdown.Displayed);
 
         }
+
+        [Test]
+        public void TrustcomparisonForNoDataSchool()
+        {
+            Actions.TrustSearchWithCompanynumber("8133360");
+            TrustComparisonPage trustcomparepage = new TrustComparisonPage();
+            try
+            {
+                Assert.IsTrue(trustcomparepage.Compare_withOtherTrusts.Displayed);
+
+            }
+            catch (NoSuchElementException)
+            {
+
+            }
+
+
+            //Assert.IsTrue(trustcharts.BalanceTab.Displayed);
+            // Assert.IsTrue(trustcharts.ExpenditureTab.Displayed);
+            // Assert.IsTrue(trustcharts.IncomeTab.Displayed);
+            //Assert.IsTrue(trustcharts.ShowValueDropDown.Displayed);
+            //Assert.IsTrue(trustcharts.CentralFinancingDropdown.Displayed);
+
+            }
 
         [Test]
         public void Trustcomparisonwithmorethan25schools()

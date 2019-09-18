@@ -196,6 +196,13 @@
             Assert.IsTrue(Driver.driver.FindElement(By.Id("modal-content")).Text == "Please refine the characteristics entered until there are between 1 and 30 matched schools.");
 
         }
+        [Test]
+        public void testPagination()
+        {
+            Actions.SearchByLocationManualEntry();
+            Actions.navigatepagination();
+
+        }
             
         [Test]
         [Category("QuickTests")]
@@ -316,6 +323,15 @@
             Actions.schoolSearchwithLaestab("8882096");
             SchoolDetailPage detailpage = new SchoolDetailPage();
             Assert.AreEqual((detailpage.School_Name).Text, "Accrington Huncoat Primary School");
+        }
+        [Test]
+        public void searchforschoolwith16plus()
+        {
+            Actions.SearchByLocationUsingLink();
+            Actions.select16plus();
+            SearchResultsPage resultspage = new SearchResultsPage();
+            Assert.IsTrue((resultspage.FirstElementPresented.Text)== "Shooters Hill Sixth Form College");
+            
         }
         [Test]
         [Category("QuickTests")]

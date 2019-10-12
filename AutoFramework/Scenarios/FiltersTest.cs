@@ -56,7 +56,7 @@ namespace AutoFramework
             Assert.That(Driver.driver.Url, Does.Contain("/SchoolSearch/Search?radius=15"));
         }
         [Test]
-        public void FilterByEducationPasePrimary()
+        public void FilterByEducationPhasePrimary()
         {
             FilterActions.FilterByEducationPhasePrimary();
         }

@@ -30,16 +30,15 @@
             Driver.driver = new ChromeDriver();
             Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
             Driver.driver.Manage().Window.Maximize();
-
-            //Driver.driver.Manage().Cookies.DeleteAllCookies();
             Driver.WaitForElementUpTo(Config.ElementsWaitingTimeout);
+            Actions.clearPopup();
             if (Driver.driver.Url.Contains("Login"))
             {
                 Actions.FillLoginForm();
             }
             else
             {
-                
+                Console.Write("There is no Logoin Required here....");
             }
         }
 
@@ -102,7 +101,7 @@
             loginScenario.UsernameField.Clear();
             loginScenario.UsernameField.SendKeys("internal");
             loginScenario.PasswordField.Clear();
-            loginScenario.PasswordField.SendKeys("sfb_19twspssc03");
+            loginScenario.PasswordField.SendKeys("1908@twspssc");
             loginScenario.LoginButton.Click();
         }
 
@@ -159,7 +158,7 @@
         {
             //GoHome();
             HomePage homepage = new HomePage();
-            clearPopup();
+            //clearPopup();
             Thread.Sleep(2000);
             homepage.School.Click();
             homepage.SchoolsearchField.Click();
@@ -175,7 +174,9 @@
             GoHome();
             HomePage homepage = new HomePage();
             Thread.Sleep(100);
-            homepage.TrustTickBox.Click();
+            homepage.TrustTab.Click();
+            homepage.trustnameRadioButton.Click();
+            homepage.TrustSearchInput.Click();
             homepage.TrustSearchInput.SendKeys(TrustName);
             homepage.TrustSubmit.Click();
             Driver.driver.FindElement(By.CssSelector(".bold-small")).Click();
@@ -185,7 +186,8 @@
         {
             GoHome();
             HomePage homepage = new HomePage();
-            homepage.TrustTickBox.Click();
+            homepage.TrustTab.Click();
+            homepage.trustnameRadioButton.Click();
             homepage.TrustSearchInput.SendKeys(companynumber);
             Thread.Sleep(5000);
             homepage.TrustSubmit.Click();
@@ -233,7 +235,7 @@
         {
             SearchResultsPage resultspage = new SearchResultsPage();
             resultspage.paginationSecondPage.Click();
-            resultspage.paginationThirdPage.Click();
+            //resultspage.paginationThirdPage.Click();
             resultspage.paginationSecondPage.Click();
             resultspage.paginationNextButton.Click();
             resultspage.paginationPreviousButton.Click();
@@ -274,17 +276,43 @@
             IJavaScriptExecutor executor = (IJavaScriptExecutor)Driver.driver;
             executor.ExecuteScript("arguments[0].scrollIntoView()", element);
             executor.ExecuteScript("arguments[0].click()", element);
-
+            Thread.Sleep(10000);
+        }
+        public static void SearchTrustViaLocation()
+        {
+            HomePage homepage = new HomePage();
+            Thread.Sleep(100);
+            homepage.TrustTab.Click();
+            homepage.TrustLocationButton.Click();
+            homepage.TrustLocationField.SendKeys(Config.Credentials.PostCode.Postcode);
+            homepage.TrustLocationSubmit.Click();
+            Driver.driver.FindElement(By.CssSelector("li.document:nth-child(1) > a:nth-child(1)")).Click();
+            Thread.Sleep(10000);
+        }
+        public static void SearchTrustViaLocalAuthority(String LAcode)
+        {
+            HomePage homepage = new HomePage();
+            Thread.Sleep(100);
+            homepage.TrustTab.Click();
+            homepage.LcalAuthoritySearchButton.Click();
+            homepage.TrustLaCodeInputField.SendKeys(LAcode);
+            homepage.TrustLacodeSearchButton.Click();
             
             Thread.Sleep(10000);
-            
-            
-
-
-
-
-
-
+        }
+        public static void selectFirstSchool()
+        {
+            SearchResultsPage resultsPage = new SearchResultsPage();
+            resultsPage.ViewTrustSchools.Click();
+            Thread.Sleep(10000);
+        }
+        public static void ResultPageactions(String LAcode,string OrderBy)
+        {
+            SearchTrustViaLocalAuthority(LAcode);
+            SearchResultsPage resultspage = new SearchResultsPage();
+            resultspage.TrustSearchResultSortedByButton.Click();
+            resultspage.TrustSearchResultSortedByButton.SendKeys(OrderBy + Keys.Enter);
+            Thread.Sleep(2000);
 
         }
         public static void downloadcsv()
@@ -301,27 +329,13 @@
             Thread.Sleep(1000);
             benchmarkpage.DownloadPage.Click();
             Thread.Sleep(1000);
-
-            //Driver.driver.SwitchTo().Window(Driver.driver.CurrentWindowHandle);
-            
-
             benchmarkpage.PowerPointFormat.Click();
-            //benchmarkpage.DownloadButton.Click();
-            //Thread.Sleep(1000);
-          
-            //Thread.Sleep(10000);
-           
             IWebElement element = Driver.driver.FindElement(By.CssSelector(".button"));
             IJavaScriptExecutor executor = (IJavaScriptExecutor)Driver.driver;
             executor.ExecuteScript("arguments[0].scrollIntoView()", element);
             Thread.Sleep(10000);
             executor.ExecuteScript("arguments[0].click()", element);
-
-
             Thread.Sleep(1000);
-
-
-
         }
         public static void savebenchmarkbasket()
         {
@@ -390,7 +404,7 @@
             public static void TestDatasourcesLink()
 
             {
-                clearPopup();
+                //clearPopup();
                 SpecialElementsPage links = new SpecialElementsPage();
                 links.DataSources.Click();
                 Thread.Sleep(1000);

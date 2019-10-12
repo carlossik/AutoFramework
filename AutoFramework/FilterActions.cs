@@ -87,6 +87,7 @@ namespace AutoFramework
             Actions.SearchByLocationManualEntry();
             FiltersPage filters = new FiltersPage();
             filters.EducationPhase_PrimaryCheckbox.Click();
+            Thread.Sleep(30000);
 
         }
         public static void selectAllEducationPhase()

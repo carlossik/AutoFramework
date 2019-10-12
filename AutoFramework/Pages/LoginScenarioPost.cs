@@ -18,7 +18,7 @@
         [FindsBy(How = How.Id, Using = "Password")]
         public IWebElement PasswordField { get; set; }
 
-        [FindsBy(How = How.XPath, Using = " /html/body/main/div/div/section/form/div[4]/div/input")]
+        [FindsBy(How = How.CssSelector, Using = " .btn")]
 
         public IWebElement LoginButton { get; set; }
     }

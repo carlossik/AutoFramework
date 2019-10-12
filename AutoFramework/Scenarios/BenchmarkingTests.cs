@@ -22,18 +22,17 @@
         {
             Actions.InitializeDriver();
 
-            //Actions.FillLoginForm();
+            
         }
         [Test]
         
         [Category("QuickTests")]
-        //[Ignore("Ignore a test")]
+       
         public void ManualBenchMarkCreationViaSchool()
         {
             
             BenchMarkActions.CreateManualBenchMarkViaName("143592");
             BenchMarkChartPage chartpage = new BenchMarkChartPage();
-
             Assert.AreEqual(chartpage.PageTitle.Text, "Benchmarking charts");
 
 
@@ -50,7 +49,7 @@
         [Test]
         public void ManualBenchmarkViaLACode()
         {
-            BenchMarkActions.CreateManualBenchMarkviaLACode();
+            BenchMarkActions.CreateManualBenchMarkviaLACode("303");
             BenchMarkChartPage chartpage = new BenchMarkChartPage();
             Assert.AreEqual(chartpage.PageTitle.Text, "Benchmarking charts");
         }
@@ -72,14 +71,14 @@
         [Test]
         public static void PasteBasketLessThan30Schools()
         {
-            BenchMarkActions.CreateBenchmarkViaDetailComparison("125249");
+            BenchMarkActions.CreateBenchmarkViaDetailComparison("100140");//"125249"
 
             BenchMarkActions.getclipboardText();
             ComparingSimilarSchoolsPage similar = new ComparingSimilarSchoolsPage();
             similar.AddToExistingBasket.Click();
             similar.NextButton.Click();
             Thread.Sleep(300);
-            Assert.IsTrue(Driver.driver.FindElement(By.CssSelector(".message")).Text == "Showing the 15 schools in your benchmark basket");
+            Assert.IsTrue(Driver.driver.FindElement(By.CssSelector(".message")).Text == "Showing the 16 schools in your benchmark basket");
 
 
 

@@ -61,7 +61,7 @@
                 
 
         }
-        public static void CreateManualBenchMarkviaLACode()
+        public static void CreateManualBenchMarkviaLACode(String Lacode)
         {
             Actions.GoHome();
 
@@ -73,7 +73,7 @@
             bestinclass.NextButton.Click();
             AddSchool addschool = new AddSchool();
             addschool.AddSchoolByLocalAuthority.Click();
-            addschool.LocalAuthorityinputField.SendKeys("303");
+            addschool.LocalAuthorityinputField.SendKeys(Lacode);
             addschool.searchButton.Click();
             SchoolDetailPage schooldetail = new SchoolDetailPage();
             Thread.Sleep(3000);
@@ -162,7 +162,7 @@
             benchchartpage.TotalExpenditureDropdown.Click();
            
             benchchartpage.costOfFinance.Click();
-            Thread.Sleep(3000);
+            Thread.Sleep(30000);
             
 
         }

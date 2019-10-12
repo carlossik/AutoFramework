@@ -56,6 +56,8 @@ namespace AutoFramework.Pages.PageElements
         public IWebElement OneClickReportingLink { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = ".sfb_gtm_address")]
         public IWebElement Address { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = "dd.metadata-school-detail__dd:nth-child(16)")]
+        public IWebElement Urn { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = ".sfb_gtm_tel")]
         public IWebElement Telephone_Number { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = " .sfb_gtm_spt")]
@@ -78,6 +80,8 @@ namespace AutoFramework.Pages.PageElements
         public IWebElement FinanceDropdown { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = "#Financing > option:nth-child(2)")]
         public IWebElement FinanceDropdown_Trust_Only { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector,Using = "dd.metadata-school-detail__dd:nth-child(12)")]
+        public IWebElement SchoolPhase { get; set; }
 
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = ".exp-total")]
 

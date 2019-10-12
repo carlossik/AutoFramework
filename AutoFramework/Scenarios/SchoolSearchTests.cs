@@ -44,6 +44,7 @@
             Assert.IsTrue(detailspage.OfstedRating.Displayed);
             Assert.IsTrue(detailspage.DataFromOtherSources.Displayed);
             Assert.IsTrue(detailspage.Services.Displayed);
+            Assert.IsTrue(detailspage.SchoolPhase.Text == "Infant and junior");
             
 
         }
@@ -115,7 +116,7 @@
         [Test]
         public static void TestIntepreTingTheChartsLinks()
         {
-            Actions.clearPopup();
+            //Actions.clearPopup();
             Actions.CallingClass.TestIntepreTingTheChartsLinks();
             Assert.AreEqual(Driver.driver.Url,Config.currentTestEnv + "Help/InterpretingCharts");
         }
@@ -210,7 +211,7 @@
         {
             Actions.SearchByLocationManualEntry();
             Assert.That(Driver.driver.FindElement(By.CssSelector(".heading-xlarge")).Text, Does.Contain("Schools in and near First Avenue"));
-            Assert.AreEqual(Driver.driver.FindElement(By.CssSelector("#js-search-results-info > div > p > span")).Text, "109");
+            Assert.AreEqual(Driver.driver.FindElement(By.CssSelector("div.pagination-container:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > span:nth-child(1)")).Text, "109");
                    }
 
         [Test]

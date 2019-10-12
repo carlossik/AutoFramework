@@ -8,6 +8,7 @@ namespace AutoFramework
     using SFB_Test_Automation.AutoFramework.Pages;
     using AutoFramework.Pages;
     using AutoFramework.Pages.PageElements;
+    using System;
 
     public class TrustSearchScenarios
     {
@@ -115,9 +116,99 @@ namespace AutoFramework
         {
             //test company number links to gias 
         }
+        [Test]
+        public void trustsearchViaLocation()
+        {
+            Actions.SearchTrustViaLocation();
+            //string SelectElement = (Driver.driver.FindElement(By.CssSelector("#DistanceRadius")));
+            //selectElement.SelectByValue(value);
+            //var selectedValue = selectElement.SelectedOption.GetAttribute("value");
+            //Assert.AreEqual(name, selectedValue);
+            
+           
+            Assert.IsTrue(Driver.driver.FindElement(By.CssSelector("#DistanceRadius)")).Text == "5");
+            //Assert.IsFalse((detailspage.FinanceDisplayed.Text) == "£0");
+        }
+        [Test]
+        public void trustsearchViaLA()
+        {
+            Actions.SearchTrustViaLocalAuthority("303");
+            Assert.IsTrue(Driver.driver.FindElement(By.CssSelector(".count-js")).Text == "29");
+            //test company number links to gias 
+        }
+        [Test]
+        public void verifyCompaniesHouseNumberOnTrustLASearchResults()
+        {
+            trustsearchViaLA();
+            Assert.IsTrue(Driver.driver.FindElement(By.CssSelector("li.school-document:nth-child(1) > div:nth-child(2) > div:nth-child(1) > a:nth-child(1)")).Displayed);
+        }
+        [Test]
+        public void verifySortedByDistanceAtoZ()
+        {
+            Actions.ResultPageactions("303", "alphabetical a-z");
+            Assert.IsTrue(Driver.driver.FindElement(By.CssSelector("li.school-document:nth-child(1) > div:nth-child(1) > a:nth-child(1)")).Text == "Academies Enterprise Trust");
+            Assert.IsTrue(Driver.driver.FindElement(By.CssSelector("li.school-document:nth-child(29) > div:nth-child(1) > a:nth-child(1)")).Text == "Woodland Academy Trust");
 
-       
 
+
+        }
+        [Test]
+        public void verifySortedByDistanceZtoA()
+        {
+            Actions.ResultPageactions("303", "alphabetical z-a");
+            Assert.IsTrue(Driver.driver.FindElement(By.CssSelector("li.school-document:nth-child(1) > div:nth-child(1) > a:nth-child(1)")).Text == "Woodland Academy Trust");
+            Assert.IsTrue(Driver.driver.FindElement(By.CssSelector("li.school-document:nth-child(29) > div:nth-child(1) > a:nth-child(1)")).Text == "Academies Enterprise Trust");
+        }
+        [Test]
+        public void verifySortedByNumOfSchoolsInArea()
+        {
+            Actions.ResultPageactions("303", "number of schools in search area");
+
+        }
+        [Test]
+        public void verifySortedByNumOfSchholEduTrust()
+        {
+            Actions.ResultPageactions("303", "number of schools in academy trust");//li.school-document:nth-child(1) > div:nth-child(2) > div:nth-child(2)
+            Assert.IsTrue(Driver.driver.FindElement(By.CssSelector("li.school-document:nth-child(1) > div:nth-child(2) > div:nth-child(2)")).Text == "Schools in trust:66 ");
+
+        }
+        [Test]
+        public void verifynumberofschoolsdisplayed()
+        {
+            Actions.SearchTrustViaLocalAuthority("303");
+            SearchResultsPage resultsPage = new SearchResultsPage();
+            Actions.selectFirstSchool();
+            Console.WriteLine(resultsPage.getnumberofschools());
+            Console.WriteLine(resultsPage.schoolsinlink);
+            Assert.IsTrue(resultsPage.getnumberofschools().Count == resultsPage.schoolsinlink);
+
+
+
+        }
+        [Test]
+        public void verifyInsideSearchArea()
+        {
+            
+            
+        }
+        [Test]
+        public void verifyOutSideSearchArea()
+        {
+            
+           
+        }
+        [Test]
+        public void verifyviewTrustSchoolsLinks()
+        {
+
+
+        }
+        [Test]
+        public void verifycompaniesHouseNumberCorrect()
+        {
+
+
+        }
         [OneTimeTearDown]
         public void CleanUp()
         {

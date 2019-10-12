@@ -48,8 +48,9 @@ namespace SFB_Test_Automation.AutoFramework
             detailpage.MaxNumberOfPupilsInputBox.SendKeys("64");
             Thread.Sleep(3000);
             string resultsnumbers = detailpage.SearchResultsCount.Text;
-            int resultsdisplayed = int.Parse(resultsnumbers);
-            Assert.IsTrue(resultsdisplayed < 31);
+            String resultsdisplayed = (resultsnumbers);
+            int resultsdisplayedint;
+            Assert.IsTrue(Convert.ToInt32(resultsnumbers ) < 31);
             detailpage.ViewBenchMarkCharts.Click();
 
            

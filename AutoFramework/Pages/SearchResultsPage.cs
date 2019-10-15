@@ -60,7 +60,8 @@ namespace AutoFramework.Pages
             }
             return numberofschoolsdisplayed;
         }
-
+        [FindsBy(How = How.XPath,Using = "/html/body/div/div[8]/main/div[2]/div[2]/div[2]/div[2]/div[1]/ul/li[1]/details/div/table/tbody/tr[1]/td[1]/a")]
+        public IWebElement viewtrustschoolsFirstLink { get; set; }
 
 
    

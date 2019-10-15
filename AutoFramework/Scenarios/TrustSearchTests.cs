@@ -10,6 +10,7 @@ namespace AutoFramework
     using AutoFramework.Pages.PageElements;
     using System;
 
+    [Ignore("Ignore a test")]
     public class TrustSearchScenarios
     {
         IAlert alert;
@@ -91,12 +92,7 @@ namespace AutoFramework
             }
 
 
-            //Assert.IsTrue(trustcharts.BalanceTab.Displayed);
-            // Assert.IsTrue(trustcharts.ExpenditureTab.Displayed);
-            // Assert.IsTrue(trustcharts.IncomeTab.Displayed);
-            //Assert.IsTrue(trustcharts.ShowValueDropDown.Displayed);
-            //Assert.IsTrue(trustcharts.CentralFinancingDropdown.Displayed);
-
+           
             }
 
         [Test]
@@ -168,8 +164,8 @@ namespace AutoFramework
         [Test]
         public void verifySortedByNumOfSchholEduTrust()
         {
-            Actions.ResultPageactions("303", "number of schools in academy trust");//li.school-document:nth-child(1) > div:nth-child(2) > div:nth-child(2)
-            Assert.IsTrue(Driver.driver.FindElement(By.CssSelector("li.school-document:nth-child(1) > div:nth-child(2) > div:nth-child(2)")).Text == "Schools in trust:66 ");
+            Actions.ResultPageactions("303", "number of schools in academy trust");
+            Assert.IsTrue(Driver.driver.FindElement(By.CssSelector("li.school-document:nth-child(1) > div:nth-child(2) > div:nth-child(2) > span:nth-child(1)")).Text == "66");
 
         }
         [Test]
@@ -200,6 +196,13 @@ namespace AutoFramework
         [Test]
         public void verifyviewTrustSchoolsLinks()
         {
+
+            Actions.SearchTrustViaLocalAuthority("890");
+            SearchResultsPage resultsPage = new SearchResultsPage();
+            Actions.selectFirstSchool();
+            resultsPage.viewtrustschoolsFirstLink.Click();
+            SchoolDetailPage detailpage = new SchoolDetailPage();
+            Assert.AreEqual(detailpage.School_Name.Text, (Driver.driver.FindElement(By.CssSelector("li.school-document:nth-child(1) > details:nth-child(3) > div:nth-child(2) > table:nth-child(1) > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(1) > a:nth-child(1)")).Text));
 
 
         }

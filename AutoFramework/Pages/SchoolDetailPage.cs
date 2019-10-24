@@ -60,7 +60,7 @@ namespace AutoFramework.Pages.PageElements
         public IWebElement Urn { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = ".sfb_gtm_tel")]
         public IWebElement Telephone_Number { get; set; }
-        [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = " .sfb_gtm_spt")]
+        [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = ".sfb_gtm_more_info")]
         public IWebElement DataFromOtherSources { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = " .sfb_gtm_more_info")]
         public IWebElement Services { get; set; }
@@ -74,7 +74,7 @@ namespace AutoFramework.Pages.PageElements
         public IWebElement FirstOptionOnSchoolsearch { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = ".heading-xlarge")]
         public IWebElement schooldetailnotfoundmessage { get; set; }
-        [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = ".sticky-div__comparison-list-info-panel__count")]
+        [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = ".message")]
         public IWebElement SchooldetailInfoPanel { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = "#Financing")]
         public IWebElement FinanceDropdown { get; set; }

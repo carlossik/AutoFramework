@@ -190,7 +190,9 @@
         [Test]
         public static void IncludeschoolswithIncFinanceMaintainedLaCode()
         {
-            DetailedComparisonActions.IncludeschoolswithIncFinanceMaintainedLaCode("3032083", "303", "245", "600");
+            DetailedComparisonActions.IncludeschoolswithIncFinanceMaintainedLaCode("2042238", "204", "300", "333");
+
+
             string errorText = "Some schools don't have a complete set of financial data for this period";
             Assert.IsTrue(Driver.driver.PageSource.Contains(errorText));
         }
@@ -232,7 +234,7 @@
         [Test]
         public static void IncludeschoolswithIncFinanceMaintainedLaName()
         {
-            DetailedComparisonActions.IncludeschoolswithIncFinanceMaintainedLaName("3035200", "Bexley", "200", "509");
+            DetailedComparisonActions.IncludeschoolswithIncFinanceMaintainedLaName("2042238", "Hackney", "300", "500");
             string errorText = "Some schools don't have a complete set of financial data for this period";
             Assert.IsTrue(Driver.driver.PageSource.Contains(errorText));
         }

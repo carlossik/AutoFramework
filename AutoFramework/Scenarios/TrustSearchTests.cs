@@ -9,8 +9,8 @@ namespace AutoFramework
     using AutoFramework.Pages;
     using AutoFramework.Pages.PageElements;
     using System;
+    using System.Threading;
 
-    [Ignore("Ignore a test")]
     public class TrustSearchScenarios
     {
         IAlert alert;
@@ -18,14 +18,16 @@ namespace AutoFramework
         public TrustSearchScenarios()
         {     
         }
-        
-        [OneTimeSetUp]
+
+        [SetUp]
+        public void SetupBeforeEachTest()
+
+
        
-        public void Initialize()
         {
             Actions.InitializeDriver();
            
-            //Actions.FillLoginForm();
+            
         }
 
 
@@ -40,7 +42,7 @@ namespace AutoFramework
 
         }
         [Test]
-        public void TrustValidationToandFrom()
+        public void TrustearchwithWrongname()
         {
             //todo
         }
@@ -61,6 +63,14 @@ namespace AutoFramework
             string trustname = (trustcomparison.TrustName).Text;
             Assert.AreEqual(trustname, "Barnwell Academy Trust");
          }
+        [Test]
+        public void TrustSearchWithwrongcompanynumber()
+        {
+            Actions.TrustSearchWithCompanynumber("8929777");
+            TrustComparisonPage trustcomparison = new TrustComparisonPage();
+            string Errormessage = Driver.driver.FindElement(By.ClassName("heading-xlarge")).Text;
+            Assert.AreEqual(Errormessage, "We found no matches for \"8929777\"");
+        }
 
 
         [Test]
@@ -116,14 +126,9 @@ namespace AutoFramework
         public void trustsearchViaLocation()
         {
             Actions.SearchTrustViaLocation();
-            //string SelectElement = (Driver.driver.FindElement(By.CssSelector("#DistanceRadius")));
-            //selectElement.SelectByValue(value);
-            //var selectedValue = selectElement.SelectedOption.GetAttribute("value");
-            //Assert.AreEqual(name, selectedValue);
-            
            
-            Assert.IsTrue(Driver.driver.FindElement(By.CssSelector("#DistanceRadius)")).Text == "5");
-            //Assert.IsFalse((detailspage.FinanceDisplayed.Text) == "£0");
+            Assert.IsTrue(Driver.driver.FindElement(By.CssSelector(".heading-xlarge")).Text == "Academy trusts with schools operating in and near First Avenue, Welling (Bexley), Kent");
+            
         }
         [Test]
         public void trustsearchViaLA()
@@ -135,7 +140,7 @@ namespace AutoFramework
         [Test]
         public void verifyCompaniesHouseNumberOnTrustLASearchResults()
         {
-            trustsearchViaLA();
+            Actions.SearchTrustViaLocalAuthority("303");
             Assert.IsTrue(Driver.driver.FindElement(By.CssSelector("li.school-document:nth-child(1) > div:nth-child(2) > div:nth-child(1) > a:nth-child(1)")).Displayed);
         }
         [Test]
@@ -144,9 +149,6 @@ namespace AutoFramework
             Actions.ResultPageactions("303", "alphabetical a-z");
             Assert.IsTrue(Driver.driver.FindElement(By.CssSelector("li.school-document:nth-child(1) > div:nth-child(1) > a:nth-child(1)")).Text == "Academies Enterprise Trust");
             Assert.IsTrue(Driver.driver.FindElement(By.CssSelector("li.school-document:nth-child(29) > div:nth-child(1) > a:nth-child(1)")).Text == "Woodland Academy Trust");
-
-
-
         }
         [Test]
         public void verifySortedByDistanceZtoA()
@@ -177,9 +179,6 @@ namespace AutoFramework
             Console.WriteLine(resultsPage.getnumberofschools());
             Console.WriteLine(resultsPage.schoolsinlink);
             Assert.IsTrue(resultsPage.getnumberofschools().Count == resultsPage.schoolsinlink);
-
-
-
         }
         [Test]
         public void verifyInsideSearchArea()
@@ -201,8 +200,9 @@ namespace AutoFramework
             SearchResultsPage resultsPage = new SearchResultsPage();
             Actions.selectFirstSchool();
             resultsPage.viewtrustschoolsFirstLink.Click();
+            Thread.Sleep(1000);
             SchoolDetailPage detailpage = new SchoolDetailPage();
-            Assert.AreEqual(detailpage.School_Name.Text, (Driver.driver.FindElement(By.CssSelector("li.school-document:nth-child(1) > details:nth-child(3) > div:nth-child(2) > table:nth-child(1) > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(1) > a:nth-child(1)")).Text));
+            Assert.IsTrue(detailpage.School_Name.Text == "Anchorsholme Primary Academy");
 
 
         }
@@ -212,8 +212,15 @@ namespace AutoFramework
 
 
         }
-        [OneTimeTearDown]
-        public void CleanUp()
+        [Test]
+        public void CopyAndPasteTrustChart()
+        {
+
+
+        }
+        [TearDown]
+        public void TeardownAfterEachTest()
+        
         {
             Driver.driver.Quit();
         }

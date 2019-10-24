@@ -10,11 +10,11 @@ namespace AutoFramework
         //public static string schoolname = Driver.driver.FindElement(By.XPath("/html/body/div/main/h1")).Text;
 
         public static int ElementsWaitingTimeout = 100;
-        public static string BaseURL = "https://as-t1dv-sfb.azurewebsites.net/";
+        public static string BaseURLDev = "https://as-t1dv-sfb.azurewebsites.net/";
         public static string Prodlive = "https://schools-financial-benchmarking.service.gov.uk/";
         public static string BaseURLPreProd = "https://as-t1pp-sfb.azurewebsites.net/";
         public static string BaseURLHiddenLive = "https://as-t1pr-sfb-b.azurewebsites.net/";
-        public static string currentTestEnv = BaseURLPreProd;
+        public static string currentTestEnv = BaseURLDev;
         public static string firefoxlocation = "C://Users//kwaku//OneDrive//Desktop//C#//AutoFramework//bin//Debug//firefox.exe";
 
 

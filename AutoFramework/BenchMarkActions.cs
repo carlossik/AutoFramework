@@ -28,7 +28,7 @@
             bestinclass.ManualComaprisonButton.Click();
             bestinclass.NextButton.Click();
             //bestinclass.NextButton.Click();
-
+            Thread.Sleep(20000);
             ManualPage manualaddition = new ManualPage();
             manualaddition.AddSchoolByNameRadio.Click();
             bestinclass.NextButton.Click();

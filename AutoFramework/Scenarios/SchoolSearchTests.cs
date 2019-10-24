@@ -21,13 +21,11 @@
         }
         [SetUp]
         public void SetupBeforeEachTest()
-        //[OneTimeSetUp]
-
-        //public void Initialize()
+        
         {
             Actions.InitializeDriver();
             
-            //Actions.FillLoginForm();
+            
         }
 
         [Test]
@@ -47,6 +45,18 @@
             Assert.IsTrue(detailspage.SchoolPhase.Text == "Infant and junior");
             
 
+        }
+        [Test]
+        public void verifyNewsPage()
+        {
+            Actions.GoHome();
+            Actions.gotonewspage();
+            Thread.Sleep(2000);
+            Console.WriteLine(Driver.driver.Url);
+            Console.WriteLine(Config.currentTestEnv + "news?referrer=%2FAccount%2FLogin%3FReturnUrl%3D%252F");
+            Assert.IsTrue(Driver.driver.Url == (Config.currentTestEnv+"news?referrer=%2FAccount%2FLogin%3FReturnUrl%3D%252F"));
+
+            
         }
         [Test]
         public void SearchSchool_closed_school()
@@ -133,7 +143,8 @@
         public void TestButtonsOnDetailsPage()
         {
             Actions.CallingClass.IsButtonPresent();
-            //Assert.AreEqual(Driver.driver.Url, "https://as-t1dv-sfb.azurewebsites.net/BenchmarkCharts");
+            Assert.AreEqual(Driver.driver.Url, Config.currentTestEnv);
+
         }
         [Test]
         [Category("QuickTests")]
@@ -150,14 +161,12 @@
 
 
         }
-       // [Test]
+       [Test]
         public void EditBasketAddSchools()
-        {
-            //Initialize();
-            
+        {   
             Actions.CallingClass.AddSchools();
             SchoolDetailPage detailspage = new SchoolDetailPage();
-            Assert.AreEqual(detailspage.SchooldetailInfoPanel.Text, "2 schools");
+            Assert.AreEqual(detailspage.SchooldetailInfoPanel.Text, "Your benchmark basket contains 2 schools");
         }
         [Test]
         public void Testtextoncomparisonpage()
@@ -211,7 +220,7 @@
         {
             Actions.SearchByLocationManualEntry();
             Assert.That(Driver.driver.FindElement(By.CssSelector(".heading-xlarge")).Text, Does.Contain("Schools in and near First Avenue"));
-            Assert.AreEqual(Driver.driver.FindElement(By.CssSelector("div.pagination-container:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > span:nth-child(1)")).Text, "109");
+            //Assert.AreEqual(Driver.driver.FindElement(By.CssSelector("div.pagination-container:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > span:nth-child(1)")).Text, "109");
                    }
 
         [Test]
@@ -299,6 +308,8 @@
         public void Savebenchmarkbasket()
         {
             Actions.savebenchmarkbasket();
+            String expected_response = "Link copied to clipboard";
+            Assert.AreEqual(expected_response, (Driver.driver.FindElement(By.CssSelector("div.save-modal-js:nth-child(2) > h1:nth-child(2)")).Text));
         }
             
         [Test]

@@ -132,6 +132,7 @@ namespace SFB_Test_Automation.AutoFramework
             detailpage.MaxNumberOfPupilsInputBox.SendKeys(maxpupils);
             Thread.Sleep(4000);
             detailpage.ViewBenchMarkCharts.Click();
+            Thread.Sleep(4000);
         }
         public static void IncludechoolswithIncFinanceAllSchoolsAllEngland(String urn)
         {

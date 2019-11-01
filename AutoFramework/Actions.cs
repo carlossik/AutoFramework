@@ -27,7 +27,7 @@
 
 
 
-            Driver.driver = new ChromeDriver();
+            Driver.driver = new FirefoxDriver();
             Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
             Driver.driver.Manage().Window.Maximize();
             Driver.WaitForElementUpTo(Config.ElementsWaitingTimeout);

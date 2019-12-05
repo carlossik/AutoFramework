@@ -14,8 +14,9 @@ namespace AutoFramework
         [OneTimeSetUp]
         public void Initialize()
         {
-            Actions.InitializeDriver();
-           
+            Actions.InitializeChromeDriver();
+            //Actions.InitializeFireFoxDriver();
+
 
             //Actions.FillLoginForm();
         }

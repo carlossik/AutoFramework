@@ -12,22 +12,39 @@
     using System.Threading;
     using OpenQA.Selenium.Firefox;
     using OpenQA.Selenium.IE;
+    using OpenQA.Selenium.Safari;
     using System;
 
 
 
     public static class Actions
     {
+        //public static IEnumerable<String> BrowserToRunWith()
+        //{
+        //    String[] browsers = {"firefox","IE"};
+        //    foreach (string b in browsers)
+        //    {
+        //        yield return b;
+
+        //    }
+        //}
+
+        public static void InitializeChromeDriver()
+        { //BrowserToRunWith browser = new BrowserToRunWith();
+            //String[] browsers = {  "firefox","chrome" };
+            //foreach (string b in browsers)
+                //if (b.Equals("chrome"))
+                   // Driver.driver = new ChromeDriver();
+               // else if (b.Equals("firefox"))
+                   // Driver.driver = new FirefoxDriver();
+               
+               // else
+                    Driver.driver = new ChromeDriver();
 
 
-        public static void InitializeDriver()
-        {
 
 
 
-
-
-            Driver.driver = new ChromeDriver();
             Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
             Driver.driver.Manage().Window.Maximize();
             Driver.WaitForElementUpTo(Config.ElementsWaitingTimeout);
@@ -42,7 +59,35 @@
             }
         }
 
+        public static void InitializeFireFoxDriver()
+        { //BrowserToRunWith browser = new BrowserToRunWith();
+          //String[] browsers = {  "firefox","chrome" };
+          //foreach (string b in browsers)
+          //if (b.Equals("chrome"))
+          // Driver.driver = new ChromeDriver();
+          // else if (b.Equals("firefox"))
+          // Driver.driver = new FirefoxDriver();
 
+            // else
+            Driver.driver = new FirefoxDriver();
+
+
+
+
+
+            Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
+            Driver.driver.Manage().Window.Maximize();
+            Driver.WaitForElementUpTo(Config.ElementsWaitingTimeout);
+            Actions.clearPopup();
+            if (Driver.driver.Url.Contains("Login"))
+            {
+                Actions.FillLoginForm();
+            }
+            else
+            {
+                Console.Write("There is no Logoin Required here....");
+            }
+        }
 
         public static void GoHome()
         {
@@ -219,7 +264,7 @@
             //Thread.Sleep(2000);
             homepage.LocationSearchSubmitButton.Click();
             Driver.driver.FindElement(By.CssSelector("li.document:nth-child(1) > a:nth-child(1)")).Click();
-            Thread.Sleep(2000);
+            Thread.Sleep(200);
 
         }
 
@@ -248,9 +293,9 @@
         {
             SearchResultsPage resultspage = new SearchResultsPage();
             resultspage.paginationSecondPage.Click();
-            resultspage.paginationThirdPage.Click();
-            resultspage.paginationSecondPage.Click();
-            resultspage.paginationNextButton.Click();
+            //resultspage.paginationThirdPage.Click();
+            //resultspage.paginationSecondPage.Click();
+            //resultspage.paginationNextButton.Click();
             resultspage.paginationPreviousButton.Click();
 
         }
@@ -400,12 +445,14 @@
             public static void SearchByLaCode(string lacode)
             {
                 HomePage homepage = new HomePage();
-                GoHome();
+                homepage.TrustTab.Click();
                 homepage.LocalAuthoritySearchButton.Click();
-                homepage.LacodeInputField.Click();
-                homepage.LacodeInputField.Clear();
+                Thread.Sleep(30000);
+                //homepage.LacodeInputField.Click();
+                Thread.Sleep(30000);
+                //homepage.LacodeInputField.Clear();
                 homepage.LacodeInputField.SendKeys(lacode);
-                homepage.LacodeSearchButton.Click();
+                homepage.TrustLacodeSearchButton.Click();
 
             }
             public static void TestHelpUsingSiteLinks()
@@ -449,7 +496,7 @@
                 resultspage.FirstElementPresented.Click();
                 Thread.Sleep(3000);
                 Schooldetails.AddToBenchMarkBasket.Click();
-                Thread.Sleep(300000);
+                Thread.Sleep(300);
                
                }
             public static void Verifybasketcapacity()
@@ -476,6 +523,30 @@
                     
                 
                 }
+
+
+            public static void sptlinkscheck()
+            {
+                SchoolDetailPage Schooldetails = new SchoolDetailPage();
+                URNHelper helpers = new URNHelper();
+                IList urns = helpers.Urns;
+                
+
+                foreach (string urn in urns)
+                {
+                    try
+                    {
+                        SearchSchoolViaName(urn);
+                       
+                        Thread.Sleep(10000);
+                        Schooldetails.schoolPerformanceTableLink.Click();
+                       
+                    }
+                    catch (NoSuchElementException) { continue; }
+
+                }
+
+            }
             public static void verifylalink()
             {
                 SchoolDetailPage Schooldetails = new SchoolDetailPage();
@@ -584,7 +655,7 @@
                 bestinclass.ContinueToHigherProgressSchoolBenchmark.Click();
                 Thread.Sleep(3000);
                 bestinclass.NextButton.Click();
-                Thread.Sleep(6000);
+                Thread.Sleep(1000);
 
             }
             public static void SchoohSearchOfstedRating()
@@ -592,6 +663,11 @@
                 SearchViaSchoolurn("142253");
                 SchoolDetailPage detailspage = new SchoolDetailPage();
                                              
+            }
+            public void ComparisonTabothercharts()
+            {
+                OnclickReportingTest();
+
             }
             public static void SchoolMap()
             {

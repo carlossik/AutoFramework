@@ -9,23 +9,44 @@
     using Selenium.WebDriver.Extensions;
     using By = Selenium.WebDriver.Extensions.By;
     using SFB_Test_Automation.AutoFramework.Pages;
+    using System.Collections.Generic;
 
     [TestFixture]
 
     public class Schoolsearchtests
     {
+        public static IEnumerable <String> BrowserToRunWith()
+        {
+            String[] browsers = { "chrome", "firefox" };
+            foreach (string b in browsers)
+            {
+                yield return b;
 
+            }
+        }
+            
 
         public void SchoolsearchTest()
         {
         }
         [SetUp]
+       
         public void SetupBeforeEachTest()
         
         {
-            Actions.InitializeDriver();
-            
-            
+            Actions.InitializeChromeDriver();
+            //Actions.InitializeFireFoxDriver();
+
+
+        }
+        [Test]
+        public void testschoolperformancetables()
+        {
+            Actions.CallingClass.sptlinkscheck();
+            SchoolDetailPage detailspage = new SchoolDetailPage();
+            String schoolUrn = detailspage.Urn.Text;
+
+            Assert.IsTrue(Driver.driver.Url.Contains ("https://www.compare-school-performance.service.gov.uk/school/"+ schoolUrn));
         }
 
         [Test]
@@ -237,7 +258,7 @@
         public void SearchByLaCode()
         {
             Actions.CallingClass.SearchByLaCode("303");
-            Assert.That(Driver.driver.FindElement(By.CssSelector(".heading-xlarge")).Text, Does.Contain("Schools in Bexley"));
+            Assert.That(Driver.driver.FindElement(By.CssSelector(".heading-xlarge")).Text, Does.Contain("Academy trusts with schools operating in Bexley"));
 
         }
         [Test]

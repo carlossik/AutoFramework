@@ -20,7 +20,8 @@
         public void SetupBeforeEachTest()
         //public void Initialize()
         {
-            Actions.InitializeDriver();
+            Actions.InitializeChromeDriver();
+            //Actions.InitializeFireFoxDriver();
 
             
         }
@@ -30,6 +31,7 @@
        
         public void ManualBenchMarkCreationViaSchool()
         {
+            
             
             BenchMarkActions.CreateManualBenchMarkViaName("143592");
             BenchMarkChartPage chartpage = new BenchMarkChartPage();

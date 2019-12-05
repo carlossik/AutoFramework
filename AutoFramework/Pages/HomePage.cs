@@ -42,7 +42,7 @@
         public IWebElement LocationSearchSubmitButton { get; set; }
         [FindsBy(How = How.Id, Using = "TrustLaCodeName")]
         public IWebElement LocalAuthoritySearchButton { get; set; }
-        [FindsBy(How = How.Id,Using = "FindSchoolByLaCodeName")]
+        [FindsBy(How = How.CssSelector,Using = "#FindTrustByLaCodeName")]
         public IWebElement LacodeInputField { get; set; }
         [FindsBy(How = How.CssSelector,Using = "#SearchByLaCodeNameFieldset > div:nth-child(3) > button")]
         public IWebElement LacodeSearchButton { get; set; }

@@ -82,6 +82,9 @@ namespace AutoFramework.Pages.PageElements
         public IWebElement FinanceDropdown_Trust_Only { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector,Using = "dd.metadata-school-detail__dd:nth-child(12)")]
         public IWebElement SchoolPhase { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector,Using = "a.spt_link_js")]
+        public IWebElement schoolPerformanceTableLink { get; set; }
+            
 
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = ".exp-total")]
 

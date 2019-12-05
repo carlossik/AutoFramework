@@ -166,6 +166,21 @@
             
 
         }
+
+        public static void NavigateToBestInClassComparisonSchoolsTab()
+        {
+            BenchMarkChartPage benchchartpage = new BenchMarkChartPage();
+            benchchartpage.BestInClassComparisonSchoolsTab.Click();
+            Thread.Sleep(4000);
+
+        }
+        public static void NavigateToOtherComparisonSchoolsTab()
+        {
+            BenchMarkChartPage benchchartpage = new BenchMarkChartPage();
+            benchchartpage.OtherComparisonSchoolsTab.Click();
+            Thread.Sleep(1000);
+
+        }
         public static void getclipboardText()
         {
 

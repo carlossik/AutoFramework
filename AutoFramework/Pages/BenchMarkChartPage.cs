@@ -74,18 +74,24 @@ namespace AutoFramework.Pages.PageElements
         public IWebElement WorkForceTab { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".custom > span:nth-child(1)")]
         public IWebElement YourChartsTab { get; set; }
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector,Using = "#benchmarkBasket > div > div > div > a.add-schools > span")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector,Using = ".add-schools > span:nth-child(2)")]
         public IWebElement AddanotherschoolLink { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id,Using = "ChartGroup")]
         public IWebElement TotalExpenditureDropdown { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "#ChartGroup > option:nth-child(7)")]
         public IWebElement costOfFinance { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector,Using = ".comp")]
+        public IWebElement BestInClassComparisonSchoolsTab { get; set; }
+
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "#ComparisonSchools > a:nth-child(1)")]
+        public IWebElement OtherComparisonSchoolsTab { get; set; }
+
 
         //public IWebDriver hitEnter = Driver.driver.FindElement(By.CssSelector(".button")).SendKeys(Keys.Enter)
-        
-        
-        
-        
+
+
+
+
 
         private Boolean existsElement(String id)
         {

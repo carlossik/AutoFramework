@@ -20,10 +20,10 @@
         public void SetupBeforeEachTest()
         //public void Initialize()
         {
-           
-            
-            Actions.InitializeDriver();
-            
+
+
+            Actions.InitializeChromeDriver();
+            //Actions.InitializeFireFoxDriver();
             //Actions.FillLoginForm();
         }
 
@@ -116,6 +116,16 @@
             Assert.IsTrue(Driver.driver.PageSource.Contains(errorText));
         }
 
+        [Test]
+        
+        public void DisplayComparisonschoolsTab()
+        {
+            DetailedComparisonActions.IncludeschoolswithIncFinanceAcademiesAllEngland("144407", "64", "50");
+            
+
+
+             
+        }
         [TearDown]
         public void TeardownAfterEachTest()
        

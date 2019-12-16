@@ -366,7 +366,18 @@
             resultsPage.ViewTrustSchools.Click();
             Thread.Sleep(10000);
         }
-        public static void ResultPageactions(String LAcode,string OrderBy)
+        public static void ResultPageactionsA_Z(String LAcode,string OrderBy)
+        {
+            SearchTrustViaLocalAuthority(LAcode);
+            SearchResultsPage resultspage = new SearchResultsPage();
+            resultspage.TrustSearchResultSortedByButton.Click();
+            resultspage.TrustSearchResultSortedByButton.SendKeys("z-a" + Keys.Enter);
+            Thread.Sleep(1000);
+            resultspage.TrustSearchResultSortedByButton.SendKeys(OrderBy + Keys.Enter);
+            Thread.Sleep(2000);
+
+        }
+        public static void ResultPageactions(String LAcode, string OrderBy)
         {
             SearchTrustViaLocalAuthority(LAcode);
             SearchResultsPage resultspage = new SearchResultsPage();

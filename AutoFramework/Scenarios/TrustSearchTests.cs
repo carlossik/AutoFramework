@@ -147,8 +147,9 @@ namespace AutoFramework
         [Test]
         public void verifySortedByDistanceAtoZ()
         {
-            Actions.ResultPageactions("303", "alphabetical a-z");
+            Actions.ResultPageactionsA_Z("303", "alphabetical a-z");
             SearchResultsPage resultsPage = new SearchResultsPage();
+            
             Assert.IsTrue(Driver.driver.FindElement(By.CssSelector("li.school-document:nth-child(1) > div:nth-child(1) > a:nth-child(1)")).Text == "Academies Enterprise Trust");
             Console.WriteLine(resultsPage.FirstElementPresented.Text);
             //Console.WriteLine(Driver.driver.FindElement(By.CssSelector("li.school-document:nth-child(1) > div:nth-child(1) > a:nth-child(1)")).Text);

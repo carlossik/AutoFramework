@@ -116,35 +116,36 @@
             //Assert.IsTrue(tabspage.PupilsTab.Displayed);
         }
             [Test]
-            public void SortComparisonTabBySchool()
+        [Ignore("Ignore a test")]
+        public void SortComparisonTabBySchool()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
         [Test]
         [Ignore("Ignore a test")]
         public void SortComparisonTabByOfstedRating()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
         [Test]
         [Ignore("Ignore a test")]
         public void VerifyInspectionDateOfstedRating()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         [Test]
         [Ignore("Ignore a test")]
         public void VerifyTeacherPayscaleInfo()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         [Test]
         [Ignore("Ignore a test")]
         public void BestInClassAllThrough()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
 

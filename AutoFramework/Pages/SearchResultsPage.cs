@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 
@@ -31,9 +32,9 @@ namespace AutoFramework.Pages
         [FindsBy(How = How.CssSelector, Using = "a.button")]
         public IWebElement ViewBenchmarkChartsButton { get; set; }
         //[FindsBy(How = How.Id, Using = "schoollevel_16plus")]
-        [FindsBy(How = How.CssSelector,Using = "#schoollevel_16Plus")]
-        public IWebElement Checkbox_16plus { get;set;}
-        [FindsBy(How = How.CssSelector,Using = "div.pagination-container:nth-child(1) > div:nth-child(1) > div:nth-child(2) > button:nth-child(2)")]
+        [FindsBy(How = How.CssSelector, Using = "#schoolLevel > div:nth-child(1) > fieldset:nth-child(1) > label:nth-child(8)")]
+        public IWebElement Checkbox_16plus { get; set; }
+        [FindsBy(How = How.CssSelector, Using = "div.pagination-container:nth-child(1) > div:nth-child(1) > div:nth-child(2) > button:nth-child(2)")]
         public IWebElement paginationSecondPage { get; set; }
         [FindsBy(How = How.PartialLinkText, Using = "3")]
         public IWebElement paginationThirdPage { get; set; }
@@ -41,7 +42,7 @@ namespace AutoFramework.Pages
         public IWebElement paginationNextButton { get; set; }
         [FindsBy(How = How.CssSelector, Using = "div.pagination-container:nth-child(1) > div:nth-child(1) > div:nth-child(2) > button:nth-child(1)")]
         public IWebElement paginationPreviousButton { get; set; }
-        [FindsBy(How = How.Id,Using = "OrderByControl")]
+        [FindsBy(How = How.Id, Using = "OrderByControl")]
         public IWebElement TrustSearchResultSortedByButton { get; set; }
 
         [FindsBy(How = How.CssSelector, Using = "li.school-document:nth-child(1) > details:nth-child(3) > summary:nth-child(1) > span:nth-child(1)")]
@@ -49,18 +50,47 @@ namespace AutoFramework.Pages
 
         //public int numberofschoolsdisplayed = Driver.driver.FindElements(By.ClassName("schoolsInTrust")).Count;
         public int schoolsinlink = Driver.driver.FindElements(By.CssSelector("a[href*='/school/detail?urn=']")).Count;
+        public int elementList = (Driver.driver.FindElements(By.ClassName("schoolsInTrust"))).Count;
+        //string numbers = Driver.driver.FindElement(By.ClassName("schoolsInTrust")).Text;
 
-        public List<string> getnumberofschools()
-        {
-            IList<IWebElement> elementList = Driver.driver.FindElements(By.ClassName("schoolsInTrust")); // note the FindElements, plural.
-            List<string> numberofschoolsdisplayed = new List<string>();
-            foreach (IWebElement  element in elementList)
-            {
-                numberofschoolsdisplayed.Add(element.ToString());
-            }
-            return numberofschoolsdisplayed;
-        }
-        [FindsBy(How = How.XPath,Using = "/html/body/div/div[8]/main/div[2]/div[2]/div[2]/div[2]/div[1]/ul/li[1]/details/div/table/tbody/tr[1]/td[1]/a")]
+        //public int size1 = elementList.Count();
+
+
+        // IList<IWebElement> elementList = Driver.driver.FindElements(By.ClassName("schoolsInTrust")); // note the FindElements, plural.
+        //List<int> numberofschoolsdisplayed = new List<int>();
+        //int size1 = elementList.Count();
+        //IList elementList1 = Driver.driver.FindElements(By.ClassName("schoolsInTrust"));
+       // int total =(elementList1 => Convert.ToInt32(elementList1));
+
+        //IList<IWebElement> all = Driver.driver.FindElements(By.ClassName("schoolsInTrust"));
+
+        //String[] allText = new String[all.Count];
+        //int i = 0;
+        //foreach (IWebElement element in all)
+        //    {
+        //    allText[i++] = element.Text;
+        //    }
+
+
+
+
+
+
+
+
+
+
+
+    //    IWebElement selectElement = driver.findElement(By.id("id"));
+    //    List<int> numberofschoolsdisplayed6 = new List<int>();
+    //    int size1 = numberofschoolsdisplayed6.Count();
+
+
+
+
+
+
+    [FindsBy(How = How.XPath,Using = "/html/body/div/div[8]/main/div[2]/div[2]/div[2]/div[2]/div[1]/ul/li[1]/details/div/table/tbody/tr[1]/td[1]/a")]
         public IWebElement viewtrustschoolsFirstLink { get; set; }
 
 

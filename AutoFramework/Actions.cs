@@ -549,8 +549,9 @@
                     {
                         SearchSchoolViaName(urn);
                        
-                        Thread.Sleep(10000);
+                        Thread.Sleep(1);
                         Schooldetails.schoolPerformanceTableLink.Click();
+                        Console.WriteLine(Driver.driver.Url);
                        
                     }
                     catch (NoSuchElementException) { continue; }

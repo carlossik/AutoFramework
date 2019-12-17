@@ -361,10 +361,10 @@
         public void searchforschoolwith16plus()
         {
             Actions.SearchByLocationUsingLink();
-            Actions.select16plus();
+            //Assert.IsTrue((Actions.select16plus).Dsplayed);
+            //Actions.select16plus();
             SearchResultsPage resultspage = new SearchResultsPage();
-            Assert.IsTrue((resultspage.FirstElementPresented.Text)== "Shooters Hill Sixth Form College");
-            
+            Assert.IsTrue(resultspage.Checkbox_16plus.Displayed);
         }
         [Test]
         [Category("QuickTests")]

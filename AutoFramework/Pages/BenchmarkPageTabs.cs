@@ -19,7 +19,7 @@ namespace AutoFramework.Pages.PageElements
 
             SeleniumExtras.PageObjects.PageFactory.InitElements(Driver.driver, this);
         }
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".tablesorter-headerAsc > div:nth-child(1)")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "#ComparisonSchoolsTable > thead:nth-child(1) > tr:nth-child(1) > th:nth-child(1) > div:nth-child(1)")]
         [SeleniumExtras.PageObjects.CacheLookup]
         public IWebElement SchoolTab { get; set; }
 

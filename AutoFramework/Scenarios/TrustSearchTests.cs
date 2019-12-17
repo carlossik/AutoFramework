@@ -135,7 +135,10 @@ namespace AutoFramework
         public void trustsearchViaLA()
         {
             Actions.SearchTrustViaLocalAuthority("303");
-            Assert.IsTrue(Driver.driver.FindElement(By.CssSelector(".count-js")).Text == "29");
+            string numberOfSchools = Driver.driver.FindElement(By.CssSelector(".count-js")).Text;
+            Console.WriteLine(Driver.driver.FindElement(By.CssSelector(".count-js")).Text);
+            Assert.IsTrue(Convert.ToInt32(numberOfSchools) > 0);
+            Assert.IsTrue(Driver.driver.FindElement(By.CssSelector(".heading-xlarge")).Text == "Academy trusts with schools operating in Bexley");
             //test company number links to gias 
         }
         [Test]
@@ -172,18 +175,24 @@ namespace AutoFramework
         public void verifySortedByNumOfSchholEduTrust()
         {
             Actions.ResultPageactions("303", "number of schools in academy trust");
-            Assert.IsTrue(Driver.driver.FindElement(By.CssSelector("li.school-document:nth-child(1) > div:nth-child(2) > div:nth-child(2) > span:nth-child(1)")).Text == "66");
+            string numberinfirstSchool = Driver.driver.FindElement(By.CssSelector("li.school-document:nth-child(1) > div:nth-child(2) > div:nth-child(2) > span:nth-child(1)")).Text;
+            string numberinSecondSchool = Driver.driver.FindElement(By.CssSelector("li.school-document:nth-child(2) > div:nth-child(2) > div:nth-child(2) > span:nth-child(1)")).Text;
+            Console.WriteLine(numberinfirstSchool);
+            Console.WriteLine(numberinSecondSchool);
+            Console.WriteLine(Driver.driver.FindElement(By.CssSelector(".count-js")).Text);
+            Assert.IsTrue(Convert.ToInt32(numberinfirstSchool) > Convert.ToInt32(numberinSecondSchool));
+           
 
         }
-        [Test]
+        //[Test]
         public void verifynumberofschoolsdisplayed()
         {
             Actions.SearchTrustViaLocalAuthority("303");
             SearchResultsPage resultsPage = new SearchResultsPage();
             Actions.selectFirstSchool();
-            Console.WriteLine(resultsPage.getnumberofschools());
+            Console.WriteLine(resultsPage.elementList);
             Console.WriteLine(resultsPage.schoolsinlink);
-            Assert.IsTrue(resultsPage.getnumberofschools().Count == resultsPage.schoolsinlink);
+            Assert.IsTrue(resultsPage.elementList == resultsPage.schoolsinlink);
         }
         [Test]
         public void verifyInsideSearchArea()
@@ -204,10 +213,11 @@ namespace AutoFramework
             Actions.SearchTrustViaLocalAuthority("890");
             SearchResultsPage resultsPage = new SearchResultsPage();
             Actions.selectFirstSchool();
+            string schooname = resultsPage.viewtrustschoolsFirstLink.Text;
             resultsPage.viewtrustschoolsFirstLink.Click();
             Thread.Sleep(1000);
             SchoolDetailPage detailpage = new SchoolDetailPage();
-            Assert.IsTrue(detailpage.School_Name.Text == "Anchorsholme Primary Academy");
+            Assert.IsTrue(detailpage.School_Name.Text == schooname);
 
 
         }

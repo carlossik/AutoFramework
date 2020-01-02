@@ -64,6 +64,11 @@
         public IWebElement TrustLaCodeInputField { get; set; }
         [FindsBy(How = How.CssSelector,Using = "#TrustSearchByLaCodeNameFieldset > div > button")]
         public IWebElement TrustLacodeSearchButton { get; set; }
+        [FindsBy(How = How.CssSelector, Using = "#FindSchoolByLaCodeName")]
+        public IWebElement SchoolLacodeinputField { get; set; }
+        [FindsBy(How = How.CssSelector, Using = ".tt-suggestion > a:nth-child(1)")]
+        public IWebElement FirstIntellicenceSuggested { get; set; }
+        
 
 
 

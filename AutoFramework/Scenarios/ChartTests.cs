@@ -7,6 +7,8 @@
     using System;
     using AutoFramework.Pages.PageElements;
     using SFB_Test_Automation.AutoFramework;
+    using NUnit.Framework.Interfaces;
+    using System.Drawing.Imaging;
 
     public class Charttests
     {
@@ -115,6 +117,12 @@
             //Assert.IsTrue(tabspage.Progress8Tab.Displayed);
             //Assert.IsTrue(tabspage.PupilsTab.Displayed);
         }
+        [Test]
+        public void PercenTageOfTotal()
+        {
+            Actions.CallingClass.BestInClassComparison();
+            BenchMarkActions.costoffinance();
+        }
             [Test]
         [Ignore("Ignore a test")]
         public void SortComparisonTabBySchool()
@@ -142,18 +150,24 @@
         }
 
         [Test]
-        [Ignore("Ignore a test")]
+        //[Ignore("Ignore a test")]
         public void BestInClassAllThrough()
         {
-            //throw new NotImplementedException();
+            Actions.AllThroughBIC("Bournemouth, Christchurch & Poole");
         }
 
 
         [TearDown]
         public void TeardownAfterEachTest()
         {
+            if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
+            {
+                var screenshot = ((ITakesScreenshot)Driver.driver).GetScreenshot();
+                screenshot.SaveAsFile(@"C:\TEMP\Screenshot.jpg");
+            }
+            Driver.driver.Close();
             Driver.driver.Quit();
         }
 
     }
-    }
+}

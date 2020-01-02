@@ -11,6 +11,7 @@ namespace AutoFramework
     using System;
     using System.Threading;
 
+    //[Parallelizable]
     public class TrustSearchScenarios
     {
         IAlert alert;
@@ -25,8 +26,8 @@ namespace AutoFramework
 
        
         {
-            //Actions.InitializeChromeDriver();
-            Actions.InitializeFireFoxDriver();
+            Actions.InitializeChromeDriver();
+            //Actions.InitializeFireFoxDriver();
 
 
         }
@@ -128,7 +129,7 @@ namespace AutoFramework
         {
             Actions.SearchTrustViaLocation();
            
-            Assert.IsTrue(Driver.driver.FindElement(By.CssSelector(".heading-xlarge")).Text == "Academy trusts with schools operating in and near First Avenue, Welling (Bexley), Kent");
+            Assert.IsTrue(Driver.driver.FindElement(By.CssSelector(".heading-xlarge")).Text == "Academy trusts with schools operating in and near First Avenue, Bexleyheath (Bexley), Kent");
             
         }
         [Test]
@@ -237,6 +238,7 @@ namespace AutoFramework
         public void TeardownAfterEachTest()
         
         {
+            Driver.driver.Close();
             Driver.driver.Quit();
         }
     }

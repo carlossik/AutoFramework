@@ -15,15 +15,10 @@ namespace AutoFramework
     using System.Collections.Generic;
     using System.Threading;
     using OpenQA.Selenium.Firefox;
+
     public static class FilterActions
     {
-        //public static void InitializeDriver()
-        //{
-        //    Driver.driver = new OpenQA.Selenium.Firefox.FirefoxDriver();
-        //    Driver.driver.Navigate().GoToUrl(Config.BaseURL);
-        //    Driver.driver.Manage().Window.Maximize();
-        //    Driver.WaitForElementUpTo(Config.ElementsWaitingTimeout);
-        //}
+        
 
         public static void FilterBy1Mile()
         {
@@ -135,8 +130,9 @@ namespace AutoFramework
             FiltersPage filters = new FiltersPage();
             filters.SortedBy.Click();
             filters.SortedBy.SendKeys("alphabetical z-a" + Keys.Enter);
-
             Thread.Sleep(3000);
+            //filters.SortedBy.SendKeys("alphabetical z-a" + Keys.Enter);
+            //Thread.Sleep(3000);
         }
 
 

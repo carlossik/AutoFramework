@@ -19,35 +19,14 @@
 
     public static class Actions
     {
-        //public static IEnumerable<String> BrowserToRunWith()
-        //{
-        //    String[] browsers = {"firefox","IE"};
-        //    foreach (string b in browsers)
-        //    {
-        //        yield return b;
-
-        //    }
-        //}
+        
 
         public static void InitializeChromeDriver()
-        { //BrowserToRunWith browser = new BrowserToRunWith();
-            //String[] browsers = {  "firefox","chrome" };
-            //foreach (string b in browsers)
-                //if (b.Equals("chrome"))
-                   // Driver.driver = new ChromeDriver();
-               // else if (b.Equals("firefox"))
-                   // Driver.driver = new FirefoxDriver();
-               
-               // else
-                    Driver.driver = new ChromeDriver();
-
-
-
-
-
+        {
+             Driver.driver = new ChromeDriver();
             Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
             Driver.driver.Manage().Window.Maximize();
-            Driver.WaitForElementUpTo(Config.ElementsWaitingTimeout);
+            Driver.driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
             Actions.clearPopup();
             if (Driver.driver.Url.Contains("Login"))
             {
@@ -60,21 +39,8 @@
         }
 
         public static void InitializeFireFoxDriver()
-        { //BrowserToRunWith browser = new BrowserToRunWith();
-          //String[] browsers = {  "firefox","chrome" };
-          //foreach (string b in browsers)
-          //if (b.Equals("chrome"))
-          // Driver.driver = new ChromeDriver();
-          // else if (b.Equals("firefox"))
-          // Driver.driver = new FirefoxDriver();
-
-            // else
-            Driver.driver = new FirefoxDriver();
-
-
-
-
-
+        { 
+            Driver.driver = new FirefoxDriver();                     
             Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
             Driver.driver.Manage().Window.Maximize();
             Driver.WaitForElementUpTo(Config.ElementsWaitingTimeout);
@@ -158,7 +124,7 @@
             homepage.School.Click();
             homepage.SchoolsearchField.SendKeys(schoolName);
             homepage.ClickOnSearchButton();
-            Thread.Sleep(3000);
+            Thread.Sleep(100);
         }
         public static void SearchSchool2()
         {
@@ -167,7 +133,7 @@
             homepage.School.Click();
             homepage.SchoolsearchField.SendKeys("100000");
             homepage.ClickOnSearchButton();
-            Thread.Sleep(3000);
+            Thread.Sleep(100);
         }
 
         public static void SearchClosedschool(string urn)
@@ -177,12 +143,12 @@
             homepage.School.Click();
             homepage.SchoolsearchField.SendKeys(urn);
             homepage.ClickOnSearchButton();
-            Thread.Sleep(3000);
+            Thread.Sleep(300);
         }
         public static void dealforswchools()
         {
             Actions.CallingClass.QuickCompareWithOtherSchools();
-            Thread.Sleep(30000);
+            Thread.Sleep(300);
             BenchMarkChartPage chartpage = new BenchMarkChartPage();
             //chartpage.DealforSchoolsLink.Click();
 
@@ -190,7 +156,15 @@
         public static void clearPopup()
         {
             IWebElement closeButton = Driver.driver.FindElement(By.Id("js-modal-close"));
-            closeButton.Click();
+
+            if (closeButton.Displayed)
+            {
+                closeButton.Click();
+            }
+            else
+            {
+                Console.Write("modal not displayed here so moving on....");
+            }
         }
         public static void gotonewspage()
 
@@ -202,29 +176,40 @@
 
             IWebElement gotonewspage = Driver.driver.FindElement(By.CssSelector("#js-modal > div > div > div > a"));
             gotonewspage.Click();
+            Thread.Sleep(100);
         }
         
 
 
-        public static void GetSearchText()
+        public static void AllThroughBIC(string LAname)
         {
-            SearchResultsPage searchresults = new SearchResultsPage();
-            var results = searchresults.SchoolSearchResults.Text;
-            return;
+            HomePage homepage = new HomePage();
+            homepage.TrustLaCodeButton.Click();
+            homepage.SchoolLacodeinputField.SendKeys(LAname);
+            homepage.FirstIntellicenceSuggested.Click();
+            Thread.Sleep(300);
+            SearchResultsPage resultspage = new SearchResultsPage();
+            resultspage.SelectAllThroughsCheckbox.Click();
+            Thread.Sleep(30);
+            resultspage.FirstScoolLinkOnPage.Click();
+           // Driver.driver.FindElement(By.CssSelector("li.school-document:nth-child(1) > div:nth-child(1) > div:nth-child(1) > a:nth-child(1)")).Click();
+
+
+
         }
         public static void schoolSearchwithLaestab(string LAESTAB)
         {
             //GoHome();
             HomePage homepage = new HomePage();
             //clearPopup();
-            Thread.Sleep(2000);
+            Thread.Sleep(200);
             homepage.School.Click();
             homepage.SchoolsearchField.Click();
            
             homepage.SchoolsearchField.SendKeys(LAESTAB);
            
             homepage.SearchSubmit.Click();
-            Thread.Sleep(3000);
+            Thread.Sleep(300);
         }
 
         public static void TrustSearchWitName(string TrustName)
@@ -247,9 +232,9 @@
             homepage.TrustTab.Click();
             homepage.trustnameRadioButton.Click();
             homepage.TrustSearchInput.SendKeys(companynumber);
-            Thread.Sleep(5000);
+            Thread.Sleep(500);
             homepage.TrustSubmit.Click();
-            Thread.Sleep(5000);
+            Thread.Sleep(500);
         }
         public static void SearchByLocationManualEntry()
         {
@@ -285,30 +270,30 @@
         {
             SearchResultsPage resultspage = new SearchResultsPage();
             resultspage.Checkbox_16plus.Click();
-            Thread.Sleep(3000);
+            Thread.Sleep(300);
             resultspage.AddFirstResult.Click();
-            Thread.Sleep(3000);
+            Thread.Sleep(300);
         }
         public static void navigatepagination()
         {
             SearchResultsPage resultspage = new SearchResultsPage();
             resultspage.paginationSecondPage.Click();
-            //resultspage.paginationThirdPage.Click();
-            //resultspage.paginationSecondPage.Click();
-            //resultspage.paginationNextButton.Click();
+            
             resultspage.paginationPreviousButton.Click();
 
         }
         public static void addtobasketviaresultspage()
         {
-            SearchByLocationUsingLink();
+            SearchByLocationManualEntry();
             SearchResultsPage resultspage = new SearchResultsPage();
             resultspage.AddFirstResult.Click();
-            Thread.Sleep(2000);
+            Thread.Sleep(200);
             resultspage.EditBasket.Click();
+            Thread.Sleep(20000);
             BenchMarkBasketPage basketpage = new BenchMarkBasketPage();
+            //Driver.driver.Navigate().Back();
             basketpage.CloseBasket.Click();
-
+            //Thread.Sleep(200);
         }
         public static void downloadpdf()
         {
@@ -371,8 +356,8 @@
             SearchTrustViaLocalAuthority(LAcode);
             SearchResultsPage resultspage = new SearchResultsPage();
             resultspage.TrustSearchResultSortedByButton.Click();
-            resultspage.TrustSearchResultSortedByButton.SendKeys("z-a" + Keys.Enter);
-            Thread.Sleep(1000);
+            //resultspage.TrustSearchResultSortedByButton.SendKeys("z-a" + Keys.Enter);
+           
             resultspage.TrustSearchResultSortedByButton.SendKeys(OrderBy + Keys.Enter);
             Thread.Sleep(2000);
 
@@ -458,10 +443,10 @@
                 HomePage homepage = new HomePage();
                 homepage.TrustTab.Click();
                 homepage.LocalAuthoritySearchButton.Click();
-                Thread.Sleep(30000);
-                //homepage.LacodeInputField.Click();
-                Thread.Sleep(30000);
-                //homepage.LacodeInputField.Clear();
+                Thread.Sleep(300);
+               
+                
+               
                 homepage.LacodeInputField.SendKeys(lacode);
                 homepage.TrustLacodeSearchButton.Click();
 
@@ -477,7 +462,7 @@
             public static void TestDatasourcesLink()
 
             {
-                //clearPopup();
+                
                 SpecialElementsPage links = new SpecialElementsPage();
                 links.DataSources.Click();
                 Thread.Sleep(1000);
@@ -507,7 +492,7 @@
                 resultspage.FirstElementPresented.Click();
                 Thread.Sleep(3000);
                 Schooldetails.AddToBenchMarkBasket.Click();
-                Thread.Sleep(300);
+                Thread.Sleep(3000);
                
                }
             public static void Verifybasketcapacity()
@@ -547,11 +532,15 @@
                 {
                     try
                     {
+                        Console.WriteLine(urn);
                         SearchSchoolViaName(urn);
                        
-                        Thread.Sleep(1);
+                        Thread.Sleep(30);
                         Schooldetails.schoolPerformanceTableLink.Click();
-                        Console.WriteLine(Driver.driver.Url);
+                        Thread.Sleep(50);
+                        Assert.IsTrue(Driver.driver.FindElement(By.CssSelector(".metadata > dd:nth-child(24)")).Text == urn);
+                        Console.WriteLine(urn);
+                        Console.WriteLine(Driver.driver.FindElement(By.CssSelector(".metadata > dd:nth - child(24)")).Text);
                        
                     }
                     catch (NoSuchElementException) { continue; }
@@ -572,7 +561,7 @@
                         SearchSchoolViaName(urn);
 
                         Schooldetails.LocalAuthorityLink.Click();
-                        //Thread.Sleep(10000);
+                       
                         Assert.IsTrue(Driver.driver.Url.Contains(Config.currentTestEnv + "SchoolSearch/Search?nameId=&suggestionUrn=&trustnameid=&trustsuggestionUrn=&locationorpostcode=&LocationCoordinates=&openOnly=true&lacodename="));
                     }
                     catch (NoSuchElementException) { continue; }
@@ -593,7 +582,7 @@
             public static void QuickCompareWithOtherSchools()
             {
                
-                //Actions.GoHome();
+                
                 
                 SearchViaSchoolurn("143592");
                 SchoolDetailPage detailspage = new SchoolDetailPage();
@@ -613,7 +602,7 @@
             public static void searchschoolwithIncompleteFinance(String urn)
             {
                 SearchViaSchoolurn(urn);
-                //Assert.IsTrue(Driver.driver.FindElement(By.CssSelector(".combined-warnings")).Text.Contains("This school doesn't have a complete set of financial data for this period "));
+              
                 SchoolDetailPage detailspage = new SchoolDetailPage();
                 detailspage.CompareWithOtherSchools.Click();
                
@@ -622,14 +611,14 @@
                 bestinclass.NextButton.Click();
                 bestinclass.NextButton.Click();
                 bestinclass.AllSchoolsChoice.Click();
-               // bestinclass.NextButton.Click();
+               
                 bestinclass.ContinueToBenchMarkChartsButton.Click();
                 BenchMarkChartPage chartpage = new BenchMarkChartPage();
                 Thread.Sleep(3000);
                 IJavaScriptExecutor executor = (IJavaScriptExecutor)Driver.driver;
-                //executor.ExecuteScript("arguments[0].click();", chartpage.KanesHillPrimarySch);
+               
                 executor.ExecuteScript("document.querySelector(#chart_0 > svg:nth-child(1) > g:nth-child(2) > g:nth-child(7) > g:nth-child(17) > circle:nth-child(3))");
-                //chartpage.KanesHillPrimarySch.SendKeys(Keys.Return);
+               
 
 
 
@@ -729,8 +718,10 @@
                 SchoolDetailPage detailpage = new SchoolDetailPage();
                 
                 detailpage.EditBasket.Click();
+                Thread.Sleep(3000);
                 BenchMarkBasketPage basketpage = new BenchMarkBasketPage();
                 basketpage.AddSchools.Click();
+                Thread.Sleep(3000);
                 HomePage home = new HomePage();
                 home.School.Click();
                 home.SchoolsearchField.SendKeys("100000");
@@ -739,10 +730,10 @@
                 Thread.Sleep(1000);
                 SchoolDetailPage detailspage = new SchoolDetailPage();
                 detailspage.AddToBenchMarkBasket.Click();
-                Thread.Sleep(1000);
+                Thread.Sleep(1000000);
 
             }
-            public static void ClearSchools()
+            public static void ClearSchools(IWebDriver driver)
             {
                 Verifybasket();
                 SchoolDetailPage detailpage = new SchoolDetailPage();

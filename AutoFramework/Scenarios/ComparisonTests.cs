@@ -80,8 +80,6 @@
         {
             DetailedComparisonActions.IncludeschoolswithIncFinanceAcademiesAllEngland("144407", "64", "50");
             string errorText = "'From' value can not be greater than the 'To' value";
-
-
             Assert.IsTrue(Driver.driver.PageSource.Contains(errorText));
         }
         [Test]
@@ -130,6 +128,7 @@
         public void TeardownAfterEachTest()
        
         {
+            Driver.driver.Close();
             Driver.driver.Quit();
         }
 

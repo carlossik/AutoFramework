@@ -28,14 +28,14 @@
             bestinclass.ManualComaprisonButton.Click();
             bestinclass.NextButton.Click();
             //bestinclass.NextButton.Click();
-            Thread.Sleep(20000);
+            Thread.Sleep(200);
             ManualPage manualaddition = new ManualPage();
             manualaddition.AddSchoolByNameRadio.Click();
             bestinclass.NextButton.Click();
             manualaddition.NewSchoolNameField.SendKeys("plumcroft Primary School");
             manualaddition.ContinueToBenchMarkChartsButton.Click();
             
-            Thread.Sleep(10000);
+            Thread.Sleep(300);
 
 
 

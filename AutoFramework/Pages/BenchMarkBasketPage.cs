@@ -17,13 +17,13 @@ namespace AutoFramework.Pages.PageElements
         {
 
 
-            SeleniumExtras.PageObjects.PageFactory.InitElements(Driver.driver, this);
+            //SeleniumExtras.PageObjects.PageFactory();
         }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".back-link")]
-        [SeleniumExtras.PageObjects.CacheLookup]
+        //[SeleniumExtras.PageObjects.CacheLookup]
         public IWebElement CloseBasket { get; set; }
 
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "a.benchmarkControls")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.ClassName, Using = "benchmarkControls")]
         public IWebElement AddSchools { get; set; }
 
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "button.benchmarkControls")]

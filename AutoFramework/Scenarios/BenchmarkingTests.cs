@@ -264,7 +264,9 @@
         [TearDown]
         public void TeardownAfterEachTest()
         {
+            Driver.driver.Close();
             Driver.driver.Quit();
+
         }
     }
 }

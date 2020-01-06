@@ -11,8 +11,7 @@
     using SFB_Test_Automation.AutoFramework;
 
     [TestFixture]
-    public class BenchmarkingTests : Driver
-    
+    public class BenchmarkingTests
     {
        
 
@@ -21,15 +20,18 @@
         public void SetupBeforeEachTest()
         //public void Initialize()
         {
-            Actions.InitializeDriver("chrome");
+            Actions.InitializeChromeDriver();
+            //Actions.InitializeFireFoxDriver();
 
             
         }
         [Test]
+        
         [Category("QuickTests")]
-
+       
         public void ManualBenchMarkCreationViaSchool()
         {
+            
             
             BenchMarkActions.CreateManualBenchMarkViaName("143592");
             BenchMarkChartPage chartpage = new BenchMarkChartPage();
@@ -183,7 +185,7 @@
         [Test]
         public static void ExcludeschoolswithIncFinanceAllSchoolsLaCode()
         {
-            DetailedComparisonActions.ExcludeschoolswithIncFinanceAllSchoolsLaCode("100140","839");
+            DetailedComparisonActions.ExcludeschoolswithIncFinanceAllSchoolsLaCode("100140");
             string errorText = "Some schools don't have a complete set of financial data for this period";
             Assert.IsFalse(Driver.driver.PageSource.Contains(errorText));
         }
@@ -258,19 +260,13 @@
         {
             
         }
-        [Test]
-        public static void displayLAinTableViewOnCharts()
-        {
-            DetailedComparisonActions.ExcludeschoolswithIncFinanceAllSchoolsLaCode("113789", "839");
-            BenchMarkActions.viewChartsAsTables();
-
-            
-        }
         
         [TearDown]
         public void TeardownAfterEachTest()
         {
+            Driver.driver.Close();
             Driver.driver.Quit();
+
         }
     }
 }

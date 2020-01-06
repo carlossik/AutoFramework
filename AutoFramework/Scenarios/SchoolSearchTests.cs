@@ -9,23 +9,45 @@
     using Selenium.WebDriver.Extensions;
     using By = Selenium.WebDriver.Extensions.By;
     using SFB_Test_Automation.AutoFramework.Pages;
+    using System.Collections.Generic;
 
     [TestFixture]
 
-    public class Schoolsearchtests
-    {
+    public class Schoolsearchtests { 
+    //{
+    //    public static IEnumerable <String> BrowserToRunWith()
+    //    {
+    //        String[] browsers = { "chrome", "firefox" };
+    //        foreach (string b in browsers)
+    //        {
+    //            yield return b;
 
+    //        }
+    //    }
+            
 
-        public void SchoolsearchTest()
-        {
-        }
+    //    public void SchoolsearchTest()
+    //    {
+        //}
         [SetUp]
+       
         public void SetupBeforeEachTest()
         
         {
-            Actions.InitializeDriver("firefox");
-            
-            
+           Actions.InitializeChromeDriver();
+            //Actions.InitializeFireFoxDriver();
+
+
+        }
+        [Test]
+        public void testschoolperformancetables()
+        {
+            Actions.CallingClass.sptlinkscheck();
+            SchoolDetailPage detailspage = new SchoolDetailPage();
+            String schoolUrn = detailspage.Urn.Text;
+            Console.WriteLine(schoolUrn);
+
+            //Assert.IsTrue(Driver.driver.Url.Contains ("https://www.compare-school-performance.service.gov.uk/school/"+ schoolUrn));
         }
 
         [Test]
@@ -54,7 +76,9 @@
             Thread.Sleep(2000);
             Console.WriteLine(Driver.driver.Url);
             Console.WriteLine(Config.currentTestEnv + "news?referrer=%2FAccount%2FLogin%3FReturnUrl%3D%252F");
-            Assert.IsTrue(Driver.driver.Url == (Config.currentTestEnv+"news?referrer=%2FAccount%2FLogin%3FReturnUrl%3D%252F"));
+            //Assert.IsTrue(Driver.driver.Url.Contains(Config.currentTestEnv+ "/news?referrer=%2F"));
+            Console.WriteLine(Driver.driver.FindElement(By.CssSelector(".heading-xlarge")).Text);
+            Assert.IsTrue(Driver.driver.FindElement(By.CssSelector(".heading-xlarge")).Text == "News");
 
             
         }
@@ -118,7 +142,7 @@
         {
             
             Actions.addtobasketviaresultspage();
-            Assert.IsTrue(Driver.driver.Url.Contains(Config.currentTestEnv + "SchoolSearch/Search?nameId="));
+            Assert.IsTrue(Driver.driver.Url.Contains(Config.currentTestEnv + "/school/detail?urn="));
             
 
             
@@ -237,7 +261,7 @@
         public void SearchByLaCode()
         {
             Actions.CallingClass.SearchByLaCode("303");
-            Assert.That(Driver.driver.FindElement(By.CssSelector(".heading-xlarge")).Text, Does.Contain("Schools in Bexley"));
+            Assert.That(Driver.driver.FindElement(By.CssSelector(".heading-xlarge")).Text, Does.Contain("Academy trusts with schools operating in Bexley"));
 
         }
         [Test]
@@ -268,14 +292,13 @@
             BenchMarkChartPage quickreportpage = new BenchMarkChartPage();
             var londonweighting = quickreportpage.DefaultSchoolValueLondonweighting.Text;
             Assert.AreEqual(londonweighting, "Outer");
-            //var londoweightingcomparisoncriteria = quickreportpage.DefaultSchoolValueLondonweighting.Text;
-            //Assert.AreEqual(londoweightingcomparisoncriteria, "Inner, Outer");
+           
         }
         [Test]
         public void OnclickReportingNotLondonTest()
         {
             Actions.OnclickReportingNonLondonTest("143590");
-            //Assert.That(Driver.driver.FindElement(By.CssSelector("#benchmarkBasket > div > div > div")).Text, Does.Contain("Your benchmark basket contains 15 schools "));
+            
             BenchMarkChartPage quickreportpage = new BenchMarkChartPage();
             var londonweighting = quickreportpage.DefaultSchoolValueLondonweighting.Text;
             Assert.AreEqual(londonweighting, "Neither");
@@ -340,10 +363,10 @@
         public void searchforschoolwith16plus()
         {
             Actions.SearchByLocationUsingLink();
-            Actions.select16plus();
+            //Assert.IsTrue((Actions.select16plus).Dsplayed);
+            //Actions.select16plus();
             SearchResultsPage resultspage = new SearchResultsPage();
-            Assert.IsTrue((resultspage.FirstElementPresented.Text)== "Shooters Hill Sixth Form College");
-            
+            Assert.IsTrue(resultspage.Checkbox_16plus.Displayed);
         }
         [Test]
         [Category("QuickTests")]
@@ -423,12 +446,12 @@
 
         }
 
-        //[OneTimeTearDown]
+       
         [TearDown]
         public void TeardownAfterEachTest()
-        //public void CleanUp()
-            
+                    
         {
+            Driver.driver.Close();
             Driver.driver.Quit();
         }
     }

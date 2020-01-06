@@ -12,9 +12,9 @@
 
     public  class Driver
     {
-        public static IWebDriver driver { get; set; }
+        public static IWebDriver  driver { get; set; }
 
-        public static void WaitForElementUpTo(int seconds = 5)
+        public static void WaitForElementUpTo(int seconds = 15)
 
         {
             

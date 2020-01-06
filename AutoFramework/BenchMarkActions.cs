@@ -28,14 +28,14 @@
             bestinclass.ManualComaprisonButton.Click();
             bestinclass.NextButton.Click();
             //bestinclass.NextButton.Click();
-            Thread.Sleep(20000);
+            Thread.Sleep(200);
             ManualPage manualaddition = new ManualPage();
             manualaddition.AddSchoolByNameRadio.Click();
             bestinclass.NextButton.Click();
             manualaddition.NewSchoolNameField.SendKeys("plumcroft Primary School");
             manualaddition.ContinueToBenchMarkChartsButton.Click();
             
-            Thread.Sleep(10000);
+            Thread.Sleep(300);
 
 
 
@@ -166,15 +166,21 @@
             
 
         }
-        public static void viewChartsAsTables()
-            
+
+        public static void NavigateToBestInClassComparisonSchoolsTab()
         {
-        BenchMarkChartPage benchchartpage = new BenchMarkChartPage();
-            benchchartpage.ViewAsCharts.Click();
-            Thread.Sleep(3000);
+            BenchMarkChartPage benchchartpage = new BenchMarkChartPage();
+            benchchartpage.BestInClassComparisonSchoolsTab.Click();
+            Thread.Sleep(4000);
 
-    }
+        }
+        public static void NavigateToOtherComparisonSchoolsTab()
+        {
+            BenchMarkChartPage benchchartpage = new BenchMarkChartPage();
+            benchchartpage.OtherComparisonSchoolsTab.Click();
+            Thread.Sleep(1000);
 
+        }
         public static void getclipboardText()
         {
 

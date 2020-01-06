@@ -132,6 +132,7 @@ namespace SFB_Test_Automation.AutoFramework
             detailpage.MaxNumberOfPupilsInputBox.SendKeys(maxpupils);
             Thread.Sleep(4000);
             detailpage.ViewBenchMarkCharts.Click();
+            Thread.Sleep(4000);
         }
         public static void IncludechoolswithIncFinanceAllSchoolsAllEngland(String urn)
         {
@@ -208,7 +209,7 @@ namespace SFB_Test_Automation.AutoFramework
             Thread.Sleep(1000);
             detailpage.ViewBenchMarkCharts.Click();
         }
-        public static void ExcludeschoolswithIncFinanceAllSchoolsLaCode(String urn)
+        public static void ExcludeschoolswithIncFinanceAllSchoolsLaCode(String urn,String Lacode)
         {
             Actions.CallingClass.SearchViaSchoolurn(urn);
             SchoolDetailPage detailspage = new SchoolDetailPage();
@@ -222,7 +223,7 @@ namespace SFB_Test_Automation.AutoFramework
             //detailpage.Excludecheckbox.Click();
             bestinclass.NextButton.Click();
             detailpage.LAcode.Click();
-            detailpage.Lacodefield.SendKeys("879");
+            detailpage.Lacodefield.SendKeys(Lacode);
             bestinclass.NextButton.Click();
 
             detailpage.General_Header.Click();

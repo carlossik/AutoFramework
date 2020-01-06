@@ -235,6 +235,9 @@
     <None Include="AutoFramework\.vs\slnx.sqlite" />
     <None Include="AutoFramework\.vs\VSWorkspaceState.json" />
     <None Include="AutoFramework\App.config" />
+    <None Include="AutoFramework\testParameters.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="AutoFramework\obj\Debug\AutoFramework.csproj.CopyComplete" />
     <None Include="AutoFramework\obj\Debug\AutoFramework.csproj.CoreCompileInputs.cache" />
     <None Include="AutoFramework\obj\Debug\AutoFramework.csprojResolveAssemblyReference.cache" />
@@ -263,6 +266,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutoFramework\BenchMarkActions.cs" />
+    <Compile Include="AutoFramework\BrowserList .cs" />
+    <Compile Include="AutoFramework\ChartActions.cs" />
     <Compile Include="AutoFramework\DetailedComparisonActions.cs" />
     <Compile Include="AutoFramework\FilterActions.cs" />
     <Compile Include="AutoFramework\Pages\AddSchoolPage.cs" />

@@ -41,7 +41,7 @@
         [FindsBy(How = How.CssSelector,Using = "#SearchByTownFieldset > div:nth-child(4) > button:nth-child(3)")]
         public IWebElement LocationSearchSubmitButton { get; set; }
         [FindsBy(How = How.Id, Using = "TrustLaCodeName")]
-        public IWebElement LcalAuthoritySearchButton { get; set; }
+        public IWebElement LocalAuthoritySearchButton { get; set; }
         [FindsBy(How = How.Id,Using = "FindSchoolByLaCodeName")]
         public IWebElement LacodeInputField { get; set; }
         [FindsBy(How = How.CssSelector,Using = "#SearchByLaCodeNameFieldset > div:nth-child(3) > button")]
@@ -50,7 +50,7 @@
         public IWebElement TrustSubmit { get; set; }
         [FindsBy(How = How.CssSelector,Using = "#TrustSearchByTownFieldset > div:nth-child(3) > button")]
         public IWebElement TrustLocationSubmit { get; set; }
-        [FindsBy(How = How.CssSelector, Using = "#TrustTab > button")]
+        [FindsBy(How = How.Id, Using = "TrustTab")]
         public IWebElement TrustTab { get; set; }
         [FindsBy(How = How.Id,Using = "trustNameId")]
         public IWebElement trustnameRadioButton { get; set; }

@@ -11,7 +11,8 @@
     using SFB_Test_Automation.AutoFramework;
 
     [TestFixture]
-    public class BenchmarkingTests
+    public class BenchmarkingTests : Driver
+    
     {
        
 
@@ -20,14 +21,13 @@
         public void SetupBeforeEachTest()
         //public void Initialize()
         {
-            Actions.InitializeDriver();
+            Actions.InitializeDriver("chrome");
 
             
         }
         [Test]
-        
         [Category("QuickTests")]
-       
+
         public void ManualBenchMarkCreationViaSchool()
         {
             
@@ -183,14 +183,16 @@
         [Test]
         public static void ExcludeschoolswithIncFinanceAllSchoolsLaCode()
         {
-            DetailedComparisonActions.ExcludeschoolswithIncFinanceAllSchoolsLaCode("100140");
+            DetailedComparisonActions.ExcludeschoolswithIncFinanceAllSchoolsLaCode("100140","839");
             string errorText = "Some schools don't have a complete set of financial data for this period";
             Assert.IsFalse(Driver.driver.PageSource.Contains(errorText));
         }
         [Test]
         public static void IncludeschoolswithIncFinanceMaintainedLaCode()
         {
-            DetailedComparisonActions.IncludeschoolswithIncFinanceMaintainedLaCode("3032083", "303", "245", "600");
+            DetailedComparisonActions.IncludeschoolswithIncFinanceMaintainedLaCode("2042238", "204", "300", "333");
+
+
             string errorText = "Some schools don't have a complete set of financial data for this period";
             Assert.IsTrue(Driver.driver.PageSource.Contains(errorText));
         }
@@ -232,7 +234,7 @@
         [Test]
         public static void IncludeschoolswithIncFinanceMaintainedLaName()
         {
-            DetailedComparisonActions.IncludeschoolswithIncFinanceMaintainedLaName("3035200", "Bexley", "200", "509");
+            DetailedComparisonActions.IncludeschoolswithIncFinanceMaintainedLaName("2042238", "Hackney", "300", "500");
             string errorText = "Some schools don't have a complete set of financial data for this period";
             Assert.IsTrue(Driver.driver.PageSource.Contains(errorText));
         }
@@ -254,6 +256,14 @@
         [Test]
         public static void Include16plusSchoolsInComparison()
         {
+            
+        }
+        [Test]
+        public static void displayLAinTableViewOnCharts()
+        {
+            DetailedComparisonActions.ExcludeschoolswithIncFinanceAllSchoolsLaCode("113789", "839");
+            BenchMarkActions.viewChartsAsTables();
+
             
         }
         

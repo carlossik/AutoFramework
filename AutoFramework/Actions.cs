@@ -13,21 +13,35 @@
     using OpenQA.Selenium.Firefox;
     using OpenQA.Selenium.IE;
     using System;
-    
+
 
 
     public static class Actions
     {
-       
-        
-        public static void InitializeDriver()
+
+
+        public static void InitializeDriver(String browser)
         {
 
-           
+            switch (browser.ToLower())
+            {
+                case "chrome":
+                    
+                    Driver.driver = new ChromeDriver();
+                    break;
+                case "firefox":
+                    Driver.driver = new FirefoxDriver();
+                    break;
+                case "ie":
+                    break;
+                    Driver.driver = new InternetExplorerDriver();
+                default:
+                    throw new NotSupportedException("Browser " + browser + " not supported");
+            }
 
 
 
-            Driver.driver = new FirefoxDriver();
+            //Driver.driver = new ChromeDriver();
             Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
             Driver.driver.Manage().Window.Maximize();
             Driver.WaitForElementUpTo(Config.ElementsWaitingTimeout);
@@ -42,22 +56,22 @@
             }
         }
 
-       
+
 
         public static void GoHome()
         {
-            
-            
+
+
             Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
         }
-        public static void  OnclickReportingTest()
+        public static void OnclickReportingTest()
         {
             GoHome();
             CallingClass.SearchViaSchoolurn("119182");
             SchoolDetailPage Schooldetails = new SchoolDetailPage();
             Schooldetails.OneClickReportingLink.Click();
             Thread.Sleep(2000);
-            }
+        }
         public static void OnclickReportingLondonTest(string LondonSchool)
         {
             GoHome();
@@ -70,7 +84,7 @@
             Thread.Sleep(2000);
 
         }
-       
+
         public static void OnclickReportingNonLondonTest(string NonLondonSchool)
         {
             GoHome();
@@ -97,7 +111,7 @@
 
         {
             LoginScenarioPost loginScenario = new LoginScenarioPost();
-            
+
             loginScenario.UsernameField.Clear();
             loginScenario.UsernameField.SendKeys("internal");
             loginScenario.PasswordField.Clear();
@@ -109,8 +123,9 @@
 
         {
             HomePage homepage = new HomePage();
-            GoHome();
+           
             homepage.School.Click();
+            Thread.Sleep(3000);
             homepage.SchoolsearchField.SendKeys(schoolName);
             homepage.ClickOnSearchButton();
             Thread.Sleep(3000);
@@ -123,7 +138,7 @@
             homepage.SchoolsearchField.SendKeys("100000");
             homepage.ClickOnSearchButton();
             Thread.Sleep(3000);
-         }
+        }
 
         public static void SearchClosedschool(string urn)
         {
@@ -147,6 +162,19 @@
             IWebElement closeButton = Driver.driver.FindElement(By.Id("js-modal-close"));
             closeButton.Click();
         }
+        public static void gotonewspage()
+
+        {
+            Driver.driver.Close();
+            Driver.driver = new ChromeDriver();
+            Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
+            Driver.driver.Manage().Window.Maximize();
+
+            IWebElement gotonewspage = Driver.driver.FindElement(By.CssSelector("#js-modal > div > div > div > a"));
+            gotonewspage.Click();
+        }
+        
+
 
         public static void GetSearchText()
         {
@@ -235,7 +263,7 @@
         {
             SearchResultsPage resultspage = new SearchResultsPage();
             resultspage.paginationSecondPage.Click();
-            //resultspage.paginationThirdPage.Click();
+            resultspage.paginationThirdPage.Click();
             resultspage.paginationSecondPage.Click();
             resultspage.paginationNextButton.Click();
             resultspage.paginationPreviousButton.Click();
@@ -289,12 +317,14 @@
             Driver.driver.FindElement(By.CssSelector("li.document:nth-child(1) > a:nth-child(1)")).Click();
             Thread.Sleep(10000);
         }
+
+
         public static void SearchTrustViaLocalAuthority(String LAcode)
         {
             HomePage homepage = new HomePage();
             Thread.Sleep(100);
             homepage.TrustTab.Click();
-            homepage.LcalAuthoritySearchButton.Click();
+            homepage.LocalAuthoritySearchButton.Click();
             homepage.TrustLaCodeInputField.SendKeys(LAcode);
             homepage.TrustLacodeSearchButton.Click();
             
@@ -343,7 +373,7 @@
             BenchMarkChartPage benchmarkpage = new BenchMarkChartPage();
             benchmarkpage.Savebenchmarkbasket.Click();
             benchmarkpage.CopyLinkToClipboard.Click();
-            Thread.Sleep(300);
+            Thread.Sleep(3000);
         }
         public static void TrustComparison(String TrustName)
         {
@@ -386,7 +416,7 @@
             {
                 HomePage homepage = new HomePage();
                 GoHome();
-                homepage.LcalAuthoritySearchButton.Click();
+                homepage.LocalAuthoritySearchButton.Click();
                 homepage.LacodeInputField.Click();
                 homepage.LacodeInputField.Clear();
                 homepage.LacodeInputField.SendKeys(lacode);
@@ -425,7 +455,7 @@
             }
             public static void Verifybasket()
             {
-                GoHome();
+                Thread.Sleep(3000);
                 SearchSchoolViaName("plumcroft primary school");
                 Thread.Sleep(3000);
                 SchoolDetailPage Schooldetails = new SchoolDetailPage();
@@ -434,7 +464,7 @@
                 resultspage.FirstElementPresented.Click();
                 Thread.Sleep(3000);
                 Schooldetails.AddToBenchMarkBasket.Click();
-                Thread.Sleep(3000);
+                Thread.Sleep(300);
                
                }
             public static void Verifybasketcapacity()
@@ -623,19 +653,22 @@
             {
                 
                 Verifybasket();
-                SchoolDetailPage detailpage = new SchoolDetailPage();
-                
-                detailpage.EditBasket.Click();
-                BenchMarkBasketPage basketpage = new BenchMarkBasketPage();
-                basketpage.AddSchools.Click();
-                HomePage home = new HomePage();
-                home.School.Click();
-                home.SchoolsearchField.SendKeys("100000");
-                home.SearchSubmit.Click();
 
-                Thread.Sleep(1000);
-                SchoolDetailPage detailspage = new SchoolDetailPage();
-                detailspage.AddToBenchMarkBasket.Click();
+                        SchoolDetailPage detailpage = new SchoolDetailPage();
+                
+                        detailpage.EditBasket.Click();
+                        BenchMarkBasketPage basketpage = new BenchMarkBasketPage();
+                        basketpage.AddSchools.Click();
+                        HomePage home = new HomePage();
+                        home.School.Click();
+                Thread.Sleep(3000);
+                        home.SchoolsearchField.SendKeys("142295");
+                        Thread.Sleep(200);
+                        home.SearchSubmit.Click();
+
+                        Thread.Sleep(1000);
+                        SchoolDetailPage detailspage = new SchoolDetailPage();
+                        detailspage.AddToBenchMarkBasket.Click();
                 Thread.Sleep(1000);
 
             }

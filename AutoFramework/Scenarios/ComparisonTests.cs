@@ -22,7 +22,7 @@
         {
            
             
-            Actions.InitializeDriver();
+            Actions.InitializeDriver("chrome");
             
             //Actions.FillLoginForm();
         }

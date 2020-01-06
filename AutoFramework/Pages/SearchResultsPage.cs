@@ -35,11 +35,11 @@ namespace AutoFramework.Pages
         public IWebElement Checkbox_16plus { get;set;}
         [FindsBy(How = How.CssSelector,Using = "div.pagination-container:nth-child(1) > div:nth-child(1) > div:nth-child(2) > button:nth-child(2)")]
         public IWebElement paginationSecondPage { get; set; }
-        [FindsBy(How = How.CssSelector, Using = "div.pagination-container:nth-child(1) > div:nth-child(1) > div:nth-child(2) > button:nth-child(3)")]
+        [FindsBy(How = How.PartialLinkText, Using = "3")]
         public IWebElement paginationThirdPage { get; set; }
-        [FindsBy(How = How.CssSelector, Using = "div.pagination-container:nth-child(1) > div:nth-child(1) > div:nth-child(2) > a:nth-child(4)")]
+        [FindsBy(How = How.CssSelector, Using = "div.pagination-container:nth-child(1) > div:nth-child(1) > div:nth-child(2) > button:nth-child(6)")]
         public IWebElement paginationNextButton { get; set; }
-        [FindsBy(How = How.CssSelector, Using = "div.pagination-container:nth-child(1) > div:nth-child(1) > div:nth-child(2) > a:nth-child(1)")]
+        [FindsBy(How = How.CssSelector, Using = "div.pagination-container:nth-child(1) > div:nth-child(1) > div:nth-child(2) > button:nth-child(1)")]
         public IWebElement paginationPreviousButton { get; set; }
         [FindsBy(How = How.Id,Using = "OrderByControl")]
         public IWebElement TrustSearchResultSortedByButton { get; set; }

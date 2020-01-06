@@ -11,10 +11,10 @@ namespace AutoFramework
         {
         }
 
-        [OneTimeSetUp]
+        [SetUp]
         public void Initialize()
         {
-            Actions.InitializeDriver();
+            Actions.InitializeDriver("firefox");
            
 
             //Actions.FillLoginForm();

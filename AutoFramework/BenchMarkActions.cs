@@ -28,7 +28,7 @@
             bestinclass.ManualComaprisonButton.Click();
             bestinclass.NextButton.Click();
             //bestinclass.NextButton.Click();
-
+            Thread.Sleep(20000);
             ManualPage manualaddition = new ManualPage();
             manualaddition.AddSchoolByNameRadio.Click();
             bestinclass.NextButton.Click();
@@ -166,6 +166,15 @@
             
 
         }
+        public static void viewChartsAsTables()
+            
+        {
+        BenchMarkChartPage benchchartpage = new BenchMarkChartPage();
+            benchchartpage.ViewAsCharts.Click();
+            Thread.Sleep(3000);
+
+    }
+
         public static void getclipboardText()
         {
 

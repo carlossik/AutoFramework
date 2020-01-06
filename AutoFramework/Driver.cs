@@ -10,7 +10,7 @@
     
 
 
-    public static class Driver
+    public  class Driver
     {
         public static IWebDriver driver { get; set; }
 
@@ -21,5 +21,26 @@
             Driver.driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             //driver.Manage().Timeouts().SetPageLoadTimeout(TimeSpan.FromSeconds(seconds)); //= TimeSpan.FromSeconds(seconds);
         }
+        //public class SeleniumTestFixtureBase
+        //{
+            //protected IWebDriver WebDriver;
+
+            public static void Initialize(String browser)
+            {
+                switch (browser.ToLower())
+                {
+                    case "chrome":
+                        //DirectoryInfo chromeDriverLocation = new DirectoryInfo(@".");
+                        Driver.driver = new ChromeDriver();
+                        break;
+                    case "firefox":
+                        Driver.driver = new FirefoxDriver();
+                        break;
+                    default:
+                        throw new NotSupportedException("Browser " + browser + " not supported");
+                }
+            }
+        //}
+
     }
 }

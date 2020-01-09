@@ -55,7 +55,7 @@ namespace AutoFramework.Pages.PageElements
             {
                 Driver.driver.FindElement(By.Id(id));
             }
-            catch (NoSuchElementException e)
+            catch (NoSuchElementException)
             {
                 return false;
             }

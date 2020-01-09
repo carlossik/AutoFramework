@@ -9,6 +9,7 @@
     using SFB_Test_Automation.AutoFramework.Pages;
     using SFB_Test_Automation.AutoFramework.Pages.PageElements.Helpers;
     using SFB_Test_Automation.AutoFramework;
+    using NUnit.Framework.Interfaces;
 
     [TestFixture]
     public class BenchmarkingTests
@@ -185,7 +186,7 @@
         [Test]
         public static void ExcludeschoolswithIncFinanceAllSchoolsLaCode()
         {
-            DetailedComparisonActions.ExcludeschoolswithIncFinanceAllSchoolsLaCode("100140");
+            DetailedComparisonActions.ExcludeschoolswithIncFinanceAllSchoolsLaCode("100140","303");
             string errorText = "Some schools don't have a complete set of financial data for this period";
             Assert.IsFalse(Driver.driver.PageSource.Contains(errorText));
         }
@@ -264,9 +265,15 @@
         [TearDown]
         public void TeardownAfterEachTest()
         {
+            if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
+            {
+                var screenshot = ((ITakesScreenshot)Driver.driver).GetScreenshot();
+                screenshot.SaveAsFile(@"C:\TEMP\Screenshot.jpg");
+                Driver.driver.Close();
+                Driver.driver.Quit();
+            }
             Driver.driver.Close();
             Driver.driver.Quit();
-
         }
     }
 }

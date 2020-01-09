@@ -166,6 +166,18 @@
             
 
         }
+        public static void PercentageOfTotal()
+        {
+            BenchMarkChartPage benchchartpage = new BenchMarkChartPage();
+            benchchartpage.PercenTageOfTotalOption.Click();
+            benchchartpage.IncomeTab.Click();
+            
+
+           
+            Thread.Sleep(3000);
+
+
+        }
 
         public static void NavigateToBestInClassComparisonSchoolsTab()
         {

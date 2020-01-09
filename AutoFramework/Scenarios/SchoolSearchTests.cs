@@ -10,6 +10,7 @@
     using By = Selenium.WebDriver.Extensions.By;
     using SFB_Test_Automation.AutoFramework.Pages;
     using System.Collections.Generic;
+    using NUnit.Framework.Interfaces;
 
     [TestFixture]
 
@@ -101,6 +102,7 @@
             Actions.SearchClosedschool("3032004");
             SchoolDetailPage detailspage = new SchoolDetailPage();
             Assert.IsTrue(detailspage.schooldetailnotfoundmessage.Text.Contains("No schools found"));
+            Console.WriteLine(detailspage.schooldetailnotfoundmessage.Text);
             
            
 
@@ -134,7 +136,7 @@
         {
             Actions.CallingClass.TestDatasourcesLink();
             Assert.AreEqual(Driver.driver.Url,  Config.currentTestEnv+ "Help/DataSources");
-
+            Console.WriteLine(Driver.driver.Url);
 
         }
         [Test]
@@ -142,7 +144,7 @@
         {
             
             Actions.addtobasketviaresultspage();
-            Assert.IsTrue(Driver.driver.Url.Contains(Config.currentTestEnv + "/school/detail?urn="));
+            Assert.IsTrue(Driver.driver.Url.Contains(Config.currentTestEnv + "SchoolSearch/Search?searchtype=search"));
             
 
             
@@ -362,7 +364,7 @@
         [Test]
         public void searchforschoolwith16plus()
         {
-            Actions.SearchByLocationUsingLink();
+            Actions.SearchByLocationManualEntry();
             //Assert.IsTrue((Actions.select16plus).Dsplayed);
             //Actions.select16plus();
             SearchResultsPage resultspage = new SearchResultsPage();
@@ -449,8 +451,17 @@
        
         [TearDown]
         public void TeardownAfterEachTest()
-                    
+
+
+      
         {
+            if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
+            {
+                var screenshot = ((ITakesScreenshot)Driver.driver).GetScreenshot();
+                screenshot.SaveAsFile(@"C:\TEMP\Screenshot.jpg");
+                Driver.driver.Close();
+                Driver.driver.Quit();
+            }
             Driver.driver.Close();
             Driver.driver.Quit();
         }

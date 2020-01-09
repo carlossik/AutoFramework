@@ -63,7 +63,7 @@
         }
         public static void OnclickReportingTest()
         {
-            GoHome();
+            //GoHome();
             CallingClass.SearchViaSchoolurn("119182");
             SchoolDetailPage Schooldetails = new SchoolDetailPage();
             Schooldetails.OneClickReportingLink.Click();
@@ -84,7 +84,7 @@
 
         public static void OnclickReportingNonLondonTest(string NonLondonSchool)
         {
-            GoHome();
+            
             CallingClass.SearchViaSchoolurn(NonLondonSchool);
             SchoolDetailPage Schooldetails = new SchoolDetailPage();
             Schooldetails.OneClickReportingLink.Click();
@@ -239,7 +239,7 @@
         public static void SearchByLocationManualEntry()
         {
             HomePage homepage = new HomePage();
-            GoHome();
+            
             homepage.LocationButton.Click();
             //homepage.UseLocationLink.Click();
             //Thread.Sleep(100);
@@ -289,11 +289,15 @@
             resultspage.AddFirstResult.Click();
             Thread.Sleep(200);
             resultspage.EditBasket.Click();
-            Thread.Sleep(20000);
+            Thread.Sleep(200);
             BenchMarkBasketPage basketpage = new BenchMarkBasketPage();
-            //Driver.driver.Navigate().Back();
             basketpage.CloseBasket.Click();
-            //Thread.Sleep(200);
+            //Driver.driver.Navigate().Back();
+            Thread.Sleep(100);
+            //basketpage.clear_basket.Click();
+            //basketpage.CloseBasket.Click();
+
+            
         }
         public static void downloadpdf()
         {
@@ -483,18 +487,18 @@
             }
             public static void Verifybasket()
             {
-                GoHome();
+                Thread.Sleep(3000);
                 SearchSchoolViaName("plumcroft primary school");
                 Thread.Sleep(3000);
                 SchoolDetailPage Schooldetails = new SchoolDetailPage();
-                
+
                 SearchResultsPage resultspage = new SearchResultsPage();
                 resultspage.FirstElementPresented.Click();
                 Thread.Sleep(3000);
                 Schooldetails.AddToBenchMarkBasket.Click();
-                Thread.Sleep(3000);
-               
-               }
+                Thread.Sleep(300);
+
+            }
             public static void Verifybasketcapacity()
             {
                 
@@ -571,11 +575,13 @@
             }
             public static void SearchViaSchoolurn( string urn)
             {
-                GoHome();
+              
                 HomePage homepage = new HomePage();
                 
                 homepage.School.Click();
+                Thread.Sleep(100);
                 homepage.SchoolsearchField.SendKeys(urn);
+                Thread.Sleep(1000);
                 homepage.ClickOnSearchButton();
                 Thread.Sleep(1000);
             }
@@ -716,21 +722,21 @@
                 
                 Verifybasket();
                 SchoolDetailPage detailpage = new SchoolDetailPage();
-                
+
                 detailpage.EditBasket.Click();
-                Thread.Sleep(3000);
                 BenchMarkBasketPage basketpage = new BenchMarkBasketPage();
                 basketpage.AddSchools.Click();
-                Thread.Sleep(3000);
                 HomePage home = new HomePage();
                 home.School.Click();
-                home.SchoolsearchField.SendKeys("100000");
+                Thread.Sleep(3000);
+                home.SchoolsearchField.SendKeys("142295");
+                Thread.Sleep(200);
                 home.SearchSubmit.Click();
 
                 Thread.Sleep(1000);
                 SchoolDetailPage detailspage = new SchoolDetailPage();
                 detailspage.AddToBenchMarkBasket.Click();
-                Thread.Sleep(1000000);
+                Thread.Sleep(1000);
 
             }
             public static void ClearSchools(IWebDriver driver)

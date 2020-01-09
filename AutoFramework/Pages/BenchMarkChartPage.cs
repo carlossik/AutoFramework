@@ -85,6 +85,8 @@ namespace AutoFramework.Pages.PageElements
 
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "#ComparisonSchools > a:nth-child(1)")]
         public IWebElement OtherComparisonSchoolsTab { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector,Using = "#ShowValue > option:nth-child(4)")]
+        public IWebElement PercenTageOfTotalOption { get; set; }
 
 
         //public IWebDriver hitEnter = Driver.driver.FindElement(By.CssSelector(".button")).SendKeys(Keys.Enter)

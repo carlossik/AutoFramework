@@ -7,7 +7,7 @@ namespace AutoFramework
    
     public static class Config
     {
-        //public static string schoolname = Driver.driver.FindElement(By.XPath("/html/body/div/main/h1")).Text;
+      
 
         public static int ElementsWaitingTimeout = 100;
         public static string BaseURLDev = "https://as-t1dv-sfb.azurewebsites.net/";
@@ -38,13 +38,6 @@ namespace AutoFramework
 
              }
 
-            //public static class CompanyNumbers
-            //{
-            //    public static string CorrectCompanyNumber = "DA7 5SS";
-
-            //    public static string WrongCompanyNumbner = "25252525";
-
-            //}
 
             public  class ExpectedMessages
             {

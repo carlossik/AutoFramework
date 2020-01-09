@@ -8,6 +8,7 @@
     using AutoFramework.Pages.PageElements;
     using System.Diagnostics;
     using SFB_Test_Automation.AutoFramework;
+    using NUnit.Framework.Interfaces;
 
     [TestFixture]
     public class ComparisonTests
@@ -126,8 +127,14 @@
         }
         [TearDown]
         public void TeardownAfterEachTest()
-       
         {
+            if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
+            {
+                var screenshot = ((ITakesScreenshot)Driver.driver).GetScreenshot();
+                screenshot.SaveAsFile(@"C:\TEMP\Screenshot.jpg");
+                Driver.driver.Close();
+                Driver.driver.Quit();
+            }
             Driver.driver.Close();
             Driver.driver.Quit();
         }

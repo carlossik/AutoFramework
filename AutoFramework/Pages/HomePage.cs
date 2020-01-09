@@ -6,7 +6,7 @@
 
     public class HomePage
     {
-        private String URL = "https://as-t1dv-sfb.azurewebsites.net/";
+        //private String URL = "https://as-t1dv-sfb.azurewebsites.net/";
         public HomePage()
         {
 #pragma warning disable CS0618 // Type or member is obsolete

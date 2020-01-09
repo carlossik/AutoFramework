@@ -10,6 +10,7 @@ namespace AutoFramework
     using AutoFramework.Pages.PageElements;
     using System;
     using System.Threading;
+    using NUnit.Framework.Interfaces;
 
     //[Parallelizable]
     public class TrustSearchScenarios
@@ -235,9 +236,18 @@ namespace AutoFramework
 
         }
         [TearDown]
-        public void TeardownAfterEachTest()
         
+
+
+       public void TeardownAfterEachTest()
         {
+            if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
+            {
+                var screenshot = ((ITakesScreenshot)Driver.driver).GetScreenshot();
+                screenshot.SaveAsFile(@"C:\TEMP\Screenshot.jpg");
+                Driver.driver.Close();
+                Driver.driver.Quit();
+            }
             Driver.driver.Close();
             Driver.driver.Quit();
         }

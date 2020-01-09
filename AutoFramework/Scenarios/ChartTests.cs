@@ -38,11 +38,15 @@
 
         }
 
-        //[Test]
+        [Test]
         [Category("QuickTests")]
-        public void TestIncompleteFinanceCharts()
+        public void PercentageOfTotalTabChange()
         {
-            Actions.CallingClass.searchschoolwithIncompleteFinance("139619");
+            Actions.CallingClass.QuickCompareWithOtherSchools();
+            BenchMarkActions.PercentageOfTotal();
+             string perecentageofincomedisplayed = Driver.driver.FindElement(By.CssSelector("#ShowValue > option:nth-child(4)")).Text;
+            Assert.IsTrue(perecentageofincomedisplayed == "Percentage of total income");
+
         }
 
         [Test]
@@ -164,6 +168,8 @@
             {
                 var screenshot = ((ITakesScreenshot)Driver.driver).GetScreenshot();
                 screenshot.SaveAsFile(@"C:\TEMP\Screenshot.jpg");
+                Driver.driver.Close();
+                Driver.driver.Quit();
             }
             Driver.driver.Close();
             Driver.driver.Quit();

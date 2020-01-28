@@ -14,27 +14,68 @@
     using OpenQA.Selenium.IE;
     using OpenQA.Selenium.Safari;
     using System;
+    using OpenQA.Selenium.Remote;
 
-
-
-    public static class Actions
+    public  class Actions :BrowserToRunWith
     {
         
 
-        public static void InitializeChromeDriver()
+        public static void InitializeChromeDriver(String browser)
         {
-             Driver.driver = new ChromeDriver();
-            Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
-            Driver.driver.Manage().Window.Maximize();
-            Driver.driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
-            Actions.clearPopup();
-            if (Driver.driver.Url.Contains("Login"))
+            if (browser == ("chrome"))
             {
-                Actions.FillLoginForm();
+                Driver.driver = new ChromeDriver();
+                Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
+                Driver.driver.Manage().Window.Maximize();
+                Driver.driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+                Actions.clearPopup();
+                if (Driver.driver.Url.Contains("Login"))
+                {
+                    Actions.FillLoginForm();
+                }
+                else
+                {
+                    Console.Write("There is no Logoin Required here....");
+                }
             }
-            else
+            else if (browser == ("firefox"))
             {
-                Console.Write("There is no Logoin Required here....");
+                FirefoxProfile fprof = new FirefoxProfile();
+                fprof.SetPreference("geo.enabled", true);
+                fprof.SetPreference("geo.provider.use_corelocation", true);
+                fprof.SetPreference("geo.prompt.testing", false);
+                fprof.SetPreference("geo.prompt.testing.allow", false);
+                DesiredCapabilities capabilities = new DesiredCapabilities();
+              
+               
+
+
+                Driver.driver = new FirefoxDriver();
+                Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
+                Driver.driver.Manage().Window.Maximize();
+               
+                Driver.driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+                Actions.clearPopup();
+                if (Driver.driver.Url.Contains("Login"))
+                {
+                    Actions.FillLoginForm();
+                }
+            }
+            else if (browser == ("IE"))
+            {
+                Driver.driver = new InternetExplorerDriver();
+                Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
+                Driver.driver.Manage().Window.Maximize();
+                Driver.driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+                Actions.clearPopup();
+                if (Driver.driver.Url.Contains("Login"))
+                {
+                    Actions.FillLoginForm();
+                }
+                else
+                {
+                    Console.Write("There is no Logoin Required here....");
+                }
             }
         }
 
@@ -43,6 +84,9 @@
             Driver.driver = new FirefoxDriver();                     
             Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
             Driver.driver.Manage().Window.Maximize();
+            FirefoxProfile fprof = new FirefoxProfile();
+            fprof.SetPreference("geo.enabled", true);
+            fprof.SetPreference("geo.provider.use_corelocation", false);
             Driver.WaitForElementUpTo(Config.ElementsWaitingTimeout);
             Actions.clearPopup();
             if (Driver.driver.Url.Contains("Login"))
@@ -136,6 +180,27 @@
             Thread.Sleep(100);
         }
 
+        public static void testmailSuccess(String emailaddress)
+        {
+            HomePage homepage = new HomePage();
+            homepage.SchoolorTrustDataQueryLink.Click();
+            DataQueriesPage queriespage = new DataQueriesPage();
+            queriespage.NameField.SendKeys("Carl Fagan");
+            queriespage.EmailField.SendKeys(emailaddress);
+
+
+            queriespage.SchoolNameField.SendKeys("Plumcroft Primary School");
+            queriespage.LA_URN_CO_NUMBERField.SendKeys("100000");
+            queriespage.QueryInputField.SendKeys("This is a Test Please Ignore");
+            queriespage.SubmitButton.Click();
+            Thread.Sleep(2000);
+
+
+        }
+        public static void testmailfailure()
+        {
+
+        }
         public static void SearchClosedschool(string urn)
         {
             HomePage homepage = new HomePage();
@@ -250,14 +315,19 @@
             homepage.LocationSearchSubmitButton.Click();
             Driver.driver.FindElement(By.CssSelector("li.document:nth-child(1) > a:nth-child(1)")).Click();
             Thread.Sleep(200);
+            FiltersPage filters = new FiltersPage();
+            string ResultsDisplayedInitially = (filters.ResultsCount).Text;
+            Console.WriteLine(ResultsDisplayedInitially);
+            Thread.Sleep(200);
 
         }
 
-        public static void SearchByLocationUsingLink()
+        public static void SearchByLocationUsingLink() //location enabling in firefox is an issue 
         {
             HomePage homepage = new HomePage();
-            GoHome();
+            //GoHome();
             homepage.LocationButton.Click();
+            
             homepage.UseLocationLink.Click();
             Thread.Sleep(300);
            

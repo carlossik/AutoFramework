@@ -42,8 +42,11 @@ namespace AutoFramework
         {
             Actions.SearchByLocationManualEntry();
             FiltersPage filters = new FiltersPage();
+            
             filters.Filter_ByMiles.Click();
             filters.FilterBy5Miles.Click();
+            Thread.Sleep(1000);
+            
         }
 
         public static void FilterBy10Miles()
@@ -129,8 +132,9 @@ namespace AutoFramework
             Actions.SearchByLocationManualEntry();
             FiltersPage filters = new FiltersPage();
             filters.SortedBy.Click();
+            Thread.Sleep(300);
             filters.SortedBy.SendKeys("alphabetical z-a" + Keys.Enter);
-            Thread.Sleep(3000);
+            Thread.Sleep(300);
             //filters.SortedBy.SendKeys("alphabetical z-a" + Keys.Enter);
             //Thread.Sleep(3000);
         }

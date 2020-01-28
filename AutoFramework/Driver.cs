@@ -3,6 +3,7 @@
     using OpenQA.Selenium;
     using OpenQA.Selenium.Chrome;
     using OpenQA.Selenium.Firefox;
+    using OpenQA.Selenium.IE;
     using OpenQA.Selenium.Support.UI;
     using Selenium;
     
@@ -19,28 +20,32 @@
         {
             
             Driver.driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            //driver.Manage().Timeouts().SetPageLoadTimeout(TimeSpan.FromSeconds(seconds)); //= TimeSpan.FromSeconds(seconds);
+            
         }
-        //public class SeleniumTestFixtureBase
-        //{
-            //protected IWebDriver WebDriver;
+        
 
             public static void Initialize(String browser)
             {
                 switch (browser.ToLower())
                 {
                     case "chrome":
-                        //DirectoryInfo chromeDriverLocation = new DirectoryInfo(@".");
+                        
                         Driver.driver = new ChromeDriver();
                         break;
                     case "firefox":
                         Driver.driver = new FirefoxDriver();
                         break;
-                    default:
-                        throw new NotSupportedException("Browser " + browser + " not supported");
+                case "IE":
+
+                    Driver.driver = new InternetExplorerDriver();
+                    break;
+                default:
+                    Driver.driver = new ChromeDriver();
+                    break;
+                    //throw new NotSupportedException("Browser " + browser + " not supported");
                 }
             }
-        //}
+      
 
     }
 }

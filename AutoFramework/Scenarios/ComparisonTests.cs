@@ -23,8 +23,8 @@
         {
 
 
-            Actions.InitializeChromeDriver();
-            //Actions.InitializeFireFoxDriver();
+            Actions.InitializeChromeDriver("chrome");
+           // Actions.InitializeFireFoxDriver();
             //Actions.FillLoginForm();
         }
 
@@ -131,7 +131,8 @@
             if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
             {
                 var screenshot = ((ITakesScreenshot)Driver.driver).GetScreenshot();
-                screenshot.SaveAsFile(@"C:\TEMP\Screenshot.jpg");
+                var testName = TestContext.CurrentContext.Test.FullName;
+                screenshot.SaveAsFile(@"C:\TEMP\" + testName + ".jpg");
                 Driver.driver.Close();
                 Driver.driver.Quit();
             }

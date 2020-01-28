@@ -5,6 +5,8 @@ namespace AutoFramework
     using NUnit.Framework;
     using System.Drawing.Imaging;
     using System;
+    using SFB_Test_Automation.AutoFramework.Pages;
+    using NUnit.Framework.Interfaces;
 
     public class FiltersTest
     {
@@ -12,11 +14,12 @@ namespace AutoFramework
         {
         }
 
-        [OneTimeSetUp]
-        public void Initialize()
+        [SetUp]
+        public void SetupBeforeEachTest()
+
         {
-            Actions.InitializeChromeDriver();
-           
+            Actions.InitializeChromeDriver("firefox");
+            //Actions.InitializeFireFoxDriver();
         }
        
 
@@ -39,7 +42,14 @@ namespace AutoFramework
         public void FilterBy5miles()
         {
             FilterActions.FilterBy5Miles();
+            FiltersPage filters = new FiltersPage();
+            //string ResultsDisplayedInitially = (filters.ResultsCount).Text;
+            string ResultsDisplayedFinally = (filters.ResultsCount).Text;
+            
+            Console.WriteLine(ResultsDisplayedFinally);
             Assert.That(Driver.driver.Url, Does.Contain("/SchoolSearch/Search?radius=5"));
+            
+
         }
 
         [Test]
@@ -52,6 +62,11 @@ namespace AutoFramework
         public void FilterBy15miles()
         {
             FilterActions.FilterBy15Miles();
+            FiltersPage filters = new FiltersPage();
+            //string ResultsDisplayedInitially = (filters.ResultsCount).Text;
+            string ResultsDisplayedFinally = (filters.ResultsCount).Text;
+
+            Console.WriteLine(ResultsDisplayedFinally);
             Assert.That(Driver.driver.Url, Does.Contain("/SchoolSearch/Search?radius=15"));
         }
         [Test]
@@ -72,7 +87,8 @@ namespace AutoFramework
         {
             FilterActions.SortByAlpabeticalOrderZA();
             var expectedText = Driver.driver.FindElement(By.CssSelector("li.school-document:nth-child(1) > div:nth-child(1) > div:nth-child(1) > a:nth-child(1)"));
-            Assert.AreEqual(expectedText.Text, "Woolwich Polytechnic school for Girls");
+            Console.WriteLine(expectedText.Text);
+            Assert.IsTrue((expectedText.Text == "Woolwich Polytechnic school for Girls"));
 
         }
         [Test]
@@ -85,27 +101,35 @@ namespace AutoFramework
         {
             FilterActions.selectAllSchoolType();
             //Assert.AreEqual((Driver.driver.FindElement(By.CssSelector("#benchmarkBasket > div > div > div")).Text), "23");
-            Assert.AreEqual(Driver.driver.FindElement(By.CssSelector("div.pagination-container:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)")).Text, "Showing 1 - 50 of 92 schools");
+            Assert.AreEqual(Driver.driver.FindElement(By.CssSelector("div.pagination-container:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)")).Text, "Showing 1 - 50 of 90 schools");
             Console.WriteLine(Driver.driver.FindElement(By.CssSelector("div.pagination-container:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)")).Text);
 
 
 
         }
 
-        
 
-        [OneTimeTearDown]
-        public void CleanUp()
+
+        [TearDown]
+        public void TeardownAfterEachTest()
         {
-            
+            if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
+            {
+                var screenshot = ((ITakesScreenshot)Driver.driver).GetScreenshot();
+                var testName = TestContext.CurrentContext.Test.FullName;
+                screenshot.SaveAsFile(@"C:\TEMP\" + testName + ".jpg");
+                Driver.driver.Close();
+                Driver.driver.Quit();
+            }
             Driver.driver.Close();
             Driver.driver.Quit();
         }
-        
-        
+
+
+
     }
 
-             
+
 }
 
 

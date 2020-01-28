@@ -10,9 +10,17 @@
     using SFB_Test_Automation.AutoFramework.Pages.PageElements.Helpers;
     using SFB_Test_Automation.AutoFramework;
     using NUnit.Framework.Interfaces;
+    using OpenQA.Selenium.Firefox;
+    using OpenQA.Selenium.IE;
+    using OpenQA.Selenium.Chrome;
+    using OpenQA.Selenium.Safari;
 
     [TestFixture]
-    public class BenchmarkingTests
+    //[TestFixture(typeof(FirefoxDriver))]
+    //[TestFixture(typeof(InternetExplorerDriver))]
+    //[TestFixture(typeof(ChromeDriver))]
+    //[TestFixture(typeof(SafariDriver))]
+    public class BenchmarkingTests :BrowserToRunWith
     {
        
 
@@ -21,8 +29,8 @@
         public void SetupBeforeEachTest()
         //public void Initialize()
         {
-            Actions.InitializeChromeDriver();
-            //Actions.InitializeFireFoxDriver();
+            Actions.InitializeChromeDriver("chrome");
+           //Actions.InitializeFireFoxDriver();
 
             
         }
@@ -41,7 +49,7 @@
 
         }
         [Test]
-        [Ignore("Ignore a test")]
+        //[Ignore("Ignore a test")]
         public void ManualBenchmarkViaLocation()
         {
             BenchMarkActions.CreateManualBenchMarkViaLocation("143592");
@@ -268,7 +276,8 @@
             if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
             {
                 var screenshot = ((ITakesScreenshot)Driver.driver).GetScreenshot();
-                screenshot.SaveAsFile(@"C:\TEMP\Screenshot.jpg");
+                var testName = TestContext.CurrentContext.Test.FullName;
+                screenshot.SaveAsFile(@"C:\TEMP\" + testName + ".jpg");
                 Driver.driver.Close();
                 Driver.driver.Quit();
             }

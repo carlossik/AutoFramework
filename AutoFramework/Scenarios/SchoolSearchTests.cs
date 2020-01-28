@@ -35,7 +35,7 @@
         public void SetupBeforeEachTest()
         
         {
-           Actions.InitializeChromeDriver();
+           Actions.InitializeChromeDriver("IE");
             //Actions.InitializeFireFoxDriver();
 
 
@@ -140,6 +140,7 @@
 
         }
         [Test]
+        [Ignore("Ignore a test")]
         public void testclosebasketviaresultspage()
         {
             
@@ -188,6 +189,7 @@
 
         }
        [Test]
+        [Ignore("Ignore a test")]
         public void EditBasketAddSchools()
         {   
             Actions.CallingClass.AddSchools();
@@ -438,13 +440,26 @@
         }
         [Test]
         public void testemailsuccess()
+
         {
+            DataQueriesPage queriesPage = new DataQueriesPage();
+            Actions.testmailSuccess("carl.fagan@education.gov.uk");
+            Assert.IsTrue((queriesPage.queryConfirmation).Text == "Your query has been sent");
+            
+            Console.WriteLine((queriesPage.queryreferencenumber).Text);
+            Console.WriteLine((queriesPage.queryConfirmation).Text);
 
         }
 
         [Test]
         public void testemailfailures()
         {
+            DataQueriesPage queriesPage = new DataQueriesPage();
+            Actions.testmailSuccess("carl.fagan");
+            Assert.IsFalse((queriesPage.queryConfirmation).Text == "Your query has been sent");
+
+            //Console.WriteLine((queriesPage.queryreferencenumber).Text);
+            //Console.WriteLine((queriesPage.queryConfirmation).Text);
 
         }
 
@@ -458,7 +473,8 @@
             if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
             {
                 var screenshot = ((ITakesScreenshot)Driver.driver).GetScreenshot();
-                screenshot.SaveAsFile(@"C:\TEMP\Screenshot.jpg");
+                var testName = TestContext.CurrentContext.Test.FullName;
+                screenshot.SaveAsFile(@"C:\TEMP\" + testName + ".jpg");
                 Driver.driver.Close();
                 Driver.driver.Quit();
             }

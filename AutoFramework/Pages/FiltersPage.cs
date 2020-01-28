@@ -96,8 +96,10 @@ namespace SFB_Test_Automation.AutoFramework.Pages
         public IWebElement FilterBy25Miles { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id,Using = "OrderByControl")]
         public IWebElement SortedBy { get; set; }
+        [SeleniumExtras .PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector,Using = "div.pagination-container:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > span:nth-child(1) > span:nth-child(1)")]
+        public IWebElement ResultsCount { get; set; }
 
-       
-       
+
+                                                                                                      //div.pagination-container:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > span:nth-child(1)
     }
 }

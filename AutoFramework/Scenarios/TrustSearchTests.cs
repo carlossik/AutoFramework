@@ -15,7 +15,7 @@ namespace AutoFramework
     //[Parallelizable]
     public class TrustSearchScenarios
     {
-        IAlert alert;
+      
 
         public TrustSearchScenarios()
         {     
@@ -27,7 +27,7 @@ namespace AutoFramework
 
        
         {
-            Actions.InitializeChromeDriver();
+            Actions.InitializeChromeDriver("chrome");
             //Actions.InitializeFireFoxDriver();
 
 
@@ -244,7 +244,8 @@ namespace AutoFramework
             if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
             {
                 var screenshot = ((ITakesScreenshot)Driver.driver).GetScreenshot();
-                screenshot.SaveAsFile(@"C:\TEMP\Screenshot.jpg");
+                var testName = TestContext.CurrentContext.Test.FullName;
+                screenshot.SaveAsFile(@"C:\TEMP\" + testName + ".jpg");
                 Driver.driver.Close();
                 Driver.driver.Quit();
             }

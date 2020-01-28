@@ -271,15 +271,18 @@
     <Compile Include="AutoFramework\BrowserToRunWith.cs" />
     <Compile Include="AutoFramework\DetailedComparisonActions.cs" />
     <Compile Include="AutoFramework\FilterActions.cs" />
+    <Compile Include="AutoFramework\NoDefaultSchoolActions.cs" />
     <Compile Include="AutoFramework\Pages\AddSchoolPage.cs" />
     <Compile Include="AutoFramework\Pages\BenchMarkBasketPage.cs" />
     <Compile Include="AutoFramework\Pages\BenchMarkChartPage.cs" />
     <Compile Include="AutoFramework\Pages\ComparingSimilarSchoolsPage.cs" />
+    <Compile Include="AutoFramework\Pages\DataQueriesPage.cs" />
     <Compile Include="AutoFramework\Pages\DetailComparisonPage.cs" />
     <Compile Include="AutoFramework\Pages\FiltersPage.cs" />
     <Compile Include="AutoFramework\Pages\IntepretingTheChartsPage.cs" />
     <Compile Include="AutoFramework\Pages\ManualPage.cs" />
     <Compile Include="AutoFramework\Pages\BenchmarkPageTabs.cs" />
+    <Compile Include="AutoFramework\Pages\NoDefaultPage.cs" />
     <Compile Include="AutoFramework\Pages\PageElements\Helpers\Testhelpers.cs" />
     <Compile Include="AutoFramework\Pages\PageElements\Helpers\UrnHelper.cs" />
     <Compile Include="AutoFramework\Actions.cs" />
@@ -301,6 +304,7 @@
     <Compile Include="AutoFramework\Scenarios\BenchmarkingTests.cs" />
     <Compile Include="AutoFramework\Scenarios\ChartTests.cs" />
     <Compile Include="AutoFramework\Scenarios\ComparisonTests.cs" />
+    <Compile Include="AutoFramework\Scenarios\ComparisonwithNoDefaultSchoolTests.cs" />
     <Compile Include="AutoFramework\Scenarios\FiltersTest.cs" />
     <Compile Include="AutoFramework\Scenarios\ReportsCreator.cs" />
     <Compile Include="AutoFramework\Scenarios\SchoolSearchTests.cs" />

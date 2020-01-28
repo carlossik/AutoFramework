@@ -8,7 +8,7 @@ namespace AutoFramework
 
         public static IEnumerable<String> BrowserTorunWith()
         {
-            String[] browsers = { "chrome", "firefox" };
+            String[] browsers = { "chrome", "firefox","IE" };
             foreach (string b in browsers)
             {
                 yield return b;

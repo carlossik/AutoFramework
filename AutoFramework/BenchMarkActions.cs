@@ -13,13 +13,14 @@
     using System.Threading;
     using OpenQA.Selenium.Firefox;
     using System;
+    
     using System.Windows.Forms;
 
     public static class BenchMarkActions
     {
         public static void CreateManualBenchMarkViaName(String urn)
         {
-            Actions.GoHome();
+            
 
             Actions.CallingClass.SearchViaSchoolurn(urn);
             SchoolDetailPage detailspage = new SchoolDetailPage();
@@ -32,7 +33,9 @@
             ManualPage manualaddition = new ManualPage();
             manualaddition.AddSchoolByNameRadio.Click();
             bestinclass.NextButton.Click();
-            manualaddition.NewSchoolNameField.SendKeys("plumcroft Primary School");
+            manualaddition.NewSchoolNameField.SendKeys("Plumcroft Primary School" + OpenQA.Selenium.Keys.Enter);
+            manualaddition.NewSchoolNameField.SendKeys( OpenQA.Selenium.Keys.Enter);
+            Thread.Sleep(200);
             manualaddition.ContinueToBenchMarkChartsButton.Click();
             
             Thread.Sleep(300);
@@ -43,7 +46,7 @@
         }
         public static void CreateManualBenchMarkViaLocation(String urn)
         {
-            Actions.GoHome();
+            //Actions.GoHome();
 
             Actions.CallingClass.SearchViaSchoolurn(urn);
             SchoolDetailPage detailspage = new SchoolDetailPage();
@@ -162,6 +165,8 @@
             benchchartpage.TotalExpenditureDropdown.Click();
            
             benchchartpage.costOfFinance.Click();
+            benchchartpage.costOfFinance.SendKeys(OpenQA.Selenium.Keys.Enter);
+
             Thread.Sleep(30000);
             
 

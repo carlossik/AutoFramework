@@ -20,8 +20,8 @@
         public void SetupBeforeEachTest()
         
         {
-            Actions.InitializeChromeDriver();
-            //Actions.InitializeFireFoxDriver();
+            Actions.InitializeChromeDriver("firefox");
+           // Actions.InitializeFireFoxDriver();
 
 
         }
@@ -40,6 +40,7 @@
 
         [Test]
         [Category("QuickTests")]
+        [Ignore("Ignore a test")]
         public void PercentageOfTotalTabChange()
         {
             Actions.CallingClass.QuickCompareWithOtherSchools();
@@ -167,7 +168,8 @@
             if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
             {
                 var screenshot = ((ITakesScreenshot)Driver.driver).GetScreenshot();
-                screenshot.SaveAsFile(@"C:\TEMP\Screenshot.jpg");
+                var testName = TestContext.CurrentContext.Test.FullName;
+                screenshot.SaveAsFile(@"C:\TEMP\"+testName +".jpg");
                 Driver.driver.Close();
                 Driver.driver.Quit();
             }

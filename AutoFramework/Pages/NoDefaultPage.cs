@@ -1,4 +1,4 @@
-﻿using OpenQA.Selenium;
+﻿
 using OpenQA.Selenium.Support.PageObjects;
 using SeleniumExtras.PageObjects;
 using System;
@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using AutoFramework.Pages;
 using How = SeleniumExtras.PageObjects.How;
 using AutoFramework;
+using OpenQA.Selenium;
 
 namespace SFB_Test_Automation.AutoFramework.Pages
 {

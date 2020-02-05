@@ -52,29 +52,29 @@ namespace AutoFramework
 
         public void CompareByDetailedComparisonAcademiesExclude()
         {
-            
 
+            //assertions to be added here
         }
         [Test]
         [Ignore("Ignore a test")]
 
         public void CompareByDetailedComparisonAcademiesInclude()
         {
-
+            //assertions to be added here
 
         }
         [Test]
         [Ignore("Ignore a test")]
         public void CompareByDetailedComparisonAllSchoolsExclude()
         {
-           
 
+            //assertions to be added here
         }
         [Test]
         [Ignore("Ignore a test")]
         public void CompareByDetailedComparisonAllSchoolsInclude()
         {
-
+            //assertions to be added here
 
         }
 
@@ -82,14 +82,16 @@ namespace AutoFramework
         [Ignore("Ignore a test")]
         public void CompareByManualComparisonName()
         {
-           
+            //assertions to be added here
 
         }
         [Test]
-        [Ignore("Ignore a test")]
+        //[Ignore("Ignore a test")]
         public void CompareByManualComparisonLocation()
         {
-           
+            NoDefaultSchoolActions.ManualComparisonByLocation();
+            //assertions to be added here
+
 
         }
         [TearDown]

@@ -16,10 +16,7 @@
     using OpenQA.Selenium.Safari;
 
     [TestFixture]
-    //[TestFixture(typeof(FirefoxDriver))]
-    //[TestFixture(typeof(InternetExplorerDriver))]
-    //[TestFixture(typeof(ChromeDriver))]
-    //[TestFixture(typeof(SafariDriver))]
+    
     public class BenchmarkingTests :BrowserToRunWith
     {
        
@@ -29,7 +26,7 @@
         public void SetupBeforeEachTest()
         //public void Initialize()
         {
-            Actions.InitializeChromeDriver("chrome");
+            Actions.InitializeChromeDriver("firefox");
            //Actions.InitializeFireFoxDriver();
 
             

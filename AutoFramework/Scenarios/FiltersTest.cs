@@ -18,8 +18,8 @@ namespace AutoFramework
         public void SetupBeforeEachTest()
 
         {
-            Actions.InitializeChromeDriver("firefox");
-            //Actions.InitializeFireFoxDriver();
+            Actions.InitializeChromeDriver("chrome");
+            
         }
        
 
@@ -43,7 +43,7 @@ namespace AutoFramework
         {
             FilterActions.FilterBy5Miles();
             FiltersPage filters = new FiltersPage();
-            //string ResultsDisplayedInitially = (filters.ResultsCount).Text;
+            
             string ResultsDisplayedFinally = (filters.ResultsCount).Text;
             
             Console.WriteLine(ResultsDisplayedFinally);
@@ -63,7 +63,7 @@ namespace AutoFramework
         {
             FilterActions.FilterBy15Miles();
             FiltersPage filters = new FiltersPage();
-            //string ResultsDisplayedInitially = (filters.ResultsCount).Text;
+            
             string ResultsDisplayedFinally = (filters.ResultsCount).Text;
 
             Console.WriteLine(ResultsDisplayedFinally);
@@ -88,7 +88,9 @@ namespace AutoFramework
             FilterActions.SortByAlpabeticalOrderZA();
             var expectedText = Driver.driver.FindElement(By.CssSelector("li.school-document:nth-child(1) > div:nth-child(1) > div:nth-child(1) > a:nth-child(1)"));
             Console.WriteLine(expectedText.Text);
-            Assert.IsTrue((expectedText.Text == "Woolwich Polytechnic school for Girls"));
+            Assert.That(expectedText.Text, Does.Contain("Woolwich Polytechnic"));
+
+          
 
         }
         [Test]
@@ -100,8 +102,10 @@ namespace AutoFramework
         public void VerifySearchResultsWithSchoolType()
         {
             FilterActions.selectAllSchoolType();
-            //Assert.AreEqual((Driver.driver.FindElement(By.CssSelector("#benchmarkBasket > div > div > div")).Text), "23");
-            Assert.AreEqual(Driver.driver.FindElement(By.CssSelector("div.pagination-container:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)")).Text, "Showing 1 - 50 of 90 schools");
+
+
+            Assert.That(Driver.driver.FindElement(By.CssSelector("div.pagination-container:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)")).Text, Does.Contain("Showing 1 - 50 of"));
+            //Assert.AreEqual(Driver.driver.FindElement(By.CssSelector("div.pagination-container:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)")).Text, "Showing 1 - 50 of 90 schools");
             Console.WriteLine(Driver.driver.FindElement(By.CssSelector("div.pagination-container:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)")).Text);
 
 

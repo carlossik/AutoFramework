@@ -14,7 +14,7 @@ namespace AutoFramework
         public static string Prodlive = "https://schools-financial-benchmarking.service.gov.uk/";
         public static string BaseURLPreProd = "https://as-t1pp-sfb.azurewebsites.net/";
         public static string BaseURLHiddenLive = "https://as-t1pr-sfb-b.azurewebsites.net/";
-        public static string currentTestEnv = BaseURLPreProd;
+        public static string currentTestEnv = BaseURLDev;
         public static string firefoxlocation = "C://Users//kwaku//OneDrive//Desktop//C#//AutoFramework//bin//Debug//firefox.exe";
 
 

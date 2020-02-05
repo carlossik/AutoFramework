@@ -29,6 +29,25 @@ namespace AutoFramework.Pages
         public IWebElement FirstElementPresented { get; set; }
         [FindsBy(How = How.CssSelector, Using = "button.desktop-button:nth-child(2)")]
         public IWebElement AddFirstResult { get; set; }
+        [FindsBy(How = How.XPath, Using = "/html/body/div/div[8]/main/div[5]/div[2]/div/div[4]/div[1]/ul/li[2]/div/div[2]/div/button[2]")]
+        public IWebElement AddSecondResult { get; set; }
+        [FindsBy(How = How.XPath, Using = "/html/body/div/div[8]/main/div[5]/div[2]/div/div[4]/div[1]/ul/li[3]/div/div[2]/div/button[2]")]
+        public IWebElement AddThirdResult { get; set; }
+        [FindsBy(How = How.XPath, Using = "/html/body/div/div[8]/main/div[5]/div[2]/div/div[4]/div[1]/ul/li[3]/div/div[2]/div/button[2]")]
+        //public IWebElement AddThirdResult { get; set; }
+        //[FindsBy(How = How.XPath, Using = "/html/body/div/div[8]/main/div[5]/div[2]/div/div[4]/div[1]/ul/li[3]/div/div[2]/div/button[2]")]
+        //public IWebElement AddThirdResult { get; set; }
+        //[FindsBy(How = How.XPath, Using = "/html/body/div/div[8]/main/div[5]/div[2]/div/div[4]/div[1]/ul/li[3]/div/div[2]/div/button[2]")]
+        //public IWebElement AddThirdResult { get; set; }
+        //[FindsBy(How = How.XPath, Using = "/html/body/div/div[8]/main/div[5]/div[2]/div/div[4]/div[1]/ul/li[3]/div/div[2]/div/button[2]")]
+        //public IWebElement AddThirdResult { get; set; }
+        //[FindsBy(How = How.XPath, Using = "/html/body/div/div[8]/main/div[5]/div[2]/div/div[4]/div[1]/ul/li[3]/div/div[2]/div/button[2]")]
+        //public IWebElement AddThirdResult { get; set; }
+        //[FindsBy(How = How.XPath, Using = "/html/body/div/div[8]/main/div[5]/div[2]/div/div[4]/div[1]/ul/li[3]/div/div[2]/div/button[2]")]
+        //public IWebElement AddThirdResult { get; set; }
+        [FindsBy(How = How.CssSelector, Using = "#manualButton")]
+        public IWebElement ManualButton { get; set; }
+
         [FindsBy(How = How.CssSelector, Using = "a.button")]
         public IWebElement ViewBenchmarkChartsButton { get; set; }
         //[FindsBy(How = How.Id, Using = "schoollevel_16plus")]

@@ -1,4 +1,4 @@
-﻿
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 using SeleniumExtras.PageObjects;
 using System;
@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using AutoFramework.Pages;
 using How = SeleniumExtras.PageObjects.How;
 using AutoFramework;
-using OpenQA.Selenium;
 
 namespace SFB_Test_Automation.AutoFramework.Pages
 {
@@ -43,8 +42,20 @@ namespace SFB_Test_Automation.AutoFramework.Pages
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "All")]
         public IWebElement AllSchoolsButton { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "excludePartialMaintained")]
-        public IWebElement ExcludeIncompleteButtonMaintained { get; set; }
-
+        public IWebElement ExcludeIncompleteButton { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id,Using = "SchoolOrCollegeNameId")]
+        public IWebElement addschoolsbynameradio { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "TownOrCity")]
+        public IWebElement addschoolsbyLocationradio { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "LaCodeName")]
+        public IWebElement addschoolsbyLocalAuthorityradio { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "FindCurrentPosition")]
+        public IWebElement useLocationLink { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "#SearchByTownFieldset > div:nth-child(4) > button:nth-child(3)")]
+        public IWebElement SearchSubmitButton { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "FindSchoolManuallyByTown")]
+        public IWebElement AddSchoolsbyLocationTextField { get; set; }
+        //FindSchoolManuallyByTown
     }
 }
 

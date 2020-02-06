@@ -35,7 +35,7 @@
         public void SetupBeforeEachTest()
         
         {
-           Actions.InitializeChromeDriver("chrome");
+           Actions.InitializeChromeDriver("firefox");
             //Actions.InitializeFireFoxDriver();
 
 
@@ -140,7 +140,7 @@
 
         }
         [Test]
-        //[Ignore("Ignore a test")]
+        [Ignore("Ignore a test")]
         public void testclosebasketviaresultspage()
         {
             

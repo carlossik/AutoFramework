@@ -361,11 +361,11 @@
             resultspage.EditBasket.Click();
             Thread.Sleep(200);
             BenchMarkBasketPage basketpage = new BenchMarkBasketPage();
-            basketpage.CloseBasket.Click();
+            //basketpage.CloseBasket.Click();
             //Driver.driver.Navigate().Back();
             Thread.Sleep(100);
-            //basketpage.clear_basket.Click();
-            //basketpage.CloseBasket.Click();
+            basketpage.clear_basket.Click();
+            basketpage.CloseBasket.Click();
 
             
         }

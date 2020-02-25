@@ -129,8 +129,9 @@ namespace AutoFramework
         public void trustsearchViaLocation()
         {
             Actions.SearchTrustViaLocation();
+            Console.WriteLine(Driver.driver.FindElement(By.CssSelector(".heading-xlarge")).Text);
            
-            Assert.IsTrue(Driver.driver.FindElement(By.CssSelector(".heading-xlarge")).Text == "Academy trusts with schools operating in and near First Avenue, Bexleyheath (Bexley), Kent");
+            Assert.IsTrue(Driver.driver.FindElement(By.CssSelector(".heading-xlarge")).Text == "Academy trusts with schools operating in and near First Avenue, Bexleyheath, Kent");
             
         }
         [Test]
@@ -233,6 +234,12 @@ namespace AutoFramework
         public void CopyAndPasteTrustChart()
         {
 
+
+        }
+
+        [Test]
+        public void verifyTrustsListedInAlphabeticalOrder()
+        {
 
         }
         [TearDown]

@@ -3,6 +3,8 @@ namespace AutoFramework.Pages
 {
     using OpenQA.Selenium;
     using OpenQA.Selenium.Support.PageObjects;
+    using System.Collections.Generic;
+
     public class BestInClass
     {
         public BestInClass()
@@ -62,7 +64,18 @@ namespace AutoFramework.Pages
         public IWebElement ComparisonSchoolsTab { get; set; }
         [FindsBy(How = How.CssSelector, Using = ".banner__comparison-list-info-panel__count")]
         public IWebElement BasketCount { get; set; }
-    }
+        //[FindsBy(How = How.CssSelector, Using = ".banner__comparison-list-info-panel__count")]
+        //public IWebElement BasketCount { get; set; }
+
+        //IList<string> all = new List<string>();
+        //foreach(var IWebElement in Driver.driver.FindElements(By.))
+        
+        //foreach(var element in driver.FindElements(By.ClassName("comments"));
+
 }
+
+    //[Find]
+}
+
 
 

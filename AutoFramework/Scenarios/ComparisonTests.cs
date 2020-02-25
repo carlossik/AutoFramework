@@ -59,6 +59,8 @@
             BestInClass bestinclasspage = new BestInClass();
             
             Assert.IsTrue(((bestinclasspage.BasketCount).Text).Contains("16 schools"));
+            //Assert.IsTrue();
+            
            
 
 

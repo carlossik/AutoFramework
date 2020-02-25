@@ -134,7 +134,7 @@
             
             bestinclass.NextButton.Click();
             details.LAcode.Click();
-            details.Lacodefield.SendKeys("002");
+            details.Lacodefield.SendKeys("202");
             bestinclass.NextButton.Click();
              details.ViewBenchMarkCharts.Click();
                     }

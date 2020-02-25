@@ -182,6 +182,29 @@
             Assert.IsFalse(Driver.driver.PageSource.Contains(errorText));
         }
         [Test]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         public static void ExcludeschoolswithIncFinanceAcademiesLaCode()
         {
             DetailedComparisonActions.ExcludeschoolswithIncFinanceAcademiesLaCode("100140");
@@ -266,7 +289,11 @@
         {
             
         }
-        
+        [Test]
+        public static void VerifyBestyInClassIncludesAllSchoolTypes()
+        {
+
+        }
         [TearDown]
         public void TeardownAfterEachTest()
         {

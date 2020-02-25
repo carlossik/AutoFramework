@@ -694,12 +694,9 @@
                 IJavaScriptExecutor executor = (IJavaScriptExecutor)Driver.driver;
                
                 executor.ExecuteScript("document.querySelector(#chart_0 > svg:nth-child(1) > g:nth-child(2) > g:nth-child(7) > g:nth-child(17) > circle:nth-child(3))");
-               
 
-
-
-
-
+      
+                
 
             }
             public static void ContinuetoBenchmarkCharts()

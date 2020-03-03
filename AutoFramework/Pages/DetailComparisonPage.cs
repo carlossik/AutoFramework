@@ -26,7 +26,7 @@ namespace SFB_Test_Automation.AutoFramework.Pages
 
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "WFHeader")]
         public IWebElement WorkForce_Header { get; set; }
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".button")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".submit-criteria-js")]
         public IWebElement ViewBenchMarkCharts { get; set; }
 
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".clear-criteria")]
@@ -76,10 +76,10 @@ namespace SFB_Test_Automation.AutoFramework.Pages
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "MaxNoPupil")]
         public IWebElement MaxNumberOfPupilsInputBox { get; set; }
 
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "checkbox-SchoolOverallPhase")]
-        public IWebElement OverallSchoolPhaseCheckBox { get; set; }
+       // [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "checkbox-SchoolOverallPhase")]
+        //public IWebElement OverallSchoolPhaseCheckBox { get; set; }
 
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "checkbox-SchoolPhase")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "checkbox-OverallPhase")]
         public IWebElement SchoolPhaseCheckBox { get; set; }
 
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "checkbox-TypeOfEstablishment")]

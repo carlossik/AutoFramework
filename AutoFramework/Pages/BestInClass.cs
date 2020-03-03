@@ -27,8 +27,8 @@ namespace AutoFramework.Pages
         [FindsBy(How = How.CssSelector,Using = ".button")]
         public IWebElement ContinueToHigherProgressSchoolBenchmark { get; set; }
 
-        [FindsBy(How = How.ClassName, Using = "button")]
-        public IWebElement NextButton { get; set; }
+        [FindsBy(How = How.CssSelector, Using = "div.column-one-third:nth-child(1) > button:nth-child(1)")]
+        public IWebElement Continue { get; set; }
 
         [FindsBy(How = How.CssSelector, Using = "div.column-one-third:nth-child(2) > a:nth-child(1)")]
         public IWebElement BackButton { get; set; }
@@ -42,7 +42,7 @@ namespace AutoFramework.Pages
         public IWebElement AllSchoolsChoice { get; set; }
         [FindsBy(How = How.Id, Using = "fsm")]
         public IWebElement PupilseligibleFreemeals { get; set; }
-        [FindsBy(How = How.ClassName, Using = "button")]
+        [FindsBy(How = How.ClassName, Using = "button submit-criteria-js submit mr-2")]
         public IWebElement ContinueToBenchMarkChartsButton { get; set; }
         [FindsBy(How = How.CssSelector, Using = "button.link-button:nth-child(4)")]
         public IWebElement EditComparison_Link { get; set; }

@@ -73,14 +73,8 @@ namespace SFB_Test_Automation.AutoFramework
             Thread.Sleep(300);
             SearchResultsPage resultspage = new SearchResultsPage();
             resultspage.AddFirstResult.Click();
-            Thread.Sleep(300);
-            resultspage.AddSecondResult.Click();
-            Thread.Sleep(300);
-            resultspage.AddThirdResult.Click();
-            Thread.Sleep(300);
-            resultspage.ManualButton.Click();
-            Thread.Sleep(300);
-            //resultspage.ManualButton.Click();
+            
+           
             Thread.Sleep(3000);
         }
         public static void ManualComparisonByName()

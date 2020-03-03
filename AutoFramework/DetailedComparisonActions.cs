@@ -33,14 +33,14 @@ namespace SFB_Test_Automation.AutoFramework
             detailspage.CompareWithOtherSchools.Click();
             BestInClass bestinclass = new BestInClass();
             bestinclass.DetailComparisonButton.Click();
-            bestinclass.NextButton.Click();
+            bestinclass.Continue.Click();
             DetailComparisonPage detailpage = new DetailComparisonPage();
             detailpage.MaintainedRadio.Click();
             //Thread.Sleep(30000);
             //detailpage.Excludecheckbox.Click();
-            bestinclass.NextButton.Click();
+            bestinclass.Continue.Click();
             detailpage.AllOfEnglandRadio.Click();
-            bestinclass.NextButton.Click();
+            bestinclass.Continue.Click();
            
             detailpage.General_Header.Click();
             detailpage.NumberOfPupilsCheckBox.Click();
@@ -65,17 +65,17 @@ namespace SFB_Test_Automation.AutoFramework
             detailspage.CompareWithOtherSchools.Click();
             BestInClass bestinclass = new BestInClass();
             bestinclass.DetailComparisonButton.Click();
-            bestinclass.NextButton.Click();
+            bestinclass.Continue.Click();
             DetailComparisonPage detailpage = new DetailComparisonPage();
             detailpage.AllschoolsRadio.Click();
             Thread.Sleep(3000);
             //detailpage.Excludecheckbox.Click();
-            bestinclass.NextButton.Click();
+            bestinclass.Continue.Click();
             Thread.Sleep(3000);
             detailpage.AllOfEnglandRadio.Click();
             Thread.Sleep(3000);
             //detailpage.Lacodefield.SendKeys("879");
-            bestinclass.NextButton.Click();
+            bestinclass.Continue.Click();
 
             detailpage.General_Header.Click();
             detailpage.NumberOfPupilsCheckBox.Click();
@@ -91,14 +91,14 @@ namespace SFB_Test_Automation.AutoFramework
             detailspage.CompareWithOtherSchools.Click();
             BestInClass bestinclass = new BestInClass();
             bestinclass.DetailComparisonButton.Click();
-            bestinclass.NextButton.Click();
+            bestinclass.Continue.Click();
             DetailComparisonPage detailpage = new DetailComparisonPage();
             detailpage.MaintainedRadio.Click();
             //Thread.Sleep(300);
             detailpage.MaintainedExcludecheckbox.Click();
-            bestinclass.NextButton.Click();
+            bestinclass.Continue.Click();
             detailpage.AllOfEnglandRadio.Click();
-            bestinclass.NextButton.Click();
+            bestinclass.Continue.Click();
 
             detailpage.General_Header.Click();
             detailpage.NumberOfPupilsCheckBox.Click();
@@ -117,14 +117,14 @@ namespace SFB_Test_Automation.AutoFramework
             detailspage.CompareWithOtherSchools.Click();
             BestInClass bestinclass = new BestInClass();
             bestinclass.DetailComparisonButton.Click();
-            bestinclass.NextButton.Click();
+            bestinclass.Continue.Click();
             DetailComparisonPage detailpage = new DetailComparisonPage();
             detailpage.AcademyRadio.Click();
             //Thread.Sleep(300);
             detailpage.AcademiesExcludecheckbox.Click();
-            bestinclass.NextButton.Click();
+            bestinclass.Continue.Click();
             detailpage.AllOfEnglandRadio.Click();
-            bestinclass.NextButton.Click();
+            bestinclass.Continue.Click();
 
             detailpage.General_Header.Click();
             detailpage.NumberOfPupilsCheckBox.Click();
@@ -141,16 +141,16 @@ namespace SFB_Test_Automation.AutoFramework
             detailspage.CompareWithOtherSchools.Click();
             BestInClass bestinclass = new BestInClass();
             bestinclass.DetailComparisonButton.Click();
-            bestinclass.NextButton.Click();
+            bestinclass.Continue.Click();
             DetailComparisonPage detailpage = new DetailComparisonPage();
             detailpage.AllschoolsRadio.Click();
             //Thread.Sleep(30000);
             detailpage.AllSchoolsExcludecheckbox.Click();
             //Thread.Sleep(30000);
-            bestinclass.NextButton.Click();
+            bestinclass.Continue.Click();
             detailpage.AllOfEnglandRadio.Click();
             //detailpage.Lacodefield.SendKeys("879");
-            bestinclass.NextButton.Click();
+            bestinclass.Continue.Click();
 
             detailpage.General_Header.Click();
             detailpage.NumberOfPupilsCheckBox.Click();
@@ -168,15 +168,15 @@ namespace SFB_Test_Automation.AutoFramework
             detailspage.CompareWithOtherSchools.Click();
             BestInClass bestinclass = new BestInClass();
             bestinclass.DetailComparisonButton.Click();
-            bestinclass.NextButton.Click();
+            bestinclass.Continue.Click();
             DetailComparisonPage detailpage = new DetailComparisonPage();
             detailpage.MaintainedRadio.Click();
             //Thread.Sleep(30000);
             //detailpage.Excludecheckbox.Click();
-            bestinclass.NextButton.Click();
+            bestinclass.Continue.Click();
             detailpage.LAcode.Click();
             detailpage.Lacodefield.SendKeys("879");
-            bestinclass.NextButton.Click();
+            bestinclass.Continue.Click();
 
             detailpage.General_Header.Click();
             detailpage.NumberOfPupilsCheckBox.Click();
@@ -192,15 +192,15 @@ namespace SFB_Test_Automation.AutoFramework
             detailspage.CompareWithOtherSchools.Click();
             BestInClass bestinclass = new BestInClass();
             bestinclass.DetailComparisonButton.Click();
-            bestinclass.NextButton.Click();
+            bestinclass.Continue.Click();
             DetailComparisonPage detailpage = new DetailComparisonPage();
             detailpage.AcademyRadio.Click();
             //Thread.Sleep(30000);
             //detailpage.Excludecheckbox.Click();
-            bestinclass.NextButton.Click();
+            bestinclass.Continue.Click();
             detailpage.LAcode.Click();
             detailpage.Lacodefield.SendKeys("879");
-            bestinclass.NextButton.Click();
+            bestinclass.Continue.Click();
 
             detailpage.General_Header.Click();
             detailpage.NumberOfPupilsCheckBox.Click();
@@ -216,15 +216,15 @@ namespace SFB_Test_Automation.AutoFramework
             detailspage.CompareWithOtherSchools.Click();
             BestInClass bestinclass = new BestInClass();
             bestinclass.DetailComparisonButton.Click();
-            bestinclass.NextButton.Click();
+            bestinclass.Continue.Click();
             DetailComparisonPage detailpage = new DetailComparisonPage();
             detailpage.AllschoolsRadio.Click();
             //Thread.Sleep(30000);
             //detailpage.Excludecheckbox.Click();
-            bestinclass.NextButton.Click();
+            bestinclass.Continue.Click();
             detailpage.LAcode.Click();
             detailpage.Lacodefield.SendKeys(Lacode);
-            bestinclass.NextButton.Click();
+            bestinclass.Continue.Click();
 
             detailpage.General_Header.Click();
             detailpage.NumberOfPupilsCheckBox.Click();
@@ -240,16 +240,16 @@ namespace SFB_Test_Automation.AutoFramework
             detailspage.CompareWithOtherSchools.Click();
             BestInClass bestinclass = new BestInClass();
             bestinclass.DetailComparisonButton.Click();
-            bestinclass.NextButton.Click();
+            bestinclass.Continue.Click();
             DetailComparisonPage detailpage = new DetailComparisonPage();
             detailpage.MaintainedRadio.Click();
             //Thread.Sleep(30000);
             detailpage.MaintainedExcludecheckbox.Click();
             //Thread.Sleep(30000);
-            bestinclass.NextButton.Click();
+            bestinclass.Continue.Click();
             detailpage.LAcodeRadio.Click();
             detailpage.Lacodefield.SendKeys(lacode);
-            bestinclass.NextButton.Click();
+            bestinclass.Continue.Click();
 
             detailpage.General_Header.Click();
             detailpage.NumberOfPupilsCheckBox.Click();
@@ -266,15 +266,15 @@ namespace SFB_Test_Automation.AutoFramework
             detailspage.CompareWithOtherSchools.Click();
             BestInClass bestinclass = new BestInClass();
             bestinclass.DetailComparisonButton.Click();
-            bestinclass.NextButton.Click();
+            bestinclass.Continue.Click();
             DetailComparisonPage detailpage = new DetailComparisonPage();
             detailpage.AcademyRadio.Click();
             //Thread.Sleep(300);
             detailpage.AcademiesExcludecheckbox.Click();
-            bestinclass.NextButton.Click();
+            bestinclass.Continue.Click();
             detailpage.LAcodeRadio.Click();
             detailpage.LAcodeinputfield.SendKeys(lacode);
-            bestinclass.NextButton.Click();
+            bestinclass.Continue.Click();
 
             detailpage.General_Header.Click();
             detailpage.NumberOfPupilsCheckBox.Click();
@@ -292,16 +292,16 @@ namespace SFB_Test_Automation.AutoFramework
             detailspage.CompareWithOtherSchools.Click();
             BestInClass bestinclass = new BestInClass();
             bestinclass.DetailComparisonButton.Click();
-            bestinclass.NextButton.Click();
+            bestinclass.Continue.Click();
             DetailComparisonPage detailpage = new DetailComparisonPage();
             detailpage.AllschoolsRadio.Click();
             //Thread.Sleep(30000);
             detailpage.AllSchoolsExcludecheckbox.Click();
             //Thread.Sleep(30000);
-            bestinclass.NextButton.Click();
+            bestinclass.Continue.Click();
             detailpage.LAcodeRadio.Click();
             detailpage.Lacodefield.SendKeys("879");
-            bestinclass.NextButton.Click();
+            bestinclass.Continue.Click();
 
             detailpage.General_Header.Click();
             detailpage.NumberOfPupilsCheckBox.Click();
@@ -319,15 +319,15 @@ namespace SFB_Test_Automation.AutoFramework
             detailspage.CompareWithOtherSchools.Click();
             BestInClass bestinclass = new BestInClass();
             bestinclass.DetailComparisonButton.Click();
-            bestinclass.NextButton.Click();
+            bestinclass.Continue.Click();
             DetailComparisonPage detailpage = new DetailComparisonPage();
             detailpage.MaintainedRadio.Click();
             //Thread.Sleep(30000);
             //detailpage.Excludecheckbox.Click();
-            bestinclass.NextButton.Click();
+            bestinclass.Continue.Click();
             detailpage.LAnameRadio.Click();
             detailpage.LANameinputfield.SendKeys("Greenwich");
-            bestinclass.NextButton.Click();
+            bestinclass.Continue.Click();
 
             detailpage.General_Header.Click();
             detailpage.NumberOfPupilsCheckBox.Click();
@@ -341,19 +341,17 @@ namespace SFB_Test_Automation.AutoFramework
         {
             Actions.CallingClass.SearchViaSchoolurn(urn);
             SchoolDetailPage detailspage = new SchoolDetailPage();
+           
             detailspage.CompareWithOtherSchools.Click();
             BestInClass bestinclass = new BestInClass();
             bestinclass.DetailComparisonButton.Click();
-            bestinclass.NextButton.Click();
+            bestinclass.Continue.Click();
             DetailComparisonPage detailpage = new DetailComparisonPage();
             detailpage.AcademyRadio.Click();
-            //Thread.Sleep(30000);
-            //detailpage.Excludecheckbox.Click();
-            bestinclass.NextButton.Click();
+            bestinclass.Continue.Click();
             detailpage.LAnameRadio.Click();
             detailpage.LANameinputfield.SendKeys("Bexley");
-            bestinclass.NextButton.Click();
-
+            bestinclass.Continue.Click();
             detailpage.General_Header.Click();
             detailpage.NumberOfPupilsCheckBox.Click();
             detailpage.MinNumberOfPupilsInputField.SendKeys("719");
@@ -368,14 +366,14 @@ namespace SFB_Test_Automation.AutoFramework
             detailspage.CompareWithOtherSchools.Click();
             BestInClass bestinclass = new BestInClass();
             bestinclass.DetailComparisonButton.Click();
-            bestinclass.NextButton.Click();
+            bestinclass.Continue.Click();
             DetailComparisonPage detailpage = new DetailComparisonPage();
             detailpage.AcademyRadio.Click();
             
-            bestinclass.NextButton.Click();
+            bestinclass.Continue.Click();
             detailpage.AllOfEnglandRadio.Click();
             
-            bestinclass.NextButton.Click();
+            bestinclass.Continue.Click();
 
             detailpage.General_Header.Click();
             detailpage.NumberOfPupilsCheckBox.Click();
@@ -394,16 +392,16 @@ namespace SFB_Test_Automation.AutoFramework
             detailspage.CompareWithOtherSchools.Click();
             BestInClass bestinclass = new BestInClass();
             bestinclass.DetailComparisonButton.Click();
-            bestinclass.NextButton.Click();
+            bestinclass.Continue.Click();
             DetailComparisonPage detailpage = new DetailComparisonPage();
             detailpage.MaintainedRadio.Click();
-            //Thread.Sleep(30000);
+           
             detailpage.MaintainedExcludecheckbox.Click();
-            //Thread.Sleep(30000);
-            bestinclass.NextButton.Click();
+           
+            bestinclass.Continue.Click();
             detailpage.LAnameRadio.Click();
             detailpage.LANameinputfield.SendKeys(laname);
-            bestinclass.NextButton.Click();
+            bestinclass.Continue.Click();
 
             detailpage.General_Header.Click();
             detailpage.NumberOfPupilsCheckBox.Click();
@@ -420,15 +418,15 @@ namespace SFB_Test_Automation.AutoFramework
             detailspage.CompareWithOtherSchools.Click();
             BestInClass bestinclass = new BestInClass();
             bestinclass.DetailComparisonButton.Click();
-            bestinclass.NextButton.Click();
+            bestinclass.Continue.Click();
             DetailComparisonPage detailpage = new DetailComparisonPage();
             detailpage.AcademyRadio.Click();
-            //Thread.Sleep(300);
+           
             detailpage.AcademiesExcludecheckbox.Click();
-            bestinclass.NextButton.Click();
+            bestinclass.Continue.Click();
             detailpage.LAnameRadio.Click();
             detailpage.LANameinputfield.SendKeys(laname);
-            bestinclass.NextButton.Click();
+            bestinclass.Continue.Click();
 
             detailpage.General_Header.Click();
             detailpage.NumberOfPupilsCheckBox.Click();
@@ -447,16 +445,16 @@ namespace SFB_Test_Automation.AutoFramework
             detailspage.CompareWithOtherSchools.Click();
             BestInClass bestinclass = new BestInClass();
             bestinclass.DetailComparisonButton.Click();
-            bestinclass.NextButton.Click();
+            bestinclass.Continue.Click();
             DetailComparisonPage detailpage = new DetailComparisonPage();
             detailpage.AllschoolsRadio.Click();
-            //Thread.Sleep(30000);
+           
             detailpage.AllSchoolsExcludecheckbox.Click();
-            //Thread.Sleep(30000);
-            bestinclass.NextButton.Click();
+           
+            bestinclass.Continue.Click();
             detailpage.LAnameRadio.Click();
             detailpage.LANameinputfield.SendKeys(laname);
-            bestinclass.NextButton.Click();
+            bestinclass.Continue.Click();
 
             detailpage.General_Header.Click();
             detailpage.NumberOfPupilsCheckBox.Click();
@@ -466,7 +464,29 @@ namespace SFB_Test_Automation.AutoFramework
             Thread.Sleep(2000);
             detailpage.ViewBenchMarkCharts.Click();
         }
-       
+        public static void GeneralDetailedJourney(string urn)
+        {
+            Actions.CallingClass.SearchViaSchoolurn(urn);
+            SchoolDetailPage detailspage = new SchoolDetailPage();
+            detailspage.CompareWithOtherSchools.Click();
+            BestInClass bestinclass = new BestInClass();
+            bestinclass.DetailComparisonButton.Click();
+            bestinclass.Continue.Click();
+            DetailComparisonPage detailpage = new DetailComparisonPage();
+            detailpage.AllschoolsRadio.Click();
+            bestinclass.Continue.Click();
+            bestinclass.Continue.Click();
+            Thread.Sleep(5000);
+            detailpage.General_Header.Click();
+            Thread.Sleep(5000);
+            //detailpage.SchoolPhaseCheckBox.Click();
+            detailpage.NumberOfPupilsCheckBox.Click();
+            detailpage.SchoolTypeCheckBox.Click();
+            Thread.Sleep(5000);
+
+
+        }
+
 
 
 

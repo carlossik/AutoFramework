@@ -11,7 +11,7 @@ namespace SFB_Test_Automation.AutoFramework.vs.AutoFramework.Helpers
         private static IList urns = new List<string> { "130342",
     "132245",
     "100029",
-    "100030", 
+    "100030",
     "100031",
     "100032",
     "100033",
@@ -74,8 +74,37 @@ namespace SFB_Test_Automation.AutoFramework.vs.AutoFramework.Helpers
         };
         public IList trusts
         {
-            get { return urns; }
+            get { return trusts; }
         }
+        private static IList schools = new List<string>
+        {"140449",
+"141352",
+"143774",
+"139984",
+"137645",
+"143082",
+"144784",
+"135507",
+"141047",
+"142295",
+"136932",
+"140710",
+"140443",
+"142229",
+"146378",
+"144889",
+"140082",
+"140082" };
+
+        public IList Schools
+        {
+            get { return Schools; }
+
+        }
+
+
     }
-    
 }
+
+    
+

@@ -20,15 +20,39 @@
     {
         
 
-        public static void InitializeChromeDriver(String browser)
+        public static void InitializeDriver(String browser)
         {
             if (browser == ("chrome"))
             {
                 Driver.driver = new ChromeDriver();
+                //Cookie ck = new Cookie("COOKIE", "cookies_policy");
+              
                 Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
+               IWebElement AcceptCookies =  Driver.driver.FindElement(By.Id("acceptAllCookies"));
+                AcceptCookies.Click();
+                IWebElement HideCookieBanner = Driver.driver.FindElement(By.Id("acceptAllCookiesHide"));
+                HideCookieBanner.Click();
+                Thread.Sleep(1000);
                 Driver.driver.Manage().Window.Maximize();
+                Driver.driver.Navigate().Refresh();
+                
+                //DateTime time = new DateTime(2020, 04, 02, 23, 02, 03);
+                //Driver.driver.Manage().Cookies.AddCookie(new Cookie("COOKIE", "cookies_policy", "https://as-t1dv-sfb.azurewebsites.net/", time));
+
+                
+                clearPopup();
+                //Driver.driver.Manage().Cookies.AddCookie(ck);
+
+
+
+
+                //clearPopup();
+
+                Thread.Sleep(500);
+               
                 Driver.driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
-                Actions.clearPopup();
+                
+                
                 if (Driver.driver.Url.Contains("Login"))
                 {
                     Actions.FillLoginForm();
@@ -37,6 +61,7 @@
                 {
                     Console.Write("There is no Logoin Required here....");
                 }
+                
             }
             else if (browser == ("firefox"))
             {
@@ -51,11 +76,15 @@
 
 
                 Driver.driver = new FirefoxDriver();
+               
                 Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
                 Driver.driver.Manage().Window.Maximize();
-               
+                DateTime time = new DateTime(2020, 04, 02, 23, 02, 03);
+                Cookie ck = new Cookie("COOKIE", "cookies_policy");
+                Driver.driver.Manage().Cookies.AddCookie(ck);
+                clearPopup();
                 Driver.driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
-                Actions.clearPopup();
+               
                 if (Driver.driver.Url.Contains("Login"))
                 {
                     Actions.FillLoginForm();
@@ -64,10 +93,15 @@
             else if (browser == ("IE"))
             {
                 Driver.driver = new InternetExplorerDriver();
+                
                 Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
                 Driver.driver.Manage().Window.Maximize();
+                DateTime time = new DateTime(2020, 04, 02, 23, 02, 03);
+                Cookie ck = new Cookie("COOKIE", "cookies_policy");
+                Driver.driver.Manage().Cookies.AddCookie(ck);
+
                 Driver.driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
-                Actions.clearPopup();
+                
                 if (Driver.driver.Url.Contains("Login"))
                 {
                     Actions.FillLoginForm();
@@ -79,25 +113,7 @@
             }
         }
 
-        public static void InitializeFireFoxDriver()
-        { 
-            Driver.driver = new FirefoxDriver();                     
-            Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
-            Driver.driver.Manage().Window.Maximize();
-            FirefoxProfile fprof = new FirefoxProfile();
-            fprof.SetPreference("geo.enabled", true);
-            fprof.SetPreference("geo.provider.use_corelocation", false);
-            Driver.WaitForElementUpTo(Config.ElementsWaitingTimeout);
-            Actions.clearPopup();
-            if (Driver.driver.Url.Contains("Login"))
-            {
-                Actions.FillLoginForm();
-            }
-            else
-            {
-                Console.Write("There is no Logoin Required here....");
-            }
-        }
+      
 
         public static void GoHome()
         {
@@ -220,6 +236,7 @@
         }
         public static void clearPopup()
         {
+            //Driver.driver.Navigate().Refresh();
             IWebElement closeButton = Driver.driver.FindElement(By.Id("js-modal-close"));
 
             if (closeButton.Displayed)
@@ -230,6 +247,19 @@
             {
                 Console.Write("modal not displayed here so moving on....");
             }
+        }
+        public static void clearcookie()
+        {
+            IWebElement closeCookie = Driver.driver.FindElement(By.Id("acceptAllCookies"));
+            if (closeCookie.Displayed)
+            { closeCookie.Click();
+                Thread.Sleep(300);
+                Driver.driver.Navigate().Refresh();
+                Thread.Sleep(300);
+                clearPopup();
+                Thread.Sleep(300);
+            }
+            
         }
         public static void gotonewspage()
 
@@ -407,7 +437,13 @@
             Thread.Sleep(10000);
         }
 
-
+        public static void ViewSchoolsInTrust()
+        {
+            SearchTrustViaLocation();
+            SearchResultsPage resultsPage = new SearchResultsPage();
+            resultsPage.ViewTrustSchools.Click();
+            Thread.Sleep(2000);
+        }
         public static void SearchTrustViaLocalAuthority(String LAcode)
         {
             HomePage homepage = new HomePage();
@@ -661,16 +697,17 @@
                 
                 
                 SearchViaSchoolurn("143592");
+                Actions.clearcookie();
                 SchoolDetailPage detailspage = new SchoolDetailPage();
                 detailspage.CompareWithOtherSchools.Click();
                 BestInClass bestinclass = new BestInClass();
                 Thread.Sleep(200);
                 bestinclass.QuckComparisonButton.Click();
-                bestinclass.NextButton.Click();
+                bestinclass.Continue.Click();
                 bestinclass.DefaultChoice.Click();
-                bestinclass.NextButton.Click();
+                bestinclass.Continue.Click();
                 bestinclass.MaintainedSchoolsChoice.Click();
-                bestinclass.NextButton.Click();
+                bestinclass.Continue.Click();
                 bestinclass.ContinueToBenchMarkChartsButton.Click();
                 Thread.Sleep(100);
 
@@ -684,8 +721,8 @@
                
                 BestInClass bestinclass = new BestInClass();
                 bestinclass.QuckComparisonButton.Click();
-                bestinclass.NextButton.Click();
-                bestinclass.NextButton.Click();
+                bestinclass.Continue.Click();
+                bestinclass.Continue.Click();
                 bestinclass.AllSchoolsChoice.Click();
                
                 bestinclass.ContinueToBenchMarkChartsButton.Click();
@@ -728,7 +765,7 @@
                 Thread.Sleep(3000);
                 bestinclass.ContinueToHigherProgressSchoolBenchmark.Click();
                 Thread.Sleep(3000);
-                bestinclass.NextButton.Click();
+                bestinclass.Continue.Click();
                 Thread.Sleep(1000);
 
             }

@@ -27,12 +27,12 @@
             detailspage.CompareWithOtherSchools.Click();
             BestInClass bestinclass = new BestInClass();
             bestinclass.ManualComaprisonButton.Click();
-            bestinclass.NextButton.Click();
+            bestinclass.Continue.Click();
             //bestinclass.NextButton.Click();
             Thread.Sleep(200);
             ManualPage manualaddition = new ManualPage();
             manualaddition.AddSchoolByNameRadio.Click();
-            bestinclass.NextButton.Click();
+            bestinclass.Continue.Click();
             manualaddition.NewSchoolNameField.SendKeys("Plumcroft Primary School" + OpenQA.Selenium.Keys.Enter);
             manualaddition.NewSchoolNameField.SendKeys( OpenQA.Selenium.Keys.Enter);
             Thread.Sleep(200);
@@ -53,7 +53,7 @@
             detailspage.CompareWithOtherSchools.Click();
             BestInClass bestinclass = new BestInClass();
             bestinclass.ManualComaprisonButton.Click();
-            bestinclass.NextButton.Click();
+            bestinclass.Continue.Click();
             Actions.SearchByLocationUsingLink();
             SearchResultsPage resultspage = new SearchResultsPage();
             //resultspage.FirstElementPresented.Click();
@@ -73,7 +73,7 @@
             detailspage.CompareWithOtherSchools.Click();
             BestInClass bestinclass = new BestInClass();
             bestinclass.ManualComaprisonButton.Click();
-            bestinclass.NextButton.Click();
+            bestinclass.Continue.Click();
             AddSchool addschool = new AddSchool();
             addschool.AddSchoolByLocalAuthority.Click();
             addschool.LocalAuthorityinputField.SendKeys(Lacode);
@@ -92,11 +92,11 @@
             detailspage.CompareWithOtherSchools.Click();
             BestInClass bestinclass = new BestInClass();
             bestinclass.DetailComparisonButton.Click();
-            bestinclass.NextButton.Click();
+            bestinclass.Continue.Click();
             bestinclass.MaintainedSchoolsChoice.Click();
-            bestinclass.NextButton.Click();
+            bestinclass.Continue.Click();
             Thread.Sleep(200);
-            bestinclass.NextButton.Click();
+            bestinclass.Continue.Click();
             Thread.Sleep(200);
             DetailComparisonPage detatilscomparison = new DetailComparisonPage();
           
@@ -109,10 +109,10 @@
             BestInClass bestinclass = new BestInClass();
             bestinclass.DetailComparisonButton.Click();
             Thread.Sleep(20);
-            bestinclass.NextButton.Click();
+            bestinclass.Continue.Click();
             bestinclass.MaintainedSchoolsChoice.Click();
             Thread.Sleep(20);
-            bestinclass.NextButton.Click();
+            bestinclass.Continue.Click();
                        
             DetailComparisonPage detatilscomparison = new DetailComparisonPage();
             Thread.Sleep(3000);
@@ -128,14 +128,14 @@
             BestInClass bestinclass = new BestInClass();
             bestinclass.DetailComparisonButton.Click();
                                  
-            bestinclass.NextButton.Click();
+            bestinclass.Continue.Click();
             
             DetailComparisonPage details = new DetailComparisonPage();
             
-            bestinclass.NextButton.Click();
+            bestinclass.Continue.Click();
             details.LAcode.Click();
             details.Lacodefield.SendKeys("202");
-            bestinclass.NextButton.Click();
+            bestinclass.Continue.Click();
              details.ViewBenchMarkCharts.Click();
                     }
         public static void createbenchmarkviadefault(string urn)
@@ -146,15 +146,15 @@
             BestInClass bestinclass = new BestInClass();
             bestinclass.QuckComparisonButton.Click();
 
-            bestinclass.NextButton.Click();
+            bestinclass.Continue.Click();
 
             bestinclass.DefaultChoice.Click();
 
-            bestinclass.NextButton.Click();
+            bestinclass.Continue.Click();
            
             bestinclass.AllSchoolsChoice.Click();
             
-            bestinclass.NextButton.Click();
+            bestinclass.Continue.Click();
 
             bestinclass.ContinueToBenchMarkChartsButton.Click();
             Thread.Sleep(30);

@@ -9,6 +9,7 @@
     using System.Diagnostics;
     using SFB_Test_Automation.AutoFramework;
     using NUnit.Framework.Interfaces;
+    using SFB_Test_Automation.AutoFramework.Pages;
 
     [TestFixture]
     public class ComparisonTests
@@ -23,7 +24,7 @@
         {
 
 
-            Actions.InitializeChromeDriver("chrome");
+            Actions.InitializeDriver("chrome");
            // Actions.InitializeFireFoxDriver();
             //Actions.FillLoginForm();
         }
@@ -122,10 +123,19 @@
         public void DisplayComparisonschoolsTab()
         {
             DetailedComparisonActions.IncludeschoolswithIncFinanceAcademiesAllEngland("144407", "64", "50");
+            //assert to come here
+        }
+        [Test]
+        public void detailedComparisonOptions()
+        {
+            
+            DetailedComparisonActions.GeneralDetailedJourney("100000");
+            //Assertions to follow but for now we make sure all options are clicked as a check that these buttons are available
+           
+          
             
 
 
-             
         }
         [TearDown]
         public void TeardownAfterEachTest()

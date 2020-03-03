@@ -27,7 +27,7 @@ namespace AutoFramework
 
        
         {
-            Actions.InitializeChromeDriver("chrome");
+            Actions.InitializeDriver("chrome");
             //Actions.InitializeFireFoxDriver();
 
 
@@ -200,14 +200,14 @@ namespace AutoFramework
         [Test]
         public void verifyInsideSearchArea()
         {
-            
-            
+            throw new NotImplementedException();
+
         }
         [Test]
         public void verifyOutSideSearchArea()
         {
-            
-           
+
+            throw new NotImplementedException();
         }
         [Test]
         public void verifyviewTrustSchoolsLinks()
@@ -227,21 +227,25 @@ namespace AutoFramework
         [Test]
         public void verifycompaniesHouseNumberCorrect()
         {
-
+            throw new NotImplementedException();
 
         }
         [Test]
         public void CopyAndPasteTrustChart()
         {
-
+            throw new NotImplementedException();
 
         }
 
         [Test]
         public void verifyTrustsListedInAlphabeticalOrder()
         {
-
+            Actions.ViewSchoolsInTrust();
+            Assert.IsTrue(Driver.driver.FindElement(By.CssSelector("li.school-document:nth-child(1) > details:nth-child(3) > div:nth-child(2) > table:nth-child(1) > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(1) > a:nth-child(1)")).Text == "Hillsgrove Primary School");//verify that first school is in alphabetical order
+            
+            Assert.IsTrue(Driver.driver.FindElement(By.CssSelector("li.school-document:nth-child(1) > details:nth-child(3) > div:nth-child(2) > table:nth-child(1) > tbody:nth-child(2) > tr:nth-child(4) > td:nth-child(1) > a:nth-child(1)")).Text == "St Paulinus Church of England Primary School");//verify that last school is in alphabetical order
         }
+
         [TearDown]
         
 

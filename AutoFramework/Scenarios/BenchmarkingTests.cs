@@ -81,7 +81,7 @@
             BenchMarkActions.getclipboardText();
             ComparingSimilarSchoolsPage similar = new ComparingSimilarSchoolsPage();
             similar.AddToExistingBasket.Click();
-            similar.NextButton.Click();
+            similar.ContinueButton.Click();
             Thread.Sleep(300);
             Assert.IsTrue(Driver.driver.FindElement(By.CssSelector(".message")).Text == "Showing the 16 schools in your benchmark basket");
 
@@ -94,7 +94,7 @@
             BenchMarkActions.createbenchmarkviadefault("125249");
             BenchMarkActions.getclipboardTextmaximum();
             ReplaceCurrentBenchmarkbasketPage replace = new ReplaceCurrentBenchmarkbasketPage();
-            replace.Viewbenchmarkbasket.Click();
+            replace.ReplaceBasket.Click();
             Thread.Sleep(2000);
             Assert.IsTrue(Driver.driver.FindElement(By.CssSelector(".message")).Text == "Showing the 30 schools in your benchmark basket");
 

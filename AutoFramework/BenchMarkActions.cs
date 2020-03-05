@@ -32,8 +32,10 @@
             Thread.Sleep(200);
             ManualPage manualaddition = new ManualPage();
             manualaddition.AddSchoolByNameRadio.Click();
-            bestinclass.Continue.Click();
+            manualaddition.ManualContinueButton.Click();
+           
             manualaddition.NewSchoolNameField.SendKeys("Plumcroft Primary School" + OpenQA.Selenium.Keys.Enter);
+            manualaddition.FirstManualSuggestion.Click();
             manualaddition.NewSchoolNameField.SendKeys( OpenQA.Selenium.Keys.Enter);
             Thread.Sleep(200);
             manualaddition.ContinueToBenchMarkChartsButton.Click();
@@ -60,7 +62,8 @@
             Thread.Sleep(2000);
             resultspage.AddFirstResult.Click();
             Thread.Sleep(2000);
-            resultspage.ViewBenchmarkChartsButton.Click();
+            //resultspage.ViewBenchmarkChartsButton.Click();
+            resultspage.ManualChartsButton.Click();
                 
 
         }
@@ -116,6 +119,7 @@
                        
             DetailComparisonPage detatilscomparison = new DetailComparisonPage();
             Thread.Sleep(3000);
+            //detatilscomparison.
             detatilscomparison.ViewBenchMarkCharts.Click();
             Thread.Sleep(3000);
            
@@ -165,7 +169,7 @@
             benchchartpage.TotalExpenditureDropdown.Click();
            
             benchchartpage.costOfFinance.Click();
-            benchchartpage.costOfFinance.SendKeys(OpenQA.Selenium.Keys.Enter);
+            //benchchartpage.costOfFinance.SendKeys(OpenQA.Selenium.Keys.Enter);
 
             Thread.Sleep(30000);
             

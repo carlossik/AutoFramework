@@ -72,6 +72,8 @@
         public IWebElement NoDefaultSchoolTab { get; set; }
         [FindsBy(How = How.CssSelector, Using = "li.guidance__list__item:nth-child(5) > a:nth-child(1)")]
         public IWebElement SchoolorTrustDataQueryLink { get; set; }
+        [FindsBy(How = How.CssSelector, Using = ".tt-suggestion")]
+        public IWebElement FirstSelectionOption { get; set; }
 
 
 

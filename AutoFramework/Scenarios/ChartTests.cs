@@ -145,6 +145,7 @@
             throw new NotImplementedException();
         }
         [Test]
+        [Ignore("Ignore a test")]
         public void VerifyperecentageOfIncomeExpenditureTabs()
         {
             throw new NotImplementedException();

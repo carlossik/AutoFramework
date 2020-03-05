@@ -23,9 +23,14 @@ namespace SFB_Test_Automation.AutoFramework.Pages
         public IWebElement AddSchoolByNameRadio { get; set; }
         [FindsBy(How = How.CssSelector,Using = "#manualButton")]
         public IWebElement ContinueToBenchMarkChartsButton { get; set; }
+        [FindsBy(How = How.CssSelector, Using = "button.button:nth-child(2)")]
+        public IWebElement ManualContinueButton { get; set; }
+        //.tt-suggestion
+
+        [FindsBy(How = How.CssSelector, Using = ".tt-suggestion")]
+        public IWebElement FirstManualSuggestion { get; set; }
 
 
-        
 
     }
 }

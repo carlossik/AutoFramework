@@ -266,10 +266,27 @@
         {
             Driver.driver.Close();
             Driver.driver = new ChromeDriver();
-            Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
-            Driver.driver.Manage().Window.Maximize();
+            //Cookie ck = new Cookie("COOKIE", "cookies_policy");
 
-            IWebElement gotonewspage = Driver.driver.FindElement(By.CssSelector("#js-modal > div > div > div > a"));
+            Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
+            IWebElement AcceptCookies = Driver.driver.FindElement(By.Id("acceptAllCookies"));
+            AcceptCookies.Click();
+            IWebElement HideCookieBanner = Driver.driver.FindElement(By.Id("acceptAllCookiesHide"));
+            HideCookieBanner.Click();
+            Thread.Sleep(1000);
+            Driver.driver.Manage().Window.Maximize();
+            Driver.driver.Navigate().Refresh();
+            Thread.Sleep(1000);
+
+            //DateTime time = new DateTime(2020, 04, 02, 23, 02, 03);
+            //Driver.driver.Manage().Cookies.AddCookie(new Cookie("COOKIE", "cookies_policy", "https://as-t1dv-sfb.azurewebsites.net/", time));
+
+
+
+
+
+
+            IWebElement gotonewspage = Driver.driver.FindElement(By.XPath("/html/body/dialog/div/div/div/a"));
             gotonewspage.Click();
             Thread.Sleep(100);
         }
@@ -316,7 +333,8 @@
             homepage.trustnameRadioButton.Click();
             homepage.TrustSearchInput.Click();
             homepage.TrustSearchInput.SendKeys(TrustName);
-            homepage.TrustSubmit.Click();
+            homepage.FirstSelectionOption.Click();
+            //homepage.TrustSubmit.Click();
             Driver.driver.FindElement(By.CssSelector(".bold-small")).Click();
             Thread.Sleep(100);
         }
@@ -516,7 +534,8 @@
             //GoHome();
             TrustSearchWitName(TrustName);
             TrustComparisonPage trustComaprison = new TrustComparisonPage();
-
+          
+            Thread.Sleep(500);
             trustComaprison.Compare_withOtherTrusts.Click();
             Thread.Sleep(500);
             trustComaprison.ViewBenchMarkingCharts.Click();
@@ -697,7 +716,7 @@
                 
                 
                 SearchViaSchoolurn("143592");
-                Actions.clearcookie();
+                //Actions.clearcookie();
                 SchoolDetailPage detailspage = new SchoolDetailPage();
                 detailspage.CompareWithOtherSchools.Click();
                 BestInClass bestinclass = new BestInClass();
@@ -763,9 +782,9 @@
                 BestInClass bestinclass = new BestInClass();
                 bestinclass.BestInClassComparisonButton.Click();
                 Thread.Sleep(3000);
-                bestinclass.ContinueToHigherProgressSchoolBenchmark.Click();
-                Thread.Sleep(3000);
                 bestinclass.Continue.Click();
+                Thread.Sleep(3000);
+                bestinclass.ContinueToHigherProgressSchoolBenchmark.Click();
                 Thread.Sleep(1000);
 
             }

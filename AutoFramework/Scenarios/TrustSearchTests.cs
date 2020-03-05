@@ -198,12 +198,14 @@ namespace AutoFramework
             Assert.IsTrue(resultsPage.elementList == resultsPage.schoolsinlink);
         }
         [Test]
+        [Ignore("Ignore a test")]
         public void verifyInsideSearchArea()
         {
             throw new NotImplementedException();
 
         }
         [Test]
+        [Ignore("Ignore a test")]
         public void verifyOutSideSearchArea()
         {
 
@@ -225,12 +227,14 @@ namespace AutoFramework
 
         }
         [Test]
+        [Ignore("Ignore a test")]
         public void verifycompaniesHouseNumberCorrect()
         {
             throw new NotImplementedException();
 
         }
         [Test]
+        [Ignore("Ignore a test")]
         public void CopyAndPasteTrustChart()
         {
             throw new NotImplementedException();

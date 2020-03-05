@@ -72,7 +72,7 @@
         [Test]
         public void verifyNewsPage()
         {
-            Actions.GoHome();
+            //Actions.GoHome();
             Actions.gotonewspage();
             Thread.Sleep(2000);
             Console.WriteLine(Driver.driver.Url);
@@ -221,6 +221,7 @@
 
         }
         [Test]
+        [Ignore("Ignore a test")]
         public void testrefineto30schools()
         {
             BenchMarkActions.refineto30schools("135747");

@@ -42,7 +42,7 @@ namespace AutoFramework.Pages
         public IWebElement AllSchoolsChoice { get; set; }
         [FindsBy(How = How.Id, Using = "fsm")]
         public IWebElement PupilseligibleFreemeals { get; set; }
-        [FindsBy(How = How.ClassName, Using = "button submit-criteria-js submit mr-2")]
+        [FindsBy(How = How.CssSelector, Using = ".next-button > button:nth-child(1)")]
         public IWebElement ContinueToBenchMarkChartsButton { get; set; }
         [FindsBy(How = How.CssSelector, Using = "button.link-button:nth-child(4)")]
         public IWebElement EditComparison_Link { get; set; }

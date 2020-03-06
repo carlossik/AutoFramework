@@ -72,7 +72,7 @@
         [Test]
         public void verifyNewsPage()
         {
-            Actions.GoHome();
+            //Actions.GoHome();
             Actions.gotonewspage();
             Thread.Sleep(2000);
             Console.WriteLine(Driver.driver.Url);

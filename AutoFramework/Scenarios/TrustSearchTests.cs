@@ -41,7 +41,9 @@ namespace AutoFramework
             Actions.TrustSearchWitName("Kaleidoscope Learning Trust ");
             TrustComparisonPage trustcomparison = new TrustComparisonPage();
             string trustname = (trustcomparison.TrustName).Text;
-            Assert.AreEqual(trustname, "Kaleidoscope Learning Trust");
+            string expectedName = Driver.driver.FindElement(By.CssSelector(".heading-xlarge")).Text;
+            Assert.AreEqual(trustname, expectedName);
+                
 
         }
         [Test]
@@ -55,7 +57,8 @@ namespace AutoFramework
             Actions.TrustSearchWitName("Brookvale Groby Learning Trust");
             TrustComparisonPage trustcomparison = new TrustComparisonPage();
             string trustname = (trustcomparison.TrustName).Text;
-            Assert.AreEqual(trustname, "Brookvale Groby Learning Trust");
+            string expectedName = Driver.driver.FindElement(By.CssSelector(".heading-xlarge")).Text;
+            Assert.AreEqual(trustname, expectedName);
 
         }
         [Test]

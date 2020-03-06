@@ -264,14 +264,14 @@
         public static void gotonewspage()
 
         {
-            Driver.driver.Close();
-            Driver.driver = new ChromeDriver();
-            Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
-            Driver.driver.Manage().Window.Maximize();
+            //Driver.driver.Close();
+            //Driver.driver = new ChromeDriver();
+            //Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
+            //Driver.driver.Manage().Window.Maximize();
 
-            IWebElement gotonewspage = Driver.driver.FindElement(By.CssSelector("#js-modal > div > div > div > a"));
-            gotonewspage.Click();
-            Thread.Sleep(100);
+            //IWebElement gotonewspage = Driver.driver.FindElement(By.CssSelector("#js-modal > div > div > div > a"));
+            //gotonewspage.Click();
+            //Thread.Sleep(100);
         }
         
 

@@ -468,6 +468,12 @@ namespace SFB_Test_Automation.AutoFramework
         {
             Actions.CallingClass.SearchViaSchoolurn(urn);
             SchoolDetailPage detailspage = new SchoolDetailPage();
+            string SchoolPhase = detailspage.SchoolPhase.Text;
+            string OverallSchoolPhase = detailspage.SchoolOverAllPhase.Text;
+            string newformed = OverallSchoolPhase +""+ "(" + SchoolPhase + ")";//Primary(Infant and junior)
+            //Console.WriteLine(OverallSchoolPhase);
+            //Console.WriteLine(SchoolPhase);
+            Console.WriteLine(newformed);
             detailspage.CompareWithOtherSchools.Click();
             BestInClass bestinclass = new BestInClass();
             bestinclass.DetailComparisonButton.Click();
@@ -481,8 +487,15 @@ namespace SFB_Test_Automation.AutoFramework
             Thread.Sleep(5000);
             //detailpage.SchoolPhaseCheckBox.Click();
             detailpage.NumberOfPupilsCheckBox.Click();
-            detailpage.SchoolTypeCheckBox.Click();
+            detailpage.SchoolPhaseCheckBox.Click();
             Thread.Sleep(5000);
+            string SchoolPhaseValue = detailpage.SchoolPhaseCheckBox.Text;
+            detailpage.SchoolTypeCheckBox.Click();
+            Console.WriteLine(SchoolPhaseValue);
+            //Assert.IsTrue(SchoolPhaseValue == newformed);
+            
+            Thread.Sleep(5000);
+           
 
 
         }

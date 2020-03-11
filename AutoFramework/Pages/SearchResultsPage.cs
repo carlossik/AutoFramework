@@ -27,7 +27,7 @@ namespace AutoFramework.Pages
         public IWebElement ViewBenchMarkCharts { get; set; }
         [FindsBy(How = How.CssSelector, Using = "a.bold-small")]
         public IWebElement FirstElementPresented { get; set; }
-        [FindsBy(How = How.XPath, Using = "/html/body/div/div[8]/main/div[5]/div[2]/div/div[4]/div[1]/ul/li[1]/div/div[2]/div/button[2]")]
+        [FindsBy(How = How.CssSelector, Using = "li.document:nth-child(1) > a:nth-child(1)")]
         public IWebElement AddFirstResult { get; set; }
         [FindsBy(How = How.XPath, Using = "/html/body/div/div[8]/main/div[5]/div[2]/div/div[4]/div[1]/ul/li[2]/div/div[2]/div/button[2]")]
         public IWebElement AddSecondResult { get; set; }

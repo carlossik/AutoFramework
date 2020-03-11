@@ -186,14 +186,23 @@
             homepage.ClickOnSearchButton();
             Thread.Sleep(100);
         }
-        public static void SearchSchool2()
+        public static void SearchSchool2(string urn)
         {
             HomePage homepage = new HomePage();
             GoHome();
             homepage.School.Click();
-            homepage.SchoolsearchField.SendKeys("100000");
+            homepage.SchoolsearchField.SendKeys(urn);
             homepage.ClickOnSearchButton();
             Thread.Sleep(100);
+            SchoolDetailPage detailspage = new SchoolDetailPage();
+            string SchoolPhase = detailspage.SchoolPhase.Text;
+            string OverallSchoolPhase = detailspage.SchoolOverAllPhase.Text;
+            string newformed = OverallSchoolPhase + "(" + SchoolPhase + ")";//Primary(Infant and junior)
+            Console.WriteLine(OverallSchoolPhase);
+            Console.WriteLine(SchoolPhase);
+            Console.WriteLine(newformed);
+            Thread.Sleep(100);
+
         }
 
         public static void testmailSuccess(String emailaddress)
@@ -461,6 +470,11 @@
             SearchResultsPage resultsPage = new SearchResultsPage();
             resultsPage.ViewTrustSchools.Click();
             Thread.Sleep(2000);
+        }
+        public static void verifyTrustIsOpen()
+        {
+            ViewSchoolsInTrust();
+
         }
         public static void SearchTrustViaLocalAuthority(String LAcode)
         {

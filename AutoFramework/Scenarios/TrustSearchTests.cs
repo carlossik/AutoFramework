@@ -69,7 +69,7 @@ namespace AutoFramework
         [Test]
         public void TrustSearchWithwrongcompanynumber()
         {
-            Actions.TrustSearchWithCompanynumber("8929777");
+            Actions.TrustSearchWithCompanynumber("8929778");
             TrustComparisonPage trustcomparison = new TrustComparisonPage();
             string Errormessage = Driver.driver.FindElement(By.ClassName("heading-xlarge")).Text;
             Assert.AreEqual(Errormessage, "We found no matches for \"8929777\"");
@@ -165,7 +165,7 @@ namespace AutoFramework
         public void verifySortedByDistanceZtoA()
         {
             Actions.ResultPageactions("303", "alphabetical z-a");
-            Assert.IsTrue(Driver.driver.FindElement(By.CssSelector("li.school-document:nth-child(1) > div:nth-child(1) > a:nth-child(1)")).Text == "Woodland Academy Trust");
+            Assert.IsTrue(Driver.driver.FindElement(By.CssSelector("li.school-document:nth-child(1) > div:nth-child(1) > a:nth-child(1)")).Text == "Unity Academy Trust");
             //Assert.IsTrue(Driver.driver.FindElement(By.CssSelector("li.school-document:nth-child(29) > div:nth-child(1) > a:nth-child(1)")).Text == "Academies Enterprise Trust");
         }
         [Test]
@@ -248,6 +248,14 @@ namespace AutoFramework
             Assert.IsTrue(Driver.driver.FindElement(By.CssSelector("li.school-document:nth-child(1) > details:nth-child(3) > div:nth-child(2) > table:nth-child(1) > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(1) > a:nth-child(1)")).Text == "Hillsgrove Primary School");//verify that first school is in alphabetical order
             
             Assert.IsTrue(Driver.driver.FindElement(By.CssSelector("li.school-document:nth-child(1) > details:nth-child(3) > div:nth-child(2) > table:nth-child(1) > tbody:nth-child(2) > tr:nth-child(4) > td:nth-child(1) > a:nth-child(1)")).Text == "St Paulinus Church of England Primary School");//verify that last school is in alphabetical order
+        }
+
+        [Test]
+        public void verifyTrustsListedSchoolsAreAllOpen()
+        {
+            Actions.verifyTrustIsOpen();
+            //
+            
         }
 
         [TearDown]

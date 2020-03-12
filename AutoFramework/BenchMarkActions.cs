@@ -33,10 +33,10 @@
             ManualPage manualaddition = new ManualPage();
             manualaddition.AddSchoolByNameRadio.Click();
             manualaddition.ManualContinueButton.Click();
-           
-            manualaddition.NewSchoolNameField.SendKeys("Plumcroft Primary School" + OpenQA.Selenium.Keys.Enter);
+
+            manualaddition.NewSchoolNameField.SendKeys("Plumcroft Primary School"); //+ OpenQA.Selenium.Keys.Enter);
             manualaddition.FirstManualSuggestion.Click();
-            manualaddition.NewSchoolNameField.SendKeys( OpenQA.Selenium.Keys.Enter);
+            //manualaddition.NewSchoolNameField.SendKeys( OpenQA.Selenium.Keys.Enter);
             Thread.Sleep(200);
             manualaddition.ContinueToBenchMarkChartsButton.Click();
             

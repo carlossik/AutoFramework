@@ -300,14 +300,14 @@ namespace SFB_Test_Automation.AutoFramework
             //Thread.Sleep(30000);
             bestinclass.Continue.Click();
             detailpage.LAcodeRadio.Click();
-            detailpage.Lacodefield.SendKeys("879");
+            detailpage.Lacodefield.SendKeys("303");
             bestinclass.Continue.Click();
 
             detailpage.General_Header.Click();
             detailpage.NumberOfPupilsCheckBox.Click();
-            detailpage.MinNumberOfPupilsInputField.SendKeys("705");
+            detailpage.MinNumberOfPupilsInputField.SendKeys("100");
             Thread.Sleep(6000);
-            detailpage.MaxNumberOfPupilsInputBox.SendKeys("1000");
+            detailpage.MaxNumberOfPupilsInputBox.SendKeys("200");
             Thread.Sleep(2000);
             detailpage.ViewBenchMarkCharts.Click();
         }

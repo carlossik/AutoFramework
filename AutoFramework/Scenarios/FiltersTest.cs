@@ -18,7 +18,7 @@ namespace AutoFramework
         public void SetupBeforeEachTest()
 
         {
-            Actions.InitializeDriver("chrome");
+            Actions.InitializeDriver("firefox");
             
         }
        

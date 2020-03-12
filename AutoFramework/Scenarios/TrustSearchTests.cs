@@ -27,7 +27,7 @@ namespace AutoFramework
 
        
         {
-            Actions.InitializeDriver("chrome");
+            Actions.InitializeDriver("firefox");
             //Actions.InitializeFireFoxDriver();
 
 
@@ -72,8 +72,8 @@ namespace AutoFramework
             Actions.TrustSearchWithCompanynumber("8929778");
             TrustComparisonPage trustcomparison = new TrustComparisonPage();
             string Errormessage = Driver.driver.FindElement(By.ClassName("heading-xlarge")).Text;
-            Assert.AreEqual(Errormessage, "We found no matches for \"8929777\"");
-        }
+            Assert.AreEqual(Errormessage, "We found no matches for \"8929778\"");
+        }//We found no matches for \"8929777\"
 
 
         [Test]
@@ -131,7 +131,7 @@ namespace AutoFramework
             Actions.SearchTrustViaLocation();
             Console.WriteLine(Driver.driver.FindElement(By.CssSelector(".heading-xlarge")).Text);
            
-            Assert.IsTrue(Driver.driver.FindElement(By.CssSelector(".heading-xlarge")).Text == "Academy trusts with schools operating in and near First Avenue, Bexleyheath, Kent");
+            Assert.IsTrue(Driver.driver.FindElement(By.CssSelector(".heading-xlarge")).Text == "Academy trusts with schools operating in and near First Avenue, Welling, Kent");
             
         }
         [Test]

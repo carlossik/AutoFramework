@@ -25,8 +25,6 @@
             if (browser == ("chrome"))
             {
                 Driver.driver = new ChromeDriver();
-                //Cookie ck = new Cookie("COOKIE", "cookies_policy");
-              
                 Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
                IWebElement AcceptCookies =  Driver.driver.FindElement(By.Id("acceptAllCookies"));
                 AcceptCookies.Click();
@@ -35,23 +33,9 @@
                 Thread.Sleep(1000);
                 Driver.driver.Manage().Window.Maximize();
                 Driver.driver.Navigate().Refresh();
-                
-                //DateTime time = new DateTime(2020, 04, 02, 23, 02, 03);
-                //Driver.driver.Manage().Cookies.AddCookie(new Cookie("COOKIE", "cookies_policy", "https://as-t1dv-sfb.azurewebsites.net/", time));
-
-                
                 clearPopup();
-                //Driver.driver.Manage().Cookies.AddCookie(ck);
-
-
-
-
-                //clearPopup();
-
                 Thread.Sleep(500);
-               
                 Driver.driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
-                
                 
                 if (Driver.driver.Url.Contains("Login"))
                 {
@@ -76,32 +60,19 @@
 
 
                 Driver.driver = new FirefoxDriver();
-               
-                Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
-                Driver.driver.Manage().Window.Maximize();
-                DateTime time = new DateTime(2020, 04, 02, 23, 02, 03);
-                Cookie ck = new Cookie("COOKIE", "cookies_policy");
-                Driver.driver.Manage().Cookies.AddCookie(ck);
-                clearPopup();
-                Driver.driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
-               
-                if (Driver.driver.Url.Contains("Login"))
-                {
-                    Actions.FillLoginForm();
-                }
-            }
-            else if (browser == ("IE"))
-            {
-                Driver.driver = new InternetExplorerDriver();
-                
-                Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
-                Driver.driver.Manage().Window.Maximize();
-                DateTime time = new DateTime(2020, 04, 02, 23, 02, 03);
-                Cookie ck = new Cookie("COOKIE", "cookies_policy");
-                Driver.driver.Manage().Cookies.AddCookie(ck);
 
+                Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
+                IWebElement AcceptCookies = Driver.driver.FindElement(By.Id("acceptAllCookies"));
+                AcceptCookies.Click();
+                IWebElement HideCookieBanner = Driver.driver.FindElement(By.Id("acceptAllCookiesHide"));
+                HideCookieBanner.Click();
+                Thread.Sleep(1000);
+                Driver.driver.Manage().Window.Maximize();
+                Driver.driver.Navigate().Refresh();
+                clearPopup();
+                Thread.Sleep(500);
                 Driver.driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
-                
+
                 if (Driver.driver.Url.Contains("Login"))
                 {
                     Actions.FillLoginForm();
@@ -110,6 +81,33 @@
                 {
                     Console.Write("There is no Logoin Required here....");
                 }
+
+            }
+            else if (browser == ("IE"))
+            {
+                Driver.driver = new InternetExplorerDriver();
+
+                Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
+                IWebElement AcceptCookies = Driver.driver.FindElement(By.Id("acceptAllCookies"));
+                AcceptCookies.Click();
+                IWebElement HideCookieBanner = Driver.driver.FindElement(By.Id("acceptAllCookiesHide"));
+                HideCookieBanner.Click();
+                Thread.Sleep(1000);
+                Driver.driver.Manage().Window.Maximize();
+                Driver.driver.Navigate().Refresh();
+                clearPopup();
+                Thread.Sleep(500);
+                Driver.driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+
+                if (Driver.driver.Url.Contains("Login"))
+                {
+                    Actions.FillLoginForm();
+                }
+                else
+                {
+                    Console.Write("There is no Logoin Required here....");
+                }
+
             }
         }
 
@@ -541,7 +539,8 @@
             BenchMarkChartPage benchmarkpage = new BenchMarkChartPage();
             benchmarkpage.Savebenchmarkbasket.Click();
             benchmarkpage.CopyLinkToClipboard.Click();
-            Thread.Sleep(3000);
+
+            Thread.Sleep(300);
         }
         public static void TrustComparison(String TrustName)
         {

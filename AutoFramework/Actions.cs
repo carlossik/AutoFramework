@@ -26,11 +26,25 @@
             {
                 Driver.driver = new ChromeDriver();
                 Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
-               IWebElement AcceptCookies =  Driver.driver.FindElement(By.Id("acceptAllCookies"));
-                AcceptCookies.Click();
+                Thread.Sleep(2000);
+                IWebElement AcceptCookies = Driver.driver.FindElement(By.Id("acceptAllCookies"));
+                if (Driver.driver.FindElement(By.Id("acceptAllCookies")).Displayed)
+                {
+                    Driver.driver.FindElement(By.Id("acceptAllCookies")).Click();
+                    Thread.Sleep(2000);
+                }
+                else
+                {
+                    Console.Write("No cookies here....");
+                }
+
                 IWebElement HideCookieBanner = Driver.driver.FindElement(By.Id("acceptAllCookiesHide"));
-                HideCookieBanner.Click();
-                Thread.Sleep(1000);
+                if (HideCookieBanner.Displayed)
+                {
+                    HideCookieBanner.Click();
+                    Thread.Sleep(1000);
+                }
+
                 Driver.driver.Manage().Window.Maximize();
                 Driver.driver.Navigate().Refresh();
                 clearPopup();

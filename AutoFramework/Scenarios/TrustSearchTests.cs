@@ -27,7 +27,7 @@ namespace AutoFramework
 
        
         {
-            Actions.InitializeDriver("firefox");
+            Actions.InitializeDriver("chrome");
             //Actions.InitializeFireFoxDriver();
 
 

@@ -35,7 +35,7 @@
         public void SetupBeforeEachTest()
         
         {
-           Actions.InitializeDriver("firefox");
+           Actions.InitializeDriver("chrome");
             //Actions.InitializeFireFoxDriver();
 
 

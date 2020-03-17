@@ -211,6 +211,7 @@
         public static void IncludechoolswithIncFinanceAllSchoolsLaCode()
         {
             DetailedComparisonActions.IncludechoolswithIncFinanceAllSchoolsLaCode("144407");
+            //use schools 
             string errorText = "Some schools don't have a complete set of financial data for this period";
             Assert.IsTrue(Driver.driver.PageSource.Contains(errorText));
         }

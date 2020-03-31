@@ -15,27 +15,13 @@
     [TestFixture]
 
     public class Schoolsearchtests { 
-    //{
-    //    public static IEnumerable <String> BrowserToRunWith()
-    //    {
-    //        String[] browsers = { "chrome", "firefox" };
-    //        foreach (string b in browsers)
-    //        {
-    //            yield return b;
-
-    //        }
-    //    }
-            
-
-    //    public void SchoolsearchTest()
-    //    {
-        //}
+    
         [SetUp]
        
         public void SetupBeforeEachTest()
         
         {
-           Actions.InitializeDriver("chrome");
+           Actions.InitializeDriver("firefox");
             //Actions.InitializeFireFoxDriver();
 
 
@@ -72,7 +58,7 @@
         [Test]
         public void verifyNewsPage()
         {
-            //Actions.GoHome();
+            
             Actions.gotonewspage();
             Thread.Sleep(2000);
             Console.WriteLine(Driver.driver.Url);
@@ -114,7 +100,7 @@
             Actions.SearchClosedschool("101405");
             SchoolDetailPage detailspage = new SchoolDetailPage();
             Assert.IsTrue(Driver.driver.FindElement(By.CssSelector("dt.metadata-school-detail__dt:nth-child(29)")).Displayed); //verify the date of closure is on the school page as it is a closed school
-           // Assert.IsTrue(detailspage.schooldetailnotfoundmessage.Text.Contains("We found no matches for"));
+          
 
         }
 
@@ -153,7 +139,7 @@
         [Test]
         public static void TestIntepreTingTheChartsLinks()
         {
-            //Actions.clearPopup();
+            
             Actions.CallingClass.TestIntepreTingTheChartsLinks();
             Assert.AreEqual(Driver.driver.Url,Config.currentTestEnv + "Help/InterpretingCharts");
         }
@@ -195,6 +181,14 @@
             Actions.CallingClass.AddSchools();
             SchoolDetailPage detailspage = new SchoolDetailPage();
             Assert.AreEqual(detailspage.SchooldetailInfoPanel.Text, "Your benchmark basket contains 2 schools");
+        }
+        [Test]
+        public void negativeSchoolTest()
+        {
+            Actions.CallingClass.SearchViaSchoolurn("Carlos");
+            SchoolDetailPage detailspage = new SchoolDetailPage();
+            Assert.AreEqual(detailspage.schooldetailnotfoundmessage.Text, "No schools found");
+
         }
         [Test]
         public void Testtextoncomparisonpage()
@@ -348,13 +342,26 @@
             Assert.IsTrue(Driver.driver.FindElement(By.Id("DownloadLinkText")).Displayed);
             Assert.IsTrue(Driver.driver.FindElement(By.Id("PrintLinkText")).Displayed);
         }
-        //[Test]
-        public void ATestBasketCapacity()
+        [Test]
+        public void TestBasketCapacity()
         {
             Actions.CallingClass.Verifybasketcapacity();
             Assert.IsTrue(Driver.driver.FindElement(By.Id("modal-title")).Text.Contains("Not enough space in basket"));
-            Driver.driver.Quit();
+            
          
+
+        }
+        [Test]
+        public void VerifyDefaultSchoolColor()
+        {
+            Actions.CallingClass.VerifyDefaultSchoolColour("108000");
+            string colortext = Driver.driver.FindElement(By.CssSelector(".highlight > span:nth-child(1)")).GetAttribute("color");
+            //Assert.IsTrue(colortext[1].Equals("FFFFFF"));
+            Console.WriteLine(colortext);
+            Console.Write(colortext);
+
+
+
 
         }
         [Test]
@@ -368,8 +375,6 @@
         public void searchforschoolwith16plus()
         {
             Actions.SearchByLocationManualEntry();
-            //Assert.IsTrue((Actions.select16plus).Dsplayed);
-            //Actions.select16plus();
             SearchResultsPage resultspage = new SearchResultsPage();
             Assert.IsTrue(resultspage.Checkbox_16plus.Displayed);
         }
@@ -411,7 +416,7 @@
 
             Actions.schoolSearchwithLaestab("8812035");
             SchoolDetailPage detailspage = new SchoolDetailPage();
-            //Assert.IsTrue(detailspage.DealsForSchools_Link.Displayed);
+          
         }
         [Test]
         [Category("QuickTests")]
@@ -436,7 +441,6 @@
             detailspage.FinanceDropdown_Trust_Only.Click();
             Thread.Sleep(1000);
 
-
             Assert.IsFalse((detailspage.FinanceDisplayed.Text) == "£0");
         }
         [Test]
@@ -459,17 +463,12 @@
             Actions.testmailSuccess("carl.fagan");
             Assert.IsFalse((queriesPage.queryConfirmation).Text == "Your query has been sent");
 
-            //Console.WriteLine((queriesPage.queryreferencenumber).Text);
-            //Console.WriteLine((queriesPage.queryConfirmation).Text);
-
         }
 
        
         [TearDown]
         public void TeardownAfterEachTest()
 
-
-      
         {
             if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
             {

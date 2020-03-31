@@ -66,15 +66,14 @@ namespace SFB_Test_Automation.AutoFramework
             nodefault.ContinueButton.Click();
             nodefault.addschoolsbyLocationradio.Click();
             Thread.Sleep(300);
-            nodefault.useLocationLink.Click();
-            //nodefault.AddSchoolsbyLocationTextField.SendKeys("DA7 5SS");
+            //nodefault.useLocationLink.Click();
+            nodefault.AddSchoolsbyLocationTextField.SendKeys("DA7 5SS");
             Thread.Sleep(3000);
             nodefault.SearchSubmitButton.Click();
             Thread.Sleep(300);
             SearchResultsPage resultspage = new SearchResultsPage();
-            resultspage.AddFirstResult.Click();
-            
-           
+            resultspage.FirstElementPresented.Click();
+                    
             Thread.Sleep(3000);
         }
         public static void ManualComparisonByName()

@@ -63,16 +63,19 @@
             }
             else if (browser == ("firefox"))
             {
-                FirefoxProfile fprof = new FirefoxProfile();
-                fprof.SetPreference("geo.enabled", true);
-                fprof.SetPreference("geo.provider.use_corelocation", true);
-                fprof.SetPreference("geo.prompt.testing", false);
-                fprof.SetPreference("geo.prompt.testing.allow", false);
-                DesiredCapabilities capabilities = new DesiredCapabilities();
+                //FirefoxProfile fprof = new FirefoxProfile();
+                //fprof.SetPreference("geo.enabled", true);
+                //fprof.SetPreference("geo.provider.use_corelocation", true);
+                //fprof.SetPreference("geo.prompt.testing", false);
+                //fprof.SetPreference("geo.prompt.testing.allow", false);
+                //DesiredCapabilities capabilities = new DesiredCapabilities();
               
                
 
 
+                //Driver.driver = new FirefoxDriver();
+                FirefoxProfile fprof = new FirefoxProfile();
+                fprof.SetPreference("geo.enabled", true);
                 Driver.driver = new FirefoxDriver();
 
                 Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
@@ -82,6 +85,7 @@
                 HideCookieBanner.Click();
                 Thread.Sleep(1000);
                 Driver.driver.Manage().Window.Maximize();
+                
                 Driver.driver.Navigate().Refresh();
                 clearPopup();
                 Thread.Sleep(500);
@@ -102,14 +106,14 @@
                 Driver.driver = new InternetExplorerDriver();
 
                 Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
-                IWebElement AcceptCookies = Driver.driver.FindElement(By.Id("acceptAllCookies"));
-                AcceptCookies.Click();
-                IWebElement HideCookieBanner = Driver.driver.FindElement(By.Id("acceptAllCookiesHide"));
-                HideCookieBanner.Click();
+                //IWebElement AcceptCookies = Driver.driver.FindElement(By.Id("acceptAllCookies"));
+                //AcceptCookies.Click();
+                //IWebElement HideCookieBanner = Driver.driver.FindElement(By.Id("acceptAllCookiesHide"));
+                //HideCookieBanner.Click();
                 Thread.Sleep(1000);
                 Driver.driver.Manage().Window.Maximize();
                 Driver.driver.Navigate().Refresh();
-                clearPopup();
+                //clearPopup();
                 Thread.Sleep(500);
                 Driver.driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
 
@@ -649,8 +653,25 @@
                 Thread.Sleep(3000);
                 Schooldetails.AddToBenchMarkBasket.Click();
                 Thread.Sleep(300);
+            }
+
+            public static void VerifyDefaultSchoolColour(String LAEstab)
+            {
+                Actions.schoolSearchwithLaestab(LAEstab);
+                SchoolDetailPage Schooldetails = new SchoolDetailPage();
+                Schooldetails.SetasDefaultSchool.Click();
+                Thread.Sleep(1000);
+                Schooldetails.CompareWithOtherSchools.Click();
+                Thread.Sleep(2000);
+                string colortext = Driver.driver.FindElement(By.CssSelector(".highlight > span:nth-child(1)")).GetAttribute("color");
+               
+                Console.WriteLine(colortext);
+                Console.Write(colortext);
+
 
             }
+
+
             public static void Verifybasketcapacity()
             {
                 
@@ -663,6 +684,7 @@
                     try
                     {
                         SearchSchoolViaName(urn);
+                       
 
                         Schooldetails.AddToBenchMarkBasket.Click();
                         Thread.Sleep(10000);

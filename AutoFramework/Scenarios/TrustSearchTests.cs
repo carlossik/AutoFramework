@@ -11,31 +11,33 @@ namespace AutoFramework
     using System;
     using System.Threading;
     using NUnit.Framework.Interfaces;
+    using System.Collections.Generic;
+    using System.Collections;
 
     //[Parallelizable]
     public class TrustSearchScenarios
     {
-      
+
 
         public TrustSearchScenarios()
-        {     
+        {
         }
 
         [SetUp]
         public void SetupBeforeEachTest()
 
 
-       
+
         {
             Actions.InitializeDriver("chrome");
-            //Actions.InitializeFireFoxDriver();
+
 
 
         }
 
 
         [Test]
-       
+
         public void TrustSearch()
         {
             Actions.TrustSearchWitName("Kaleidoscope Learning Trust ");
@@ -49,7 +51,7 @@ namespace AutoFramework
         {
             //todo
         }
-       [Test]
+        [Test]
         public void TrustSearchwithName()
         {
             Actions.TrustSearchWitName("Brookvale Groby Learning Trust");
@@ -59,13 +61,25 @@ namespace AutoFramework
 
         }
         [Test]
+        public void TrustSearchwithOneschoolinTrust()
+        {
+            Actions.SearchTrustViaLocalAuthority("303");
+            TrustComparisonPage trustcomparison = new TrustComparisonPage();
+            //select a Trust with only 1 school
+            Driver.driver.FindElement(By.CssSelector("li.school-document:nth-child(3) > div:nth-child(1) > a:nth-child(1)")).Click();
+            string nomatches = Driver.driver.FindElement(By.CssSelector(".heading-xlarge")).Text;
+            Assert.IsTrue(nomatches == "Beths Grammer School");
+
+            //Assert.IsFalse(nomatches;
+        }
+        [Test]
         public void TrustSearchWithCompanyNumber()
         {
             Actions.TrustSearchWithCompanynumber("8929065");
             TrustComparisonPage trustcomparison = new TrustComparisonPage();
             string trustname = (trustcomparison.TrustName).Text;
             Assert.AreEqual(trustname, "Barnwell Academy Trust");
-         }
+        }
         [Test]
         public void TrustSearchWithwrongcompanynumber()
         {
@@ -105,8 +119,8 @@ namespace AutoFramework
             }
 
 
-           
-            }
+
+        }
 
         [Test]
         public void Trustcomparisonwithmorethan25schools()
@@ -125,13 +139,38 @@ namespace AutoFramework
         {
             //test company number links to gias 
         }
+
+        [Test]
+        public void TrustPerformanceLink()
+        {
+            TrustActions.TrustPerformanceLinksViaLacode("879");
+            //List <IWebElement> linksList = Driver.driver.FindElements(By.CssSelector(".//a[contains(@href,'long')]"));
+            //IList<IWebElement>  linksList = Driver.driver.FindElements(By.CssSelector("a[href*='/trust/index?companyNo=']")); //"));//a[href*='/trust/index?companyNo=']
+            //Console.WriteLine(linksList);
+            
+            //foreach (IWebElement trustlink in linksList)
+            //    try
+            //    {
+            //        trustlink.Click();
+            //        IWebElement performanceLink = Driver.driver.FindElement(By.ClassName("trust-ext-link"));
+            //        Assert.IsTrue(performanceLink.Displayed);
+            //        Thread.Sleep(1000);
+            //        Driver.driver.Navigate().Back();
+            //    }
+            //    catch (NoSuchElementException) { continue; }
+
+        
+    
+            
+
+        }
         [Test]
         public void trustsearchViaLocation()
         {
             Actions.SearchTrustViaLocation();
             Console.WriteLine(Driver.driver.FindElement(By.CssSelector(".heading-xlarge")).Text);
            
-            Assert.IsTrue(Driver.driver.FindElement(By.CssSelector(".heading-xlarge")).Text == "Academy trusts with schools operating in and near First Avenue, Welling, Kent");
+            Assert.IsTrue(Driver.driver.FindElement(By.CssSelector(".heading-xlarge")).Text == "Academy trusts with schools operating in and near First Avenue, Bexleyheath, Kent");
             
         }
         [Test]

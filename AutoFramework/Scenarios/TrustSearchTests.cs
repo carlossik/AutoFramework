@@ -143,21 +143,8 @@ namespace AutoFramework
         [Test]
         public void TrustPerformanceLink()
         {
-            TrustActions.TrustPerformanceLinksViaLacode("879");
-            //List <IWebElement> linksList = Driver.driver.FindElements(By.CssSelector(".//a[contains(@href,'long')]"));
-            //IList<IWebElement>  linksList = Driver.driver.FindElements(By.CssSelector("a[href*='/trust/index?companyNo=']")); //"));//a[href*='/trust/index?companyNo=']
-            //Console.WriteLine(linksList);
-            
-            //foreach (IWebElement trustlink in linksList)
-            //    try
-            //    {
-            //        trustlink.Click();
-            //        IWebElement performanceLink = Driver.driver.FindElement(By.ClassName("trust-ext-link"));
-            //        Assert.IsTrue(performanceLink.Displayed);
-            //        Thread.Sleep(1000);
-            //        Driver.driver.Navigate().Back();
-            //    }
-            //    catch (NoSuchElementException) { continue; }
+            //TrustActions.TrustPerformanceLinksViaLacode("303");
+            TrustActions.getCompanyNumber();
 
         
     

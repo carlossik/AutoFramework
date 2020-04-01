@@ -15,32 +15,46 @@
     using OpenQA.Selenium.Safari;
     using System;
     using OpenQA.Selenium.Remote;
-   
+
     class TrustActions
     {
         //All Trust actions happen here
         public static void TrustPerformanceLinksViaLacode(string Lacode)
         {
-
             Actions.SearchTrustViaLocalAuthority(Lacode);
-            IList<IWebElement> linksList = Driver.driver.FindElements(By.CssSelector("a[href*='/trust/index?companyNo=']")); 
-            Console.WriteLine(linksList);
-
-            foreach (IWebElement trustlink in linksList)
-                try
-                {
-                    trustlink.Click();
-                    IWebElement performanceLink = Driver.driver.FindElement(By.ClassName("trust-ext-link"));
-                    Assert.IsTrue(performanceLink.Displayed);
-                    Thread.Sleep(1000);
-                    Driver.driver.Navigate().Back();
-                }
-                catch (NoSuchElementException) { continue; }
-
-
-
 
         }
 
+        public static void  getCompanyNumber()
+        {
+
+            URNHelper helpers = new URNHelper();
+            IList trustlinks = helpers.trustlinks;
+            List<string> failedTrusts = new List<string>();
+            foreach (string link in trustlinks)
+
+            {
+                try
+                {
+                    Driver.driver.Navigate().GoToUrl(link);
+                    
+                    IWebElement performanceLink = Driver.driver.FindElement(By.CssSelector("a.trust-ext-link:nth-child(1)"));
+                    IWebElement getMoreInformation = Driver.driver.FindElement(By.CssSelector("a.trust-ext-link:nth-child(3)"));
+                    if (!(performanceLink.Displayed && getMoreInformation.Displayed))
+                    {
+                        failedTrusts.Add(link);
+                    }
+                   
+                        Thread.Sleep(10000);
+                }
+                
+                catch (NoSuchElementException) { continue; }
+               
+                
+            }
+            Console.WriteLine(failedTrusts.Count);
+
+
+        }
     }
 }

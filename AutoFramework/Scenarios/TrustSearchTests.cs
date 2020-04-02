@@ -29,7 +29,7 @@ namespace AutoFramework
 
 
         {
-            Actions.InitializeDriver("chrome");
+            Actions.InitializeDriver("firefox");
 
 
 
@@ -40,7 +40,7 @@ namespace AutoFramework
 
         public void TrustSearch()
         {
-            Actions.TrustSearchWitName("Kaleidoscope Learning Trust ");
+            TrustActions.TrustSearchWitNameUsingFirstSuggestedName("Kaleidoscope Learning Trust ");
             TrustComparisonPage trustcomparison = new TrustComparisonPage();
             string trustname = (trustcomparison.TrustName).Text;
             Assert.AreEqual(trustname, "Kaleidoscope Learning Trust");
@@ -54,7 +54,7 @@ namespace AutoFramework
         [Test]
         public void TrustSearchwithName()
         {
-            Actions.TrustSearchWitName("Brookvale Groby Learning Trust");
+            TrustActions.TrustSearchWitNameUsingFirstSuggestedName("Brookvale Groby Learning Trust");
             TrustComparisonPage trustcomparison = new TrustComparisonPage();
             string trustname = (trustcomparison.TrustName).Text;
             Assert.AreEqual(trustname, "Brookvale Groby Learning Trust");
@@ -125,7 +125,7 @@ namespace AutoFramework
         [Test]
         public void Trustcomparisonwithmorethan25schools()
         {
-            Actions.TrustComparisonWithMultipleTrusts();
+            TrustActions.TrustComparisonWithMultipleTrusts();
             TrustBenchmarkChartsPage trustcharts = new TrustBenchmarkChartsPage();
             Assert.IsTrue(trustcharts.BalanceTab.Displayed);
             Assert.IsTrue(trustcharts.ExpenditureTab.Displayed);
@@ -280,8 +280,38 @@ namespace AutoFramework
         public void verifyTrustsListedSchoolsAreAllOpen()
         {
             Actions.verifyTrustIsOpen();
-            //
             
+            
+        }
+        [Test]
+        public void SearchForTrustWithNameandSubmitButton()
+        {
+            TrustActions.TrustSearchWitNameUsingSubmitButton("5 Dimensions Trust");
+            String TrustName = Driver.driver.FindElement(By.CssSelector(".heading-xlarge")).Text;
+            Assert.IsTrue(TrustName.Contains("5 Dimensions Trust"));
+            IWebElement ViewOnMapButton = Driver.driver.FindElement(By.CssSelector("div.litem:nth-child(1) > button:nth-child(1)"));
+            Assert.IsTrue(ViewOnMapButton.Displayed);
+            String NumberOfTrustsFoundText = Driver.driver.FindElement(By.CssSelector("p.summary")).Text;
+            IWebElement NumberOfTrustsFoundMessage = Driver.driver.FindElement(By.CssSelector("p.summary"));
+            Assert.IsTrue(NumberOfTrustsFoundMessage.Displayed);
+            Assert.AreEqual(NumberOfTrustsFoundText, "1 academy trusts found");
+
+        }
+        [Test]
+        public void SearchForTrustWithNameUsingFirstSuggested()
+        {
+            TrustActions.TrustSearchWitNameUsingFirstSuggestedName("5 Dimensions Trust");
+            String TrustName = Driver.driver.FindElement(By.CssSelector(".heading-xlarge")).Text;
+            Assert.AreEqual(TrustName, "5 Dimensions Trust");
+            IWebElement CompareWithOtherTrustsButton = Driver.driver.FindElement(By.CssSelector(".page > div:nth-child(2) > div:nth-child(1) > a:nth-child(1)"));
+            Assert.IsTrue(CompareWithOtherTrustsButton.Displayed);
+            String CompaniesHouseNumber = Driver.driver.FindElement(By.CssSelector(".ml-05")).Text;
+            Console.WriteLine(CompaniesHouseNumber);
+            Assert.IsTrue(Driver.driver.FindElement(By.CssSelector(".ml-05")).Displayed);
+            Assert.IsTrue((Driver.driver.Url) == ("https://as-t1dv-sfb.azurewebsites.net/trust/index?companyNo=" + CompaniesHouseNumber));
+            Console.WriteLine(Driver.driver.Url);
+
+
         }
 
         [TearDown]

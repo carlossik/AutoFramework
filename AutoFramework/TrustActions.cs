@@ -24,7 +24,66 @@
             Actions.SearchTrustViaLocalAuthority(Lacode);
 
         }
+        public static void TrustComparisonWithMultipleTrusts()
+        {
+            
+            TrustSearchWitNameUsingFirstSuggestedName("Kaleidoscope Learning Trust ");
+            TrustComparisonPage trustComaprison = new TrustComparisonPage();
+            trustComaprison.Compare_withOtherTrusts.Click();
+           Thread.Sleep(100);
+            trustComaprison.SelectCharacteristicsButton.Click();
+            trustComaprison.NumberOfSchoolscheckbox.Click();
+            trustComaprison.MinNumOfScools.SendKeys("30");
+            trustComaprison.MaxNumofschools.SendKeys("35");
+            Thread.Sleep(1000);
+            trustComaprison.ViewBenchMarkingChartsbutton.Click();
 
+
+        }
+        public static void TrustSearchWitNameUsingSubmitButton(String TrustNameSubmitted)
+        {
+            Actions.GoHome();
+            HomePage homepage = new HomePage();
+            Thread.Sleep(100);
+            homepage.TrustTab.Click();
+            homepage.trustnameRadioButton.Click();
+            homepage.TrustSearchInput.Click();
+            homepage.TrustSearchInput.SendKeys(TrustNameSubmitted);
+            
+            homepage.TrustSubmit.Click();
+            Driver.driver.FindElement(By.CssSelector(".bold-small")).Click();
+            Thread.Sleep(100);
+        }
+        public static void TrustSearchWitNameUsingFirstSuggestedName(string TrustName)
+        {
+            Actions.GoHome();
+            HomePage homepage = new HomePage();
+            Thread.Sleep(100);
+            homepage.TrustTab.Click();
+            homepage.trustnameRadioButton.Click();
+            homepage.TrustSearchInput.Click();
+            homepage.TrustSearchInput.SendKeys(TrustName);
+            homepage.FirstSelectionOption.Click();
+            
+            Driver.driver.FindElement(By.CssSelector(".bold-small")).Click();
+            Thread.Sleep(100);
+        }
+        //public static void TrustComparisonWithMultipleTrusts()
+        //{
+        //    Actions.GoHome();
+        //    TrustSearchWitNameUsingFirstSuggestedName("Kaleidoscope Learning Trust ");
+        //    TrustComparisonPage trustComaprison = new TrustComparisonPage();
+        //    trustComaprison.Compare_withOtherTrusts.Click();
+        //    Thread.Sleep(100);
+        //    trustComaprison.SelectCharacteristicsButton.Click();
+        //    trustComaprison.NumberOfSchoolscheckbox.Click();
+        //    trustComaprison.MinNumOfScools.SendKeys("30");
+        //    trustComaprison.MaxNumofschools.SendKeys("35");
+        //    Thread.Sleep(1000);
+        //    trustComaprison.ViewBenchMarkingChartsbutton.Click();
+
+
+        //}
         public static void  getCompanyNumber()
         {
 

@@ -349,7 +349,7 @@
             Thread.Sleep(300);
         }
 
-        public static void TrustSearchWitName(string TrustName)
+        public static void TrustSearchWitNameUsingSubmitButton(string TrustName)
         {
             GoHome();
             HomePage homepage = new HomePage();
@@ -358,8 +358,8 @@
             homepage.trustnameRadioButton.Click();
             homepage.TrustSearchInput.Click();
             homepage.TrustSearchInput.SendKeys(TrustName);
-            homepage.FirstSelectionOption.Click();
-            //homepage.TrustSubmit.Click();
+            //homepage.FirstSelectionOption.Click();
+            homepage.TrustSubmit.Click();
             Driver.driver.FindElement(By.CssSelector(".bold-small")).Click();
             Thread.Sleep(100);
         }
@@ -563,7 +563,7 @@
         public static void TrustComparison(String TrustName)
         {
             //GoHome();
-            TrustSearchWitName(TrustName);
+            TrustSearchWitNameUsingSubmitButton(TrustName);
             TrustComparisonPage trustComaprison = new TrustComparisonPage();
           
             Thread.Sleep(500);
@@ -574,22 +574,22 @@
 
         }
             
-        public static void TrustComparisonWithMultipleTrusts()
-        {
-            GoHome();
-            TrustSearchWitName("Kaleidoscope Learning Trust ");
-            TrustComparisonPage trustComaprison = new TrustComparisonPage();
-            trustComaprison.Compare_withOtherTrusts.Click();
-            Thread.Sleep(100);
-            trustComaprison.SelectCharacteristicsButton.Click();
-            trustComaprison.NumberOfSchoolscheckbox.Click();
-            trustComaprison.MinNumOfScools.SendKeys("30");
-            trustComaprison.MaxNumofschools.SendKeys("35");
-            Thread.Sleep(1000);
-            trustComaprison.ViewBenchMarkingChartsbutton.Click();
+        //public static void TrustComparisonWithMultipleTrusts()
+        //{
+        //    GoHome();
+        //    TrustSearchWitName("Kaleidoscope Learning Trust ");
+        //    TrustComparisonPage trustComaprison = new TrustComparisonPage();
+        //    trustComaprison.Compare_withOtherTrusts.Click();
+        //    Thread.Sleep(100);
+        //    trustComaprison.SelectCharacteristicsButton.Click();
+        //    trustComaprison.NumberOfSchoolscheckbox.Click();
+        //    trustComaprison.MinNumOfScools.SendKeys("30");
+        //    trustComaprison.MaxNumofschools.SendKeys("35");
+        //    Thread.Sleep(1000);
+        //    trustComaprison.ViewBenchMarkingChartsbutton.Click();
             
 
-        }
+        //}
         
 
         public class CallingClass // This will have to be refactored in future when tests are stable

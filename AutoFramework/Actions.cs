@@ -15,6 +15,7 @@
     using OpenQA.Selenium.Safari;
     using System;
     using OpenQA.Selenium.Remote;
+    using System.Drawing;
 
     public  class Actions :BrowserToRunWith
     {
@@ -130,10 +131,22 @@
         }
 
       
-
+        public static void defaultsSchool()
+        {
+            
+            Actions.CallingClass.SearchViaSchoolurn("119182");
+            Thread.Sleep(100);
+            SchoolDetailPage detailspage = new SchoolDetailPage();
+            detailspage.SetasDefaultSchool.Click();
+            Thread.Sleep(100);
+            detailspage.CompareWithOtherSchools.Click();
+            Thread.Sleep(100);
+            String color = Driver.driver.FindElement(By.XPath("/html/body/div/div[8]/main/div/div/div/span")).GetAttribute("color");
+            Console.WriteLine(color);
+            Console.WriteLine(color);
+        }
         public static void GoHome()
         {
-
 
             Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
         }

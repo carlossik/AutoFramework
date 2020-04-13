@@ -74,6 +74,8 @@
         public IWebElement SchoolorTrustDataQueryLink { get; set; }
         [FindsBy(How = How.CssSelector, Using = ".tt-suggestion")]
         public IWebElement FirstSelectionOption { get; set; }
+        [FindsBy(How = How.CssSelector, Using = "button.img-button:nth-child(2)")]
+        public IWebElement SetasDefaultSchool { get; set; }
 
 
 

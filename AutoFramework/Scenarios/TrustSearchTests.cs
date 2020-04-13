@@ -64,11 +64,12 @@ namespace AutoFramework
         public void TrustSearchwithOneschoolinTrust()
         {
             Actions.SearchTrustViaLocalAuthority("303");
-            TrustComparisonPage trustcomparison = new TrustComparisonPage();
-            //select a Trust with only 1 school
-            Driver.driver.FindElement(By.CssSelector("li.school-document:nth-child(3) > div:nth-child(1) > a:nth-child(1)")).Click();
-            string nomatches = Driver.driver.FindElement(By.CssSelector(".heading-xlarge")).Text;
-            Assert.IsTrue(nomatches == "Beths Grammer School");
+            TrustActions.identifyTrustsWithOneSchool();
+            //TrustComparisonPage trustcomparison = new TrustComparisonPage();
+            ////select a Trust with only 1 school
+            //Driver.driver.FindElement(By.CssSelector("li.school-document:nth-child(3) > div:nth-child(1) > a:nth-child(1)")).Click();
+            //string nomatches = Driver.driver.FindElement(By.CssSelector(".heading-xlarge")).Text;
+            //Assert.IsTrue(nomatches == "Beths Grammer School");
 
             //Assert.IsFalse(nomatches;
         }

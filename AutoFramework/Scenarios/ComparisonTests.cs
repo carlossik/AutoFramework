@@ -80,6 +80,17 @@
             Actions.TrustComparison("Portswood Primary Academy Trust");
         }
         [Test]
+        public void VerifySchoolPhaseAndOverAllPhase()
+        {
+         DetailedComparisonActions.GeneralDetailedJourney("100008");
+             String TestValue = Driver.driver.FindElement(By.CssSelector("div.accordion-section:nth-child(2) > fieldset:nth-child(1) > div:nth-child(3) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > span:nth-child(1) > span:nth-child(1)")).Text;
+           SchoolDetailPage detailspage = new SchoolDetailPage();
+        
+            Assert.AreEqual(TestValue, "Primary (Infant and junior)");//need to change this test to parameterize the test value
+           
+        }
+
+        [Test]
         public void TestToAndFromFieldsNumOfPupils()
         {
             DetailedComparisonActions.IncludeschoolswithIncFinanceAcademiesAllEngland("144407", "64", "50");

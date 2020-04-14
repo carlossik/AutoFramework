@@ -309,6 +309,7 @@
     <Compile Include="AutoFramework\Scenarios\ReportsCreator.cs" />
     <Compile Include="AutoFramework\Scenarios\SchoolSearchTests.cs" />
     <Compile Include="AutoFramework\Scenarios\TrustSearchTests.cs" />
+    <Compile Include="AutoFramework\TrustActions.cs" />
     <Compile Include="GlobalSuppressions.cs" />
   </ItemGroup>
   <ItemGroup>

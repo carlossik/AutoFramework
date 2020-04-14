@@ -24,7 +24,7 @@ namespace AutoFramework.Pages
         [FindsBy(How = How.Id, Using = "radio-4")]
         public IWebElement ManualComaprisonButton { get; set; }
 
-        [FindsBy(How = How.CssSelector,Using = ".button")]
+        [FindsBy(How = How.CssSelector,Using = ".next-button > a:nth-child(1)")]
         public IWebElement ContinueToHigherProgressSchoolBenchmark { get; set; }
 
         [FindsBy(How = How.CssSelector, Using = "div.column-one-third:nth-child(1) > button:nth-child(1)")]

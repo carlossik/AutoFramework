@@ -15,6 +15,7 @@ namespace AutoFramework
     using OpenQA.Selenium.IE;
     using OpenQA.Selenium.Chrome;
     using OpenQA.Selenium.Safari;
+    //using OpenQA.Selenium.Remote.DesiredCapabilities;
 
 
 
@@ -27,7 +28,7 @@ namespace AutoFramework
              [SetUp]
         public void SetupBeforeEachTest()
         {
-            Actions.InitializeDriver("chrome");
+            Actions.InitializeDriver("IE");
         }
         [Test]
 

@@ -81,7 +81,7 @@
             BenchMarkActions.getclipboardText();
             ComparingSimilarSchoolsPage similar = new ComparingSimilarSchoolsPage();
             similar.AddToExistingBasket.Click();
-            similar.NextButton.Click();
+            similar.ContinueButton.Click();
             Thread.Sleep(300);
             Assert.IsTrue(Driver.driver.FindElement(By.CssSelector(".message")).Text == "Showing the 16 schools in your benchmark basket");
 
@@ -94,7 +94,7 @@
             BenchMarkActions.createbenchmarkviadefault("125249");
             BenchMarkActions.getclipboardTextmaximum();
             ReplaceCurrentBenchmarkbasketPage replace = new ReplaceCurrentBenchmarkbasketPage();
-            replace.Viewbenchmarkbasket.Click();
+            replace.ReplaceBasket.Click();
             Thread.Sleep(2000);
             Assert.IsTrue(Driver.driver.FindElement(By.CssSelector(".message")).Text == "Showing the 30 schools in your benchmark basket");
 
@@ -158,7 +158,7 @@
         public static void IncludeschoolswithIncFinanceAcademiesAllEngland()
             
         {
-            DetailedComparisonActions.IncludeschoolswithIncFinanceAcademiesAllEngland("100028","64","64");//("144407","64","64");//"145621", "879", "350","1003"
+            DetailedComparisonActions.IncludeschoolswithIncFinanceAcademiesAllEngland("100028","200","200");//("144407","64","64");//"145621", "879", "350","1003"
             string errorText = "Some schools don't have a complete set of financial data for this period";
             Assert.IsTrue(Driver.driver.PageSource.Contains(errorText));
         }
@@ -203,7 +203,7 @@
         [Test]
         public static void IncludeschoolswithIncFinanceAcademiesLaCode()
         {
-            DetailedComparisonActions.IncludeschoolswithIncFinanceAcademiesLaCode("145621", "879", "350","1003");
+            DetailedComparisonActions.IncludeschoolswithIncFinanceAcademiesLaCode("145621", "879", "350","1035");
             string errorText = "Some schools don't have a complete set of financial data for this period";
             Assert.IsTrue(Driver.driver.PageSource.Contains(errorText));
         }
@@ -211,6 +211,7 @@
         public static void IncludechoolswithIncFinanceAllSchoolsLaCode()
         {
             DetailedComparisonActions.IncludechoolswithIncFinanceAllSchoolsLaCode("144407");
+            //use schools 
             string errorText = "Some schools don't have a complete set of financial data for this period";
             Assert.IsTrue(Driver.driver.PageSource.Contains(errorText));
         }
@@ -252,7 +253,7 @@
         [Test]
         public static void IncludechoolswithIncFinanceAllSchoolsLaName()
         {
-            DetailedComparisonActions.IncludechoolswithIncFinanceAllSchoolsLaName("144407", "Greenwich", "20", "201");
+            DetailedComparisonActions.IncludechoolswithIncFinanceAllSchoolsLaName("144407", "Bradford", "20", "170");
             string errorText = "Some schools don't have a complete set of financial data for this period";
             Assert.IsTrue(Driver.driver.PageSource.Contains(errorText));
         }

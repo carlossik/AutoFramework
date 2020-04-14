@@ -134,6 +134,8 @@ namespace AutoFramework
             filters.SortedBy.Click();
             Thread.Sleep(300);
             filters.SortedBy.SendKeys("alphabetical z-a" + Keys.Enter);
+            Thread.Sleep(3000);
+            //filters.SortedBy.SendKeys("alphabetical z-a" + Keys.Enter);
             Thread.Sleep(300);
             //filters.SortedBy.SendKeys("alphabetical z-a" + Keys.Enter);
             //Thread.Sleep(3000);

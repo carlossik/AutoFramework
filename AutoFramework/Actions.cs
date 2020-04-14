@@ -15,6 +15,7 @@
     using OpenQA.Selenium.Safari;
     using System;
     using OpenQA.Selenium.Remote;
+    using System.Drawing;
 
     public  class Actions :BrowserToRunWith
     {
@@ -25,33 +26,31 @@
             if (browser == ("chrome"))
             {
                 Driver.driver = new ChromeDriver();
-                //Cookie ck = new Cookie("COOKIE", "cookies_policy");
-              
                 Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
-               IWebElement AcceptCookies =  Driver.driver.FindElement(By.Id("acceptAllCookies"));
-                AcceptCookies.Click();
+                Thread.Sleep(2000);
+                IWebElement AcceptCookies = Driver.driver.FindElement(By.Id("acceptAllCookies"));
+                if (Driver.driver.FindElement(By.Id("acceptAllCookies")).Displayed)
+                {
+                    Driver.driver.FindElement(By.Id("acceptAllCookies")).Click();
+                    Thread.Sleep(2000);
+                }
+                else
+                {
+                    Console.Write("No cookies here....");
+                }
+
                 IWebElement HideCookieBanner = Driver.driver.FindElement(By.Id("acceptAllCookiesHide"));
-                HideCookieBanner.Click();
-                Thread.Sleep(1000);
+                if (HideCookieBanner.Displayed)
+                {
+                    HideCookieBanner.Click();
+                    Thread.Sleep(1000);
+                }
+
                 Driver.driver.Manage().Window.Maximize();
                 Driver.driver.Navigate().Refresh();
-                
-                //DateTime time = new DateTime(2020, 04, 02, 23, 02, 03);
-                //Driver.driver.Manage().Cookies.AddCookie(new Cookie("COOKIE", "cookies_policy", "https://as-t1dv-sfb.azurewebsites.net/", time));
-
-                
                 clearPopup();
-                //Driver.driver.Manage().Cookies.AddCookie(ck);
-
-
-
-
-                //clearPopup();
-
                 Thread.Sleep(500);
-               
                 Driver.driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
-                
                 
                 if (Driver.driver.Url.Contains("Login"))
                 {
@@ -65,43 +64,34 @@
             }
             else if (browser == ("firefox"))
             {
-                FirefoxProfile fprof = new FirefoxProfile();
-                fprof.SetPreference("geo.enabled", true);
-                fprof.SetPreference("geo.provider.use_corelocation", true);
-                fprof.SetPreference("geo.prompt.testing", false);
-                fprof.SetPreference("geo.prompt.testing.allow", false);
-                DesiredCapabilities capabilities = new DesiredCapabilities();
+                //FirefoxProfile fprof = new FirefoxProfile();
+                //fprof.SetPreference("geo.enabled", true);
+                //fprof.SetPreference("geo.provider.use_corelocation", true);
+                //fprof.SetPreference("geo.prompt.testing", false);
+                //fprof.SetPreference("geo.prompt.testing.allow", false);
+                //DesiredCapabilities capabilities = new DesiredCapabilities();
               
                
 
 
+                //Driver.driver = new FirefoxDriver();
+                FirefoxProfile fprof = new FirefoxProfile();
+                fprof.SetPreference("geo.enabled", true);
                 Driver.driver = new FirefoxDriver();
-               
-                Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
-                Driver.driver.Manage().Window.Maximize();
-                DateTime time = new DateTime(2020, 04, 02, 23, 02, 03);
-                Cookie ck = new Cookie("COOKIE", "cookies_policy");
-                Driver.driver.Manage().Cookies.AddCookie(ck);
-                clearPopup();
-                Driver.driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
-               
-                if (Driver.driver.Url.Contains("Login"))
-                {
-                    Actions.FillLoginForm();
-                }
-            }
-            else if (browser == ("IE"))
-            {
-                Driver.driver = new InternetExplorerDriver();
-                
-                Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
-                Driver.driver.Manage().Window.Maximize();
-                DateTime time = new DateTime(2020, 04, 02, 23, 02, 03);
-                Cookie ck = new Cookie("COOKIE", "cookies_policy");
-                Driver.driver.Manage().Cookies.AddCookie(ck);
 
-                Driver.driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+                Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
+                IWebElement AcceptCookies = Driver.driver.FindElement(By.Id("acceptAllCookies"));
+                AcceptCookies.Click();
+                IWebElement HideCookieBanner = Driver.driver.FindElement(By.Id("acceptAllCookiesHide"));
+                HideCookieBanner.Click();
+                Thread.Sleep(1000);
+                Driver.driver.Manage().Window.Maximize();
                 
+                Driver.driver.Navigate().Refresh();
+                clearPopup();
+                Thread.Sleep(500);
+                Driver.driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+
                 if (Driver.driver.Url.Contains("Login"))
                 {
                     Actions.FillLoginForm();
@@ -110,14 +100,53 @@
                 {
                     Console.Write("There is no Logoin Required here....");
                 }
+
+            }
+            else if (browser == ("IE"))
+            {
+                Driver.driver = new InternetExplorerDriver();
+
+                Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
+                //IWebElement AcceptCookies = Driver.driver.FindElement(By.Id("acceptAllCookies"));
+                //AcceptCookies.Click();
+                //IWebElement HideCookieBanner = Driver.driver.FindElement(By.Id("acceptAllCookiesHide"));
+                //HideCookieBanner.Click();
+                Thread.Sleep(1000);
+                Driver.driver.Manage().Window.Maximize();
+                Driver.driver.Navigate().Refresh();
+                //clearPopup();
+                Thread.Sleep(500);
+                Driver.driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+
+                if (Driver.driver.Url.Contains("Login"))
+                {
+                    Actions.FillLoginForm();
+                }
+                else
+                {
+                    Console.Write("There is no Logoin Required here....");
+                }
+
             }
         }
 
       
-
+        public static void defaultsSchool()
+        {
+            
+            Actions.CallingClass.SearchViaSchoolurn("119182");
+            Thread.Sleep(100);
+            SchoolDetailPage detailspage = new SchoolDetailPage();
+            detailspage.SetasDefaultSchool.Click();
+            Thread.Sleep(100);
+            detailspage.CompareWithOtherSchools.Click();
+            Thread.Sleep(100);
+            String color = Driver.driver.FindElement(By.XPath("/html/body/div/div[8]/main/div/div/div/span")).GetAttribute("color");
+            Console.WriteLine(color);
+            Console.WriteLine(color);
+        }
         public static void GoHome()
         {
-
 
             Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
         }
@@ -186,14 +215,23 @@
             homepage.ClickOnSearchButton();
             Thread.Sleep(100);
         }
-        public static void SearchSchool2()
+        public static void SearchSchool2(string urn)
         {
             HomePage homepage = new HomePage();
             GoHome();
             homepage.School.Click();
-            homepage.SchoolsearchField.SendKeys("100000");
+            homepage.SchoolsearchField.SendKeys(urn);
             homepage.ClickOnSearchButton();
             Thread.Sleep(100);
+            SchoolDetailPage detailspage = new SchoolDetailPage();
+            string SchoolPhase = detailspage.SchoolPhase.Text;
+            string OverallSchoolPhase = detailspage.SchoolOverAllPhase.Text;
+            string newformed = OverallSchoolPhase + "(" + SchoolPhase + ")";//Primary(Infant and junior)
+            Console.WriteLine(OverallSchoolPhase);
+            Console.WriteLine(SchoolPhase);
+            Console.WriteLine(newformed);
+            Thread.Sleep(100);
+
         }
 
         public static void testmailSuccess(String emailaddress)
@@ -264,14 +302,31 @@
         public static void gotonewspage()
 
         {
-            //Driver.driver.Close();
-            //Driver.driver = new ChromeDriver();
-            //Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
-            //Driver.driver.Manage().Window.Maximize();
+            Driver.driver.Close();
+            Driver.driver = new ChromeDriver();
+            //Cookie ck = new Cookie("COOKIE", "cookies_policy");
 
-            //IWebElement gotonewspage = Driver.driver.FindElement(By.CssSelector("#js-modal > div > div > div > a"));
-            //gotonewspage.Click();
-            //Thread.Sleep(100);
+            Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
+            IWebElement AcceptCookies = Driver.driver.FindElement(By.Id("acceptAllCookies"));
+            AcceptCookies.Click();
+            IWebElement HideCookieBanner = Driver.driver.FindElement(By.Id("acceptAllCookiesHide"));
+            HideCookieBanner.Click();
+            Thread.Sleep(1000);
+            Driver.driver.Manage().Window.Maximize();
+            Driver.driver.Navigate().Refresh();
+            Thread.Sleep(1000);
+
+            //DateTime time = new DateTime(2020, 04, 02, 23, 02, 03);
+            //Driver.driver.Manage().Cookies.AddCookie(new Cookie("COOKIE", "cookies_policy", "https://as-t1dv-sfb.azurewebsites.net/", time));
+
+
+
+
+
+
+            IWebElement gotonewspage = Driver.driver.FindElement(By.XPath("/html/body/dialog/div/div/div/a"));
+            gotonewspage.Click();
+            Thread.Sleep(100);
         }
         
 
@@ -307,7 +362,7 @@
             Thread.Sleep(300);
         }
 
-        public static void TrustSearchWitName(string TrustName)
+        public static void TrustSearchWitNameUsingSubmitButton(string TrustName)
         {
             GoHome();
             HomePage homepage = new HomePage();
@@ -316,6 +371,7 @@
             homepage.trustnameRadioButton.Click();
             homepage.TrustSearchInput.Click();
             homepage.TrustSearchInput.SendKeys(TrustName);
+            //homepage.FirstSelectionOption.Click();
             homepage.TrustSubmit.Click();
             Driver.driver.FindElement(By.CssSelector(".bold-small")).Click();
             Thread.Sleep(100);
@@ -444,6 +500,11 @@
             resultsPage.ViewTrustSchools.Click();
             Thread.Sleep(2000);
         }
+        public static void verifyTrustIsOpen()
+        {
+            ViewSchoolsInTrust();
+
+        }
         public static void SearchTrustViaLocalAuthority(String LAcode)
         {
             HomePage homepage = new HomePage();
@@ -509,14 +570,16 @@
             BenchMarkChartPage benchmarkpage = new BenchMarkChartPage();
             benchmarkpage.Savebenchmarkbasket.Click();
             benchmarkpage.CopyLinkToClipboard.Click();
-            Thread.Sleep(3000);
+
+            Thread.Sleep(300);
         }
         public static void TrustComparison(String TrustName)
         {
             //GoHome();
-            TrustSearchWitName(TrustName);
+            TrustSearchWitNameUsingSubmitButton(TrustName);
             TrustComparisonPage trustComaprison = new TrustComparisonPage();
-
+          
+            Thread.Sleep(500);
             trustComaprison.Compare_withOtherTrusts.Click();
             Thread.Sleep(500);
             trustComaprison.ViewBenchMarkingCharts.Click();
@@ -524,22 +587,22 @@
 
         }
             
-        public static void TrustComparisonWithMultipleTrusts()
-        {
-            GoHome();
-            TrustSearchWitName("Kaleidoscope Learning Trust ");
-            TrustComparisonPage trustComaprison = new TrustComparisonPage();
-            trustComaprison.Compare_withOtherTrusts.Click();
-            Thread.Sleep(100);
-            trustComaprison.SelectCharacteristicsButton.Click();
-            trustComaprison.NumberOfSchoolscheckbox.Click();
-            trustComaprison.MinNumOfScools.SendKeys("30");
-            trustComaprison.MaxNumofschools.SendKeys("35");
-            Thread.Sleep(1000);
-            trustComaprison.ViewBenchMarkingChartsbutton.Click();
+        //public static void TrustComparisonWithMultipleTrusts()
+        //{
+        //    GoHome();
+        //    TrustSearchWitName("Kaleidoscope Learning Trust ");
+        //    TrustComparisonPage trustComaprison = new TrustComparisonPage();
+        //    trustComaprison.Compare_withOtherTrusts.Click();
+        //    Thread.Sleep(100);
+        //    trustComaprison.SelectCharacteristicsButton.Click();
+        //    trustComaprison.NumberOfSchoolscheckbox.Click();
+        //    trustComaprison.MinNumOfScools.SendKeys("30");
+        //    trustComaprison.MaxNumofschools.SendKeys("35");
+        //    Thread.Sleep(1000);
+        //    trustComaprison.ViewBenchMarkingChartsbutton.Click();
             
 
-        }
+        //}
         
 
         public class CallingClass // This will have to be refactored in future when tests are stable
@@ -603,8 +666,25 @@
                 Thread.Sleep(3000);
                 Schooldetails.AddToBenchMarkBasket.Click();
                 Thread.Sleep(300);
+            }
+
+            public static void VerifyDefaultSchoolColour(String LAEstab)
+            {
+                Actions.schoolSearchwithLaestab(LAEstab);
+                SchoolDetailPage Schooldetails = new SchoolDetailPage();
+                Schooldetails.SetasDefaultSchool.Click();
+                Thread.Sleep(1000);
+                Schooldetails.CompareWithOtherSchools.Click();
+                Thread.Sleep(2000);
+                string colortext = Driver.driver.FindElement(By.CssSelector(".highlight > span:nth-child(1)")).GetAttribute("color");
+               
+                Console.WriteLine(colortext);
+                Console.Write(colortext);
+
 
             }
+
+
             public static void Verifybasketcapacity()
             {
                 
@@ -617,6 +697,7 @@
                     try
                     {
                         SearchSchoolViaName(urn);
+                       
 
                         Schooldetails.AddToBenchMarkBasket.Click();
                         Thread.Sleep(10000);
@@ -697,7 +778,7 @@
                 
                 
                 SearchViaSchoolurn("143592");
-                Actions.clearcookie();
+                //Actions.clearcookie();
                 SchoolDetailPage detailspage = new SchoolDetailPage();
                 detailspage.CompareWithOtherSchools.Click();
                 BestInClass bestinclass = new BestInClass();
@@ -763,9 +844,9 @@
                 BestInClass bestinclass = new BestInClass();
                 bestinclass.BestInClassComparisonButton.Click();
                 Thread.Sleep(3000);
-                bestinclass.ContinueToHigherProgressSchoolBenchmark.Click();
-                Thread.Sleep(3000);
                 bestinclass.Continue.Click();
+                Thread.Sleep(3000);
+                bestinclass.ContinueToHigherProgressSchoolBenchmark.Click();
                 Thread.Sleep(1000);
 
             }

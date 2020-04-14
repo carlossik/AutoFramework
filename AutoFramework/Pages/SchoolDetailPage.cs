@@ -48,8 +48,10 @@ namespace AutoFramework.Pages.PageElements
         public IWebElement ViewBenchMarkCharts { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector,Using = "#manualButton")]
         public IWebElement ContinueToManualBenchMarkCharts { get; set; }
-        //[SeleniumExtras.PageObjects.FindsBy(How =How.ClassName,Using = "button compare-buttons-panel__button--compare")]
-        //public IWebElement Compare { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "dd.metadata-school-detail__dd:nth-child(10)")]
+        public IWebElement SchoolOverAllPhase { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "dd.metadata-school-detail__dd:nth-child(12)")]
+        public IWebElement SchoolPhase { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = "a.button:nth-child(1)")]
         public IWebElement Compare { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = How.Id, Using = "DownloadLinkText")]
@@ -80,8 +82,8 @@ namespace AutoFramework.Pages.PageElements
         public IWebElement FinanceDropdown { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = "#Financing > option:nth-child(2)")]
         public IWebElement FinanceDropdown_Trust_Only { get; set; }
-        [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector,Using = "dd.metadata-school-detail__dd:nth-child(12)")]
-        public IWebElement SchoolPhase { get; set; }
+        //[SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector,Using = "dd.metadata-school-detail__dd:nth-child(12)")]
+        //public IWebElement SchoolPhase { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector,Using = "a.spt_link_js")]
         public IWebElement schoolPerformanceTableLink { get; set; }
             
@@ -92,6 +94,10 @@ namespace AutoFramework.Pages.PageElements
 
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector,Using = "dd.metadata-school-detail__dd:nth-child(6) > a:nth-child(1)")]
         public IWebElement LocalAuthorityLink { get; set; }
+        //public string SchoolPhaseValue = Driver.driver.FindElement(By.CssSelector("dd.metadata-school-detail__dd:nth-child(12)")).Text;
+        //public string OverallSchoolPhaseValue = Driver.driver.FindElement(By.CssSelector("dd.metadata-school-detail__dd:nth-child(10)")).Text;
+        //public string newvalue = OverallSchoolPhaseValue
+
 
     }
 

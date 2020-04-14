@@ -72,9 +72,8 @@ namespace SFB_Test_Automation.AutoFramework
             nodefault.SearchSubmitButton.Click();
             Thread.Sleep(300);
             SearchResultsPage resultspage = new SearchResultsPage();
-            resultspage.AddFirstResult.Click();
-            
-           
+            resultspage.FirstElementPresented.Click();
+                    
             Thread.Sleep(3000);
         }
         public static void ManualComparisonByName()

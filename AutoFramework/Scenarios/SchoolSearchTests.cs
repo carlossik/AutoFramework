@@ -187,10 +187,12 @@
         {
 
             Actions.defaultsSchool();
-            String Textcolor = Driver.driver.FindElement(By.XPath("/html/body/div/div[8]/main/div/div/div/span")).GetCssValue("color");
+            String Textcolor = Driver.driver.FindElement(By.XPath("/html/body/div/div[8]/main/div/div/div/span")).GetCssValue("background-color");
             String LinkColour = Driver.driver.FindElement(By.CssSelector(".form-group > fieldset:nth-child(1) > p:nth-child(2) > a:nth-child(1)")).GetCssValue("color"); 
             String BackGroundColor = Driver.driver.FindElement(By.XPath("/html/body/div/div[8]/main/div/div/div/span")).GetCssValue("background-color");
-            Console.WriteLine(Textcolor);
+            String ExpectedColor = "rgb(0, 94, 165)";
+            Assert.AreEqual(ExpectedColor,LinkColour);
+            Console.WriteLine(Textcolor);//Assert to follow
             Console.WriteLine(BackGroundColor);//element.getCssValue("color");
             Console.WriteLine(LinkColour);
         }

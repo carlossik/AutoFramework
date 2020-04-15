@@ -22,53 +22,61 @@
         //All Trust actions happen here
         public static void identifyTrustsWithOneSchool()
         {
-            IList<IWebElement> all = Driver.driver.FindElements(By.ClassName("schoolsInTrust"));
+            var results = Driver.driver.FindElements(By.ClassName("schoolsInTrust"));
             IList<IWebElement> schoolname = Driver.driver.FindElements(By.CssSelector("li.school-document:nth-child(31) > div:nth-child(1) > a:nth-child(1)"));
             IList<IWebElement> schoolLink = Driver.driver.FindElements(By.XPath("//*[@id=\"schoolResults\"]"));
             List<IWebElement> allHandles2 = new List<IWebElement>();
             IList<IWebElement> schools = Driver.driver.FindElements(By.XPath("//a[contains(@href,\"/trust/index?companyNo=\")]"));
             List<IWebElement> val = new List<IWebElement>();
             var str = new[] { schoolLink };
-            var results = Driver.driver.FindElements(By.XPath("//a[contains(@href, \"/trust/index?companyNo=\")]"));
+            var linkstouse = Driver.driver.FindElements(By.XPath("//a[contains(@href, \"/trust/index?companyNo=\")]"));
             ArrayList myvalues = new ArrayList();
 
-            //foreach (IWebElement element in result)
-                    //for (int i = 0; i < all.Count; i++)
-                    //    if (all[i].Text == "1")
-
+            //IOrderedEnumerable<string> result = results.Zip(linkstouse(a, b) => a.ToString() + "-" + b);
+            //foreach (string s in result)
             //{
-                
-            //        foreach (IWebElement element in all)
-                   
-            //    if (element.Text == "1")
-            //            IWebElement schoollink = Driver.driver.FindElement(By.XPath("//a[contains(@href, \"/trust/index?companyNo=\")]"));
-            //    {
-                        
-            //            Console.WriteLine(schoollink.Text);
-            //            myvalues.Add(schoollink.GetAttribute("href"));
-            //    }
+            //    Console.WriteLine(s);
             //}
-            //Console.WriteLine(myvalues.Count);
 
-            //for (int i = 0; i < all.Count; i++)
-            //foreach (IWebElement elem in all)
-            //{
-            //    if (elem.Text == "1")
-            //        foreach (IWebElement element in results)
-            //    {
-            //        if (elem.Text == "1")
-            //        {
-            //            //val.Add(element);
-            //            //IWebElement school = Driver.driver.FindElement(By.XPath("//a[contains(@href, \"/trust/index?companyNo=\")]"));
-            //            //Console.WriteLine(elem.Text +  " "+ school.GetAttribute("href"));
-            //            myvalues.Add(element.GetAttribute("href"));
-            //           Console.WriteLine(elem.GetAttribute("href")); 
-
-            //        }
-            //    }
-            //}
-            //Console.WriteLine(myvalues);
         }
+
+        //foreach (IWebElement element in result)
+        //for (int i = 0; i < all.Count; i++)
+        //    if (all[i].Text == "1")
+
+        //{
+
+        //        foreach (IWebElement element in all)
+
+        //    if (element.Text == "1")
+        //            IWebElement schoollink = Driver.driver.FindElement(By.XPath("//a[contains(@href, \"/trust/index?companyNo=\")]"));
+        //    {
+
+        //            Console.WriteLine(schoollink.Text);
+        //            myvalues.Add(schoollink.GetAttribute("href"));
+        //    }
+        //}
+        //Console.WriteLine(myvalues.Count);
+
+        //for (int i = 0; i < all.Count; i++)
+        //foreach (IWebElement elem in all)
+        //{
+        //    if (elem.Text == "1")
+        //        foreach (IWebElement element in results)
+        //    {
+        //        if (elem.Text == "1")
+        //        {
+        //            //val.Add(element);
+        //            //IWebElement school = Driver.driver.FindElement(By.XPath("//a[contains(@href, \"/trust/index?companyNo=\")]"));
+        //            //Console.WriteLine(elem.Text +  " "+ school.GetAttribute("href"));
+        //            myvalues.Add(element.GetAttribute("href"));
+        //           Console.WriteLine(elem.GetAttribute("href")); 
+
+        //        }
+        //    }
+        //}
+        //Console.WriteLine(myvalues);
+    
 
         //    var result = Driver.driver.FindElements((By.XPath("//*[@id=\"schoolResults\"]")));
         //    Console.WriteLine(result);

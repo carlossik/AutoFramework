@@ -95,6 +95,7 @@ namespace AutoFramework
         public void Trustcomparison()
         {
             Actions.TrustComparison("Harvey Academy");
+            //TrustActions.TrustSearchWitNameUsingFirstSuggestedName("ARK Schools");
             TrustBenchmarkChartsPage trustcharts = new TrustBenchmarkChartsPage();
             Assert.IsTrue(trustcharts.BalanceTab.Displayed);
             Assert.IsTrue(trustcharts.ExpenditureTab.Displayed);
@@ -185,8 +186,8 @@ namespace AutoFramework
             
             Assert.IsTrue(Driver.driver.FindElement(By.CssSelector("li.school-document:nth-child(1) > div:nth-child(1) > a:nth-child(1)")).Text == "Academies Enterprise Trust");
             Console.WriteLine(resultsPage.FirstElementPresented.Text);
-            //Console.WriteLine(Driver.driver.FindElement(By.CssSelector("li.school-document:nth-child(1) > div:nth-child(1) > a:nth-child(1)")).Text);
-            //Assert.IsTrue(Driver.driver.FindElement(By.CssSelector("li.school-document:nth-child(29) > div:nth-child(1) > a:nth-child(1)")).Text == "Woodland Academy Trust");
+            //var cells = WebDriver.FindElements(locator);
+            //Assert.IsTrue(cells.OrderBy(c => c.Text).SequenceEqual(cells));
         }
         [Test]
         public void verifySortedByDistanceZtoA()

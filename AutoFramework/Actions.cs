@@ -19,7 +19,11 @@
 
     public  class Actions :BrowserToRunWith
     {
-        
+        public static void ClearBasket()
+        {
+
+        }
+
 
         public static void InitializeDriver(String browser)
         {
@@ -90,11 +94,25 @@
 
             }
             else if (browser == ("IE"))
+
             {
+                // DesiredCapabilities capabilities = DesiredCapabilities.internetExplorer();
+                //capabilities.setCapability(InternetExplorerDriver.IE_ENSURE_CLEAN_SESSION, true);
+                
+
+
                 Driver.driver = new InternetExplorerDriver();
+                DesiredCapabilities capabilities = new DesiredCapabilities();
+                //capabilities.SetCapability(InternetExplorerDriver);
                 Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
+                //capabilities.SetCapability("zal:name", "TEST NAME");//InternetExplorerDriverService.CreateDefaultService());
+
                 Thread.Sleep(1000);
                 Driver.driver.Manage().Window.Maximize();
+                HomePage page = new HomePage();
+                if (page.CheckBasketEmpty().ToString() == "True")
+                { page.emptybasketBeforeTesting(); }
+                //page.emptybasketBeforeTesting();
                 Driver.driver.Navigate().Refresh();
                 Thread.Sleep(500);
                 Driver.driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
@@ -348,7 +366,7 @@
             HomePage homepage = new HomePage();
             homepage.LocationButton.Click();
             homepage.SearchByLocationField.Click();
-            homepage.SearchByLocationField.Clear();
+            //homepage.SearchByLocationField.Clear();
             homepage.SearchByLocationField.SendKeys(Config.Credentials.PostCode.Postcode);
             homepage.LocationSearchSubmitButton.Click();
             Driver.driver.FindElement(By.CssSelector("li.document:nth-child(1) > a:nth-child(1)")).Click();
@@ -358,6 +376,22 @@
             Console.WriteLine(ResultsDisplayedInitially);
             Thread.Sleep(200);
 
+        }
+
+        public static void AddAnotherSchoolManually()
+        {
+            HomePage homepage = new HomePage();
+            homepage.LocationButton.Click();
+            homepage.SearchLocationManually.Click();
+            //homepage.SearchByLocationField.Clear();
+            homepage.SearchLocationManually.SendKeys(Config.Credentials.PostCode.Postcode);
+            homepage.LocationSearchSubmitButton.Click();
+            Driver.driver.FindElement(By.CssSelector("li.document:nth-child(1) > a:nth-child(1)")).Click();
+            Thread.Sleep(200);
+            FiltersPage filters = new FiltersPage();
+            string ResultsDisplayedInitially = (filters.ResultsCount).Text;
+            Console.WriteLine(ResultsDisplayedInitially);
+            Thread.Sleep(200);
         }
 
         public static void SearchByLocationUsingLink() //location enabling in firefox is an issue 
@@ -438,7 +472,10 @@
         {
             SearchTrustViaLocation();
             SearchResultsPage resultsPage = new SearchResultsPage();
-            resultsPage.ViewTrustSchools.Click();
+            Console.WriteLine(Driver.driver.FindElement(By.CssSelector("li.school-document:nth-child(1) > details:nth-child(3) > div:nth-child(2) > table:nth-child(1) > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(1) > a:nth-child(1)")).Text);
+            Console.WriteLine(Driver.driver.FindElement(By.CssSelector("li.school-document:nth-child(1) > details:nth-child(3) > div:nth-child(2) > table:nth-child(1) > tbody:nth-child(2) > tr:nth-child(4) > td:nth-child(1) > a:nth-child(1)")).Text);
+
+            //resultsPage.ViewTrustSchools.Click();
             Thread.Sleep(2000);
         }
         public static void verifyTrustIsOpen()

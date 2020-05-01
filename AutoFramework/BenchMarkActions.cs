@@ -56,7 +56,7 @@
             BestInClass bestinclass = new BestInClass();
             bestinclass.ManualComaprisonButton.Click();
             bestinclass.Continue.Click();
-            Actions.SearchByLocationUsingLink();
+            Actions.AddAnotherSchoolManually();
             SearchResultsPage resultspage = new SearchResultsPage();
             //resultspage.FirstElementPresented.Click();
             Thread.Sleep(2000);

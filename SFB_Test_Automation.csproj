@@ -264,7 +264,6 @@
     <None Include="packages\Selenium.WebDriver.ChromeDriver.73.0.3683.68\build\Selenium.WebDriver.ChromeDriver.targets" />
     <None Include="packages\Selenium.WebDriver.ChromeDriver.73.0.3683.68\driver\linux64\chromedriver" />
     <None Include="packages\Selenium.WebDriver.ChromeDriver.73.0.3683.68\driver\mac64\chromedriver" />
-    <None Include="packages\Selenium.WebDriver.ChromeDriver.73.0.3683.68\Selenium.WebDriver.ChromeDriver.73.0.3683.68.nupkg" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutoFramework\BenchMarkActions.cs" />
@@ -300,6 +299,7 @@
     <Compile Include="AutoFramework\Pages\SpecialElementsPage.cs" />
     <Compile Include="AutoFramework\Pages\TrustBenchmarkChartsPage.cs" />
     <Compile Include="AutoFramework\Pages\TrustComparisonPage.cs" />
+    <Compile Include="AutoFramework\Pages\TrustHomePage.cs" />
     <Compile Include="AutoFramework\Properties\AssemblyInfo.cs" />
     <Compile Include="AutoFramework\Scenarios\BenchmarkingTests.cs" />
     <Compile Include="AutoFramework\Scenarios\ChartTests.cs" />
@@ -336,19 +336,19 @@
     <Error Condition="!Exists('packages\NUnit.3.11.0\build\NUnit.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\NUnit.3.11.0\build\NUnit.props'))" />
     <Error Condition="!Exists('packages\NUnit3TestAdapter.3.13.0\build\net35\NUnit3TestAdapter.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\NUnit3TestAdapter.3.13.0\build\net35\NUnit3TestAdapter.props'))" />
     <Error Condition="!Exists('packages\Selenium.Firefox.WebDriver.0.26.0\build\Selenium.Firefox.WebDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Selenium.Firefox.WebDriver.0.26.0\build\Selenium.Firefox.WebDriver.targets'))" />
-    <Error Condition="!Exists('packages\Selenium.WebDriver.ChromeDriver.79.0.3945.3600\build\Selenium.WebDriver.ChromeDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Selenium.WebDriver.ChromeDriver.79.0.3945.3600\build\Selenium.WebDriver.ChromeDriver.targets'))" />
-    <Error Condition="!Exists('packages\Selenium.Chrome.WebDriver.79.0.0\build\Selenium.Chrome.WebDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Selenium.Chrome.WebDriver.79.0.0\build\Selenium.Chrome.WebDriver.targets'))" />
     <Error Condition="!Exists('packages\Selenium.WebDriver.GeckoDriver.Win64.0.26.0\build\Selenium.WebDriver.GeckoDriver.Win64.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Selenium.WebDriver.GeckoDriver.Win64.0.26.0\build\Selenium.WebDriver.GeckoDriver.Win64.targets'))" />
     <Error Condition="!Exists('packages\Selenium.InternetExplorer.WebDriver.3.150.1\build\Selenium.InternetExplorer.WebDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Selenium.InternetExplorer.WebDriver.3.150.1\build\Selenium.InternetExplorer.WebDriver.targets'))" />
     <Error Condition="!Exists('packages\Selenium.WebDriver.IEDriver.3.150.1\build\Selenium.WebDriver.IEDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Selenium.WebDriver.IEDriver.3.150.1\build\Selenium.WebDriver.IEDriver.targets'))" />
     <Error Condition="!Exists('packages\Selenium.WebDriver.GeckoDriver.0.26.0\build\Selenium.WebDriver.GeckoDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Selenium.WebDriver.GeckoDriver.0.26.0\build\Selenium.WebDriver.GeckoDriver.targets'))" />
+    <Error Condition="!Exists('packages\Selenium.Chrome.WebDriver.81.0.0\build\Selenium.Chrome.WebDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Selenium.Chrome.WebDriver.81.0.0\build\Selenium.Chrome.WebDriver.targets'))" />
+    <Error Condition="!Exists('packages\Selenium.WebDriver.ChromeDriver.81.0.4044.6900\build\Selenium.WebDriver.ChromeDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Selenium.WebDriver.ChromeDriver.81.0.4044.6900\build\Selenium.WebDriver.ChromeDriver.targets'))" />
   </Target>
   <Import Project="packages\Selenium.WebDriver.PhantomJS.CrossPlatform.2.1.1\build\Selenium.WebDriver.PhantomJS.CrossPlatform.targets" Condition="Exists('packages\Selenium.WebDriver.PhantomJS.CrossPlatform.2.1.1\build\Selenium.WebDriver.PhantomJS.CrossPlatform.targets')" />
   <Import Project="packages\Selenium.Firefox.WebDriver.0.26.0\build\Selenium.Firefox.WebDriver.targets" Condition="Exists('packages\Selenium.Firefox.WebDriver.0.26.0\build\Selenium.Firefox.WebDriver.targets')" />
-  <Import Project="packages\Selenium.WebDriver.ChromeDriver.79.0.3945.3600\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('packages\Selenium.WebDriver.ChromeDriver.79.0.3945.3600\build\Selenium.WebDriver.ChromeDriver.targets')" />
-  <Import Project="packages\Selenium.Chrome.WebDriver.79.0.0\build\Selenium.Chrome.WebDriver.targets" Condition="Exists('packages\Selenium.Chrome.WebDriver.79.0.0\build\Selenium.Chrome.WebDriver.targets')" />
   <Import Project="packages\Selenium.WebDriver.GeckoDriver.Win64.0.26.0\build\Selenium.WebDriver.GeckoDriver.Win64.targets" Condition="Exists('packages\Selenium.WebDriver.GeckoDriver.Win64.0.26.0\build\Selenium.WebDriver.GeckoDriver.Win64.targets')" />
   <Import Project="packages\Selenium.InternetExplorer.WebDriver.3.150.1\build\Selenium.InternetExplorer.WebDriver.targets" Condition="Exists('packages\Selenium.InternetExplorer.WebDriver.3.150.1\build\Selenium.InternetExplorer.WebDriver.targets')" />
   <Import Project="packages\Selenium.WebDriver.IEDriver.3.150.1\build\Selenium.WebDriver.IEDriver.targets" Condition="Exists('packages\Selenium.WebDriver.IEDriver.3.150.1\build\Selenium.WebDriver.IEDriver.targets')" />
   <Import Project="packages\Selenium.WebDriver.GeckoDriver.0.26.0\build\Selenium.WebDriver.GeckoDriver.targets" Condition="Exists('packages\Selenium.WebDriver.GeckoDriver.0.26.0\build\Selenium.WebDriver.GeckoDriver.targets')" />
+  <Import Project="packages\Selenium.Chrome.WebDriver.81.0.0\build\Selenium.Chrome.WebDriver.targets" Condition="Exists('packages\Selenium.Chrome.WebDriver.81.0.0\build\Selenium.Chrome.WebDriver.targets')" />
+  <Import Project="packages\Selenium.WebDriver.ChromeDriver.81.0.4044.6900\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('packages\Selenium.WebDriver.ChromeDriver.81.0.4044.6900\build\Selenium.WebDriver.ChromeDriver.targets')" />
 </Project>

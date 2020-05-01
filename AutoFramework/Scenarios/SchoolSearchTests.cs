@@ -21,7 +21,7 @@
         public void SetupBeforeEachTest()
         
         {
-           Actions.InitializeDriver("firefox");
+           Actions.InitializeDriver("chrome");
             //Actions.InitializeFireFoxDriver();
 
 
@@ -172,7 +172,6 @@
         {
             Actions.CallingClass.Verifybasket();
 
-
         }
        [Test]
         [Ignore("Ignore a test")]
@@ -190,11 +189,11 @@
             String Textcolor = Driver.driver.FindElement(By.XPath("/html/body/div/div[8]/main/div/div/div/span")).GetCssValue("background-color");
             String LinkColour = Driver.driver.FindElement(By.CssSelector(".form-group > fieldset:nth-child(1) > p:nth-child(2) > a:nth-child(1)")).GetCssValue("color"); 
             String BackGroundColor = Driver.driver.FindElement(By.XPath("/html/body/div/div[8]/main/div/div/div/span")).GetCssValue("background-color");
-            String ExpectedColor = "rgb(0, 94, 165)";
+            String ExpectedColor = ("rgba(0, 94, 165, 1)");
             Assert.AreEqual(ExpectedColor,LinkColour);
-            Console.WriteLine(Textcolor);//Assert to follow
-            Console.WriteLine(BackGroundColor);//element.getCssValue("color");
-            Console.WriteLine(LinkColour);
+            Console.WriteLine( "Colour of Text " + Textcolor);//Assert to follow
+            Console.WriteLine("BackGround Colour " + BackGroundColor);//element.getCssValue("color");
+            Console.WriteLine("Colour of HyperLink " + LinkColour);
         }
         [Test]
         public void negativeSchoolTest()
@@ -202,12 +201,10 @@
             Actions.CallingClass.SearchViaSchoolurn("Carlos");
             SchoolDetailPage detailspage = new SchoolDetailPage();
             Assert.AreEqual(detailspage.schooldetailnotfoundmessage.Text, "No schools found");
-
-        }
+                    }
         [Test]
         public void Testtextoncomparisonpage()
         {
-
             BenchMarkActions.CreateBenchmarkViaDetailComparison("100000");
             DetailComparisonPage detatilscomparison = new DetailComparisonPage();
             Assert.IsTrue(detatilscomparison.General_Header.Displayed);
@@ -216,9 +213,6 @@
             Assert.IsTrue(detatilscomparison.WorkForce_Header.Displayed);
             Assert.AreEqual(detatilscomparison.SchooNameLink.Text, detatilscomparison.ComparingToText.Text);
             Assert.AreEqual(detatilscomparison.BodyText1.Text, "Which characteristics would you like to use for your comparison?");
-
-
-
         }
         [Test]
         public void IsmapDisplayed()

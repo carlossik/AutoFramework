@@ -26,7 +26,7 @@
         public void SetupBeforeEachTest()
         
         {
-            Actions.InitializeDriver("chrome");
+            Actions.InitializeDriver("IE");
          
         }
         [Test]
@@ -46,7 +46,7 @@
         //[Ignore("Ignore a test")]
         public void ManualBenchmarkViaLocation()
         {
-            BenchMarkActions.CreateManualBenchMarkViaLocation("143592");
+            BenchMarkActions.CreateManualBenchMarkViaLocation("100000");
             BenchMarkChartPage chartpage = new BenchMarkChartPage();
 
             Assert.AreEqual(chartpage.PageTitle.Text, "Benchmarking charts");
@@ -203,7 +203,7 @@
         [Test]
         public static void IncludeschoolswithIncFinanceAcademiesLaCode()
         {
-            DetailedComparisonActions.IncludeschoolswithIncFinanceAcademiesLaCode("145621", "879", "350","1035");
+            DetailedComparisonActions.IncludeschoolswithIncFinanceAcademiesLaCode("145621", "879", "350","1030");
             string errorText = "Some schools don't have a complete set of financial data for this period";
             Assert.IsTrue(Driver.driver.PageSource.Contains(errorText));
         }
@@ -275,10 +275,10 @@
                 var screenshot = ((ITakesScreenshot)Driver.driver).GetScreenshot();
                 var testName = TestContext.CurrentContext.Test.FullName;
                 screenshot.SaveAsFile(@"C:\TEMP\" + testName + ".jpg");
-                //Driver.driver.Close();
+                Driver.driver.Close();
                 Driver.driver.Quit();
             }
-            //Driver.driver.Close();
+            Driver.driver.Close();
             Driver.driver.Quit();
         }
     }

@@ -2,6 +2,7 @@
 {
     using OpenQA.Selenium;
     using OpenQA.Selenium.Support.PageObjects;
+    //using OpenQA.Selenium.Support
     using System;
 
     public class HomePage
@@ -13,7 +14,7 @@
             PageFactory.InitElements(Driver.driver, this);
 #pragma warning restore CS0618 // Type or member is obsolete
         }
-        [FindsBy(How = How.XPath,Using = "//*[@id=\"js - search - results - info\"]/div/p/span")]
+        [FindsBy(How = How.XPath, Using = "//*[@id=\"js - search - results - info\"]/div/p/span")]
         [CacheLookup]
         public IWebElement SearchResults { get; set; }
         [FindsBy(How = How.CssSelector, Using = "#SchoolOrCollegeNameId")]
@@ -26,49 +27,49 @@
         public IWebElement SearchSubmit { get; set; }
         [FindsBy(How = How.CssSelector, Using = "#FindByNameId")]
         public IWebElement SchoolsearchField { get; set; }
-        [FindsBy(How = How.Id,Using = "trustNameId")]
+        [FindsBy(How = How.Id, Using = "trustNameId")]
         public IWebElement TrustTickBox { get; set; }
         [FindsBy(How = How.CssSelector, Using = "#FindByTrustName")]
         public IWebElement TrustSearchInput { get; set; }
         [FindsBy(How = How.Id, Using = "TownOrCity")]
         public IWebElement LocationButton { get; set; }
-        [FindsBy(How = How.Id,Using = "FindSchoolByTown")]
+        [FindsBy(How = How.Id, Using = "FindSchoolByTown")]
         public IWebElement SearchByLocationField { get; set; }
-        [FindsBy(How = How.Id,Using = "FindCurrentPosition")]
+        [FindsBy(How = How.Id, Using = "FindCurrentPosition")]
         public IWebElement UseLocationLink { get; set; }
-        [FindsBy(How = How.Id,Using = "openOnlyLocation")]
+        [FindsBy(How = How.Id, Using = "openOnlyLocation")]
         public IWebElement OpenSchoolsOnly { get; set; }
-        [FindsBy(How = How.CssSelector,Using = "#SearchByTownFieldset > div:nth-child(4) > button:nth-child(3)")]
+        [FindsBy(How = How.CssSelector, Using = "#SearchByTownFieldset > div:nth-child(4) > button:nth-child(3)")]
         public IWebElement LocationSearchSubmitButton { get; set; }
         [FindsBy(How = How.Id, Using = "TrustLaCodeName")]
         public IWebElement LocalAuthoritySearchButton { get; set; }
-        [FindsBy(How = How.CssSelector,Using = "#FindTrustByLaCodeName")]
+        [FindsBy(How = How.CssSelector, Using = "#FindTrustByLaCodeName")]
         public IWebElement LacodeInputField { get; set; }
-        [FindsBy(How = How.CssSelector,Using = "#SearchByLaCodeNameFieldset > div:nth-child(3) > button")]
+        [FindsBy(How = How.CssSelector, Using = "#SearchByLaCodeNameFieldset > div:nth-child(3) > button")]
         public IWebElement LacodeSearchButton { get; set; }
         [FindsBy(How = How.CssSelector, Using = "#SearchByTrustNameFieldset > button:nth-child(4)")]
         public IWebElement TrustSubmit { get; set; }
-        [FindsBy(How = How.CssSelector,Using = "#TrustSearchByTownFieldset > div:nth-child(3) > button")]
+        [FindsBy(How = How.CssSelector, Using = "#TrustSearchByTownFieldset > div:nth-child(3) > button")]
         public IWebElement TrustLocationSubmit { get; set; }
         [FindsBy(How = How.Id, Using = "TrustTab")]
         public IWebElement TrustTab { get; set; }
-        [FindsBy(How = How.Id,Using = "trustNameId")]
+        [FindsBy(How = How.Id, Using = "trustNameId")]
         public IWebElement trustnameRadioButton { get; set; }
-        [FindsBy(How = How.Id,Using = "TrustTownOrCity")]
+        [FindsBy(How = How.Id, Using = "TrustTownOrCity")]
         public IWebElement TrustLocationButton { get; set; }
-        [FindsBy(How = How.Id,Using = "FindTrustByTown")]
+        [FindsBy(How = How.Id, Using = "FindTrustByTown")]
         public IWebElement TrustLocationField { get; set; }
-        [FindsBy(How = How.Id,Using = "LaCodeName")]
+        [FindsBy(How = How.Id, Using = "LaCodeName")]
         public IWebElement TrustLaCodeButton { get; set; }
         [FindsBy(How = How.Id, Using = "FindTrustByLaCodeName")]
         public IWebElement TrustLaCodeInputField { get; set; }
-        [FindsBy(How = How.CssSelector,Using = "#TrustSearchByLaCodeNameFieldset > div > button")]
+        [FindsBy(How = How.CssSelector, Using = "#TrustSearchByLaCodeNameFieldset > div > button")]
         public IWebElement TrustLacodeSearchButton { get; set; }
         [FindsBy(How = How.CssSelector, Using = "#FindSchoolByLaCodeName")]
         public IWebElement SchoolLacodeinputField { get; set; }
         [FindsBy(How = How.CssSelector, Using = ".tt-suggestion > a:nth-child(1)")]
         public IWebElement FirstIntellicenceSuggested { get; set; }
-        [FindsBy(How = How.CssSelector,Using = "#NoDefaultTab > button:nth-child(1)")]
+        [FindsBy(How = How.CssSelector, Using = "#NoDefaultTab > button:nth-child(1)")]
         public IWebElement NoDefaultSchoolTab { get; set; }
         [FindsBy(How = How.CssSelector, Using = "li.guidance__list__item:nth-child(5) > a:nth-child(1)")]
         public IWebElement SchoolorTrustDataQueryLink { get; set; }
@@ -76,6 +77,8 @@
         public IWebElement FirstSelectionOption { get; set; }
         [FindsBy(How = How.CssSelector, Using = "button.img-button:nth-child(2)")]
         public IWebElement SetasDefaultSchool { get; set; }
+        [FindsBy(How = How.Id,Using = "FindSchoolManuallyByTown")]
+        public IWebElement SearchLocationManually { get; set; }
 
 
 
@@ -87,7 +90,49 @@
             SearchSubmit.Click();
 
         }
-       
-      
+
+        public bool CheckBasketEmpty()
+        {
+            try
+            {
+                var editbasketLink = Driver.driver.FindElement(By.CssSelector(".banner__comparison-list-info-panel__edit-basket"));
+                bool basketNotEmpty = editbasketLink.Displayed;
+                Console.WriteLine(basketNotEmpty);
+                return basketNotEmpty;
+            }
+
+            catch (OpenQA.Selenium.NoSuchElementException e) { }
+
+            return false;
+        }
+    
+    
+        public void emptybasketBeforeTesting()
+        {
+            //var editbasketLink = Driver.driver.FindElement(By.CssSelector(".banner__comparison-list-info-panel__edit-basket"));
+
+            if (CheckBasketEmpty())//Driver.driver.FindElement(By.CssSelector(".banner__comparison-list-info-panel__edit-basket")).Displayed))
+            {
+                var editbasketLink = Driver.driver.FindElement(By.CssSelector(".banner__comparison-list-info-panel__edit-basket"));
+                editbasketLink.Click();
+                var clearBasket = Driver.driver.FindElement(By.CssSelector("button.benchmarkControls"));
+                clearBasket.Click();
+                var closeBasket = Driver.driver.FindElement(By.CssSelector(".back-link"));
+                closeBasket.Click();
+
+            }
+            else
+            {
+                Console.WriteLine("Nothig to clear here. Baskets are empty");
+            }
+            
+        }
+
+
+
+        //.banner__comparison-list-info-panel__edit-basket
+
+
     }
 }
+

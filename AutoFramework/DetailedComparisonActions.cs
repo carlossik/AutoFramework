@@ -43,7 +43,7 @@ namespace SFB_Test_Automation.AutoFramework
             detailpage.NumberOfPupilsCheckBox.Click();
             detailpage.MinNumberOfPupilsInputField.SendKeys("64");
             detailpage.MaxNumberOfPupilsInputBox.SendKeys("64");
-            Thread.Sleep(3000);
+            Thread.Sleep(300);
             string resultsnumbers = detailpage.SearchResultsCount.Text;
             String resultsdisplayed = (resultsnumbers);
             int resultsdisplayedint;

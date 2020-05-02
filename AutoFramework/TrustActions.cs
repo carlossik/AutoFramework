@@ -142,7 +142,7 @@
         }
         public static void TrustSearchWitNameUsingFirstSuggestedName(string TrustName)
         {
-            Actions.GoHome();
+            //Actions.GoHome();
             HomePage homepage = new HomePage();
             Thread.Sleep(100);
             homepage.TrustTab.Click();
@@ -150,7 +150,6 @@
             homepage.TrustSearchInput.Click();
             homepage.TrustSearchInput.SendKeys(TrustName);
             homepage.FirstSelectionOption.Click();
-
             Driver.driver.FindElement(By.CssSelector(".bold-small")).Click();
             Thread.Sleep(100);
         }

@@ -95,11 +95,9 @@
             BenchMarkActions.getclipboardTextmaximum();
             ReplaceCurrentBenchmarkbasketPage replace = new ReplaceCurrentBenchmarkbasketPage();
             replace.ReplaceBasket.Click();
-            Thread.Sleep(2000);
+            Thread.Sleep(200);
             Assert.IsTrue(Driver.driver.FindElement(By.CssSelector(".message")).Text == "Showing the 30 schools in your benchmark basket");
 
-
-            //hread.Sleep(30000);
         }
         [Test]
         public static void PasteBasketLessThan30SchoolsCancell()

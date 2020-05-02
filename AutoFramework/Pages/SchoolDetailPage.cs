@@ -34,7 +34,7 @@ namespace AutoFramework.Pages.PageElements
         public IWebElement SetasDefaultSchool { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".compare-buttons-panel__button--compare")]
         public IWebElement CompareWithOtherSchools { get; set; }
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = " a.add-remove-js:nth-child(3)")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = " a.add-remove-js:nth-child(4)")]
         public IWebElement AddToBenchMarkBasket { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector,Using = "#\\31 44406desktop > button:nth-child(2)")]
         public IWebElement FirstSearchItem { get; set; }

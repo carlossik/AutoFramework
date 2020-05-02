@@ -64,15 +64,28 @@ namespace AutoFramework.Pages
         public IWebElement ComparisonSchoolsTab { get; set; }
         [FindsBy(How = How.CssSelector, Using = ".banner__comparison-list-info-panel__count")]
         public IWebElement BasketCount { get; set; }
-        //[FindsBy(How = How.CssSelector, Using = ".banner__comparison-list-info-panel__count")]
-        //public IWebElement BasketCount { get; set; }
-
+        [FindsBy(How = How.Id, Using = "continue-button")]
+        public IWebElement page2of2ContinueButton { get; set; }
+        [FindsBy(How = How.Id, Using = "DefaultAccordion")]
+        public IWebElement Page2of2UseDefaultBasket { get; set; }
+        [FindsBy(How = How.Id, Using = "CustomBasketSize")]
+        public IWebElement Page2of2ChooseYourOwnBasketSize { get; set; }
+        [FindsBy(How = How.CssSelector, Using = ".column-one-third > a:nth-child(1)")]
+        public IWebElement Page2of2BackButton { get; set; }
+        [FindsBy(How = How.Id, Using = "la")]
+        public IWebElement page2of2WithintheLACheckBox { get; set; }
+        [FindsBy(How = How.Id, Using = "lafsm")]
+        public IWebElement page2of2EligifreeSchMealscheckBox { get; set; }
+        [FindsBy(How = How.Id, Using = "sen")]
+        public IWebElement page2of2PupilsWithEducationalneedsCheckBox { get; set; }
+        [FindsBy(How = How.Id, Using = "eal")]
+        public IWebElement page2of2PupilsWithEnglishCheckBox { get; set; }
         //IList<string> all = new List<string>();
         //foreach(var IWebElement in Driver.driver.FindElements(By.))
-        
+
         //foreach(var element in driver.FindElements(By.ClassName("comments"));
 
-}
+    }
 
     //[Find]
 }

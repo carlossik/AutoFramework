@@ -600,7 +600,7 @@
             public static void Verifybasket()
             {
                 Thread.Sleep(3000);
-                SearchSchoolViaName("plumcroft primary school");
+                SearchSchoolViaName("plumcroft ");
                 Thread.Sleep(3000);
                 SchoolDetailPage Schooldetails = new SchoolDetailPage();
                 SearchResultsPage resultspage = new SearchResultsPage();
@@ -704,11 +704,8 @@
                 Thread.Sleep(200);
                 bestinclass.QuckComparisonButton.Click();
                 bestinclass.Continue.Click();
-                bestinclass.DefaultChoice.Click();
                 bestinclass.Continue.Click();
-                bestinclass.MaintainedSchoolsChoice.Click();
-                bestinclass.Continue.Click();
-                bestinclass.ContinueToBenchMarkChartsButton.Click();
+                bestinclass.page2of2ContinueButton.Click();
                 Thread.Sleep(100);
             }
             public static void searchschoolwithIncompleteFinance(String urn)

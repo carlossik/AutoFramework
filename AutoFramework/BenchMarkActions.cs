@@ -115,11 +115,9 @@
             bestinclass.Continue.Click();
             bestinclass.MaintainedSchoolsChoice.Click();
             Thread.Sleep(20);
-            bestinclass.Continue.Click();
-                       
+            bestinclass.Continue.Click();        
             DetailComparisonPage detatilscomparison = new DetailComparisonPage();
             Thread.Sleep(3000);
-            //detatilscomparison.
             detatilscomparison.ViewBenchMarkCharts.Click();
             Thread.Sleep(3000);
            
@@ -130,18 +128,16 @@
             SchoolDetailPage detailspage = new SchoolDetailPage();
             detailspage.CompareWithOtherSchools.Click();
             BestInClass bestinclass = new BestInClass();
-            bestinclass.DetailComparisonButton.Click();
-                                 
+            bestinclass.DetailComparisonButton.Click();                  
             bestinclass.Continue.Click();
-            
             DetailComparisonPage details = new DetailComparisonPage();
-            
             bestinclass.Continue.Click();
             details.LAcode.Click();
             details.Lacodefield.SendKeys("202");
             bestinclass.Continue.Click();
              details.ViewBenchMarkCharts.Click();
-                    }
+             }
+
         public static void createbenchmarkviadefault(string urn)
         {
             Actions.CallingClass.SearchViaSchoolurn(urn);
@@ -149,28 +145,16 @@
             detailspage.CompareWithOtherSchools.Click();
             BestInClass bestinclass = new BestInClass();
             bestinclass.QuckComparisonButton.Click();
-
             bestinclass.Continue.Click();
-
-            bestinclass.DefaultChoice.Click();
-
             bestinclass.Continue.Click();
+            bestinclass.page2of2ContinueButton.Click();
            
-            bestinclass.AllSchoolsChoice.Click();
-            
-            bestinclass.Continue.Click();
-
-            bestinclass.ContinueToBenchMarkChartsButton.Click();
-            Thread.Sleep(30);
         }
         public static void costoffinance()
         {
             BenchMarkChartPage benchchartpage = new BenchMarkChartPage();
             benchchartpage.TotalExpenditureDropdown.Click();
-           
             benchchartpage.costOfFinance.Click();
-            //benchchartpage.costOfFinance.SendKeys(OpenQA.Selenium.Keys.Enter);
-
             Thread.Sleep(30000);
             
 
@@ -180,12 +164,7 @@
             BenchMarkChartPage benchchartpage = new BenchMarkChartPage();
             benchchartpage.PercenTageOfTotalOption.Click();
             benchchartpage.IncomeTab.Click();
-            
-
-           
             Thread.Sleep(3000);
-
-
         }
 
         public static void NavigateToBestInClassComparisonSchoolsTab()
@@ -193,33 +172,27 @@
             BenchMarkChartPage benchchartpage = new BenchMarkChartPage();
             benchchartpage.BestInClassComparisonSchoolsTab.Click();
             Thread.Sleep(4000);
-
         }
         public static void NavigateToOtherComparisonSchoolsTab()
         {
             BenchMarkChartPage benchchartpage = new BenchMarkChartPage();
             benchchartpage.OtherComparisonSchoolsTab.Click();
             Thread.Sleep(1000);
-
         }
         public static void getclipboardText()
-        {
-
-           
+        {  
             string myURL = Clipboard.GetText();
             Driver.driver.Navigate().GoToUrl(Config.currentTestEnv+"BenchmarkCharts/GenerateFromSavedBasket?urns=125249-116423-141874-144929-137598-126473-141341-112399-115775-136311-112936-145124-138920-138478-135620");
             Thread.Sleep(20);
         }
         public static void getclipboardTextmaximum()
         {          
-           
             Driver.driver.Navigate().GoToUrl(Config.currentTestEnv +"BenchmarkCharts/GenerateFromSavedBasket?urns=123422-123445-119464-142078-139804-134117-139927-114033-122258-111668-114110-119534-139806-141358-117833-111393-143953-142014-111718-112806-116123-120492-114270-139511-111301-141121-140505-112705-120479-134214-145789");
         }
         public static void addschoolvianameorlocationlink()
         {
             BenchMarkChartPage benchchartpage = new BenchMarkChartPage();
             benchchartpage.AddanotherschoolLink.Click();
-
         }
 
     }

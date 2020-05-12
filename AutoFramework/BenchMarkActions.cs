@@ -59,7 +59,7 @@
             Actions.AddAnotherSchoolManually();
             SearchResultsPage resultspage = new SearchResultsPage();
             //resultspage.FirstElementPresented.Click();
-            Thread.Sleep(2000);
+            Thread.Sleep(200);
             resultspage.AddFirstResult.Click();
             Thread.Sleep(2000);
             //resultspage.ViewBenchmarkChartsButton.Click();

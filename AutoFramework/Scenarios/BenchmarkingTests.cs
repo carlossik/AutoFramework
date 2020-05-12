@@ -26,7 +26,7 @@
         public void SetupBeforeEachTest()
         
         {
-            Actions.InitializeDriver("IE");
+            Actions.InitializeDriver("chrome");
          
         }
         [Test]

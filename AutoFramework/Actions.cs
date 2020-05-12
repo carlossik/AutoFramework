@@ -493,7 +493,7 @@
             homepage.TrustLacodeSearchButton.Click();
             Thread.Sleep(10000);
         }
-        public static void selectFirstSchool()
+        public static void selectFirstSchoolInTrusts()
         {
             SearchResultsPage resultsPage = new SearchResultsPage();
             resultsPage.ViewTrustSchools.Click();
@@ -554,6 +554,12 @@
             TrustComparisonPage trustComaprison = new TrustComparisonPage();
             Thread.Sleep(500);
             trustComaprison.Compare_withOtherTrusts.Click();
+            Thread.Sleep(500);
+            trustComaprison.EnterTrustForComparisonOption.Click();
+            Thread.Sleep(500);
+            trustComaprison.EnterTrustforCompareNameField.SendKeys("Ark Schools");
+            trustComaprison.EnterTrustforCompareNameField.SendKeys(Keys.Enter);
+            Driver.driver.FindElement(By.CssSelector(".tt-suggestion > a:nth-child(1)")).Click();
             Thread.Sleep(500);
             trustComaprison.ViewBenchMarkingCharts.Click();
             Thread.Sleep(500);
@@ -661,7 +667,7 @@
                         Console.WriteLine(urn);
                         Console.WriteLine(Driver.driver.FindElement(By.CssSelector(".metadata > dd:nth - child(24)")).Text);
                     }
-                    catch (NoSuchElementException) { continue; }
+                    catch (NoSuchElementException) {Console.WriteLine("There may be an issue with this school" + ""+ urn); continue; }
                 }
             }
             public static void verifylalink()

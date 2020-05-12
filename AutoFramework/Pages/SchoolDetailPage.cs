@@ -34,7 +34,7 @@ namespace AutoFramework.Pages.PageElements
         public IWebElement SetasDefaultSchool { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".compare-buttons-panel__button--compare")]
         public IWebElement CompareWithOtherSchools { get; set; }
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = " a.add-remove-js:nth-child(4)")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = " a.add-remove-js:nth-child(3)")]
         public IWebElement AddToBenchMarkBasket { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector,Using = "#\\31 44406desktop > button:nth-child(2)")]
         public IWebElement FirstSearchItem { get; set; }
@@ -74,7 +74,7 @@ namespace AutoFramework.Pages.PageElements
         //public IWebElement DealsForSchools_Link { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = "span.twitter-typeahead:nth-child(3) > div:nth-child(4)")]
         public IWebElement FirstOptionOnSchoolsearch { get; set; }
-        [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = ".heading-xlarge")]
+        [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = ".error-summary")]
         public IWebElement schooldetailnotfoundmessage { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = ".message")]
         public IWebElement SchooldetailInfoPanel { get; set; }

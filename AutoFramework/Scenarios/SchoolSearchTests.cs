@@ -46,7 +46,7 @@
             Actions.schoolSearchwithLaestab("8782446");
             SchoolDetailPage detailspage = new SchoolDetailPage();
             Assert.IsTrue(detailspage.School_Name.Displayed);
-            Assert.AreEqual((detailspage.School_Name).Text, Driver.driver.FindElement(By.XPath("/html/body/div/div[9]/main/h1")).Text);
+            Assert.AreEqual((detailspage.School_Name).Text, Driver.driver.FindElement(By.CssSelector(".heading-xlarge")).Text); //.heading-xlarge///html/body/div/div[9]/main/div[1]/div[1]/h1
             Assert.IsTrue(detailspage.Telephone_Number.Displayed);
             Assert.IsTrue(detailspage.OfstedRating.Displayed);
             Assert.IsTrue(detailspage.DataFromOtherSources.Displayed);
@@ -87,7 +87,7 @@
 
             Actions.SearchClosedschool("3032004");
             SchoolDetailPage detailspage = new SchoolDetailPage();
-            Assert.IsTrue(detailspage.schooldetailnotfoundmessage.Text.Contains("No schools found"));
+            Assert.IsTrue(detailspage.schooldetailnotfoundmessage.Text.Contains("There are errors on this page that require attention"));
             Console.WriteLine(detailspage.schooldetailnotfoundmessage.Text);
             
            
@@ -200,8 +200,10 @@
         {
             Actions.CallingClass.SearchViaSchoolurn("Carlos");
             SchoolDetailPage detailspage = new SchoolDetailPage();
-            Assert.AreEqual(detailspage.schooldetailnotfoundmessage.Text, "No schools found");
-                    }
+           // Assert.IsTrue(detailspage.schooldetailnotfoundmessage.Text.Contains) "There are errors on this page that require attention.");
+            Assert.That(detailspage.schooldetailnotfoundmessage.Text.Contains("There are errors on this page that require attention"));
+                
+        }    
         [Test]
         public void Testtextoncomparisonpage()
         {
@@ -212,7 +214,7 @@
             Assert.IsTrue(detatilscomparison.Performance_Header.Displayed);
             Assert.IsTrue(detatilscomparison.WorkForce_Header.Displayed);
             Assert.AreEqual(detatilscomparison.SchooNameLink.Text, detatilscomparison.ComparingToText.Text);
-            Assert.AreEqual(detatilscomparison.BodyText1.Text, "Which characteristics would you like to use for your comparison?");
+            //Assert.AreEqual(detatilscomparison.BodyText1.Text, "Which characteristics would you like to use for your comparison?");
         }
         [Test]
         public void IsmapDisplayed()

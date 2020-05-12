@@ -50,7 +50,11 @@ namespace SFB_Test_Automation.AutoFramework.Pages
 
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".heading-xlarge")]
         public IWebElement TrustName { get; set; }
-
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id,Using = "EnterTrustManuallyAccordion")]
+        public IWebElement EnterTrustForComparisonOption { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "NewTrustName")]
+        public IWebElement EnterTrustforCompareNameField { get; set; }
+        //NewTrustName
 
 
 

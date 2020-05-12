@@ -54,11 +54,11 @@ namespace SFB_Test_Automation.AutoFramework.Pages
         public IWebElement AllOfEnglandRadio { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "LaCodeRadio")]
         public IWebElement LAcodeRadio { get; set; }
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "LaName")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "LaCodeRadio")]
         public IWebElement LAnameRadio { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "FindSchoolByLaCode")]
         public IWebElement LAcodeinputfield { get; set; }
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "FindSchoolByLaName")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "#FindSchoolByLaCode")]
         public IWebElement LANameinputfield { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector,Using = "#AllFieldset > div > input[type=checkbox]")]
         public IWebElement AllSchoolsExcludecheckbox { get; set; }

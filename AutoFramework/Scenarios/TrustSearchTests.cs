@@ -69,8 +69,8 @@
         {
             Actions.TrustSearchWithCompanynumber("8929778");
             TrustComparisonPage trustcomparison = new TrustComparisonPage();
-            string Errormessage = Driver.driver.FindElement(By.ClassName("heading-xlarge")).Text;
-            Assert.AreEqual(Errormessage, "We found no matches for \"8929778\"");
+            string Errormessage = Driver.driver.FindElement(By.ClassName("error-message")).Text;
+            Assert.AreEqual(Errormessage, "We couldn't find any trusts matching your search criteria");
         }
 
 
@@ -190,10 +190,12 @@
         {
             Actions.SearchTrustViaLocalAuthority("303");
             SearchResultsPage resultsPage = new SearchResultsPage();
-            Actions.selectFirstSchool();
-            Console.WriteLine(resultsPage.elementList);
-            Console.WriteLine(resultsPage.schoolsinlink);
-            Assert.IsTrue(resultsPage.elementList == resultsPage.schoolsinlink);
+            //Actions.selectFirstSchool();
+            
+            Console.WriteLine("These are the results counted " + resultsPage.ResultsfromLinksCount);
+            int final_results = (resultsPage.ResultsfromLinksCount);
+            Console.WriteLine("These are the results displayed " + (resultsPage.Allresultsdisplayed.Text));
+            Assert.IsTrue((resultsPage.Allresultsdisplayed.Text) == (final_results.ToString()));
         }
         [Test]
         [Ignore("Ignore a test")]
@@ -214,7 +216,7 @@
         {
             Actions.SearchTrustViaLocalAuthority("890");
             SearchResultsPage resultsPage = new SearchResultsPage();
-            Actions.selectFirstSchool();
+            Actions.selectFirstSchoolInTrusts();
             string schooname = resultsPage.viewtrustschoolsFirstLink.Text;
             resultsPage.viewtrustschoolsFirstLink.Click();
             Thread.Sleep(1000);
@@ -226,7 +228,7 @@
         {
             Actions.SearchTrustViaLocalAuthority("890");
             SearchResultsPage resultsPage = new SearchResultsPage();
-            Actions.selectFirstSchool();
+            Actions.selectFirstSchoolInTrusts();
             string schooname = resultsPage.viewtrustschoolsFirstLink.Text;
             resultsPage.viewtrustschoolsFirstLink.Click();
             Thread.Sleep(1000);

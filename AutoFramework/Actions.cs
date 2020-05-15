@@ -132,9 +132,10 @@
         public static void defaultsSchool()
         {
             
-            Actions.CallingClass.SearchViaSchoolurn("119182");
+            Actions.CallingClass.SearchViaSchoolurn("100000");
             Thread.Sleep(100);
             SchoolDetailPage detailspage = new SchoolDetailPage();
+            Thread.Sleep(100);
             detailspage.SetasDefaultSchool.Click();
             Thread.Sleep(100);
             detailspage.CompareWithOtherSchools.Click();
@@ -154,7 +155,7 @@
             CallingClass.SearchViaSchoolurn("119182");
             SchoolDetailPage Schooldetails = new SchoolDetailPage();
             Schooldetails.OneClickReportingLink.Click();
-            Thread.Sleep(2000);
+            //Thread.Sleep(2000);
         }
         public static void OnclickReportingLondonTest(string LondonSchool)
         {
@@ -522,7 +523,7 @@
             OnclickReportingTest();
             BenchMarkChartPage benchmarkpage = new BenchMarkChartPage();
             benchmarkpage.Downloadata.Click();
-            Thread.Sleep(1000);
+            //Thread.Sleep(1000);
         }
         public static void downloadppt()
         {

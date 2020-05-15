@@ -24,7 +24,7 @@
         public void SetupBeforeEachTest()
 
         {
-            Actions.InitializeDriver("chrome");
+            Actions.InitializeDriver("IE");
         }
         [Test]
         public void TrustSearch()
@@ -126,7 +126,7 @@
         [Test]
         public void TrustPerformanceLink()
         {
-            //TrustActions.TrustPerformanceLinksViaLacode("303");
+            
             TrustActions.getCompanyNumber();
         }
         [Test]
@@ -144,7 +144,7 @@
             Console.WriteLine(Driver.driver.FindElement(By.CssSelector(".count-js")).Text);
             Assert.IsTrue(Convert.ToInt32(numberOfSchools) > 0);
             Assert.IsTrue(Driver.driver.FindElement(By.CssSelector(".heading-xlarge")).Text == "Academy trusts with schools operating in Bexley");
-            //test company number links to gias 
+            
         }
         [Test]
         public void verifyCompaniesHouseNumberOnTrustLASearchResults()
@@ -159,8 +159,7 @@
             SearchResultsPage resultsPage = new SearchResultsPage();
             Assert.IsTrue(Driver.driver.FindElement(By.CssSelector("li.school-document:nth-child(1) > div:nth-child(1) > a:nth-child(1)")).Text == "Academies Enterprise Trust");
             Console.WriteLine(resultsPage.FirstElementPresented.Text);
-            //var cells = WebDriver.FindElements(locator);
-            //Assert.IsTrue(cells.OrderBy(c => c.Text).SequenceEqual(cells));
+           
         }
         [Test]
         public void verifySortedByDistanceZtoA()
@@ -309,9 +308,11 @@
             Assert.IsTrue(CompareWithOtherTrustsButton.Displayed);
             String CompaniesHouseNumber = Driver.driver.FindElement(By.CssSelector(".ml-05")).Text;
             Console.WriteLine(CompaniesHouseNumber);
-            Assert.IsTrue(Driver.driver.FindElement(By.CssSelector(".ml-05")).Displayed);
-            Assert.IsTrue((Driver.driver.Url) == ("https://as-t1dv-sfb.azurewebsites.net/trust/index?companyNo=" + CompaniesHouseNumber));
             Console.WriteLine(Driver.driver.Url);
+            Console.WriteLine((Config.currentTestEnv + "/trust/index?companyNo=" + CompaniesHouseNumber));
+            Assert.IsTrue(Driver.driver.FindElement(By.CssSelector(".ml-05")).Displayed);
+            Assert.IsTrue((Driver.driver.Url) == (Config.currentTestEnv +"trust/index?companyNo="+CompaniesHouseNumber));
+           
 
 
         }

@@ -21,8 +21,8 @@
         public void SetupBeforeEachTest()
         
         {
-           Actions.InitializeDriver("chrome");
-            //Actions.InitializeFireFoxDriver();
+           Actions.InitializeDriver("IE");
+            
 
 
         }
@@ -190,10 +190,11 @@
             String LinkColour = Driver.driver.FindElement(By.CssSelector(".form-group > fieldset:nth-child(1) > p:nth-child(2) > a:nth-child(1)")).GetCssValue("color"); 
             String BackGroundColor = Driver.driver.FindElement(By.XPath("/html/body/div/div[8]/main/div/div/div/span")).GetCssValue("background-color");
             String ExpectedColor = ("rgba(0, 94, 165, 1)");
-            Assert.AreEqual(ExpectedColor,LinkColour);
             Console.WriteLine( "Colour of Text " + Textcolor);//Assert to follow
             Console.WriteLine("BackGround Colour " + BackGroundColor);//element.getCssValue("color");
             Console.WriteLine("Colour of HyperLink " + LinkColour);
+            Console.WriteLine("Expected Colour " + ExpectedColor);
+            Assert.IsTrue(ExpectedColor.Contains("0, 94, 165"));
         }
         [Test]
         public void negativeSchoolTest()

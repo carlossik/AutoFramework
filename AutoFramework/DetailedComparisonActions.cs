@@ -2,6 +2,7 @@
 using AutoFramework.Pages;
 using AutoFramework.Pages.PageElements;
 using NUnit.Framework;
+using OpenQA.Selenium;
 using SFB_Test_Automation.AutoFramework.Pages;
 using System;
 using System.Collections.Generic;
@@ -121,7 +122,9 @@ namespace SFB_Test_Automation.AutoFramework
             detailpage.General_Header.Click();
             detailpage.NumberOfPupilsCheckBox.Click();
             detailpage.MinNumberOfPupilsInputField.SendKeys(minpupils);
-            detailpage.MaxNumberOfPupilsInputBox.SendKeys(maxpupils);
+            Thread.Sleep(100);
+            detailpage.MaxNumberOfPupilsInputBox.SendKeys(maxpupils + Keys.Enter);
+            //detailpage.MaxNumberOfPupilsInputBox.SendKeys(Keys.ENTER);
             Thread.Sleep(4000);
             detailpage.ViewBenchMarkCharts.Click();
             Thread.Sleep(4000);

@@ -24,7 +24,7 @@
         {
 
 
-            Actions.InitializeDriver("chrome");
+            Actions.InitializeDriver("firefox");
            // Actions.InitializeFireFoxDriver();
             //Actions.FillLoginForm();
         }
@@ -94,6 +94,7 @@
         public void TestToAndFromFieldsNumOfPupils()
         {
             DetailedComparisonActions.IncludeschoolswithIncFinanceAcademiesAllEngland("144407", "64", "50");
+            
             string errorText = "'From' value can not be greater than the 'To' value";
             Assert.IsTrue(Driver.driver.PageSource.Contains(errorText));
         }

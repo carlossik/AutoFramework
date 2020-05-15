@@ -7,7 +7,6 @@
 
     public class HomePage
     {
-        //private String URL = "https://as-t1dv-sfb.azurewebsites.net/";
         public HomePage()
         {
 #pragma warning disable CS0618 // Type or member is obsolete
@@ -77,13 +76,10 @@
         public IWebElement FirstSelectionOption { get; set; }
         [FindsBy(How = How.CssSelector, Using = "button.img-button:nth-child(2)")]
         public IWebElement SetasDefaultSchool { get; set; }
+        [FindsBy(How = How.CssSelector, Using = "button.img-button:nth-child(1) > span:nth-child(2)")]
+        public IWebElement UnSetasDefaultSchool { get; set; }
         [FindsBy(How = How.Id,Using = "FindSchoolManuallyByTown")]
         public IWebElement SearchLocationManually { get; set; }
-
-
-
-
-
 
         public void ClickOnSearchButton()
         {

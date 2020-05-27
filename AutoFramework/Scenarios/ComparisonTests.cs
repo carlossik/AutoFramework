@@ -134,8 +134,8 @@
         
         public void DisplayComparisonschoolsTab()
         {
-            DetailedComparisonActions.IncludeschoolswithIncFinanceAcademiesAllEngland("144407", "64", "50");
-            //assert to come here
+            DetailedComparisonActions.IncludeschoolswithIncFinanceAcademiesAllEngland("144407", "64", "65");
+            Assert.IsTrue(Driver.driver.FindElement(By.CssSelector("#ComparisonSchools > a:nth-child(1)")).Displayed);
         }
         [Test]
         public void detailedComparisonOptions()

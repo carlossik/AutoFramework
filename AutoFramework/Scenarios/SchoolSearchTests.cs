@@ -21,7 +21,7 @@
         public void SetupBeforeEachTest()
         
         {
-           Actions.InitializeDriver("IE");
+           Actions.InitializeDriver("chrome");
             
 
 
@@ -126,7 +126,7 @@
 
         }
         [Test]
-        [Ignore("Ignore a test")]
+        
         public void testclosebasketviaresultspage()
         {
             
@@ -174,7 +174,7 @@
 
         }
        [Test]
-        [Ignore("Ignore a test")]
+       // [Ignore("Ignore a test")]
         public void EditBasketAddSchools()
         {   
             Actions.CallingClass.AddSchools();
@@ -226,11 +226,11 @@
 
         }
         [Test]
-        [Ignore("Ignore a test")]
+        //[Ignore("Ignore a test")]
         public void testrefineto30schools()
         {
             BenchMarkActions.refineto30schools("135747");
-           //Assert.IsTrue(Driver.driver.FindElement(By.Id("modal-content")).Displayed);
+           Assert.IsTrue(Driver.driver.FindElement(By.Id("modal-content")).Displayed);
         }
         [Test]
         public void testrefineZeroschoolsfound()

@@ -96,26 +96,22 @@
             else if (browser == ("IE"))
 
             {
-                // DesiredCapabilities capabilities = DesiredCapabilities.internetExplorer();
-                //capabilities.setCapability(InternetExplorerDriver.IE_ENSURE_CLEAN_SESSION, true);
-                
-
-
+                 
                 Driver.driver = new InternetExplorerDriver();
                 DesiredCapabilities capabilities = new DesiredCapabilities();
-                //capabilities.SetCapability(InternetExplorerDriver);
                 Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
-                //capabilities.SetCapability("zal:name", "TEST NAME");//InternetExplorerDriverService.CreateDefaultService());
-
+                IWebElement AcceptCookies = Driver.driver.FindElement(By.Id("acceptAllCookies"));
+                if (AcceptCookies.Displayed)
+                { AcceptCookies.Click(); }
+                IWebElement HideCookieBanner = Driver.driver.FindElement(By.Id("acceptAllCookiesHide"));
+                if (HideCookieBanner.Displayed)
+                { HideCookieBanner.Click(); }
+              
                 Thread.Sleep(1000);
                 Driver.driver.Manage().Window.Maximize();
-                HomePage page = new HomePage();
-                if (page.CheckBasketEmpty().ToString() == "True")
-                { page.emptybasketBeforeTesting(); }
-                //page.emptybasketBeforeTesting();
                 Driver.driver.Navigate().Refresh();
-                Thread.Sleep(500);
-                Driver.driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+                Thread.Sleep(1000);
+                Driver.driver.Manage().Window.Maximize();
                 if (Driver.driver.Url.Contains("Login"))
                 {
                     Actions.FillLoginForm();
@@ -125,6 +121,14 @@
                     Console.Write("There is no Logoin Required here....");
                 }
 
+                HomePage page = new HomePage();
+                if (page.CheckBasketEmpty().ToString() == "True")
+                { page.emptybasketBeforeTesting(); }
+                //page.emptybasketBeforeTesting();
+                Driver.driver.Navigate().Refresh();
+                Thread.Sleep(500);
+                Driver.driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+               
             }
         }
 
@@ -430,6 +434,9 @@
             BenchMarkBasketPage basketpage = new BenchMarkBasketPage();
             Thread.Sleep(100);
             basketpage.clear_basket.Click();
+ 
+            Thread.Sleep(2000);
+           
             basketpage.CloseBasket.Click();
 
             
@@ -812,12 +819,15 @@
                 Verifybasket();
                 SchoolDetailPage detailpage = new SchoolDetailPage();
                 detailpage.EditBasket.Click();
+                Thread.Sleep(3000);
                 BenchMarkBasketPage basketpage = new BenchMarkBasketPage();
-                basketpage.AddSchools.Click();
+              
+                Driver.driver.FindElement(By.CssSelector("a.benchmarkControls")).Click();//need to create a new class for manual benchmark page
+                
                 HomePage home = new HomePage();
                 home.School.Click();
                 Thread.Sleep(3000);
-                home.SchoolsearchField.SendKeys("142295");
+                home.SchoolsearchField.SendKeys("100231");
                 Thread.Sleep(200);
                 home.SearchSubmit.Click();
                 Thread.Sleep(1000);
@@ -841,7 +851,6 @@
                 Thread.Sleep(2000);
                 chartpage.AddanotherschoolLink.Click();
             }
-
 
         }
     }

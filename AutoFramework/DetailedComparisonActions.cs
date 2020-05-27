@@ -123,7 +123,8 @@ namespace SFB_Test_Automation.AutoFramework
             detailpage.NumberOfPupilsCheckBox.Click();
             detailpage.MinNumberOfPupilsInputField.SendKeys(minpupils);
             Thread.Sleep(100);
-            detailpage.MaxNumberOfPupilsInputBox.SendKeys(maxpupils + Keys.Enter);
+            detailpage.MaxNumberOfPupilsInputBox.SendKeys(maxpupils );
+            Thread.Sleep(100);
             //detailpage.MaxNumberOfPupilsInputBox.SendKeys(Keys.ENTER);
             Thread.Sleep(4000);
             detailpage.ViewBenchMarkCharts.Click();

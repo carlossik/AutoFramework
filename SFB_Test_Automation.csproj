@@ -163,7 +163,6 @@
     <Content Include="packages\Selenium.WebDriver.3.141.0\lib\net45\WebDriver.xml" />
     <Content Include="packages\Selenium.WebDriver.3.141.0\lib\netstandard2.0\WebDriver.dll" />
     <Content Include="packages\Selenium.WebDriver.3.141.0\lib\netstandard2.0\WebDriver.xml" />
-    <Content Include="packages\Selenium.WebDriver.ChromeDriver.73.0.3683.68\driver\win32\chromedriver.exe" />
     <Content Include="packages\WebDriver.GeckoDriver.0.20.1\content\geckodriver.exe" />
   </ItemGroup>
   <ItemGroup>
@@ -260,10 +259,6 @@
     <None Include="packages\Selenium.Support.3.141.0\Selenium.Support.3.141.0.nupkg" />
     <None Include="packages\Selenium.WebDriver.3.141.0\.signature.p7s" />
     <None Include="packages\Selenium.WebDriver.3.141.0\Selenium.WebDriver.3.141.0.nupkg" />
-    <None Include="packages\Selenium.WebDriver.ChromeDriver.73.0.3683.68\.signature.p7s" />
-    <None Include="packages\Selenium.WebDriver.ChromeDriver.73.0.3683.68\build\Selenium.WebDriver.ChromeDriver.targets" />
-    <None Include="packages\Selenium.WebDriver.ChromeDriver.73.0.3683.68\driver\linux64\chromedriver" />
-    <None Include="packages\Selenium.WebDriver.ChromeDriver.73.0.3683.68\driver\mac64\chromedriver" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutoFramework\BenchMarkActions.cs" />

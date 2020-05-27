@@ -17,7 +17,7 @@ namespace AutoFramework.Pages.PageElements
         {
 
 
-            //SeleniumExtras.PageObjects.PageFactory();
+            SeleniumExtras.PageObjects.PageFactory.InitElements(Driver.driver, this);
         }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".back-link")]
         //[SeleniumExtras.PageObjects.CacheLookup]
@@ -42,9 +42,9 @@ namespace AutoFramework.Pages.PageElements
         public IWebElement emailLink { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".add-schools > span:nth-child(2)")]
         public IWebElement add_schools { get; set; }
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "button.benchmarkControls")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "/html/body/div/div[8]/main/div[2]/div/div[1]/div/button")]
         public IWebElement clear_basket { get; set; }
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".back-link")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "/html/body/div/div[7]/div/div/a/span")]
         public IWebElement close_basket { get; set; }
 
         //a.benchmarkControls

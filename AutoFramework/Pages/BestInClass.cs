@@ -80,6 +80,8 @@ namespace AutoFramework.Pages
         public IWebElement page2of2PupilsWithEducationalneedsCheckBox { get; set; }
         [FindsBy(How = How.Id, Using = "eal")]
         public IWebElement page2of2PupilsWithEnglishCheckBox { get; set; }
+        [FindsBy(How = How.CssSelector, Using = "div.column-one-third:nth-child(1) > button:nth-child(1)")]
+        public IWebElement WhereShouldTheComparisonComeFromcontbutton { get; set; }
         //IList<string> all = new List<string>();
         //foreach(var IWebElement in Driver.driver.FindElements(By.))
 

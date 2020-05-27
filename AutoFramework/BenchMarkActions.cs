@@ -118,6 +118,7 @@
             bestinclass.Continue.Click();        
             DetailComparisonPage detatilscomparison = new DetailComparisonPage();
             Thread.Sleep(3000);
+            bestinclass.WhereShouldTheComparisonComeFromcontbutton.Click();
             detatilscomparison.ViewBenchMarkCharts.Click();
             Thread.Sleep(3000);
            

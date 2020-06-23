@@ -23,12 +23,37 @@
         {
 
         }
+        public static void InitializeDriverWithoutOptions(String browser)
+        {
+            if (browser == ("chrome"))
+            {
+
+                Driver.driver = new ChromeDriver();
+                Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
+                Thread.Sleep(2000);
+                
+            }
+            else if (browser == ("firefox"))
+            {
+               
+                Driver.driver = new FirefoxDriver();
+
+                Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
+            }
+            else if (browser == ("IE"))
+            {
+                Driver.driver = new InternetExplorerDriver();
+                Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
+            }
+
+        }
 
 
         public static void InitializeDriver(String browser)
         {
             if (browser == ("chrome"))
             {
+                
                 Driver.driver = new ChromeDriver();
                 Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
                 Thread.Sleep(2000);
@@ -255,6 +280,15 @@
         {
 
         }
+
+        public static void testExcludeIncludeCheckboxSchName(string urn)
+        {
+            HomePage homepage = new HomePage();
+            homepage.School.Click();
+            homepage.SchoolsearchField.SendKeys(urn);
+            homepage.IncludeSchoolsCheckbox.Click();
+            Thread.Sleep(2000);
+        }
         public static void SearchClosedschool(string urn)
         {
             HomePage homepage = new HomePage();
@@ -300,22 +334,33 @@
         public static void gotonewspage()
 
         {
+            Thread.Sleep(1000);
+            HomePage home = new HomePage();
+            home.NewsLink.Click();
+            Thread.Sleep(100);
+        }
+        public static void gotonewspagefrombanner()
+        {
             Driver.driver.Close();
-            Driver.driver = new ChromeDriver();
-            Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
+            InitializeDriverWithoutOptions(Config.DriverUnderTest);
+           
+            Thread.Sleep(1000);
+            Driver.driver.Manage().Window.Maximize();
             IWebElement AcceptCookies = Driver.driver.FindElement(By.Id("acceptAllCookies"));
+            //SearchSchool2("100140");
+            //Driver.driver.Navigate().Refresh();
+            //Thread.Sleep(10000);
             AcceptCookies.Click();
             IWebElement HideCookieBanner = Driver.driver.FindElement(By.Id("acceptAllCookiesHide"));
             HideCookieBanner.Click();
-            Thread.Sleep(1000);
-            Driver.driver.Manage().Window.Maximize();
             Driver.driver.Navigate().Refresh();
-            Thread.Sleep(1000);
+            Thread.Sleep(10000);
             IWebElement gotonewspage = Driver.driver.FindElement(By.XPath("/html/body/dialog/div/div/div/a"));
             gotonewspage.Click();
-            Thread.Sleep(100);
         }
-        
+
+
+
 
 
         public static void AllThroughBIC(string LAname)
@@ -363,16 +408,16 @@
             homepage.trustnameRadioButton.Click();
             homepage.TrustSearchInput.SendKeys(companynumber);
             Thread.Sleep(500);
-            homepage.TrustSubmit.Click();
+            homepage.TrustSubmitButton.Click();
             Thread.Sleep(500);
         }
-        public static void SearchByLocationManualEntry()
+        public static void SearchByLocationUsingPostcode(string postcode)
         {
             HomePage homepage = new HomePage();
             homepage.LocationButton.Click();
             homepage.SearchByLocationField.Click();
             //homepage.SearchByLocationField.Clear();
-            homepage.SearchByLocationField.SendKeys(Config.Credentials.PostCode.Postcode);
+            homepage.SearchByLocationField.SendKeys(postcode);
             homepage.LocationSearchSubmitButton.Click();
             Driver.driver.FindElement(By.CssSelector("li.document:nth-child(1) > a:nth-child(1)")).Click();
             Thread.Sleep(200);
@@ -423,9 +468,9 @@
             resultspage.paginationSecondPage.Click();
             resultspage.paginationPreviousButton.Click();
         }
-        public static void addtobasketviaresultspage()
+        public static void addtobasketviaresultspage(string postcode)
         {
-            SearchByLocationManualEntry();
+            SearchByLocationUsingPostcode(postcode);
             SearchResultsPage resultspage = new SearchResultsPage();
             resultspage.AddFirstResult.Click();
             Thread.Sleep(200);
@@ -491,12 +536,20 @@
             ViewSchoolsInTrust();
 
         }
+        public static void searchSchoolViaLaCode(string lacode)
+        {
+            HomePage homepage = new HomePage();
+            //homepage.LacodeSearchButton.Click();
+            homepage.LacodeSearchButton.Click();
+            homepage.LacodeInputField.SendKeys(lacode);
+            Thread.Sleep(2000);
+        }
         public static void SearchTrustViaLocalAuthority(String LAcode)
         {
             HomePage homepage = new HomePage();
             Thread.Sleep(100);
             homepage.TrustTab.Click();
-            homepage.LocalAuthoritySearchButton.Click();
+            homepage.LocalAuthorityTrustSearchButton.Click();
             homepage.TrustLaCodeInputField.SendKeys(LAcode);
             homepage.TrustLacodeSearchButton.Click();
             Thread.Sleep(10000);
@@ -579,7 +632,7 @@
             {
                 HomePage homepage = new HomePage();
                 homepage.TrustTab.Click();
-                homepage.LocalAuthoritySearchButton.Click();
+                homepage.LocalAuthorityTrustSearchButton.Click();
                 Thread.Sleep(300);
                 homepage.LacodeInputField.SendKeys(lacode);
                 homepage.TrustLacodeSearchButton.Click();

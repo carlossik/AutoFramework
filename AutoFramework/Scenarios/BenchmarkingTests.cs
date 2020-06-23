@@ -135,6 +135,13 @@
             DetailedComparisonActions.ExcludeschoolswithIncFinanceAcademiesAllEngland("141976", "239", "240");
             string errorText = "Some schools don't have a complete set of financial data for this period";
             Assert.IsFalse(Driver.driver.PageSource.Contains(errorText));
+        }
+        [Test]
+        public static void veryifyP8Bandingforsecondariescolour()
+        {
+            //We test here to ensure that secondary schools have p8 banding background colour
+            DetailedComparisonActions.detailedComparisonOnlySecondarySchools("Da7 5ss");
+           
 
         }
         [Test]

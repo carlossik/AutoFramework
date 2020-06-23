@@ -35,6 +35,7 @@
             manualaddition.ManualContinueButton.Click();
 
             manualaddition.NewSchoolNameField.SendKeys("Plumcroft Primary School"); //+ OpenQA.Selenium.Keys.Enter);
+            Thread.Sleep(2000);
             manualaddition.FirstManualSuggestion.Click();
             //manualaddition.NewSchoolNameField.SendKeys( OpenQA.Selenium.Keys.Enter);
             Thread.Sleep(200);

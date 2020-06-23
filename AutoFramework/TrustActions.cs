@@ -136,7 +136,7 @@
             homepage.TrustSearchInput.Click();
             homepage.TrustSearchInput.SendKeys(TrustNameSubmitted);
 
-            homepage.TrustSubmit.Click();
+            homepage.TrustSubmitButton.Click();
             Driver.driver.FindElement(By.CssSelector(".bold-small")).Click();
             Thread.Sleep(100);
         }

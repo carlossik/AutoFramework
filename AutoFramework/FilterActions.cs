@@ -20,9 +20,9 @@ namespace AutoFramework
     {
         
 
-        public static void FilterBy1Mile()
+        public static void FilterBy1Mile(string postcode)
         {
-            Actions.SearchByLocationManualEntry();
+            Actions.SearchByLocationUsingPostcode(postcode);
             FiltersPage filters = new FiltersPage();
             filters.Filter_ByMiles.Click();
             filters.FilterBy1Mile.Click();
@@ -30,17 +30,17 @@ namespace AutoFramework
 
 
         }
-        public static void FilterBy3Miles()
+        public static void FilterBy3Miles(string postcode)
         {
-            Actions.SearchByLocationManualEntry();
+            Actions.SearchByLocationUsingPostcode(postcode);
             FiltersPage filters = new FiltersPage();
             filters.Filter_ByMiles.Click();
             filters.FilterBy10Miles.Click();
             filters.FilterBy3Miles.Click();
         }
-        public static void FilterBy5Miles()
+        public static void FilterBy5Miles(string postcode)
         {
-            Actions.SearchByLocationManualEntry();
+            Actions.SearchByLocationUsingPostcode(postcode);
             FiltersPage filters = new FiltersPage();
             
             filters.Filter_ByMiles.Click();
@@ -49,48 +49,48 @@ namespace AutoFramework
             
         }
 
-        public static void FilterBy10Miles()
+        public static void FilterBy10Miles(string postcode)
         {
-            Actions.SearchByLocationManualEntry();
+            Actions.SearchByLocationUsingPostcode(postcode);
             FiltersPage filters = new FiltersPage();
             filters.Filter_ByMiles.Click();
             filters.FilterBy10Miles.Click();
         }
 
-        public static void FilterBy15Miles()
+        public static void FilterBy15Miles(string postcode)
         {
-            Actions.SearchByLocationManualEntry();
+            Actions.SearchByLocationUsingPostcode(postcode);
             FiltersPage filters = new FiltersPage();
             filters.Filter_ByMiles.Click();
             filters.FilterBy15Miles.Click();
         }
 
-        public static void FilterBy20Miles()
+        public static void FilterBy20Miles(string postcode)
         {
-            Actions.SearchByLocationManualEntry();
+            Actions.SearchByLocationUsingPostcode(postcode);
             FiltersPage filters = new FiltersPage();
             filters.Filter_ByMiles.Click();
             filters.FilterBy20Miles.Click();
         }
-        public static void FilterBy25Miles()
+        public static void FilterBy25Miles(string postcode)
         {
-            Actions.SearchByLocationManualEntry();
+            Actions.SearchByLocationUsingPostcode(postcode);
             FiltersPage filters = new FiltersPage();
             filters.Filter_ByMiles.Click();
             filters.FilterBy25Miles.Click();
         }
 
-        public static void FilterByEducationPhasePrimary()
+        public static void FilterByEducationPhasePrimary(string postcode)
         {
-            Actions.SearchByLocationManualEntry();
+            Actions.SearchByLocationUsingPostcode(postcode);
             FiltersPage filters = new FiltersPage();
             filters.EducationPhase_PrimaryCheckbox.Click();
             Thread.Sleep(3000);
 
         }
-        public static void selectAllEducationPhase()
+        public static void selectAllEducationPhase(string postcode)
         {
-            Actions.SearchByLocationManualEntry();
+            Actions.SearchByLocationUsingPostcode(postcode);
             FiltersPage filters = new FiltersPage();
             filters.EducationPhase_SecondaryCheckbox.Click();
             filters.EducationPhase_AllThroughCheckbox.Click();
@@ -101,9 +101,9 @@ namespace AutoFramework
 
 
         }
-        public static void selectAllSchoolType()
+        public static void selectAllSchoolType(string postcode)
         {
-            Actions.SearchByLocationManualEntry();
+            Actions.SearchByLocationUsingPostcode(postcode);
             FiltersPage filters = new FiltersPage();
             filters.SchoolType.Click();
             filters.SchoolType_AcademyConverter.Click();
@@ -118,27 +118,27 @@ namespace AutoFramework
             filters.SchoolType_VoluntaryAidedSchool.Click();
 
         }
-        public static void SortByAlpabeticalOrderAZ()
+        public static void SortByAlpabeticalOrderAZ(string postcode)
         {
-            Actions.SearchByLocationManualEntry();
+            Actions.SearchByLocationUsingPostcode(postcode);
             FiltersPage filters = new FiltersPage();
             filters.SortedBy.Click();
             filters.SortedBy.SendKeys("alphabetical a-z" + Keys.Enter);
             Thread.Sleep(3000);
         }
 
-        public static void SortByAlpabeticalOrderZA()
+        public static void SortByAlpabeticalOrderZA(string postcode)
         {
-            Actions.SearchByLocationManualEntry();
+            Actions.SearchByLocationUsingPostcode(postcode);
             FiltersPage filters = new FiltersPage();
             filters.SortedBy.Click();
             Thread.Sleep(300);
             filters.SortedBy.SendKeys("alphabetical z-a" + Keys.Enter);
             Thread.Sleep(3000);
             filters.SortedBy.SendKeys("alphabetical z-a" + Keys.Enter);
-            Thread.Sleep(300);
-            //filters.SortedBy.SendKeys("alphabetical z-a" + Keys.Enter);
-            //Thread.Sleep(3000);
+            Thread.Sleep(3000);
+            filters.SortedBy.SendKeys("alphabetical z-a" + Keys.Enter);
+            Thread.Sleep(3000);
         }
 
 

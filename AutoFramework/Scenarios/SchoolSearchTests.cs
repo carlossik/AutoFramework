@@ -14,14 +14,15 @@
 
     [TestFixture]
 
-    public class Schoolsearchtests { 
+    public class Schoolsearchtests
+    { 
     
         [SetUp]
        
         public void SetupBeforeEachTest()
         
         {
-           Actions.InitializeDriver("chrome");
+           Actions.InitializeDriver(Config.DriverUnderTest);
             
 
 
@@ -89,8 +90,12 @@
             SchoolDetailPage detailspage = new SchoolDetailPage();
             Assert.IsTrue(detailspage.schooldetailnotfoundmessage.Text.Contains("There are errors on this page that require attention"));
             Console.WriteLine(detailspage.schooldetailnotfoundmessage.Text);
-            
-           
+       
+        }
+        [Test]
+        public static void verifynewspagefromNewsBanner()
+        {
+            Actions.gotonewspagefrombanner();
 
         }
         [Test]
@@ -130,7 +135,7 @@
         public void testclosebasketviaresultspage()
         {
             
-            Actions.addtobasketviaresultspage();
+            Actions.addtobasketviaresultspage("DA7 5SS");
             Assert.IsTrue(Driver.driver.Url.Contains(Config.currentTestEnv + "SchoolSearch/Search?searchtype=search"));
             
 
@@ -171,9 +176,21 @@
         public void editBasket()
         {
             Actions.CallingClass.Verifybasket();
-
+            
         }
-       [Test]
+        
+        [Test]
+        [Ignore("Ignore a test")]
+        public void SearchSchoolIncludeExcludeCheckBox()
+        {
+            Actions.testExcludeIncludeCheckboxSchName("100000");
+            IWebElement myInput = Driver.driver.FindElement(By.CssSelector("input[type=\"text\"]"));
+            Assert.IsFalse(myInput.GetAttribute("value").Equals(""));
+           
+        }
+
+
+        [Test]
        // [Ignore("Ignore a test")]
         public void EditBasketAddSchools()
         {   
@@ -243,7 +260,7 @@
         [Test]
         public void testPagination()
         {
-            Actions.SearchByLocationManualEntry();
+            Actions.SearchByLocationUsingPostcode("Se18 3jl");
             Actions.navigatepagination();
 
         }
@@ -252,7 +269,7 @@
         [Category("QuickTests")]
         public void SearchViaLocationManualEntry()
         {
-            Actions.SearchByLocationManualEntry();
+            Actions.SearchByLocationUsingPostcode("DA7 5SS");
             Assert.That(Driver.driver.FindElement(By.CssSelector(".heading-xlarge")).Text, Does.Contain("Schools in and near First Avenue"));
             //Assert.AreEqual(Driver.driver.FindElement(By.CssSelector("div.pagination-container:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > span:nth-child(1)")).Text, "109");
                    }
@@ -358,9 +375,6 @@
         {
             Actions.CallingClass.Verifybasketcapacity();
             Assert.IsTrue(Driver.driver.FindElement(By.Id("modal-title")).Text.Contains("Not enough space in basket"));
-            
-         
-
         }
         [Test]
         public void VerifyDefaultSchoolColor()
@@ -370,10 +384,6 @@
             //Assert.IsTrue(colortext[1].Equals("FFFFFF"));
             Console.WriteLine(colortext);
             Console.Write(colortext);
-
-
-
-
         }
         [Test]
         public void searchschoolwithLAESTAB()
@@ -385,7 +395,7 @@
         [Test]
         public void searchforschoolwith16plus()
         {
-            Actions.SearchByLocationManualEntry();
+            Actions.SearchByLocationUsingPostcode("Ae18 3JL");
             SearchResultsPage resultspage = new SearchResultsPage();
             Assert.IsTrue(resultspage.Checkbox_16plus.Displayed);
         }
@@ -468,7 +478,7 @@
         }
 
         [Test]
-        public void testemailfailures()
+        public void testemail_FailuresWrongEmail()
         {
             DataQueriesPage queriesPage = new DataQueriesPage();
             Actions.testmailSuccess("carl.fagan");

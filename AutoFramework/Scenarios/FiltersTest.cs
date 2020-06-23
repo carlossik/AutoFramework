@@ -18,7 +18,7 @@ namespace AutoFramework
         public void SetupBeforeEachTest()
 
         {
-            Actions.InitializeDriver("firefox");
+            Actions.InitializeDriver("chrome");
             
         }
        
@@ -26,7 +26,7 @@ namespace AutoFramework
         [Test]
         public void FilterBy1mile()
         {
-            FilterActions.FilterBy1Mile();
+            FilterActions.FilterBy1Mile("DA7 5SS");
             Assert.That(Driver.driver.Url, Does.Contain("/SchoolSearch/Search?radius=1"));
         }
 
@@ -35,13 +35,13 @@ namespace AutoFramework
         {
            
             
-            FilterActions.FilterBy3Miles();
+            FilterActions.FilterBy3Miles("DA7 5SS");
             Assert.That(Driver.driver.Url, Does.Contain("/SchoolSearch/Search?radius=3"));
         }
         [Test]
         public void FilterBy5miles()
         {
-            FilterActions.FilterBy5Miles();
+            FilterActions.FilterBy5Miles("DA7 5SS");
             FiltersPage filters = new FiltersPage();
             
             string ResultsDisplayedFinally = (filters.ResultsCount).Text;
@@ -55,13 +55,13 @@ namespace AutoFramework
         [Test]
         public void FilterBy10miles()
         {
-            FilterActions.FilterBy10Miles();
+            FilterActions.FilterBy10Miles("DA7 5SS");
             Assert.That(Driver.driver.Url, Does.Contain("/SchoolSearch/Search?radius=10"));
         }
         [Test]
         public void FilterBy15miles()
         {
-            FilterActions.FilterBy15Miles();
+            FilterActions.FilterBy15Miles("DA7 5SS");
             FiltersPage filters = new FiltersPage();
             
             string ResultsDisplayedFinally = (filters.ResultsCount).Text;
@@ -72,12 +72,12 @@ namespace AutoFramework
         [Test]
         public void FilterByEducationPhasePrimary()
         {
-            FilterActions.FilterByEducationPhasePrimary();
+            FilterActions.FilterByEducationPhasePrimary("DA7 5SS");
         }
         [Test]
         public void FilterByAlphabeticalOrderAZ()
         {
-            FilterActions.SortByAlpabeticalOrderAZ();
+            FilterActions.SortByAlpabeticalOrderAZ("DA7 5SS");
             var expectedText = Driver.driver.FindElement(By.CssSelector("li.school-document:nth-child(1) > div:nth-child(1) > div:nth-child(1) > a:nth-child(1)"));
             Assert.AreEqual(expectedText.Text, "Abbey Wood Nursery School");
 
@@ -85,7 +85,7 @@ namespace AutoFramework
         [Test]
         public void FilterByAlphabeticalOrderZA()
         {
-            FilterActions.SortByAlpabeticalOrderZA();
+            FilterActions.SortByAlpabeticalOrderZA("DA7 5SS");
             var expectedText = Driver.driver.FindElement(By.CssSelector("li.school-document:nth-child(1) > div:nth-child(1) > div:nth-child(1) > a:nth-child(1)"));
             Console.WriteLine(expectedText.Text);
             Assert.That(expectedText.Text, Does.Contain("Woolwich Polytechnic"));
@@ -96,12 +96,12 @@ namespace AutoFramework
         [Test]
         public void verifySearchResults()
         {
-            FilterActions.selectAllEducationPhase();
+            FilterActions.selectAllEducationPhase("DA7 5SS");
         }
         [Test]
         public void VerifySearchResultsWithSchoolType()
         {
-            FilterActions.selectAllSchoolType();
+            FilterActions.selectAllSchoolType("DA7 5SS");
 
 
             Assert.That(Driver.driver.FindElement(By.CssSelector("div.pagination-container:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)")).Text, Does.Contain("Showing 1 - 50 of"));

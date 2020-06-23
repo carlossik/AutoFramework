@@ -61,10 +61,17 @@ namespace AutoFramework.Pages
         public int ResultsfromLinksCount = (Driver.driver.FindElements(By.XPath("//a[contains(@href,\"/trust/index?companyNo=\")]")).Count());
         [FindsBy(How = How.XPath, Using = "/html/body/div/div[8]/main/div[2]/div[2]/div[1]/div/p/span")]
         public IWebElement Allresultsdisplayed { get; set; }
-        
+        [FindsBy(How = How.Id, Using = "schoollevel_Secondary")]
+        public IWebElement secondaryschool_checkbox { get; set; }
+        [FindsBy(How = How.CssSelector, Using = "div.govuk-option-select:nth-child(4) > div:nth-child(1) > div:nth-child(1)")]
+        public IWebElement EducationPhase_checkbox { get; set; }
+        [FindsBy(How = How.CssSelector, Using = ".add-all")]
+        public IWebElement AddAllToBasket_Button { get; set; }
         [FindsBy(How = How.Id,Using = "schoollevel_Allthrough")]
         public IWebElement SelectAllThroughsCheckbox { get; set; }
         [FindsBy(How = How.XPath,Using = "/html/body/div/div[8]/main/div[2]/div[2]/div[2]/div[2]/div[1]/ul/li[1]/details/div/table/tbody/tr[1]/td[1]/a")]
         public IWebElement viewtrustschoolsFirstLink { get; set; }
+        [FindsBy(How =How.CssSelector,Using = ".view-benchmark-charts-wrapper > a:nth-child(1)")]
+        public IWebElement viewbenchmarkchartsResultsPage { get; set; }
     }
 }

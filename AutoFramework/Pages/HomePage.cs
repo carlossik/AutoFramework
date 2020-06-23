@@ -41,13 +41,15 @@
         [FindsBy(How = How.CssSelector, Using = "#SearchByTownFieldset > div:nth-child(4) > button:nth-child(3)")]
         public IWebElement LocationSearchSubmitButton { get; set; }
         [FindsBy(How = How.Id, Using = "TrustLaCodeName")]
-        public IWebElement LocalAuthoritySearchButton { get; set; }
+        public IWebElement LocalAuthorityTrustSearchButton { get; set; }
         [FindsBy(How = How.CssSelector, Using = "#FindTrustByLaCodeName")]
         public IWebElement LacodeInputField { get; set; }
         [FindsBy(How = How.CssSelector, Using = "#SearchByLaCodeNameFieldset > div:nth-child(3) > button")]
         public IWebElement LacodeSearchButton { get; set; }
+
         [FindsBy(How = How.CssSelector, Using = "#SearchByTrustNameFieldset > button:nth-child(4)")]
-        public IWebElement TrustSubmit { get; set; }
+        public IWebElement TrustSubmitButton { get; set; }
+
         [FindsBy(How = How.CssSelector, Using = "#TrustSearchByTownFieldset > div:nth-child(3) > button")]
         public IWebElement TrustLocationSubmit { get; set; }
         [FindsBy(How = How.Id, Using = "TrustTab")]
@@ -80,7 +82,11 @@
         public IWebElement UnSetasDefaultSchool { get; set; }
         [FindsBy(How = How.Id,Using = "FindSchoolManuallyByTown")]
         public IWebElement SearchLocationManually { get; set; }
+        [FindsBy(How = How.CssSelector,Using = "li.guidance__list__item:nth-child(1) > a:nth-child(1)")]
+        public IWebElement NewsLink { get; set; }
 
+        [FindsBy(How = How.Id, Using = "openOnlyName")]
+        public IWebElement IncludeSchoolsCheckbox { get; set; }
         public void ClickOnSearchButton()
         {
             SearchSubmit.Click();

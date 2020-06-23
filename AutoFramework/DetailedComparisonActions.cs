@@ -97,8 +97,8 @@ namespace SFB_Test_Automation.AutoFramework
             bestinclass.Continue.Click();
             detailpage.General_Header.Click();
             detailpage.NumberOfPupilsCheckBox.Click();
-            detailpage.MinNumberOfPupilsInputField.SendKeys("64");
-            detailpage.MaxNumberOfPupilsInputBox.SendKeys("64");
+            detailpage.MinNumberOfPupilsInputField.SendKeys("43");
+            detailpage.MaxNumberOfPupilsInputBox.SendKeys("43.5");
             Thread.Sleep(7000);
             detailpage.ViewBenchMarkCharts.Click();
             Thread.Sleep(5000);
@@ -195,6 +195,24 @@ namespace SFB_Test_Automation.AutoFramework
             detailpage.MaxNumberOfPupilsInputBox.SendKeys("79");
             Thread.Sleep(1000);
             detailpage.ViewBenchMarkCharts.Click();
+        }
+        public static void detailedComparisonOnlySecondarySchools(string postcode)
+        {
+            Actions.SearchByLocationUsingPostcode(postcode); 
+            SearchResultsPage resultspage = new SearchResultsPage();
+            //resultspage.EducationPhase_checkbox.Click();
+            resultspage.secondaryschool_checkbox.Click();
+            resultspage.AddAllToBasket_Button.Click();
+            resultspage.viewbenchmarkchartsResultsPage.Click();
+            BenchMarkChartPage chartpage = new BenchMarkChartPage();
+            chartpage.ComparisonSchool_Tab.Click();
+            Thread.Sleep(2000);
+            string colortext = Driver.driver.FindElement(By.CssSelector("#ComparisonSchoolsTable > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(6) > div:nth-child(1)")).GetAttribute("color");
+            Console.WriteLine(colortext);
+            
+
+            Thread.Sleep(2000);
+
         }
         public static void ExcludeschoolswithIncFinanceAllSchoolsLaCode(String urn,String Lacode)
         {

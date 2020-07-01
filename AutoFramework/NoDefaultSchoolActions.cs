@@ -50,10 +50,10 @@ namespace SFB_Test_Automation.AutoFramework
             Thread.Sleep(100);
             DetailComparisonPage detailpage = new DetailComparisonPage();
             detailpage.General_Header.Click();
-            detailpage.EligibilityFressSchoolMealsCheckBox.Click();
-            detailpage.EligibilityFressSchoolMealsfromInput.SendKeys("20.99");
+            detailpage.BoardersCheckBox.Click();
+            detailpage.minimumBoardersCheckBox.SendKeys("4");
             Thread.Sleep(6000);
-            detailpage.EligibilityFressSchoolMealsToInput.SendKeys("21");
+            detailpage.maximumBoardersCheckBox.SendKeys("18");
             Thread.Sleep(2000);
             detailpage.ViewBenchMarkCharts.Click();
         }

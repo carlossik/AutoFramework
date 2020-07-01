@@ -86,6 +86,12 @@ namespace SFB_Test_Automation.AutoFramework.Pages
 
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "checkbox-TypeOfEstablishment")]
         public IWebElement SchoolTypeCheckBox { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "checkbox-MinPerBoarders")]
+        public IWebElement BoardersCheckBox { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "MinPerBoarders")]
+        public IWebElement minimumBoardersCheckBox { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "MaxPerBoarders")]
+        public IWebElement maximumBoardersCheckBox { get; set; }
 
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector,Using = "#countPart")]
         public IWebElement SearchResultsCount { get; set; }

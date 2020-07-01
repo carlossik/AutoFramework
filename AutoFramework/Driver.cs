@@ -39,6 +39,7 @@
 
                     Driver.driver = new InternetExplorerDriver();
                     break;
+                
                 default:
                     Driver.driver = new ChromeDriver();
                     break;

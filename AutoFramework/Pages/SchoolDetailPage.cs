@@ -66,7 +66,7 @@ namespace AutoFramework.Pages.PageElements
         public IWebElement DataFromOtherSources { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = " .sfb_gtm_more_info")]
         public IWebElement Services { get; set; }
-        [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = " dd.metadata-school-detail__dd:nth-child(28)")]
+        [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = " dd.metadata-school-detail__dd:nth-child(29)")]
         public IWebElement Date_Of_Closure { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = "dd.metadata-school-detail__dd:nth-child(12)")]
         public IWebElement NumberOfPupils { get; set; }

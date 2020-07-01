@@ -289,13 +289,15 @@
             homepage.IncludeSchoolsCheckbox.Click();
             Thread.Sleep(2000);
         }
-        public static void SearchClosedschool(string urn)
+        public static void SearchClosedschool(string schoolname)
         {
             HomePage homepage = new HomePage();
             GoHome();
             homepage.School.Click();
-            homepage.SchoolsearchField.SendKeys(urn);
-            homepage.ClickOnSearchButton();
+            homepage.IncludeSchoolsCheckbox.Click();
+            homepage.SchoolsearchField.SendKeys(schoolname);
+            homepage.secondSelectionOption.Click();
+            //homepage.ClickOnSearchButton();
             Thread.Sleep(300);
         }
         public static void dealforswchools()

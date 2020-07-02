@@ -74,7 +74,7 @@
         public void SearchSchool_closed_school_withName()
         {
             
-            Actions.SearchClosedschool("Bedonwell Infant And Nursery School");//"Belmont Primary School"
+            Actions.SearchClosedschoolName("Bedonwell Infant And Nursery School");//"Belmont Primary School"
             SchoolDetailPage detailspage = new SchoolDetailPage();
            // Assert.IsTrue(detailspage.Date_Of_Closure.Displayed);
             Assert.IsFalse(detailspage.CompareWithOtherSchools.Displayed);
@@ -86,7 +86,7 @@
         public void SearchSchool_closed_schoolWithLAESTAB()
         {
 
-            Actions.SearchClosedschool("3032004");
+            Actions.SearchClosedschoolLAEstab("3032004");
             SchoolDetailPage detailspage = new SchoolDetailPage();
             Assert.IsTrue(detailspage.schooldetailnotfoundmessage.Text.Contains("There are errors on this page that require attention"));
             Console.WriteLine(detailspage.schooldetailnotfoundmessage.Text);
@@ -102,7 +102,7 @@
         public void SearchSchool_closed_schoolWithURN()
         {
 
-            Actions.SearchClosedschool("101449");
+            Actions.SearchClosedschoolUrn("101449");
             SchoolDetailPage detailspage = new SchoolDetailPage();
             Assert.IsTrue(Driver.driver.FindElement(By.CssSelector("dt.metadata-school-detail__dt:nth-child(29)")).Displayed); //verify the date of closure is on the school page as it is a closed school
           

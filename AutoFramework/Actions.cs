@@ -289,15 +289,37 @@
             homepage.IncludeSchoolsCheckbox.Click();
             Thread.Sleep(2000);
         }
-        public static void SearchClosedschool(string schoolname)
+        public static void SearchClosedschoolLAEstab(string LAestab)
         {
             HomePage homepage = new HomePage();
-            GoHome();
+           
+            homepage.School.Click();
+            homepage.IncludeSchoolsCheckbox.Click();
+            homepage.SchoolsearchField.SendKeys(LAestab);
+            //homepage.secondSelectionOption.Click();
+            homepage.ClickOnSearchButton();
+            Thread.Sleep(300);
+        }
+        public static void SearchClosedschoolName(string schoolname)
+        {
+            HomePage homepage = new HomePage();
+
             homepage.School.Click();
             homepage.IncludeSchoolsCheckbox.Click();
             homepage.SchoolsearchField.SendKeys(schoolname);
             homepage.secondSelectionOption.Click();
             //homepage.ClickOnSearchButton();
+            Thread.Sleep(300);
+        }
+        public static void SearchClosedschoolUrn(string urn)
+        {
+            HomePage homepage = new HomePage();
+
+            homepage.School.Click();
+            homepage.IncludeSchoolsCheckbox.Click();
+            homepage.SchoolsearchField.SendKeys(urn);
+            //homepage.secondSelectionOption.Click();
+            homepage.ClickOnSearchButton();
             Thread.Sleep(300);
         }
         public static void dealforswchools()

@@ -23,30 +23,30 @@
         {
 
         }
-        public static void InitializeDriverWithoutOptions(String browser)
-        {
-            if (browser == ("chrome"))
-            {
+        //public static void initializedriverwithoutoptions(string browser)
+        //{
+        //    if (browser == ("chrome"))
+        //    {
 
-                Driver.driver = new ChromeDriver();
-                Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
-                Thread.Sleep(2000);
+        //        driver.driver = new chromedriver();
+        //        driver.driver.navigate().gotourl(config.currenttestenv);
+        //        thread.sleep(2000);
                 
-            }
-            else if (browser == ("firefox"))
-            {
+        //    }
+        //    else if (browser == ("firefox"))
+        //    {
                
-                Driver.driver = new FirefoxDriver();
+        //        driver.driver = new firefoxdriver();
 
-                Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
-            }
-            else if (browser == ("IE"))
-            {
-                Driver.driver = new InternetExplorerDriver();
-                Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
-            }
+        //        driver.driver.navigate().gotourl(config.currenttestenv);
+        //    }
+        //    else if (browser == ("ie"))
+        //    {
+        //        driver.driver = new internetexplorerdriver();
+        //        driver.driver.navigate().gotourl(config.currenttestenv);
+        //    }
 
-        }
+        //}
 
 
         public static void InitializeDriver(String browser)
@@ -169,7 +169,7 @@
             Thread.Sleep(100);
             detailspage.CompareWithOtherSchools.Click();
             Thread.Sleep(100);
-            String color = Driver.driver.FindElement(By.XPath("/html/body/div/div[8]/main/div/div/div/span")).GetAttribute("color");
+            String color = Driver.driver.FindElement(By.ClassName("bold-small")).GetAttribute("color");
             Console.WriteLine(color);
             Console.WriteLine(color);
         }
@@ -366,7 +366,7 @@
         public static void gotonewspagefrombanner()
         {
             Driver.driver.Close();
-            InitializeDriverWithoutOptions(Config.DriverUnderTest);
+            InitializeDriver(Config.DriverUnderTest3);
            
             Thread.Sleep(1000);
             Driver.driver.Manage().Window.Maximize();
@@ -589,6 +589,10 @@
             SearchTrustViaLocalAuthority(LAcode);
             SearchResultsPage resultspage = new SearchResultsPage();
             resultspage.TrustSearchResultSortedByButton.Click();
+            if (Config.DriverUnderTest3 == "firefox")
+            {
+                resultspage.TrustSearchResultSortedByButton.SendKeys(OrderBy + Keys.Enter);
+            }
             resultspage.TrustSearchResultSortedByButton.SendKeys(OrderBy + Keys.Enter);
             Thread.Sleep(2000);
 
@@ -743,14 +747,14 @@
                 {
                     try
                     {
-                        Console.WriteLine(urn);
+                        //Console.WriteLine(urn);
                         SearchSchoolViaName(urn);
                         Thread.Sleep(30);
-                        Schooldetails.schoolPerformanceTableLink.Click();
+                        //Schooldetails.schoolPerformanceTableLink.Click();
                         Thread.Sleep(50);
-                        Assert.IsTrue(Driver.driver.FindElement(By.CssSelector(".metadata > dd:nth-child(24)")).Text == urn);
-                        Console.WriteLine(urn);
-                        Console.WriteLine(Driver.driver.FindElement(By.CssSelector(".metadata > dd:nth - child(24)")).Text);
+                        //Assert.IsTrue(Driver.driver.FindElement(By.CssSelector(".metadata > dd:nth-child(24)")).Text == urn);
+                        //Console.WriteLine(urn);
+                        //Console.WriteLine(Driver.driver.FindElement(By.CssSelector(".metadata > dd:nth - child(24)")).Text);
                     }
                     catch (NoSuchElementException) {Console.WriteLine("There may be an issue with this school" + ""+ urn); continue; }
                 }

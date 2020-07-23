@@ -7,18 +7,22 @@ namespace AutoFramework
     using System;
     using SFB_Test_Automation.AutoFramework.Pages;
     using NUnit.Framework.Interfaces;
+    using OpenQA.Selenium.Firefox;
+    using OpenQA.Selenium.Chrome;
+    using OpenQA.Selenium.IE;
 
     public class FiltersTest
     {
+        
         public FiltersTest()
         {
         }
-
+        
         [SetUp]
         public void SetupBeforeEachTest()
 
         {
-            Actions.InitializeDriver("chrome");
+            Actions.InitializeDriver(Config.DriverUnderTest1);
             
         }
        

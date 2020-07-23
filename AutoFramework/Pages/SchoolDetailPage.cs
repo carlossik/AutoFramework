@@ -86,7 +86,9 @@ namespace AutoFramework.Pages.PageElements
         //public IWebElement SchoolPhase { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector,Using = "a.spt_link_js")]
         public IWebElement schoolPerformanceTableLink { get; set; }
-            
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "li:nth-of-type(2) > .font-xsmall")]
+        public IWebElement SADLink { get; set; }
+
 
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = ".exp-total")]
 

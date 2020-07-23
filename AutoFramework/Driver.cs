@@ -8,8 +8,7 @@
     using Selenium;
     
     using System;
-    
-
+    using System.Collections.Generic;
 
     public  class Driver
     {
@@ -46,6 +45,15 @@
                     //throw new NotSupportedException("Browser " + browser + " not supported");
                 }
             }
+        public static IEnumerable<String> BrowserToRunWith()
+        {
+            String[] Browsers = { "chrome", "firefox", "IE" };
+            foreach (String b in Browsers)
+            {
+                yield return b;
+
+            }
+        }
       
 
     }

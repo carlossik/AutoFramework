@@ -15,11 +15,12 @@ namespace AutoFramework
         public static string Prodlive = "https://schools-financial-benchmarking.service.gov.uk/";
         public static string PreProd = "https://as-t1pp-sfb.azurewebsites.net/";
         public static string HiddenLive = "https://as-t1pr-sfb-b.azurewebsites.net/";
-        public static string currentTestEnv = PreProd;
+        public static string currentTestEnv = Dev;
         public static string firefoxlocation = "C://Users//kwaku//OneDrive//Desktop//C#//AutoFramework//bin//Debug//firefox.exe";
 
-        public static string DriverUnderTest = "chrome";
-
+        public static string DriverUnderTest1 = "firefox";
+        public static string DriverUnderTest2 = "chrome";
+        public static string DriverUnderTest3 = "IE";
 
         public static object AlertsTexts { get; internal set; }
 
@@ -47,10 +48,15 @@ namespace AutoFramework
                  IWebElement SearchResults = Driver.driver.FindElement(By.CssSelector("#js-search-results-info > div > p > span"));
                 
             }
-            public class FireFoxDriver
-            {
+            //public class browsertotestwith
+            //{
+            //    string browsers = ["chrome", "IE", "firefox"];
+                
+            //    foreach (string browser in browsers)
+            //        {get {return browsertotestwith }
+            //        }
 
-            }
+            //}
 
 
         }

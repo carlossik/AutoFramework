@@ -15,6 +15,7 @@ namespace AutoFramework
     using System.Collections.Generic;
     using System.Threading;
     using OpenQA.Selenium.Firefox;
+    using OpenQA.Selenium.Support.UI;
 
     public static class FilterActions
     {
@@ -122,8 +123,12 @@ namespace AutoFramework
         {
             Actions.SearchByLocationUsingPostcode(postcode);
             FiltersPage filters = new FiltersPage();
-            filters.SortedBy.Click();
-            filters.SortedBy.SendKeys("alphabetical a-z" + Keys.Enter);
+            //filters.SortedBy.Click();
+            IWebElement SortedByDropDownElement = Driver.driver.FindElement(By.Id("OrderByControl"));
+            //SortedByDropDownElement.Click();
+            SelectElement SelectanOption = new SelectElement(SortedByDropDownElement);
+            SelectanOption.SelectByValue("EstablishmentName asc");
+            //filters.SortedBy.SendKeys("alphabetical a-z" + Keys.Enter);
             Thread.Sleep(3000);
         }
 
@@ -131,14 +136,24 @@ namespace AutoFramework
         {
             Actions.SearchByLocationUsingPostcode(postcode);
             FiltersPage filters = new FiltersPage();
-            filters.SortedBy.Click();
-            Thread.Sleep(300);
-            filters.SortedBy.SendKeys("alphabetical z-a" + Keys.Enter);
+            IWebElement SortedByDropDownElement = Driver.driver.FindElement(By.Id("OrderByControl"));
+            //SortedByDropDownElement.Click();
+            SelectElement SelectanOption = new SelectElement(SortedByDropDownElement);
+            SelectanOption.SelectByValue("EstablishmentName desc");
+            //filters.SortedBy.SendKeys("alphabetical a-z" + Keys.Enter);
             Thread.Sleep(3000);
-            filters.SortedBy.SendKeys("alphabetical z-a" + Keys.Enter);
-            Thread.Sleep(3000);
-            filters.SortedBy.SendKeys("alphabetical z-a" + Keys.Enter);
-            Thread.Sleep(3000);
+            //filters.SortedBy.Click();
+            //Thread.Sleep(3000);
+            //filters.SortedBy.SendKeys("alphabetical z-a" + Keys.Enter);
+            //if (Config.DriverUnderTest == "firefox")
+            //{
+            //    filters.SortedBy.SendKeys("alphabetical z-a" + Keys.Enter);
+            //}
+            //Thread.Sleep(3000);
+            ////filters.SortedBy.SendKeys("alphabetical z-a" + Keys.Enter);
+            //Thread.Sleep(3000);
+            ////filters.SortedBy.SendKeys("alphabetical z-a" + Keys.Enter);
+            //Thread.Sleep(3000);
         }
 
 

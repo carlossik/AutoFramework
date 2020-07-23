@@ -11,8 +11,11 @@
     using SFB_Test_Automation.AutoFramework.Pages;
     using System.Collections.Generic;
     using NUnit.Framework.Interfaces;
+    using OpenQA.Selenium.Firefox;
+    using OpenQA.Selenium.IE;
+    using OpenQA.Selenium.Chrome;
 
-    [TestFixture]
+    
 
     public class Schoolsearchtests
     { 
@@ -22,7 +25,7 @@
         public void SetupBeforeEachTest()
         
         {
-           Actions.InitializeDriver(Config.DriverUnderTest);
+           Actions.InitializeDriver(Config.DriverUnderTest1);
             
 
 
@@ -31,9 +34,11 @@
         public void testschoolperformancetables()
         {
             Actions.CallingClass.sptlinkscheck();
-            SchoolDetailPage detailspage = new SchoolDetailPage();
-            String schoolUrn = detailspage.Urn.Text;
+            SchoolDetailPage Schooldetails = new SchoolDetailPage();
+            String schoolUrn = Schooldetails.Urn.Text;
+            IWebElement sptlink = Schooldetails.schoolPerformanceTableLink;
             Console.WriteLine(schoolUrn);
+            Assert.IsTrue(sptlink.Displayed);
 
             //Assert.IsTrue(Driver.driver.Url.Contains ("https://www.compare-school-performance.service.gov.uk/school/"+ schoolUrn));
         }
@@ -203,9 +208,9 @@
         {
 
             Actions.defaultsSchool();
-            String Textcolor = Driver.driver.FindElement(By.XPath("/html/body/div/div[8]/main/div/div/div/span")).GetCssValue("background-color");
+            String Textcolor = Driver.driver.FindElement(By.ClassName("bold-small")).GetCssValue("background-color");
             String LinkColour = Driver.driver.FindElement(By.CssSelector(".form-group > fieldset:nth-child(1) > p:nth-child(2) > a:nth-child(1)")).GetCssValue("color"); 
-            String BackGroundColor = Driver.driver.FindElement(By.XPath("/html/body/div/div[8]/main/div/div/div/span")).GetCssValue("background-color");
+            String BackGroundColor = Driver.driver.FindElement(By.ClassName("bold-small")).GetCssValue("background-color");
             String ExpectedColor = ("rgba(0, 94, 165, 1)");
             Console.WriteLine( "Colour of Text " + Textcolor);//Assert to follow
             Console.WriteLine("BackGround Colour " + BackGroundColor);//element.getCssValue("color");

@@ -8,11 +8,12 @@ using System.Text;
 
 namespace SFB_Test_Automation.AutoFramework.Pages
 {
-     public class TrustComparisonPage
+     public class TrustComparisonPage 
     {
         public TrustComparisonPage()
         {
-            PageFactory.InitElements(Driver.driver, this);
+            //PageFactory.InitElements(Driver.driver, this);
+            PageFactory.InitElements(TestBase.driver,this);
         }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "#ExistingTrusts > div:nth-child(1) > button:nth-child(3)")]
         [SeleniumExtras.PageObjects.CacheLookup]

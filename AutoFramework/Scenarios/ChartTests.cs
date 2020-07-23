@@ -17,7 +17,7 @@
         public void SetupBeforeEachTest()
         
         {
-            Actions.InitializeDriver("chrome");
+            Actions.InitializeDriver(Config.DriverUnderTest3);
   
         }
         [Test]

@@ -268,6 +268,7 @@
     <Compile Include="AutoFramework\BrowserToRunWith.cs" />
     <Compile Include="AutoFramework\DetailedComparisonActions.cs" />
     <Compile Include="AutoFramework\FilterActions.cs" />
+    <Compile Include="AutoFramework\MyChartActions.cs" />
     <Compile Include="AutoFramework\NoDefaultSchoolActions.cs" />
     <Compile Include="AutoFramework\Pages\AddSchoolPage.cs" />
     <Compile Include="AutoFramework\Pages\BenchMarkBasketPage.cs" />
@@ -279,6 +280,7 @@
     <Compile Include="AutoFramework\Pages\IntepretingTheChartsPage.cs" />
     <Compile Include="AutoFramework\Pages\ManualPage.cs" />
     <Compile Include="AutoFramework\Pages\BenchmarkPageTabs.cs" />
+    <Compile Include="AutoFramework\Pages\MyChartsPage.cs" />
     <Compile Include="AutoFramework\Pages\NoDefaultPage.cs" />
     <Compile Include="AutoFramework\Pages\PageElements\Helpers\Testhelpers.cs" />
     <Compile Include="AutoFramework\Pages\PageElements\Helpers\UrnHelper.cs" />
@@ -291,9 +293,11 @@
     <Compile Include="AutoFramework\Pages\LoginPage.cs" />
     <Compile Include="AutoFramework\Pages\LoginScenarioPost.cs" />
     <Compile Include="AutoFramework\Pages\PageElements\Menu.cs" />
+    <Compile Include="AutoFramework\Pages\SadEditPage.cs" />
     <Compile Include="AutoFramework\Pages\ReplaceCurrentBenchmarkbasketPage.cs" />
     <Compile Include="AutoFramework\Pages\SchoolDetailPage.cs" />
     <Compile Include="AutoFramework\Pages\SearchResultsPage.cs" />
+    <Compile Include="AutoFramework\Pages\SelfAssessmentPage.cs" />
     <Compile Include="AutoFramework\Pages\SpecialElementsPage.cs" />
     <Compile Include="AutoFramework\Pages\TrustBenchmarkChartsPage.cs" />
     <Compile Include="AutoFramework\Pages\TrustComparisonPage.cs" />
@@ -304,11 +308,15 @@
     <Compile Include="AutoFramework\Scenarios\ComparisonTests.cs" />
     <Compile Include="AutoFramework\Scenarios\ComparisonwithNoDefaultSchoolTests.cs" />
     <Compile Include="AutoFramework\Scenarios\FiltersTest.cs" />
+    <Compile Include="AutoFramework\Scenarios\MyChartTests.cs" />
     <Compile Include="AutoFramework\Scenarios\ReportsCreator.cs" />
     <Compile Include="AutoFramework\Scenarios\SchoolSearchTests.cs" />
+    <Compile Include="AutoFramework\Scenarios\SelfAssessmentTests.cs" />
     <Compile Include="AutoFramework\Scenarios\TrustSearchTests.cs" />
+    <Compile Include="AutoFramework\SelfAssessmentActions.cs" />
     <Compile Include="AutoFramework\TrustActions.cs" />
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="AutoFramework\TestBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include=".git\logs\refs\remotes\" />

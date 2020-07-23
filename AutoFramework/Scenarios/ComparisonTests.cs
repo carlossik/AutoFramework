@@ -24,7 +24,7 @@
         {
 
 
-            Actions.InitializeDriver("chrome");
+            Actions.InitializeDriver(Config.DriverUnderTest3);
            // Actions.InitializeFireFoxDriver();
             //Actions.FillLoginForm();
         }

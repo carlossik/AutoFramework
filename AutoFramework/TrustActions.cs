@@ -16,8 +16,9 @@
     using System;
     using OpenQA.Selenium.Remote;
     using System.Linq;
+    using SFB_Test_Automation;
 
-    class TrustActions
+    class TrustActions : TestBase
     {
         //All Trust actions happen here
         public static void identifyTrustsWithOneSchool()
@@ -32,80 +33,9 @@
             var linkstouse = Driver.driver.FindElements(By.XPath("//a[contains(@href, \"/trust/index?companyNo=\")]"));
             ArrayList myvalues = new ArrayList();
 
-            //IOrderedEnumerable<string> result = results.Zip(linkstouse(a, b) => a.ToString() + "-" + b);
-            //foreach (string s in result)
-            //{
-            //    Console.WriteLine(s);
-            //}
-
         }
 
-        //foreach (IWebElement element in result)
-        //for (int i = 0; i < all.Count; i++)
-        //    if (all[i].Text == "1")
-
-        //{
-
-        //        foreach (IWebElement element in all)
-
-        //    if (element.Text == "1")
-        //            IWebElement schoollink = Driver.driver.FindElement(By.XPath("//a[contains(@href, \"/trust/index?companyNo=\")]"));
-        //    {
-
-        //            Console.WriteLine(schoollink.Text);
-        //            myvalues.Add(schoollink.GetAttribute("href"));
-        //    }
-        //}
-        //Console.WriteLine(myvalues.Count);
-
-        //for (int i = 0; i < all.Count; i++)
-        //foreach (IWebElement elem in all)
-        //{
-        //    if (elem.Text == "1")
-        //        foreach (IWebElement element in results)
-        //    {
-        //        if (elem.Text == "1")
-        //        {
-        //            //val.Add(element);
-        //            //IWebElement school = Driver.driver.FindElement(By.XPath("//a[contains(@href, \"/trust/index?companyNo=\")]"));
-        //            //Console.WriteLine(elem.Text +  " "+ school.GetAttribute("href"));
-        //            myvalues.Add(element.GetAttribute("href"));
-        //           Console.WriteLine(elem.GetAttribute("href")); 
-
-        //        }
-        //    }
-        //}
-        //Console.WriteLine(myvalues);
-    
-
-        //    var result = Driver.driver.FindElements((By.XPath("//*[@id=\"schoolResults\"]")));
-        //    Console.WriteLine(result);
-        //    foreach (IWebElement element in result)
-        //        for (int i = 0; i < all.Count; i++)
-        //            if (all[i].Text == "1")
-        //        {
-        //                Console.WriteLine(all[i].Text);
-
-
-            //    }
-            //    //var results = val.Zip(str, (n, w) => new { all = n, schoolLink = w });
-            //    //foreach (var a in results)
-            //    //{
-            //    //    Console.WriteLine();
-            //    //}
-            //}
-
-
-
-
-            //for (int i = 0; i < all.Count;  i++)
-            //    //for (int s =0; s <schoolname.Count; s++)
-            //    foreach (var al in all)
-            //    if (all[i].Text=="1")
-            //    {
-            //    Console.WriteLine(all[i].Text); 
-
-            //    }
+       
             public static void TrustPerformanceLinksViaLacode(string Lacode)
         {
             Actions.SearchTrustViaLocalAuthority(Lacode);
@@ -150,7 +80,7 @@
             homepage.TrustSearchInput.Click();
             homepage.TrustSearchInput.SendKeys(TrustName);
             homepage.FirstSelectionOption.Click();
-            Driver.driver.FindElement(By.CssSelector(".bold-small")).Click();
+            //Driver.driver.FindElement(By.CssSelector(".bold-small")).Click();
             Thread.Sleep(100);
         }
         public static void getCompanyNumber()

@@ -59,7 +59,7 @@ namespace AutoFramework.Pages
         public IWebElement FirstScoolLinkOnPage { get; set; }
         //public int numberofschoolsdisplayed = Driver.driver.FindElements(By.ClassName("schoolsInTrust")).Count;
         public int ResultsfromLinksCount = (Driver.driver.FindElements(By.XPath("//a[contains(@href,\"/trust/index?companyNo=\")]")).Count());
-        [FindsBy(How = How.XPath, Using = "/html/body/div/div[8]/main/div[2]/div[2]/div[1]/div/p/span")]
+        [FindsBy(How = How.CssSelector, Using = ".count-js")]//"/html/body/div/div[8]/main/div[2]/div[2]/div[1]/div/p/span")]
         public IWebElement Allresultsdisplayed { get; set; }
         [FindsBy(How = How.Id, Using = "schoollevel_Secondary")]
         public IWebElement secondaryschool_checkbox { get; set; }
@@ -69,7 +69,7 @@ namespace AutoFramework.Pages
         public IWebElement AddAllToBasket_Button { get; set; }
         [FindsBy(How = How.Id,Using = "schoollevel_Allthrough")]
         public IWebElement SelectAllThroughsCheckbox { get; set; }
-        [FindsBy(How = How.XPath,Using = "/html/body/div/div[8]/main/div[2]/div[2]/div[2]/div[2]/div[1]/ul/li[1]/details/div/table/tbody/tr[1]/td[1]/a")]
+        [FindsBy(How = How.CssSelector,Using = "[href *= '/school/detail?urn=']")]
         public IWebElement viewtrustschoolsFirstLink { get; set; }
         [FindsBy(How =How.CssSelector,Using = ".view-benchmark-charts-wrapper > a:nth-child(1)")]
         public IWebElement viewbenchmarkchartsResultsPage { get; set; }

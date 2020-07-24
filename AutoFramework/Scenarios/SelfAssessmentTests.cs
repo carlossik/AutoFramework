@@ -65,7 +65,7 @@ namespace SFB_Test_Automation.AutoFramework.Scenarios
         [Test]
         public void TestCreateSideBySideView()
         {
-            throw new NotImplementedException();
+            SelfAssessmentActions.createSideBySideScenario("3032083");
         }
         [Test]
         public void TestEditSideBySideView()

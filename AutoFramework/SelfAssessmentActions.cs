@@ -40,6 +40,21 @@ namespace SFB_Test_Automation.AutoFramework
             Thread.Sleep(3000);
         }
 
+        public static void FillSADForm()
+        {
+            SadEditPage editpage = new SadEditPage();
+            editpage.ScenarioNameField.SendKeys("Automated Test1 Scenario");
+            editpage.YearOfScenarioField.Click();
+            editpage.NumberOfPupils.SendKeys("33");
+            editpage.NumberOfTeachers.SendKeys("45");
+            editpage.SchoolWorkForce.SendKeys("26.4");
+            editpage.SeniorLeaderShip.SendKeys("26.1");
+            editpage.PercenTageOfPupilsEligbleFSM.SendKeys("20");
+            editpage.Total_income.SendKeys("5000000");
+            editpage.Total_expenditure.SendKeys("8000000");
+            editpage.Submit_Button.Click();
+            Thread.Sleep(200000);
+        }
         public static void createSideBySideScenario(String LAestab)
         {
             Actions.schoolSearchwithLaestab(LAestab);
@@ -47,8 +62,9 @@ namespace SFB_Test_Automation.AutoFramework
             detailspage.SADLink.Click();
             SelfAssessmentPage SadPage = new SelfAssessmentPage();
             SadPage.SideBySideLink.Click();
-
-
+            Thread.Sleep(200);
+            FillSADForm();
+            
         }
     }
 }

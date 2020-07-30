@@ -80,11 +80,9 @@ namespace SFB_Test_Automation.AutoFramework.Pages
                     if (Finalfinance == SdFinalFinance)
                     {
                         return true;
-                        Console.WriteLine("Finance Years Match");
                     }
                     else
                         return false;
-                         Console.WriteLine("Finances do not match");
                 }
 
                 catch (OpenQA.Selenium.NoSuchElementException e) { }

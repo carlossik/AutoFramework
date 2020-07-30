@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -22,7 +23,7 @@ namespace SFB_Test_Automation.AutoFramework
             Console.WriteLine(FinancialYear);
             SelfAssessmentPage assessmentpage = new SelfAssessmentPage();
             detailspage.SADLink.Click();
-            Thread.Sleep(3000);
+            Thread.Sleep(300);
             String SadFinancialYearDisplayed = Driver.driver.FindElement(By.CssSelector(".govuk-heading-m")).Text;
             Console.WriteLine(SadFinancialYearDisplayed);
 
@@ -40,6 +41,29 @@ namespace SFB_Test_Automation.AutoFramework
             Thread.Sleep(3000);
         }
 
+        public static void ViewCharacteristics(String Laestab)
+        {
+            Actions.schoolSearchwithLaestab(Laestab);
+            SchoolDetailPage detailspage = new SchoolDetailPage();
+            detailspage.SADLink.Click();
+            Thread.Sleep(2000);
+            SelfAssessmentPage SADpage = new SelfAssessmentPage();
+            SADpage.ViewCharacteristicsLink.Click();
+            Thread.Sleep(2000);
+
+        }
+
+        public static void ViewCharacteristicsSideBySide(String Laestab)
+        {
+            
+            createSideBySideScenario(Laestab);
+            SelfAssessmentPage SADpage = new SelfAssessmentPage();
+            SADpage.ViewCharacteristicsLink.Click();
+            Thread.Sleep(2000);
+
+        }
+
+      
         public static void FillSADForm()
         {
             SadEditPage editpage = new SadEditPage();
@@ -53,7 +77,31 @@ namespace SFB_Test_Automation.AutoFramework
             editpage.Total_income.SendKeys("5000000");
             editpage.Total_expenditure.SendKeys("8000000");
             editpage.Submit_Button.Click();
-            Thread.Sleep(200000);
+            Thread.Sleep(200);
+        }
+
+        public static void EditSADForm()
+        {
+            SadEditPage editpage = new SadEditPage();
+            editpage.ScenarioNameField.Clear();
+            editpage.ScenarioNameField.SendKeys("Automated Test1 Scenario");
+            editpage.YearOfScenarioField.Click();
+            editpage.NumberOfPupils.Clear();
+            editpage.NumberOfPupils.SendKeys("33");
+            editpage.NumberOfTeachers.Clear();
+            editpage.NumberOfTeachers.SendKeys("45");
+            editpage.SchoolWorkForce.Clear();
+            editpage.SchoolWorkForce.SendKeys("26.4");
+            editpage.SeniorLeaderShip.Clear();
+            editpage.SeniorLeaderShip.SendKeys("26.1");
+            editpage.PercenTageOfPupilsEligbleFSM.Clear();
+            editpage.PercenTageOfPupilsEligbleFSM.SendKeys("20");
+            editpage.Total_income.Clear();
+            editpage.Total_income.SendKeys("5000000");
+            editpage.Total_expenditure.Clear();
+            editpage.Total_expenditure.SendKeys("8000000");
+            editpage.Submit_Button.Click();
+            Thread.Sleep(200);
         }
         public static void createSideBySideScenario(String LAestab)
         {
@@ -64,7 +112,84 @@ namespace SFB_Test_Automation.AutoFramework
             SadPage.SideBySideLink.Click();
             Thread.Sleep(200);
             FillSADForm();
-            
+            Thread.Sleep(2000);
+            //SadPage.backtoschooldetailpagecrumb.Click();
+
         }
+        public static void gotohomepageviabreadcrumb()
+        {
+            SelfAssessmentPage assessmentpage = new SelfAssessmentPage();
+            assessmentpage.backtoschooldetailpagecrumb.Click();
+            Thread.Sleep(2000);
+        }
+        public static void persist()
+        {
+            gotohomepageviabreadcrumb();
+            SchoolDetailPage detailspage = new SchoolDetailPage();
+            detailspage.SADLink.Click();
+            SelfAssessmentPage SadPage = new SelfAssessmentPage();
+            Thread.Sleep(2000);
+        }
+
+        public static void removeScenario1()
+        {
+            SelfAssessmentPage SadPage = new SelfAssessmentPage();
+            SadPage.RemoveScenario1Button.Click();
+            Thread.Sleep(2000);
+        }
+        public static void removeScenario2()
+        {
+            SelfAssessmentPage SadPage = new SelfAssessmentPage();
+            SadPage.RemoveScenario2Button.Click();
+            Thread.Sleep(2000);
+        }
+        public static void EditScenario1()
+        {
+            SelfAssessmentPage SadPage = new SelfAssessmentPage();
+            SadPage.EditScenario1Button.Click();
+            Thread.Sleep(200);
+            EditSADForm();
+            Thread.Sleep(20000);
+        }
+        public static void EditScenario2()
+        {
+            SelfAssessmentPage SadPage = new SelfAssessmentPage();
+            SadPage.EditScenario2Button.Click();
+            Thread.Sleep(2000);
+        }
+        public static void ResetDashBoard()
+        {
+            SelfAssessmentPage SadPage = new SelfAssessmentPage();
+            SadPage.ResetDashboardButton.Click();
+            Thread.Sleep(2000);
+        }
+        public static void verifyFinanceYear(string Laestab)
+        {
+            Actions.schoolSearchwithLaestab(Laestab);
+            SchoolDetailPage detailspage = new SchoolDetailPage();
+            String FinancialYear = Driver.driver.FindElement(By.CssSelector("div.charts-section__chart-container:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > span:nth-child(1)")).Text;
+            String FinancialYearFinal = Regex.Replace(FinancialYear, @"\s+", "");
+            String Finalfinance = Regex.Replace(FinancialYearFinal, @"-", "/");
+            Console.WriteLine(Finalfinance);
+            detailspage.SADLink.Click();
+            SelfAssessmentPage assessmentpage = new SelfAssessmentPage();
+            Thread.Sleep(300);
+            String SadFinancialYearDisplayed = Driver.driver.FindElement(By.CssSelector(".govuk-heading-m")).Text;
+            String SdFinalFinance = Regex.Replace(SadFinancialYearDisplayed, @" submitted data", "");
+            Console.WriteLine(SdFinalFinance);
+            if (Finalfinance == SdFinalFinance)
+            {
+                
+                Console.WriteLine("Finance Years Match"); ;
+            }
+            else
+               
+                Console.WriteLine("Finances do not match");
+
+        }
+
+
     }
+   
+
 }

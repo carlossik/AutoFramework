@@ -157,6 +157,7 @@
             BenchMarkChartPage benchchartpage = new BenchMarkChartPage();
             benchchartpage.TotalExpenditureDropdown.Click();
             benchchartpage.costOfFinance.Click();
+           // benchchartpage.costOfFinance.SendKeys(Keys);
             Thread.Sleep(30000);
             
 

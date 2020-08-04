@@ -136,11 +136,51 @@ namespace SFB_Test_Automation.AutoFramework.Scenarios
         {
             SelfAssessmentActions.createSideBySideScenario("2032028");
             SelfAssessmentActions.EditScenario2();
-           
-
-
-
+        
         }
+        [Test]
+        public void Verify_ClosedSchool_Has_No_Sad_Link()
+        {
+            SelfAssessmentActions.SADclosedSchool("134118");
+            SchoolDetailPage detailspage = new SchoolDetailPage();
+           Assert.IsFalse(detailspage.verifySADLink());
+                
+        }
+        [Test]
+        public void TestprintSAD()
+        {
+            SelfAssessmentActions.createSideBySideScenario("2032028");
+            SelfAssessmentActions.PrintSad();
+        }
+
+        [Test]
+        public void TestDownloadSAD()
+        {
+            SelfAssessmentActions.createSideBySideScenario("2032028");
+            SelfAssessmentActions.DownloadSad();
+        }
+        [Test]
+        public void TestprintLayoutSAD()
+        {
+            throw new NotImplementedException();
+        }
+        [Test]
+        public void Verify_SADlink_Displayed_ForOpenSchool()
+        {
+            throw new NotImplementedException();
+        }
+
+        [Test]
+        public void Verify_SADlink_Displayed_ForClosedSchool()
+        {
+            throw new NotImplementedException();
+        }
+        [Test]
+        public void verifyIyb_displayed_for_all_Values()
+        {
+            throw new NotImplementedException();
+        }
+
 
         [TearDown]
         public void TeardownAfterEachTest()

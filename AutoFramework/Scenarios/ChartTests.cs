@@ -43,7 +43,7 @@
 
         [Test]
         [Category("QuickTests")]
-        //[Ignore("Ignore a test")]
+        [Ignore("Ignore a test")]
         public void DealsForSchoolsLink()
         {
 
@@ -59,7 +59,8 @@
         {
             Actions.CallingClass.QuickCompareWithOtherSchools();
             BenchMarkActions.costoffinance();
-            Assert.IsFalse(Driver.driver.FindElement(By.CssSelector("div.chart-container:nth-child(3) > div:nth-child(1) > div:nth-child(3) > details:nth-child(2) > summary:nth-child(1) > span:nth-child(1)")).Displayed);
+            Assert.IsTrue(Driver.driver.FindElement(By.CssSelector("div.chart-container:nth-child(3) > div:nth-child(1) > div:nth-child(2)")).Displayed);
+            //Assert.IsFalse(Driver.driver.FindElement(By.CssSelector("div.chart-container:nth-child(3) > div:nth-child(1) > div:nth-child(3) > details:nth-child(2) > summary:nth-child(1) > span:nth-child(1)")).Displayed);
             //testing that anyother below cost of finance should be in an accordion
 
         }
@@ -69,7 +70,8 @@
         {
             DetailedComparisonActions.IncludechoolswithIncFinanceAllSchoolsAllEngland("145789");
             BenchMarkActions.costoffinance();
-            Assert.IsFalse(Driver.driver.FindElement(By.CssSelector("div.chart-container:nth-child(3) > div:nth-child(1) > div:nth-child(3) > details:nth-child(2) > summary:nth-child(1) > span:nth-child(1)")).Displayed);
+            Assert.IsTrue(Driver.driver.FindElement(By.CssSelector("div.chart-container:nth-child(3) > div:nth-child(1) > div:nth-child(2)")).Displayed);
+            //Assert.IsFalse(Driver.driver.FindElement(By.CssSelector("div.chart-container:nth-child(3) > div:nth-child(1) > div:nth-child(3) > details:nth-child(2) > summary:nth-child(1) > span:nth-child(1)")).Displayed);
             //testing that anyother below cost of finance should be in an accordion
         }
 
@@ -78,7 +80,7 @@
         {
             Actions.CallingClass.BestInClassComparison();
             BenchMarkActions.costoffinance();
-            Assert.IsFalse(Driver.driver.FindElement(By.CssSelector("div.chart-container:nth-child(3) > div:nth-child(1) > div:nth-child(3) > details:nth-child(2) > summary:nth-child(1) > span:nth-child(1)")).Displayed);
+            Assert.IsTrue(Driver.driver.FindElement(By.CssSelector("div.chart-container:nth-child(3) > div:nth-child(1) > div:nth-child(2)")).Displayed);
             //testing that anyother below cost of finance should be in an accordion
 
 

@@ -13,27 +13,25 @@
     using SFB_Test_Automation.AutoFramework.vs.AutoFramework.Helpers;
     using SFB_Test_Automation;
 
-    public class TrustSearchScenarios :TestBase
+    public class TrustSearchScenarios 
     {
 
-
-        public TrustSearchScenarios()
-        {
-        }
-
         [SetUp]
-        public void SetupBeforeEachTest(string browsername)
+
+        public void SetupBeforeEachTest()
 
         {
- 
-        Actions.InitializeDriver(Config.DriverUnderTest1);
+            Actions.InitializeDriver(Config.DriverUnderTest1);
+
+
+
         }
 
         [Test]
-        //[TestCaseSource(typeof(Driver), "BrowserToRunWith")]
-        public void TrustSearch(String browsername)
+        
+        public void TrustSearch()
         {
-            SetupBeforeEachTest(browsername);
+           
             TrustActions.TrustSearchWitNameUsingFirstSuggestedName("Kaleidoscope Learning Trust ");
             TrustComparisonPage trustcomparison = new TrustComparisonPage();
             string trustname = (trustcomparison.TrustName).Text;
@@ -41,13 +39,13 @@
             Assert.AreEqual(trustname, expectedName);
         }
         [Test]
-        //[TestCaseSource(typeof(Driver), "BrowserToRunWith")]
+       
         public void TrustearchwithWrongname()
         {
             //todo
         }
         [Test]
-        //[TestCaseSource(typeof(Driver), "BrowserToRunWith")]
+      
         public void TrustSearchwithName()
         {
             TrustActions.TrustSearchWitNameUsingFirstSuggestedName("Brookvale Groby Learning Trust");
@@ -57,7 +55,7 @@
             Assert.AreEqual(trustname, expectedName);
         }
         [Test]
-        //[TestCaseSource(typeof(Driver), "BrowserToRunWith")]
+       
         public void TrustSearchwithOneschoolinTrust()
         {
             Actions.SearchTrustViaLocalAuthority("303");

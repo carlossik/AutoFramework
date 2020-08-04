@@ -647,8 +647,8 @@
             trustComaprison.EnterTrustForComparisonOption.Click();
             Thread.Sleep(500);
             trustComaprison.EnterTrustforCompareNameField.SendKeys("Ark Schools");
-            trustComaprison.EnterTrustforCompareNameField.SendKeys(Keys.Enter);
-            Driver.driver.FindElement(By.CssSelector(".tt-suggestion > a:nth-child(1)")).Click();
+           // trustComaprison.EnterTrustforCompareNameField.SendKeys(Keys.Enter);
+            Driver.driver.FindElement(By.CssSelector(".tt-suggestion > a:nth-child(1)")).Click();//select the first suggested 
             Thread.Sleep(500);
             trustComaprison.ViewBenchMarkingCharts.Click();
             Thread.Sleep(500);

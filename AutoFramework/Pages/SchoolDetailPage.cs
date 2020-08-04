@@ -96,9 +96,25 @@ namespace AutoFramework.Pages.PageElements
 
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector,Using = "dd.metadata-school-detail__dd:nth-child(6) > a:nth-child(1)")]
         public IWebElement LocalAuthorityLink { get; set; }
-        //public string SchoolPhaseValue = Driver.driver.FindElement(By.CssSelector("dd.metadata-school-detail__dd:nth-child(12)")).Text;
-        //public string OverallSchoolPhaseValue = Driver.driver.FindElement(By.CssSelector("dd.metadata-school-detail__dd:nth-child(10)")).Text;
-        //public string newvalue = OverallSchoolPhaseValue
+
+        public bool verifySADLink()
+        {
+
+            try
+            {
+                if (SADLink.Displayed)
+                {
+                    return true;
+                }
+                else
+                    return false;
+            }
+            catch (OpenQA.Selenium.NoSuchElementException e) { }
+
+            return false;
+
+        }
+
 
 
     }

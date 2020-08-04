@@ -62,8 +62,20 @@ namespace SFB_Test_Automation.AutoFramework
             Thread.Sleep(2000);
 
         }
+        public static void PrintSad()
+        {
+            SelfAssessmentPage assessmentpage = new SelfAssessmentPage();
+            assessmentpage.PrintPage.Click();
+            Thread.Sleep(200);
+        }
 
-      
+        public static void DownloadSad()
+        {
+            SelfAssessmentPage assessmentpage = new SelfAssessmentPage();
+            assessmentpage.DownloadPage.Click();
+            Thread.Sleep(2000);
+        }
+
         public static void FillSADForm()
         {
             SadEditPage editpage = new SadEditPage();
@@ -162,6 +174,11 @@ namespace SFB_Test_Automation.AutoFramework
             SelfAssessmentPage SadPage = new SelfAssessmentPage();
             SadPage.ResetDashboardButton.Click();
             Thread.Sleep(2000);
+        }
+
+        public static void SADclosedSchool(String Laestab)// should be a closed school
+        {
+            Actions.schoolSearchwithLaestab(Laestab);
         }
         public static void verifyFinanceYear(string Laestab)
         {

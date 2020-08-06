@@ -125,7 +125,20 @@ namespace SFB_Test_Automation.AutoFramework
             Thread.Sleep(200);
             FillSADForm();
             Thread.Sleep(2000);
-            //SadPage.backtoschooldetailpagecrumb.Click();
+
+        }
+        public static void cancelsidebysidecreation(String LAestab)
+        {
+            Actions.schoolSearchwithLaestab(LAestab);
+            SchoolDetailPage detailspage = new SchoolDetailPage();
+            detailspage.SADLink.Click();
+            SelfAssessmentPage SadPage = new SelfAssessmentPage();
+            SadPage.SideBySideLink.Click();
+            Thread.Sleep(20000);
+            SadEditPage editpage = new SadEditPage();
+            editpage.Back_Link.Click();
+            Thread.Sleep(2000);
+            
 
         }
         public static void gotohomepageviabreadcrumb()
@@ -180,31 +193,18 @@ namespace SFB_Test_Automation.AutoFramework
         {
             Actions.schoolSearchwithLaestab(Laestab);
         }
-        public static void verifyFinanceYear(string Laestab)
+        public static void navigatebacktohomepage()
         {
-            Actions.schoolSearchwithLaestab(Laestab);
-            SchoolDetailPage detailspage = new SchoolDetailPage();
-            String FinancialYear = Driver.driver.FindElement(By.CssSelector("div.charts-section__chart-container:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > span:nth-child(1)")).Text;
-            String FinancialYearFinal = Regex.Replace(FinancialYear, @"\s+", "");
-            String Finalfinance = Regex.Replace(FinancialYearFinal, @"-", "/");
-            Console.WriteLine(Finalfinance);
-            detailspage.SADLink.Click();
-            SelfAssessmentPage assessmentpage = new SelfAssessmentPage();
-            Thread.Sleep(300);
-            String SadFinancialYearDisplayed = Driver.driver.FindElement(By.CssSelector(".govuk-heading-m")).Text;
-            String SdFinalFinance = Regex.Replace(SadFinancialYearDisplayed, @" submitted data", "");
-            Console.WriteLine(SdFinalFinance);
-            if (Finalfinance == SdFinalFinance)
-            {
-                
-                Console.WriteLine("Finance Years Match"); ;
-            }
-            else
-               
-                Console.WriteLine("Finances do not match");
-
+            SelfAssessmentPage SadPage = new SelfAssessmentPage();
+            SadPage.HomeBreadCrumb.Click();
+            Thread.Sleep(2000);
         }
-
+        public static void navigatebacktoschooldetaipage()
+        {
+            SelfAssessmentPage SadPage = new SelfAssessmentPage();
+            SadPage.backtoschooldetailpagecrumb.Click();
+            Thread.Sleep(2000);
+        }
 
     }
    

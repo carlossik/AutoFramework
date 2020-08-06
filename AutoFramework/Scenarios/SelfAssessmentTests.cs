@@ -79,6 +79,13 @@ namespace SFB_Test_Automation.AutoFramework.Scenarios
             Assert.IsTrue(assessmentpage.ResetDashboardButton.Displayed);
         }
         [Test]
+        public void TestCancelCreateSideBySideView()
+        {
+            SelfAssessmentActions.cancelsidebysidecreation("2032028");
+            SelfAssessmentPage assessmentpage = new SelfAssessmentPage();
+            Assert.IsTrue(assessmentpage.SideBySideLink.Displayed);
+        }
+        [Test]
         public void TestEditSideBySideView()
         {
             SelfAssessmentActions.createSideBySideScenario("100000");
@@ -112,6 +119,9 @@ namespace SFB_Test_Automation.AutoFramework.Scenarios
         {
             SelfAssessmentActions.createSideBySideScenario("2032028");
             SelfAssessmentActions.removeScenario1();
+            SelfAssessmentPage assesmentpage = new SelfAssessmentPage();
+            Assert.IsTrue(assesmentpage.SideBySideLink.Displayed);
+
 
 
         }
@@ -120,6 +130,8 @@ namespace SFB_Test_Automation.AutoFramework.Scenarios
         {
             SelfAssessmentActions.createSideBySideScenario("2032028");
             SelfAssessmentActions.removeScenario2();
+            SelfAssessmentPage assesmentpage = new SelfAssessmentPage();
+            Assert.IsTrue(assesmentpage.SideBySideLink.Displayed);
 
 
         }
@@ -151,6 +163,12 @@ namespace SFB_Test_Automation.AutoFramework.Scenarios
         {
             SelfAssessmentActions.createSideBySideScenario("2032028");
             SelfAssessmentActions.PrintSad();
+            SelfAssessmentPage assessmentpage = new SelfAssessmentPage();
+            Assert.IsTrue(assessmentpage.Printbutton.Displayed);
+
+
+
+
         }
 
         [Test]
@@ -180,7 +198,23 @@ namespace SFB_Test_Automation.AutoFramework.Scenarios
         {
             throw new NotImplementedException();
         }
+        [Test]
+        public void navigateBackToschooldetailpage()
+        {
+            SelfAssessmentActions.createSideBySideScenario("2032028");
+            SelfAssessmentActions.navigatebacktoschooldetaipage();
+            SchoolDetailPage detailpage = new SchoolDetailPage();
+            Assert.IsTrue(detailpage.School_Name.Displayed);
+        }
 
+        [Test]
+        public void navigateBackToHomePage()
+        {
+            SelfAssessmentActions.createSideBySideScenario("2032028");
+            SelfAssessmentActions.navigatebacktohomepage();
+            HomePage home = new HomePage();
+            Assert.IsTrue(home.TrustTab.Displayed);
+        }
 
         [TearDown]
         public void TeardownAfterEachTest()

@@ -49,16 +49,7 @@ namespace AutoFramework
                  IWebElement SearchResults = Driver.driver.FindElement(By.CssSelector("#js-search-results-info > div > p > span"));
                 
             }
-            //public class browsertotestwith
-            //{
-            //    string browsers = ["chrome", "IE", "firefox"];
-                
-            //    foreach (string browser in browsers)
-            //        {get {return browsertotestwith }
-            //        }
-
-            //}
-
+            
 
         }
     }

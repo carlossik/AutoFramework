@@ -52,7 +52,8 @@ namespace SFB_Test_Automation.AutoFramework.Pages
         public IWebElement DownloadPage { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "a.a-button:nth-child(2) > span:nth-child(2)")]
         public IWebElement PrintPage { get; set; }
-
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "div > cr-button.action-button")]
+        public IWebElement Printbutton { get; set; }
 
 
 

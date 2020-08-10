@@ -54,6 +54,8 @@ namespace SFB_Test_Automation.AutoFramework.Pages
         public IWebElement PrintPage { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "div > cr-button.action-button")]
         public IWebElement Printbutton { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector,Using = ".govuk-warning-text__assistive")]
+        public IWebElement FinancewarningMessage { get; set; }
 
 
 

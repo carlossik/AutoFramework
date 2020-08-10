@@ -1,6 +1,7 @@
 ﻿using AutoFramework;
 using OpenQA.Selenium;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -69,7 +70,63 @@ namespace SFB_Test_Automation.AutoFramework.Pages
             public IWebElement Submit_Button { get; set; }
             [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "a.govuk-link:nth-child(2)")]
             public IWebElement Back_Link { get; set; }
-            //.govuk-heading-xl
+            [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector,Using = "fieldset.govuk-fieldset:nth-child(1) > div:nth-child(3) > label:nth-child(1) > img:nth-child(1)")]
+            public IWebElement YearOfScenario_Popup { get; set; }
+            [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "fieldset.govuk-fieldset:nth-child(2) > div:nth-child(2) > label:nth-child(1) > img:nth-child(1)")]
+            public IWebElement Number_of_pupilsPopup { get; set; }
+            [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "fieldset.govuk-fieldset:nth-child(1) > div:nth-child(3) > label:nth-child(1) > img:nth-child(1)")]
+            public IWebElement School_workforce_Popup { get; set; }
+            [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "fieldset.govuk-fieldset:nth-child(2) > div:nth-child(3) > label:nth-child(1) > img:nth-child(1)")]
+            public IWebElement NumberOfTeachers_Popup { get; set; }
+            [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "fieldset.govuk-fieldset:nth-child(2) > div:nth-child(5) > label:nth-child(1) > img:nth-child(1)")]
+            public IWebElement Senior_leadership_Popup { get; set; }
+            [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "fieldset.govuk-fieldset:nth-child(2) > div:nth-child(7) > label:nth-child(1) > img:nth-child(1)")]
+            public IWebElement Teacher_contact_ratio_Popup { get; set; }
+            [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "fieldset.govuk-fieldset:nth-child(2) > div:nth-child(8) > label:nth-child(1) > img:nth-child(1)")]
+            public IWebElement Predicted_percentage_pupil_number_change_in_3_5_years_Popup { get; set; }
+            [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "fieldset.govuk-fieldset:nth-child(2) > div:nth-child(9) > label:nth-child(1) > img:nth-child(1)")]
+            public IWebElement Average_Class_size_Popup { get; set; }
+            [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "fieldset.govuk-fieldset:nth-child(3) > div:nth-child(2) > label:nth-child(1) > img:nth-child(1)")]
+            public IWebElement Total_income_Popup { get; set; }
+            [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "fieldset.govuk-fieldset:nth-child(3) > div:nth-child(3) > label:nth-child(1) > img:nth-child(1)")]
+            public IWebElement Total_expenditure_Popup { get; set; }
+            [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "fieldset.govuk-fieldset:nth-child(3) > div:nth-child(4) > label:nth-child(1) > img:nth-child(1)")]
+            public IWebElement Revenue_reserve_Popup { get; set; }
+            [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "fieldset.govuk-fieldset:nth-child(4) > div:nth-child(2) > label:nth-child(1) > img:nth-child(1)")]
+            public IWebElement Spending_on_teaching_staff_Popup { get; set; }
+            [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "fieldset.govuk-fieldset:nth-child(4) > div:nth-child(3) > label:nth-child(1) > img:nth-child(1)")]
+            public IWebElement Spending_on_supply_staff_Popup { get; set; }
+            [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "fieldset.govuk-fieldset:nth-child(4) > div:nth-child(4) > label:nth-child(1) > img:nth-child(1)")]
+            public IWebElement Spending_on_education_support_staff_Popup { get; set; }
+            [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "fieldset.govuk-fieldset:nth-child(4) > div:nth-child(5) > label:nth-child(1) > img:nth-child(1)")]
+            public IWebElement Spending_on_administrative_and_clerical_staff_Popup { get; set; }
+            [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "fieldset.govuk-fieldset:nth-child(4) > div:nth-child(6) > label:nth-child(1) > img:nth-child(1)")]
+            public IWebElement Spending_on_other_staff_costs_Popup { get; set; }
+            [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "fieldset.govuk-fieldset:nth-child(4) > div:nth-child(7) > label:nth-child(1) > img:nth-child(1)")]
+            public IWebElement Spending_on_premises_costs_Popup { get; set; }
+            [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "fieldset.govuk-fieldset:nth-child(4) > div:nth-child(8) > label:nth-child(1) > img:nth-child(1)")]
+            public IWebElement Spending_on_teaching_resources_Popup { get; set; }
+
+            [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "fieldset.govuk-fieldset:nth-child(4) > div:nth-child(9) > label:nth-child(1) > img:nth-child(1)")]
+            public IWebElement Spending_on_energy_Popup { get; set; }
+
+            [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".pull-right > span:nth-child(1)")]
+            public IWebElement modalcloseButton { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".modal-body > div:nth-child(1) > p:nth-child(1)")]
+        public IWebElement popupmessage { get; set; }
+        //.pull-right > span:nth-child(1)
+
+
+
+
+
+
+
+
+
+
+
+        //.govuk-heading-xl
 
 
 

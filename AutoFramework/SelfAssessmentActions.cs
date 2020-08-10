@@ -1,6 +1,7 @@
 ﻿using AutoFramework;
 using AutoFramework.Pages.PageElements;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 using SFB_Test_Automation.AutoFramework.Pages;
 using System;
 using System.Collections.Generic;
@@ -23,7 +24,7 @@ namespace SFB_Test_Automation.AutoFramework
             Console.WriteLine(FinancialYear);
             SelfAssessmentPage assessmentpage = new SelfAssessmentPage();
             detailspage.SADLink.Click();
-            Thread.Sleep(300);
+            Thread.Sleep(3000);
             String SadFinancialYearDisplayed = Driver.driver.FindElement(By.CssSelector(".govuk-heading-m")).Text;
             Console.WriteLine(SadFinancialYearDisplayed);
 
@@ -91,6 +92,13 @@ namespace SFB_Test_Automation.AutoFramework
             editpage.Submit_Button.Click();
             Thread.Sleep(200);
         }
+        public static void EditSideBySideView(String LAestab)
+        {
+            createSideBySideScenario(LAestab);
+            Thread.Sleep(30000);
+
+
+        }
 
         public static void EditSADForm()
         {
@@ -155,6 +163,24 @@ namespace SFB_Test_Automation.AutoFramework
             SelfAssessmentPage SadPage = new SelfAssessmentPage();
             Thread.Sleep(2000);
         }
+        public static void non_persistence(String LAestab)
+        {
+            gotohomepageviabreadcrumb();
+            Driver.driver.Close();
+            Driver.driver = new ChromeDriver();
+            Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
+            Driver.driver.FindElement(By.Id("acceptAllCookies")).Click();
+            Driver.driver.FindElement(By.Id("acceptAllCookiesHide")).Click();
+            Driver.driver.Manage().Window.Maximize();
+            Driver.driver.Navigate().Refresh();
+            Thread.Sleep(5000);
+            Actions.clearPopup();
+            Actions.schoolSearchwithLaestab(LAestab);
+            SchoolDetailPage detailspage = new SchoolDetailPage();
+            detailspage.SADLink.Click();
+            Thread.Sleep(2000);
+            //driver.get(‘chrome://settings/clearBrowserData’) .
+        }
 
         public static void removeScenario1()
         {
@@ -205,6 +231,24 @@ namespace SFB_Test_Automation.AutoFramework
             SadPage.backtoschooldetailpagecrumb.Click();
             Thread.Sleep(2000);
         }
+        public static void VerifyPopUps(String Laestab)
+        {
+            Actions.schoolSearchwithLaestab(Laestab);
+            SchoolDetailPage detailspage = new SchoolDetailPage();
+            detailspage.SADLink.Click();
+            Thread.Sleep(3000);
+            SelfAssessmentPage SadPage = new SelfAssessmentPage();
+            SadPage.SideBySideLink.Click();
+            Thread.Sleep(3000);
+    
+
+        }
+       public static void ClickPopUp(IWebElement popupName)
+        {
+            popupName.Click();
+            Thread.Sleep(2000);
+        }
+
 
     }
    

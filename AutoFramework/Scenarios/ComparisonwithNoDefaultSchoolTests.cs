@@ -28,7 +28,7 @@ namespace AutoFramework
              [SetUp]
         public void SetupBeforeEachTest()
         {
-            Actions.InitializeDriver(Config.DriverUnderTest3);
+            Actions.InitializeDriver(Config.FirefoxDriverUnderTest);
         }
         [Test]
 

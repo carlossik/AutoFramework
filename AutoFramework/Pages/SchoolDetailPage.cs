@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoFramework.Pages;
 using How = SeleniumExtras.PageObjects.How;
+using System.Threading;
 
 namespace AutoFramework.Pages.PageElements
 {
@@ -54,8 +55,8 @@ namespace AutoFramework.Pages.PageElements
         public IWebElement SchoolPhase { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = "a.button:nth-child(1)")]
         public IWebElement Compare { get; set; }
-        [SeleniumExtras.PageObjects.FindsBy(How = How.Id, Using = "DownloadLinkText")]
-        public IWebElement OneClickReportingLink { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = ".sfb_gtm_auto_report")]
+        public IWebElement BasicComparisonReportLink { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = ".sfb_gtm_address")]
         public IWebElement Address { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = "dd.metadata-school-detail__dd:nth-child(16)")]
@@ -86,8 +87,11 @@ namespace AutoFramework.Pages.PageElements
         //public IWebElement SchoolPhase { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector,Using = "a.spt_link_js")]
         public IWebElement schoolPerformanceTableLink { get; set; }
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "li:nth-of-type(2) > .font-xsmall")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".list > li:nth-child(2) > a:nth-child(1)")]
         public IWebElement SADLink { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "html/body/div/div[3]/div[7]/main/div[1]/div[2]/aside/ul/li[2]/a")]
+        public IWebElement SADLinkxpath { get; set; }
+        ///html/body/div/div[3]/div[7]/main/div[1]/div[2]/aside/ul/li[2]/a
 
 
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = ".exp-total")]
@@ -96,22 +100,41 @@ namespace AutoFramework.Pages.PageElements
 
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector,Using = "dd.metadata-school-detail__dd:nth-child(6) > a:nth-child(1)")]
         public IWebElement LocalAuthorityLink { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = ".list > li:nth-child(1) > a:nth-child(1)")]
+        public IWebElement EfficiencyMetricLink { get; set; }
+       
 
         public bool verifySADLink()
         {
 
             try
             {
-                if (SADLink.Displayed)
+                if (SADLinkxpath.Displayed)
                 {
                     return true;
                 }
-                else
-                    return false;
+                
             }
             catch (OpenQA.Selenium.NoSuchElementException e) { }
 
             return false;
+
+        }
+
+        public void clickSadLink()
+        {
+            try { 
+
+            if (SADLink.Displayed)
+            {
+                SADLink.Click();
+                Thread.Sleep(200);
+                Actions.acceptCookie();
+                Thread.Sleep(200);
+
+                }
+                 }
+            catch (OpenQA.Selenium.NoSuchElementException e) { }
 
         }
 

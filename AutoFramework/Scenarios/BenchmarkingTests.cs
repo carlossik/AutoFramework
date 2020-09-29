@@ -26,7 +26,7 @@
         public void SetupBeforeEachTest()
         
         {
-            Actions.InitializeDriver(Config.DriverUnderTest2);
+            Actions.InitializeDriver(Config.FirefoxDriverUnderTest);
          
         }
         [Test]

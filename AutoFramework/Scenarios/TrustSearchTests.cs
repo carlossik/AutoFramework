@@ -21,7 +21,7 @@
         public void SetupBeforeEachTest()
 
         {
-            Actions.InitializeDriver(Config.DriverUnderTest1);
+            Actions.InitializeDriver(Config.ChromeDriverUnderTest);
 
 
 
@@ -140,7 +140,7 @@
         {
             Actions.SearchTrustViaLocation();
             Console.WriteLine(Driver.driver.FindElement(By.CssSelector(".heading-xlarge")).Text);
-            Assert.IsTrue(Driver.driver.FindElement(By.CssSelector(".heading-xlarge")).Text == "Academy trusts with schools operating in and near First Avenue, Welling, Kent");
+            Assert.IsTrue(Driver.driver.FindElement(By.CssSelector(".heading-xlarge")).Text == "Academy trusts with schools operating in and near First Avenue, Bexleyheath, Kent");
         }
         [Test]
         public void trustsearchViaLA()

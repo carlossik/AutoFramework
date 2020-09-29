@@ -25,7 +25,7 @@
         public void SetupBeforeEachTest()
         
         {
-           Actions.InitializeDriver(Config.DriverUnderTest1);
+           Actions.InitializeDriver(Config.ChromeDriverUnderTest);
             
 
 
@@ -79,7 +79,7 @@
         public void SearchSchool_closed_school_withName()
         {
             
-            Actions.SearchClosedschoolName("Bedonwell Infant And Nursery School");//"Belmont Primary School"
+            Actions.SearchClosedschoolLAEstab("101421");//"Belmont Primary School"
             SchoolDetailPage detailspage = new SchoolDetailPage();
            // Assert.IsTrue(detailspage.Date_Of_Closure.Displayed);
             Assert.IsFalse(detailspage.CompareWithOtherSchools.Displayed);
@@ -97,7 +97,8 @@
             Console.WriteLine(detailspage.schooldetailnotfoundmessage.Text);
        
         }
-        [Test]
+        
+        //[Test]
         public static void verifynewspagefromNewsBanner()
         {
             Actions.gotonewspagefrombanner();
@@ -203,6 +204,7 @@
             SchoolDetailPage detailspage = new SchoolDetailPage();
             Assert.AreEqual(detailspage.SchooldetailInfoPanel.Text, "Your benchmark basket contains 2 schools");
         }
+        [Ignore("Ignore a test")]
         [Test]
         public void verifyDefaultSchool()
         {
@@ -303,7 +305,7 @@
             Assert.That(Driver.driver.FindElement(By.CssSelector("dd.metadata-school-detail__dd:nth-child(16)")).Text, Does.Contain("Not rated"));
         }
         [Test]
-        public void OnclickReportingTest()
+        public void BasicComparisonReportingTest()
         {
             Actions.OnclickReportingTest();
             Assert.That(Driver.driver.FindElement(By.CssSelector("#benchmarkBasket > div > div > div")).Text, Does.Contain("Your benchmark basket contains 15 schools "));
@@ -317,7 +319,7 @@
 
         }
         [Test]
-        public void OnclickReportingLondonTest()
+        public void BasicComparisonReportingLondonTest()
         {
             Actions.OnclickReportingLondonTest("100140");
             Assert.That(Driver.driver.FindElement(By.CssSelector("#benchmarkBasket > div > div > div")).Text, Does.Contain("Your benchmark basket contains 15 schools "));
@@ -327,7 +329,7 @@
            
         }
         [Test]
-        public void OnclickReportingNotLondonTest()
+        public void BasicComparisonReportNotLondonTest()
         {
             Actions.OnclickReportingNonLondonTest("143590");
             
@@ -381,6 +383,7 @@
             Actions.CallingClass.Verifybasketcapacity();
             Assert.IsTrue(Driver.driver.FindElement(By.Id("modal-title")).Text.Contains("Not enough space in basket"));
         }
+        [Ignore("Ignore a test")]
         [Test]
         public void VerifyDefaultSchoolColor()
         {
@@ -400,7 +403,7 @@
         [Test]
         public void searchforschoolwith16plus()
         {
-            Actions.SearchByLocationUsingPostcode("Ae18 3JL");
+            Actions.SearchByLocationUsingPostcode("Se18 3JL");
             SearchResultsPage resultspage = new SearchResultsPage();
             Assert.IsTrue(resultspage.Checkbox_16plus.Displayed);
         }

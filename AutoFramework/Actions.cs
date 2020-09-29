@@ -183,7 +183,7 @@
             //GoHome();
             CallingClass.SearchViaSchoolurn("119182");
             SchoolDetailPage Schooldetails = new SchoolDetailPage();
-            Schooldetails.OneClickReportingLink.Click();
+            Schooldetails.BasicComparisonReportLink.Click();
             //Thread.Sleep(2000);
         }
         public static void OnclickReportingLondonTest(string LondonSchool)
@@ -191,7 +191,7 @@
             GoHome();
             CallingClass.SearchViaSchoolurn(LondonSchool);
             SchoolDetailPage Schooldetails = new SchoolDetailPage();
-            Schooldetails.OneClickReportingLink.Click();
+            Schooldetails.BasicComparisonReportLink.Click();
             Thread.Sleep(2000);
             BenchMarkChartPage oneclickpage = new BenchMarkChartPage();
             oneclickpage.ViewCharacteristicsUsed.Click();
@@ -204,7 +204,7 @@
             
             CallingClass.SearchViaSchoolurn(NonLondonSchool);
             SchoolDetailPage Schooldetails = new SchoolDetailPage();
-            Schooldetails.OneClickReportingLink.Click();
+            Schooldetails.BasicComparisonReportLink.Click();
             BenchMarkChartPage oneclickpage = new BenchMarkChartPage();
             oneclickpage.ViewCharacteristicsUsed.Click();
             Thread.Sleep(2000);
@@ -353,6 +353,7 @@
                 clearPopup();
                 Thread.Sleep(300);
             }
+
             
         }
         public static void gotonewspage()
@@ -363,22 +364,37 @@
             home.NewsLink.Click();
             Thread.Sleep(100);
         }
+        public static void acceptCookie()
+        {
+            IWebElement closeCookie = Driver.driver.FindElement(By.Id("acceptAllCookies"));
+            if (closeCookie.Displayed)
+            {
+                closeCookie.Click();
+                Thread.Sleep(300);
+                //Driver.driver.Navigate().Refresh();
+                Thread.Sleep(300);
+               
+               
+            }
+
+        }
         public static void gotonewspagefrombanner()
         {
             Driver.driver.Close();
-            InitializeDriver(Config.DriverUnderTest3);
-           
+            Driver.driver = new ChromeDriver();
+            Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
+
             Thread.Sleep(1000);
             Driver.driver.Manage().Window.Maximize();
             IWebElement AcceptCookies = Driver.driver.FindElement(By.Id("acceptAllCookies"));
-            //SearchSchool2("100140");
+            
+           // AcceptCookies.Click();
+            //IWebElement HideCookieBanner = Driver.driver.FindElement(By.Id("acceptAllCookiesHide"));
+            //HideCookieBanner.Click();
+            Thread.Sleep(1000);
+
             //Driver.driver.Navigate().Refresh();
-            //Thread.Sleep(10000);
-            AcceptCookies.Click();
-            IWebElement HideCookieBanner = Driver.driver.FindElement(By.Id("acceptAllCookiesHide"));
-            HideCookieBanner.Click();
-            Driver.driver.Navigate().Refresh();
-            Thread.Sleep(10000);
+            Thread.Sleep(1000);
             IWebElement gotonewspage = Driver.driver.FindElement(By.XPath("/html/body/dialog/div/div/div/a"));
             gotonewspage.Click();
         }
@@ -589,7 +605,7 @@
             SearchTrustViaLocalAuthority(LAcode);
             SearchResultsPage resultspage = new SearchResultsPage();
             resultspage.TrustSearchResultSortedByButton.Click();
-            if (Config.DriverUnderTest3 == "firefox")
+            if (Config.FirefoxDriverUnderTest == "firefox")
             {
                 resultspage.TrustSearchResultSortedByButton.SendKeys(OrderBy + Keys.Enter);
             }

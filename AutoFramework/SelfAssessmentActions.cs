@@ -49,11 +49,13 @@ namespace SFB_Test_Automation.AutoFramework
             detailspage.SADLink.Click();
             Thread.Sleep(2000);
             SelfAssessmentPage SADpage = new SelfAssessmentPage();
+            SADpage.AcceptSADCookie.Click();
+            Thread.Sleep(2000);
             SADpage.ViewCharacteristicsLink.Click();
             Thread.Sleep(2000);
 
         }
-
+      
         public static void ViewCharacteristicsSideBySide(String Laestab)
         {
             
@@ -68,6 +70,8 @@ namespace SFB_Test_Automation.AutoFramework
             SelfAssessmentPage assessmentpage = new SelfAssessmentPage();
             assessmentpage.PrintPage.Click();
             Thread.Sleep(200);
+            Driver.driver.SwitchTo().ActiveElement();
+            Driver.driver.FindElement(By.CssSelector("div > cr-button.cancel-button")).Click();
         }
 
         public static void DownloadSad()
@@ -96,8 +100,6 @@ namespace SFB_Test_Automation.AutoFramework
         {
             createSideBySideScenario(LAestab);
             Thread.Sleep(30000);
-
-
         }
 
         public static void EditSADForm()
@@ -128,7 +130,10 @@ namespace SFB_Test_Automation.AutoFramework
             Actions.schoolSearchwithLaestab(LAestab);
             SchoolDetailPage detailspage = new SchoolDetailPage();
             detailspage.SADLink.Click();
+             Thread.Sleep(2000);
             SelfAssessmentPage SadPage = new SelfAssessmentPage();
+            SadPage.AcceptSADCookie.Click();
+            Thread.Sleep(2000);
             SadPage.SideBySideLink.Click();
             Thread.Sleep(200);
             FillSADForm();
@@ -141,13 +146,15 @@ namespace SFB_Test_Automation.AutoFramework
             SchoolDetailPage detailspage = new SchoolDetailPage();
             detailspage.SADLink.Click();
             SelfAssessmentPage SadPage = new SelfAssessmentPage();
+           
+            SadPage.AcceptSADCookie.Click();
+            Thread.Sleep(200);
             SadPage.SideBySideLink.Click();
-            Thread.Sleep(20000);
+            Thread.Sleep(200);
             SadEditPage editpage = new SadEditPage();
             editpage.Back_Link.Click();
-            Thread.Sleep(2000);
-            
-
+            Thread.Sleep(200);
+          
         }
         public static void gotohomepageviabreadcrumb()
         {
@@ -236,12 +243,26 @@ namespace SFB_Test_Automation.AutoFramework
             Actions.schoolSearchwithLaestab(Laestab);
             SchoolDetailPage detailspage = new SchoolDetailPage();
             detailspage.SADLink.Click();
+
             Thread.Sleep(3000);
             SelfAssessmentPage SadPage = new SelfAssessmentPage();
+            SadPage.AcceptSADCookie.Click();
+            Thread.Sleep(200);
             SadPage.SideBySideLink.Click();
             Thread.Sleep(3000);
-    
-
+        }
+        public static void AddData(String Laestab,IWebElement element,String editData)
+        {
+            createSideBySideScenario(Laestab);
+            SelfAssessmentPage SadPage = new SelfAssessmentPage();
+            element.Click();
+            Thread.Sleep(400);
+            SadEditPage EditPage = new SadEditPage();
+            Thread.Sleep(400);
+            IWebElement activeField = Driver.driver.SwitchTo().ActiveElement();
+            activeField.SendKeys(editData);
+            EditPage.Submit_Button.Click();
+            Thread.Sleep(4000);
         }
        public static void ClickPopUp(IWebElement popupName)
         {

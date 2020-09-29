@@ -17,16 +17,12 @@
 
 
 
-        //[OneTimeSetUp]
+      
         [SetUp]
         public void SetupBeforeEachTest()
-        //public void Initialize()
+       
         {
-
-
-            Actions.InitializeDriver(Config.DriverUnderTest3);
-           // Actions.InitializeFireFoxDriver();
-            //Actions.FillLoginForm();
+            Actions.InitializeDriver(Config.ChromeDriverUnderTest); 
         }
 
         [Test]
@@ -38,9 +34,6 @@
            
             Assert.IsTrue(Driver.driver.FindElement(By.Id("Expenditure")).Displayed);//verify that the Expenditure tab is displayed and in focus
             Assert.IsTrue(Driver.driver.FindElement(By.CssSelector(".add-schools > span:nth-child(2)")).Displayed);//verify that the Add another School by name or location is available
-            //Assert.IsTrue(Driver.driver.FindElement(By.Id("CentralFinancing")).Selected);
-            //Assert.IsFalse(Driver.driver.FindElement(By.Id("la")).Selected);
-            //Actions.CallingClass.ContinuetoBenchmarkCharts();
 
 
         }

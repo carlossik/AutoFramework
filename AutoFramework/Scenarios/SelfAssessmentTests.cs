@@ -25,7 +25,7 @@ using System.Threading.Tasks;
 
         {
 
-            Actions.InitializeDriver(Config.DriverUnderTest2);
+            Actions.InitializeDriver(Config.ChromeDriverUnderTest);
         }
 
         [Test]
@@ -60,7 +60,7 @@ using System.Threading.Tasks;
         {
             SelfAssessmentActions.verifySADlinkforIncomplete_finance_Year("101439");
             SchoolDetailPage detailspage = new SchoolDetailPage();
-            Assert.IsFalse(detailspage.SADLink.Displayed);
+            Assert.IsFalse(detailspage.verifySADLink());
         }
         [Test]
         public void TestPersistenceOfSADonSchool()
@@ -114,6 +114,9 @@ using System.Threading.Tasks;
         public void testViewCharacteristicsLinkForSideBySideView()
         {
             SelfAssessmentActions.ViewCharacteristicsSideBySide("2013614");
+            SADSideBySidePage sidebysidepage = new SADSideBySidePage();
+            Assert.IsTrue(sidebysidepage.sadsidebysideLondonweighingRow.Displayed);
+            Assert.IsTrue(sidebysidepage.sadsidebysideNumberOfPupilsRow.Displayed);
 
         }
         [Test]
@@ -182,10 +185,10 @@ using System.Threading.Tasks;
         public void TestprintSAD()
         {
             SelfAssessmentActions.createSideBySideScenario("2032028");
-            SelfAssessmentActions.PrintSad();
+            //SelfAssessmentActions.PrintSad();
             SelfAssessmentPage assessmentpage = new SelfAssessmentPage();
             Assert.IsTrue(assessmentpage.Printbutton.Displayed);
-
+           
 
 
 
@@ -197,7 +200,7 @@ using System.Threading.Tasks;
             SelfAssessmentActions.createSideBySideScenario("2032028");
             SelfAssessmentActions.DownloadSad();
         }
-        [Test]
+        //[Test]
         public void TestprintLayoutSAD()
         {
             throw new NotImplementedException();
@@ -205,13 +208,17 @@ using System.Threading.Tasks;
         [Test]
         public void Verify_SADlink_Displayed_ForOpenSchool()
         {
-            throw new NotImplementedException();
+            SelfAssessmentActions.SADclosedSchool("100000");
+            SchoolDetailPage detailpage = new SchoolDetailPage();
+            Assert.IsTrue(detailpage.verifySADLink());
         }
 
         [Test]
         public void Verify_SADlink_Displayed_ForClosedSchool()
         {
-            throw new NotImplementedException();
+            SelfAssessmentActions.SADclosedSchool("101449");
+            SchoolDetailPage detailpage = new SchoolDetailPage();
+            Assert.IsFalse(detailpage.verifySADLink());
         }
         [Test]
         public void verifyIyb_displayed_for_all_Values()
@@ -252,7 +259,7 @@ using System.Threading.Tasks;
             SelfAssessmentPage assesmentpage = new SelfAssessmentPage();
             SadEditPage editpage = new SadEditPage();
             SelfAssessmentActions.ClickPopUp(editpage.Average_Class_size_Popup);
-            String popupmessage = editpage.popupmessage.Text;
+            String popupmessage = Driver.driver.FindElement(By.CssSelector("body > modal-container > div > div > app-edit-data-info-modal > div.modal-body > div")).Text;
             Assert.IsTrue(popupmessage == "Average class sizes are a key determinant of the cost of running a school.");
 
         }
@@ -263,8 +270,19 @@ using System.Threading.Tasks;
             SelfAssessmentPage assesmentpage = new SelfAssessmentPage();
             SadEditPage editpage = new SadEditPage();
             SelfAssessmentActions.ClickPopUp(editpage.Spending_on_administrative_and_clerical_staff_Popup);
-            String popupmessage = editpage.popupmessage.Text;
-            Assert.IsTrue(popupmessage == "Average class sizes are a key determinant of the cost of running a school.");
+            String popupmessage = Driver.driver.FindElement(By.CssSelector("body > modal-container > div > div > app-edit-data-info-modal > div.modal-body > div")).Text;
+            Console.WriteLine(popupmessage);
+            Assert.AreEqual(popupmessage, @"Spend on administrative and clerical staff includes salaries and wages (including allowances, maternity pay, employer’s contributions to National Insurance and pensions) for administrative and clerical staff employed directly by the school. This includes:
+business managers and bursars
+clerk to the governing body
+receptionists, school secretaries
+other administrative staff
+telephonists, typists
+IT managers
+It excludes administrative and clerical staff that are not employed directly by the school and costs that are incurred as part of a service contract.
+It also excludes IT teachers and staff employed to manage and support the school’s special facilities.");
+
+
 
         }
         [Test]
@@ -274,8 +292,10 @@ using System.Threading.Tasks;
             SelfAssessmentPage assesmentpage = new SelfAssessmentPage();
             SadEditPage editpage = new SadEditPage();
             SelfAssessmentActions.ClickPopUp(editpage.School_workforce_Popup);
-            String popupmessage = editpage.popupmessage.Text;
-            Assert.IsTrue(popupmessage == "The total full-time equivalent count of the school's workforce for the year of the scenario.This information is used to calculate workforce and pupil to workforce ratios.");
+            String popupmessage = Driver.driver.FindElement(By.CssSelector("body > modal-container > div > div > app-edit-data-info-modal > div.modal-body > div")).Text;
+            Console.WriteLine(popupmessage);
+            Assert.AreEqual(popupmessage, @"The total full-time equivalent count of the school's workforce for the year of the scenario.
+This information is used to calculate workforce and pupil to workforce ratios.");
 
 
 
@@ -287,8 +307,10 @@ using System.Threading.Tasks;
             SelfAssessmentPage assesmentpage = new SelfAssessmentPage();
             SadEditPage editpage = new SadEditPage();
             SelfAssessmentActions.ClickPopUp(editpage.Revenue_reserve_Popup);
-            String popupmessage = editpage.popupmessage.Text;
-            Assert.IsTrue(popupmessage == "This is the Restricted and unrestricted funds carried forward from the previous year + total income from current year – total expenditure in current year.A cumulative deficit / negative reserve is indicated by a negative result, and a cumulative surplus / positive reserve is indicated by a positive result.The risk significance of a cumulative deficit is assessed relative to the Total income. ");
+            String popupmessage = Driver.driver.FindElement(By.CssSelector("body > modal-container > div > div > app-edit-data-info-modal > div.modal-body > div")).Text;
+            Console.WriteLine(popupmessage);
+            Assert.AreEqual(popupmessage , @"This is the Restricted and unrestricted funds carried forward from the previous year + total income from current year – total expenditure in current year.
+A cumulative deficit / negative reserve is indicated by a negative result, and a cumulative surplus / positive reserve is indicated by a positive result. The risk significance of a cumulative deficit is assessed relative to the Total income.");
 
 
 
@@ -300,8 +322,9 @@ using System.Threading.Tasks;
             SelfAssessmentPage assesmentpage = new SelfAssessmentPage();
             SadEditPage editpage = new SadEditPage();
             SelfAssessmentActions.ClickPopUp(editpage.Predicted_percentage_pupil_number_change_in_3_5_years_Popup);
-            String popupmessage = editpage.popupmessage.Text;
-            Assert.IsTrue(popupmessage == "Average class sizes are a key determinant of the cost of running a school.");
+            String popupmessage = Driver.driver.FindElement(By.CssSelector("body > modal-container > div > div > app-edit-data-info-modal > div.modal-body > div")).Text;
+            Console.WriteLine(popupmessage);
+            Assert.IsTrue(popupmessage == "This is the percentage of pupils the school is expected to grow or shrink by over the next 3-5 years. A key factor determining a school’s finances is pupil numbers and schools should take this into account for financial projections and assumptions. This number cannot be lower than -100%");
 
         }
         [Test]
@@ -311,8 +334,12 @@ using System.Threading.Tasks;
             SelfAssessmentPage assesmentpage = new SelfAssessmentPage();
             SadEditPage editpage = new SadEditPage();
             SelfAssessmentActions.ClickPopUp(editpage.Number_of_pupilsPopup);
-            String popupmessage = editpage.popupmessage.Text;
-            Assert.IsTrue(popupmessage == "Average class sizes are a key determinant of the cost of running a school.");
+            String popupmessage = Driver.driver.FindElement(By.CssSelector("body > modal-container > div > div > app-edit-data-info-modal > div.modal-body > div")).Text;
+            Console.WriteLine(popupmessage);
+            Assert.AreEqual(popupmessage , @"The number of pupils, full time equivalent, in the school for the year of the scenario.
+This information is used to ensure the school is being compared with schools of a similar size for Primary and Secondary phase schools. It is also used to calculate ratios of pupils to teachers and pupils to all workforce.");
+
+
 
         }
         [Test]
@@ -322,8 +349,9 @@ using System.Threading.Tasks;
             SelfAssessmentPage assesmentpage = new SelfAssessmentPage();
             SadEditPage editpage = new SadEditPage();
             SelfAssessmentActions.ClickPopUp(editpage.NumberOfTeachers_Popup);
-            String popupmessage = editpage.popupmessage.Text;
-            Assert.IsTrue(popupmessage == "Average class sizes are a key determinant of the cost of running a school.");
+            String popupmessage = Driver.driver.FindElement(By.CssSelector("body > modal-container > div > div > app-edit-data-info-modal > div.modal-body > div")).Text;
+            Console.WriteLine(popupmessage);
+            Assert.AreEqual(popupmessage , @"The total full-time equivalent count of the school's teaching staff for the year of the scenario. Full time equivalent number of teachers includes both classroom teachers and teachers in the leadership group. It excludes teaching assistants, non-classroom based school support staff, and auxiliary staff.This information is used to calculate average salaries, leadership ratios, and pupil to teacher ratios.");
 
         }
         [Test]
@@ -333,7 +361,7 @@ using System.Threading.Tasks;
             SelfAssessmentPage assesmentpage = new SelfAssessmentPage();
             SadEditPage editpage = new SadEditPage();
             SelfAssessmentActions.ClickPopUp(editpage.YearOfScenario_Popup);
-            String popupmessage = editpage.popupmessage.Text;
+            String popupmessage = Driver.driver.FindElement(By.CssSelector("body > modal-container > div > div > app-edit-data-info-modal > div.modal-body > div")).Text;
             Assert.IsTrue(popupmessage == "This is used to apply the correct banding ratios that may differ from year to year, e.g. Teaching staff ratios and Average salary has been adjusted with a graded uplift from years 17/18 to 19/20. It is also presented on the side by side dashboard to help users identified when two scenarios are for different years.");
 
         }
@@ -344,8 +372,8 @@ using System.Threading.Tasks;
             SelfAssessmentPage assesmentpage = new SelfAssessmentPage();
             SadEditPage editpage = new SadEditPage();
             SelfAssessmentActions.ClickPopUp(editpage.Total_income_Popup);
-            String popupmessage = editpage.popupmessage.Text;
-            Assert.IsTrue(popupmessage == "Average class sizes are a key determinant of the cost of running a school.");
+            String popupmessage = Driver.driver.FindElement(By.CssSelector("body > modal-container > div > div > app-edit-data-info-modal > div.modal-body > div")).Text;
+            Assert.IsTrue(popupmessage == "This is the Total income for the school in the scenario year, actual or predicted if future. It is a Mandatory field as it is used to calculate the annual balance, and as baseline for the percentage of annual overspend and the relative size of any strategic reserve deficit.");
 
         }
         [Test]
@@ -355,8 +383,14 @@ using System.Threading.Tasks;
             SelfAssessmentPage assesmentpage = new SelfAssessmentPage();
             SadEditPage editpage = new SadEditPage();
             SelfAssessmentActions.ClickPopUp(editpage.Total_expenditure_Popup);
-            String popupmessage = editpage.popupmessage.Text;
-            Assert.IsTrue(popupmessage == "Average class sizes are a key determinant of the cost of running a school.");
+            
+            String popupmessage = Driver.driver.FindElement(By.CssSelector("body > modal-container > div > div > app-edit-data-info-modal > div.modal-body > div")).Text;
+            Console.WriteLine(popupmessage);
+           
+            Assert.IsTrue(popupmessage == @"This is the total expenditure for the school in the scenario year. It is a mandatory field and should be greater than all the other spend items listed here.
+It includes all the spend on the risk items plus the additional items not risk assessed in the dashboard including catering staff and supplies, water and sewerage, rent and rates, other occupation costs, special facilities, educational consultancy, professional services, auditor costs, other insurance premiums, administrative supplies, direct revenue finance, and interest charges for loan and bank.");
+
+
 
         }
         [Test]
@@ -366,10 +400,119 @@ using System.Threading.Tasks;
             SelfAssessmentPage assesmentpage = new SelfAssessmentPage();
             SadEditPage editpage = new SadEditPage();
             SelfAssessmentActions.ClickPopUp(editpage.Teacher_contact_ratio_Popup);
-            String popupmessage = editpage.popupmessage.Text;
-            Assert.IsTrue(popupmessage == "Average class sizes are a key determinant of the cost of running a school.");
+            String popupmessage = Driver.driver.FindElement(By.CssSelector("body > modal-container > div > div > app-edit-data-info-modal > div.modal-body > div")).Text;
+            Console.WriteLine(popupmessage);
+            Assert.AreEqual(popupmessage , @"For secondary schools: Teacher contact ratio = total number of teaching periods timetabled for all teachers in the school ÷ total possible number of teaching periods
+The total possible number of teaching periods is equivalent to the number of teaching periods in the timetable cycle multiplied by the full time equivalent number of teachers.
+Full time equivalent number of teachers includes both classroom teachers and teachers in the leadership group. It excludes teaching assistants, non-classroom based school support staff, and auxiliary staff.
+For primary schools: Teacher contact ratio = total number of classes ÷ full time equivalent number of teachers
+Full time equivalent number of teachers includes both classroom teachers and teachers in the leadership group. It excludes teaching assistants, non-classroom based school support staff, and auxiliary staff.
+The teacher contact ratio will always be less than 1.0");
+
 
         }
+        [Test]
+        public void Add_Data_In_year_balance()
+        {
+            
+            //table.govuk-table:nth-child(3) > tbody:nth-child(2) > tr:nth-child(5) > td:nth-child(4) > span:nth-child(1)
+            //Assert.IsTrue(teacherContaRatio.Text == "0.80");
+        }
+        [Test]
+        public void Add_Data_Revenue_Reserve()
+        {
+            SADSideBySidePage SadPage = new SADSideBySidePage();
+            SelfAssessmentActions.AddData("8792637", SadPage.AddData_Revenue_reserveSC2, "5000000.00");
+            IWebElement revenueReserveC2 = Driver.driver.FindElement(By.CssSelector("#reserveTable > tr:nth-child(7) > td:nth-child(5)"));
+            Console.WriteLine(revenueReserveC2.Text);
+            Assert.AreEqual(revenueReserveC2.Text , "£5,000,000.00");
+        }
+        [Test]
+        public void Add_Data_Teaching_Staff()
+        {
+            SADSideBySidePage SadPage = new SADSideBySidePage();
+            SelfAssessmentActions.AddData("8792637", SadPage.AddData_Teaching_staffC2, "5000000.00");
+            IWebElement teachingStaffSpend = Driver.driver.FindElement(By.CssSelector("#spendingTable > tr:nth-child(6) > td:nth-child(5)"));
+            Console.WriteLine(teachingStaffSpend.Text);
+            Assert.IsTrue(teachingStaffSpend.Text == "£5,000,000.00");
+
+        }
+        [Test]
+        public void Add_Data_Supply_Staff()
+        {
+
+        }
+        [Test]
+        public void Add_Data_Educational_Support_Staff()
+        {
+
+        }
+        [Test]
+        public void Add_Data_Administrative_and_clerical_staff()
+        {
+
+        }
+        [Test]
+        public void Add_Data_Other_staff_costs()
+        {
+
+        }
+        [Test]
+        public void Add_Data_Premises_costs()
+        {
+
+        }
+        [Test]
+        public void Add_Data_Teaching_resources()
+        {
+
+        }
+        [Test]
+        public void Add_Data_Energy()
+        {
+
+        }
+        [Test]
+        public void Add_Data_Average_teacher_cost()
+        {
+
+        }
+        [Test]
+        public  void Add_Data_Senior_leaders_as_a_percentageofworkforce()
+        {
+
+        }
+        [Test]
+        public void Add_Data_Pupil_to_teacher_ratio()
+        {
+
+        }
+        [Test]
+        public void Add_Data_Pupil_to_adult_ratio()
+        {
+
+        }
+        [Test]
+        public void Add_Data_Teacher_contact_ratio()
+        {
+            SelfAssessmentPage SadPage = new SelfAssessmentPage();
+            SelfAssessmentActions.AddData("8792637", SadPage.AddData_TeacherContactRatioSecondForSideBySide,"0.80");
+            IWebElement  teacherContaRatio = Driver.driver.FindElement(By.CssSelector("#charTable > tr:nth-child(10) > td:nth-child(4) > span:nth-child(1)"));
+            Console.WriteLine(teacherContaRatio.Text);
+            //table.govuk-table:nth-child(3) > tbody:nth-child(2) > tr:nth-child(5) > td:nth-child(4) > span:nth-child(1)
+            Assert.IsTrue(teacherContaRatio.Text == "0.80");
+        }
+        [Test]
+        public void Add_Data_Average_Class_size()
+        {
+
+        }
+        [Test]
+        public void Add_Data_Predicted_percentage_pupil_number_change()
+        {
+
+        }
+
 
         [TearDown]
         public void TeardownAfterEachTest()

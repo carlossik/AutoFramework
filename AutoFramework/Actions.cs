@@ -53,8 +53,12 @@
         {
             if (browser == ("chrome"))
             {
-                
-                Driver.driver = new ChromeDriver();
+                var ChromeOptions = new ChromeOptions();
+                var downloadDirectory = (@"C:\AutomationDownloads");
+                ChromeOptions.AddUserProfilePreference("download.default_directory", downloadDirectory);
+                ChromeOptions.AddUserProfilePreference("download.prompt_for_download", false);
+                ChromeOptions.AddUserProfilePreference("disable-popup-blocking", "true");
+                Driver.driver = new ChromeDriver(ChromeOptions);
                 Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
                 Thread.Sleep(2000);
                 IWebElement AcceptCookies = Driver.driver.FindElement(By.Id("acceptAllCookies"));

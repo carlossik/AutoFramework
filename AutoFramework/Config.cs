@@ -25,6 +25,10 @@ namespace AutoFramework
 
         public static object AlertsTexts { get; internal set; }
 
+        
+
+
+
         public static class Credentials
         {
 
@@ -50,6 +54,13 @@ namespace AutoFramework
                 
             }
             
+            public static void deletefiles(String fileName)
+            {
+                if ((System.IO.File.Exists(fileName)))
+                {
+                    System.IO.File.Delete(fileName);
+                }
+            }
 
         }
     }

@@ -264,6 +264,7 @@
     <Compile Include="AutoFramework\BenchMarkActions.cs" />
     <Compile Include="AutoFramework\BrowserToRunWith.cs" />
     <Compile Include="AutoFramework\DetailedComparisonActions.cs" />
+    <Compile Include="AutoFramework\EfficiencyMetricActions.cs" />
     <Compile Include="AutoFramework\FilterActions.cs" />
     <Compile Include="AutoFramework\MyChartActions.cs" />
     <Compile Include="AutoFramework\NoDefaultSchoolActions.cs" />

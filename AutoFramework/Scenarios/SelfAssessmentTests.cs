@@ -7,8 +7,8 @@ using AutoFramework.Pages.PageElements;
 using NUnit.Framework;
 using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
-    using SFB_Test_Automation.AutoFramework;
-    using SFB_Test_Automation.AutoFramework.Pages;
+using SFB_Test_Automation.AutoFramework;
+using SFB_Test_Automation.AutoFramework.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +24,8 @@ using System.Threading.Tasks;
         public void SetupBeforeEachTest()
 
         {
+            var testName = TestContext.CurrentContext.Test.FullName;
+            Config.Credentials.deletefiles(@"C:\TEMP\" + testName + ".jpg");
 
             Actions.InitializeDriver(Config.ChromeDriverUnderTest);
         }
@@ -197,8 +199,11 @@ using System.Threading.Tasks;
         [Test]
         public void TestDownloadSAD()
         {
+            Config.Credentials.deletefiles(@"C:\AutomationDownloads\Self-assessment-dashboard.pdf");
             SelfAssessmentActions.createSideBySideScenario("2032028");
             SelfAssessmentActions.DownloadSad();
+            SelfAssessmentPage assessmentpage = new SelfAssessmentPage();
+            Assert.IsTrue(assessmentpage.IsFileInFolder());
         }
         //[Test]
         public void TestprintLayoutSAD()

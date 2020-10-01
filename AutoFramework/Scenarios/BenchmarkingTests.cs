@@ -26,6 +26,8 @@
         public void SetupBeforeEachTest()
         
         {
+            var testName = TestContext.CurrentContext.Test.FullName;
+            Config.Credentials.deletefiles(@"C:\TEMP\" + testName + ".jpg");
             Actions.InitializeDriver(Config.FirefoxDriverUnderTest);
          
         }

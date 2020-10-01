@@ -78,7 +78,7 @@ namespace SFB_Test_Automation.AutoFramework
         {
             SelfAssessmentPage assessmentpage = new SelfAssessmentPage();
             assessmentpage.DownloadPage.Click();
-            Thread.Sleep(2000);
+            Thread.Sleep(20000);
         }
 
         public static void FillSADForm()

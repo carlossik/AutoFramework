@@ -37,5 +37,37 @@ namespace SFB_Test_Automation.AutoFramework
             EfficiencyMetricPage MetricPage = new EfficiencyMetricPage();
             MetricPage.BenchMarkTheseSchoolsButton.Click();
         }
+
+        public static void seeschoolrank()
+        {
+            EfficiencyMetricPage MetricPage = new EfficiencyMetricPage();
+            MetricPage.SeeThis_SchoolRank.Click();
+            Thread.Sleep(4000);
+        }
+
+        public static void createBenchMarkForEMVia30percent(String urn)
+        {
+            GotoSchholEfficiencyMetric(urn);
+            EfficiencyMetricPage MetricPage = new EfficiencyMetricPage();
+            MetricPage.BenchMarkTheseSchoolsButton.Click();
+            EMbenchmarkInterpage InterPage = new EMbenchmarkInterpage();
+            InterPage.CompareGaianst30Percent.Click();
+            InterPage.Continue.Click();
+
+
+        }
+
+        public static void createBenchMarkForEM_Manually(String urn)
+        {
+            GotoSchholEfficiencyMetric(urn);
+            EfficiencyMetricPage MetricPage = new EfficiencyMetricPage();
+            MetricPage.BenchMarkTheseSchoolsButton.Click();
+            EMbenchmarkInterpage InterPage = new EMbenchmarkInterpage();
+            InterPage.ManuallySelectSchools.Click();
+            InterPage.Continue.Click();
+        }
+
+
+
     }
 }

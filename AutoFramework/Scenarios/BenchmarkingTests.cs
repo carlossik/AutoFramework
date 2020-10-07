@@ -28,7 +28,7 @@
         {
             var testName = TestContext.CurrentContext.Test.FullName;
             Config.Credentials.deletefiles(@"C:\TEMP\" + testName + ".jpg");
-            Actions.InitializeDriver(Config.FirefoxDriverUnderTest);
+            Actions.InitializeDriver(Config.ChromeDriverUnderTest);
          
         }
         [Test]

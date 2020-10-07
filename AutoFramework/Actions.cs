@@ -84,7 +84,7 @@
                 clearPopup();
                 Thread.Sleep(500);
                 Driver.driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
-                
+
                 if (Driver.driver.Url.Contains("Login"))
                 {
                     Actions.FillLoginForm();
@@ -93,12 +93,17 @@
                 {
                     Console.Write("There is no Logoin Required here....");
                 }
-                
+
             }
             else if (browser == ("firefox"))
+                
             {
                 FirefoxProfile fprof = new FirefoxProfile();
                 fprof.SetPreference("geo.enabled", true);
+                var firefoxOptions = new FirefoxOptions();
+                
+                var downloadDirectory = (@"C:\AutomationDownloads");
+                
                 Driver.driver = new FirefoxDriver();
 
                 Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);

@@ -276,6 +276,7 @@
     <Compile Include="AutoFramework\Pages\DetailComparisonPage.cs" />
     <Compile Include="AutoFramework\Pages\EfficiencyMetricIntroPage.cs" />
     <Compile Include="AutoFramework\Pages\EfficiencyMetricPage.cs" />
+    <Compile Include="AutoFramework\Pages\EMbenchmarkInterpage.cs" />
     <Compile Include="AutoFramework\Pages\FiltersPage.cs" />
     <Compile Include="AutoFramework\Pages\IntepretingTheChartsPage.cs" />
     <Compile Include="AutoFramework\Pages\ManualPage.cs" />
@@ -308,6 +309,7 @@
     <Compile Include="AutoFramework\Scenarios\ChartTests.cs" />
     <Compile Include="AutoFramework\Scenarios\ComparisonTests.cs" />
     <Compile Include="AutoFramework\Scenarios\ComparisonwithNoDefaultSchoolTests.cs" />
+    <Compile Include="AutoFramework\Scenarios\EfficiencyMetricTests.cs" />
     <Compile Include="AutoFramework\Scenarios\FiltersTest.cs" />
     <Compile Include="AutoFramework\Scenarios\MyChartTests.cs" />
     <Compile Include="AutoFramework\Scenarios\ReportsCreator.cs" />

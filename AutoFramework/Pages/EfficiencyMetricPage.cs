@@ -34,6 +34,11 @@ namespace SFB_Test_Automation.AutoFramework.Pages
         public IWebElement SeeThis_SchoolRank { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//*[text()=\"See tools to improve your school's efficiency\"]")]
         public IWebElement See_tools_toImprove_EM { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".govuk-list > li:nth-child(1) > a:nth-child(1)")]
+        public IWebElement How_Efficiency_Is_Calculated { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "/html/body/app-root/app-gov-uk-layout/div[2]/div/main/app-home/div/div[2]/div/ul/li[3]/a")]//"//*[text()=Contact details of schools in the table]")]
+        public IWebElement Contact_Details_Of_Schools { get; set; }
+
 
         //#emTableDesktop > tbody:nth-child(49) > tr:nth-child(2) > td:nth-child(1) > div:nth-child(1) > a:nth-child(1)//*[text()='match']
     }

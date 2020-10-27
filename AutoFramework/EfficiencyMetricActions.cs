@@ -67,6 +67,61 @@ namespace SFB_Test_Automation.AutoFramework
             InterPage.Continue.Click();
         }
 
+        public static void navigateToToolPage(String LAESTAB)
+        {
+            GotoSchholEfficiencyMetric(LAESTAB);
+            EfficiencyMetricPage MetricPage = new EfficiencyMetricPage();
+            MetricPage.See_tools_toImprove_EM.Click();
+            Thread.Sleep(500);
+        }
+
+        public static void TestEMToolLinks_PlanningChecklist(String LAESTAB)
+        {
+            GotoSchholEfficiencyMetric(LAESTAB);
+            EfficiencyMetricPage MetricPage = new EfficiencyMetricPage();
+            MetricPage.See_tools_toImprove_EM.Click();
+            Thread.Sleep(500);
+            ToolsToImproveEMPage emtoolspage = new ToolsToImproveEMPage();
+            emtoolspage.UseFinancial_PlanningCheckList_Link.Click();
+            Thread.Sleep(30000);
+        }
+
+        public static void TestEMToolLinks_Top10FinancialPlanningChecks(String LAESTAB)
+        {
+            GotoSchholEfficiencyMetric(LAESTAB);
+            EfficiencyMetricPage MetricPage = new EfficiencyMetricPage();
+            MetricPage.See_tools_toImprove_EM.Click();
+            Thread.Sleep(500);
+            ToolsToImproveEMPage emtoolspage = new ToolsToImproveEMPage();
+            emtoolspage.UseTheTop10PlanningChecksLink.Click();
+            Thread.Sleep(30000);
+        }
+
+        public static void ListSchoolDetails(String LAESTAB)
+        {
+            GotoSchholEfficiencyMetric(LAESTAB);
+            EfficiencyMetricPage MetricPage = new EfficiencyMetricPage();
+           
+            MetricPage.Contact_Details_Of_Schools.Click();
+            Thread.Sleep(1000);
+            
+        }
+
+        public static void TestEMToolLinks_UseTheToolkit(String LAESTAB)
+        {
+            GotoSchholEfficiencyMetric(LAESTAB);
+            EfficiencyMetricPage MetricPage = new EfficiencyMetricPage();
+            MetricPage.See_tools_toImprove_EM.Click();
+            Thread.Sleep(500);
+            ToolsToImproveEMPage emtoolspage = new ToolsToImproveEMPage();
+            emtoolspage.UseTheToolKitLink.Click();
+            Thread.Sleep(300);
+            Driver.driver.SwitchTo().ActiveElement();
+            Thread.Sleep(30000);
+
+
+        }
+
 
 
     }

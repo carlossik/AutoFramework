@@ -49,7 +49,7 @@ namespace SFB_Test_Automation.AutoFramework
             detailspage.SADLink.Click();
             Thread.Sleep(2000);
             SelfAssessmentPage SADpage = new SelfAssessmentPage();
-            SADpage.AcceptSADCookie.Click();
+            Actions.acceptCookie();
             Thread.Sleep(2000);
             SADpage.ViewCharacteristicsLink.Click();
             Thread.Sleep(2000);
@@ -91,8 +91,11 @@ namespace SFB_Test_Automation.AutoFramework
             editpage.SchoolWorkForce.SendKeys("26.4");
             editpage.SeniorLeaderShip.SendKeys("26.1");
             editpage.PercenTageOfPupilsEligbleFSM.SendKeys("20");
+            editpage.SchoolWorkForce.SendKeys("50");
+            editpage.NumberOfTeachers.SendKeys("50");
             editpage.Total_income.SendKeys("5000000");
             editpage.Total_expenditure.SendKeys("8000000");
+            
             editpage.Submit_Button.Click();
             Thread.Sleep(200);
         }
@@ -132,7 +135,7 @@ namespace SFB_Test_Automation.AutoFramework
             detailspage.SADLink.Click();
              Thread.Sleep(2000);
             SelfAssessmentPage SadPage = new SelfAssessmentPage();
-            SadPage.AcceptSADCookie.Click();
+            //SadPage.AcceptSADCookie.Click();
             Thread.Sleep(2000);
             SadPage.SideBySideLink.Click();
             Thread.Sleep(200);
@@ -147,7 +150,7 @@ namespace SFB_Test_Automation.AutoFramework
             detailspage.SADLink.Click();
             SelfAssessmentPage SadPage = new SelfAssessmentPage();
            
-            SadPage.AcceptSADCookie.Click();
+           // SadPage.AcceptSADCookie.Click();
             Thread.Sleep(200);
             SadPage.SideBySideLink.Click();
             Thread.Sleep(200);
@@ -246,7 +249,9 @@ namespace SFB_Test_Automation.AutoFramework
 
             Thread.Sleep(3000);
             SelfAssessmentPage SadPage = new SelfAssessmentPage();
-            SadPage.AcceptSADCookie.Click();
+            Actions.clearcookie();
+            
+            
             Thread.Sleep(200);
             SadPage.SideBySideLink.Click();
             Thread.Sleep(3000);
@@ -255,12 +260,16 @@ namespace SFB_Test_Automation.AutoFramework
         {
             createSideBySideScenario(Laestab);
             SelfAssessmentPage SadPage = new SelfAssessmentPage();
+            Thread.Sleep(400);
             element.Click();
             Thread.Sleep(400);
             SadEditPage EditPage = new SadEditPage();
             Thread.Sleep(400);
             IWebElement activeField = Driver.driver.SwitchTo().ActiveElement();
             activeField.SendKeys(editData);
+            Thread.Sleep(400000);
+            EditPage.SchoolWorkForce.SendKeys("50");
+            EditPage.NumberOfTeachers.SendKeys("50");
             EditPage.Submit_Button.Click();
             Thread.Sleep(4000);
         }

@@ -13,6 +13,7 @@ namespace AutoFramework
     using OpenQA.Selenium.IE;
     using AutoFramework.Pages.PageElements;
     using SFB_Test_Automation.AutoFramework;
+    using System.Threading;
 
     class EfficiencyMetricTests
     {
@@ -77,6 +78,9 @@ namespace AutoFramework
             Assert.IsTrue(MetricPage.HomeBreadCrumb.Displayed);
             Assert.IsTrue(MetricPage.SchoolBreadCrumb.Displayed);
             Assert.IsTrue(MetricPage.Introduction_To_Efficiency_Metric_BreadCrumb.Displayed);
+            Assert.IsTrue(MetricPage.See_tools_toImprove_EM.Displayed);
+            Assert.IsTrue(MetricPage.Contact_Details_Of_Schools.Displayed);
+            Assert.IsTrue(MetricPage.How_Efficiency_Is_Calculated.Displayed);
         }
 
         [Test]
@@ -98,6 +102,71 @@ namespace AutoFramework
 
 
         }
+        [Test]
+        public void Verify_school_contact_details()
+        {
+            EfficiencyMetricActions.ListSchoolDetails("100000");
+            Assert.IsTrue(Driver.driver.Url == "https://as-t1stg-sfb-em.azurewebsites.net/efficiency-metric/contact-details/100000");
+        }
+
+        [Test]
+        public void Verify_tools_to_improve_PlanningCheckList()
+        {
+            EfficiencyMetricActions.TestEMToolLinks_PlanningChecklist("2032471");
+            
+            ToolsToImproveEMPage improveEMPage = new ToolsToImproveEMPage();
+            Assert.IsTrue(improveEMPage.UseFinancial_PlanningCheckList_Link.Displayed);
+            Assert.IsTrue(improveEMPage.UseTheTop10PlanningChecksLink.Displayed);
+            Assert.IsTrue(improveEMPage.UseFinancial_PlanningCheckList_Link.Displayed);
+
+
+        }
+
+
+        [Test]
+        public void Verify_tools_to_improve_Top10_PlanningChecks()
+        {
+            EfficiencyMetricActions.TestEMToolLinks_Top10FinancialPlanningChecks("2032471");
+            Console.WriteLine(Driver.driver.Url);
+            Assert.IsTrue(Driver.driver.Url == "https://educationendowmentfoundation.org.uk/evidence-summaries/teaching-learning-toolkit/");
+
+
+        }
+
+        [Test]
+        public void Verify_tools_to_improve_UseTheToolKit()
+        {
+            EfficiencyMetricActions.TestEMToolLinks_UseTheToolkit("2032471");
+            Driver.driver.SwitchTo().ActiveElement();
+            Console.WriteLine(Driver.driver.Url);
+            Assert.IsTrue(Driver.driver.Url == "https://educationendowmentfoundation.org.uk/evidence-summaries/teaching-learning-toolkit/");
+           
+        }
+
+        [Test]
+        public void Verify_Link_To_ImprovementTools_work()
+        {
+            EfficiencyMetricActions.navigateToToolPage("2032471");
+            Console.WriteLine(Driver.driver.Url);
+            Assert.IsTrue(Driver.driver.Url == "https://educationendowmentfoundation.org.uk/evidence-summaries/teaching-learning-toolkit/");
+
+
+        }
+
+
+        [Test]
+        public void Verify_how_EfficiencyMetricCalculation()
+        {
+            EfficiencyMetricActions.GotoSchholEfficiencyMetric("2032471");
+            EfficiencyMetricPage metricPage = new EfficiencyMetricPage();
+            metricPage.How_Efficiency_Is_Calculated.Click();
+            Thread.Sleep(500);
+            Assert.IsTrue(Driver.driver.FindElement(By.CssSelector(".govuk-heading-xl")).Text == "How the efficiency metric is calculated");
+            Assert.IsTrue(Driver.driver.FindElement(By.CssSelector(".govuk-back-link")).Displayed);
+
+
+        }
+
 
         [Test]
         public void Verify_EM_Benchmarkfor30_percent_Ofschools()

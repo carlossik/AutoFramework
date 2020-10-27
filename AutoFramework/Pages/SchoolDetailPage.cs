@@ -87,10 +87,10 @@ namespace AutoFramework.Pages.PageElements
         //public IWebElement SchoolPhase { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector,Using = "a.spt_link_js")]
         public IWebElement schoolPerformanceTableLink { get; set; }
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".list > li:nth-child(2) > a:nth-child(1)")]
+        //[SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = ".list > li:nth-child(2) > a:nth-child(1)")]
+        //public IWebElement SADLink { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//*[text()=\"Self-assessment dashboard\"]")]
         public IWebElement SADLink { get; set; }
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "html/body/div/div[3]/div[7]/main/div[1]/div[2]/aside/ul/li[2]/a")]
-        public IWebElement SADLinkxpath { get; set; }
         ///html/body/div/div[3]/div[7]/main/div[1]/div[2]/aside/ul/li[2]/a
 
 
@@ -109,7 +109,7 @@ namespace AutoFramework.Pages.PageElements
 
             try
             {
-                if (SADLinkxpath.Displayed)
+                if (SADLink.Displayed)
                 {
                     return true;
                 }

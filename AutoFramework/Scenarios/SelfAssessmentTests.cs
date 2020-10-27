@@ -55,7 +55,7 @@ using System.Threading.Tasks;
         {
 
             SelfAssessmentPage assessmentpage = new SelfAssessmentPage();
-            Assert.IsTrue(assessmentpage.verifyFinancialYear("100000"));
+            Assert.IsTrue(assessmentpage.verifyFinancialYear("141811"));
         }
         [Test]
         public void verifyschoolwithoutFullFinanceYear()
@@ -442,27 +442,7 @@ The teacher contact ratio will always be less than 1.0");
             Assert.IsTrue(teachingStaffSpend.Text == "£5,000,000.00");
 
         }
-        [Test]
-        public void Add_Data_Supply_Staff()
-        {
-
-        }
-        [Test]
-        public void Add_Data_Educational_Support_Staff()
-        {
-
-        }
-        [Test]
-        public void Add_Data_Administrative_and_clerical_staff()
-        {
-
-        }
-        [Test]
-        public void Add_Data_Other_staff_costs()
-        {
-
-        }
-        [Test]
+      [Test]
         public void Add_Data_Premises_costs()
         {
 
@@ -480,7 +460,10 @@ The teacher contact ratio will always be less than 1.0");
         [Test]
         public void Add_Data_Average_teacher_cost()
         {
-
+            SelfAssessmentPage SadPage = new SelfAssessmentPage();
+            SelfAssessmentActions.AddData("8792637", SadPage.AverageTeacherCost_add, "200000");
+            IWebElement teacherContaRatio = Driver.driver.FindElement(By.CssSelector("#charTable > tr:nth-child(10) > td:nth-child(4) > span:nth-child(1)"));
+            Console.WriteLine(teacherContaRatio.Text);
         }
         [Test]
         public  void Add_Data_Senior_leaders_as_a_percentageofworkforce()
@@ -515,7 +498,18 @@ The teacher contact ratio will always be less than 1.0");
         [Test]
         public void Add_Data_Predicted_percentage_pupil_number_change()
         {
+            SelfAssessmentPage SadPage = new SelfAssessmentPage();
+            SelfAssessmentActions.AddData("8792637", SadPage.AddData_Predicted_percentage_pupil_number_changeforSideBySide1, "12.666");
+            IWebElement Predictedpupilchangepercentage = Driver.driver.FindElement(By.CssSelector("#charTable > tr:nth-child(11) > td:nth-child(2) > span:nth-child(1)"));
+            Console.WriteLine(Predictedpupilchangepercentage.Text);
+            Assert.IsTrue(Predictedpupilchangepercentage.Text == "12.7%");
+            
+        }
 
+        [Test]
+        public void testForDecimalPlacesOnFinanceFigures()
+        {
+            SelfAssessmentActions.createSideBySideScenario("100000");
         }
 
 

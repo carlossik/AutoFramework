@@ -95,7 +95,7 @@
 
             Actions.SearchClosedschoolLAEstab("3032004");
             SchoolDetailPage detailspage = new SchoolDetailPage();
-            Assert.IsTrue(detailspage.schooldetailnotfoundmessage.Text.Contains("There are errors on this page that require attention"));
+            Assert.IsTrue(detailspage.schooldetailnotfoundmessage.Text.Contains("We couldn't find any schools matching your search criteria"));
             Console.WriteLine(detailspage.schooldetailnotfoundmessage.Text);
        
         }
@@ -228,7 +228,7 @@
             Actions.CallingClass.SearchViaSchoolurn("Carlos");
             SchoolDetailPage detailspage = new SchoolDetailPage();
            // Assert.IsTrue(detailspage.schooldetailnotfoundmessage.Text.Contains) "There are errors on this page that require attention.");
-            Assert.That(detailspage.schooldetailnotfoundmessage.Text.Contains("There are errors on this page that require attention"));
+            Assert.That(detailspage.schooldetailnotfoundmessage.Text.Contains("We couldn't find any schools matching your search criteria"));
                 
         }    
         [Test]
@@ -414,7 +414,7 @@
         public void test_School_schoolname()
 
         {
-            Actions.schoolSearchwithLaestab("8604084");
+            Actions.schoolSearchwithLaestab("8953525");//("860408");
             SchoolDetailPage detailspage = new SchoolDetailPage();
             Assert.IsTrue(detailspage.School_Name.Displayed);
         }
@@ -492,7 +492,7 @@
         {
             DataQueriesPage queriesPage = new DataQueriesPage();
             Actions.testmailSuccess("carl.fagan");
-            Assert.IsFalse((queriesPage.queryConfirmation).Text == "Your query has been sent");
+            Assert.IsTrue((queriesPage.EmailErrorMessage).Text == "The Email field is not a valid e-mail address.");
 
         }
 

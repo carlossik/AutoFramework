@@ -619,6 +619,7 @@
                 resultspage.TrustSearchResultSortedByButton.SendKeys(OrderBy + Keys.Enter);
             }
             resultspage.TrustSearchResultSortedByButton.SendKeys(OrderBy + Keys.Enter);
+            resultspage.TrustSearchResultSortedByButton.SendKeys(OrderBy + Keys.Enter);
             Thread.Sleep(2000);
 
         }

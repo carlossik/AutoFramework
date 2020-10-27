@@ -61,6 +61,8 @@ namespace SFB_Test_Automation.AutoFramework.Pages
         public IWebElement AddData_TeacherContactRatio { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "table.govuk-table:nth-child(3) > tbody:nth-child(3) > tr:nth-child(6) > td:nth-child(3) > span:nth-child(1) > a:nth-child(2)")]
         public IWebElement AddData_Predicted_percentage_pupil_number_change { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "#charTable > tr:nth-child(11) > td:nth-child(3) > span:nth-child(1) > a:nth-child(2)")]
+        public IWebElement AddData_Predicted_percentage_pupil_number_changeforSideBySide1 { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "table.govuk-table:nth-child(3) > tbody:nth-child(2) > tr:nth-child(5) > td:nth-child(3) > span:nth-child(1) > a:nth-child(2)")]
         public IWebElement AddData_TeacherContactRatioFirstForSideBySide { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "#charTable > tr:nth-child(10) > td:nth-child(5) > span:nth-child(1) > a:nth-child(2)")]
@@ -73,8 +75,11 @@ namespace SFB_Test_Automation.AutoFramework.Pages
         public IWebElement AcceptSADCookie { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "acceptAllCookiesHide")]
         public IWebElement HideSADCookie { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "#charTable > tr:nth-child(6) > td:nth-child(3) > span:nth-child(1) > a:nth-child(2)")]
+        public IWebElement AverageTeacherCost_add { get; set; }
+       // [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "acceptAllCookiesHide")]
+       // public IWebElement HideSADCookie { get; set; }
         //acceptAllCookiesHide
-
 
 
         public bool verifyFinancialYear(String laestab)

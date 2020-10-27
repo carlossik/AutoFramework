@@ -301,6 +301,7 @@
     <Compile Include="AutoFramework\Pages\SearchResultsPage.cs" />
     <Compile Include="AutoFramework\Pages\SelfAssessmentPage.cs" />
     <Compile Include="AutoFramework\Pages\SpecialElementsPage.cs" />
+    <Compile Include="AutoFramework\Pages\ToolsToImproveEMPage.cs" />
     <Compile Include="AutoFramework\Pages\TrustBenchmarkChartsPage.cs" />
     <Compile Include="AutoFramework\Pages\TrustComparisonPage.cs" />
     <Compile Include="AutoFramework\Pages\TrustHomePage.cs" />

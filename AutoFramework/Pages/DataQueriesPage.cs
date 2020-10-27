@@ -35,5 +35,8 @@ namespace SFB_Test_Automation.AutoFramework.Pages
         public IWebElement referencenumberConfirmation { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".bold")]
         public IWebElement queryreferencenumber { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".error-summary-list > li:nth-child(1) > a:nth-child(1)")]
+        public IWebElement EmailErrorMessage { get; set; }
+        //.error-summary-list > li:nth-child(1) > a:nth-child(1)
     }
 }

@@ -132,11 +132,12 @@ namespace SFB_Test_Automation.AutoFramework
         {
             Actions.schoolSearchwithLaestab(LAestab);
             SchoolDetailPage detailspage = new SchoolDetailPage();
+            Thread.Sleep(200);
             detailspage.SADLink.Click();
              Thread.Sleep(2000);
             SelfAssessmentPage SadPage = new SelfAssessmentPage();
-            //SadPage.AcceptSADCookie.Click();
             Thread.Sleep(2000);
+            Actions.acceptCookie();
             SadPage.SideBySideLink.Click();
             Thread.Sleep(200);
             FillSADForm();
@@ -149,8 +150,6 @@ namespace SFB_Test_Automation.AutoFramework
             SchoolDetailPage detailspage = new SchoolDetailPage();
             detailspage.SADLink.Click();
             SelfAssessmentPage SadPage = new SelfAssessmentPage();
-           
-           // SadPage.AcceptSADCookie.Click();
             Thread.Sleep(200);
             SadPage.SideBySideLink.Click();
             Thread.Sleep(200);
@@ -189,7 +188,7 @@ namespace SFB_Test_Automation.AutoFramework
             SchoolDetailPage detailspage = new SchoolDetailPage();
             detailspage.SADLink.Click();
             Thread.Sleep(2000);
-            //driver.get(‘chrome://settings/clearBrowserData’) .
+           
         }
 
         public static void removeScenario1()
@@ -246,15 +245,25 @@ namespace SFB_Test_Automation.AutoFramework
             Actions.schoolSearchwithLaestab(Laestab);
             SchoolDetailPage detailspage = new SchoolDetailPage();
             detailspage.SADLink.Click();
-
             Thread.Sleep(3000);
             SelfAssessmentPage SadPage = new SelfAssessmentPage();
-            Actions.clearcookie();
-            
-            
+            Actions.acceptCookie();
             Thread.Sleep(200);
             SadPage.SideBySideLink.Click();
             Thread.Sleep(3000);
+        }
+
+        public static void create_sadFor_Nurseries_Prus_Specials(String Laestab, IWebElement element, String editDat)
+        {
+
+            AddData(Laestab,element,editDat);
+            //Actions.schoolSearchwithLaestab(Laestab);
+            //SchoolDetailPage detailspage = new SchoolDetailPage();
+            //detailspage.SADLink.Click();
+            //Thread.Sleep(3000);
+            //SelfAssessmentPage SadPage = new SelfAssessmentPage();
+            //Actions.clearcookie();
+            //Thread.Sleep(200);
         }
         public static void AddData(String Laestab,IWebElement element,String editData)
         {
@@ -267,11 +276,11 @@ namespace SFB_Test_Automation.AutoFramework
             Thread.Sleep(400);
             IWebElement activeField = Driver.driver.SwitchTo().ActiveElement();
             activeField.SendKeys(editData);
-            Thread.Sleep(400000);
+            Thread.Sleep(400);
             EditPage.SchoolWorkForce.SendKeys("50");
             EditPage.NumberOfTeachers.SendKeys("50");
             EditPage.Submit_Button.Click();
-            Thread.Sleep(4000);
+            Thread.Sleep(400);
         }
        public static void ClickPopUp(IWebElement popupName)
         {

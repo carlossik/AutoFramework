@@ -36,7 +36,7 @@ namespace SFB_Test_Automation.AutoFramework.Pages
         public IWebElement See_tools_toImprove_EM { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".govuk-list > li:nth-child(1) > a:nth-child(1)")]
         public IWebElement How_Efficiency_Is_Calculated { get; set; }
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "/html/body/app-root/app-gov-uk-layout/div[2]/div/main/app-home/div/div[2]/div/ul/li[3]/a")]//"//*[text()=Contact details of schools in the table]")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "/html/body/app-root/app-gov-uk-layout/div[2]/div/main/app-home/div/div[2]/div/ul/li[3]/a")]//"//*[text()=News]")]
         public IWebElement Contact_Details_Of_Schools { get; set; }
 
 

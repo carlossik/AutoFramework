@@ -27,7 +27,7 @@ using System.Threading.Tasks;
             var testName = TestContext.CurrentContext.Test.FullName;
             Config.Credentials.deletefiles(@"C:\TEMP\" + testName + ".jpg");
 
-            Actions.InitializeDriver(Config.ChromeDriverUnderTest);
+            Actions.InitializeDriver(Config.FirefoxDriverUnderTest);
         }
 
         [Test]
@@ -461,7 +461,7 @@ The teacher contact ratio will always be less than 1.0");
         public void Add_Data_Average_teacher_cost()
         {
             SelfAssessmentPage SadPage = new SelfAssessmentPage();
-            SelfAssessmentActions.AddData("8792637", SadPage.AverageTeacherCost_add, "200000");
+            SelfAssessmentActions.AddData("138950", SadPage.AverageTeacherCost_add, "200000");
             IWebElement teacherContaRatio = Driver.driver.FindElement(By.CssSelector("#charTable > tr:nth-child(10) > td:nth-child(4) > span:nth-child(1)"));
             Console.WriteLine(teacherContaRatio.Text);
         }
@@ -495,6 +495,24 @@ The teacher contact ratio will always be less than 1.0");
         {
 
         }
+
+        [Test]
+
+        public void VerifyNonApplicableFields()
+        {
+            //Some school - TCR and Av class Not applied
+             //112477 - Nursery
+             //139761 - PRU
+              //116640 - Special
+
+            SelfAssessmentPage SadPage = new SelfAssessmentPage();
+            SelfAssessmentActions.create_sadFor_Nurseries_Prus_Specials("112477", SadPage.AddData_TeacherContactRatio, ".65");
+            
+
+
+        }
+
+
         [Test]
         public void Add_Data_Predicted_percentage_pupil_number_change()
         {

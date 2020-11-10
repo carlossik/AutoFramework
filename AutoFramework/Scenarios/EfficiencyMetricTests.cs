@@ -25,7 +25,7 @@ namespace AutoFramework
         {
             var testName = TestContext.CurrentContext.Test.FullName;
             Config.Credentials.deletefiles(@"C:\TEMP\" + testName + ".jpg");
-            Actions.InitializeDriver(Config.FirefoxDriverUnderTest);
+            Actions.InitializeDriver(Config.ChromeDriverUnderTest);
 
         }
 
@@ -173,15 +173,18 @@ namespace AutoFramework
         {
 
             EfficiencyMetricActions.createBenchMarkForEMVia30percent("2032471");
+            //Asserts to follow
 
 
         }
         [Test]
         public void Verify_EM_BenchmarkChartManually()
         {
-
             EfficiencyMetricActions.createBenchMarkForEM_Manually("2032471");
-
+            EfficiencyMetricActions.addschoolstoBasket();
+            BenchMarkChartPage chartpage = new BenchMarkChartPage();
+            Assert.IsTrue(chartpage.ViewAsTables.Displayed);
+            //Asserts to follow
 
         }
 

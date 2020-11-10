@@ -67,6 +67,44 @@ namespace SFB_Test_Automation.AutoFramework
             InterPage.Continue.Click();
         }
 
+        public static void addschoolstoBasket()
+        {
+            EM_ManualComparisonPage manualpage = new EM_ManualComparisonPage();
+            Thread.Sleep(2000);
+            manualpage.AddFirstSchoolButton.Click();
+            manualpage.AddSecondSchoolButton.Click();
+            manualpage.AddThirdSchoolButton.Click();
+            manualpage.AddFourthSchoolButton.Click();
+            manualpage.AddFithSchoolButton.Click();
+            manualpage.Continue_To_BenchMarkCharts.Click();
+
+        }
+
+        public static void filterByEM_Rank(String rank,String urn)
+        {
+            createBenchMarkForEM_Manually(urn);
+        }
+        public static void filterByEducationPhase(String educationphase, String urn)
+        {
+            createBenchMarkForEM_Manually(urn);
+        }
+
+        public static void filterBySchoolType(String schooltype, String urn)
+        {
+            createBenchMarkForEM_Manually(urn);
+        }
+
+        public static void filterByOfstedRating(String rating, String urn)
+        {
+            createBenchMarkForEM_Manually(urn);
+        }
+
+        public static void filterByReligiousCharacter(String character, String urn)
+        {
+            createBenchMarkForEM_Manually(urn);
+        }
+
+
         public static void navigateToToolPage(String LAESTAB)
         {
             GotoSchholEfficiencyMetric(LAESTAB);

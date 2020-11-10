@@ -72,7 +72,7 @@ namespace AutoFramework.Pages.PageElements
         public IWebElement BalanceTab { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "#Workforce > a:nth-child(1)")]
         public IWebElement WorkForceTab { get; set; }
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "#Custom > a > span:nth-child(1) > span > span")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "Custom")]
         public IWebElement YourChartsTab { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector,Using = ".add-schools > span:nth-child(2)")]
         public IWebElement AddanotherschoolLink { get; set; }

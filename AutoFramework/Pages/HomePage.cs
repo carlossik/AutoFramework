@@ -84,7 +84,7 @@
         public IWebElement UnSetasDefaultSchool { get; set; }
         [FindsBy(How = How.Id,Using = "FindSchoolManuallyByTown")]
         public IWebElement SearchLocationManually { get; set; }
-        [FindsBy(How = How.CssSelector,Using = "li.guidance__list__item:nth-child(1) > a:nth-child(1)")]
+        [FindsBy(How = How.CssSelector,Using = "[href *= 'News']")]
         public IWebElement NewsLink { get; set; }
 
         [FindsBy(How = How.Id, Using = "openOnlyName")]

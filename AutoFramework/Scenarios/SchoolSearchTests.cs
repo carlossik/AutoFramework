@@ -70,10 +70,10 @@
             Actions.gotonewspage();
             Thread.Sleep(2000);
             Console.WriteLine(Driver.driver.Url);
-            Console.WriteLine(Config.currentTestEnv + "news?referrer=%2FAccount%2FLogin%3FReturnUrl%3D%252F");
-            //Assert.IsTrue(Driver.driver.Url.Contains(Config.currentTestEnv+ "/news?referrer=%2F"));
-            Console.WriteLine(Driver.driver.FindElement(By.CssSelector(".heading-xlarge")).Text);
-            Assert.IsTrue(Driver.driver.FindElement(By.CssSelector(".heading-xlarge")).Text == "News");
+            //Console.WriteLine(Config.currentTestEnv + "news?referrer=%2FAccount%2FLogin%3FReturnUrl%3D%252F");
+            Assert.IsTrue(Driver.driver.Url.Contains(Config.currentTestEnv+"News"));
+           // Console.WriteLine(Driver.driver.FindElement(By.CssSelector(".heading-xlarge")).Text);
+           //Assert.IsTrue(Driver.driver.FindElement(By.CssSelector(".heading-xlarge")).Text == "News");
 
             
         }

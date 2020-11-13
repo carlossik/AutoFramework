@@ -299,7 +299,7 @@ It also excludes IT teachers and staff employed to manage and support the school
             SelfAssessmentActions.ClickPopUp(editpage.School_workforce_Popup);
             String popupmessage = Driver.driver.FindElement(By.CssSelector("body > modal-container > div > div > app-edit-data-info-modal > div.modal-body > div")).Text;
             Console.WriteLine(popupmessage);
-            Assert.AreEqual(popupmessage, @"The total full-time equivalent count of the school's workforce for the year of the scenario.
+            Assert.AreEqual(popupmessage, @"The total full-time equivalent count of the school's workforce for the year of the dashboard.
 This information is used to calculate workforce and pupil to workforce ratios.");
 
 
@@ -341,7 +341,7 @@ A cumulative deficit / negative reserve is indicated by a negative result, and a
             SelfAssessmentActions.ClickPopUp(editpage.Number_of_pupilsPopup);
             String popupmessage = Driver.driver.FindElement(By.CssSelector("body > modal-container > div > div > app-edit-data-info-modal > div.modal-body > div")).Text;
             Console.WriteLine(popupmessage);
-            Assert.AreEqual(popupmessage , @"The number of pupils, full time equivalent, in the school for the year of the scenario.
+            Assert.AreEqual(popupmessage , @"The number of pupils, full time equivalent, in the school for the year of the dashboard.
 This information is used to ensure the school is being compared with schools of a similar size for Primary and Secondary phase schools. It is also used to calculate ratios of pupils to teachers and pupils to all workforce.");
 
 
@@ -356,7 +356,7 @@ This information is used to ensure the school is being compared with schools of 
             SelfAssessmentActions.ClickPopUp(editpage.NumberOfTeachers_Popup);
             String popupmessage = Driver.driver.FindElement(By.CssSelector("body > modal-container > div > div > app-edit-data-info-modal > div.modal-body > div")).Text;
             Console.WriteLine(popupmessage);
-            Assert.AreEqual(popupmessage , @"The total full-time equivalent count of the school's teaching staff for the year of the scenario. Full time equivalent number of teachers includes both classroom teachers and teachers in the leadership group. It excludes teaching assistants, non-classroom based school support staff, and auxiliary staff.This information is used to calculate average salaries, leadership ratios, and pupil to teacher ratios.");
+            Assert.AreEqual(popupmessage , @"The total full-time equivalent count of the school's teaching staff for the year of the dashboard. Full time equivalent number of teachers includes both classroom teachers and teachers in the leadership group. It excludes teaching assistants, non-classroom based school support staff, and auxiliary staff.This information is used to calculate average salaries, leadership ratios, and pupil to teacher ratios.");
 
         }
         [Test]
@@ -367,7 +367,7 @@ This information is used to ensure the school is being compared with schools of 
             SadEditPage editpage = new SadEditPage();
             SelfAssessmentActions.ClickPopUp(editpage.YearOfScenario_Popup);
             String popupmessage = Driver.driver.FindElement(By.CssSelector("body > modal-container > div > div > app-edit-data-info-modal > div.modal-body > div")).Text;
-            Assert.IsTrue(popupmessage == "This is used to apply the correct banding ratios that may differ from year to year, e.g. Teaching staff ratios and Average salary has been adjusted with a graded uplift from years 17/18 to 19/20. It is also presented on the side by side dashboard to help users identified when two scenarios are for different years.");
+            Assert.AreEqual(popupmessage, "This is used to apply the correct banding ratios that may differ from year to year, e.g. Teaching staff ratios and Average salary has been adjusted with a graded uplift from years 17/18 to 19/20. It is also presented on the custom dashboard to help users identified when two dashboards are for different years.");
 
         }
         [Test]
@@ -378,7 +378,7 @@ This information is used to ensure the school is being compared with schools of 
             SadEditPage editpage = new SadEditPage();
             SelfAssessmentActions.ClickPopUp(editpage.Total_income_Popup);
             String popupmessage = Driver.driver.FindElement(By.CssSelector("body > modal-container > div > div > app-edit-data-info-modal > div.modal-body > div")).Text;
-            Assert.IsTrue(popupmessage == "This is the Total income for the school in the scenario year, actual or predicted if future. It is a Mandatory field as it is used to calculate the annual balance, and as baseline for the percentage of annual overspend and the relative size of any strategic reserve deficit.");
+            Assert.AreEqual(popupmessage , "This is the Total income for the school in the dashboard year, actual or predicted if future. It is a Mandatory field as it is used to calculate the annual balance, and as baseline for the percentage of annual overspend and the relative size of any strategic reserve deficit.");
 
         }
         [Test]
@@ -392,7 +392,7 @@ This information is used to ensure the school is being compared with schools of 
             String popupmessage = Driver.driver.FindElement(By.CssSelector("body > modal-container > div > div > app-edit-data-info-modal > div.modal-body > div")).Text;
             Console.WriteLine(popupmessage);
            
-            Assert.IsTrue(popupmessage == @"This is the total expenditure for the school in the scenario year. It is a mandatory field and should be greater than all the other spend items listed here.
+            Assert.AreEqual(popupmessage, @"This is the total expenditure for the school in the dashboard year. It is a mandatory field and should be greater than all the other spend items listed here.
 It includes all the spend on the risk items plus the additional items not risk assessed in the dashboard including catering staff and supplies, water and sewerage, rent and rates, other occupation costs, special facilities, educational consultancy, professional services, auditor costs, other insurance premiums, administrative supplies, direct revenue finance, and interest charges for loan and bank.");
 
 

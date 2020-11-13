@@ -38,6 +38,8 @@ namespace AutoFramework
             MyChartsPage chartspage = new MyChartsPage();
             Assert.IsTrue(chartspage.AddOrRemoveChartsLink.Displayed);
             //Assert.That(Driver.driver.Url, Does.Contain("/SchoolSearch/Search?radius=1"));
+            AssessibilityActions assessibility = new AssessibilityActions();
+            assessibility.accessibilitytest();
 
 
         }

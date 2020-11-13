@@ -136,8 +136,9 @@ namespace SFB_Test_Automation.AutoFramework
             detailspage.SADLink.Click();
              Thread.Sleep(2000);
             SelfAssessmentPage SadPage = new SelfAssessmentPage();
-            Thread.Sleep(2000);
+            Thread.Sleep(200);
             Actions.acceptCookie();
+            Thread.Sleep(2000);
             SadPage.SideBySideLink.Click();
             Thread.Sleep(200);
             FillSADForm();
@@ -245,12 +246,12 @@ namespace SFB_Test_Automation.AutoFramework
             Actions.schoolSearchwithLaestab(Laestab);
             SchoolDetailPage detailspage = new SchoolDetailPage();
             detailspage.SADLink.Click();
-            Thread.Sleep(3000);
+            Thread.Sleep(300);
             SelfAssessmentPage SadPage = new SelfAssessmentPage();
             Actions.acceptCookie();
             Thread.Sleep(200);
             SadPage.SideBySideLink.Click();
-            Thread.Sleep(3000);
+            Thread.Sleep(300);
         }
 
         public static void create_sadFor_Nurseries_Prus_Specials(String Laestab, IWebElement element, String editDat)

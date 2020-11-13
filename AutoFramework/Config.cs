@@ -10,12 +10,13 @@ namespace AutoFramework
       
 
         public static int ElementsWaitingTimeout = 10000;
-        public static string StagingEnv = "https://as-t1stg-sfb.azurewebsites.net/";
+        public static string staging = "https://as-t1stg-sfb.azurewebsites.net/";
         public static string Dev = "https://as-t1dv-sfb.azurewebsites.net/";
         public static string Prodlive = "https://schools-financial-benchmarking.service.gov.uk/";
-        public static string PreProd = "https://as-t1pr-sfb-preprod.azurewebsites.net/";
-        public static string HiddenLive = "https://as-t1pr-sfb-b.azurewebsites.net/";
-        public static string currentTestEnv = Dev;
+        //public static string PreProd = "https://as-t1pr-sfb-preprod.azurewebsites.net/";
+        //public static string HiddenLive = "https://as-t1pr-sfb-b.azurewebsites.net/";
+        public static string currentTestEnv = staging;
+            
 
         public static string firefoxlocation = "C://Users//kwaku//OneDrive//Desktop//C#//AutoFramework//bin//Debug//firefox.exe";
 

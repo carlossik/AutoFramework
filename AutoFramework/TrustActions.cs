@@ -83,7 +83,7 @@
             //Driver.driver.FindElement(By.CssSelector(".bold-small")).Click();
             Thread.Sleep(100);
         }
-        public static void getCompanyNumber() //test
+        public static void getCompanyNumber() 
         {
             URNHelper helpers = new URNHelper();
             IList trustlinks = helpers.trustlinks;

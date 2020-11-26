@@ -17,6 +17,7 @@
     using OpenQA.Selenium.Remote;
     using System.Linq;
     using SFB_Test_Automation;
+    using OpenQA.Selenium.Support.PageObjects;
 
     class TrustActions : TestBase
     {
@@ -83,6 +84,22 @@
             //Driver.driver.FindElement(By.CssSelector(".bold-small")).Click();
             Thread.Sleep(100);
         }
+        public string   calculateNumberOfSchoolsInMat()
+        {
+            TrustHomePage thomepage = new TrustHomePage();
+            Thread.Sleep(2000);
+            thomepage.NumberOfSchools1819.Click();
+            By byXpath = By.XPath("//a[contains(@href,'/school/detail?urn=')] and (@Id = 'LatestTermHeader')]");
+            //IList<IWebElement> schools = Driver.driver.FindElements(byXpath);
+            IList<IWebElement> schools = Driver.driver.FindElements(new ByChained(By.Id("LatestTermHeader"), By.XPath("//a[contains(@href,'/school/detail?urn=')]")));
+            // IList schools = Driver.driver.FindElements(By.Id("LatestTermHeader").FindElements(By.XPath("//a[contains(@href,'/school/detail?urn=')]")));//.FindElements(By.XPath("//a[contains(@href,'/school/detail?urn=')]")); 
+            int numberOfschools = schools.Count;
+            Console.WriteLine(numberOfschools);
+            return numberOfschools.ToString();
+
+                
+        }
+
         public static void getCompanyNumber() 
         {
             URNHelper helpers = new URNHelper();

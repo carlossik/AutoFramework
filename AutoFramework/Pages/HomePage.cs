@@ -68,6 +68,9 @@
         public IWebElement TrustLacodeSearchButton { get; set; }
         [FindsBy(How = How.CssSelector, Using = "#FindSchoolByLaCodeName")]
         public IWebElement SchoolLacodeinputField { get; set; }
+        [FindsBy(How = How.Id, Using = "LaCodeName")]
+        public IWebElement SchoolLacodeButton { get; set; }
+
         [FindsBy(How = How.CssSelector, Using = ".tt-suggestion > a:nth-child(1)")]
         public IWebElement FirstIntellicenceSuggested { get; set; }
         [FindsBy(How = How.CssSelector, Using = "#NoDefaultTab > button:nth-child(1)")]
@@ -89,6 +92,7 @@
 
         [FindsBy(How = How.Id, Using = "openOnlyName")]
         public IWebElement IncludeSchoolsCheckbox { get; set; }
+
         public void ClickOnSearchButton()
         {
             SearchSubmit.Click();

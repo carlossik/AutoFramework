@@ -77,8 +77,34 @@ namespace SFB_Test_Automation.AutoFramework.Pages
         public IWebElement HideSADCookie { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "#charTable > tr:nth-child(6) > td:nth-child(3) > span:nth-child(1) > a:nth-child(2)")]
         public IWebElement AverageTeacherCost_add { get; set; }
-       // [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "acceptAllCookiesHide")]
-       // public IWebElement HideSADCookie { get; set; }
+
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "//*[text() = 'Average Class size']")] //"#charTable > tbody:nth-child(3) > tr:nth-child(7) > th:nth-child(1)")]
+        public IWebElement AverageClassSize { get; set; }
+
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//*[text() = 'Teacher contact ratio (less than 1)']")]
+        public IWebElement TeacherContactRatio { get; set; }
+
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector,Using = ".dashboard-help-icon > img:nth-child(1)")]
+        public IWebElement Add_Custom_Dashboard_Help_Icon { get; set; }
+
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".dashboard-year-help-icon > img:nth-child(1)")]
+        public IWebElement Dashboard_Year_Help_Icon { get; set; }
+
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".modal-body > div:nth-child(1)")]
+        public IWebElement add_custom_dashboard_help_text { get; set; }
+
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".modal-body > div:nth-child(1) > p:nth-child(1)")]
+        public IWebElement dashboard_Year_help_text { get; set; }
+
+
+        public String Expected_CustomDashboard_Help_Text = "The custom dashboard allows schools to plan for hypothetical or projected changes to their financial situation and see a RAG rating against it.\r\nCustom dashboards are only visible to you and will be viewable on subsequent visits to this school’s self-assessment dashboard if you have selected the option to allow cookies.";
+        public String Expected_DashboardYear_Help_Text = "By choosing a different year banding figures are adjusted to align to that year. An 8.6% uplift has been applied to Teaching staff and average salary (including pensions) for 2019/20 and an 11.9% uplift on 2020/21 and future years.";
+
+        ////a[contains(@title,'List of Users')]
+        //#charTable > tbody:nth-child(3) > tr:nth-child(5) > th:nth-child(1) //Average Class size
+        //#charTable > tbody:nth-child(3) > tr:nth-child(7) > th:nth-child(1)
+        // [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "acceptAllCookiesHide")]
+        // public IWebElement HideSADCookie { get; set; }
         //acceptAllCookiesHide
 
 
@@ -133,6 +159,30 @@ namespace SFB_Test_Automation.AutoFramework.Pages
             return false;
 
         }
+        public bool IsElementDisplayed( IWebElement element)
+        {
+
+            try
+            {
+                
+                if (element.Displayed)
+                {
+                    return true;
+                }
+                else;
+                Console.WriteLine(element.Text);
+                return false;
+                
+
+
+               
+            }
+            catch (OpenQA.Selenium.NoSuchElementException e) { }
+
+            return false;
+
+        }
+
 
 
     }

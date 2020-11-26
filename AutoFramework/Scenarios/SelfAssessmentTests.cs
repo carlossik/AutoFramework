@@ -27,7 +27,7 @@ using System.Threading.Tasks;
             var testName = TestContext.CurrentContext.Test.FullName;
             Config.Credentials.deletefiles(@"C:\TEMP\" + testName + ".jpg");
 
-            Actions.InitializeDriver(Config.FirefoxDriverUnderTest);
+            Actions.InitializeDriver(Config.ChromeDriverUnderTest);
         }
 
         [Test]
@@ -58,11 +58,22 @@ using System.Threading.Tasks;
             Assert.IsTrue(assessmentpage.verifyFinancialYear("141811"));
         }
         [Test]
-        public void verifyschoolwithoutFullFinanceYear()
+        public void verifyFieldsHiddenForSchoolType()
         {
-            SelfAssessmentActions.verifySADlinkforIncomplete_finance_Year("101439");
-            SchoolDetailPage detailspage = new SchoolDetailPage();
-            Assert.IsFalse(detailspage.verifySADLink());
+            
+            
+            var Lacodes = new List<string> { "207", "208", "205", "209" };
+            var random = new Random();
+            int index = random.Next(Lacodes.Count);
+            string randomLacode = Lacodes[index]; //select a random La code from the list of La codes for the test
+            SelfAssessmentActions.verifyHiddenFields(randomLacode); //208 // why is 303 not displaying any nurseries
+            SelfAssessmentPage assessmentpage = new SelfAssessmentPage();
+            Assert.IsFalse(assessmentpage.IsElementDisplayed(assessmentpage.AverageClassSize));
+            Assert.IsFalse(assessmentpage.IsElementDisplayed(assessmentpage.TeacherContactRatio));
+                
+            
+            
+            
         }
         [Test]
         public void TestPersistenceOfSADonSchool()
@@ -197,9 +208,9 @@ using System.Threading.Tasks;
         }
 
         [Test]
-        public void TestDownloadSAD()
+        public void TestDownloadSAD() //Run this test with Chrome browser for now
         {
-            Config.Credentials.deletefiles(@"C:\AutomationDownloads\Self-assessment-dashboard.pdf");
+            Config.Credentials.deletefiles(@"C:\AutomationDownloads\Self-assessment-dashboard.pdf"); // removes any files from previous test runs in the download folder
             SelfAssessmentActions.createSideBySideScenario("2032028");
             SelfAssessmentActions.DownloadSad();
             SelfAssessmentPage assessmentpage = new SelfAssessmentPage();
@@ -466,12 +477,16 @@ The teacher contact ratio will always be less than 1.0");
             Console.WriteLine(teacherContaRatio.Text);
         }
         [Test]
-        public  void Add_Data_Senior_leaders_as_a_percentageofworkforce()
+        public  void verifyYearOfDashboard_Text()
         {
+            SelfAssessmentActions.navigateToSadPage("100000");
+            SelfAssessmentPage SadPage = new SelfAssessmentPage();
+            SelfAssessmentActions.ClickPopUp(SadPage.Dashboard_Year_Help_Icon);
+            Assert.AreEqual(SadPage.dashboard_Year_help_text.Text, SadPage.Expected_DashboardYear_Help_Text);
 
         }
         [Test]
-        public void Add_Data_Pupil_to_teacher_ratio()
+        public void VerifyKS2p8()
         {
 
         }
@@ -491,8 +506,12 @@ The teacher contact ratio will always be less than 1.0");
             Assert.IsTrue(teacherContaRatio.Text == "0.80");
         }
         [Test]
-        public void Add_Data_Average_Class_size()
+        public void VerifyCustomDashboardText()
         {
+            SelfAssessmentActions.navigateToSadPage("100000");
+            SelfAssessmentPage SadPage = new SelfAssessmentPage();
+            SelfAssessmentActions.ClickPopUp(SadPage.Add_Custom_Dashboard_Help_Icon);
+            Assert.AreEqual(SadPage.add_custom_dashboard_help_text.Text, SadPage.Expected_CustomDashboard_Help_Text);
 
         }
 
@@ -500,13 +519,8 @@ The teacher contact ratio will always be less than 1.0");
 
         public void VerifyNonApplicableFields()
         {
-            //Some school - TCR and Av class Not applied
-             //112477 - Nursery
-             //139761 - PRU
-              //116640 - Special
 
-            SelfAssessmentPage SadPage = new SelfAssessmentPage();
-            SelfAssessmentActions.create_sadFor_Nurseries_Prus_Specials("112477", SadPage.AddData_TeacherContactRatio, ".65");
+            
             
 
 

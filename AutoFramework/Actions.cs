@@ -195,6 +195,16 @@
             Schooldetails.BasicComparisonReportLink.Click();
             //Thread.Sleep(2000);
         }
+        public static void selectNursery(String LaCode)
+        {
+            searchSchoolViaLaCode(LaCode);
+            FiltersPage filters = new FiltersPage();
+            filters.EducationPhase_NurseryCheckbox.Click();
+            filters.schoolsdisplayedLinks.Click();
+            Thread.Sleep(2000);
+
+
+        }
         public static void OnclickReportingLondonTest(string LondonSchool)
         {
             GoHome();
@@ -662,6 +672,18 @@
             benchmarkpage.CopyLinkToClipboard.Click();
             Thread.Sleep(300);
         }
+        public static void searchschoolLaCode(String Lacode)
+        {
+            HomePage homepage = new HomePage();
+           
+            homepage.School.Click();
+            homepage.SchoolLacodeButton.Click();
+            homepage.SchoolLacodeinputField.SendKeys(Lacode);
+            homepage.LacodeSearchButton.Click();
+            Thread.Sleep(100);
+
+        }
+
         public static void TrustComparison(String TrustName)
         {
             
@@ -958,6 +980,8 @@
                 Thread.Sleep(2000);
                 chartpage.AddanotherschoolLink.Click();
             }
+
+           
 
         }
     }

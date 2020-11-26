@@ -41,6 +41,18 @@ namespace SFB_Test_Automation.AutoFramework.Pages
         public IWebElement IncomeValue { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "div.column-third:nth-child(1) > div:nth-child(1) > h2:nth-child(1)")]
         public IWebElement ExpenditureValue { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "CurrentHeader")]
+        public IWebElement SchoolsCurrentlyInTrustTab { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "LatestTermHeader")]
+        public IWebElement SchoolsIn1819SubmissionTab { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "HistoryTermHeader")]
+        public IWebElement TrustHistoryTab { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "span.bold:nth-child(3)")]
+        public IWebElement NumberOfSchools1819 { get; set; }
+        
+        //span.bold:nth-child(3)
+
+        //CurrentHeader
 
     }
 }

@@ -243,12 +243,31 @@
         }
 
         [Test]
-        [Ignore("Ignore a test")]
-        public void verifycompaniesHouseNumberCorrect()
+        
+        public void verifyMATHistoricalTabs()
         {
-            throw new NotImplementedException();
+            Actions.TrustSearchWithCompanynumber("7554121");//must be a MAT
+            TrustHomePage thome = new TrustHomePage();
+            Assert.IsTrue(thome.SchoolsCurrentlyInTrustTab.Displayed);
+            Assert.IsTrue(thome.SchoolsIn1819SubmissionTab.Displayed);
+            Assert.IsTrue(thome.TrustHistoryTab.Displayed);
 
         }
+        [Test]
+        public void verifynumberOfSchoolsInTrust()
+        {
+            Actions.TrustSearchWithCompanynumber("2535091");//must be a MAT
+            TrustActions tactions = new TrustActions();
+            TrustHomePage thome = new TrustHomePage();
+            Assert.AreEqual(tactions.calculateNumberOfSchoolsInMat(), thome.NumberOfSchools1819.Text);
+            
+
+           
+            
+        }
+
+
+
         [Test]
         [Ignore("Ignore a test")]
         public void CopyAndPasteTrustChart()

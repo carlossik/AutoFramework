@@ -15,7 +15,16 @@ namespace SFB_Test_Automation.AutoFramework
 {
     class SelfAssessmentActions
     {
+        public static void navigateToSadPage(String Laestab)
+        {
+            Actions.schoolSearchwithLaestab(Laestab);
+            SchoolDetailPage detailspage = new SchoolDetailPage();
+            detailspage.SADLink.Click();
+            Thread.Sleep(200);
+            Actions.acceptCookie();
+            Thread.Sleep(2000);
 
+        }
         public static void verifySADLink(String Laestab)
         {
             Actions.schoolSearchwithLaestab(Laestab);
@@ -30,6 +39,8 @@ namespace SFB_Test_Automation.AutoFramework
 
 
         }
+
+        
 
         public static void verifySADlinkforIncomplete_finance_Year(String Laestab)
         {
@@ -149,10 +160,14 @@ namespace SFB_Test_Automation.AutoFramework
         {
             Actions.schoolSearchwithLaestab(LAestab);
             SchoolDetailPage detailspage = new SchoolDetailPage();
+            Thread.Sleep(200);
             detailspage.SADLink.Click();
+            Thread.Sleep(2000);
             SelfAssessmentPage SadPage = new SelfAssessmentPage();
             Thread.Sleep(200);
+            Actions.acceptCookie();
             SadPage.SideBySideLink.Click();
+           
             Thread.Sleep(200);
             SadEditPage editpage = new SadEditPage();
             editpage.Back_Link.Click();
@@ -283,6 +298,20 @@ namespace SFB_Test_Automation.AutoFramework
             EditPage.Submit_Button.Click();
             Thread.Sleep(400);
         }
+        public static void verifyHiddenFields(String Lacode)
+        {
+            Actions.searchschoolLaCode(Lacode);
+            FiltersPage filters = new FiltersPage();
+            Thread.Sleep(500);
+            filters.EducationPhase_Nursery.Click();
+            filters.schoolsdisplayedLinks.Click();
+            Thread.Sleep(300);
+            SchoolDetailPage detailpage = new SchoolDetailPage();
+            detailpage.SADLink.Click();
+            Actions.acceptCookie();
+            Thread.Sleep(2000);
+        }
+
        public static void ClickPopUp(IWebElement popupName)
         {
             popupName.Click();

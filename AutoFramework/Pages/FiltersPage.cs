@@ -62,6 +62,10 @@ namespace SFB_Test_Automation.AutoFramework.Pages
         public IWebElement SchoolType_FreeSchool { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "#schoolType > div:nth-child(1) > fieldset:nth-child(1) > label:nth-child(9)")]
         public IWebElement SchoolType_Nursery { get; set; }
+
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "schoollevel_Nursery")]
+        public IWebElement EducationPhase_Nursery { get; set; }
+        //schoollevel_Nursery
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "#schoolType > div:nth-child(1) > fieldset:nth-child(1) > label:nth-child(10)")]
         public IWebElement SchoolType_PupilReferalUnit { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "#schoolType > div:nth-child(1) > fieldset:nth-child(1) > label:nth-child(11)")]
@@ -98,6 +102,9 @@ namespace SFB_Test_Automation.AutoFramework.Pages
         public IWebElement SortedBy { get; set; }
         [SeleniumExtras .PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector,Using = "div.pagination-container:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > span:nth-child(1) > span:nth-child(1)")]
         public IWebElement ResultsCount { get; set; }
+
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "/html/body/div/div[3]/div[7]/main/div[2]/div[2]/div/div/div[4]/div[1]/ul/li[1]/div/div[1]/a")]
+        public IWebElement schoolsdisplayedLinks { get; set; }
 
 
                                                                                                       //div.pagination-container:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > span:nth-child(1)

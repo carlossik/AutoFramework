@@ -89,9 +89,13 @@
         public IWebElement SearchLocationManually { get; set; }
         [FindsBy(How = How.CssSelector,Using = "[href *= 'News']")]
         public IWebElement NewsLink { get; set; }
-
+        [FindsBy(How = How.CssSelector,Using = "details.mb-1 > summary:nth-child(1) > span:nth-child(1)")]
+        public IWebElement SenSpecialCharacteristicsLink { get; set; }
         [FindsBy(How = How.Id, Using = "openOnlyName")]
         public IWebElement IncludeSchoolsCheckbox { get; set; }
+
+        [FindsBy(How = How.CssSelector, Using = ".error-summary-list > li:nth-child(1) > a:nth-child(1)")]
+        public IWebElement schoolsearchErrormessage { get; set; }
 
         public void ClickOnSearchButton()
         {

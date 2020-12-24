@@ -307,6 +307,7 @@
     <Compile Include="AutoFramework\Pages\LoginPage.cs" />
     <Compile Include="AutoFramework\Pages\LoginScenarioPost.cs" />
     <Compile Include="AutoFramework\Pages\PageElements\Menu.cs" />
+    <Compile Include="AutoFramework\Pages\QuickComparisonPage2.cs" />
     <Compile Include="AutoFramework\Pages\SadEditPage.cs" />
     <Compile Include="AutoFramework\Pages\ReplaceCurrentBenchmarkbasketPage.cs" />
     <Compile Include="AutoFramework\Pages\SADSideBySidePage.cs" />
@@ -325,6 +326,7 @@
     <Compile Include="AutoFramework\Scenarios\ComparisonTests.cs" />
     <Compile Include="AutoFramework\Scenarios\ComparisonwithNoDefaultSchoolTests.cs" />
     <Compile Include="AutoFramework\Scenarios\EfficiencyMetricTests.cs" />
+    <Compile Include="AutoFramework\Scenarios\ErrorMessages.cs" />
     <Compile Include="AutoFramework\Scenarios\FiltersTest.cs" />
     <Compile Include="AutoFramework\Scenarios\MyChartTests.cs" />
     <Compile Include="AutoFramework\Scenarios\ReportsCreator.cs" />

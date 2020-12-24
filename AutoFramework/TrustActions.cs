@@ -57,6 +57,16 @@
             trustComaprison.ViewBenchMarkingChartsbutton.Click();
 
         }
+        public static void generaltrustsearch(String trustname)
+        {
+            HomePage homepage = new HomePage();
+            homepage.TrustTab.Click();
+            homepage.trustnameRadioButton.Click();
+            homepage.TrustSearchInput.Click();
+            homepage.TrustSearchInput.SendKeys(trustname);
+            homepage.TrustSubmitButton.Click();
+        }
+
         public static void TrustSearchWitNameUsingSubmitButton(String TrustNameSubmitted)
         {
             Actions.GoHome();
@@ -66,14 +76,12 @@
             homepage.trustnameRadioButton.Click();
             homepage.TrustSearchInput.Click();
             homepage.TrustSearchInput.SendKeys(TrustNameSubmitted);
-
             homepage.TrustSubmitButton.Click();
             Driver.driver.FindElement(By.CssSelector(".bold-small")).Click();
             Thread.Sleep(100);
         }
         public static void TrustSearchWitNameUsingFirstSuggestedName(string TrustName)
         {
-            //Actions.GoHome();////
             HomePage homepage = new HomePage();
             Thread.Sleep(100);
             homepage.TrustTab.Click();
@@ -88,17 +96,59 @@
         {
             TrustHomePage thomepage = new TrustHomePage();
             Thread.Sleep(2000);
-            thomepage.NumberOfSchools1819.Click();
-            By byXpath = By.XPath("//a[contains(@href,'/school/detail?urn=')] and (@Id = 'LatestTermHeader')]");
-            //IList<IWebElement> schools = Driver.driver.FindElements(byXpath);
-            IList<IWebElement> schools = Driver.driver.FindElements(new ByChained(By.Id("LatestTermHeader"), By.XPath("//a[contains(@href,'/school/detail?urn=')]")));
-            // IList schools = Driver.driver.FindElements(By.Id("LatestTermHeader").FindElements(By.XPath("//a[contains(@href,'/school/detail?urn=')]")));//.FindElements(By.XPath("//a[contains(@href,'/school/detail?urn=')]")); 
-            int numberOfschools = schools.Count;
-            Console.WriteLine(numberOfschools);
+            thomepage.SchoolsIn1819SubmissionTab.Click();
+            //IWebElement element = Driver.driver.FindElement(By.Id("LatestTermHeader"));
+            //IList numberofschoolsin1819 = element.FindElements(By.XPath(".//a[contains(@href, '\"/school/detail?urn=\"')]"));//(".//a"));
+            //int numberOfschools = numberofschoolsin1819.Count;
+            //Console.WriteLine("These are the number of schools" + numberOfschools.ToString());
+            //return numberOfschools.ToString();
+            Thread.Sleep(200);
+            String xpathbefore = "//*[@id=\"schools-in-trust-accordion\"]/div[3]/fieldset/div[2]/div/div/ul/li[";
+            String xpathafter = "]/a";
+            String numberofschools = thomepage.NumberOfSchools1819.Text;
+            List<string> numberofschoolsin1819 = new List<string>();
+            for (int i = 1; i <=(Int32.Parse(numberofschools)) ; i++)
+            {
+                IWebElement schoolsin1819 = Driver.driver.FindElement(By.XPath(xpathbefore + i + xpathafter));
+                Console.WriteLine(schoolsin1819.Text);
+                numberofschoolsin1819.Add(schoolsin1819.Text);
+            }
+            int numberOfschools = numberofschoolsin1819.Count;
+            Console.WriteLine("These are the number of schools"+ numberOfschools.ToString());
             return numberOfschools.ToString();
 
-                
+            
+
         }
+
+        public String numberberofcharacteristicsDisplayed()
+        {
+            List<string> numberofsenCharacteristics = new List<string>();
+            String beforexpath = "sen-table > tbody:nth-child(1) > tr:nth-child(";
+            String afterxpath = ") > td:nth-child(1) > span:nth-child(1)";
+           
+            for (int i = 1 ; i > 0; i++)
+                try
+                
+                    {
+                        Console.WriteLine(beforexpath + i + afterxpath);
+                        IWebElement SenCharactristics = Driver.driver.FindElement(By.CssSelector(beforexpath + i + afterxpath));
+                        numberofsenCharacteristics.Add(SenCharactristics.Text);
+                        Console.WriteLine(SenCharactristics.Text);
+                   
+                }
+                   
+                   catch (NoSuchElementException e)
+                {
+                    Console.WriteLine(numberofsenCharacteristics.Count.ToString());
+                    return numberofsenCharacteristics.Count.ToString();
+                    
+                }
+            Console.WriteLine(numberofsenCharacteristics.Count.ToString());
+            return numberofsenCharacteristics.Count.ToString();
+        }
+
+
 
         public static void getCompanyNumber() 
         {

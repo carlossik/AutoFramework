@@ -19,39 +19,10 @@
 
     public  class Actions :BrowserToRunWith
     {
-        public static void ClearBasket()
-        {
-
-        }
-        //public static void initializedriverwithoutoptions(string browser)
-        //{
-        //    if (browser == ("chrome"))
-        //    {
-
-        //        driver.driver = new chromedriver();
-        //        driver.driver.navigate().gotourl(config.currenttestenv);
-        //        thread.sleep(2000);
-                
-        //    }
-        //    else if (browser == ("firefox"))
-        //    {
-               
-        //        driver.driver = new firefoxdriver();
-
-        //        driver.driver.navigate().gotourl(config.currenttestenv);
-        //    }
-        //    else if (browser == ("ie"))
-        //    {
-        //        driver.driver = new internetexplorerdriver();
-        //        driver.driver.navigate().gotourl(config.currenttestenv);
-        //    }
-
-        //}
-
 
         public static void InitializeDriver(String browser)
         {
-            if (browser == ("chrome"))
+            if (browser == "chrome")
             {
                 var ChromeOptions = new ChromeOptions();
                 var downloadDirectory = (@"C:\AutomationDownloads");
@@ -187,6 +158,42 @@
 
             Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
         }
+
+        public static void quickcompareSpecialSchoolWithSimilar(String LAESTAB)
+        {
+            CallingClass.SearchViaSchoolurn(LAESTAB);// must be a special school
+            SchoolDetailPage detailpage = new SchoolDetailPage();
+            detailpage.CompareWithOtherSchools.Click();
+            BestInClass bestinclass = new BestInClass();
+            bestinclass.QuickcompareforspecialsSchools.Click();
+            bestinclass.Continue.Click();
+            QuickComparisonPage2 specialspage2 = new QuickComparisonPage2();
+            specialspage2.SchoolswithSimilarAgedStudentscheckbox.Click();// we select the schools with similar aged pupils here
+            specialspage2.ContinueToBenchMarkingChartButton.Click();
+            Thread.Sleep(2000);
+        }
+
+        public static void quickcompareSpecialSchoolWithoutSimilar(String LAESTAB)
+        {
+            CallingClass.SearchViaSchoolurn(LAESTAB);// must be a special school
+            SchoolDetailPage detailpage = new SchoolDetailPage();
+            detailpage.CompareWithOtherSchools.Click();
+            BestInClass bestinclass = new BestInClass();
+            bestinclass.QuickcompareforspecialsSchools.Click();
+            bestinclass.Continue.Click();
+            QuickComparisonPage2 specialspage2 = new QuickComparisonPage2();
+            
+            specialspage2.ContinueToBenchMarkingChartButton.Click();
+            Thread.Sleep(2000);
+        }
+
+        public static void viewcharacteristicsOnChartPage()
+        {
+            BenchMarkChartPage chartpage = new BenchMarkChartPage();
+            chartpage.ViewCharacteristicsUsed.Click();
+            Thread.Sleep(3000);
+        }
+
         public static void OnclickReportingTest()
         {
             //GoHome();
@@ -341,9 +348,9 @@
             homepage.ClickOnSearchButton();
             Thread.Sleep(300);
         }
-        public static void dealforswchools()
+        public static void dealforswchools(String LAESTAB)
         {
-            Actions.CallingClass.QuickCompareWithOtherSchools();
+            Actions.CallingClass.QuickCompareWithOtherSchools(LAESTAB);
             Thread.Sleep(300);
             BenchMarkChartPage chartpage = new BenchMarkChartPage();
 
@@ -446,6 +453,20 @@
             Thread.Sleep(300);
         }
 
+        public static void schoolsearchforSpecialSchool(string LAESTAB)
+        {
+            HomePage homepage = new HomePage();
+            Thread.Sleep(200);
+            homepage.School.Click();
+            homepage.SchoolsearchField.Click();
+            homepage.SchoolsearchField.SendKeys(LAESTAB);
+            homepage.SearchSubmit.Click();
+            Thread.Sleep(300);
+            homepage.SenSpecialCharacteristicsLink.Click();
+            Thread.Sleep(2000);
+        }
+      
+
         public static void TrustSearchWitNameUsingSubmitButton(string TrustName)
         {
             GoHome();
@@ -538,12 +559,9 @@
             BenchMarkBasketPage basketpage = new BenchMarkBasketPage();
             Thread.Sleep(100);
             basketpage.clear_basket.Click();
- 
             Thread.Sleep(2000);
-           
             basketpage.CloseBasket.Click();
-
-            
+           
         }
         public static void downloadpdf()
         {
@@ -629,7 +647,7 @@
                 resultspage.TrustSearchResultSortedByButton.SendKeys(OrderBy + Keys.Enter);
             }
             resultspage.TrustSearchResultSortedByButton.SendKeys(OrderBy + Keys.Enter);
-            resultspage.TrustSearchResultSortedByButton.SendKeys(OrderBy + Keys.Enter);
+            //resultspage.TrustSearchResultSortedByButton.SendKeys(OrderBy + Keys.Enter);
             Thread.Sleep(2000);
 
         }
@@ -838,9 +856,9 @@
                 homepage.ClickOnSearchButton();
                 Thread.Sleep(1000);
             }
-            public static void QuickCompareWithOtherSchools()
+            public static void QuickCompareWithOtherSchools(String Laestab)
             {
-              SearchViaSchoolurn("143592");
+              SearchViaSchoolurn(Laestab);//"143592"
                 SchoolDetailPage detailspage = new SchoolDetailPage();
                 detailspage.CompareWithOtherSchools.Click();
                 BestInClass bestinclass = new BestInClass();
@@ -851,6 +869,24 @@
                 bestinclass.page2of2ContinueButton.Click();
                 Thread.Sleep(100);
             }
+            public static void QuickCompareWithSpecialSchools(String Laestab)
+            {
+                SearchViaSchoolurn(Laestab);//"143592"
+                SchoolDetailPage detailspage = new SchoolDetailPage();
+                detailspage.CompareWithOtherSchools.Click();
+                BestInClass bestinclass = new BestInClass();
+                Thread.Sleep(200);
+                bestinclass.QuckComparisonButton.Click();
+                QuickComparisonPage2 specialsquickpage = new QuickComparisonPage2();
+                specialsquickpage.SchoolswithSimilarAgedStudentscheckbox.Click();
+                specialsquickpage.ContinueToBenchMarkingChartButton.Click();
+                Thread.Sleep(3000);
+                //bestinclass.Continue.Click();
+                //bestinclass.Continue.Click();
+                //bestinclass.page2of2ContinueButton.Click();
+                //Thread.Sleep(100);
+            }
+
             public static void searchschoolwithIncompleteFinance(String urn)
             {
                 SearchViaSchoolurn(urn);
@@ -975,10 +1011,26 @@
             }
             public static void addanotherschoolvianameorlocationlink()
             {
-                QuickCompareWithOtherSchools();
+                QuickCompareWithOtherSchools("2032471");
                 BenchMarkChartPage chartpage = new BenchMarkChartPage();
                 Thread.Sleep(2000);
                 chartpage.AddanotherschoolLink.Click();
+            }
+
+            public String numberberofcharacteristicsDisplayed()
+            {
+                List<string> numberofsenCharacteristics = new List<string>();
+                String beforexpath = "//*[@id=\"content\"]/main/div[2]/div[1]/details/div/table/tbody/tr[";
+                String afterxpath = "]/td[1]/span";
+                for (int i = 1; i > 0; i++)
+                {
+                    IWebElement SenCharactristics = Driver.driver.FindElement(By.XPath(beforexpath + i + afterxpath));
+                    numberofsenCharacteristics.Add(SenCharactristics.Text);
+                    
+                    
+                }
+                return numberofsenCharacteristics.Count.ToString();
+                    
             }
 
            

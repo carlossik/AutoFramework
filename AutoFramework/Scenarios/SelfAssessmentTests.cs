@@ -27,7 +27,7 @@ using System.Threading.Tasks;
             var testName = TestContext.CurrentContext.Test.FullName;
             Config.Credentials.deletefiles(@"C:\TEMP\" + testName + ".jpg");
 
-            Actions.InitializeDriver(Config.ChromeDriverUnderTest);
+            Actions.InitializeDriver(Config.FirefoxDriverUnderTest);
         }
 
         [Test]
@@ -237,6 +237,7 @@ using System.Threading.Tasks;
             Assert.IsFalse(detailpage.verifySADLink());
         }
         [Test]
+        [Ignore("Ignore a test")]
         public void verifyIyb_displayed_for_all_Values()
         {
             throw new NotImplementedException();

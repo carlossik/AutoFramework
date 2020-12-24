@@ -27,7 +27,7 @@ namespace SFB_Test_Automation.AutoFramework.Pages
         public IWebElement DataFromOtherServicesGet_MoreInfoLink { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".result-list-summary > span:nth-child(1)")]
         public IWebElement NumberOfAcaDemies { get; set; }
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".result-list-summary > a:nth-child(3)")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//*[@id=\"content\"]/main/div[1]/div[1]/a/text()")]
         public IWebElement SelectSchoolsToCompareLink { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".resultListPanel > summary:nth-child(1) > span:nth-child(1)")]
         public IWebElement ViewAllacademiesLink { get; set; }

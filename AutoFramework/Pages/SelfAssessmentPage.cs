@@ -1,5 +1,6 @@
 ﻿using AutoFramework;
 using AutoFramework.Pages.PageElements;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
@@ -118,22 +119,31 @@ namespace SFB_Test_Automation.AutoFramework.Pages
                 String FinancialYear = Driver.driver.FindElement(By.CssSelector("div.charts-section__chart-container:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > span:nth-child(1)")).Text;
                 String FinancialYearFinal = Regex.Replace(FinancialYear, @"\s+", "");
                 String Finalfinance = Regex.Replace(FinancialYearFinal, @"-", "/");
+                String FinalFinanceFigure = Regex.Replace(Finalfinance,@" ","");
                 Console.WriteLine(Finalfinance);
                 detailspage.SADLink.Click();
                 SelfAssessmentPage assessmentpage = new SelfAssessmentPage();
-                Thread.Sleep(300);
-                String SadFinancialYearDisplayed = Driver.driver.FindElement(By.CssSelector(".govuk-heading-m")).Text;
-                String SdFinalFinance = Regex.Replace(SadFinancialYearDisplayed, @" submitted data", "");
-                Console.WriteLine(SdFinalFinance);
-                if (Finalfinance == SdFinalFinance)
-                {
-                    return true;
-                }
-                else
-                    return false;
+                Thread.Sleep(3000);
+                Actions.acceptCookie();
+                String SadFinancialYearDisplayed = Driver.driver.FindElement(By.Id("scenarioYear")).Text;
+                Console.WriteLine("This is the raw Financial Year on SAD "+ SadFinancialYearDisplayed);
+                String SdFinalFinance = Regex.Replace(SadFinancialYearDisplayed, @"Dashboard year", "");
+                //String sdfinalfinance = Regex.Replace(SdFinalFinance.Trim(), @" ");
+                Console.WriteLine( "This is first of what we display"+SdFinalFinance);
+                Console.WriteLine("This is second of what we display"+Finalfinance);
+                Assert.AreEqual(SdFinalFinance, FinalFinanceFigure);
+                //if (Finalfinance == SdFinalFinance)
+                //{
+                //    return true;
+                //}
+                //else
+                //    return false;
             }
 
-            catch (OpenQA.Selenium.NoSuchElementException e) { }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
 
             return false;
 
@@ -149,10 +159,11 @@ namespace SFB_Test_Automation.AutoFramework.Pages
                     return true;
                 }
                 else;
+                Console.WriteLine(File.Exists(downloadpdfile) ? "File exists." : "File does not exist.");
                 return false;
 
                 
-                Console.WriteLine(File.Exists(downloadpdfile) ? "File exists." : "File does not exist.");
+               
             }
             catch (OpenQA.Selenium.NoSuchElementException e) { }
 
@@ -172,9 +183,6 @@ namespace SFB_Test_Automation.AutoFramework.Pages
                 else;
                 Console.WriteLine(element.Text);
                 return false;
-                
-
-
                
             }
             catch (OpenQA.Selenium.NoSuchElementException e) { }

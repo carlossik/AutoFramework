@@ -24,14 +24,14 @@
         {
             var testName = TestContext.CurrentContext.Test.FullName;
             Config.Credentials.deletefiles(@"C:\TEMP\" + testName + ".jpg");
-            Actions.InitializeDriver(Config.ChromeDriverUnderTest); 
+            Actions.InitializeDriver(Config.FirefoxDriverUnderTest); 
         }
 
         [Test]
         [Category("QuickTests")]
         public void QuickCompare()
         {
-            Actions.CallingClass.QuickCompareWithOtherSchools();
+            Actions.CallingClass.QuickCompareWithOtherSchools("2032471");
             Thread.Sleep(2000);
            
             Assert.IsTrue(Driver.driver.FindElement(By.Id("Expenditure")).Displayed);//verify that the Expenditure tab is displayed and in focus
@@ -42,7 +42,7 @@
         //[Test]
         public void ContinueToCharts()
         {
-            Actions.CallingClass.QuickCompareWithOtherSchools();
+            Actions.CallingClass.QuickCompareWithOtherSchools("2032471");
             Actions.CallingClass.ContinuetoBenchmarkCharts();
             
         }
@@ -55,12 +55,7 @@
             BestInClass bestinclasspage = new BestInClass();
             
             Assert.IsTrue(((bestinclasspage.BasketCount).Text).Contains("16 schools"));
-            //Assert.IsTrue();
             
-           
-
-
-
         }
         [Test]
         public void TestIntepretingTheCharts()
@@ -69,6 +64,34 @@
             Assert.IsTrue(Driver.driver.Url == Config.currentTestEnv+ "Help/InterpretingCharts");
             //need to add some assertions on the links present and the order
         }
+        [Test]
+        public void specialschoolQuickComparisonTest()
+        {
+            Actions.quickcompareSpecialSchoolWithSimilar("8797068");
+            BenchMarkChartPage chartpage = new BenchMarkChartPage();
+            Assert.AreEqual(chartpage.NumberOfitemsInBasket.Text, "15 schools");
+            //add assertion to verify characteristics used
+        }
+
+        [Test]
+        public void specialschoolQuickComparisonTestWithoutSimilaragedPupils()
+        {
+            Actions.quickcompareSpecialSchoolWithoutSimilar("8797068");
+            BenchMarkChartPage chartpage = new BenchMarkChartPage();
+            Assert.AreEqual(chartpage.NumberOfitemsInBasket.Text, "15 schools");
+            //add assertion to verify characteristics used
+        }
+
+        [Test]
+        public void specialschoolBenchmarkChart_TestCharacteristics()
+        {
+            Actions.quickcompareSpecialSchoolWithoutSimilar("8797068");
+            Actions.viewcharacteristicsOnChartPage();
+            BenchMarkChartPage chartpage = new BenchMarkChartPage();
+            Assert.AreEqual(chartpage.NumberOfitemsInBasket.Text, "15 schools");
+            //add assertion to verify characteristics used
+        }
+
         [Test]
         public void CompareTrusts()
         {

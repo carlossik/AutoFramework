@@ -66,7 +66,7 @@ namespace SFB_Test_Automation.AutoFramework.Pages
             public IWebElement Spending_on_teaching_resources  { get; set; }
             [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "en")]
             public IWebElement Spending_on_energy { get; set; }
-            [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "div.govuk-grid-row:nth-child(5) > div:nth-child(1) > button:nth-child(1)")]
+            [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".sad_gtm_submit_sbs")]
             public IWebElement Submit_Button { get; set; }
             [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".govuk-link--no-visited-state")]
             public IWebElement Back_Link { get; set; }

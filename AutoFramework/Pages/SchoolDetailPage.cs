@@ -98,8 +98,16 @@ namespace AutoFramework.Pages.PageElements
 
         public IWebElement FinanceDisplayed { get; set; }
 
+        [SeleniumExtras.PageObjects.FindsBy(How = How.XPath, Using = ".//a[contains(@href, '/trust?uid=')]")]
+
+        public IWebElement CurrentTrustLinkDisplayed { get; set; }
+
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector,Using = "dd.metadata-school-detail__dd:nth-child(6) > a:nth-child(1)")]
         public IWebElement LocalAuthorityLink { get; set; }
+
+        [SeleniumExtras.PageObjects.FindsBy(How = How.Id, Using = "Financing")]
+        public IWebElement MatFinanceToggle { get; set; }
+
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = ".list > li:nth-child(1) > a:nth-child(1)")]
         public IWebElement EfficiencyMetricLink { get; set; }
        

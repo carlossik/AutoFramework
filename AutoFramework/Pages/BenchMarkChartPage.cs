@@ -89,6 +89,11 @@ namespace AutoFramework.Pages.PageElements
         public IWebElement PercenTageOfTotalOption { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "#ComparisonSchools > a:nth-child(1)")]
         public IWebElement ComparisonSchool_Tab { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".banner__comparison-list-info-panel__count")]
+        public IWebElement NumberOfitemsInBasket { get; set; }
+        //[SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".banner__comparison-list-info-panel__count")]
+       // public IWebElement ViewCharacteristicsUsed { get; set; }
+        //#criteria-details > summary:nth-child(1) > span:nth-child(1)
         //
 
 

@@ -26,7 +26,7 @@
         [Category("QuickTests")]
         public void QuickCompareChartsTest()
         {
-            Actions.CallingClass.QuickCompareWithOtherSchools();
+            Actions.CallingClass.QuickCompareWithOtherSchools("2032471");
             Assert.IsTrue(Driver.driver.FindElement(By.Id("BCHeader")).Text == "Benchmarking charts");
    
         }
@@ -36,7 +36,7 @@
         [Ignore("Ignore a test")]
         public void PercentageOfTotalTabChange()
         {
-            Actions.CallingClass.QuickCompareWithOtherSchools();
+            Actions.CallingClass.QuickCompareWithOtherSchools("2032471");
             BenchMarkActions.PercentageOfTotal();
              string perecentageofincomedisplayed = Driver.driver.FindElement(By.CssSelector("#ShowValue > option:nth-child(4)")).Text;
             Assert.IsTrue(perecentageofincomedisplayed == "Percentage of total income");
@@ -49,7 +49,7 @@
         public void DealsForSchoolsLink()
         {
 
-            Actions.dealforswchools();
+            Actions.dealforswchools("2032471");
             //Assert.IsTrue(Driver.driver.FindElement(By.CssSelector("div.chart-container:nth-child(4) > div:nth-child(1) > div:nth-child(3) > a:nth-child(1)")).Displayed);
             //Assert.IsTrue(Driver.driver.FindElement(By.CssSelector("div.chart-container:nth-child(3) > div:nth-child(1) > div:nth-child(3) > a:nth-child(1)")).Displayed);
             //Assert.IsTrue(Driver.driver.FindElement(By.CssSelector("div.chart-container:nth-child(5) > div:nth-child(1) > div:nth-child(3) > a:nth-child(1)")).Displayed);
@@ -59,7 +59,7 @@
         [Test]
         public void CostOffinanceTestQuickComparison()
         {
-            Actions.CallingClass.QuickCompareWithOtherSchools();
+            Actions.CallingClass.QuickCompareWithOtherSchools("2032471");
             BenchMarkActions.costoffinance();
             Assert.IsTrue(Driver.driver.FindElement(By.CssSelector("div.chart-container:nth-child(3) > div:nth-child(1) > div:nth-child(2)")).Displayed);
             //Assert.IsFalse(Driver.driver.FindElement(By.CssSelector("div.chart-container:nth-child(3) > div:nth-child(1) > div:nth-child(3) > details:nth-child(2) > summary:nth-child(1) > span:nth-child(1)")).Displayed);
@@ -108,7 +108,7 @@
         [Test]
         public void TestComparisonSchoolsTabOtherCharts()
         {
-            Actions.CallingClass.QuickCompareWithOtherSchools();
+            Actions.CallingClass.QuickCompareWithOtherSchools("2032471");
             BenchMarkActions.NavigateToOtherComparisonSchoolsTab();
             BenchmarkPageTabs tabspage = new BenchmarkPageTabs();
             Assert.IsTrue(tabspage.SchoolTab.Displayed);

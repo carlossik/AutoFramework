@@ -23,7 +23,7 @@
         {
             var testName = TestContext.CurrentContext.Test.FullName;
             Config.Credentials.deletefiles(@"C:\TEMP\" + testName + ".jpg");
-            Actions.InitializeDriver(Config.ChromeDriverUnderTest);
+            Actions.InitializeDriver(Config.FirefoxDriverUnderTest);
 
 
 
@@ -165,7 +165,7 @@
         {
             Actions.ResultPageactionsA_Z("303", "alphabetical a-z");
             SearchResultsPage resultsPage = new SearchResultsPage();
-            Assert.IsTrue(Driver.driver.FindElement(By.CssSelector("li.school-document:nth-child(1) > div:nth-child(1) > a:nth-child(1)")).Text == "Academies Enterprise Trust");
+            Assert.AreEqual(Driver.driver.FindElement(By.CssSelector("li.school-document:nth-child(1) > div:nth-child(1) > a:nth-child(1)")).Text ,"Academies Enterprise Trust");
             Console.WriteLine(resultsPage.FirstElementPresented.Text);
            
         }
@@ -243,7 +243,8 @@
         }
 
         [Test]
-        
+        [Ignore("Ignore a test")]
+
         public void verifyMATHistoricalTabs()
         {
             Actions.TrustSearchWithCompanynumber("7554121");//must be a MAT
@@ -256,14 +257,11 @@
         [Test]
         public void verifynumberOfSchoolsInTrust()
         {
-            Actions.TrustSearchWithCompanynumber("2535091");//must be a MAT
+            Actions.TrustSearchWithCompanynumber("8084557");//must be a MAT
             TrustActions tactions = new TrustActions();
             TrustHomePage thome = new TrustHomePage();
             Assert.AreEqual(tactions.calculateNumberOfSchoolsInMat(), thome.NumberOfSchools1819.Text);
-            
-
-           
-            
+       
         }
 
 
@@ -346,9 +344,46 @@
         [Test]
         public void SelectSchoolsToCompare()
         {
-            TrustActions.TrustSearchWitNameUsingFirstSuggestedName("5 Dimensions Trust");
+            Actions.TrustComparison("5 Dimensions Trust");
+            //TrustActions.TrustSearchWitNameUsingFirstSuggestedName("5 Dimensions Trust");
             TrustHomePage trusthome = new TrustHomePage();
-            trusthome.SelectSchoolsToCompareLink.Click();
+            //trusthome.SelectSchoolsToCompareLink.Click();
+        }
+
+        [Test ]
+        public void verify_School_in_SAT()
+        {
+            throw new NotImplementedException();// test school not available to test 
+            Actions.schoolSearchwithLaestab("");
+            SchoolDetailPage detailpage = new SchoolDetailPage();
+            Assert.IsTrue(detailpage.FinanceDropdown_Trust_Only.Displayed);
+        }
+
+        [Test]
+        public void verify_School_MovedTo_MAT_From_SAT()
+        {
+            Actions.schoolSearchwithLaestab("135587");
+            SchoolDetailPage detailpage = new SchoolDetailPage();
+           // Assert.IsFalse(detailpage.MatFinanceToggle.Displayed);
+            Assert.IsTrue(detailpage.CurrentTrustLinkDisplayed.Displayed);
+        }
+        [Test]
+        public void verify_School_movedFrom_MAT_To_SAT()
+        {
+            Actions.schoolSearchwithLaestab("137353");
+
+            SchoolDetailPage detailpage = new SchoolDetailPage();
+            Assert.IsTrue(detailpage.CurrentTrustLinkDisplayed.Displayed);
+            Assert.IsTrue(detailpage.MatFinanceToggle.Displayed);
+        }
+
+        [Test]
+        public void verify_School_MovedFrom_MAT_Tonew_MAT()
+        {
+            throw new NotImplementedException();// now test school identified for the test
+            Actions.schoolSearchwithLaestab("");
+            SchoolDetailPage detailpage = new SchoolDetailPage();
+            Assert.IsTrue(detailpage.FinanceDropdown_Trust_Only.Displayed);
         }
         [TearDown]
         public void TeardownAfterEachTest()

@@ -8,6 +8,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Selenium.Axe;
+using System.IO;
+//using AxeResult = Selenium.Axe.AxeResult;
+//using AxeBuilder = Globant.Selenium.Axe.AxeBuilder;
 
 namespace SFB_Test_Automation.AutoFramework.Scenarios
 {
@@ -21,37 +25,67 @@ namespace SFB_Test_Automation.AutoFramework.Scenarios
         {
             var testName = TestContext.CurrentContext.Test.FullName;
             Config.Credentials.deletefiles(@"C:\TEMP\" + testName + ".jpg");
-            Actions.InitializeDriver(Config.ChromeDriverUnderTest);
+            Actions.InitializeDriver(Config.FirefoxDriverUnderTest);
 
         }
 
 
         [Test]
-        public void AccessibilityTest()
+        public void AccessibilityTestHomePage()
         {
-            AxeResult results = Driver.driver.Analyze();
-
-            Assert.IsEmpty(results.Violations);
+            Selenium.Axe.AxeResult axeResult = new Selenium.Axe.AxeBuilder(Driver.driver).Analyze();
+            Assert.IsEmpty(axeResult.Violations);
 
         }
 
+        [Test]
+        public void AccessibilityTestForSchoolDetailPage()
+        {
+            Driver.driver.Navigate().GoToUrl("https://as-t1stg-sfb.azurewebsites.net/school/detail?urn=113650");
+            Selenium.Axe.AxeResult axeResult = new Selenium.Axe.AxeBuilder(Driver.driver).Analyze();
+            Assert.IsEmpty(axeResult.Violations);
+
+        }
+
+        [Test]
+        public void AccessibilityTestForTrustDetailPage()
+        {
+            Driver.driver.Navigate().GoToUrl("https://as-t1stg-sfb.azurewebsites.net/trust/index?companyNo=10192252");
+            Selenium.Axe.AxeResult axeResult = new Selenium.Axe.AxeBuilder(Driver.driver).Analyze();
+            Assert.IsEmpty(axeResult.Violations);
+        }
+
+        [Test]
+        public void AccessibilityTestForComparisonPage()
+        {
+            Driver.driver.Navigate().GoToUrl("https://as-t1stg-sfb.azurewebsites.net/BenchmarkCriteria/ComparisonStrategy?urn=143308");
+            Selenium.Axe.AxeResult axeResult = new Selenium.Axe.AxeBuilder(Driver.driver).Analyze();
+            Assert.IsEmpty(axeResult.Violations);
+        }
+
+        [Test]
+        public void AccessibilityTestBenchMarkPage()
+        {
+            Driver.driver.Navigate().GoToUrl("https://as-t1stg-sfb.azurewebsites.net/BenchmarkCharts/GenerateFromSimpleCriteria?SimpleCriteria.IncludeFsm=true&SimpleCriteria.IncludeSen=true&SimpleCriteria.IncludeEal=true&BasketSize=15&Urn=143308&ComparisonType=Basic&EstType=Academies");
+            Selenium.Axe.AxeResult axeResult = new Selenium.Axe.AxeBuilder(Driver.driver).Analyze();
+            Assert.IsEmpty(axeResult.Violations);
+        }
 
         [Test]
         public void accessibilitytest2()
         {
-            AxeResult results = Driver.driver.Analyze();
-
-            foreach (var xyz in results.Violations)
+            Selenium.Axe.AxeResult axeResult = new Selenium.Axe.AxeBuilder(Driver.driver).Analyze();
+            foreach (var xyz in axeResult.Violations)
             {
                 Console.WriteLine(xyz.Impact.ToString());
-                Console.WriteLine(results.Violations.ToList());
+                Console.WriteLine(axeResult.Violations.ToList());
                 Console.WriteLine(xyz.Description.ToString());
                 Console.WriteLine(xyz.Id.ToString());
-                
-                //log.Info(xyz.Description.ToString());
-                //log.Info(xyz.Id.ToString());
             }
-            Assert.True(results.Violations.Length == 0, "There are accessibility violations. Please check log file");
+            Assert.True(axeResult.Violations.Length == 0, "There are accessibility violations. Please check log file");
+            var testName = TestContext.CurrentContext.Test.FullName;
+            string path = Path.Combine(@"C:\TEMP\", "AxeReport.html");
+            Driver.driver.CreateAxeHtmlReport(axeResult,path);
         }
 
     
@@ -72,24 +106,3 @@ namespace SFB_Test_Automation.AutoFramework.Scenarios
         }
     }
 }
-/***
- * 
- * [TestFixture]
-public class Tests
-{
-    [Test]
-    public void Test()
-    {
-        var driver = new ChromeDriver();
-        driver.Navigate().GoToUrl("https://www.google.com");
-            AxeResult results = driver.Analyze();
-            driver.Close();
-    }
-}
- * 
- * 
- * 
- * 
- * 
- * 
- * **/

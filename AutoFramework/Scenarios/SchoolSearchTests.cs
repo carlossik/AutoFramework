@@ -14,8 +14,7 @@
     using OpenQA.Selenium.Firefox;
     using OpenQA.Selenium.IE;
     using OpenQA.Selenium.Chrome;
-
-    
+    using System.Collections;
 
     public class Schoolsearchtests
     { 
@@ -27,7 +26,7 @@
         {
             var testName = TestContext.CurrentContext.Test.FullName;
             Config.Credentials.deletefiles(@"C:\TEMP\" + testName + ".jpg");
-            Actions.InitializeDriver(Config.ChromeDriverUnderTest);
+            Actions.InitializeDriver(Config.FirefoxDriverUnderTest);
             
 
 
@@ -493,6 +492,49 @@
             DataQueriesPage queriesPage = new DataQueriesPage();
             Actions.testmailSuccess("carl.fagan");
             Assert.IsTrue((queriesPage.EmailErrorMessage).Text == "The Email field is not a valid e-mail address.");
+
+        }
+
+        [Test]
+        public void testSpecialSchoolPage()
+        {
+            string[] specialschools = { "8797066", "3037004", "8797063", "8797065", "8777001" };
+            List<string> specialschooolsundertest = new List<string>(specialschools);
+            foreach (string school in specialschooolsundertest) {
+                Actions.schoolSearchwithLaestab(school);//must be a special School
+                HomePage schoolhomepage = new HomePage();
+                Assert.IsTrue(schoolhomepage.SenSpecialCharacteristicsLink.Displayed);
+                Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
+            }
+        }
+
+        [Test]
+        public void testspecialschoolsSenCharacteristics()
+        {
+
+            string[] specialschools = {"8797066"};
+            List<string> specialschooolsundertest = new List<string>(specialschools);
+            foreach (string school in specialschooolsundertest)
+            {
+
+                Actions.schoolsearchforSpecialSchool(school);//Should be a special School
+                TrustHomePage thome = new TrustHomePage();
+                TrustActions tactions = new TrustActions();
+                Assert.IsTrue(Int32.Parse(tactions.numberberofcharacteristicsDisplayed()) > 0);
+                Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
+
+            }
+
+            
+
+
+        }
+
+       
+
+        [Test]
+        public void testspecialschoolBenchmarkChart()
+        {
 
         }
 

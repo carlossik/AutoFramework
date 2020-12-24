@@ -2,6 +2,7 @@
 using AutoFramework.Pages.PageElements;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Firefox;
 using SFB_Test_Automation.AutoFramework.Pages;
 using System;
 using System.Collections.Generic;
@@ -192,7 +193,7 @@ namespace SFB_Test_Automation.AutoFramework
         {
             gotohomepageviabreadcrumb();
             Driver.driver.Close();
-            Driver.driver = new ChromeDriver();
+            Driver.driver = new FirefoxDriver();
             Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
             Driver.driver.FindElement(By.Id("acceptAllCookies")).Click();
             Driver.driver.FindElement(By.Id("acceptAllCookiesHide")).Click();
@@ -285,7 +286,7 @@ namespace SFB_Test_Automation.AutoFramework
         {
             createSideBySideScenario(Laestab);
             SelfAssessmentPage SadPage = new SelfAssessmentPage();
-            Thread.Sleep(400);
+            Thread.Sleep(4000);
             element.Click();
             Thread.Sleep(400);
             SadEditPage EditPage = new SadEditPage();

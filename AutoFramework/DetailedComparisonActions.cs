@@ -374,27 +374,31 @@ namespace SFB_Test_Automation.AutoFramework
         }
         public static void IncludeschoolswithIncFinanceMaintainedLaName(String urn, String laname, String minnumpupils, String maxnumpupils)
         {
-            Actions.CallingClass.SearchViaSchoolurn(urn);
-            SchoolDetailPage detailspage = new SchoolDetailPage();
-            detailspage.CompareWithOtherSchools.Click();
-            BestInClass bestinclass = new BestInClass();
-            bestinclass.DetailComparisonButton.Click();
-            bestinclass.Continue.Click();
-            DetailComparisonPage detailpage = new DetailComparisonPage();
-            detailpage.MaintainedRadio.Click();
-            detailpage.MaintainedExcludecheckbox.Click();
-            bestinclass.Continue.Click();
-            detailpage.LAnameRadio.Click();
-            detailpage.LANameinputfield.SendKeys(laname);
-            bestinclass.Continue.Click();
-            detailpage.General_Header.Click();
-            detailpage.NumberOfPupilsCheckBox.Click();
-            detailpage.MinNumberOfPupilsInputField.SendKeys(minnumpupils);
-            Thread.Sleep(6000);
-            detailpage.MaxNumberOfPupilsInputBox.SendKeys(maxnumpupils);
-            Thread.Sleep(2000);
-            detailpage.ViewBenchMarkCharts.Click();
-        }
+            try {
+                Actions.CallingClass.SearchViaSchoolurn(urn);
+                SchoolDetailPage detailspage = new SchoolDetailPage();
+                detailspage.CompareWithOtherSchools.Click();
+                BestInClass bestinclass = new BestInClass();
+                bestinclass.DetailComparisonButton.Click();
+                bestinclass.Continue.Click();
+                DetailComparisonPage detailpage = new DetailComparisonPage();
+                detailpage.MaintainedRadio.Click();
+                detailpage.MaintainedExcludecheckbox.Click();
+                bestinclass.Continue.Click();
+                detailpage.LAnameRadio.Click();
+                detailpage.LANameinputfield.SendKeys(laname);
+                bestinclass.Continue.Click();
+                detailpage.General_Header.Click();
+                detailpage.NumberOfPupilsCheckBox.Click();
+                detailpage.MinNumberOfPupilsInputField.SendKeys(minnumpupils);
+                Thread.Sleep(6000);
+                detailpage.MaxNumberOfPupilsInputBox.SendKeys(maxnumpupils);
+                Thread.Sleep(2000);
+                detailpage.ViewBenchMarkCharts.Click();
+            }
+            catch (ElementNotInteractableException e) { Console.WriteLine("Element not found " + e); }
+            
+         }   
         public static void IncludeschoolswithIncFinanceAcademiesLaName(String urn,String laname,String minpupils,String maxpupils)
         {
             Actions.CallingClass.SearchViaSchoolurn(urn);
@@ -458,6 +462,7 @@ namespace SFB_Test_Automation.AutoFramework
             DetailComparisonPage detailpage = new DetailComparisonPage();
             detailpage.AllschoolsRadio.Click();
             bestinclass.Continue.Click();
+            detailpage.AllOfEnglandRadio.Click();
             bestinclass.Continue.Click();
             Thread.Sleep(5000);
             detailpage.General_Header.Click();

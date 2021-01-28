@@ -29,7 +29,7 @@ namespace SFB_Test_Automation.AutoFramework.Scenarios
         public void SchoolsearchwrongURNorLAESTAB()
         {
 
-            Actions.SearchClosedschoolUrn(" ");//we send an empty message to verify the results
+            Actions.schoolSearchwithLaestab("113456");//we send a wrong laestab to invoke the error
             HomePage home = new HomePage();
             Assert.AreEqual(home.schoolsearchErrormessage.Text, "Enter a school name, URN or LAESTAB to start a search (minimum 3 characters)");
         }
@@ -37,7 +37,7 @@ namespace SFB_Test_Automation.AutoFramework.Scenarios
         public void SchoolsearchLocationError()
         {
 
-            Actions.SearchClosedschoolUrn(" ");//we send an empty message to verify the results
+            Actions.SearchByLocationUsingPostcode(" ");//we send an empty message to verify the results
             HomePage home = new HomePage();
             Assert.AreEqual(home.schoolsearchErrormessage.Text, "Enter a school name, URN or LAESTAB to start a search (minimum 3 characters)");
         }
@@ -68,7 +68,7 @@ namespace SFB_Test_Automation.AutoFramework.Scenarios
 
             TrustActions.generaltrustsearch(" ");//we send an empty message to verify the results
             HomePage home = new HomePage();
-            Assert.AreEqual(home.schoolsearchErrormessage.Text, "Enter a school name, URN or LAESTAB to start a search (minimum 3 characters)");
+            Assert.AreEqual(home.schoolsearchErrormessage.Text, "Enter a trust name or Companies House number to start a search (minimum 3 characters)");
         }
 
         [Test]
@@ -129,10 +129,10 @@ namespace SFB_Test_Automation.AutoFramework.Scenarios
                 var screenshot = ((ITakesScreenshot)Driver.driver).GetScreenshot();
                 var testName = TestContext.CurrentContext.Test.FullName;
                 screenshot.SaveAsFile(@"C:\TEMP\" + testName + ".jpg");
-                Driver.driver.Close();
+                //Driver.driver.Close();
                 Driver.driver.Quit();
             }
-            Driver.driver.Close();
+           // Driver.driver.Close();
             Driver.driver.Quit();
         }
     }

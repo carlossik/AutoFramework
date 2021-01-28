@@ -12,10 +12,12 @@ namespace AutoFramework.Pages
             PageFactory.InitElements(Driver.driver, this);
         }
 
-        [FindsBy(How = How.Id,Using ="radio-1")]
+        [FindsBy(How = How.Id,Using = "radio-1")]
         [CacheLookup]
         public IWebElement QuckComparisonButton { get; set; }
-
+        [FindsBy(How = How.Id, Using = "radio-5")]
+        [CacheLookup]
+        public IWebElement QuckComparison_For_Specials_Button { get; set; }
         [FindsBy(How = How.Id,Using = "radio-5")]
         public IWebElement QuickcompareforspecialsSchools { get; set; }
 
@@ -32,6 +34,9 @@ namespace AutoFramework.Pages
 
         [FindsBy(How = How.CssSelector, Using = "div.column-one-third:nth-child(1) > button:nth-child(1)")]
         public IWebElement Continue { get; set; }
+
+        [FindsBy(How = How.CssSelector,Using = "div.grid-row:nth-child(2) > div:nth-child(1) > button:nth-child(1)")]
+        public IWebElement ContinueForSpecials { get; set; }
 
         [FindsBy(How = How.CssSelector, Using = "div.column-one-third:nth-child(2) > a:nth-child(1)")]
         public IWebElement BackButton { get; set; }
@@ -85,14 +90,17 @@ namespace AutoFramework.Pages
         public IWebElement page2of2PupilsWithEnglishCheckBox { get; set; }
         [FindsBy(How = How.CssSelector, Using = "div.column-one-third:nth-child(1) > button:nth-child(1)")]
         public IWebElement WhereShouldTheComparisonComeFromcontbutton { get; set; }
-        //IList<string> all = new List<string>();
-        //foreach(var IWebElement in Driver.driver.FindElements(By.))
+        
+        [FindsBy(How = How.Id, Using = "All")]
+        public IWebElement AllOfEngland { get; set; }
 
-        //foreach(var element in driver.FindElements(By.ClassName("comments"));
+        [FindsBy(How = How.Id, Using = "LaCodeRadio")]
+        public IWebElement LocalAuthority { get; set; }
+     
 
     }
 
-    //[Find]
+    
 }
 
 

@@ -26,7 +26,7 @@
         {
             var testName = TestContext.CurrentContext.Test.FullName;
             Config.Credentials.deletefiles(@"C:\TEMP\" + testName + ".jpg");
-            Actions.InitializeDriver(Config.FirefoxDriverUnderTest);
+            Actions.InitializeDriver(Config.ChromeDriverUnderTest);
             
 
 
@@ -239,7 +239,7 @@
             Assert.IsTrue(detatilscomparison.Sen_Header.Displayed);
             Assert.IsTrue(detatilscomparison.Performance_Header.Displayed);
             Assert.IsTrue(detatilscomparison.WorkForce_Header.Displayed);
-            Assert.AreEqual(detatilscomparison.SchooNameLink.Text, detatilscomparison.ComparingToText.Text);
+           // Assert.AreEqual(detatilscomparison.SchooNameLink.Text, detatilscomparison.ComparingToText.Text);
             //Assert.AreEqual(detatilscomparison.BodyText1.Text, "Which characteristics would you like to use for your comparison?");
         }
         [Test]
@@ -262,7 +262,7 @@
         {
             BenchMarkActions.testrefinezerofound("135747");
             Assert.IsTrue(Driver.driver.FindElement(By.Id("modal-content")).Displayed);
-            Assert.IsTrue(Driver.driver.FindElement(By.Id("modal-content")).Text == "Please refine the characteristics entered until there are between 1 and 30 matched schools.");
+            Assert.AreEqual(Driver.driver.FindElement(By.Id("modal-content")).Text, "Refine the characteristics entered until there are between 1 and 30 matched schools.");
 
         }
         [Test]
@@ -438,15 +438,13 @@
             Assert.IsTrue(detailspage.DataFromOtherSources.Displayed);
 
         }
-        //[Test] This feature has been decommissioned
-        [Category("QuickTests")]
-        public void test_School_DealsForSchools()
-
+        [Test]
+        public void verifyBackToCharacteristicsOnSpecialsPage()
         {
-
-            Actions.schoolSearchwithLaestab("8812035");
-            SchoolDetailPage detailspage = new SchoolDetailPage();
           
+                BenchMarkActions.createBenchmarkforSpecials("144041");//must be a special school
+                BenchMarkChartPage chartpage = new BenchMarkChartPage();
+                Assert.IsTrue(chartpage.backToViewCharacteristicsUsed.Displayed);
         }
         [Test]
         [Category("QuickTests")]
@@ -508,6 +506,8 @@
             }
         }
 
+
+
         [Test]
         public void testspecialschoolsSenCharacteristics()
         {
@@ -520,6 +520,7 @@
                 Actions.schoolsearchforSpecialSchool(school);//Should be a special School
                 TrustHomePage thome = new TrustHomePage();
                 TrustActions tactions = new TrustActions();
+                Console.WriteLine(Int32.Parse(tactions.numberberofcharacteristicsDisplayed()));
                 Assert.IsTrue(Int32.Parse(tactions.numberberofcharacteristicsDisplayed()) > 0);
                 Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
 
@@ -532,11 +533,6 @@
 
        
 
-        [Test]
-        public void testspecialschoolBenchmarkChart()
-        {
-
-        }
 
        
         [TearDown]
@@ -548,10 +544,10 @@
                 var screenshot = ((ITakesScreenshot)Driver.driver).GetScreenshot();
                 var testName = TestContext.CurrentContext.Test.FullName;
                 screenshot.SaveAsFile(@"C:\TEMP\" + testName + ".jpg");
-                Driver.driver.Close();
+                //Driver.driver.Close();
                 Driver.driver.Quit();
             }
-            Driver.driver.Close();
+           // Driver.driver.Close();
             Driver.driver.Quit();
         }
     }

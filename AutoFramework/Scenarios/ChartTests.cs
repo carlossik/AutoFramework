@@ -19,7 +19,7 @@
         {
             var testName = TestContext.CurrentContext.Test.FullName;
             Config.Credentials.deletefiles(@"C:\TEMP\" + testName + ".jpg");
-            Actions.InitializeDriver(Config.FirefoxDriverUnderTest);
+            Actions.InitializeDriver(Config.ChromeDriverUnderTest);
   
         }
         [Test]
@@ -61,7 +61,7 @@
         {
             Actions.CallingClass.QuickCompareWithOtherSchools("2032471");
             BenchMarkActions.costoffinance();
-            Assert.IsTrue(Driver.driver.FindElement(By.CssSelector("div.chart-container:nth-child(3) > div:nth-child(1) > div:nth-child(2)")).Displayed);
+            Assert.IsTrue(Driver.driver.FindElement(By.CssSelector("div.chart-container:nth-child(3) > div:nth-child(1) > h2:nth-child(1) > a:nth-child(1) > span:nth-child(1)")).Displayed);
             //Assert.IsFalse(Driver.driver.FindElement(By.CssSelector("div.chart-container:nth-child(3) > div:nth-child(1) > div:nth-child(3) > details:nth-child(2) > summary:nth-child(1) > span:nth-child(1)")).Displayed);
             //testing that anyother below cost of finance should be in an accordion
 
@@ -72,7 +72,7 @@
         {
             DetailedComparisonActions.IncludechoolswithIncFinanceAllSchoolsAllEngland("145789");
             BenchMarkActions.costoffinance();
-            Assert.IsTrue(Driver.driver.FindElement(By.CssSelector("div.chart-container:nth-child(3) > div:nth-child(1) > div:nth-child(2)")).Displayed);
+            Assert.IsTrue(Driver.driver.FindElement(By.CssSelector("div.chart-container:nth-child(3) > div:nth-child(1) > h2:nth-child(1) > a:nth-child(1) > span:nth-child(1)")).Displayed);
             //Assert.IsFalse(Driver.driver.FindElement(By.CssSelector("div.chart-container:nth-child(3) > div:nth-child(1) > div:nth-child(3) > details:nth-child(2) > summary:nth-child(1) > span:nth-child(1)")).Displayed);
             //testing that anyother below cost of finance should be in an accordion
         }
@@ -82,7 +82,7 @@
         {
             Actions.CallingClass.BestInClassComparison();
             BenchMarkActions.costoffinance();
-            Assert.IsTrue(Driver.driver.FindElement(By.CssSelector("div.chart-container:nth-child(3) > div:nth-child(1) > div:nth-child(2)")).Displayed);
+            Assert.IsTrue(Driver.driver.FindElement(By.CssSelector("div.chart-container:nth-child(3) > div:nth-child(1) > h2:nth-child(1) > a:nth-child(1) > span:nth-child(1)")).Displayed);
             //testing that anyother below cost of finance should be in an accordion
 
 
@@ -170,10 +170,10 @@
                 var screenshot = ((ITakesScreenshot)Driver.driver).GetScreenshot();
                 var testName = TestContext.CurrentContext.Test.FullName;
                 screenshot.SaveAsFile(@"C:\TEMP\"+testName +".jpg");
-                Driver.driver.Close();
+                //Driver.driver.Close();
                 Driver.driver.Quit();
             }
-            Driver.driver.Close();
+            //Driver.driver.Close();
             Driver.driver.Quit();
         }
 

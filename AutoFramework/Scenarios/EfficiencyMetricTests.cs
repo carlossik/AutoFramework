@@ -25,7 +25,7 @@ namespace AutoFramework
         {
             var testName = TestContext.CurrentContext.Test.FullName;
             Config.Credentials.deletefiles(@"C:\TEMP\" + testName + ".jpg");
-            Actions.InitializeDriver(Config.FirefoxDriverUnderTest);
+            Actions.InitializeDriver(Config.ChromeDriverUnderTest);
 
         }
 
@@ -196,10 +196,10 @@ namespace AutoFramework
                 var screenshot = ((ITakesScreenshot)Driver.driver).GetScreenshot();
                 var testName = TestContext.CurrentContext.Test.FullName;
                 screenshot.SaveAsFile(@"C:\TEMP\" + testName + ".jpg");
-                Driver.driver.Close();
+                //Driver.driver.Close();
                 Driver.driver.Quit();
             }
-            Driver.driver.Close();
+            //Driver.driver.Close();
             Driver.driver.Quit();
         }
     }

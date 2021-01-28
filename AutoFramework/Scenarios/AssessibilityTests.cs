@@ -26,16 +26,13 @@ namespace SFB_Test_Automation.AutoFramework.Scenarios
             var testName = TestContext.CurrentContext.Test.FullName;
             Config.Credentials.deletefiles(@"C:\TEMP\" + testName + ".jpg");
             Actions.InitializeDriver(Config.FirefoxDriverUnderTest);
-
         }
-
 
         [Test]
         public void AccessibilityTestHomePage()
         {
             Selenium.Axe.AxeResult axeResult = new Selenium.Axe.AxeBuilder(Driver.driver).Analyze();
             Assert.IsEmpty(axeResult.Violations);
-
         }
 
         [Test]
@@ -44,7 +41,6 @@ namespace SFB_Test_Automation.AutoFramework.Scenarios
             Driver.driver.Navigate().GoToUrl("https://as-t1stg-sfb.azurewebsites.net/school/detail?urn=113650");
             Selenium.Axe.AxeResult axeResult = new Selenium.Axe.AxeBuilder(Driver.driver).Analyze();
             Assert.IsEmpty(axeResult.Violations);
-
         }
 
         [Test]

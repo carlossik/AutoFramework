@@ -65,6 +65,7 @@
             homepage.TrustSearchInput.Click();
             homepage.TrustSearchInput.SendKeys(trustname);
             homepage.TrustSubmitButton.Click();
+            Thread.Sleep(200);
         }
 
         public static void TrustSearchWitNameUsingSubmitButton(String TrustNameSubmitted)
@@ -97,19 +98,15 @@
             TrustHomePage thomepage = new TrustHomePage();
             Thread.Sleep(2000);
             thomepage.SchoolsIn1819SubmissionTab.Click();
-            //IWebElement element = Driver.driver.FindElement(By.Id("LatestTermHeader"));
-            //IList numberofschoolsin1819 = element.FindElements(By.XPath(".//a[contains(@href, '\"/school/detail?urn=\"')]"));//(".//a"));
-            //int numberOfschools = numberofschoolsin1819.Count;
-            //Console.WriteLine("These are the number of schools" + numberOfschools.ToString());
-            //return numberOfschools.ToString();
             Thread.Sleep(200);
+            String xpathbeforebefore = "//*[@id=\"schools-in-trust-accordion\"]/div[2]/div/div/div/ul/li[";
             String xpathbefore = "//*[@id=\"schools-in-trust-accordion\"]/div[3]/fieldset/div[2]/div/div/ul/li[";
             String xpathafter = "]/a";
             String numberofschools = thomepage.NumberOfSchools1819.Text;
             List<string> numberofschoolsin1819 = new List<string>();
             for (int i = 1; i <=(Int32.Parse(numberofschools)) ; i++)
             {
-                IWebElement schoolsin1819 = Driver.driver.FindElement(By.XPath(xpathbefore + i + xpathafter));
+                IWebElement schoolsin1819 = Driver.driver.FindElement(By.XPath(xpathbeforebefore + i + xpathafter));
                 Console.WriteLine(schoolsin1819.Text);
                 numberofschoolsin1819.Add(schoolsin1819.Text);
             }

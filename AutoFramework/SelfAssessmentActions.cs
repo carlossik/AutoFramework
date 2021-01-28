@@ -274,30 +274,42 @@ namespace SFB_Test_Automation.AutoFramework
         {
 
             AddData(Laestab,element,editDat);
-            //Actions.schoolSearchwithLaestab(Laestab);
-            //SchoolDetailPage detailspage = new SchoolDetailPage();
-            //detailspage.SADLink.Click();
-            //Thread.Sleep(3000);
-            //SelfAssessmentPage SadPage = new SelfAssessmentPage();
-            //Actions.clearcookie();
-            //Thread.Sleep(200);
+           
         }
         public static void AddData(String Laestab,IWebElement element,String editData)
         {
             createSideBySideScenario(Laestab);
             SelfAssessmentPage SadPage = new SelfAssessmentPage();
-            Thread.Sleep(4000);
-            element.Click();
+            Thread.Sleep(40);
+
+            Driver.driver.FindElement(By.CssSelector("#charTable > tr:nth-child(6) > td:nth-child(5) > span:nth-child(1) > a:nth-child(2)")).Click();
+            //element.Click();
             Thread.Sleep(400);
             SadEditPage EditPage = new SadEditPage();
             Thread.Sleep(400);
             IWebElement activeField = Driver.driver.SwitchTo().ActiveElement();
+            activeField.Clear();
             activeField.SendKeys(editData);
-            Thread.Sleep(400);
+            Thread.Sleep(4);
+            EditPage.SchoolWorkForce.Clear();
+            Thread.Sleep(4);
             EditPage.SchoolWorkForce.SendKeys("50");
+            Thread.Sleep(4);
+            EditPage.NumberOfTeachers.Clear();
+            Thread.Sleep(4);
             EditPage.NumberOfTeachers.SendKeys("50");
+            Thread.Sleep(4);
+            EditPage.Revenue_reserve.Clear();
+            Thread.Sleep(4);
+            EditPage.Revenue_reserve.SendKeys(editData);
+            EditPage.Teacher_contact_ratio.Clear();
+            EditPage.Teacher_contact_ratio.SendKeys(".5");
+            Thread.Sleep(500);
+            EditPage.Predicted_percentage_pupil_number_change_in_3_5_years.Clear();
+            EditPage.Predicted_percentage_pupil_number_change_in_3_5_years.SendKeys(editData);
+            EditPage.Spending_on_teaching_staff.SendKeys(editData);
             EditPage.Submit_Button.Click();
-            Thread.Sleep(400);
+            Thread.Sleep(40);
         }
         public static void verifyHiddenFields(String Lacode)
         {

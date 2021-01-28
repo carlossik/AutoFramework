@@ -47,6 +47,9 @@ namespace AutoFramework.Pages.PageElements
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "/html/body/div/div[7]/div/div/a/span")]
         public IWebElement close_basket { get; set; }
 
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector,Using= ".govuk-back-link")]
+        public IWebElement backButton{ get; set; }
+
         //a.benchmarkControls
 
         public Boolean existsElement(String id)

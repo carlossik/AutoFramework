@@ -23,7 +23,7 @@
         {
             var testName = TestContext.CurrentContext.Test.FullName;
             Config.Credentials.deletefiles(@"C:\TEMP\" + testName + ".jpg");
-            Actions.InitializeDriver(Config.FirefoxDriverUnderTest);
+            Actions.InitializeDriver(Config.ChromeDriverUnderTest);
 
 
 
@@ -347,16 +347,16 @@
             Actions.TrustComparison("5 Dimensions Trust");
             //TrustActions.TrustSearchWitNameUsingFirstSuggestedName("5 Dimensions Trust");
             TrustHomePage trusthome = new TrustHomePage();
-            //trusthome.SelectSchoolsToCompareLink.Click();
         }
 
         [Test ]
         public void verify_School_in_SAT()
         {
-            throw new NotImplementedException();// test school not available to test 
-            Actions.schoolSearchwithLaestab("");
+            //throw new NotImplementedException();// test school not available to test 
+            Actions.schoolSearchwithLaestab("137427"); 
             SchoolDetailPage detailpage = new SchoolDetailPage();
             Assert.IsTrue(detailpage.FinanceDropdown_Trust_Only.Displayed);
+            Assert.IsTrue(detailpage.IntrustLink.Displayed);
         }
 
         [Test]
@@ -364,24 +364,24 @@
         {
             Actions.schoolSearchwithLaestab("135587");
             SchoolDetailPage detailpage = new SchoolDetailPage();
-           // Assert.IsFalse(detailpage.MatFinanceToggle.Displayed);
             Assert.IsTrue(detailpage.CurrentTrustLinkDisplayed.Displayed);
         }
         [Test]
         public void verify_School_movedFrom_MAT_To_SAT()
         {
             Actions.schoolSearchwithLaestab("137353");
-
             SchoolDetailPage detailpage = new SchoolDetailPage();
-            Assert.IsTrue(detailpage.CurrentTrustLinkDisplayed.Displayed);
+            Assert.IsTrue(detailpage.previousTrustLink.Displayed);
             Assert.IsTrue(detailpage.MatFinanceToggle.Displayed);
         }
 
         [Test]
+        [Ignore ("This test requires example school which we dont have")]
         public void verify_School_MovedFrom_MAT_Tonew_MAT()
         {
             throw new NotImplementedException();// now test school identified for the test
-            Actions.schoolSearchwithLaestab("");
+            Actions.schoolSearchwithLaestab("137427");
+
             SchoolDetailPage detailpage = new SchoolDetailPage();
             Assert.IsTrue(detailpage.FinanceDropdown_Trust_Only.Displayed);
         }
@@ -393,10 +393,10 @@
                 var screenshot = ((ITakesScreenshot)Driver.driver).GetScreenshot();
                 var testName = TestContext.CurrentContext.Test.FullName;
                 screenshot.SaveAsFile(@"C:\TEMP\" + testName + ".jpg");
-                Driver.driver.Close();
+               // Driver.driver.Close();
                 Driver.driver.Quit();
             }
-            Driver.driver.Close();
+            //Driver.driver.Close();
             Driver.driver.Quit();
         }
     }

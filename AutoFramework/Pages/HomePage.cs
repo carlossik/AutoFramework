@@ -73,9 +73,9 @@
 
         [FindsBy(How = How.CssSelector, Using = ".tt-suggestion > a:nth-child(1)")]
         public IWebElement FirstIntellicenceSuggested { get; set; }
-        [FindsBy(How = How.CssSelector, Using = "#NoDefaultTab > button:nth-child(1)")]
+        [FindsBy(How = How.CssSelector, Using = "#NoDefaultTab > a:nth-child(1)")]
         public IWebElement NoDefaultSchoolTab { get; set; }
-        [FindsBy(How = How.CssSelector, Using = ".list > li:nth-child(5) > a:nth-child(1)")]
+        [FindsBy(How = How.CssSelector, Using = ".list > li:nth-child(6) > a:nth-child(1)")]
         public IWebElement SchoolorTrustDataQueryLink { get; set; }
         [FindsBy(How = How.CssSelector, Using = ".tt-suggestion")]
         public IWebElement FirstSelectionOption { get; set; }

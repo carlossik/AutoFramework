@@ -91,15 +91,14 @@ namespace AutoFramework.Pages.PageElements
         public IWebElement ComparisonSchool_Tab { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".banner__comparison-list-info-panel__count")]
         public IWebElement NumberOfitemsInBasket { get; set; }
-        //[SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".banner__comparison-list-info-panel__count")]
-       // public IWebElement ViewCharacteristicsUsed { get; set; }
-        //#criteria-details > summary:nth-child(1) > span:nth-child(1)
-        //
 
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "js-modal-close")]
+        public IWebElement closeLinkCopiedPopUp { get; set; }
 
-        //public IWebDriver hitEnter = Driver.driver.FindElement(By.CssSelector(".button")).SendKeys(Keys.Enter)
-
-
+        
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "button.link-button:nth-child(5)")]
+         public IWebElement backToViewCharacteristicsUsed { get; set; }
+        
 
 
 

@@ -83,11 +83,11 @@
             addschool.LocalAuthorityinputField.SendKeys(Lacode);
             addschool.searchButton.Click();
             SchoolDetailPage schooldetail = new SchoolDetailPage();
-            Thread.Sleep(3000);
+            Thread.Sleep(30);
             schooldetail.FirstSearchItem.Click();
-            Thread.Sleep(3000);
+            Thread.Sleep(30);
             schooldetail.ContinueToManualBenchMarkCharts.Click();
-            Thread.Sleep(10000);
+            Thread.Sleep(100);
            }
         public static void CreateBenchmarkViaDetailComparison(String urn)
         {
@@ -100,10 +100,14 @@
             bestinclass.MaintainedSchoolsChoice.Click();
             bestinclass.Continue.Click();
             Thread.Sleep(200);
+            bestinclass.AllOfEngland.Click();
             bestinclass.Continue.Click();
             Thread.Sleep(200);
             DetailComparisonPage detatilscomparison = new DetailComparisonPage();
-          
+            detatilscomparison.ViewBenchMarkCharts.Click();
+
+            Thread.Sleep(200);
+
         }
         public static void refineto30schools(String urn)
         {
@@ -119,7 +123,12 @@
             bestinclass.Continue.Click();        
             DetailComparisonPage detatilscomparison = new DetailComparisonPage();
             Thread.Sleep(3000);
+
+            bestinclass.AllOfEngland.Click();
             bestinclass.WhereShouldTheComparisonComeFromcontbutton.Click();
+            Thread.Sleep(3000);
+
+          
             detatilscomparison.ViewBenchMarkCharts.Click();
             Thread.Sleep(3000);
            
@@ -133,6 +142,7 @@
             bestinclass.DetailComparisonButton.Click();                  
             bestinclass.Continue.Click();
             DetailComparisonPage details = new DetailComparisonPage();
+            bestinclass.MaintainedSchoolsChoice.Click();
             bestinclass.Continue.Click();
             details.LAcode.Click();
             details.Lacodefield.SendKeys("202");
@@ -148,6 +158,7 @@
             BestInClass bestinclass = new BestInClass();
             bestinclass.QuckComparisonButton.Click();
             bestinclass.Continue.Click();
+            bestinclass.MaintainedSchoolsChoice.Click();
             bestinclass.Continue.Click();
             bestinclass.page2of2ContinueButton.Click();
            
@@ -157,7 +168,6 @@
             BenchMarkChartPage benchchartpage = new BenchMarkChartPage();
             benchchartpage.TotalExpenditureDropdown.Click();
             benchchartpage.costOfFinance.Click();
-           // benchchartpage.costOfFinance.SendKeys(Keys);
             Thread.Sleep(30000);
             
 
@@ -182,11 +192,16 @@
             benchchartpage.OtherComparisonSchoolsTab.Click();
             Thread.Sleep(1000);
         }
-        public static void getclipboardText()
+        public static void PasteCopiedClipboardText()
         {  
-            string myURL = Clipboard.GetText();
-            Driver.driver.Navigate().GoToUrl(Config.currentTestEnv+"BenchmarkCharts/GenerateFromSavedBasket?urns=125249-116423-141874-144929-137598-126473-141341-112399-115775-136311-112936-145124-138920-138478-135620");
-            Thread.Sleep(20);
+            string myURL = System.Windows.Forms.Clipboard.GetText(TextDataFormat.Text);
+           
+            ((IJavaScriptExecutor)Driver.driver).ExecuteScript("navigator.clipboard.readText().then(text => window.location.replace(text));");
+            Console.WriteLine("This is the copied clipboard data"+myURL);
+            Thread.Sleep(500);
+           
+            
+            Thread.Sleep(2000);
         }
         public static void getclipboardTextmaximum()
         {          
@@ -196,6 +211,31 @@
         {
             BenchMarkChartPage benchchartpage = new BenchMarkChartPage();
             benchchartpage.AddanotherschoolLink.Click();
+        }
+
+        public static void createBenchmarkforSpecials(String specialSchool)
+        {
+            Actions.CallingClass.SearchViaSchoolurn(specialSchool);
+            SchoolDetailPage detailspage = new SchoolDetailPage();
+            detailspage.CompareWithOtherSchools.Click();
+            BestInClass bestinclass = new BestInClass();
+            bestinclass.QuckComparison_For_Specials_Button.Click();
+            bestinclass.Continue.Click();
+           // bestinclass.MaintainedSchoolsChoice.Click();
+            bestinclass.ContinueForSpecials.Click();
+           // bestinclass.page2of2ContinueButton.Click();
+            Thread.Sleep(2000);
+        }
+
+        public static void CopyChart()
+        {
+            BenchMarkChartPage benchchartpage = new BenchMarkChartPage();
+            benchchartpage.Savebenchmarkbasket.Click();
+            benchchartpage.CopyLinkToClipboard.Click();
+           string linkurl =  benchchartpage.CopyLinkToClipboard.GetAttribute("save-url-input");
+            Console.WriteLine(linkurl);
+            Driver.driver.FindElement(By.CssSelector("div.save-modal-js:nth-child(2) > a:nth-child(1)")).Click();
+            
         }
 
     }

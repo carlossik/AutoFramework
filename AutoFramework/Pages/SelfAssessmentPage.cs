@@ -76,7 +76,7 @@ namespace SFB_Test_Automation.AutoFramework.Pages
         public IWebElement AcceptSADCookie { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "acceptAllCookiesHide")]
         public IWebElement HideSADCookie { get; set; }
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "#charTable > tr:nth-child(6) > td:nth-child(3) > span:nth-child(1) > a:nth-child(2)")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "#charTable > tr:nth-child(6) > td:nth-child(5) > span:nth-child(1) > a:nth-child(2)")]
         public IWebElement AverageTeacherCost_add { get; set; }
 
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "//*[text() = 'Average Class size']")] //"#charTable > tbody:nth-child(3) > tr:nth-child(7) > th:nth-child(1)")]
@@ -98,7 +98,9 @@ namespace SFB_Test_Automation.AutoFramework.Pages
         public IWebElement dashboard_Year_help_text { get; set; }
 
 
-        public String Expected_CustomDashboard_Help_Text = "The custom dashboard allows schools to plan for hypothetical or projected changes to their financial situation and see a RAG rating against it.\r\nCustom dashboards are only visible to you and will be viewable on subsequent visits to this school’s self-assessment dashboard if you have selected the option to allow cookies.";
+        public String Expected_CustomDashboard_Help_Text = "The custom dashboard allows schools to plan for hypothetical or projected changes to their financial situation and see a red, amber or green (RAG) rating against it.\r\nCustom dashboards are for personal use and only visible to you. Any changes you make will be viewable on subsequent visits to this school’s dashboard unless you choose to reset them.";
+
+
         public String Expected_DashboardYear_Help_Text = "By choosing a different year banding figures are adjusted to align to that year. An 8.6% uplift has been applied to Teaching staff and average salary (including pensions) for 2019/20 and an 11.9% uplift on 2020/21 and future years.";
 
         ////a[contains(@title,'List of Users')]
@@ -117,8 +119,8 @@ namespace SFB_Test_Automation.AutoFramework.Pages
                 Actions.schoolSearchwithLaestab(laestab);
                 SchoolDetailPage detailspage = new SchoolDetailPage();
                 String FinancialYear = Driver.driver.FindElement(By.CssSelector("div.charts-section__chart-container:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > span:nth-child(1)")).Text;
-                String FinancialYearFinal = Regex.Replace(FinancialYear, @"\s+", "");
-                String Finalfinance = Regex.Replace(FinancialYearFinal, @"-", "/");
+                String FinancialYearFinal = Regex.Replace(FinancialYear, @"\s+","");
+                String Finalfinance = Regex.Replace(FinancialYearFinal, @"-","/");
                 String FinalFinanceFigure = Regex.Replace(Finalfinance,@" ","");
                 Console.WriteLine(Finalfinance);
                 detailspage.SADLink.Click();
@@ -127,17 +129,11 @@ namespace SFB_Test_Automation.AutoFramework.Pages
                 Actions.acceptCookie();
                 String SadFinancialYearDisplayed = Driver.driver.FindElement(By.Id("scenarioYear")).Text;
                 Console.WriteLine("This is the raw Financial Year on SAD "+ SadFinancialYearDisplayed);
-                String SdFinalFinance = Regex.Replace(SadFinancialYearDisplayed, @"Dashboard year", "");
-                //String sdfinalfinance = Regex.Replace(SdFinalFinance.Trim(), @" ");
+                String SdFinalFinance = Regex.Replace(SadFinancialYearDisplayed,@"Dashboard year", "");
                 Console.WriteLine( "This is first of what we display"+SdFinalFinance);
                 Console.WriteLine("This is second of what we display"+Finalfinance);
-                Assert.AreEqual(SdFinalFinance, FinalFinanceFigure);
-                //if (Finalfinance == SdFinalFinance)
-                //{
-                //    return true;
-                //}
-                //else
-                //    return false;
+                Assert.AreEqual(SdFinalFinance,FinalFinanceFigure);
+                
             }
 
             catch (Exception ex)

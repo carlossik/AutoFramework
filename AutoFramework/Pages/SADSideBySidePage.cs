@@ -77,7 +77,5 @@ namespace SFB_Test_Automation.AutoFramework.Pages
         public IWebElement sadsidebysideFSMRow { get; set; }
        
 
-        //#criteriaTable > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(1)
-        //will need to add page objects for Average teacher costs, senior leaders as a percentageof workforce,pupil to teacher ratio,pupil to adult ratio
     }
 }

@@ -110,7 +110,14 @@ namespace AutoFramework.Pages.PageElements
 
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = ".list > li:nth-child(1) > a:nth-child(1)")]
         public IWebElement EfficiencyMetricLink { get; set; }
-       
+
+        [SeleniumExtras.PageObjects.FindsBy(How = How.XPath, Using = "//a[contains(@href, '/trust?uid=')]")]
+        public IWebElement IntrustLink { get; set; }
+
+        [SeleniumExtras.PageObjects.FindsBy(How = How.XPath,Using = "//a[contains(@href, '/trust?companyNo=')]")]
+        public IWebElement previousTrustLink { get; set; }
+
+        //By.xpath("//*[text()='Academy trust']"));
 
         public bool verifySADLink()
         {

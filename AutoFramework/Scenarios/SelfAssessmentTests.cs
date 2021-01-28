@@ -13,7 +13,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+    using System.Threading;
+    using System.Threading.Tasks;
 
 
     public class SelfAssessmentTests
@@ -27,7 +28,7 @@ using System.Threading.Tasks;
             var testName = TestContext.CurrentContext.Test.FullName;
             Config.Credentials.deletefiles(@"C:\TEMP\" + testName + ".jpg");
 
-            Actions.InitializeDriver(Config.FirefoxDriverUnderTest);
+            Actions.InitializeDriver(Config.ChromeDriverUnderTest);
         }
 
         [Test]
@@ -277,7 +278,7 @@ using System.Threading.Tasks;
             SadEditPage editpage = new SadEditPage();
             SelfAssessmentActions.ClickPopUp(editpage.Average_Class_size_Popup);
             String popupmessage = Driver.driver.FindElement(By.CssSelector("body > modal-container > div > div > app-edit-data-info-modal > div.modal-body > div")).Text;
-            Assert.IsTrue(popupmessage == "Average class sizes are a key determinant of the cost of running a school.");
+            Assert.AreEqual(popupmessage , "This is the FTE number of children in your school divided by the number of classes.");
 
         }
         [Test]
@@ -379,7 +380,7 @@ This information is used to ensure the school is being compared with schools of 
             SadEditPage editpage = new SadEditPage();
             SelfAssessmentActions.ClickPopUp(editpage.YearOfScenario_Popup);
             String popupmessage = Driver.driver.FindElement(By.CssSelector("body > modal-container > div > div > app-edit-data-info-modal > div.modal-body > div")).Text;
-            Assert.AreEqual(popupmessage, "This is used to apply the correct banding ratios that may differ from year to year, e.g. Teaching staff ratios and Average salary has been adjusted with a graded uplift from years 17/18 to 19/20. It is also presented on the custom dashboard to help users identified when two dashboards are for different years.");
+            Assert.AreEqual(popupmessage, "This is used to apply the correct banding ratios that may differ from year to year, e.g. Teaching staff ratios and Average salary has been adjusted with a graded uplift from years 17/18 to 19/20. It is also presented on the custom dashboard to help users identified when two dashboards are for different years.\r\nBy choosing a different year banding figures are adjusted to align to that year. An 8.6% uplift has been applied to Teaching staff and average salary (including pensions) for 2019/20 and an 11.9% uplift on 2020/21 and future years.");
 
         }
         [Test]
@@ -400,7 +401,6 @@ This information is used to ensure the school is being compared with schools of 
             SelfAssessmentPage assesmentpage = new SelfAssessmentPage();
             SadEditPage editpage = new SadEditPage();
             SelfAssessmentActions.ClickPopUp(editpage.Total_expenditure_Popup);
-            
             String popupmessage = Driver.driver.FindElement(By.CssSelector("body > modal-container > div > div > app-edit-data-info-modal > div.modal-body > div")).Text;
             Console.WriteLine(popupmessage);
            
@@ -440,18 +440,20 @@ The teacher contact ratio will always be less than 1.0");
         {
             SADSideBySidePage SadPage = new SADSideBySidePage();
             SelfAssessmentActions.AddData("8792637", SadPage.AddData_Revenue_reserveSC2, "5000000.00");
-            IWebElement revenueReserveC2 = Driver.driver.FindElement(By.CssSelector("#reserveTable > tr:nth-child(7) > td:nth-child(5)"));
+            IWebElement revenueReserveC2 = Driver.driver.FindElement(By.XPath("//*[@id=\"reserveTable\"]/tr[4]/td[4]"));
             Console.WriteLine(revenueReserveC2.Text);
-            Assert.AreEqual(revenueReserveC2.Text , "£5,000,000.00");
+            Assert.AreEqual("£5,000,000.00", revenueReserveC2.Text);
         }
         [Test]
         public void Add_Data_Teaching_Staff()
         {
             SADSideBySidePage SadPage = new SADSideBySidePage();
             SelfAssessmentActions.AddData("8792637", SadPage.AddData_Teaching_staffC2, "5000000.00");
-            IWebElement teachingStaffSpend = Driver.driver.FindElement(By.CssSelector("#spendingTable > tr:nth-child(6) > td:nth-child(5)"));
+            IWebElement teachingStaffSpend = Driver.driver.FindElement(By.XPath("//*[@id=\"spendingTable\"]/tr[3]/td[4]"));
             Console.WriteLine(teachingStaffSpend.Text);
-            Assert.IsTrue(teachingStaffSpend.Text == "£5,000,000.00");
+            Thread.Sleep(20000);
+            Assert.AreEqual(teachingStaffSpend.Text,"£5,000,000.00");
+            
 
         }
       [Test]
@@ -470,6 +472,7 @@ The teacher contact ratio will always be less than 1.0");
 
         }
         [Test]
+        [Ignore ("Ignore this test")]
         public void Add_Data_Average_teacher_cost()
         {
             SelfAssessmentPage SadPage = new SelfAssessmentPage();
@@ -533,9 +536,10 @@ The teacher contact ratio will always be less than 1.0");
         {
             SelfAssessmentPage SadPage = new SelfAssessmentPage();
             SelfAssessmentActions.AddData("8792637", SadPage.AddData_Predicted_percentage_pupil_number_changeforSideBySide1, "12.666");
-            IWebElement Predictedpupilchangepercentage = Driver.driver.FindElement(By.CssSelector("#charTable > tr:nth-child(11) > td:nth-child(2) > span:nth-child(1)"));
+            IWebElement Predictedpupilchangepercentage = Driver.driver.FindElement(By.XPath("//*[@id=\"charTable\"]/tr[8]/td[3]/span")); 
             Console.WriteLine(Predictedpupilchangepercentage.Text);
-            Assert.IsTrue(Predictedpupilchangepercentage.Text == "12.7%");
+            Assert.AreEqual(Predictedpupilchangepercentage.Text,"12.7%");
+            
             
         }
 
@@ -554,10 +558,10 @@ The teacher contact ratio will always be less than 1.0");
                 var screenshot = ((ITakesScreenshot)Driver.driver).GetScreenshot();
                 var testName = TestContext.CurrentContext.Test.FullName;
                 screenshot.SaveAsFile(@"C:\TEMP\" + testName + ".jpg");
-                Driver.driver.Close();
+               // Driver.driver.Close();
                 Driver.driver.Quit();
             }
-            Driver.driver.Close();
+           // Driver.driver.Close();
             Driver.driver.Quit();
         }
 

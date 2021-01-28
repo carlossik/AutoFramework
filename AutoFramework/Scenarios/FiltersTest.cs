@@ -128,10 +128,10 @@ namespace AutoFramework
                 var screenshot = ((ITakesScreenshot)Driver.driver).GetScreenshot();
                 var testName = TestContext.CurrentContext.Test.FullName;
                 screenshot.SaveAsFile(@"C:\TEMP\" + testName + ".jpg");
-                Driver.driver.Close();
+               // Driver.driver.Close();
                 Driver.driver.Quit();
             }
-            Driver.driver.Close();
+           // Driver.driver.Close();
             Driver.driver.Quit();
         }
 

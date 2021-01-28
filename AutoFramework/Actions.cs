@@ -26,9 +26,12 @@
             {
                 var ChromeOptions = new ChromeOptions();
                 var downloadDirectory = (@"C:\AutomationDownloads");
+                var clipboardException = new Dictionary<string, object> { { "[*.]"+Config.currentTestEnv+","+"*", new Dictionary<string, object> { { "last_modified", DateTimeOffset.Now.ToUnixTimeMilliseconds() }, { "setting", 1 } } } };
+                ChromeOptions.AddUserProfilePreference("profile.content_settings.exceptions.clipboard", clipboardException);
                 ChromeOptions.AddUserProfilePreference("download.default_directory", downloadDirectory);
                 ChromeOptions.AddUserProfilePreference("download.prompt_for_download", false);
                 ChromeOptions.AddUserProfilePreference("disable-popup-blocking", "true");
+                //ChromeOptions.AddUserProfilePreference("profile.content_settings.exceptions.clipboard", "clipboardExceptionuserprofile ");
                 Driver.driver = new ChromeDriver(ChromeOptions);
                 Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
                 Thread.Sleep(2000);
@@ -413,10 +416,7 @@
             Thread.Sleep(1000);
             Driver.driver.Manage().Window.Maximize();
             IWebElement AcceptCookies = Driver.driver.FindElement(By.Id("acceptAllCookies"));
-            
-           // AcceptCookies.Click();
-            //IWebElement HideCookieBanner = Driver.driver.FindElement(By.Id("acceptAllCookiesHide"));
-            //HideCookieBanner.Click();
+     
             Thread.Sleep(1000);
 
             //Driver.driver.Navigate().Refresh();
@@ -496,14 +496,14 @@
             HomePage homepage = new HomePage();
             homepage.LocationButton.Click();
             homepage.SearchByLocationField.Click();
-            //homepage.SearchByLocationField.Clear();
+            
             homepage.SearchByLocationField.SendKeys(postcode);
             homepage.LocationSearchSubmitButton.Click();
             Driver.driver.FindElement(By.CssSelector("li.document:nth-child(1) > a:nth-child(1)")).Click();
             Thread.Sleep(200);
             FiltersPage filters = new FiltersPage();
-            string ResultsDisplayedInitially = (filters.ResultsCount).Text;
-            Console.WriteLine(ResultsDisplayedInitially);
+            //string ResultsDisplayedInitially = (filters.ResultsCount).Text;
+            //Console.WriteLine(ResultsDisplayedInitially);
             Thread.Sleep(200);
 
         }
@@ -560,7 +560,7 @@
             Thread.Sleep(100);
             basketpage.clear_basket.Click();
             Thread.Sleep(2000);
-            basketpage.CloseBasket.Click();
+            basketpage.backButton.Click();
            
         }
         public static void downloadpdf()
@@ -647,7 +647,7 @@
                 resultspage.TrustSearchResultSortedByButton.SendKeys(OrderBy + Keys.Enter);
             }
             resultspage.TrustSearchResultSortedByButton.SendKeys(OrderBy + Keys.Enter);
-            //resultspage.TrustSearchResultSortedByButton.SendKeys(OrderBy + Keys.Enter);
+            resultspage.TrustSearchResultSortedByButton.SendKeys(OrderBy + Keys.Enter);
             Thread.Sleep(2000);
 
         }
@@ -707,7 +707,7 @@
             
             TrustActions.TrustSearchWitNameUsingFirstSuggestedName(TrustName);
             TrustComparisonPage trustComaprison = new TrustComparisonPage();
-            Thread.Sleep(500);
+            Thread.Sleep(1000);
             trustComaprison.Compare_withOtherTrusts.Click();
             Thread.Sleep(500);
             trustComaprison.EnterTrustForComparisonOption.Click();
@@ -818,9 +818,7 @@
                         Thread.Sleep(30);
                         //Schooldetails.schoolPerformanceTableLink.Click();
                         Thread.Sleep(50);
-                        //Assert.IsTrue(Driver.driver.FindElement(By.CssSelector(".metadata > dd:nth-child(24)")).Text == urn);
-                        //Console.WriteLine(urn);
-                        //Console.WriteLine(Driver.driver.FindElement(By.CssSelector(".metadata > dd:nth - child(24)")).Text);
+                       
                     }
                     catch (NoSuchElementException) {Console.WriteLine("There may be an issue with this school" + ""+ urn); continue; }
                 }
@@ -855,6 +853,7 @@
                 Thread.Sleep(1000);
                 homepage.ClickOnSearchButton();
                 Thread.Sleep(1000);
+                
             }
             public static void QuickCompareWithOtherSchools(String Laestab)
             {
@@ -865,7 +864,9 @@
                 Thread.Sleep(200);
                 bestinclass.QuckComparisonButton.Click();
                 bestinclass.Continue.Click();
+                bestinclass.MaintainedSchoolsChoice.Click();
                 bestinclass.Continue.Click();
+                //bestinclass.MaintainedSchoolsChoice.Click();
                 bestinclass.page2of2ContinueButton.Click();
                 Thread.Sleep(100);
             }
@@ -881,10 +882,7 @@
                 specialsquickpage.SchoolswithSimilarAgedStudentscheckbox.Click();
                 specialsquickpage.ContinueToBenchMarkingChartButton.Click();
                 Thread.Sleep(3000);
-                //bestinclass.Continue.Click();
-                //bestinclass.Continue.Click();
-                //bestinclass.page2of2ContinueButton.Click();
-                //Thread.Sleep(100);
+                
             }
 
             public static void searchschoolwithIncompleteFinance(String urn)

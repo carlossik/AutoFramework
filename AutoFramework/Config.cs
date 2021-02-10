@@ -15,9 +15,9 @@ namespace AutoFramework
         //public static string HiddenLive = "https://as-t1pr-sfb-b.azurewebsites.net/";
         public static string currentTestEnv = staging;     
         public static string firefoxlocation = "C://Users//kwaku//OneDrive//Desktop//C#//AutoFramework//bin//Debug//firefox.exe";
-        public static string FirefoxDriverUnderTest = "firefox";
+        //public static string FirefoxDriverUnderTest = "firefox";
         public static string ChromeDriverUnderTest = "chrome";
-        public static string IEDriverUnderTest = "IE";
+       // public static string IEDriverUnderTest = "IE";
         public static object AlertsTexts { get; internal set; }
 
     public static class Credentials
@@ -35,8 +35,12 @@ namespace AutoFramework
 
 
             public  class ExpectedMessages
+
+
             {
-                 IWebElement SearchResults = Driver.driver.FindElement(By.CssSelector("#js-search-results-info > div > p > span"));
+               
+
+                 //IWebElement SearchResults = driver.FindElement(By.CssSelector("#js-search-results-info > div > p > span"));
             }
             
             public static void deletefiles(String fileName)

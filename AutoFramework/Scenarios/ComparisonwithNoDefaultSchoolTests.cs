@@ -17,10 +17,16 @@ namespace AutoFramework
     using OpenQA.Selenium.Safari;
     //using OpenQA.Selenium.Remote.DesiredCapabilities;
 
-
+    [TestFixture]
+    [Parallelizable]
 
     public class ComparisonwithNoDefaultSchoolTests
+
     {
+
+        IAlert alert;
+        IWebDriver driver;
+
         public ComparisonwithNoDefaultSchoolTests()
         {
 
@@ -30,24 +36,24 @@ namespace AutoFramework
         {
             var testName = TestContext.CurrentContext.Test.FullName;
             Config.Credentials.deletefiles(@"C:\TEMP\" + testName + ".jpg");
-            Actions.InitializeDriver(Config.FirefoxDriverUnderTest);
+           driver =  Actions.InitializeDriver(5);
         }
         [Test]
 
         public void CompareByDetailedComparisonMaintainedExclude()
         {
-            NoDefaultSchoolActions.detailedComparisonExcludeMaintained();
+            NoDefaultSchoolActions.detailedComparisonExcludeMaintained(driver);
             string errorText = "Some schools don't have a complete set of financial data for this period";
-            Assert.IsFalse(Driver.driver.PageSource.Contains(errorText));
+            Assert.IsFalse(driver.PageSource.Contains(errorText));
 
         }
         [Test]
 
         public void CompareByDetailedComparisonMaintainedInclude()
         {
-            NoDefaultSchoolActions.detailedComparisonIncludeMaintained();
+            NoDefaultSchoolActions.detailedComparisonIncludeMaintained(driver);
             string errorText = "Some schools don't have a complete set of financial data for this period";
-            Assert.IsTrue(Driver.driver.PageSource.Contains(errorText));
+            Assert.IsTrue(driver.PageSource.Contains(errorText));
 
         }
         [Test]
@@ -92,7 +98,7 @@ namespace AutoFramework
         //[Ignore("Ignore a test")]
         public void CompareByManualComparisonLocation()
         {
-            NoDefaultSchoolActions.ManualComparisonByLocation();
+            NoDefaultSchoolActions.ManualComparisonByLocation(driver);
             //assertions to be added here
 
 
@@ -105,14 +111,14 @@ namespace AutoFramework
         {
             if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
             {
-                var screenshot = ((ITakesScreenshot)Driver.driver).GetScreenshot();
+                var screenshot = ((ITakesScreenshot)driver).GetScreenshot();
                 var testName = TestContext.CurrentContext.Test.FullName;
                 screenshot.SaveAsFile(@"C:\Users\kwaku\OneDrive\Desktop\C#\AutoFramework\AutoFramework\Pages\screenshot" + testName + ".jpg");
                 //Driver.driver.Close();
-                Driver.driver.Quit();
+                driver.Quit();
             }
-            Driver.driver.Close();
-            Driver.driver.Quit();
+            driver.Close();
+            driver.Quit();
         }
     }
             

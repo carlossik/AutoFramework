@@ -10,10 +10,10 @@ namespace SFB_Test_Automation.AutoFramework.Pages
 {
 	class FiltersPage
 	{
-        public FiltersPage()
+        public FiltersPage(IWebDriver driver)
         {
 
-            PageFactory.InitElements(Driver.driver, this);
+            PageFactory.InitElements(driver, this);
 
         }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "DistanceRadius")]

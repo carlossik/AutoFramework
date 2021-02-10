@@ -10,8 +10,12 @@
     using NUnit.Framework.Interfaces;
     using System.Drawing.Imaging;
 
+    [Parallelizable]
+
     public class Charttests
     {
+        IAlert alert;
+        IWebDriver driver;
 
         [SetUp]
         public void SetupBeforeEachTest()
@@ -19,15 +23,15 @@
         {
             var testName = TestContext.CurrentContext.Test.FullName;
             Config.Credentials.deletefiles(@"C:\TEMP\" + testName + ".jpg");
-            Actions.InitializeDriver(Config.ChromeDriverUnderTest);
-  
+            driver = Actions.InitializeDriver(1);
+
         }
         [Test]
         [Category("QuickTests")]
         public void QuickCompareChartsTest()
         {
-            Actions.CallingClass.QuickCompareWithOtherSchools("2032471");
-            Assert.IsTrue(Driver.driver.FindElement(By.Id("BCHeader")).Text == "Benchmarking charts");
+            Actions.CallingClass.QuickCompareWithOtherSchools("2032471",driver);
+            Assert.IsTrue(driver.FindElement(By.Id("BCHeader")).Text == "Benchmarking charts");
    
         }
 
@@ -36,9 +40,9 @@
         [Ignore("Ignore a test")]
         public void PercentageOfTotalTabChange()
         {
-            Actions.CallingClass.QuickCompareWithOtherSchools("2032471");
-            BenchMarkActions.PercentageOfTotal();
-             string perecentageofincomedisplayed = Driver.driver.FindElement(By.CssSelector("#ShowValue > option:nth-child(4)")).Text;
+            Actions.CallingClass.QuickCompareWithOtherSchools("2032471",driver);
+            BenchMarkActions.PercentageOfTotal(driver);
+             string perecentageofincomedisplayed = driver.FindElement(By.CssSelector("#ShowValue > option:nth-child(4)")).Text;
             Assert.IsTrue(perecentageofincomedisplayed == "Percentage of total income");
 
         }
@@ -49,20 +53,20 @@
         public void DealsForSchoolsLink()
         {
 
-            Actions.dealforswchools("2032471");
-            //Assert.IsTrue(Driver.driver.FindElement(By.CssSelector("div.chart-container:nth-child(4) > div:nth-child(1) > div:nth-child(3) > a:nth-child(1)")).Displayed);
-            //Assert.IsTrue(Driver.driver.FindElement(By.CssSelector("div.chart-container:nth-child(3) > div:nth-child(1) > div:nth-child(3) > a:nth-child(1)")).Displayed);
-            //Assert.IsTrue(Driver.driver.FindElement(By.CssSelector("div.chart-container:nth-child(5) > div:nth-child(1) > div:nth-child(3) > a:nth-child(1)")).Displayed);
-            //Assert.IsTrue(Driver.driver.FindElement(By.CssSelector("div.chart-container:nth-child(6) > div:nth-child(1) > div:nth-child(3) > a:nth-child(1)")).Displayed);
+            Actions.dealforswchools("2032471",driver);
+            //Assert.IsTrue(driver.FindElement(By.CssSelector("div.chart-container:nth-child(4) > div:nth-child(1) > div:nth-child(3) > a:nth-child(1)")).Displayed);
+            //Assert.IsTrue(driver.FindElement(By.CssSelector("div.chart-container:nth-child(3) > div:nth-child(1) > div:nth-child(3) > a:nth-child(1)")).Displayed);
+            //Assert.IsTrue(driver.FindElement(By.CssSelector("div.chart-container:nth-child(5) > div:nth-child(1) > div:nth-child(3) > a:nth-child(1)")).Displayed);
+            //Assert.IsTrue(driver.FindElement(By.CssSelector("div.chart-container:nth-child(6) > div:nth-child(1) > div:nth-child(3) > a:nth-child(1)")).Displayed);
             
         }
         [Test]
         public void CostOffinanceTestQuickComparison()
         {
-            Actions.CallingClass.QuickCompareWithOtherSchools("2032471");
-            BenchMarkActions.costoffinance();
-            Assert.IsTrue(Driver.driver.FindElement(By.CssSelector("div.chart-container:nth-child(3) > div:nth-child(1) > h2:nth-child(1) > a:nth-child(1) > span:nth-child(1)")).Displayed);
-            //Assert.IsFalse(Driver.driver.FindElement(By.CssSelector("div.chart-container:nth-child(3) > div:nth-child(1) > div:nth-child(3) > details:nth-child(2) > summary:nth-child(1) > span:nth-child(1)")).Displayed);
+            Actions.CallingClass.QuickCompareWithOtherSchools("2032471",driver);
+            BenchMarkActions.costoffinance(driver);
+            Assert.IsTrue(driver.FindElement(By.CssSelector("div.chart-container:nth-child(3) > div:nth-child(1) > h2:nth-child(1) > a:nth-child(1) > span:nth-child(1)")).Displayed);
+            //Assert.IsFalse(driver.FindElement(By.CssSelector("div.chart-container:nth-child(3) > div:nth-child(1) > div:nth-child(3) > details:nth-child(2) > summary:nth-child(1) > span:nth-child(1)")).Displayed);
             //testing that anyother below cost of finance should be in an accordion
 
         }
@@ -70,19 +74,19 @@
         [Test]
         public void CostOffinanceTestDetailComparison()
         {
-            DetailedComparisonActions.IncludechoolswithIncFinanceAllSchoolsAllEngland("145789");
-            BenchMarkActions.costoffinance();
-            Assert.IsTrue(Driver.driver.FindElement(By.CssSelector("div.chart-container:nth-child(3) > div:nth-child(1) > h2:nth-child(1) > a:nth-child(1) > span:nth-child(1)")).Displayed);
-            //Assert.IsFalse(Driver.driver.FindElement(By.CssSelector("div.chart-container:nth-child(3) > div:nth-child(1) > div:nth-child(3) > details:nth-child(2) > summary:nth-child(1) > span:nth-child(1)")).Displayed);
+            DetailedComparisonActions.IncludechoolswithIncFinanceAllSchoolsAllEngland("145789",driver);
+            BenchMarkActions.costoffinance(driver);
+            Assert.IsTrue(driver.FindElement(By.CssSelector("div.chart-container:nth-child(3) > div:nth-child(1) > h2:nth-child(1) > a:nth-child(1) > span:nth-child(1)")).Displayed);
+            //Assert.IsFalse(driver.FindElement(By.CssSelector("div.chart-container:nth-child(3) > div:nth-child(1) > div:nth-child(3) > details:nth-child(2) > summary:nth-child(1) > span:nth-child(1)")).Displayed);
             //testing that anyother below cost of finance should be in an accordion
         }
 
         [Test]
         public void CostOffinanceTestBICComparison()
         {
-            Actions.CallingClass.BestInClassComparison();
-            BenchMarkActions.costoffinance();
-            Assert.IsTrue(Driver.driver.FindElement(By.CssSelector("div.chart-container:nth-child(3) > div:nth-child(1) > h2:nth-child(1) > a:nth-child(1) > span:nth-child(1)")).Displayed);
+            Actions.CallingClass.BestInClassComparison(driver);
+            BenchMarkActions.costoffinance(driver);
+            Assert.IsTrue(driver.FindElement(By.CssSelector("div.chart-container:nth-child(3) > div:nth-child(1) > h2:nth-child(1) > a:nth-child(1) > span:nth-child(1)")).Displayed);
             //testing that anyother below cost of finance should be in an accordion
 
 
@@ -90,9 +94,9 @@
         [Test]
         public void TestBestInClassComparisonSchoolsTab()
         {
-            Actions.CallingClass.BestInClassComparison();
-            BenchMarkActions.NavigateToBestInClassComparisonSchoolsTab();
-            BenchmarkPageTabs tabspage = new BenchmarkPageTabs();
+            Actions.CallingClass.BestInClassComparison(driver);
+            BenchMarkActions.NavigateToBestInClassComparisonSchoolsTab(driver);
+            BenchmarkPageTabs tabspage = new BenchmarkPageTabs(driver);
             Assert.IsTrue(tabspage.BICSchool.Displayed);
             Assert.IsTrue(tabspage.BICPupils.Displayed);
             Assert.IsTrue(tabspage.LocalAuthority.Displayed);
@@ -108,9 +112,9 @@
         [Test]
         public void TestComparisonSchoolsTabOtherCharts()
         {
-            Actions.CallingClass.QuickCompareWithOtherSchools("2032471");
-            BenchMarkActions.NavigateToOtherComparisonSchoolsTab();
-            BenchmarkPageTabs tabspage = new BenchmarkPageTabs();
+            Actions.CallingClass.QuickCompareWithOtherSchools("2032471",driver);
+            BenchMarkActions.NavigateToOtherComparisonSchoolsTab(driver);
+            BenchmarkPageTabs tabspage = new BenchmarkPageTabs(driver);
             Assert.IsTrue(tabspage.SchoolTab.Displayed);
             Assert.IsTrue(tabspage.PhaseOfEducationTab.Displayed);
             Assert.IsTrue(tabspage.OfStedRatingTab.Displayed);
@@ -120,8 +124,8 @@
         [Test]
         public void PercenTageOfTotal()
         {
-            Actions.CallingClass.BestInClassComparison();
-            BenchMarkActions.costoffinance();
+            Actions.CallingClass.BestInClassComparison(driver);
+            BenchMarkActions.costoffinance(driver);
         }
             [Test]
         [Ignore("Ignore a test")]
@@ -158,7 +162,7 @@
         //[Ignore("Ignore a test")]
         public void BestInClassAllThrough()
         {
-            Actions.AllThroughBIC("Bournemouth, Christchurch & Poole");
+            Actions.AllThroughBIC("Bournemouth, Christchurch & Poole",driver);
         }
 
 
@@ -167,14 +171,14 @@
         {
             if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
             {
-                var screenshot = ((ITakesScreenshot)Driver.driver).GetScreenshot();
+                var screenshot = ((ITakesScreenshot)driver).GetScreenshot();
                 var testName = TestContext.CurrentContext.Test.FullName;
                 screenshot.SaveAsFile(@"C:\TEMP\"+testName +".jpg");
-                //Driver.driver.Close();
-                Driver.driver.Quit();
+                
+                driver.Quit();
             }
-            //Driver.driver.Close();
-            Driver.driver.Quit();
+           
+              driver.Quit();
         }
 
     }

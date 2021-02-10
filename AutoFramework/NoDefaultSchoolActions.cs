@@ -1,4 +1,5 @@
 ﻿using AutoFramework.Pages;
+using OpenQA.Selenium;
 using SFB_Test_Automation.AutoFramework.Pages;
 using System;
 using System.Collections.Generic;
@@ -11,11 +12,11 @@ namespace SFB_Test_Automation.AutoFramework
 {
     public static class NoDefaultSchoolActions
     {
-        public static void detailedComparisonExcludeMaintained()
+        public static void detailedComparisonExcludeMaintained(IWebDriver driver)
         {
-            HomePage home = new HomePage();
+            HomePage home = new HomePage(driver);
             home.NoDefaultSchoolTab.Click();
-            NoDefaultPage nodefault = new NoDefaultPage();
+            NoDefaultPage nodefault = new NoDefaultPage(driver);
             nodefault.DetailComparisonButton.Click();
             nodefault.ContinueButton.Click();
             //Thread.Sleep(1000);
@@ -24,7 +25,7 @@ namespace SFB_Test_Automation.AutoFramework
             nodefault.AllSchoolsButton.Click();
             nodefault.ContinueButton.Click();
             Thread.Sleep(100);
-            DetailComparisonPage detailpage = new DetailComparisonPage();
+            DetailComparisonPage detailpage = new DetailComparisonPage(driver);
             detailpage.General_Header.Click();
             detailpage.NumberOfPupilsCheckBox.Click();
             detailpage.MinNumberOfPupilsInputField.SendKeys("500");
@@ -34,11 +35,11 @@ namespace SFB_Test_Automation.AutoFramework
             detailpage.ViewBenchMarkCharts.Click();
 
         }
-        public static void detailedComparisonIncludeMaintained()
+        public static void detailedComparisonIncludeMaintained(IWebDriver driver)
         {
-            HomePage home = new HomePage();
+            HomePage home = new HomePage(driver);
             home.NoDefaultSchoolTab.Click();
-            NoDefaultPage nodefault = new NoDefaultPage();
+            NoDefaultPage nodefault = new NoDefaultPage(driver);
             nodefault.DetailComparisonButton.Click();
             nodefault.ContinueButton.Click();
           
@@ -48,7 +49,7 @@ namespace SFB_Test_Automation.AutoFramework
             nodefault.AllSchoolsButton.Click();
             nodefault.ContinueButton.Click();
             Thread.Sleep(100);
-            DetailComparisonPage detailpage = new DetailComparisonPage();
+            DetailComparisonPage detailpage = new DetailComparisonPage(driver);
             detailpage.General_Header.Click();
             detailpage.BoardersCheckBox.Click();
             detailpage.minimumBoardersCheckBox.SendKeys("4");
@@ -57,11 +58,11 @@ namespace SFB_Test_Automation.AutoFramework
             Thread.Sleep(2000);
             detailpage.ViewBenchMarkCharts.Click();
         }
-        public static void ManualComparisonByLocation()
+        public static void ManualComparisonByLocation(IWebDriver driver)
         {
-            HomePage home = new HomePage();
+            HomePage home = new HomePage(driver);
             home.NoDefaultSchoolTab.Click();
-            NoDefaultPage nodefault = new NoDefaultPage();
+            NoDefaultPage nodefault = new NoDefaultPage(driver);
             nodefault.ManualComparisonButton.Click();
             nodefault.ContinueButton.Click();
             nodefault.addschoolsbyLocationradio.Click();
@@ -71,53 +72,27 @@ namespace SFB_Test_Automation.AutoFramework
             Thread.Sleep(3000);
             nodefault.SearchSubmitButton.Click();
             Thread.Sleep(300);
-            SearchResultsPage resultspage = new SearchResultsPage();
+            SearchResultsPage resultspage = new SearchResultsPage(driver);
             resultspage.FirstElementPresented.Click();
                     
             Thread.Sleep(3000);
         }
-        public static void ManualComparisonByName()
+        public static void ManualComparisonByName(IWebDriver driver)
         {
-            HomePage home = new HomePage();
+            HomePage home = new HomePage(driver);
             home.NoDefaultSchoolTab.Click();
-            NoDefaultPage nodefault = new NoDefaultPage();
+            NoDefaultPage nodefault = new NoDefaultPage(driver);
             nodefault.ManualComparisonButton.Click();
             nodefault.ContinueButton.Click();
 
-            //nodefault.MainTainedSchoolsButton.Click();
-            //nodefault.ExcludeIncompleteButtonMaintained.Click();
-            //nodefault.ContinueButton.Click();
-            //nodefault.AllSchoolsButton.Click();
-            //nodefault.ContinueButton.Click();
-            //Thread.Sleep(100);
-            //DetailComparisonPage detailpage = new DetailComparisonPage();
-            //detailpage.General_Header.Click();
-            //detailpage.EligibilityFressSchoolMealsCheckBox.Click();
-            //detailpage.EligibilityFressSchoolMealsfromInput.SendKeys("20.99");
-            //Thread.Sleep(6000);
-            //detailpage.EligibilityFressSchoolMealsToInput.SendKeys("21");
-            //Thread.Sleep(2000);
-            //detailpage.ViewBenchMarkCharts.Click();
+           
         }
-        public static void ManualComparisonByLA()
+        public static void ManualComparisonByLA(IWebDriver driver)
         {
             
             
 
-            //nodefault.MainTainedSchoolsButton.Click();
-            //nodefault.ExcludeIncompleteButtonMaintained.Click();
-            //nodefault.ContinueButton.Click();
-            //nodefault.AllSchoolsButton.Click();
-            //nodefault.ContinueButton.Click();
-            //Thread.Sleep(100);
-            //DetailComparisonPage detailpage = new DetailComparisonPage();
-            //detailpage.General_Header.Click();
-            //detailpage.EligibilityFressSchoolMealsCheckBox.Click();
-            //detailpage.EligibilityFressSchoolMealsfromInput.SendKeys("20.99");
-            //Thread.Sleep(6000);
-            //detailpage.EligibilityFressSchoolMealsToInput.SendKeys("21");
-            //Thread.Sleep(2000);
-            //detailpage.ViewBenchMarkCharts.Click();
+           
         }
     }
 }

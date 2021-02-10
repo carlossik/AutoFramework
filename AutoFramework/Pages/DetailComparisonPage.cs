@@ -11,9 +11,9 @@ namespace SFB_Test_Automation.AutoFramework.Pages
 {
     class DetailComparisonPage
     {
-        public DetailComparisonPage()
+        public DetailComparisonPage(IWebDriver driver)
         {
-            PageFactory.InitElements(Driver.driver, this);
+            PageFactory.InitElements(driver, this);
         }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "GeneralHeader")]
         public IWebElement General_Header{ get; set; }

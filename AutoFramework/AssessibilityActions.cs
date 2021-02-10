@@ -26,9 +26,9 @@ namespace SFB_Test_Automation.AutoFramework
             public string Violation;
         }
 
-        public void accessibilitytest()
+        public void accessibilitytest(IWebDriver driver)
         {
-            AxeResult results = Driver.driver.Analyze();
+            AxeResult results = driver.Analyze();
 
             foreach (var xyz in results.Violations)
             {

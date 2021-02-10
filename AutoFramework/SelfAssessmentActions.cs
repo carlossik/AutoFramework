@@ -16,26 +16,26 @@ namespace SFB_Test_Automation.AutoFramework
 {
     class SelfAssessmentActions
     {
-        public static void navigateToSadPage(String Laestab)
+        public static void navigateToSadPage(String Laestab, IWebDriver driver)
         {
-            Actions.schoolSearchwithLaestab(Laestab);
-            SchoolDetailPage detailspage = new SchoolDetailPage();
+            Actions.schoolSearchwithLaestab(Laestab,driver);
+            SchoolDetailPage detailspage = new SchoolDetailPage(driver);
             detailspage.SADLink.Click();
             Thread.Sleep(200);
-            Actions.acceptCookie();
+            Actions.acceptCookie(driver);
             Thread.Sleep(2000);
 
         }
-        public static void verifySADLink(String Laestab)
+        public static void verifySADLink(String Laestab, IWebDriver driver)
         {
-            Actions.schoolSearchwithLaestab(Laestab);
-            SchoolDetailPage detailspage = new SchoolDetailPage();
-            String FinancialYear = Driver.driver.FindElement(By.CssSelector("div.charts-section__chart-container:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > span:nth-child(1)")).Text;
+            Actions.schoolSearchwithLaestab(Laestab,driver);
+            SchoolDetailPage detailspage = new SchoolDetailPage(driver);
+            String FinancialYear = driver.FindElement(By.CssSelector("div.charts-section__chart-container:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > span:nth-child(1)")).Text;
             Console.WriteLine(FinancialYear);
-            SelfAssessmentPage assessmentpage = new SelfAssessmentPage();
+            SelfAssessmentPage assessmentpage = new SelfAssessmentPage(driver);
             detailspage.SADLink.Click();
             Thread.Sleep(3000);
-            String SadFinancialYearDisplayed = Driver.driver.FindElement(By.CssSelector(".govuk-heading-m")).Text;
+            String SadFinancialYearDisplayed = driver.FindElement(By.CssSelector(".govuk-heading-m")).Text;
             Console.WriteLine(SadFinancialYearDisplayed);
 
 
@@ -43,59 +43,59 @@ namespace SFB_Test_Automation.AutoFramework
 
         
 
-        public static void verifySADlinkforIncomplete_finance_Year(String Laestab)
+        public static void verifySADlinkforIncomplete_finance_Year(String Laestab, IWebDriver driver)
         {
-            Actions.schoolSearchwithLaestab(Laestab);
-            SchoolDetailPage detailspage = new SchoolDetailPage();
-            String FinancialYear = Driver.driver.FindElement(By.CssSelector("div.charts-section__chart-container:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > span:nth-child(1)")).Text;
+            Actions.schoolSearchwithLaestab(Laestab,driver);
+            SchoolDetailPage detailspage = new SchoolDetailPage(driver);
+            String FinancialYear = driver.FindElement(By.CssSelector("div.charts-section__chart-container:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > span:nth-child(1)")).Text;
             Console.WriteLine(FinancialYear);
            
             //detailspage.SADLink.Click();
             Thread.Sleep(3000);
         }
 
-        public static void ViewCharacteristics(String Laestab)
+        public static void ViewCharacteristics(String Laestab, IWebDriver driver)
         {
-            Actions.schoolSearchwithLaestab(Laestab);
-            SchoolDetailPage detailspage = new SchoolDetailPage();
+            Actions.schoolSearchwithLaestab(Laestab,driver);
+            SchoolDetailPage detailspage = new SchoolDetailPage(driver);
             detailspage.SADLink.Click();
             Thread.Sleep(2000);
-            SelfAssessmentPage SADpage = new SelfAssessmentPage();
-            Actions.acceptCookie();
+            SelfAssessmentPage SADpage = new SelfAssessmentPage(driver);
+            Actions.acceptCookie(driver);
             Thread.Sleep(2000);
             SADpage.ViewCharacteristicsLink.Click();
             Thread.Sleep(2000);
 
         }
       
-        public static void ViewCharacteristicsSideBySide(String Laestab)
+        public static void ViewCharacteristicsSideBySide(String Laestab, IWebDriver driver)
         {
             
-            createSideBySideScenario(Laestab);
-            SelfAssessmentPage SADpage = new SelfAssessmentPage();
+            createSideBySideScenario(Laestab,driver);
+            SelfAssessmentPage SADpage = new SelfAssessmentPage(driver);
             SADpage.ViewCharacteristicsLink.Click();
             Thread.Sleep(2000);
 
         }
-        public static void PrintSad()
+        public static void PrintSad(IWebDriver driver)
         {
-            SelfAssessmentPage assessmentpage = new SelfAssessmentPage();
+            SelfAssessmentPage assessmentpage = new SelfAssessmentPage(driver);
             assessmentpage.PrintPage.Click();
             Thread.Sleep(200);
-            Driver.driver.SwitchTo().ActiveElement();
-            Driver.driver.FindElement(By.CssSelector("div > cr-button.cancel-button")).Click();
+            driver.SwitchTo().ActiveElement();
+            driver.FindElement(By.CssSelector("div > cr-button.cancel-button")).Click();
         }
 
-        public static void DownloadSad()
+        public static void DownloadSad(IWebDriver driver)
         {
-            SelfAssessmentPage assessmentpage = new SelfAssessmentPage();
+            SelfAssessmentPage assessmentpage = new SelfAssessmentPage(driver);
             assessmentpage.DownloadPage.Click();
             Thread.Sleep(20000);
         }
 
-        public static void FillSADForm()
+        public static void FillSADForm(IWebDriver driver)
         {
-            SadEditPage editpage = new SadEditPage();
+            SadEditPage editpage = new SadEditPage(driver);
             editpage.ScenarioNameField.SendKeys("Automated Test1 Scenario");
             editpage.YearOfScenarioField.Click();
             editpage.NumberOfPupils.SendKeys("33");
@@ -111,15 +111,15 @@ namespace SFB_Test_Automation.AutoFramework
             editpage.Submit_Button.Click();
             Thread.Sleep(200);
         }
-        public static void EditSideBySideView(String LAestab)
+        public static void EditSideBySideView(String LAestab, IWebDriver driver)
         {
-            createSideBySideScenario(LAestab);
+            createSideBySideScenario(LAestab,driver);
             Thread.Sleep(30000);
         }
 
-        public static void EditSADForm()
+        public static void EditSADForm(IWebDriver driver)
         {
-            SadEditPage editpage = new SadEditPage();
+            SadEditPage editpage = new SadEditPage(driver);
             editpage.ScenarioNameField.Clear();
             editpage.ScenarioNameField.SendKeys("Automated Test1 Scenario");
             editpage.YearOfScenarioField.Click();
@@ -140,154 +140,158 @@ namespace SFB_Test_Automation.AutoFramework
             editpage.Submit_Button.Click();
             Thread.Sleep(200);
         }
-        public static void createSideBySideScenario(String LAestab)
+        public static void createSideBySideScenario(String LAestab, IWebDriver driver)
         {
-            Actions.schoolSearchwithLaestab(LAestab);
-            SchoolDetailPage detailspage = new SchoolDetailPage();
+            Actions.schoolSearchwithLaestab(LAestab,driver);
+            SchoolDetailPage detailspage = new SchoolDetailPage(driver);
             Thread.Sleep(200);
             detailspage.SADLink.Click();
              Thread.Sleep(2000);
-            SelfAssessmentPage SadPage = new SelfAssessmentPage();
+            SelfAssessmentPage SadPage = new SelfAssessmentPage(driver);
             Thread.Sleep(200);
-            Actions.acceptCookie();
+            Actions.acceptCookie(driver);
             Thread.Sleep(2000);
             SadPage.SideBySideLink.Click();
             Thread.Sleep(200);
-            FillSADForm();
+            FillSADForm(driver);
             Thread.Sleep(2000);
 
         }
-        public static void cancelsidebysidecreation(String LAestab)
+        public static void cancelsidebysidecreation(String LAestab, IWebDriver driver)
         {
-            Actions.schoolSearchwithLaestab(LAestab);
-            SchoolDetailPage detailspage = new SchoolDetailPage();
+            Actions.schoolSearchwithLaestab(LAestab,driver);
+            SchoolDetailPage detailspage = new SchoolDetailPage(driver);
             Thread.Sleep(200);
             detailspage.SADLink.Click();
             Thread.Sleep(2000);
-            SelfAssessmentPage SadPage = new SelfAssessmentPage();
+            SelfAssessmentPage SadPage = new SelfAssessmentPage(driver);
             Thread.Sleep(200);
-            Actions.acceptCookie();
+            Actions.acceptCookie(driver);
             SadPage.SideBySideLink.Click();
            
             Thread.Sleep(200);
-            SadEditPage editpage = new SadEditPage();
+            SadEditPage editpage = new SadEditPage(driver);
             editpage.Back_Link.Click();
             Thread.Sleep(200);
           
         }
-        public static void gotohomepageviabreadcrumb()
+        public static void gotohomepageviabreadcrumb(IWebDriver driver)
         {
-            SelfAssessmentPage assessmentpage = new SelfAssessmentPage();
+            SelfAssessmentPage assessmentpage = new SelfAssessmentPage(driver);
             assessmentpage.backtoschooldetailpagecrumb.Click();
             Thread.Sleep(2000);
         }
-        public static void persist()
+        public static void persist(IWebDriver driver)
         {
-            gotohomepageviabreadcrumb();
-            SchoolDetailPage detailspage = new SchoolDetailPage();
+            gotohomepageviabreadcrumb(driver);
+            SchoolDetailPage detailspage = new SchoolDetailPage(driver);
             detailspage.SADLink.Click();
-            SelfAssessmentPage SadPage = new SelfAssessmentPage();
+            SelfAssessmentPage SadPage = new SelfAssessmentPage(driver);
             Thread.Sleep(2000);
         }
-        public static void non_persistence(String LAestab)
+        public static void non_persistence(String LAestab, IWebDriver driver)
         {
-            gotohomepageviabreadcrumb();
-            Driver.driver.Close();
-            Driver.driver = new FirefoxDriver();
-            Driver.driver.Navigate().GoToUrl(Config.currentTestEnv);
-            Driver.driver.FindElement(By.Id("acceptAllCookies")).Click();
-            Driver.driver.FindElement(By.Id("acceptAllCookiesHide")).Click();
-            Driver.driver.Manage().Window.Maximize();
-            Driver.driver.Navigate().Refresh();
-            Thread.Sleep(5000);
-            Actions.clearPopup();
-            Actions.schoolSearchwithLaestab(LAestab);
-            SchoolDetailPage detailspage = new SchoolDetailPage();
+            gotohomepageviabreadcrumb(driver);
+            driver.Close();
+            driver = new ChromeDriver();
+            driver.Navigate().GoToUrl(Config.currentTestEnv);
+            driver.FindElement(By.Id("acceptAllCookies")).Click();
+            driver.FindElement(By.Id("acceptAllCookiesHide")).Click();
+            driver.Manage().Window.Maximize();
+            driver.Navigate().Refresh();
+            //Thread.Sleep(5000);
+            Actions.clearPopup(driver);
+            Actions.schoolSearchwithLaestab(LAestab,driver);
+            SchoolDetailPage detailspage = new SchoolDetailPage(driver);
             detailspage.SADLink.Click();
+            TimeSpan seconds = TimeSpan.FromSeconds(5);
+            driver.Manage().Timeouts().ImplicitWait = (seconds);
+            driver.FindElement(By.Id("acceptAllCookies")).Click();
+            driver.FindElement(By.Id("acceptAllCookiesHide")).Click();
             Thread.Sleep(2000);
            
         }
 
-        public static void removeScenario1()
+        public static void removeScenario1(IWebDriver driver)
         {
-            SelfAssessmentPage SadPage = new SelfAssessmentPage();
+            SelfAssessmentPage SadPage = new SelfAssessmentPage(driver);
             SadPage.RemoveScenario1Button.Click();
             Thread.Sleep(2000);
         }
-        public static void removeScenario2()
+        public static void removeScenario2(IWebDriver driver)
         {
-            SelfAssessmentPage SadPage = new SelfAssessmentPage();
+            SelfAssessmentPage SadPage = new SelfAssessmentPage(driver);
             SadPage.RemoveScenario2Button.Click();
             Thread.Sleep(2000);
         }
-        public static void EditScenario1()
+        public static void EditScenario1(IWebDriver driver)
         {
-            SelfAssessmentPage SadPage = new SelfAssessmentPage();
+            SelfAssessmentPage SadPage = new SelfAssessmentPage(driver);
             SadPage.EditScenario1Button.Click();
             Thread.Sleep(200);
-            EditSADForm();
+            EditSADForm(driver);
             Thread.Sleep(20000);
         }
-        public static void EditScenario2()
+        public static void EditScenario2(IWebDriver driver)
         {
-            SelfAssessmentPage SadPage = new SelfAssessmentPage();
+            SelfAssessmentPage SadPage = new SelfAssessmentPage(driver);
             SadPage.EditScenario2Button.Click();
             Thread.Sleep(2000);
         }
-        public static void ResetDashBoard()
+        public static void ResetDashBoard(IWebDriver driver)
         {
-            SelfAssessmentPage SadPage = new SelfAssessmentPage();
+            SelfAssessmentPage SadPage = new SelfAssessmentPage(driver);
             SadPage.ResetDashboardButton.Click();
             Thread.Sleep(2000);
         }
 
-        public static void SADclosedSchool(String Laestab)// should be a closed school
+        public static void SADclosedSchool(String Laestab, IWebDriver driver)// should be a closed school
         {
-            Actions.schoolSearchwithLaestab(Laestab);
+            Actions.schoolSearchwithLaestab(Laestab,driver);
         }
-        public static void navigatebacktohomepage()
+        public static void navigatebacktohomepage(IWebDriver driver)
         {
-            SelfAssessmentPage SadPage = new SelfAssessmentPage();
+            SelfAssessmentPage SadPage = new SelfAssessmentPage(driver);
             SadPage.HomeBreadCrumb.Click();
             Thread.Sleep(2000);
         }
-        public static void navigatebacktoschooldetaipage()
+        public static void navigatebacktoschooldetaipage(IWebDriver driver)
         {
-            SelfAssessmentPage SadPage = new SelfAssessmentPage();
+            SelfAssessmentPage SadPage = new SelfAssessmentPage(driver);
             SadPage.backtoschooldetailpagecrumb.Click();
             Thread.Sleep(2000);
         }
-        public static void VerifyPopUps(String Laestab)
+        public static void VerifyPopUps(String Laestab, IWebDriver driver)
         {
-            Actions.schoolSearchwithLaestab(Laestab);
-            SchoolDetailPage detailspage = new SchoolDetailPage();
+            Actions.schoolSearchwithLaestab(Laestab,driver);
+            SchoolDetailPage detailspage = new SchoolDetailPage(driver);
             detailspage.SADLink.Click();
             Thread.Sleep(300);
-            SelfAssessmentPage SadPage = new SelfAssessmentPage();
-            Actions.acceptCookie();
+            SelfAssessmentPage SadPage = new SelfAssessmentPage(driver);
+            Actions.acceptCookie(driver);
             Thread.Sleep(200);
             SadPage.SideBySideLink.Click();
             Thread.Sleep(300);
         }
 
-        public static void create_sadFor_Nurseries_Prus_Specials(String Laestab, IWebElement element, String editDat)
+        public static void create_sadFor_Nurseries_Prus_Specials(String Laestab, IWebElement element, String editDat, IWebDriver driver)
         {
 
-            AddData(Laestab,element,editDat);
+            AddData(Laestab,element,editDat,driver);
            
         }
-        public static void AddData(String Laestab,IWebElement element,String editData)
+        public static void AddData(String Laestab,IWebElement element,String editData, IWebDriver driver)
         {
-            createSideBySideScenario(Laestab);
-            SelfAssessmentPage SadPage = new SelfAssessmentPage();
+            createSideBySideScenario(Laestab,driver);
+            SelfAssessmentPage SadPage = new SelfAssessmentPage(driver);
             Thread.Sleep(40);
 
-            Driver.driver.FindElement(By.CssSelector("#charTable > tr:nth-child(6) > td:nth-child(5) > span:nth-child(1) > a:nth-child(2)")).Click();
+            driver.FindElement(By.CssSelector("#charTable > tr:nth-child(6) > td:nth-child(5) > span:nth-child(1) > a:nth-child(2)")).Click();
             //element.Click();
             Thread.Sleep(400);
-            SadEditPage EditPage = new SadEditPage();
+            SadEditPage EditPage = new SadEditPage(driver);
             Thread.Sleep(400);
-            IWebElement activeField = Driver.driver.SwitchTo().ActiveElement();
+            IWebElement activeField = driver.SwitchTo().ActiveElement();
             activeField.Clear();
             activeField.SendKeys(editData);
             Thread.Sleep(4);
@@ -311,17 +315,17 @@ namespace SFB_Test_Automation.AutoFramework
             EditPage.Submit_Button.Click();
             Thread.Sleep(40);
         }
-        public static void verifyHiddenFields(String Lacode)
+        public static void verifyHiddenFields(String Lacode, IWebDriver driver)
         {
-            Actions.searchschoolLaCode(Lacode);
-            FiltersPage filters = new FiltersPage();
+            Actions.searchschoolLaCode(Lacode,driver);
+            FiltersPage filters = new FiltersPage(driver);
             Thread.Sleep(500);
             filters.EducationPhase_Nursery.Click();
             filters.schoolsdisplayedLinks.Click();
             Thread.Sleep(300);
-            SchoolDetailPage detailpage = new SchoolDetailPage();
+            SchoolDetailPage detailpage = new SchoolDetailPage(driver);
             detailpage.SADLink.Click();
-            Actions.acceptCookie();
+            Actions.acceptCookie(driver);
             Thread.Sleep(2000);
         }
 

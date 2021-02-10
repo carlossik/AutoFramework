@@ -13,9 +13,9 @@ namespace SFB_Test_Automation.AutoFramework.Pages
     {
         
         
-            public SadEditPage()
+            public SadEditPage(IWebDriver driver)
             {
-                SeleniumExtras.PageObjects.PageFactory.InitElements(Driver.driver, this);
+                SeleniumExtras.PageObjects.PageFactory.InitElements(driver, this);
             }
 
             [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "scenario-name")]
@@ -114,20 +114,7 @@ namespace SFB_Test_Automation.AutoFramework.Pages
             public IWebElement modalcloseButton { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".modal-body > div:nth-child(1) > p:nth-child(1)")]
         public IWebElement popupmessage { get; set; }
-        //.pull-right > span:nth-child(1)
-
-
-
-
-
-
-
-
-
-
-
-        //.govuk-heading-xl
-
+       
 
 
 

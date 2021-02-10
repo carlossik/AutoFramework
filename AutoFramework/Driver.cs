@@ -1,60 +1,60 @@
-﻿namespace AutoFramework
-{
-    using OpenQA.Selenium;
-    using OpenQA.Selenium.Chrome;
-    using OpenQA.Selenium.Firefox;
-    using OpenQA.Selenium.IE;
-    using OpenQA.Selenium.Support.UI;
-    using Selenium;
+﻿//namespace AutoFramework
+//{
+//    using OpenQA.Selenium;
+//    using OpenQA.Selenium.Chrome;
+//    using OpenQA.Selenium.Firefox;
+//    using OpenQA.Selenium.IE;
+//    using OpenQA.Selenium.Support.UI;
+//    using Selenium;
     
-    using System;
-    using System.Collections.Generic;
+//    using System;
+//    using System.Collections.Generic;
 
-    public  class Driver
-    {
-        public static IWebDriver  driver { get; set; }
+//    public  class Driver
+//    {
+//        public static IWebDriver  driver { get; set; }
 
-        public static void WaitForElementUpTo(int seconds = 15)
+//        public static void WaitForElementUpTo(int seconds = 15)
 
-        {
+//        {
             
-            Driver.driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+//            Driver.driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             
-        }
+//        }
         
 
-            public static void Initialize(String browser)
-            {
-                switch (browser.ToLower())
-                {
-                    case "chrome":
+//            public static void Initialize(String browser)
+//            {
+//                switch (browser.ToLower())
+//                {
+//                    case "chrome":
                         
-                        Driver.driver = new ChromeDriver();
-                        break;
-                    case "firefox":
-                        Driver.driver = new FirefoxDriver();
-                        break;
-                case "IE":
+//                        Driver.driver = new ChromeDriver();
+//                        break;
+//                    case "firefox":
+//                        Driver.driver = new FirefoxDriver();
+//                        break;
+//                case "IE":
 
-                    Driver.driver = new InternetExplorerDriver();
-                    break;
+//                    Driver.driver = new InternetExplorerDriver();
+//                    break;
                 
-                default:
-                    Driver.driver = new ChromeDriver();
-                    break;
-                    //throw new NotSupportedException("Browser " + browser + " not supported");
-                }
-            }
-        public static IEnumerable<String> BrowserToRunWith()
-        {
-            String[] Browsers = { "chrome", "firefox", "IE" };
-            foreach (String b in Browsers)
-            {
-                yield return b;
+//                default:
+//                    Driver.driver = new ChromeDriver();
+//                    break;
+//                    //throw new NotSupportedException("Browser " + browser + " not supported");
+//                }
+//            }
+//        public static IEnumerable<String> BrowserToRunWith()
+//        {
+//            String[] Browsers = { "chrome", "firefox", "IE" };
+//            foreach (String b in Browsers)
+//            {
+//                yield return b;
 
-            }
-        }
+//            }
+//        }
       
 
-    }
-}
+//    }
+//}

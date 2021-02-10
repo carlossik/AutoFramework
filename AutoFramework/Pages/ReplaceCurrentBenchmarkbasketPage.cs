@@ -10,9 +10,9 @@ namespace SFB_Test_Automation.AutoFramework.Pages
 {
     public class ReplaceCurrentBenchmarkbasketPage
     {
-        public ReplaceCurrentBenchmarkbasketPage()
+        public ReplaceCurrentBenchmarkbasketPage(IWebDriver driver)
         {
-            SeleniumExtras.PageObjects.PageFactory.InitElements(Driver.driver, this);
+            SeleniumExtras.PageObjects.PageFactory.InitElements(driver, this);
         }
 
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".button")]

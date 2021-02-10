@@ -11,9 +11,9 @@ namespace SFB_Test_Automation.AutoFramework.Pages
 {
     class ManualPage
     {
-        public ManualPage()
+        public ManualPage(IWebDriver driver)
         {
-            PageFactory.InitElements(Driver.driver, this);
+            PageFactory.InitElements(driver, this);
         }
 
         [FindsBy(How = How.CssSelector, Using = "#NewSchoolName")]

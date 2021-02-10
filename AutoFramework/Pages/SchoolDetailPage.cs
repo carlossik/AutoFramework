@@ -15,11 +15,11 @@ namespace AutoFramework.Pages.PageElements
     class SchoolDetailPage
     {
 
-        public SchoolDetailPage()
+        public SchoolDetailPage(IWebDriver driver)
         {
 
 
-            SeleniumExtras.PageObjects.PageFactory.InitElements(Driver.driver, this);
+            SeleniumExtras.PageObjects.PageFactory.InitElements(driver, this);
         }
 
 
@@ -136,7 +136,7 @@ namespace AutoFramework.Pages.PageElements
 
         }
 
-        public void clickSadLink()
+        public void clickSadLink(IWebDriver driver)
         {
             try { 
 
@@ -144,7 +144,7 @@ namespace AutoFramework.Pages.PageElements
             {
                 SADLink.Click();
                 Thread.Sleep(200);
-                Actions.acceptCookie();
+                Actions.acceptCookie(driver);
                 Thread.Sleep(200);
 
                 }

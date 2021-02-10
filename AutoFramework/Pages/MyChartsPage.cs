@@ -14,19 +14,38 @@ namespace SFB_Test_Automation.AutoFramework.Pages
 {
     class MyChartsPage
     {
-        public MyChartsPage()
+        public MyChartsPage(IWebDriver driver)
         {
-            SeleniumExtras.PageObjects.PageFactory.InitElements(Driver.driver, this);
+            SeleniumExtras.PageObjects.PageFactory.InitElements(driver, this);
         }
 
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "#Custom > a:nth-child(1) > span:nth-child(1)")]//"//*[contains(., 'Your charts')]")]
         //[SeleniumExtras.PageObjects.CacheLookup]
         public IWebElement YourChartsTab { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "#customTabSection > div > div > div > details > summary > span.summary.font-xsmall")]
-        //[SeleniumExtras.PageObjects.CacheLookup]
         public IWebElement AddOrRemoveChartsLink { get; set; }
-        //.criteria-details > summary:nth-child(1)
 
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "#custom-report-accordion > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > label:nth-child(2)")]
+        public IWebElement Tot_ExpenDiture_PerPupil { get; set; }
 
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "div.accordion-section:nth-child(3) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > label:nth-child(2)")]
+        public IWebElement Staff_PerPupil { get; set; }
+
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "div.accordion-section:nth-child(3) > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > label:nth-child(2)")]
+        public IWebElement TeachingStaff_PerPupil { get; set; }
+
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "div.accordion-section:nth-child(3) > div:nth-child(2) > div:nth-child(4) > div:nth-child(2) > div:nth-child(1) > label:nth-child(2)")]
+        public IWebElement EducationSupport_PerPupil { get; set; }
+
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "#custom-report-accordion > div:nth-child(2) > h2:nth-child(1) > a:nth-child(1) > span:nth-child(1)")]
+        public IWebElement TotalExpenditureaccordion { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "div.accordion-section:nth-child(3) > h2:nth-child(1) > a:nth-child(1) > span:nth-child(1)")]
+        public IWebElement Staffeaccordion { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath,Using = "//*[@id=\"Custom\"]/a")]
+        public IWebElement YourChartsTabAfterAddingChart { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id,Using = "proposition-name")]
+        public IWebElement sfbbacktoHomeLink { get; set; }
     }
+
+
 }

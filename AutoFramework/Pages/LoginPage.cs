@@ -5,9 +5,9 @@
 
     public class LoginPage
     {
-        public LoginPage()
+        public LoginPage(IWebDriver driver)
         {
-            PageFactory.InitElements(Driver.driver, this);
+            PageFactory.InitElements(driver, this);
         }
         [FindsBy(How = How.Id, Using = "Username")]
         [CacheLookup]

@@ -21,28 +21,28 @@ namespace AutoFramework
     {
         
 
-        public static void FilterBy1Mile(string postcode)
+        public static void FilterBy1Mile(string postcode, IWebDriver driver)
         {
-            Actions.SearchByLocationUsingPostcode(postcode);
-            FiltersPage filters = new FiltersPage();
+            Actions.SearchByLocationUsingPostcode(postcode,driver);
+            FiltersPage filters = new FiltersPage(driver);
             filters.Filter_ByMiles.Click();
             filters.FilterBy1Mile.Click();
 
 
 
         }
-        public static void FilterBy3Miles(string postcode)
+        public static void FilterBy3Miles(string postcode, IWebDriver driver)
         {
-            Actions.SearchByLocationUsingPostcode(postcode);
-            FiltersPage filters = new FiltersPage();
+            Actions.SearchByLocationUsingPostcode(postcode,driver);
+            FiltersPage filters = new FiltersPage(driver);
             filters.Filter_ByMiles.Click();
             filters.FilterBy10Miles.Click();
             filters.FilterBy3Miles.Click();
         }
-        public static void FilterBy5Miles(string postcode)
+        public static void FilterBy5Miles(string postcode, IWebDriver driver)
         {
-            Actions.SearchByLocationUsingPostcode(postcode);
-            FiltersPage filters = new FiltersPage();
+            Actions.SearchByLocationUsingPostcode(postcode,driver);
+            FiltersPage filters = new FiltersPage(driver);
             
             filters.Filter_ByMiles.Click();
             filters.FilterBy5Miles.Click();
@@ -50,49 +50,49 @@ namespace AutoFramework
             
         }
 
-        public static void FilterBy10Miles(string postcode)
+        public static void FilterBy10Miles(string postcode, IWebDriver driver)
         {
-            Actions.SearchByLocationUsingPostcode(postcode);
-            FiltersPage filters = new FiltersPage();
+            Actions.SearchByLocationUsingPostcode(postcode,driver);
+            FiltersPage filters = new FiltersPage(driver);
             filters.Filter_ByMiles.Click();
             filters.FilterBy10Miles.Click();
         }
 
-        public static void FilterBy15Miles(string postcode)
+        public static void FilterBy15Miles(string postcode, IWebDriver driver)
         {
-            Actions.SearchByLocationUsingPostcode(postcode);
-            FiltersPage filters = new FiltersPage();
+            Actions.SearchByLocationUsingPostcode(postcode,driver);
+            FiltersPage filters = new FiltersPage(driver);
             filters.Filter_ByMiles.Click();
             filters.FilterBy15Miles.Click();
         }
 
-        public static void FilterBy20Miles(string postcode)
+        public static void FilterBy20Miles(string postcode, IWebDriver driver)
         {
-            Actions.SearchByLocationUsingPostcode(postcode);
-            FiltersPage filters = new FiltersPage();
+            Actions.SearchByLocationUsingPostcode(postcode,driver);
+            FiltersPage filters = new FiltersPage(driver);
             filters.Filter_ByMiles.Click();
             filters.FilterBy20Miles.Click();
         }
-        public static void FilterBy25Miles(string postcode)
+        public static void FilterBy25Miles(string postcode, IWebDriver driver)
         {
-            Actions.SearchByLocationUsingPostcode(postcode);
-            FiltersPage filters = new FiltersPage();
+            Actions.SearchByLocationUsingPostcode(postcode,driver);
+            FiltersPage filters = new FiltersPage(driver);
             filters.Filter_ByMiles.Click();
             filters.FilterBy25Miles.Click();
         }
 
-        public static void FilterByEducationPhasePrimary(string postcode)
+        public static void FilterByEducationPhasePrimary(string postcode, IWebDriver driver)
         {
-            Actions.SearchByLocationUsingPostcode(postcode);
-            FiltersPage filters = new FiltersPage();
+            Actions.SearchByLocationUsingPostcode(postcode,driver);
+            FiltersPage filters = new FiltersPage(driver);
             filters.EducationPhase_PrimaryCheckbox.Click();
             Thread.Sleep(3000);
 
         }
-        public static void selectAllEducationPhase(string postcode)
+        public static void selectAllEducationPhase(string postcode, IWebDriver driver)
         {
-            Actions.SearchByLocationUsingPostcode(postcode);
-            FiltersPage filters = new FiltersPage();
+            Actions.SearchByLocationUsingPostcode(postcode,driver);
+            FiltersPage filters = new FiltersPage(driver);
             filters.EducationPhase_SecondaryCheckbox.Click();
             filters.EducationPhase_AllThroughCheckbox.Click();
             filters.EducationPhase_NurseryCheckbox.Click();
@@ -102,10 +102,10 @@ namespace AutoFramework
 
 
         }
-        public static void selectAllSchoolType(string postcode)
+        public static void selectAllSchoolType(string postcode,IWebDriver driver)
         {
-            Actions.SearchByLocationUsingPostcode(postcode);
-            FiltersPage filters = new FiltersPage();
+            Actions.SearchByLocationUsingPostcode(postcode,driver);
+            FiltersPage filters = new FiltersPage(driver);
             filters.SchoolType.Click();
             filters.SchoolType_AcademyConverter.Click();
             filters.SchoolType_SponsorLed.Click();
@@ -119,12 +119,12 @@ namespace AutoFramework
             filters.SchoolType_VoluntaryAidedSchool.Click();
 
         }
-        public static void SortByAlpabeticalOrderAZ(string postcode)
+        public static void SortByAlpabeticalOrderAZ(string postcode, IWebDriver driver)
         {
-            Actions.SearchByLocationUsingPostcode(postcode);
-            FiltersPage filters = new FiltersPage();
+            Actions.SearchByLocationUsingPostcode(postcode,driver);
+            FiltersPage filters = new FiltersPage(driver);
             //filters.SortedBy.Click();
-            IWebElement SortedByDropDownElement = Driver.driver.FindElement(By.Id("OrderByControl"));
+            IWebElement SortedByDropDownElement = driver.FindElement(By.Id("OrderByControl"));
             //SortedByDropDownElement.Click();
             SelectElement SelectanOption = new SelectElement(SortedByDropDownElement);
             SelectanOption.SelectByValue("EstablishmentName asc");
@@ -132,11 +132,11 @@ namespace AutoFramework
             Thread.Sleep(3000);
         }
 
-        public static void SortByAlpabeticalOrderZA(string postcode)
+        public static void SortByAlpabeticalOrderZA(string postcode, IWebDriver driver)
         {
-            Actions.SearchByLocationUsingPostcode(postcode);
-            FiltersPage filters = new FiltersPage();
-            IWebElement SortedByDropDownElement = Driver.driver.FindElement(By.Id("OrderByControl"));
+            Actions.SearchByLocationUsingPostcode(postcode,driver);
+            FiltersPage filters = new FiltersPage(driver);
+            IWebElement SortedByDropDownElement = driver.FindElement(By.Id("OrderByControl"));
             //SortedByDropDownElement.Click();
             SelectElement SelectanOption = new SelectElement(SortedByDropDownElement);
             SelectanOption.SelectByValue("EstablishmentName desc");

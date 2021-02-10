@@ -13,8 +13,16 @@
     using SFB_Test_Automation.AutoFramework.vs.AutoFramework.Helpers;
     using SFB_Test_Automation;
 
+
+
+
+    [Parallelizable]
     public class TrustSearchScenarios 
     {
+
+        IAlert alert;
+        IWebDriver driver;
+
 
         [SetUp]
 
@@ -23,7 +31,7 @@
         {
             var testName = TestContext.CurrentContext.Test.FullName;
             Config.Credentials.deletefiles(@"C:\TEMP\" + testName + ".jpg");
-            Actions.InitializeDriver(Config.ChromeDriverUnderTest);
+            driver = Actions.InitializeDriver(1);
 
 
 
@@ -34,10 +42,10 @@
         public void TrustSearch()
         {
            
-            TrustActions.TrustSearchWitNameUsingFirstSuggestedName("Kaleidoscope Learning Trust ");
-            TrustComparisonPage trustcomparison = new TrustComparisonPage();
+            TrustActions.TrustSearchWitNameUsingFirstSuggestedName("Kaleidoscope Learning Trust ",driver);
+            TrustComparisonPage trustcomparison = new TrustComparisonPage(driver);
             string trustname = (trustcomparison.TrustName).Text;
-            string expectedName = Driver.driver.FindElement(By.CssSelector(".heading-xlarge")).Text;
+            string expectedName = driver.FindElement(By.CssSelector(".heading-xlarge")).Text;
             Assert.AreEqual(trustname, expectedName);
         }
         [Test]
@@ -50,34 +58,34 @@
       
         public void TrustSearchwithName()
         {
-            TrustActions.TrustSearchWitNameUsingFirstSuggestedName("Brookvale Groby Learning Trust");
-            TrustComparisonPage trustcomparison = new TrustComparisonPage();
+            TrustActions.TrustSearchWitNameUsingFirstSuggestedName("Brookvale Groby Learning Trust",driver);
+            TrustComparisonPage trustcomparison = new TrustComparisonPage(driver);
             string trustname = (trustcomparison.TrustName).Text;
-            string expectedName = Driver.driver.FindElement(By.CssSelector(".heading-xlarge")).Text;
+            string expectedName = driver.FindElement(By.CssSelector(".heading-xlarge")).Text;
             Assert.AreEqual(trustname, expectedName);
         }
         [Test]
        
         public void TrustSearchwithOneschoolinTrust()
         {
-            Actions.SearchTrustViaLocalAuthority("303");
-            TrustActions.identifyTrustsWithOneSchool();
+            Actions.SearchTrustViaLocalAuthority("303",driver);
+            TrustActions.identifyTrustsWithOneSchool(driver);
             //todo assertions
         }
         [Test]
         public void TrustSearchWithCompanyNumber()
         {
-            Actions.TrustSearchWithCompanynumber("8929065");
-            TrustComparisonPage trustcomparison = new TrustComparisonPage();
+            Actions.TrustSearchWithCompanynumber("8929065",driver);
+            TrustComparisonPage trustcomparison = new TrustComparisonPage(driver);
             string trustname = (trustcomparison.TrustName).Text;
             Assert.AreEqual(trustname, "Barnwell Academy Trust");
         }
         [Test]
         public void TrustSearchWithwrongcompanynumber()
         {
-            Actions.TrustSearchWithCompanynumber("8929778");
-            TrustComparisonPage trustcomparison = new TrustComparisonPage();
-            string Errormessage = Driver.driver.FindElement(By.ClassName("error-message")).Text;
+            Actions.TrustSearchWithCompanynumber("8929778",driver);
+            TrustComparisonPage trustcomparison = new TrustComparisonPage(driver);
+            string Errormessage = driver.FindElement(By.ClassName("error-message")).Text;
             Assert.AreEqual(Errormessage, "We couldn't find any trusts matching your search criteria");
         }
 
@@ -85,8 +93,8 @@
         [Test]
         public void Trustcomparison()
         {
-            Actions.TrustComparison("Harvey Academy");
-            TrustBenchmarkChartsPage trustcharts = new TrustBenchmarkChartsPage();
+            Actions.TrustComparison("Harvey Academy",driver);
+            TrustBenchmarkChartsPage trustcharts = new TrustBenchmarkChartsPage(driver);
             Assert.IsTrue(trustcharts.BalanceTab.Displayed);
             Assert.IsTrue(trustcharts.ExpenditureTab.Displayed);
             Assert.IsTrue(trustcharts.IncomeTab.Displayed);
@@ -97,8 +105,8 @@
         [Test]
         public void TrustcomparisonForNoDataSchool()
         {
-            Actions.TrustSearchWithCompanynumber("8133360");
-            TrustComparisonPage trustcomparepage = new TrustComparisonPage();
+            Actions.TrustSearchWithCompanynumber("8133360",driver);
+            TrustComparisonPage trustcomparepage = new TrustComparisonPage(driver);
             try
             {
                 Assert.IsTrue(trustcomparepage.Compare_withOtherTrusts.Displayed);
@@ -116,8 +124,8 @@
         [Test]
         public void Trustcomparisonwithmorethan25schools()
         {
-            TrustActions.TrustComparisonWithMultipleTrusts();
-            TrustBenchmarkChartsPage trustcharts = new TrustBenchmarkChartsPage();
+            TrustActions.TrustComparisonWithMultipleTrusts(driver);
+            TrustBenchmarkChartsPage trustcharts = new TrustBenchmarkChartsPage(driver);
             Assert.IsTrue(trustcharts.BalanceTab.Displayed);
             Assert.IsTrue(trustcharts.ExpenditureTab.Displayed);
             Assert.IsTrue(trustcharts.IncomeTab.Displayed);
@@ -135,72 +143,72 @@
         public void TrustPerformanceLink()
         {
             
-            TrustActions.getCompanyNumber();
+            TrustActions.getCompanyNumber(driver);
         }
         [Test]
         public void trustsearchViaLocation()
         {
-            Actions.SearchTrustViaLocation();
-            Console.WriteLine(Driver.driver.FindElement(By.CssSelector(".heading-xlarge")).Text);
-            Assert.IsTrue(Driver.driver.FindElement(By.CssSelector(".heading-xlarge")).Text == "Academy trusts with schools operating in and near First Avenue, Bexleyheath, Kent");
+            Actions.SearchTrustViaLocation(driver);
+            Console.WriteLine(driver.FindElement(By.CssSelector(".heading-xlarge")).Text);
+            Assert.IsTrue(driver.FindElement(By.CssSelector(".heading-xlarge")).Text == "Academy trusts with schools operating in and near First Avenue, Bexleyheath, Kent");
         }
         [Test]
         public void trustsearchViaLA()
         {
-            Actions.SearchTrustViaLocalAuthority("303");
-            string numberOfSchools = Driver.driver.FindElement(By.CssSelector(".count-js")).Text;
-            Console.WriteLine(Driver.driver.FindElement(By.CssSelector(".count-js")).Text);
+            Actions.SearchTrustViaLocalAuthority("303",driver);
+            string numberOfSchools = driver.FindElement(By.CssSelector(".count-js")).Text;
+            Console.WriteLine(driver.FindElement(By.CssSelector(".count-js")).Text);
             Assert.IsTrue(Convert.ToInt32(numberOfSchools) > 0);
-            Assert.IsTrue(Driver.driver.FindElement(By.CssSelector(".heading-xlarge")).Text == "Academy trusts with schools operating in Bexley");
+            Assert.IsTrue(driver.FindElement(By.CssSelector(".heading-xlarge")).Text == "Academy trusts with schools operating in Bexley");
             
         }
         [Test]
         public void verifyCompaniesHouseNumberOnTrustLASearchResults()
         {
-            Actions.SearchTrustViaLocalAuthority("303");
-            Assert.IsTrue(Driver.driver.FindElement(By.CssSelector("li.school-document:nth-child(1) > div:nth-child(2) > div:nth-child(1) > a:nth-child(1)")).Displayed);
+            Actions.SearchTrustViaLocalAuthority("303",driver);
+            Assert.IsTrue(driver.FindElement(By.CssSelector("li.school-document:nth-child(1) > div:nth-child(2) > div:nth-child(1) > a:nth-child(1)")).Displayed);
         }
         [Test]
         public void verifySortedByDistanceAtoZ()
         {
-            Actions.ResultPageactionsA_Z("303", "alphabetical a-z");
-            SearchResultsPage resultsPage = new SearchResultsPage();
-            Assert.AreEqual(Driver.driver.FindElement(By.CssSelector("li.school-document:nth-child(1) > div:nth-child(1) > a:nth-child(1)")).Text ,"Academies Enterprise Trust");
+            Actions.ResultPageactionsA_Z("303", "alphabetical a-z",driver);
+            SearchResultsPage resultsPage = new SearchResultsPage(driver);
+            Assert.AreEqual(driver.FindElement(By.CssSelector("li.school-document:nth-child(1) > div:nth-child(1) > a:nth-child(1)")).Text ,"Academies Enterprise Trust");
             Console.WriteLine(resultsPage.FirstElementPresented.Text);
            
         }
         [Test]
         public void verifySortedByDistanceZtoA()
         {
-            Actions.ResultPageactions("303", "alphabetical z-a");
-            Assert.IsTrue(Driver.driver.FindElement(By.CssSelector("li.school-document:nth-child(1) > div:nth-child(1) > a:nth-child(1)")).Text == "Unity Academy Trust");
-            //Assert.IsTrue(Driver.driver.FindElement(By.CssSelector("li.school-document:nth-child(29) > div:nth-child(1) > a:nth-child(1)")).Text == "Academies Enterprise Trust");
+            Actions.ResultPageactions("303", "alphabetical z-a",driver);
+            Assert.IsTrue(driver.FindElement(By.CssSelector("li.school-document:nth-child(1) > div:nth-child(1) > a:nth-child(1)")).Text == "Unity Academy Trust");
+            //Assert.IsTrue(driver.FindElement(By.CssSelector("li.school-document:nth-child(29) > div:nth-child(1) > a:nth-child(1)")).Text == "Academies Enterprise Trust");
         }
         [Test]
         public void verifySortedByNumOfSchoolsInArea()
         {
-            Actions.ResultPageactions("303", "number of schools in search area");
+            Actions.ResultPageactions("303", "number of schools in search area",driver);
         }
         [Test]
         public void verifySortedByNumOfSchholEduTrust()
         {
-            Actions.ResultPageactions("303", "number of schools in academy trust");
-            string numberinfirstSchool = Driver.driver.FindElement(By.CssSelector("li.school-document:nth-child(1) > div:nth-child(2) > div:nth-child(2) > span:nth-child(1)")).Text;
-            string numberinSecondSchool = Driver.driver.FindElement(By.CssSelector("li.school-document:nth-child(2) > div:nth-child(2) > div:nth-child(2) > span:nth-child(1)")).Text;
+            Actions.ResultPageactions("303", "number of schools in academy trust",driver);
+            string numberinfirstSchool = driver.FindElement(By.CssSelector("li.school-document:nth-child(1) > div:nth-child(2) > div:nth-child(2) > span:nth-child(1)")).Text;
+            string numberinSecondSchool = driver.FindElement(By.CssSelector("li.school-document:nth-child(2) > div:nth-child(2) > div:nth-child(2) > span:nth-child(1)")).Text;
             Console.WriteLine(numberinfirstSchool);
             Console.WriteLine(numberinSecondSchool);
-            Console.WriteLine(Driver.driver.FindElement(By.CssSelector(".count-js")).Text);
+            Console.WriteLine(driver.FindElement(By.CssSelector(".count-js")).Text);
             Assert.IsTrue(Convert.ToInt32(numberinfirstSchool) > Convert.ToInt32(numberinSecondSchool));
         }
         [Test]
         public void verifynumberofschoolsdisplayed()
         {
-            Actions.SearchTrustViaLocalAuthority("303");
-            SearchResultsPage resultsPage = new SearchResultsPage();
+            Actions.SearchTrustViaLocalAuthority("303",driver);
+            SearchResultsPage resultsPage = new SearchResultsPage(driver);
             //Actions.selectFirstSchool();
             
-            Console.WriteLine("These are the results counted " + resultsPage.ResultsfromLinksCount);
-            int final_results = (resultsPage.ResultsfromLinksCount);
+            Console.WriteLine("These are the results counted " + resultsPage.resultsfromLinksCount(driver));
+            int final_results = resultsPage.resultsfromLinksCount(driver);
             Console.WriteLine("These are the results displayed " + (resultsPage.Allresultsdisplayed.Text));
             Assert.IsTrue((resultsPage.Allresultsdisplayed.Text) == (final_results.ToString()));
         }
@@ -221,21 +229,21 @@
         [Test]
         public void verifyviewTrustSchoolsLinks()
         {
-            Actions.SearchTrustViaLocalAuthority("890");
-            SearchResultsPage resultsPage = new SearchResultsPage();
-            Actions.selectFirstSchoolInTrusts();
+            Actions.SearchTrustViaLocalAuthority("890",driver);
+            SearchResultsPage resultsPage = new SearchResultsPage(driver);
+            Actions.selectFirstSchoolInTrusts(driver);
             string schooname = resultsPage.viewtrustschoolsFirstLink.Text;
             resultsPage.viewtrustschoolsFirstLink.Click();
             Thread.Sleep(1000);
-            SchoolDetailPage detailpage = new SchoolDetailPage();
+            SchoolDetailPage detailpage = new SchoolDetailPage(driver);
             Assert.IsTrue(detailpage.School_Name.Text == schooname);
         }
         [Test]
         public void verifyTrustBelongsToLink()
         {
-            Actions.SearchTrustViaLocalAuthority("890");
-            SearchResultsPage resultsPage = new SearchResultsPage();
-            Actions.selectFirstSchoolInTrusts();
+            Actions.SearchTrustViaLocalAuthority("890",driver);
+            SearchResultsPage resultsPage = new SearchResultsPage(driver);
+            Actions.selectFirstSchoolInTrusts(driver);
             string schooname = resultsPage.viewtrustschoolsFirstLink.Text;
             resultsPage.viewtrustschoolsFirstLink.Click();
             Thread.Sleep(1000);
@@ -247,8 +255,8 @@
 
         public void verifyMATHistoricalTabs()
         {
-            Actions.TrustSearchWithCompanynumber("7554121");//must be a MAT
-            TrustHomePage thome = new TrustHomePage();
+            Actions.TrustSearchWithCompanynumber("7554121",driver);//must be a MAT
+            TrustHomePage thome = new TrustHomePage(driver);
             Assert.IsTrue(thome.SchoolsCurrentlyInTrustTab.Displayed);
             Assert.IsTrue(thome.SchoolsIn1819SubmissionTab.Displayed);
             Assert.IsTrue(thome.TrustHistoryTab.Displayed);
@@ -257,10 +265,10 @@
         [Test]
         public void verifynumberOfSchoolsInTrust()
         {
-            Actions.TrustSearchWithCompanynumber("8084557");//must be a MAT
+            Actions.TrustSearchWithCompanynumber("8084557",driver);//must be a MAT
             TrustActions tactions = new TrustActions();
-            TrustHomePage thome = new TrustHomePage();
-            Assert.AreEqual(tactions.calculateNumberOfSchoolsInMat(), thome.NumberOfSchools1819.Text);
+            TrustHomePage thome = new TrustHomePage(driver);
+            Assert.AreEqual(tactions.calculateNumberOfSchoolsInMat(driver), thome.NumberOfSchools1819.Text);
        
         }
 
@@ -278,12 +286,12 @@
         public void verifyTrustsListedInAlphabeticalOrder()
         {
 
-            Actions.ViewSchoolsInTrust();
-            SearchResultsPage resultspage = new SearchResultsPage();
+            Actions.ViewSchoolsInTrust(driver);
+            SearchResultsPage resultspage = new SearchResultsPage(driver);
             resultspage.TrustSearchResultSortedByButton.Click();
             resultspage.TrustSearchResultSortedByButton.SendKeys("alphabetical a-z" + Keys.Enter);
             Thread.Sleep(2000);
-            IList<IWebElement> schoolList = Driver.driver.FindElements(By.XPath("//a[contains(@href,\"/trust/index?companyNo=\")]")); // note the FindElements, plural.
+            IList<IWebElement> schoolList = driver.FindElements(By.XPath("//a[contains(@href,\"/trust/index?companyNo=\")]")); // note the FindElements, plural.
             List<string> validations = new List<string>();
             foreach (IWebElement element in schoolList)
             {
@@ -296,18 +304,18 @@
         [Test]
         public void verifyTrustsListedSchoolsAreAllOpen()
         {
-            Actions.verifyTrustIsOpen();
+            Actions.verifyTrustIsOpen(driver);
         }
         [Test]
         public void SearchForTrustWithNameandSubmitButton()
         {
-            TrustActions.TrustSearchWitNameUsingSubmitButton("5 Dimensions Trust");
-            String TrustName = Driver.driver.FindElement(By.CssSelector(".heading-xlarge")).Text;
+            TrustActions.TrustSearchWitNameUsingSubmitButton("5 Dimensions Trust",driver);
+            String TrustName = driver.FindElement(By.CssSelector(".heading-xlarge")).Text;
             Assert.IsTrue(TrustName.Contains("5 Dimensions Trust"));
-            IWebElement ViewOnMapButton = Driver.driver.FindElement(By.CssSelector("div.litem:nth-child(1) > button:nth-child(1)"));
+            IWebElement ViewOnMapButton = driver.FindElement(By.CssSelector("div.litem:nth-child(1) > button:nth-child(1)"));
             Assert.IsTrue(ViewOnMapButton.Displayed);
-            String NumberOfTrustsFoundText = Driver.driver.FindElement(By.CssSelector("p.summary")).Text;
-            IWebElement NumberOfTrustsFoundMessage = Driver.driver.FindElement(By.CssSelector("p.summary"));
+            String NumberOfTrustsFoundText = driver.FindElement(By.CssSelector("p.summary")).Text;
+            IWebElement NumberOfTrustsFoundMessage = driver.FindElement(By.CssSelector("p.summary"));
             Assert.IsTrue(NumberOfTrustsFoundMessage.Displayed);
             Assert.AreEqual(NumberOfTrustsFoundText, "1 academy trusts found");
 
@@ -315,9 +323,9 @@
         [Test]
         public void VerifyTrustPageDetails()
         {
-                    TrustActions.TrustSearchWitNameUsingFirstSuggestedName("Anthem Schools Trust");
+                    TrustActions.TrustSearchWitNameUsingFirstSuggestedName("Anthem Schools Trust",driver);
                     Thread.Sleep(2000);
-                    TrustHomePage trusthome = new TrustHomePage();
+                    TrustHomePage trusthome = new TrustHomePage(driver);
                     Console.WriteLine("This is The CompaniesHouse Number " + "" + trusthome.CompaniesHouseNumber.Text + "for " + trusthome.TrustName.Text);
                     Assert.IsTrue(trusthome.CompareWithOtherTrustsButton.Displayed);
                     Assert.IsTrue(trusthome.CompaniesHouseNumber.Displayed);
@@ -326,17 +334,17 @@
         [Test]
         public void SearchForTrustWithNameUsingFirstSuggested()
         {
-            TrustActions.TrustSearchWitNameUsingFirstSuggestedName("5 Dimensions Trust");
-            String TrustName = Driver.driver.FindElement(By.CssSelector(".heading-xlarge")).Text;
+            TrustActions.TrustSearchWitNameUsingFirstSuggestedName("5 Dimensions Trust",driver);
+            String TrustName = driver.FindElement(By.CssSelector(".heading-xlarge")).Text;
             Assert.AreEqual(TrustName, "5 Dimensions Trust");
-            IWebElement CompareWithOtherTrustsButton = Driver.driver.FindElement(By.CssSelector(".page > div:nth-child(2) > div:nth-child(1) > a:nth-child(1)"));
+            IWebElement CompareWithOtherTrustsButton = driver.FindElement(By.CssSelector(".page > div:nth-child(2) > div:nth-child(1) > a:nth-child(1)"));
             Assert.IsTrue(CompareWithOtherTrustsButton.Displayed);
-            String CompaniesHouseNumber = Driver.driver.FindElement(By.CssSelector(".ml-05")).Text;
+            String CompaniesHouseNumber = driver.FindElement(By.CssSelector(".ml-05")).Text;
             Console.WriteLine(CompaniesHouseNumber);
-            Console.WriteLine(Driver.driver.Url);
+            Console.WriteLine(driver.Url);
             Console.WriteLine((Config.currentTestEnv + "/trust/index?companyNo=" + CompaniesHouseNumber));
-            Assert.IsTrue(Driver.driver.FindElement(By.CssSelector(".ml-05")).Displayed);
-            Assert.IsTrue((Driver.driver.Url) == (Config.currentTestEnv +"trust/index?companyNo="+CompaniesHouseNumber));
+            Assert.IsTrue(driver.FindElement(By.CssSelector(".ml-05")).Displayed);
+            Assert.IsTrue((driver.Url) == (Config.currentTestEnv +"trust/index?companyNo="+CompaniesHouseNumber));
            
 
 
@@ -344,17 +352,17 @@
         [Test]
         public void SelectSchoolsToCompare()
         {
-            Actions.TrustComparison("5 Dimensions Trust");
+            Actions.TrustComparison("5 Dimensions Trust",driver);
             //TrustActions.TrustSearchWitNameUsingFirstSuggestedName("5 Dimensions Trust");
-            TrustHomePage trusthome = new TrustHomePage();
+            TrustHomePage trusthome = new TrustHomePage(driver);
         }
 
         [Test ]
         public void verify_School_in_SAT()
         {
             //throw new NotImplementedException();// test school not available to test 
-            Actions.schoolSearchwithLaestab("137427"); 
-            SchoolDetailPage detailpage = new SchoolDetailPage();
+            Actions.schoolSearchwithLaestab("137427",driver); 
+            SchoolDetailPage detailpage = new SchoolDetailPage(driver);
             Assert.IsTrue(detailpage.FinanceDropdown_Trust_Only.Displayed);
             Assert.IsTrue(detailpage.IntrustLink.Displayed);
         }
@@ -362,15 +370,15 @@
         [Test]
         public void verify_School_MovedTo_MAT_From_SAT()
         {
-            Actions.schoolSearchwithLaestab("135587");
-            SchoolDetailPage detailpage = new SchoolDetailPage();
+            Actions.schoolSearchwithLaestab("135587",driver);
+            SchoolDetailPage detailpage = new SchoolDetailPage(driver);
             Assert.IsTrue(detailpage.CurrentTrustLinkDisplayed.Displayed);
         }
         [Test]
         public void verify_School_movedFrom_MAT_To_SAT()
         {
-            Actions.schoolSearchwithLaestab("137353");
-            SchoolDetailPage detailpage = new SchoolDetailPage();
+            Actions.schoolSearchwithLaestab("137353",driver);
+            SchoolDetailPage detailpage = new SchoolDetailPage(driver);
             Assert.IsTrue(detailpage.previousTrustLink.Displayed);
             Assert.IsTrue(detailpage.MatFinanceToggle.Displayed);
         }
@@ -380,9 +388,9 @@
         public void verify_School_MovedFrom_MAT_Tonew_MAT()
         {
             throw new NotImplementedException();// now test school identified for the test
-            Actions.schoolSearchwithLaestab("137427");
+            Actions.schoolSearchwithLaestab("137427",driver);
 
-            SchoolDetailPage detailpage = new SchoolDetailPage();
+            SchoolDetailPage detailpage = new SchoolDetailPage(driver);
             Assert.IsTrue(detailpage.FinanceDropdown_Trust_Only.Displayed);
         }
         [TearDown]
@@ -390,14 +398,14 @@
         {
             if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
             {
-                var screenshot = ((ITakesScreenshot)Driver.driver).GetScreenshot();
+                var screenshot = ((ITakesScreenshot)driver).GetScreenshot();
                 var testName = TestContext.CurrentContext.Test.FullName;
                 screenshot.SaveAsFile(@"C:\TEMP\" + testName + ".jpg");
-               // Driver.driver.Close();
-                Driver.driver.Quit();
+               // driver.Close();
+                driver.Quit();
             }
-            //Driver.driver.Close();
-            Driver.driver.Quit();
+            //driver.Close();
+            driver.Quit();
         }
     }
 }

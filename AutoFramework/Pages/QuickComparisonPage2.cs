@@ -14,9 +14,9 @@ namespace SFB_Test_Automation.AutoFramework.Pages
 {
     class QuickComparisonPage2
     {
-        public QuickComparisonPage2()
+        public QuickComparisonPage2(IWebDriver driver)
         {
-            SeleniumExtras.PageObjects.PageFactory.InitElements(Driver.driver, this);
+            SeleniumExtras.PageObjects.PageFactory.InitElements(driver, this);
         }
 
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "similarPupils")]

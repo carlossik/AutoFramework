@@ -17,59 +17,61 @@ namespace SFB_Test_Automation.AutoFramework
 {
     public static class EfficiencyMetricActions
     {
-        public static void GotoSchholEfficiencyMetric(String urn)
+        public static void GotoSchholEfficiencyMetric(String urn,IWebDriver driver)
         {
-            Actions.schoolSearchwithLaestab(urn);
+            Actions.schoolSearchwithLaestab(urn,driver);
             Thread.Sleep(2000);
-            SchoolDetailPage detailspage = new SchoolDetailPage();
+            SchoolDetailPage detailspage = new SchoolDetailPage(driver);
             detailspage.EfficiencyMetricLink.Click();
             Thread.Sleep(2000);
-            Actions.acceptCookie();
+            Actions.acceptCookie(driver);
             Thread.Sleep(2000);
-            EfficiencyMetricIntroPage intropage = new EfficiencyMetricIntroPage();
+            EfficiencyMetricIntroPage intropage = new EfficiencyMetricIntroPage(driver);
             intropage.ContinueToEfficiencyMetricButton.Click();
             Thread.Sleep(2000);
         }
 
-        public static void benchmarkEfficiencyMetricSchools(String urn)
+        public static void benchmarkEfficiencyMetricSchools(String urn,IWebDriver driver)
         {
-            GotoSchholEfficiencyMetric(urn);
-            EfficiencyMetricPage MetricPage = new EfficiencyMetricPage();
+            GotoSchholEfficiencyMetric(urn,driver);
+            EfficiencyMetricPage MetricPage = new EfficiencyMetricPage(driver);
             MetricPage.BenchMarkTheseSchoolsButton.Click();
         }
 
-        public static void seeschoolrank()
+        public static void seeschoolrank(IWebDriver driver)
         {
-            EfficiencyMetricPage MetricPage = new EfficiencyMetricPage();
+            EfficiencyMetricPage MetricPage = new EfficiencyMetricPage(driver);
             MetricPage.SeeThis_SchoolRank.Click();
             Thread.Sleep(4000);
         }
 
-        public static void createBenchMarkForEMVia30percent(String urn)
+        public static void createBenchMarkForEMVia30percent(String urn,IWebDriver driver)
         {
-            GotoSchholEfficiencyMetric(urn);
-            EfficiencyMetricPage MetricPage = new EfficiencyMetricPage();
+            GotoSchholEfficiencyMetric(urn,driver);
+            EfficiencyMetricIntroPage intropage = new EfficiencyMetricIntroPage(driver);
+            //intropage.ContinueToEfficiencyMetricButton.Click();
+            EfficiencyMetricPage MetricPage = new EfficiencyMetricPage(driver);
             MetricPage.BenchMarkTheseSchoolsButton.Click();
-            EMbenchmarkInterpage InterPage = new EMbenchmarkInterpage();
+            EMbenchmarkInterpage InterPage = new EMbenchmarkInterpage(driver);
             InterPage.CompareGaianst30Percent.Click();
             InterPage.Continue.Click();
 
 
         }
 
-        public static void createBenchMarkForEM_Manually(String urn)
+        public static void createBenchMarkForEM_Manually(String urn,IWebDriver driver)
         {
-            GotoSchholEfficiencyMetric(urn);
-            EfficiencyMetricPage MetricPage = new EfficiencyMetricPage();
+            GotoSchholEfficiencyMetric(urn,driver);
+            EfficiencyMetricPage MetricPage = new EfficiencyMetricPage(driver);
             MetricPage.BenchMarkTheseSchoolsButton.Click();
-            EMbenchmarkInterpage InterPage = new EMbenchmarkInterpage();
+            EMbenchmarkInterpage InterPage = new EMbenchmarkInterpage(driver);
             InterPage.ManuallySelectSchools.Click();
             InterPage.Continue.Click();
         }
 
-        public static void addschoolstoBasket()
+        public static void addschoolstoBasket(IWebDriver driver)
         {
-            EM_ManualComparisonPage manualpage = new EM_ManualComparisonPage();
+            EM_ManualComparisonPage manualpage = new EM_ManualComparisonPage(driver);
             Thread.Sleep(2000);
             manualpage.AddFirstSchoolButton.Click();
             manualpage.AddSecondSchoolButton.Click();
@@ -80,81 +82,81 @@ namespace SFB_Test_Automation.AutoFramework
 
         }
 
-        public static void filterByEM_Rank(String rank,String urn)
+        public static void filterByEM_Rank(String rank,String urn,IWebDriver driver)
         {
-            createBenchMarkForEM_Manually(urn);
+            createBenchMarkForEM_Manually(urn,driver);
         }
-        public static void filterByEducationPhase(String educationphase, String urn)
+        public static void filterByEducationPhase(String educationphase, String urn,IWebDriver driver)
         {
-            createBenchMarkForEM_Manually(urn);
-        }
-
-        public static void filterBySchoolType(String schooltype, String urn)
-        {
-            createBenchMarkForEM_Manually(urn);
+            createBenchMarkForEM_Manually(urn,driver);
         }
 
-        public static void filterByOfstedRating(String rating, String urn)
+        public static void filterBySchoolType(String schooltype, String urn,IWebDriver driver)
         {
-            createBenchMarkForEM_Manually(urn);
+            createBenchMarkForEM_Manually(urn,driver);
         }
 
-        public static void filterByReligiousCharacter(String character, String urn)
+        public static void filterByOfstedRating(String rating, String urn,IWebDriver driver)
         {
-            createBenchMarkForEM_Manually(urn);
+            createBenchMarkForEM_Manually(urn,driver);
+        }
+
+        public static void filterByReligiousCharacter(String character, String urn,IWebDriver driver)
+        {
+            createBenchMarkForEM_Manually(urn,driver);
         }
 
 
-        public static void navigateToToolPage(String LAESTAB)
+        public static void navigateToToolPage(String LAESTAB,IWebDriver driver)
         {
-            GotoSchholEfficiencyMetric(LAESTAB);
-            EfficiencyMetricPage MetricPage = new EfficiencyMetricPage();
+            GotoSchholEfficiencyMetric(LAESTAB,driver);
+            EfficiencyMetricPage MetricPage = new EfficiencyMetricPage(driver);
             MetricPage.See_tools_toImprove_EM.Click();
             Thread.Sleep(500);
         }
 
-        public static void TestEMToolLinks_PlanningChecklist(String LAESTAB)
+        public static void TestEMToolLinks_PlanningChecklist(String LAESTAB,IWebDriver driver)
         {
-            GotoSchholEfficiencyMetric(LAESTAB);
-            EfficiencyMetricPage MetricPage = new EfficiencyMetricPage();
+            GotoSchholEfficiencyMetric(LAESTAB,driver);
+            EfficiencyMetricPage MetricPage = new EfficiencyMetricPage(driver);
             MetricPage.See_tools_toImprove_EM.Click();
             Thread.Sleep(500);
-            ToolsToImproveEMPage emtoolspage = new ToolsToImproveEMPage();
+            ToolsToImproveEMPage emtoolspage = new ToolsToImproveEMPage(driver);
             emtoolspage.UseFinancial_PlanningCheckList_Link.Click();
             Thread.Sleep(30000);
         }
 
-        public static void TestEMToolLinks_Top10FinancialPlanningChecks(String LAESTAB)
+        public static void TestEMToolLinks_Top10FinancialPlanningChecks(String LAESTAB,IWebDriver driver)
         {
-            GotoSchholEfficiencyMetric(LAESTAB);
-            EfficiencyMetricPage MetricPage = new EfficiencyMetricPage();
+            GotoSchholEfficiencyMetric(LAESTAB,driver);
+            EfficiencyMetricPage MetricPage = new EfficiencyMetricPage(driver);
             MetricPage.See_tools_toImprove_EM.Click();
             Thread.Sleep(500);
-            ToolsToImproveEMPage emtoolspage = new ToolsToImproveEMPage();
+            ToolsToImproveEMPage emtoolspage = new ToolsToImproveEMPage(driver);
             emtoolspage.UseTheTop10PlanningChecksLink.Click();
             Thread.Sleep(30000);
         }
 
-        public static void ListSchoolDetails(String LAESTAB)
+        public static void ListSchoolDetails(String LAESTAB,IWebDriver driver)
         {
-            GotoSchholEfficiencyMetric(LAESTAB);
-            EfficiencyMetricPage MetricPage = new EfficiencyMetricPage();
+            GotoSchholEfficiencyMetric(LAESTAB,driver);
+            EfficiencyMetricPage MetricPage = new EfficiencyMetricPage(driver);
            
             MetricPage.Contact_Details_Of_Schools.Click();
             Thread.Sleep(1000);
             
         }
 
-        public static void TestEMToolLinks_UseTheToolkit(String LAESTAB)
+        public static void TestEMToolLinks_UseTheToolkit(String LAESTAB,IWebDriver driver)
         {
-            GotoSchholEfficiencyMetric(LAESTAB);
-            EfficiencyMetricPage MetricPage = new EfficiencyMetricPage();
+            GotoSchholEfficiencyMetric(LAESTAB,driver);
+            EfficiencyMetricPage MetricPage = new EfficiencyMetricPage(driver);
             MetricPage.See_tools_toImprove_EM.Click();
             Thread.Sleep(500);
-            ToolsToImproveEMPage emtoolspage = new ToolsToImproveEMPage();
+            ToolsToImproveEMPage emtoolspage = new ToolsToImproveEMPage(driver);
             emtoolspage.UseTheToolKitLink.Click();
             Thread.Sleep(300);
-            Driver.driver.SwitchTo().ActiveElement();
+            driver.SwitchTo().ActiveElement();
             Thread.Sleep(30000);
 
 

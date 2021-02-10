@@ -15,9 +15,9 @@ namespace SFB_Test_Automation.AutoFramework.Pages
 {
     class SelfAssessmentPage
     {
-        public SelfAssessmentPage()
+        public SelfAssessmentPage(IWebDriver driver)
         {
-            SeleniumExtras.PageObjects.PageFactory.InitElements(Driver.driver, this);
+            SeleniumExtras.PageObjects.PageFactory.InitElements(driver, this);
         }
 
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "li:nth-of-type(2) > .font-xsmall")]
@@ -111,28 +111,28 @@ namespace SFB_Test_Automation.AutoFramework.Pages
         //acceptAllCookiesHide
 
 
-        public bool verifyFinancialYear(String laestab)
+        public bool verifyFinancialYear(String laestab, IWebDriver driver)
         {
 
             try
             {
-                Actions.schoolSearchwithLaestab(laestab);
-                SchoolDetailPage detailspage = new SchoolDetailPage();
-                String FinancialYear = Driver.driver.FindElement(By.CssSelector("div.charts-section__chart-container:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > span:nth-child(1)")).Text;
+                Actions.schoolSearchwithLaestab(laestab,driver);
+                SchoolDetailPage detailspage = new SchoolDetailPage(driver);
+                String FinancialYear = driver.FindElement(By.CssSelector("div.charts-section__chart-container:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > span:nth-child(1)")).Text;
                 String FinancialYearFinal = Regex.Replace(FinancialYear, @"\s+","");
                 String Finalfinance = Regex.Replace(FinancialYearFinal, @"-","/");
-                String FinalFinanceFigure = Regex.Replace(Finalfinance,@" ","");
+                String FinalFinanceFigure = Regex.Replace(Finalfinance,@" "," ");
                 Console.WriteLine(Finalfinance);
                 detailspage.SADLink.Click();
-                SelfAssessmentPage assessmentpage = new SelfAssessmentPage();
+                SelfAssessmentPage assessmentpage = new SelfAssessmentPage(driver);
                 Thread.Sleep(3000);
-                Actions.acceptCookie();
-                String SadFinancialYearDisplayed = Driver.driver.FindElement(By.Id("scenarioYear")).Text;
+                Actions.acceptCookie(driver);
+                String SadFinancialYearDisplayed = driver.FindElement(By.Id("scenarioYear")).Text;
                 Console.WriteLine("This is the raw Financial Year on SAD "+ SadFinancialYearDisplayed);
-                String SdFinalFinance = Regex.Replace(SadFinancialYearDisplayed,@"Dashboard year", "");
-                Console.WriteLine( "This is first of what we display"+SdFinalFinance);
+                String SdFinalFinance = Regex.Replace(SadFinancialYearDisplayed,@"Dashboard year","");
+                Console.WriteLine("This is first of what we display"+SdFinalFinance);
                 Console.WriteLine("This is second of what we display"+Finalfinance);
-                Assert.AreEqual(SdFinalFinance,FinalFinanceFigure);
+                Assert.AreEqual(SdFinalFinance, FinalFinanceFigure);
                 
             }
 

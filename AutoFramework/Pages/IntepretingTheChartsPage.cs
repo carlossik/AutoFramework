@@ -10,10 +10,10 @@ namespace SFB_Test_Automation.AutoFramework.Pages
 {
     class IntepretingTheChartsPage
     {
-        public IntepretingTheChartsPage()
+        public IntepretingTheChartsPage(IWebDriver driver)
         {
         
-            PageFactory.InitElements(Driver.driver, this);
+            PageFactory.InitElements(driver, this);
 
         }
 

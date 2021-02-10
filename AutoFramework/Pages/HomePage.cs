@@ -2,16 +2,15 @@
 {
     using OpenQA.Selenium;
     using OpenQA.Selenium.Support.PageObjects;
-    //using OpenQA.Selenium.Support
     using System;
 
     public class HomePage
     {
-        public HomePage()
+        public HomePage(IWebDriver driver)
         {
-#pragma warning disable CS0618 // Type or member is obsolete
-            PageFactory.InitElements(Driver.driver, this);
-#pragma warning restore CS0618 // Type or member is obsolete
+
+            PageFactory.InitElements(driver, this);
+
         }
         [FindsBy(How = How.XPath, Using = "//*[@id=\"js - search - results - info\"]/div/p/span")]
         [CacheLookup]
@@ -97,17 +96,21 @@
         [FindsBy(How = How.CssSelector, Using = ".error-summary-list > li:nth-child(1) > a:nth-child(1)")]
         public IWebElement schoolsearchErrormessage { get; set; }
 
+        [FindsBy(How = How.CssSelector, Using = ".view-benchmark-charts-wrapper > a:nth-child(1)")]
+        public IWebElement ViewBenchMarkChartsButton { get; set; }
+        
+
         public void ClickOnSearchButton()
         {
             SearchSubmit.Click();
 
         }
 
-        public bool CheckBasketEmpty()
+        public bool CheckBasketEmpty(IWebDriver driver)
         {
             try
             {
-                var editbasketLink = Driver.driver.FindElement(By.CssSelector(".banner__comparison-list-info-panel__edit-basket"));
+                var editbasketLink = driver.FindElement(By.CssSelector(".banner__comparison-list-info-panel__edit-basket"));
                 bool basketNotEmpty = editbasketLink.Displayed;
                 Console.WriteLine(basketNotEmpty);
                 return basketNotEmpty;
@@ -119,17 +122,17 @@
         }
     
     
-        public void emptybasketBeforeTesting()
+        public void emptybasketBeforeTesting(IWebDriver driver)
         {
             //var editbasketLink = Driver.driver.FindElement(By.CssSelector(".banner__comparison-list-info-panel__edit-basket"));
 
-            if (CheckBasketEmpty())//Driver.driver.FindElement(By.CssSelector(".banner__comparison-list-info-panel__edit-basket")).Displayed))
+            if (CheckBasketEmpty(driver))//Driver.driver.FindElement(By.CssSelector(".banner__comparison-list-info-panel__edit-basket")).Displayed))
             {
-                var editbasketLink = Driver.driver.FindElement(By.CssSelector(".banner__comparison-list-info-panel__edit-basket"));
+                var editbasketLink = driver.FindElement(By.CssSelector(".banner__comparison-list-info-panel__edit-basket"));
                 editbasketLink.Click();
-                var clearBasket = Driver.driver.FindElement(By.CssSelector("button.benchmarkControls"));
+                var clearBasket = driver.FindElement(By.CssSelector("button.benchmarkControls"));
                 clearBasket.Click();
-                var closeBasket = Driver.driver.FindElement(By.CssSelector(".back-link"));
+                var closeBasket = driver.FindElement(By.CssSelector(".back-link"));
                 closeBasket.Click();
 
             }

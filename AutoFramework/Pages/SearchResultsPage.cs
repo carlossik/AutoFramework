@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,9 +12,9 @@ namespace AutoFramework.Pages
 {
     public class SearchResultsPage
     {
-        public SearchResultsPage()
+        public SearchResultsPage(IWebDriver driver)
         {
-            PageFactory.InitElements(Driver.driver, this);
+            PageFactory.InitElements(driver, this);
         }
 
         [FindsBy(How = How.CssSelector, Using = "p.summary")]
@@ -57,8 +58,8 @@ namespace AutoFramework.Pages
         public IWebElement ViewTrustSchools { get; set; }
         [FindsBy(How = How.CssSelector,Using = "li.school-document:nth-child(1) > div:nth-child(1) > div:nth-child(1) > a:nth-child(1)")]
         public IWebElement FirstScoolLinkOnPage { get; set; }
-        //public int numberofschoolsdisplayed = Driver.driver.FindElements(By.ClassName("schoolsInTrust")).Count;
-        public int ResultsfromLinksCount = (Driver.driver.FindElements(By.XPath("//a[contains(@href,\"/trust/index?companyNo=\")]")).Count());
+        //public int numberofschoolsdisplayed = driver.FindElements(By.ClassName("schoolsInTrust")).Count;
+        //public int ResultsfromLinksCount = driver.FindElements(By.XPath("//a[contains(@href,\"/trust/index?companyNo=\")]")).Count();
         [FindsBy(How = How.CssSelector, Using = ".count-js")]//"/html/body/div/div[8]/main/div[2]/div[2]/div[1]/div/p/span")]
         public IWebElement Allresultsdisplayed { get; set; }
         [FindsBy(How = How.Id, Using = "schoollevel_Secondary")]
@@ -73,5 +74,25 @@ namespace AutoFramework.Pages
         public IWebElement viewtrustschoolsFirstLink { get; set; }
         [FindsBy(How =How.CssSelector,Using = ".view-benchmark-charts-wrapper > a:nth-child(1)")]
         public IWebElement viewbenchmarkchartsResultsPage { get; set; }
+
+
+        [FindsBy(How = How.ClassName, Using = "schoolsInTrust")]
+        public IWebElement results { get; set; }
+
+
+        public int resultsfromLinksCount(IWebDriver driver)
+        {
+            IList<IWebElement> elementList = driver.FindElements(By.XPath("//a[contains(@href,\"/trust/index?companyNo=\")]")); // note the FindElements, plural.
+           
+            return elementList.Count;
+        }
+
+        public int numberofschoolsdisplayed(IWebDriver driver)
+        {
+          IList numberofschools = (driver.FindElements(By.ClassName("schoolsInTrust"))); // note the FindElements, plural.
+           
+            return numberofschools.Count;
+        }
     }
+   
 }

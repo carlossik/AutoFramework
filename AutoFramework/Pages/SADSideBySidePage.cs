@@ -10,9 +10,9 @@ namespace SFB_Test_Automation.AutoFramework.Pages
 {
     class SADSideBySidePage
     {
-        public SADSideBySidePage()
+        public SADSideBySidePage(IWebDriver driver)
         {
-            SeleniumExtras.PageObjects.PageFactory.InitElements(Driver.driver, this);
+            SeleniumExtras.PageObjects.PageFactory.InitElements(driver, this);
         }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "")]
         public IWebElement AddData_Revenue_reserveSC1 { get; set; }

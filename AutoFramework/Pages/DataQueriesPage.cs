@@ -10,11 +10,11 @@ namespace SFB_Test_Automation.AutoFramework.Pages
 {
     class DataQueriesPage
     {
-        public DataQueriesPage()
+        public DataQueriesPage(IWebDriver driver)
         {
 
 
-            SeleniumExtras.PageObjects.PageFactory.InitElements(Driver.driver, this);
+            SeleniumExtras.PageObjects.PageFactory.InitElements(driver, this);
         }
 
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "dataQuery.Name")]

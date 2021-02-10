@@ -5,10 +5,10 @@
 
     public class LoginScenarioPost
     {
-        public LoginScenarioPost()
+        public LoginScenarioPost(IWebDriver driver)
         {
 #pragma warning disable CS0618 // Type or member is obsolete
-            PageFactory.InitElements(Driver.driver, this);
+            PageFactory.InitElements(driver, this);
 #pragma warning restore CS0618 // Type or member is obsolete
         }
 

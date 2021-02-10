@@ -15,11 +15,11 @@ namespace AutoFramework.Pages.PageElements
     class BenchMarkChartPage
     {
 
-        public BenchMarkChartPage()
+        public BenchMarkChartPage(IWebDriver driver)
         {
 
 
-            SeleniumExtras.PageObjects.PageFactory.InitElements(Driver.driver, this);
+            SeleniumExtras.PageObjects.PageFactory.InitElements(driver, this);
         }
 
 
@@ -102,11 +102,11 @@ namespace AutoFramework.Pages.PageElements
 
 
 
-        private Boolean existsElement(String id)
+        private Boolean existsElement(String id, IWebDriver driver)
         {
             try
             {
-                Driver.driver.FindElement(By.Id(id));
+                driver.FindElement(By.Id(id));
             }
             catch (NoSuchElementException e)
             {

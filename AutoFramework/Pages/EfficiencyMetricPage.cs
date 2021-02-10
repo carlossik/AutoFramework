@@ -14,9 +14,9 @@ namespace SFB_Test_Automation.AutoFramework.Pages
     class EfficiencyMetricPage
     {
 
-        public EfficiencyMetricPage()
+        public EfficiencyMetricPage(IWebDriver driver)
         {
-            SeleniumExtras.PageObjects.PageFactory.InitElements(Driver.driver, this);
+            SeleniumExtras.PageObjects.PageFactory.InitElements(driver, this);
         }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "li.govuk-breadcrumbs__list-item:nth-child(1) > a:nth-child(1)")]
         public IWebElement HomeBreadCrumb { get; set; }

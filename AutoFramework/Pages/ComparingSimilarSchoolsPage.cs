@@ -10,9 +10,9 @@ namespace SFB_Test_Automation.AutoFramework.Pages
 {
    public class ComparingSimilarSchoolsPage
     {
-        public ComparingSimilarSchoolsPage()
+        public ComparingSimilarSchoolsPage(IWebDriver driver)
         {
-            SeleniumExtras.PageObjects.PageFactory.InitElements(Driver.driver, this);
+            SeleniumExtras.PageObjects.PageFactory.InitElements(driver, this);
         }
 
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "#radio-1")]

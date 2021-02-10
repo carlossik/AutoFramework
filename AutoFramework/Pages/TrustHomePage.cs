@@ -11,9 +11,9 @@ namespace SFB_Test_Automation.AutoFramework.Pages
 {
     class TrustHomePage
     {
-        public TrustHomePage()
+        public TrustHomePage(IWebDriver driver)
         {
-            PageFactory.InitElements(Driver.driver, this);
+            PageFactory.InitElements(driver, this);
         }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".heading-xlarge")]
         public IWebElement TrustName { get; set; }

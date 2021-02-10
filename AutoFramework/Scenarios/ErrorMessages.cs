@@ -13,8 +13,10 @@ using AutoFramework;
 namespace SFB_Test_Automation.AutoFramework.Scenarios
 {
     [TestFixture]
-    class ErrorMessagesTests
+    public class ErrorMessagesTests
     {
+        IAlert alert;
+        IWebDriver driver;
 
         [SetUp]
         public void SetupBeforeEachTest()
@@ -22,32 +24,32 @@ namespace SFB_Test_Automation.AutoFramework.Scenarios
         {
             var testName = TestContext.CurrentContext.Test.FullName;
             Config.Credentials.deletefiles(@"C:\TEMP\" + testName + ".jpg");
-            Actions.InitializeDriver(Config.FirefoxDriverUnderTest);
+            driver = Actions.InitializeDriver(5);
 
         }
         [Test]
         public void SchoolsearchwrongURNorLAESTAB()
         {
 
-            Actions.schoolSearchwithLaestab("113456");//we send a wrong laestab to invoke the error
-            HomePage home = new HomePage();
-            Assert.AreEqual(home.schoolsearchErrormessage.Text, "Enter a school name, URN or LAESTAB to start a search (minimum 3 characters)");
+            Actions.schoolSearchwithLaestab("0013456",driver);//we send a wrong laestab to invoke the error
+            HomePage home = new HomePage(driver);
+            Assert.AreEqual(home.schoolsearchErrormessage.Text, "We couldn't find any schools matching your search criteria");
         }
         [Test]
         public void SchoolsearchLocationError()
         {
 
-            Actions.SearchByLocationUsingPostcode(" ");//we send an empty message to verify the results
-            HomePage home = new HomePage();
-            Assert.AreEqual(home.schoolsearchErrormessage.Text, "Enter a school name, URN or LAESTAB to start a search (minimum 3 characters)");
+            Actions.SearchByLocationUsingPostcode(" ",driver);//we send an empty message to verify the results
+            HomePage home = new HomePage(driver);
+            Assert.AreEqual(home.schoolsearchErrormessage.Text, "Enter a postcode, town or street to start a search (minimum 2 characters)");
         }
 
         [Test]
         public void SchoolsearPostcodeError()
         {
 
-            Actions.SearchByLocationUsingPostcode(" ");//we send an empty message to verify the results
-            HomePage home = new HomePage();
+            Actions.SearchByLocationUsingPostcode(" ",driver);//we send an empty message to verify the results
+            HomePage home = new HomePage(driver);
             Assert.AreEqual(home.schoolsearchErrormessage.Text, "Enter a postcode, town or street to start a search (minimum 2 characters)");
         }
 
@@ -55,8 +57,8 @@ namespace SFB_Test_Automation.AutoFramework.Scenarios
         public void SchoolsearchLAError()
         {
 
-            Actions.searchschoolLaCode(" ");//we send an empty message to verify the results
-            HomePage home = new HomePage();
+            Actions.searchschoolLaCode(" ",driver);//we send an empty message to verify the results
+            HomePage home = new HomePage(driver);
             Assert.AreEqual(home.schoolsearchErrormessage.Text, "Enter a local authority name or LA code to start a search (minimum 2 characters)");
         }
 
@@ -66,8 +68,8 @@ namespace SFB_Test_Automation.AutoFramework.Scenarios
         public void trustsearchwithnameError()
         {
 
-            TrustActions.generaltrustsearch(" ");//we send an empty message to verify the results
-            HomePage home = new HomePage();
+            TrustActions.generaltrustsearch(" ",driver);//we send an empty message to verify the results
+            HomePage home = new HomePage(driver);
             Assert.AreEqual(home.schoolsearchErrormessage.Text, "Enter a trust name or Companies House number to start a search (minimum 3 characters)");
         }
 
@@ -75,8 +77,8 @@ namespace SFB_Test_Automation.AutoFramework.Scenarios
         public void TrustsearchLAError()
         {
 
-            Actions.SearchTrustViaLocalAuthority(" ");//we send an empty message to verify the results
-            HomePage home = new HomePage();
+            Actions.SearchTrustViaLocalAuthority(" ",driver);//we send an empty message to verify the results
+            HomePage home = new HomePage(driver);
             Assert.AreEqual(home.schoolsearchErrormessage.Text, "Enter a local authority name or LA code to start a search (minimum 2 characters)");
 
         }
@@ -85,8 +87,8 @@ namespace SFB_Test_Automation.AutoFramework.Scenarios
         public void quickcompareErrorMessaging()
         {
 
-            Actions.SearchClosedschoolUrn(" ");//we send an empty message to verify the results
-            HomePage home = new HomePage();
+            Actions.SearchClosedschoolUrn(" ",driver);//we send an empty message to verify the results
+            HomePage home = new HomePage(driver);
             Assert.AreEqual(home.schoolsearchErrormessage.Text, "Enter a school name, URN or LAESTAB to start a search (minimum 3 characters)");
         }
 
@@ -94,8 +96,8 @@ namespace SFB_Test_Automation.AutoFramework.Scenarios
         public void DetailComparisonError()
         {
 
-            Actions.SearchClosedschoolUrn(" ");//we send an empty message to verify the results
-            HomePage home = new HomePage();
+            Actions.SearchClosedschoolUrn(" ",driver);//we send an empty message to verify the results
+            HomePage home = new HomePage(driver);
             Assert.AreEqual(home.schoolsearchErrormessage.Text, "Enter a school name, URN or LAESTAB to start a search (minimum 3 characters)");
         }
 
@@ -103,8 +105,8 @@ namespace SFB_Test_Automation.AutoFramework.Scenarios
         public void ManualComparisonError()
         {
 
-            Actions.SearchClosedschoolUrn(" ");//we send an empty message to verify the results
-            HomePage home = new HomePage();
+            Actions.SearchClosedschoolUrn(" ",driver);//we send an empty message to verify the results
+            HomePage home = new HomePage(driver);
             Assert.AreEqual(home.schoolsearchErrormessage.Text, "Enter a school name, URN or LAESTAB to start a search (minimum 3 characters)");
         }
 
@@ -112,8 +114,8 @@ namespace SFB_Test_Automation.AutoFramework.Scenarios
         public void Add_custom_dashboardError()
         {
 
-            Actions.SearchClosedschoolUrn(" ");//we send an empty message to verify the results
-            HomePage home = new HomePage();
+            Actions.SearchClosedschoolUrn(" ",driver);//we send an empty message to verify the results
+            HomePage home = new HomePage(driver);
             Assert.AreEqual(home.schoolsearchErrormessage.Text, "Enter a school name, URN or LAESTAB to start a search (minimum 3 characters)");
         }
 
@@ -126,14 +128,14 @@ namespace SFB_Test_Automation.AutoFramework.Scenarios
         {
             if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
             {
-                var screenshot = ((ITakesScreenshot)Driver.driver).GetScreenshot();
+                var screenshot = ((ITakesScreenshot)driver).GetScreenshot();
                 var testName = TestContext.CurrentContext.Test.FullName;
                 screenshot.SaveAsFile(@"C:\TEMP\" + testName + ".jpg");
-                //Driver.driver.Close();
-                Driver.driver.Quit();
+               
+                driver.Quit();
             }
-           // Driver.driver.Close();
-            Driver.driver.Quit();
+         
+            driver.Quit();
         }
     }
 }

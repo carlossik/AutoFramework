@@ -21,32 +21,35 @@
 
     class TrustActions : TestBase
     {
+
+        IAlert alert;
+        IWebDriver driver;
         //All Trust actions happen here
-        public static void identifyTrustsWithOneSchool()
+        public static void identifyTrustsWithOneSchool(IWebDriver driver)
         {
-            var results = Driver.driver.FindElements(By.ClassName("schoolsInTrust"));
-            IList<IWebElement> schoolname = Driver.driver.FindElements(By.CssSelector("li.school-document:nth-child(31) > div:nth-child(1) > a:nth-child(1)"));
-            IList<IWebElement> schoolLink = Driver.driver.FindElements(By.XPath("//*[@id=\"schoolResults\"]"));
+            var results = driver.FindElements(By.ClassName("schoolsInTrust"));
+            IList<IWebElement> schoolname = driver.FindElements(By.CssSelector("li.school-document:nth-child(31) > div:nth-child(1) > a:nth-child(1)"));
+            IList<IWebElement> schoolLink = driver.FindElements(By.XPath("//*[@id=\"schoolResults\"]"));
             List<IWebElement> allHandles2 = new List<IWebElement>();
-            IList<IWebElement> schools = Driver.driver.FindElements(By.XPath("//a[contains(@href,\"/trust/index?companyNo=\")]"));
+            IList<IWebElement> schools = driver.FindElements(By.XPath("//a[contains(@href,\"/trust/index?companyNo=\")]"));
             List<IWebElement> val = new List<IWebElement>();
             var str = new[] { schoolLink };
-            var linkstouse = Driver.driver.FindElements(By.XPath("//a[contains(@href, \"/trust/index?companyNo=\")]"));
+            var linkstouse = driver.FindElements(By.XPath("//a[contains(@href, \"/trust/index?companyNo=\")]"));
             ArrayList myvalues = new ArrayList();
 
         }
 
        
-            public static void TrustPerformanceLinksViaLacode(string Lacode)
+            public static void TrustPerformanceLinksViaLacode(string Lacode, IWebDriver driver)
         {
-            Actions.SearchTrustViaLocalAuthority(Lacode);
+            Actions.SearchTrustViaLocalAuthority(Lacode,driver);
 
         }
-        public static void TrustComparisonWithMultipleTrusts()
+        public static void TrustComparisonWithMultipleTrusts(IWebDriver driver)
         {
 
-            TrustSearchWitNameUsingFirstSuggestedName("Kaleidoscope Learning Trust ");
-            TrustComparisonPage trustComaprison = new TrustComparisonPage();
+            TrustSearchWitNameUsingFirstSuggestedName("Kaleidoscope Learning Trust ",driver);
+            TrustComparisonPage trustComaprison = new TrustComparisonPage(driver);
             trustComaprison.Compare_withOtherTrusts.Click();
             Thread.Sleep(100);
             trustComaprison.SelectCharacteristicsButton.Click();
@@ -57,9 +60,9 @@
             trustComaprison.ViewBenchMarkingChartsbutton.Click();
 
         }
-        public static void generaltrustsearch(String trustname)
+        public static void generaltrustsearch(String trustname, IWebDriver driver)
         {
-            HomePage homepage = new HomePage();
+            HomePage homepage = new HomePage(driver);
             homepage.TrustTab.Click();
             homepage.trustnameRadioButton.Click();
             homepage.TrustSearchInput.Click();
@@ -68,34 +71,34 @@
             Thread.Sleep(200);
         }
 
-        public static void TrustSearchWitNameUsingSubmitButton(String TrustNameSubmitted)
+        public static void TrustSearchWitNameUsingSubmitButton(String TrustNameSubmitted, IWebDriver driver)
         {
-            Actions.GoHome();
-            HomePage homepage = new HomePage();
+            Actions.GoHome(driver);
+            HomePage homepage = new HomePage(driver);
             Thread.Sleep(100);
             homepage.TrustTab.Click();
             homepage.trustnameRadioButton.Click();
             homepage.TrustSearchInput.Click();
             homepage.TrustSearchInput.SendKeys(TrustNameSubmitted);
             homepage.TrustSubmitButton.Click();
-            Driver.driver.FindElement(By.CssSelector(".bold-small")).Click();
+            driver.FindElement(By.CssSelector(".bold-small")).Click();
             Thread.Sleep(100);
         }
-        public static void TrustSearchWitNameUsingFirstSuggestedName(string TrustName)
+        public static void TrustSearchWitNameUsingFirstSuggestedName(string TrustName, IWebDriver driver)
         {
-            HomePage homepage = new HomePage();
+            HomePage homepage = new HomePage(driver);
             Thread.Sleep(100);
             homepage.TrustTab.Click();
             homepage.trustnameRadioButton.Click();
             homepage.TrustSearchInput.Click();
             homepage.TrustSearchInput.SendKeys(TrustName);
             homepage.FirstSelectionOption.Click();
-            //Driver.driver.FindElement(By.CssSelector(".bold-small")).Click();
+            //driver.FindElement(By.CssSelector(".bold-small")).Click();
             Thread.Sleep(100);
         }
-        public string   calculateNumberOfSchoolsInMat()
+        public string   calculateNumberOfSchoolsInMat(IWebDriver driver)
         {
-            TrustHomePage thomepage = new TrustHomePage();
+            TrustHomePage thomepage = new TrustHomePage(driver);
             Thread.Sleep(2000);
             thomepage.SchoolsIn1819SubmissionTab.Click();
             Thread.Sleep(200);
@@ -106,7 +109,7 @@
             List<string> numberofschoolsin1819 = new List<string>();
             for (int i = 1; i <=(Int32.Parse(numberofschools)) ; i++)
             {
-                IWebElement schoolsin1819 = Driver.driver.FindElement(By.XPath(xpathbeforebefore + i + xpathafter));
+                IWebElement schoolsin1819 = driver.FindElement(By.XPath(xpathbeforebefore + i + xpathafter));
                 Console.WriteLine(schoolsin1819.Text);
                 numberofschoolsin1819.Add(schoolsin1819.Text);
             }
@@ -118,7 +121,7 @@
 
         }
 
-        public String numberberofcharacteristicsDisplayed()
+        public String numberberofcharacteristicsDisplayed(IWebDriver driver)
         {
             List<string> numberofsenCharacteristics = new List<string>();
             String beforexpath = "sen-table > tbody:nth-child(1) > tr:nth-child(";
@@ -129,7 +132,7 @@
                 
                     {
                         Console.WriteLine(beforexpath + i + afterxpath);
-                        IWebElement SenCharactristics = Driver.driver.FindElement(By.CssSelector(beforexpath + i + afterxpath));
+                        IWebElement SenCharactristics = driver.FindElement(By.CssSelector(beforexpath + i + afterxpath));
                         numberofsenCharacteristics.Add(SenCharactristics.Text);
                         Console.WriteLine(SenCharactristics.Text);
                    
@@ -147,7 +150,7 @@
 
 
 
-        public static void getCompanyNumber() 
+        public static void getCompanyNumber(IWebDriver driver) 
         {
             URNHelper helpers = new URNHelper();
             IList trustlinks = helpers.trustlinks;
@@ -156,9 +159,9 @@
             {
                 try
                 {
-                    Driver.driver.Navigate().GoToUrl(link);
-                    IWebElement performanceLink = Driver.driver.FindElement(By.CssSelector("a.trust-ext-link:nth-child(1)"));
-                    IWebElement getMoreInformation = Driver.driver.FindElement(By.CssSelector("a.trust-ext-link:nth-child(3)"));
+                    driver.Navigate().GoToUrl(link);
+                    IWebElement performanceLink = driver.FindElement(By.CssSelector("a.trust-ext-link:nth-child(1)"));
+                    IWebElement getMoreInformation = driver.FindElement(By.CssSelector("a.trust-ext-link:nth-child(3)"));
                     if (!(performanceLink.Displayed && getMoreInformation.Displayed))
                     {
                         failedTrusts.Add(link);

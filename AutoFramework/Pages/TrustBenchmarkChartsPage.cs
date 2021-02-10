@@ -12,10 +12,10 @@ namespace SFB_Test_Automation.AutoFramework.Pages
 {
     public class TrustBenchmarkChartsPage
     {
-        public TrustBenchmarkChartsPage()
+        public TrustBenchmarkChartsPage(IWebDriver driver)
 
         {
-            SeleniumExtras.PageObjects.PageFactory.InitElements(Driver.driver, this);
+            SeleniumExtras.PageObjects.PageFactory.InitElements(driver, this);
         }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "#content > div:nth-child(3) > div:nth-child(1)")]
         [SeleniumExtras.PageObjects.CacheLookup]

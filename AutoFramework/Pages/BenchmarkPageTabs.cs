@@ -13,11 +13,11 @@ namespace AutoFramework.Pages.PageElements
 {
     class BenchmarkPageTabs
     {
-        public BenchmarkPageTabs()
+        public BenchmarkPageTabs(IWebDriver driver)
         {
 
 
-            SeleniumExtras.PageObjects.PageFactory.InitElements(Driver.driver, this);
+            SeleniumExtras.PageObjects.PageFactory.InitElements(driver, this);
         }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "#ComparisonSchoolsTable > thead:nth-child(1) > tr:nth-child(1) > th:nth-child(1) > div:nth-child(1)")]
         [SeleniumExtras.PageObjects.CacheLookup]

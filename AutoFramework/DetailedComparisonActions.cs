@@ -15,9 +15,9 @@ namespace SFB_Test_Automation.AutoFramework
 {
     public static class DetailedComparisonActions
     {
-        public static void  verifysearchnumbers()
+        public static void  verifysearchnumbers(IWebDriver driver)
         {
-            DetailComparisonPage detailpage = new DetailComparisonPage();
+            DetailComparisonPage detailpage = new DetailComparisonPage(driver);
             string resultsnumbers = detailpage.SearchResultsCount.Text;
             int resultsdisplayed = int.Parse(resultsnumbers);
             if (resultsdisplayed < 31)
@@ -27,15 +27,15 @@ namespace SFB_Test_Automation.AutoFramework
             
 
         }
-        public static void ExcludeschoolswithIncFinanceMaintainedAllEngland(String urn)
+        public static void ExcludeschoolswithIncFinanceMaintainedAllEngland(String urn, IWebDriver driver)
         {
-            Actions.CallingClass.SearchViaSchoolurn(urn);
-            SchoolDetailPage detailspage = new SchoolDetailPage();
+            Actions.CallingClass.SearchViaSchoolurn(urn,driver);
+            SchoolDetailPage detailspage = new SchoolDetailPage(driver);
             detailspage.CompareWithOtherSchools.Click();
-            BestInClass bestinclass = new BestInClass();
+            BestInClass bestinclass = new BestInClass(driver);
             bestinclass.DetailComparisonButton.Click();
             bestinclass.Continue.Click();
-            DetailComparisonPage detailpage = new DetailComparisonPage();
+            DetailComparisonPage detailpage = new DetailComparisonPage(driver);
             detailpage.MaintainedRadio.Click();
             bestinclass.Continue.Click();
             detailpage.AllOfEnglandRadio.Click();
@@ -45,12 +45,7 @@ namespace SFB_Test_Automation.AutoFramework
             detailpage.MinNumberOfPupilsInputField.SendKeys("64");
             detailpage.MaxNumberOfPupilsInputBox.SendKeys("64");
             Thread.Sleep(300);
-            //string resultsnumbers = detailpage.SearchResultsCount.Text;
-            //Console.WriteLine( "Results"+""+resultsnumbers);
-            //String resultsdisplayed = (resultsnumbers);
-            //Console.WriteLine("Results Displayed" + "" + resultsdisplayed);
-            ////int resultsdisplayedint;
-            //Assert.IsTrue(Convert.ToInt32(resultsnumbers ) < 31);
+            
             detailpage.ViewBenchMarkCharts.Click();
 
            
@@ -58,15 +53,15 @@ namespace SFB_Test_Automation.AutoFramework
             
 
         }
-        public static void ExcludeschoolswithIncFinanceAllSchoolsAllEngland(String urn)
+        public static void ExcludeschoolswithIncFinanceAllSchoolsAllEngland(String urn, IWebDriver driver)
         {
-            Actions.CallingClass.SearchViaSchoolurn(urn);
-            SchoolDetailPage detailspage = new SchoolDetailPage();
+            Actions.CallingClass.SearchViaSchoolurn(urn,driver);
+            SchoolDetailPage detailspage = new SchoolDetailPage(driver);
             detailspage.CompareWithOtherSchools.Click();
-            BestInClass bestinclass = new BestInClass();
+            BestInClass bestinclass = new BestInClass(driver);
             bestinclass.DetailComparisonButton.Click();
             bestinclass.Continue.Click();
-            DetailComparisonPage detailpage = new DetailComparisonPage();
+            DetailComparisonPage detailpage = new DetailComparisonPage(driver);
             detailpage.AllschoolsRadio.Click();
             Thread.Sleep(3000);
             bestinclass.Continue.Click();
@@ -81,15 +76,15 @@ namespace SFB_Test_Automation.AutoFramework
             Thread.Sleep(3000);
             detailpage.ViewBenchMarkCharts.Click();
         }
-        public static void IncludeschoolswithIncFinanceMaintainedAllEngland(String urn)
+        public static void IncludeschoolswithIncFinanceMaintainedAllEngland(String urn, IWebDriver driver)
         {
-            Actions.CallingClass.SearchViaSchoolurn(urn);
-            SchoolDetailPage detailspage = new SchoolDetailPage();
+            Actions.CallingClass.SearchViaSchoolurn(urn,driver);
+            SchoolDetailPage detailspage = new SchoolDetailPage(driver);
             detailspage.CompareWithOtherSchools.Click();
-            BestInClass bestinclass = new BestInClass();
+            BestInClass bestinclass = new BestInClass(driver);
             bestinclass.DetailComparisonButton.Click();
             bestinclass.Continue.Click();
-            DetailComparisonPage detailpage = new DetailComparisonPage();
+            DetailComparisonPage detailpage = new DetailComparisonPage(driver);
             detailpage.MaintainedRadio.Click();
             detailpage.MaintainedExcludecheckbox.Click();
             bestinclass.Continue.Click();
@@ -105,15 +100,15 @@ namespace SFB_Test_Automation.AutoFramework
 
 
         }
-        public static void IncludeschoolswithIncFinanceAcademiesAllEngland(String urn, String minpupils, String maxpupils)
+        public static void IncludeschoolswithIncFinanceAcademiesAllEngland(String urn, String minpupils, String maxpupils, IWebDriver driver)
         {
-            Actions.CallingClass.SearchViaSchoolurn(urn);
-            SchoolDetailPage detailspage = new SchoolDetailPage();
+            Actions.CallingClass.SearchViaSchoolurn(urn,driver);
+            SchoolDetailPage detailspage = new SchoolDetailPage(driver);
             detailspage.CompareWithOtherSchools.Click();
-            BestInClass bestinclass = new BestInClass();
+            BestInClass bestinclass = new BestInClass(driver);
             bestinclass.DetailComparisonButton.Click();
             bestinclass.Continue.Click();
-            DetailComparisonPage detailpage = new DetailComparisonPage();
+            DetailComparisonPage detailpage = new DetailComparisonPage(driver);
             detailpage.AcademyRadio.Click();
             detailpage.AcademiesExcludecheckbox.Click();
             bestinclass.Continue.Click();
@@ -130,15 +125,15 @@ namespace SFB_Test_Automation.AutoFramework
             detailpage.ViewBenchMarkCharts.Click();
             Thread.Sleep(4000);
         }
-        public static void IncludechoolswithIncFinanceAllSchoolsAllEngland(String urn)
+        public static void IncludechoolswithIncFinanceAllSchoolsAllEngland(String urn, IWebDriver driver)
         {
-            Actions.CallingClass.SearchViaSchoolurn(urn);
-            SchoolDetailPage detailspage = new SchoolDetailPage();
+            Actions.CallingClass.SearchViaSchoolurn(urn,driver);
+            SchoolDetailPage detailspage = new SchoolDetailPage(driver);
             detailspage.CompareWithOtherSchools.Click();
-            BestInClass bestinclass = new BestInClass();
+            BestInClass bestinclass = new BestInClass(driver);
             bestinclass.DetailComparisonButton.Click();
             bestinclass.Continue.Click();
-            DetailComparisonPage detailpage = new DetailComparisonPage();
+            DetailComparisonPage detailpage = new DetailComparisonPage(driver);
             detailpage.AllschoolsRadio.Click();
             detailpage.AllSchoolsExcludecheckbox.Click();
             bestinclass.Continue.Click();
@@ -153,15 +148,15 @@ namespace SFB_Test_Automation.AutoFramework
             detailpage.ViewBenchMarkCharts.Click();
             Thread.Sleep(5000);
         }
-        public static void ExcludeschoolswithIncFinanceMaintainedLaCode(String urn)
+        public static void ExcludeschoolswithIncFinanceMaintainedLaCode(String urn, IWebDriver driver)
         {
-            Actions.CallingClass.SearchViaSchoolurn(urn);
-            SchoolDetailPage detailspage = new SchoolDetailPage();
+            Actions.CallingClass.SearchViaSchoolurn(urn,driver);
+            SchoolDetailPage detailspage = new SchoolDetailPage(driver);
             detailspage.CompareWithOtherSchools.Click();
-            BestInClass bestinclass = new BestInClass();
+            BestInClass bestinclass = new BestInClass(driver);
             bestinclass.DetailComparisonButton.Click();
             bestinclass.Continue.Click();
-            DetailComparisonPage detailpage = new DetailComparisonPage();
+            DetailComparisonPage detailpage = new DetailComparisonPage(driver);
             detailpage.MaintainedRadio.Click();
             bestinclass.Continue.Click();
             detailpage.LAcode.Click();
@@ -174,15 +169,15 @@ namespace SFB_Test_Automation.AutoFramework
             Thread.Sleep(1000);
             detailpage.ViewBenchMarkCharts.Click();
         }
-        public static void ExcludeschoolswithIncFinanceAcademiesLaCode(String urn)
+        public static void ExcludeschoolswithIncFinanceAcademiesLaCode(String urn, IWebDriver driver)
         {
-            Actions.CallingClass.SearchViaSchoolurn(urn);
-            SchoolDetailPage detailspage = new SchoolDetailPage();
+            Actions.CallingClass.SearchViaSchoolurn(urn,driver);
+            SchoolDetailPage detailspage = new SchoolDetailPage(driver);
             detailspage.CompareWithOtherSchools.Click();
-            BestInClass bestinclass = new BestInClass();
+            BestInClass bestinclass = new BestInClass(driver);
             bestinclass.DetailComparisonButton.Click();
             bestinclass.Continue.Click();
-            DetailComparisonPage detailpage = new DetailComparisonPage();
+            DetailComparisonPage detailpage = new DetailComparisonPage(driver);
             detailpage.AcademyRadio.Click();
             bestinclass.Continue.Click();
             detailpage.LAcode.Click();
@@ -196,33 +191,33 @@ namespace SFB_Test_Automation.AutoFramework
             Thread.Sleep(1000);
             detailpage.ViewBenchMarkCharts.Click();
         }
-        public static void detailedComparisonOnlySecondarySchools(string postcode)
+        public static void detailedComparisonOnlySecondarySchools(string postcode, IWebDriver driver)
         {
-            Actions.SearchByLocationUsingPostcode(postcode); 
-            SearchResultsPage resultspage = new SearchResultsPage();
+            Actions.SearchByLocationUsingPostcode(postcode,driver); 
+            SearchResultsPage resultspage = new SearchResultsPage(driver);
             //resultspage.EducationPhase_checkbox.Click();
             resultspage.secondaryschool_checkbox.Click();
             resultspage.AddAllToBasket_Button.Click();
             resultspage.viewbenchmarkchartsResultsPage.Click();
-            BenchMarkChartPage chartpage = new BenchMarkChartPage();
+            BenchMarkChartPage chartpage = new BenchMarkChartPage(driver);
             chartpage.ComparisonSchool_Tab.Click();
             Thread.Sleep(2000);
-            string colortext = Driver.driver.FindElement(By.CssSelector("#ComparisonSchoolsTable > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(6) > div:nth-child(1)")).GetAttribute("color");
+            string colortext = driver.FindElement(By.CssSelector("#ComparisonSchoolsTable > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(6) > div:nth-child(1)")).GetAttribute("color");
             Console.WriteLine(colortext);
             
 
             Thread.Sleep(2000);
 
         }
-        public static void ExcludeschoolswithIncFinanceAllSchoolsLaCode(String urn,String Lacode)
+        public static void ExcludeschoolswithIncFinanceAllSchoolsLaCode(String urn,String Lacode, IWebDriver driver)
         {
-            Actions.CallingClass.SearchViaSchoolurn(urn);
-            SchoolDetailPage detailspage = new SchoolDetailPage();
+            Actions.CallingClass.SearchViaSchoolurn(urn,driver);
+            SchoolDetailPage detailspage = new SchoolDetailPage(driver);
             detailspage.CompareWithOtherSchools.Click();
-            BestInClass bestinclass = new BestInClass();
+            BestInClass bestinclass = new BestInClass(driver);
             bestinclass.DetailComparisonButton.Click();
             bestinclass.Continue.Click();
-            DetailComparisonPage detailpage = new DetailComparisonPage();
+            DetailComparisonPage detailpage = new DetailComparisonPage(driver);
             detailpage.AllschoolsRadio.Click();
             bestinclass.Continue.Click();
             detailpage.LAcode.Click();
@@ -235,15 +230,15 @@ namespace SFB_Test_Automation.AutoFramework
             Thread.Sleep(1000);
             detailpage.ViewBenchMarkCharts.Click();
         }
-        public static void IncludeschoolswithIncFinanceMaintainedLaCode(String urn,String lacode,String minnumpupils,String maxnumpupils)
+        public static void IncludeschoolswithIncFinanceMaintainedLaCode(String urn,String lacode,String minnumpupils,String maxnumpupils, IWebDriver driver)
         {
-            Actions.CallingClass.SearchViaSchoolurn(urn);
-            SchoolDetailPage detailspage = new SchoolDetailPage();
+            Actions.CallingClass.SearchViaSchoolurn(urn,driver);
+            SchoolDetailPage detailspage = new SchoolDetailPage(driver);
             detailspage.CompareWithOtherSchools.Click();
-            BestInClass bestinclass = new BestInClass();
+            BestInClass bestinclass = new BestInClass(driver);
             bestinclass.DetailComparisonButton.Click();
             bestinclass.Continue.Click();
-            DetailComparisonPage detailpage = new DetailComparisonPage();
+            DetailComparisonPage detailpage = new DetailComparisonPage(driver);
             detailpage.MaintainedRadio.Click();
             detailpage.MaintainedExcludecheckbox.Click();
             bestinclass.Continue.Click();
@@ -258,15 +253,15 @@ namespace SFB_Test_Automation.AutoFramework
             Thread.Sleep(2000);
             detailpage.ViewBenchMarkCharts.Click();
         }
-        public static void IncludeschoolswithIncFinanceAcademiesLaCode(String urn,String lacode,String minpupils,String maxpupils)
+        public static void IncludeschoolswithIncFinanceAcademiesLaCode(String urn,String lacode,String minpupils,String maxpupils, IWebDriver driver)
         {
-            Actions.CallingClass.SearchViaSchoolurn(urn);
-            SchoolDetailPage detailspage = new SchoolDetailPage();
+            Actions.CallingClass.SearchViaSchoolurn(urn,driver);
+            SchoolDetailPage detailspage = new SchoolDetailPage(driver);
             detailspage.CompareWithOtherSchools.Click();
-            BestInClass bestinclass = new BestInClass();
+            BestInClass bestinclass = new BestInClass(driver);
             bestinclass.DetailComparisonButton.Click();
             bestinclass.Continue.Click();
-            DetailComparisonPage detailpage = new DetailComparisonPage();
+            DetailComparisonPage detailpage = new DetailComparisonPage(driver);
             detailpage.AcademyRadio.Click();
             detailpage.AcademiesExcludecheckbox.Click();
             bestinclass.Continue.Click();
@@ -282,15 +277,15 @@ namespace SFB_Test_Automation.AutoFramework
             Thread.Sleep(4000);
 
         }
-        public static void IncludechoolswithIncFinanceAllSchoolsLaCode(String urn)
+        public static void IncludechoolswithIncFinanceAllSchoolsLaCode(String urn, IWebDriver driver)
         {
-            Actions.CallingClass.SearchViaSchoolurn(urn);
-            SchoolDetailPage detailspage = new SchoolDetailPage();
+            Actions.CallingClass.SearchViaSchoolurn(urn, driver);
+            SchoolDetailPage detailspage = new SchoolDetailPage(driver);
             detailspage.CompareWithOtherSchools.Click();
-            BestInClass bestinclass = new BestInClass();
+            BestInClass bestinclass = new BestInClass(driver);
             bestinclass.DetailComparisonButton.Click();
             bestinclass.Continue.Click();
-            DetailComparisonPage detailpage = new DetailComparisonPage();
+            DetailComparisonPage detailpage = new DetailComparisonPage(driver);
             detailpage.AllschoolsRadio.Click();
             detailpage.AllSchoolsExcludecheckbox.Click();
             bestinclass.Continue.Click();
@@ -305,16 +300,16 @@ namespace SFB_Test_Automation.AutoFramework
             Thread.Sleep(2000);
             detailpage.ViewBenchMarkCharts.Click();
         }
-        public static void ExcludeschoolswithIncFinanceMaintainedLaName(String urn)
+        public static void ExcludeschoolswithIncFinanceMaintainedLaName(String urn, IWebDriver driver)
 
         {
-            Actions.CallingClass.SearchViaSchoolurn(urn);
-            SchoolDetailPage detailspage = new SchoolDetailPage();
+            Actions.CallingClass.SearchViaSchoolurn(urn,driver);
+            SchoolDetailPage detailspage = new SchoolDetailPage(driver);
             detailspage.CompareWithOtherSchools.Click();
-            BestInClass bestinclass = new BestInClass();
+            BestInClass bestinclass = new BestInClass(driver);
             bestinclass.DetailComparisonButton.Click();
             bestinclass.Continue.Click();
-            DetailComparisonPage detailpage = new DetailComparisonPage();
+            DetailComparisonPage detailpage = new DetailComparisonPage(driver);
             detailpage.MaintainedRadio.Click();
             bestinclass.Continue.Click();
             detailpage.LAnameRadio.Click();
@@ -328,15 +323,15 @@ namespace SFB_Test_Automation.AutoFramework
             detailpage.ViewBenchMarkCharts.Click();
 
         }
-        public static void ExcludeschoolswithIncFinanceAcademiesLaName(String urn)
+        public static void ExcludeschoolswithIncFinanceAcademiesLaName(String urn, IWebDriver driver)
         {
-            Actions.CallingClass.SearchViaSchoolurn(urn);
-            SchoolDetailPage detailspage = new SchoolDetailPage();
+            Actions.CallingClass.SearchViaSchoolurn(urn,driver);
+            SchoolDetailPage detailspage = new SchoolDetailPage(driver);
             detailspage.CompareWithOtherSchools.Click();
-            BestInClass bestinclass = new BestInClass();
+            BestInClass bestinclass = new BestInClass(driver);
             bestinclass.DetailComparisonButton.Click();
             bestinclass.Continue.Click();
-            DetailComparisonPage detailpage = new DetailComparisonPage();
+            DetailComparisonPage detailpage = new DetailComparisonPage(driver);
             detailpage.AcademyRadio.Click();
             bestinclass.Continue.Click();
             detailpage.LAnameRadio.Click();
@@ -349,15 +344,15 @@ namespace SFB_Test_Automation.AutoFramework
             Thread.Sleep(1000);
             detailpage.ViewBenchMarkCharts.Click();
         }
-        public static void ExcludeschoolswithIncFinanceAcademiesAllEngland(String urn, String minnumpupils, String maxnumpupils)
+        public static void ExcludeschoolswithIncFinanceAcademiesAllEngland(String urn, String minnumpupils, String maxnumpupils, IWebDriver driver)
         {
-            Actions.CallingClass.SearchViaSchoolurn(urn);
-            SchoolDetailPage detailspage = new SchoolDetailPage();
+            Actions.CallingClass.SearchViaSchoolurn(urn,driver);
+            SchoolDetailPage detailspage = new SchoolDetailPage(driver);
             detailspage.CompareWithOtherSchools.Click();
-            BestInClass bestinclass = new BestInClass();
+            BestInClass bestinclass = new BestInClass(driver);
             bestinclass.DetailComparisonButton.Click();
             bestinclass.Continue.Click();
-            DetailComparisonPage detailpage = new DetailComparisonPage();
+            DetailComparisonPage detailpage = new DetailComparisonPage(driver);
             detailpage.AcademyRadio.Click();
             bestinclass.Continue.Click();
             detailpage.AllOfEnglandRadio.Click();
@@ -372,16 +367,16 @@ namespace SFB_Test_Automation.AutoFramework
             Thread.Sleep(5000);
 
         }
-        public static void IncludeschoolswithIncFinanceMaintainedLaName(String urn, String laname, String minnumpupils, String maxnumpupils)
+        public static void IncludeschoolswithIncFinanceMaintainedLaName(String urn, String laname, String minnumpupils, String maxnumpupils, IWebDriver driver)
         {
             try {
-                Actions.CallingClass.SearchViaSchoolurn(urn);
-                SchoolDetailPage detailspage = new SchoolDetailPage();
+                Actions.CallingClass.SearchViaSchoolurn(urn,driver);
+                SchoolDetailPage detailspage = new SchoolDetailPage(driver);
                 detailspage.CompareWithOtherSchools.Click();
-                BestInClass bestinclass = new BestInClass();
+                BestInClass bestinclass = new BestInClass(driver);
                 bestinclass.DetailComparisonButton.Click();
                 bestinclass.Continue.Click();
-                DetailComparisonPage detailpage = new DetailComparisonPage();
+                DetailComparisonPage detailpage = new DetailComparisonPage(driver);
                 detailpage.MaintainedRadio.Click();
                 detailpage.MaintainedExcludecheckbox.Click();
                 bestinclass.Continue.Click();
@@ -399,15 +394,15 @@ namespace SFB_Test_Automation.AutoFramework
             catch (ElementNotInteractableException e) { Console.WriteLine("Element not found " + e); }
             
          }   
-        public static void IncludeschoolswithIncFinanceAcademiesLaName(String urn,String laname,String minpupils,String maxpupils)
+        public static void IncludeschoolswithIncFinanceAcademiesLaName(String urn,String laname,String minpupils,String maxpupils, IWebDriver driver)
         {
-            Actions.CallingClass.SearchViaSchoolurn(urn);
-            SchoolDetailPage detailspage = new SchoolDetailPage();
+            Actions.CallingClass.SearchViaSchoolurn(urn,driver);
+            SchoolDetailPage detailspage = new SchoolDetailPage(driver);
             detailspage.CompareWithOtherSchools.Click();
-            BestInClass bestinclass = new BestInClass();
+            BestInClass bestinclass = new BestInClass(driver);
             bestinclass.DetailComparisonButton.Click();
             bestinclass.Continue.Click();
-            DetailComparisonPage detailpage = new DetailComparisonPage();
+            DetailComparisonPage detailpage = new DetailComparisonPage(driver);
             detailpage.AcademyRadio.Click();
             detailpage.AcademiesExcludecheckbox.Click();
             bestinclass.Continue.Click();
@@ -424,15 +419,15 @@ namespace SFB_Test_Automation.AutoFramework
 
 
         }
-        public static void IncludechoolswithIncFinanceAllSchoolsLaName(String urn,String laname,String minpupils,String maxpupils)
+        public static void IncludechoolswithIncFinanceAllSchoolsLaName(String urn,String laname,String minpupils,String maxpupils, IWebDriver driver)
         {
-            Actions.CallingClass.SearchViaSchoolurn(urn);
-            SchoolDetailPage detailspage = new SchoolDetailPage();
+            Actions.CallingClass.SearchViaSchoolurn(urn,driver);
+            SchoolDetailPage detailspage = new SchoolDetailPage(driver);
             detailspage.CompareWithOtherSchools.Click();
-            BestInClass bestinclass = new BestInClass();
+            BestInClass bestinclass = new BestInClass(driver);
             bestinclass.DetailComparisonButton.Click();
             bestinclass.Continue.Click();
-            DetailComparisonPage detailpage = new DetailComparisonPage();
+            DetailComparisonPage detailpage = new DetailComparisonPage(driver);
             detailpage.AllschoolsRadio.Click();
             detailpage.AllSchoolsExcludecheckbox.Click();
             bestinclass.Continue.Click();
@@ -447,19 +442,19 @@ namespace SFB_Test_Automation.AutoFramework
             Thread.Sleep(2000);
             detailpage.ViewBenchMarkCharts.Click();
         }
-        public static void GeneralDetailedJourney(string urn)
+        public static void GeneralDetailedJourney(string urn, IWebDriver driver)
         {
-            Actions.CallingClass.SearchViaSchoolurn(urn);
-            SchoolDetailPage detailspage = new SchoolDetailPage();
+            Actions.CallingClass.SearchViaSchoolurn(urn,driver);
+            SchoolDetailPage detailspage = new SchoolDetailPage(driver);
             string SchoolPhase = detailspage.SchoolPhase.Text;
             string OverallSchoolPhase = detailspage.SchoolOverAllPhase.Text;
             string newformed = OverallSchoolPhase +""+ "(" + SchoolPhase + ")";//Primary(Infant and junior)
             Console.WriteLine(newformed);
             detailspage.CompareWithOtherSchools.Click();
-            BestInClass bestinclass = new BestInClass();
+            BestInClass bestinclass = new BestInClass(driver);
             bestinclass.DetailComparisonButton.Click();
             bestinclass.Continue.Click();
-            DetailComparisonPage detailpage = new DetailComparisonPage();
+            DetailComparisonPage detailpage = new DetailComparisonPage(driver);
             detailpage.AllschoolsRadio.Click();
             bestinclass.Continue.Click();
             detailpage.AllOfEnglandRadio.Click();

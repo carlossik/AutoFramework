@@ -11,9 +11,9 @@ namespace SFB_Test_Automation.AutoFramework.Pages
 {
     class EM_ManualComparisonPage
     {
-        public EM_ManualComparisonPage()
+        public EM_ManualComparisonPage(IWebDriver driver)
         {
-            PageFactory.InitElements(Driver.driver, this);
+            PageFactory.InitElements(driver, this);
         }
 
         [FindsBy(How = How.CssSelector, Using = "li.school-list__item:nth-child(1) > div:nth-child(1) > div:nth-child(2) > button:nth-child(1)")]

@@ -7,9 +7,9 @@ namespace AutoFramework.Pages
 
     public class BestInClass
     {
-        public BestInClass()
+        public BestInClass(IWebDriver driver)
         {
-            PageFactory.InitElements(Driver.driver, this);
+            PageFactory.InitElements(driver, this);
         }
 
         [FindsBy(How = How.Id,Using = "radio-1")]

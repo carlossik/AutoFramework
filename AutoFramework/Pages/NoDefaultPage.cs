@@ -14,11 +14,11 @@ namespace SFB_Test_Automation.AutoFramework.Pages
 {
     class NoDefaultPage
     {
-        public NoDefaultPage()
+        public NoDefaultPage(IWebDriver driver)
         {
 
 
-            SeleniumExtras.PageObjects.PageFactory.InitElements(Driver.driver, this);
+            SeleniumExtras.PageObjects.PageFactory.InitElements(driver, this);
         }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "radio-2")]
         [SeleniumExtras.PageObjects.CacheLookup]

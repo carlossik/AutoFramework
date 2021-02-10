@@ -7,39 +7,58 @@ namespace AutoFramework
     using SFB_Test_Automation.AutoFramework.Pages;
     using SFB_Test_Automation.AutoFramework;
 
+    [Parallelizable]
+
     public class MyChartTests
-      //[TestFixture(typeof(FirefoxDriver))]
-//    [TestFixture(typeof(InternetExplorerDriver))]
-//    [TestFixture(typeof(ChromeDriver))]
+    //[TestFixture(typeof(FirefoxDriver))]
+    //    [TestFixture(typeof(InternetExplorerDriver))]
+    //    [TestFixture(typeof(ChromeDriver))]
+
 
     {
+
+        IAlert alert;
+        IWebDriver driver;
+
+
+        public MyChartTests()
+        {
+        }
+
+
         [SetUp]
         public void SetupBeforeEachTest()
 
         {
             var testName = TestContext.CurrentContext.Test.FullName;
             Config.Credentials.deletefiles(@"C:\TEMP\" + testName + ".jpg");
-            Actions.InitializeDriver(Config.FirefoxDriverUnderTest);
-
+            driver = Actions.InitializeDriver(5);
         }
 
         [Test]
         public void TestMyChartTab()
         {
-            MyChartActions.Gotomycharts();
-            MyChartsPage chartspage = new MyChartsPage();
+            MyChartActions.Gotomycharts(driver);
+            MyChartsPage chartspage = new MyChartsPage(driver);
             Assert.IsTrue(chartspage.AddOrRemoveChartsLink.Displayed);
-            //Assert.That(Driver.driver.Url, Does.Contain("/SchoolSearch/Search?radius=1"));
+           
         }
         [Test]
         public void AddOrRemoveCharts()
         {
-            MyChartActions.AddCharts();
-            MyChartsPage chartspage = new MyChartsPage();
+            MyChartActions.AddCharts(driver);
+            MyChartsPage chartspage = new MyChartsPage(driver);
             Assert.IsTrue(chartspage.AddOrRemoveChartsLink.Displayed);
-            //Assert.That(Driver.driver.Url, Does.Contain("/SchoolSearch/Search?radius=1"));
-            //AssessibilityActions assessibility = new AssessibilityActions();
-            //assessibility.accessibilitytest();
+         }
+        [Test]
+        public void VeriFyChartPersists()
+        {
+            MyChartActions.AddCharts(driver);
+            MyChartActions.persistCharts(driver);
+            MyChartsPage chartspage = new MyChartsPage(driver);
+            
+            Assert.AreEqual(chartspage.YourChartsTabAfterAddingChart.Text, "Your charts\r\n(3 selected)");
+
 
 
         }
@@ -48,14 +67,14 @@ namespace AutoFramework
         {
             if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
             {
-                var screenshot = ((ITakesScreenshot)Driver.driver).GetScreenshot();
+                var screenshot = ((ITakesScreenshot)driver).GetScreenshot();
                 var testName = TestContext.CurrentContext.Test.FullName;
                 screenshot.SaveAsFile(@"C:\TEMP\" + testName + ".jpg");
-                //Driver.driver.Close();
-                Driver.driver.Quit();
+               
+                driver.Quit();
             }
-            //Driver.driver.Close();
-            Driver.driver.Quit();
+            
+            driver.Quit();
         }
 
     }

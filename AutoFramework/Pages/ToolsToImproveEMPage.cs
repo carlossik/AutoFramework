@@ -15,9 +15,9 @@ namespace SFB_Test_Automation.AutoFramework.Pages
     class ToolsToImproveEMPage
     {
 
-        public ToolsToImproveEMPage()
+        public ToolsToImproveEMPage(IWebDriver driver)
         {
-            SeleniumExtras.PageObjects.PageFactory.InitElements(Driver.driver, this);
+            SeleniumExtras.PageObjects.PageFactory.InitElements(driver, this);
         }
 
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "/html/body/app-root/app-gov-uk-layout/div[2]/div/main/app-ways-to-improve/div/div/ul/li[1]/a")]

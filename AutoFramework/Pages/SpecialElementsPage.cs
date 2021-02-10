@@ -5,9 +5,9 @@
 
     public class SpecialElementsPage
     {
-        public SpecialElementsPage()
+        public SpecialElementsPage(IWebDriver driver)
         {
-            PageFactory.InitElements(Driver.driver, this);
+            PageFactory.InitElements(driver, this);
         }
           [FindsBy(How = How.CssSelector, Using = ".font16-ext-link")]
         [CacheLookup]
@@ -34,12 +34,12 @@
         public static string schooltext = "Sir John Cass's Foundation Primary School";
         
     }
-    public  class getSchoolName
+    //public  class getSchoolName()
 
-    {
-        public string SchoolName = Driver.driver.FindElement(By.XPath("/html/body/div/main/h1")).Text;
+    //{
+    //    public string SchoolName = driver.FindElement(By.XPath("/html/body/div/main/h1")).Text;
 
-    }
+    //}
 
 
 }

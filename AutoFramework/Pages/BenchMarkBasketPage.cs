@@ -13,11 +13,11 @@ namespace AutoFramework.Pages.PageElements
 {
     class BenchMarkBasketPage
     {
-        public BenchMarkBasketPage()
+        public BenchMarkBasketPage(IWebDriver driver)
         {
 
 
-            SeleniumExtras.PageObjects.PageFactory.InitElements(Driver.driver, this);
+            SeleniumExtras.PageObjects.PageFactory.InitElements(driver, this);
         }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".back-link")]
         //[SeleniumExtras.PageObjects.CacheLookup]
@@ -52,11 +52,11 @@ namespace AutoFramework.Pages.PageElements
 
         //a.benchmarkControls
 
-        public Boolean existsElement(String id)
+        public Boolean existsElement(String id, IWebDriver driver)
         {
             try
             {
-                Driver.driver.FindElement(By.Id(id));
+                driver.FindElement(By.Id(id));
             }
             catch (NoSuchElementException)
             {

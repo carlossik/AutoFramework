@@ -12,47 +12,49 @@
     using SFB_Test_Automation.AutoFramework.Pages;
 
     [TestFixture]
+    [Parallelizable]
     public class ComparisonTests
     {
+        IAlert alert;
+        IWebDriver driver;
 
 
 
-      
         [SetUp]
         public void SetupBeforeEachTest()
        
         {
             var testName = TestContext.CurrentContext.Test.FullName;
             Config.Credentials.deletefiles(@"C:\TEMP\" + testName + ".jpg");
-            Actions.InitializeDriver(Config.ChromeDriverUnderTest); 
+            driver = Actions.InitializeDriver(5); 
         }
 
         [Test]
         [Category("QuickTests")]
         public void QuickCompare()
         {
-            Actions.CallingClass.QuickCompareWithOtherSchools("2032471");
+            Actions.CallingClass.QuickCompareWithOtherSchools("2032471",driver);
             Thread.Sleep(2000);
            
-            Assert.IsTrue(Driver.driver.FindElement(By.Id("Expenditure")).Displayed);//verify that the Expenditure tab is displayed and in focus
-            Assert.IsTrue(Driver.driver.FindElement(By.CssSelector(".add-schools > span:nth-child(2)")).Displayed);//verify that the Add another School by name or location is available
+            Assert.IsTrue(driver.FindElement(By.Id("Expenditure")).Displayed);//verify that the Expenditure tab is displayed and in focus
+            Assert.IsTrue(driver.FindElement(By.CssSelector(".add-schools > span:nth-child(2)")).Displayed);//verify that the Add another School by name or location is available
 
 
         }
         //[Test]
         public void ContinueToCharts()
         {
-            Actions.CallingClass.QuickCompareWithOtherSchools("2032471");
-            Actions.CallingClass.ContinuetoBenchmarkCharts();
+            Actions.CallingClass.QuickCompareWithOtherSchools("2032471",driver);
+            Actions.CallingClass.ContinuetoBenchmarkCharts(driver);
             
         }
    
         [Test]
         public void zBestInClassComparison()
         {
-            Actions.CallingClass.BestInClassComparison();
-            SchoolDetailPage detailspage = new SchoolDetailPage();
-            BestInClass bestinclasspage = new BestInClass();
+            Actions.CallingClass.BestInClassComparison(driver);
+            SchoolDetailPage detailspage = new SchoolDetailPage(driver);
+            BestInClass bestinclasspage = new BestInClass(driver);
             
             Assert.IsTrue(((bestinclasspage.BasketCount).Text).Contains("16 schools"));
             
@@ -60,15 +62,15 @@
         [Test]
         public void TestIntepretingTheCharts()
         {
-            Actions.CallingClass.InterpretingTheChartsTest();
-            Assert.IsTrue(Driver.driver.Url == Config.currentTestEnv+ "Help/InterpretingCharts");
+            Actions.CallingClass.InterpretingTheChartsTest(driver);
+            Assert.IsTrue(driver.Url == Config.currentTestEnv+ "Help/InterpretingCharts");
             //need to add some assertions on the links present and the order
         }
         [Test]
         public void specialschoolQuickComparisonTest()
         {
-            Actions.quickcompareSpecialSchoolWithSimilar("8797068");
-            BenchMarkChartPage chartpage = new BenchMarkChartPage();
+            Actions.quickcompareSpecialSchoolWithSimilar("8797068",driver);
+            BenchMarkChartPage chartpage = new BenchMarkChartPage(driver);
             Assert.AreEqual(chartpage.NumberOfitemsInBasket.Text, "15 schools");
             //add assertion to verify characteristics used
         }
@@ -76,8 +78,8 @@
         [Test]
         public void specialschoolQuickComparisonTestWithoutSimilaragedPupils()
         {
-            Actions.quickcompareSpecialSchoolWithoutSimilar("8797068");
-            BenchMarkChartPage chartpage = new BenchMarkChartPage();
+            Actions.quickcompareSpecialSchoolWithoutSimilar("8797068",driver);
+            BenchMarkChartPage chartpage = new BenchMarkChartPage(driver);
             Assert.AreEqual(chartpage.NumberOfitemsInBasket.Text, "15 schools");
             //add assertion to verify characteristics used
         }
@@ -85,9 +87,9 @@
         [Test]
         public void specialschoolBenchmarkChart_TestCharacteristics()
         {
-            Actions.quickcompareSpecialSchoolWithoutSimilar("8797068");
-            Actions.viewcharacteristicsOnChartPage();
-            BenchMarkChartPage chartpage = new BenchMarkChartPage();
+            Actions.quickcompareSpecialSchoolWithoutSimilar("8797068",driver);
+            Actions.viewcharacteristicsOnChartPage(driver);
+            BenchMarkChartPage chartpage = new BenchMarkChartPage(driver);
             Assert.AreEqual(chartpage.NumberOfitemsInBasket.Text, "15 schools");
             //add assertion to verify characteristics used
         }
@@ -95,14 +97,14 @@
         [Test]
         public void CompareTrusts()
         {
-            Actions.TrustComparison("Portswood Primary Academy Trust");
+            Actions.TrustComparison("Portswood Primary Academy Trust",driver);
         }
         [Test]
         public void VerifySchoolPhaseAndOverAllPhase()
         {
-         DetailedComparisonActions.GeneralDetailedJourney("100008");
-             String TestValue = Driver.driver.FindElement(By.CssSelector("div.accordion-section:nth-child(2) > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > span:nth-child(1) > span:nth-child(1)")).Text;
-           SchoolDetailPage detailspage = new SchoolDetailPage();
+         DetailedComparisonActions.GeneralDetailedJourney("100008",driver);
+             String TestValue = driver.FindElement(By.CssSelector("div.accordion-section:nth-child(2) > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > span:nth-child(1) > span:nth-child(1)")).Text;
+           SchoolDetailPage detailspage = new SchoolDetailPage(driver);
         
             Assert.AreEqual(TestValue, "Primary (Infant and junior)");//need to change this test to parameterize the test value
            
@@ -111,55 +113,55 @@
         [Test]
         public void TestToAndFromFieldsNumOfPupils()
         {
-            DetailedComparisonActions.IncludeschoolswithIncFinanceAcademiesAllEngland("144407", "64", "50");
+            DetailedComparisonActions.IncludeschoolswithIncFinanceAcademiesAllEngland("144407", "64", "50",driver);
             
             string errorText = "'From' value can not be greater than the 'To' value";
-            Assert.IsTrue(Driver.driver.PageSource.Contains(errorText));
+            Assert.IsTrue(driver.PageSource.Contains(errorText));
         }
         [Test]
         [Ignore("Ignore a test")]
 
         public void TestToAndFromFieldsEligibilityFreeschmeals()
         {
-            DetailedComparisonActions.IncludeschoolswithIncFinanceAcademiesAllEngland("144407", "64", "50");
+            DetailedComparisonActions.IncludeschoolswithIncFinanceAcademiesAllEngland("144407", "64", "50",driver);
             string errorText = "'From' value can not be greater than the 'To' value";
 
 
-            Assert.IsTrue(Driver.driver.PageSource.Contains(errorText));
+            Assert.IsTrue(driver.PageSource.Contains(errorText));
         }
         [Test]
         [Ignore("Ignore a test")]
         public void TestToAndFromFieldsNumOfPupilsEduNeeds()
         {
-            DetailedComparisonActions.IncludeschoolswithIncFinanceAcademiesAllEngland("144407", "64", "50");
+            DetailedComparisonActions.IncludeschoolswithIncFinanceAcademiesAllEngland("144407", "64", "50",driver);
             string errorText = "'From' value can not be greater than the 'To' value";
 
 
-            Assert.IsTrue(Driver.driver.PageSource.Contains(errorText));
+            Assert.IsTrue(driver.PageSource.Contains(errorText));
         }
         [Test]
         [Ignore("Ignore a test")]
         public void TestToAndFromFieldsNumInSixthForm()
         {
-            DetailedComparisonActions.IncludeschoolswithIncFinanceAcademiesAllEngland("144407", "64", "50");
+            DetailedComparisonActions.IncludeschoolswithIncFinanceAcademiesAllEngland("144407", "64", "50",driver);
             string errorText = "'From' value can not be greater than the 'To' value";
 
 
-            Assert.IsTrue(Driver.driver.PageSource.Contains(errorText));
+            Assert.IsTrue(driver.PageSource.Contains(errorText));
         }
 
         [Test]
         
         public void DisplayComparisonschoolsTab()
         {
-            DetailedComparisonActions.IncludeschoolswithIncFinanceAcademiesAllEngland("144407", "64", "65");
-            Assert.IsTrue(Driver.driver.FindElement(By.CssSelector("#ComparisonSchools > a:nth-child(1)")).Displayed);
+            DetailedComparisonActions.IncludeschoolswithIncFinanceAcademiesAllEngland("144407", "64", "65",driver);
+            Assert.IsTrue(driver.FindElement(By.CssSelector("#ComparisonSchools > a:nth-child(1)")).Displayed);
         }
         [Test]
         public void detailedComparisonOptions()
         {
             
-            DetailedComparisonActions.GeneralDetailedJourney("100000");
+            DetailedComparisonActions.GeneralDetailedJourney("100000",driver);
             //Assertions to follow but for now we make sure all options are clicked as a check that these buttons are available
            
           
@@ -172,14 +174,14 @@
         {
             if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
             {
-                var screenshot = ((ITakesScreenshot)Driver.driver).GetScreenshot();
+                var screenshot = ((ITakesScreenshot)driver).GetScreenshot();
                 var testName = TestContext.CurrentContext.Test.FullName;
                 screenshot.SaveAsFile(@"C:\TEMP\" + testName + ".jpg");
-                Driver.driver.Close();
-                Driver.driver.Quit();
+                driver.Close();
+                driver.Quit();
             }
-            Driver.driver.Close();
-            Driver.driver.Quit();
+            driver.Close();
+            driver.Quit();
         }
 
     }

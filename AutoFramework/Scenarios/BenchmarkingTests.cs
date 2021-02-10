@@ -15,21 +15,28 @@
     using OpenQA.Selenium.Chrome;
     using OpenQA.Selenium.Safari;
 
+    [Parallelizable]
+
     [TestFixture]
     
-    public class BenchmarkingTests :BrowserToRunWith
+    public class BenchmarkingTests 
     {
-       
+        IAlert alert;
+        IWebDriver driver;
 
-        //[OneTimeSetUp]
-          [SetUp]
+        public BenchmarkingTests()
+        {
+        }
+
+
+        [SetUp]
         public void SetupBeforeEachTest()
         
         {
             var testName = TestContext.CurrentContext.Test.FullName;
             Config.Credentials.deletefiles(@"C:\TEMP\" + testName + ".jpg");
-            Actions.InitializeDriver(Config.ChromeDriverUnderTest);
-         
+            driver = Actions.InitializeDriver(5);
+
         }
         [Test]
         
@@ -38,8 +45,8 @@
         public void ManualBenchMarkCreationViaSchool()
         {
 
-            BenchMarkActions.CreateManualBenchMarkViaName("143592");
-            BenchMarkChartPage chartpage = new BenchMarkChartPage();
+            BenchMarkActions.CreateManualBenchMarkViaName("143592",driver);
+            BenchMarkChartPage chartpage = new BenchMarkChartPage(driver);
             Assert.AreEqual(chartpage.PageTitle.Text, "Benchmarking charts");
 
 
@@ -48,271 +55,272 @@
         //[Ignore("Ignore a test")]
         public void ManualBenchmarkViaLocation()
         {
-            BenchMarkActions.CreateManualBenchMarkViaLocation("100000");
-            BenchMarkChartPage chartpage = new BenchMarkChartPage();
+            BenchMarkActions.CreateManualBenchMarkViaLocation("100000",driver);
+            BenchMarkChartPage chartpage = new BenchMarkChartPage(driver);
 
             Assert.AreEqual(chartpage.PageTitle.Text, "Benchmarking charts");
         }
         [Test]
         public void ManualBenchmarkViaLACode()
         {
-            BenchMarkActions.CreateManualBenchMarkviaLACode("303");
-            BenchMarkChartPage chartpage = new BenchMarkChartPage();
+            BenchMarkActions.CreateManualBenchMarkviaLACode("303",driver);
+            BenchMarkChartPage chartpage = new BenchMarkChartPage(driver);
             Assert.AreEqual(chartpage.PageTitle.Text, "Benchmarking charts");
         }
         [Test]
         public void AddAnotherSchoolByNameOrLocationLink()
         {
-            Actions.CallingClass.QuickCompareWithOtherSchools("2032471");
-            BenchMarkActions.addschoolvianameorlocationlink();
+            Actions.CallingClass.QuickCompareWithOtherSchools("2032471",driver);
+            BenchMarkActions.addschoolvianameorlocationlink(driver);
 
         }
         [Test]
         public void Savebenchmarkbaskettest()
         {
-            Actions.savebenchmarkbasket();
-            BenchMarkBasketPage basketpage = new BenchMarkBasketPage();
-            Assert.IsTrue(basketpage.existsElement("js-modal-close"));
+            Actions.savebenchmarkbasket(driver);
+            BenchMarkBasketPage basketpage = new BenchMarkBasketPage(driver);
+            Assert.IsTrue(basketpage.existsElement("js-modal-close",driver));
 
         }
         [Test]
-        public static void PasteBasketLessThan30Schools()
+        public  void PasteBasketLessThan30Schools()
         {
-            // BenchMarkActions.CreateBenchmarkViaDetailComparison("100140");//"125249"
-            Actions.OnclickReportingTest();
-            BenchMarkActions.CopyChart();
-            BenchMarkActions.PasteCopiedClipboardText();
-            ComparingSimilarSchoolsPage similar = new ComparingSimilarSchoolsPage();
+
+            Actions.OnclickReportingTest(driver);
+            BenchMarkActions.CopyChart(driver);
+            BenchMarkActions.PasteCopiedClipboardText(driver);
+            ComparingSimilarSchoolsPage similar = new ComparingSimilarSchoolsPage(driver);
             similar.AddToExistingBasket.Click();
             similar.ContinueButton.Click();
             Thread.Sleep(3);
-            Assert.AreEqual(Driver.driver.FindElement(By.CssSelector(".message")).Text , "Showing the 15 schools in your benchmark basket");
+            Assert.AreEqual(driver.FindElement(By.CssSelector(".message")).Text, "Showing the 15 schools in your benchmark basket");
 
 
 
         }
         [Test]
-        public static void PasteBasketGreaterThan30Schools()
+       public void PasteBasketGreaterThan30Schools()
         {
-            BenchMarkActions.createbenchmarkviadefault("125249");
-            BenchMarkActions.getclipboardTextmaximum();
-            ReplaceCurrentBenchmarkbasketPage replace = new ReplaceCurrentBenchmarkbasketPage();
+            BenchMarkActions.createbenchmarkviadefault("125249", driver);
+            BenchMarkActions.getclipboardTextmaximum(driver);
+            ReplaceCurrentBenchmarkbasketPage replace = new ReplaceCurrentBenchmarkbasketPage(driver);
             replace.ReplaceBasket.Click();
             Thread.Sleep(200);
-            Assert.IsTrue(Driver.driver.FindElement(By.CssSelector(".message")).Text == "Showing the 30 schools in your benchmark basket");
+            Assert.IsTrue(driver.FindElement(By.CssSelector(".message")).Text == "Showing the 30 schools in your benchmark basket");
 
         }
         [Test]
-        public static void PasteBasketLessThan30SchoolsCancell()
+       public void PasteBasketLessThan30SchoolsCancell()
         {
             //BenchMarkActions.CreateBenchmarkViaDetailComparison("125249");
-            Actions.OnclickReportingTest();
-            BenchMarkActions.CopyChart();
-            BenchMarkActions.PasteCopiedClipboardText();
-            ComparingSimilarSchoolsPage similar = new ComparingSimilarSchoolsPage();
-            ReplaceCurrentBenchmarkbasketPage replace = new ReplaceCurrentBenchmarkbasketPage();
+            Actions.OnclickReportingTest(driver);
+            BenchMarkActions.CopyChart(driver);
+            BenchMarkActions.PasteCopiedClipboardText(driver);
+            ComparingSimilarSchoolsPage similar = new ComparingSimilarSchoolsPage(driver);
+            ReplaceCurrentBenchmarkbasketPage replace = new ReplaceCurrentBenchmarkbasketPage(driver);
             replace.Cancelt.Click();
-            Assert.IsTrue(Driver.driver.Url == Config.currentTestEnv);
+            Assert.IsTrue(driver.Url == Config.currentTestEnv);
 
         }
         [Test]
-        public static void VerifyDefaulSchoolCopied_QuickCompare()
+       public void VerifyDefaulSchoolCopied_QuickCompare()
         {
-            BenchMarkActions.createbenchmarkviadefault("100140");//"125249"
+            BenchMarkActions.createbenchmarkviadefault("100140", driver);//"125249"
 
-            BenchMarkActions.CopyChart();
-            BenchMarkActions.PasteCopiedClipboardText();
+            BenchMarkActions.CopyChart(driver);
+            BenchMarkActions.PasteCopiedClipboardText(driver);
 
         }
 
         [Test]
-        public static void VerifyDefaulSchoolCopied_AdvancedCompare()
+       public void VerifyDefaulSchoolCopied_AdvancedCompare()
         {
-            DetailedComparisonActions.ExcludeschoolswithIncFinanceAcademiesAllEngland("141976", "239", "240");
-           // BenchMarkActions.CreateBenchmarkViaDetailComparison("100140");//"125249"
-            BenchMarkActions.CopyChart();
-            BenchMarkActions.PasteCopiedClipboardText();
+            DetailedComparisonActions.ExcludeschoolswithIncFinanceAcademiesAllEngland("141976", "239", "240", driver);
+            // BenchMarkActions.CreateBenchmarkViaDetailComparison("100140");//"125249"
+            BenchMarkActions.CopyChart(driver);
+            BenchMarkActions.PasteCopiedClipboardText(driver);
         }
 
         [Test]
-        public static void VerifyDefaulSchoolCopied_BestInClass()
+       public void VerifyDefaulSchoolCopied_BestInClass()
         {
-            Actions.CallingClass.BestInClassComparison();
-            BenchMarkActions.CopyChart();
-            BenchMarkActions.PasteCopiedClipboardText();
+            Actions.CallingClass.BestInClassComparison(driver);
+            BenchMarkActions.CopyChart(driver);
+            BenchMarkActions.PasteCopiedClipboardText(driver);
 
         }
 
         [Test]
-        public static void VerifyDefaulSchoolCopied_ManualCompare()
+       public void VerifyDefaulSchoolCopied_ManualCompare()
         {
             throw new NotImplementedException();
         }
 
         [Test]
-        public static void PasteBasketGreaterThan30SchoolsCancell()
+       public void PasteBasketGreaterThan30SchoolsCancell()
         {
-            BenchMarkActions.createbenchmarkviadefault("125249");
-            BenchMarkActions.getclipboardTextmaximum();
-            ReplaceCurrentBenchmarkbasketPage replace = new ReplaceCurrentBenchmarkbasketPage();
+            BenchMarkActions.createbenchmarkviadefault("125249", driver);
+            BenchMarkActions.getclipboardTextmaximum(driver);
+            ReplaceCurrentBenchmarkbasketPage replace = new ReplaceCurrentBenchmarkbasketPage(driver);
             replace.Cancelt.Click();
-            Assert.IsTrue(Driver.driver.Url == Config.currentTestEnv);
+            Assert.IsTrue(driver.Url == Config.currentTestEnv);
         }
         [Test]
-        public static void ExcludeschoolswithIncFinanceMaintainedAllEngland()
+       public void ExcludeschoolswithIncFinanceMaintainedAllEngland()
         {
-            DetailedComparisonActions.ExcludeschoolswithIncFinanceMaintainedAllEngland("142071");
-            string errorText = "Some schools don't have a complete set of financial data for this period";              
-            Assert.IsFalse(Driver.driver.PageSource.Contains(errorText));
-
-
-        }
-        [Test]
-        public static void ExcludeschoolswithIncFinanceAcademiesAllEngland()
-        {
-            DetailedComparisonActions.ExcludeschoolswithIncFinanceAcademiesAllEngland("141976", "239", "240");
+            DetailedComparisonActions.ExcludeschoolswithIncFinanceMaintainedAllEngland("142071", driver);
             string errorText = "Some schools don't have a complete set of financial data for this period";
-            Assert.IsFalse(Driver.driver.PageSource.Contains(errorText));
+            Assert.IsFalse(driver.PageSource.Contains(errorText));
+
+
         }
         [Test]
-        public static void veryifyP8Bandingforsecondariescolour()
+       public void ExcludeschoolswithIncFinanceAcademiesAllEngland()
+        {
+            DetailedComparisonActions.ExcludeschoolswithIncFinanceAcademiesAllEngland("141976", "239", "240", driver);
+            string errorText = "Some schools don't have a complete set of financial data for this period";
+            Assert.IsFalse(driver.PageSource.Contains(errorText));
+        }
+        [Test]
+       public void veryifyP8Bandingforsecondariescolour()
         {
             //We test here to ensure that secondary schools have p8 banding background colour
-            DetailedComparisonActions.detailedComparisonOnlySecondarySchools("Da7 5ss");
-           
+            DetailedComparisonActions.detailedComparisonOnlySecondarySchools("Da7 5ss", driver);
+
 
         }
         [Test]
-        public static void ExcludeschoolswithIncFinanceAllSchoolsAllEngland()
+       public void ExcludeschoolswithIncFinanceAllSchoolsAllEngland()
         {
-            DetailedComparisonActions.ExcludeschoolswithIncFinanceAllSchoolsAllEngland("100140");
+            DetailedComparisonActions.ExcludeschoolswithIncFinanceAllSchoolsAllEngland("100140", driver);
             string errorText = "Some schools don't have a complete set of financial data for this period";
-            Assert.IsFalse(Driver.driver.PageSource.Contains(errorText));
+            Assert.IsFalse(driver.PageSource.Contains(errorText));
         }
         [Test]
-        public static void IncludeschoolswithIncFinanceMaintainedAllEngland()
+       public void IncludeschoolswithIncFinanceMaintainedAllEngland()
         {
-            DetailedComparisonActions.IncludeschoolswithIncFinanceMaintainedAllEngland("142071");
+            DetailedComparisonActions.IncludeschoolswithIncFinanceMaintainedAllEngland("142071", driver);
             string errorText = "Some schools don't have a complete set of financial data for this period";
-            Assert.IsTrue(Driver.driver.PageSource.Contains(errorText));
+            Assert.IsTrue(driver.PageSource.Contains(errorText));
 
         }
         [Test]
-        public static void IncludeschoolswithIncFinanceAcademiesAllEngland()
-            
+       public void IncludeschoolswithIncFinanceAcademiesAllEngland()
+
         {
-            DetailedComparisonActions.IncludeschoolswithIncFinanceAcademiesAllEngland("100028","200","200");//("144407","64","64");//"145621", "879", "350","1003"
+            DetailedComparisonActions.IncludeschoolswithIncFinanceAcademiesAllEngland("100028", "200", "200", driver);//("144407","64","64");//"145621", "879", "350","1003"
             string errorText = "Some schools don't have a complete set of financial data for this period";
-            Assert.IsTrue(Driver.driver.PageSource.Contains(errorText));
+            Assert.IsTrue(driver.PageSource.Contains(errorText));
         }
         [Test]
-        public static void IncludechoolswithIncFinanceAllSchoolsAllEngland()
+       public void IncludechoolswithIncFinanceAllSchoolsAllEngland()
         {
-            DetailedComparisonActions.IncludechoolswithIncFinanceAllSchoolsAllEngland("145789");
+            DetailedComparisonActions.IncludechoolswithIncFinanceAllSchoolsAllEngland("145789", driver);
             string errorText = "Some schools don't have a complete set of financial data for this period";
-            Assert.IsTrue(Driver.driver.PageSource.Contains(errorText));
+            Assert.IsTrue(driver.PageSource.Contains(errorText));
         }
         [Test]
-        public static void ExcludeschoolswithIncFinanceMaintainedLaCode()
+       public void ExcludeschoolswithIncFinanceMaintainedLaCode()
         {
-            DetailedComparisonActions.ExcludeschoolswithIncFinanceMaintainedLaCode("142974");
+            DetailedComparisonActions.ExcludeschoolswithIncFinanceMaintainedLaCode("142974", driver);
             string errorText = "Some schools don't have a complete set of financial data for this period";
-            Assert.IsFalse(Driver.driver.PageSource.Contains(errorText));
+            Assert.IsFalse(driver.PageSource.Contains(errorText));
         }
         [Test]
 
-        public static void ExcludeschoolswithIncFinanceAcademiesLaCode()
+       public void ExcludeschoolswithIncFinanceAcademiesLaCode()
         {
-            DetailedComparisonActions.ExcludeschoolswithIncFinanceAcademiesLaCode("100140");
+            DetailedComparisonActions.ExcludeschoolswithIncFinanceAcademiesLaCode("100140", driver);
             string errorText = "Some schools don't have a complete set of financial data for this period";
-            Assert.IsFalse(Driver.driver.PageSource.Contains(errorText));
+            Assert.IsFalse(driver.PageSource.Contains(errorText));
         }
         [Test]
-        public static void ExcludeschoolswithIncFinanceAllSchoolsLaCode()
+       public void ExcludeschoolswithIncFinanceAllSchoolsLaCode()
         {
-            DetailedComparisonActions.ExcludeschoolswithIncFinanceAllSchoolsLaCode("100140","303");
+            DetailedComparisonActions.ExcludeschoolswithIncFinanceAllSchoolsLaCode("100140", "303", driver);
             string errorText = "Some schools don't have a complete set of financial data for this period";
-            Assert.IsFalse(Driver.driver.PageSource.Contains(errorText));
+            Assert.IsFalse(driver.PageSource.Contains(errorText));
         }
-        
+
         [Test]
         [Ignore("Need more data to replace current test school")]
-        public static void IncludeschoolswithIncFinanceMaintainedLaCode()
+       public void IncludeschoolswithIncFinanceMaintainedLaCode()
         {
-            DetailedComparisonActions.IncludeschoolswithIncFinanceMaintainedLaCode("142071", "204", "300", "333");
+            DetailedComparisonActions.IncludeschoolswithIncFinanceMaintainedLaCode("142071", "204", "300", "333", driver);
             //142071,2042238
 
             string errorText = "Some schools don't have a complete set of financial data for this period";
-            Assert.IsTrue(Driver.driver.PageSource.Contains(errorText));
+            Assert.IsTrue(driver.PageSource.Contains(errorText));
         }
         [Test]
-        public static void IncludeschoolswithIncFinanceAcademiesLaCode()
+       public void IncludeschoolswithIncFinanceAcademiesLaCode()
         {
-            DetailedComparisonActions.IncludeschoolswithIncFinanceAcademiesLaCode("145621", "879", "350","1030");
+            DetailedComparisonActions.IncludeschoolswithIncFinanceAcademiesLaCode("145621", "879", "350", "1030", driver);
             string errorText = "Some schools don't have a complete set of financial data for this period";
-            Assert.IsTrue(Driver.driver.PageSource.Contains(errorText));
+            Assert.IsTrue(driver.PageSource.Contains(errorText));
         }
         [Test]
-        public static void IncludechoolswithIncFinanceAllSchoolsLaCode()
+       public void IncludechoolswithIncFinanceAllSchoolsLaCode()
         {
-            DetailedComparisonActions.IncludechoolswithIncFinanceAllSchoolsLaCode("144407");
+            DetailedComparisonActions.IncludechoolswithIncFinanceAllSchoolsLaCode("144407", driver);
             //use schools 
             string errorText = "Some schools don't have a complete set of financial data for this period";
-            Assert.IsTrue(Driver.driver.PageSource.Contains(errorText));
+            Assert.IsTrue(driver.PageSource.Contains(errorText));
         }
         [Test]
-        public static void ExcludeschoolswithIncFinanceMaintainedLaName()
+       public void ExcludeschoolswithIncFinanceMaintainedLaName()
         {
-            DetailedComparisonActions.ExcludeschoolswithIncFinanceMaintainedLaName("100140");
+            DetailedComparisonActions.ExcludeschoolswithIncFinanceMaintainedLaName("100140", driver);
             string errorText = "Some schools don't have a complete set of financial data for this period";
-            Assert.IsFalse(Driver.driver.PageSource.Contains(errorText));
+            Assert.IsFalse(driver.PageSource.Contains(errorText));
         }
         [Test]
-        public static void ExcludeschoolswithIncFinanceAcademiesLaName()
+       public void ExcludeschoolswithIncFinanceAcademiesLaName()
         {
-            DetailedComparisonActions.ExcludeschoolswithIncFinanceAcademiesLaName("100140");
+            DetailedComparisonActions.ExcludeschoolswithIncFinanceAcademiesLaName("100140", driver);
             string errorText = "Some schools don't have a complete set of financial data for this period";
-            Assert.IsFalse(Driver.driver.PageSource.Contains(errorText));
+            Assert.IsFalse(driver.PageSource.Contains(errorText));
         }
         [Test]
-        public static void ExcludeschoolswithIncFinanceAllSchoolsLaName()
+       public void ExcludeschoolswithIncFinanceAllSchoolsLaName()
         {
-            DetailedComparisonActions.ExcludeschoolswithIncFinanceAcademiesLaName("100140");
+            DetailedComparisonActions.ExcludeschoolswithIncFinanceAcademiesLaName("100140", driver);
             string errorText = "Some schools don't have a complete set of financial data for this period";
-            Assert.IsFalse(Driver.driver.PageSource.Contains(errorText));
+            Assert.IsFalse(driver.PageSource.Contains(errorText));
         }
         [Test]
         [Ignore("need new test data")]
-        public static void IncludeschoolswithIncFinanceMaintainedLaName()
+       public void IncludeschoolswithIncFinanceMaintainedLaName()
         {
-            DetailedComparisonActions.IncludeschoolswithIncFinanceMaintainedLaName("142071", "Hackney", "300", "500");
+            DetailedComparisonActions.IncludeschoolswithIncFinanceMaintainedLaName("142071", "Hackney", "300", "500", driver);
             string errorText = "Some schools don't have a complete set of financial data for this period";
-            Assert.IsTrue(Driver.driver.PageSource.Contains(errorText));
+            Assert.IsTrue(driver.PageSource.Contains(errorText));
         }
         [Test]
-        public static void IncludeschoolswithIncFinanceAcademiesLaName()
+       public void IncludeschoolswithIncFinanceAcademiesLaName()
         {
-            DetailedComparisonActions.IncludeschoolswithIncFinanceAcademiesLaName("3035200", "Bexley", "200","509");
+            DetailedComparisonActions.IncludeschoolswithIncFinanceAcademiesLaName("3035200", "Bexley", "200", "509", driver);
             string errorText = "Some schools don't have a complete set of financial data for this period";
-            Assert.IsTrue(Driver.driver.PageSource.Contains(errorText));
+            Assert.IsTrue(driver.PageSource.Contains(errorText));
         }
         [Test]
-        public static void IncludechoolswithIncFinanceAllSchoolsLaName()
+       public void IncludechoolswithIncFinanceAllSchoolsLaName()
         {
-            DetailedComparisonActions.IncludechoolswithIncFinanceAllSchoolsLaName("144407", "Bradford", "20", "170");
+            DetailedComparisonActions.IncludechoolswithIncFinanceAllSchoolsLaName("144407", "Bradford", "20", "170", driver);
             string errorText = "Some schools don't have a complete set of financial data for this period";
-            Assert.IsTrue(Driver.driver.PageSource.Contains(errorText));
+            Assert.IsTrue(driver.PageSource.Contains(errorText));
         }
         [Test]
-        public static void Include16plusSchoolsInComparison()
+        [Ignore("")]
+       public void Include16plusSchoolsInComparison()
         {
             throw new NotImplementedException();
-  
+
         }
         [Test]
-        public static void VerifyShowSENcharacteristicsonbenchmarkpageforspecialschools()
+       public void VerifyShowSENcharacteristicsonbenchmarkpageforspecialschools()
         {
-            BenchMarkActions.createBenchmarkforSpecials("101487");
+            BenchMarkActions.createBenchmarkforSpecials("101487", driver);
 
         }
         [TearDown]
@@ -320,14 +328,14 @@
         {
             if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
             {
-                var screenshot = ((ITakesScreenshot)Driver.driver).GetScreenshot();
+                var screenshot = ((ITakesScreenshot)driver).GetScreenshot();
                 var testName = TestContext.CurrentContext.Test.FullName;
                 screenshot.SaveAsFile(@"C:\TEMP\" + testName + ".jpg");
-                //Driver.driver.Close();
-                Driver.driver.Quit();
+                
+                driver.Quit();
             }
-            //Driver.driver.Close();
-            Driver.driver.Quit();
+           
+            driver.Quit();
         }
     }
 }

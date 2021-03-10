@@ -114,7 +114,7 @@ namespace AutoFramework
                 var screenshot = ((ITakesScreenshot)driver).GetScreenshot();
                 var testName = TestContext.CurrentContext.Test.FullName;
                 screenshot.SaveAsFile(@"C:\Users\kwaku\OneDrive\Desktop\C#\AutoFramework\AutoFramework\Pages\screenshot" + testName + ".jpg");
-                //Driver.driver.Close();
+                driver.Close();
                 driver.Quit();
             }
             driver.Close();

@@ -97,7 +97,7 @@
         [Test]
         public void CompareTrusts()
         {
-            Actions.TrustComparison("Portswood Primary Academy Trust",driver);
+           TrustActions.ManualTrustComparison("Portswood Primary Academy Trust",driver);
         }
         [Test]
         public void VerifySchoolPhaseAndOverAllPhase()

@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 
 namespace SFB_Test_Automation.AutoFramework
 {
+    
     public static class DetailedComparisonActions
     {
         public static void  verifysearchnumbers(IWebDriver driver)
@@ -63,17 +64,17 @@ namespace SFB_Test_Automation.AutoFramework
             bestinclass.Continue.Click();
             DetailComparisonPage detailpage = new DetailComparisonPage(driver);
             detailpage.AllschoolsRadio.Click();
-            Thread.Sleep(3000);
+            Thread.Sleep(300);
             bestinclass.Continue.Click();
-            Thread.Sleep(3000);
+            Thread.Sleep(300);
             detailpage.AllOfEnglandRadio.Click();
-            Thread.Sleep(3000);
+            Thread.Sleep(300);
             bestinclass.Continue.Click();
             detailpage.General_Header.Click();
             detailpage.NumberOfPupilsCheckBox.Click();
             detailpage.MinNumberOfPupilsInputField.SendKeys("64");
             detailpage.MaxNumberOfPupilsInputBox.SendKeys("79");
-            Thread.Sleep(3000);
+            Thread.Sleep(300);
             detailpage.ViewBenchMarkCharts.Click();
         }
         public static void IncludeschoolswithIncFinanceMaintainedAllEngland(String urn, IWebDriver driver)

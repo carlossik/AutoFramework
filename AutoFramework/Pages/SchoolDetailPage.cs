@@ -100,7 +100,14 @@ namespace AutoFramework.Pages.PageElements
 
         [SeleniumExtras.PageObjects.FindsBy(How = How.XPath, Using = ".//a[contains(@href, '/trust?uid=')]")]
 
-        public IWebElement CurrentTrustLinkDisplayed { get; set; }
+        public IWebElement CurrentTrustLinkDisplayed { get; set; }  //"/trust?companyNo=7719620
+
+
+        [SeleniumExtras.PageObjects.FindsBy(How = How.XPath, Using = ".//a[contains(@href, '/trust?companyNo=')]")]
+
+        public IWebElement CurrentTrustLinkDisplayed2 { get; set; }
+
+
 
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector,Using = "dd.metadata-school-detail__dd:nth-child(6) > a:nth-child(1)")]
         public IWebElement LocalAuthorityLink { get; set; }
@@ -117,8 +124,46 @@ namespace AutoFramework.Pages.PageElements
         [SeleniumExtras.PageObjects.FindsBy(How = How.XPath,Using = "//a[contains(@href, '/trust?companyNo=')]")]
         public IWebElement previousTrustLink { get; set; }
 
-        //By.xpath("//*[text()='Academy trust']"));
+        [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector,Using = "dt.metadata-school-detail__dt:nth-child(31)")]
+        public IWebElement trustText { get; set; }
 
+        //By.xpath("//*[text()='Academy trust']"));
+        public bool  istrusttextDisplayed()
+        {
+            try
+            {
+                if (trustText.Text.Contains("Academy trust"))
+                {
+                    return true;
+                }
+            }
+            catch (OpenQA.Selenium.NoSuchElementException e) { }
+            return false;
+        }
+
+        public bool IsTrustLinkDisplayed()
+        {
+
+            try
+            {
+                //bool useduid = IntrustLink.Displayed;
+                //bool usedcompno = previousTrustLink.Displayed;
+                //bool result = useduid || usedcompno;
+                if ((IntrustLink.Displayed ^ previousTrustLink.Displayed))
+                {
+                    return true;
+                }
+                else 
+                {
+                    //Console.WriteLine("I am not sure why this is evaluating to false when it should be true?");
+                   return false;
+                }
+                
+            }
+            catch (OpenQA.Selenium.NoSuchElementException e) { }
+            Console.WriteLine("I am not sure why this is evaluating to false when it should be true?");
+            return false;
+        }
         public bool verifySADLink()
         {
 

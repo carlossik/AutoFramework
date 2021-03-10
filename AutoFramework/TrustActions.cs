@@ -52,7 +52,14 @@
             TrustComparisonPage trustComaprison = new TrustComparisonPage(driver);
             trustComaprison.Compare_withOtherTrusts.Click();
             Thread.Sleep(100);
-            trustComaprison.SelectCharacteristicsButton.Click();
+            //TrustComparisonPage trustComaprison = new TrustComparisonPage(driver);
+            Thread.Sleep(1000);
+          //  trustComaprison.Compare_withOtherTrusts.Click();
+            Thread.Sleep(500);
+            trustComaprison.SelectTrustsByCharacteristicsRadioButton.Click();
+            trustComaprison.TrustComparisonPageContinueButton.Click();
+            TrustCharacteristicsPage tcompare = new TrustCharacteristicsPage(driver);
+           // trustComaprison.SelectCharacteristicsButton.Click();
             trustComaprison.NumberOfSchoolscheckbox.Click();
             trustComaprison.MinNumOfScools.SendKeys("30");
             trustComaprison.MaxNumofschools.SendKeys("35");
@@ -80,8 +87,11 @@
             homepage.trustnameRadioButton.Click();
             homepage.TrustSearchInput.Click();
             homepage.TrustSearchInput.SendKeys(TrustNameSubmitted);
-            homepage.TrustSubmitButton.Click();
+            //homepage.TrustSearchInput.SendKeys(Keys.Enter);
             driver.FindElement(By.CssSelector(".bold-small")).Click();
+            homepage.TrustSubmitButton.Click();
+            
+             //strong[@class='bold-small']
             Thread.Sleep(100);
         }
         public static void TrustSearchWitNameUsingFirstSuggestedName(string TrustName, IWebDriver driver)
@@ -94,6 +104,7 @@
             homepage.TrustSearchInput.SendKeys(TrustName);
             homepage.FirstSelectionOption.Click();
             //driver.FindElement(By.CssSelector(".bold-small")).Click();
+            homepage.TrustSubmitButton.Click();
             Thread.Sleep(100);
         }
         public string   calculateNumberOfSchoolsInMat(IWebDriver driver)
@@ -116,10 +127,50 @@
             int numberOfschools = numberofschoolsin1819.Count;
             Console.WriteLine("These are the number of schools"+ numberOfschools.ToString());
             return numberOfschools.ToString();
+        }
 
-            
+        public static void ManualTrustComparison(String TrustName, IWebDriver driver)
+        {
+
+            TrustActions.TrustSearchWitNameUsingFirstSuggestedName(TrustName, driver);
+            TrustComparisonPage trustComaprison = new TrustComparisonPage(driver);
+            Thread.Sleep(1000);
+            trustComaprison.Compare_withOtherTrusts.Click();
+            Thread.Sleep(500);
+            trustComaprison.ManuallyAddTrustsRadio.Click();
+            trustComaprison.TrustComparisonPageContinueButton.Click();
+            //trustComaprison.EnterTrustForComparisonOption.Click();
+            Thread.Sleep(500);
+            trustComaprison.EnterTrustforCompareNameField.SendKeys("Ark Schools");
+            // trustComaprison.EnterTrustforCompareNameField.SendKeys(Keys.Enter);
+            driver.FindElement(By.CssSelector(".tt-suggestion > a:nth-child(1)")).Click();//select the first suggested 
+            Thread.Sleep(500);
+            trustComaprison.ViewBenchMarkingCharts.Click();
+            Thread.Sleep(500);
+        }
+
+        public static void SelectCharacteristicsToFindTrusts(String TrustName, IWebDriver driver)
+        {
+            TrustActions.TrustSearchWitNameUsingFirstSuggestedName(TrustName, driver);
+            TrustComparisonPage trustComaprison = new TrustComparisonPage(driver);
+            Thread.Sleep(1000);
+            trustComaprison.Compare_withOtherTrusts.Click();
+            Thread.Sleep(500);
+            trustComaprison.SelectTrustsByCharacteristicsRadioButton.Click();
+            trustComaprison.TrustComparisonPageContinueButton.Click();
+            TrustCharacteristicsPage tcompare = new TrustCharacteristicsPage(driver);
+            tcompare.NumberOfPupilsCheckBox.Click();
+            tcompare.NumberOfPupilsFromtextBox.SendKeys("5000");
+            tcompare.NumberOfPupilsTotextbox.SendKeys("5500");
+            Thread.Sleep(5000);
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5000);
+            tcompare.ViewBenchMarkChartsButton.Click();
+            Thread.Sleep(5000);
+
+
 
         }
+
 
         public String numberberofcharacteristicsDisplayed(IWebDriver driver)
         {

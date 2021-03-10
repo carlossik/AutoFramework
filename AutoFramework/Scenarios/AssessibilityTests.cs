@@ -15,6 +15,7 @@ namespace SFB_Test_Automation.AutoFramework.Scenarios
     using Selenium.Axe;
     using System.IO;
     using global::AutoFramework;
+    using global::AutoFramework.Pages;
 
     [Parallelizable]
 
@@ -41,7 +42,7 @@ namespace SFB_Test_Automation.AutoFramework.Scenarios
         public void AccessibilityTestHomePage()
         {
             Selenium.Axe.AxeResult axeResult = new Selenium.Axe.AxeBuilder(driver).Analyze();
-
+            Console.WriteLine(axeResult.Violations);
             Assert.IsEmpty(axeResult.Violations);
         }
 
@@ -96,6 +97,14 @@ namespace SFB_Test_Automation.AutoFramework.Scenarios
             var testName = TestContext.CurrentContext.Test.FullName;
             string path = Path.Combine(@"C:\TEMP\", "AxeReport.html");
             driver.CreateAxeHtmlReport(axeResult,path);
+        }
+
+        [Test]
+        public void verifyaccessibilityLink()
+        {
+            HomePage home = new HomePage(driver);
+            Assert.IsTrue(home.AccessibilityLink.Displayed);
+
         }
 
     

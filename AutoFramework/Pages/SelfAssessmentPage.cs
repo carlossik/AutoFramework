@@ -103,6 +103,13 @@ namespace SFB_Test_Automation.AutoFramework.Pages
 
         public String Expected_DashboardYear_Help_Text = "By choosing a different year banding figures are adjusted to align to that year. An 8.6% uplift has been applied to Teaching staff and average salary (including pensions) for 2019/20 and an 11.9% uplift on 2020/21 and future years.";
 
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "radio-1")]
+        public IWebElement download_pdf_radio { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "radio-2")]
+        public IWebElement download_ppt_radio { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = ".next-button")]
+        public IWebElement download_Options_Next_Button { get; set; }
+
         ////a[contains(@title,'List of Users')]
         //#charTable > tbody:nth-child(3) > tr:nth-child(5) > th:nth-child(1) //Average Class size
         //#charTable > tbody:nth-child(3) > tr:nth-child(7) > th:nth-child(1)
@@ -144,25 +151,35 @@ namespace SFB_Test_Automation.AutoFramework.Pages
             return false;
 
         }
-        public bool IsFileInFolder()
+        public bool IsFileInFolder(string filetype)
         {
 
             try
             {
-                string downloadpdfile = @"C:\AutomationDownloads\Self-assessment-dashboard.pdf";
-                if (File.Exists(downloadpdfile))
+                if (filetype == "pdf")
                 {
-                    return true;
+                    string pdfdownloadpdfile = @"C:\AutomationDownloads\Self-assessment-dashboard.pdf";
+                    if (File.Exists(pdfdownloadpdfile))
+                    {
+                        return true;
+                    }
+                    else return false;
+                }
+                else if (filetype == "ppt")
+                {
+                    string pptdownloadpptfile = @"C:\AutomationDownloads\Self-assessment-dashboard.pptx";
+                    if (File.Exists(pptdownloadpptfile))
+                    {
+                        return true;
+                    }
+                    else return false;
                 }
                 else;
-                Console.WriteLine(File.Exists(downloadpdfile) ? "File exists." : "File does not exist.");
+                Console.WriteLine(File.Exists(filetype) ? "File exists." : "File does not exist.");
                 return false;
 
-                
-               
             }
             catch (OpenQA.Selenium.NoSuchElementException e) { }
-
             return false;
 
         }

@@ -86,10 +86,11 @@ namespace SFB_Test_Automation.AutoFramework
             driver.FindElement(By.CssSelector("div > cr-button.cancel-button")).Click();
         }
 
-        public static void DownloadSad(IWebDriver driver)
+        public static void DownloadSad(string fileformat, IWebDriver driver)
         {
             SelfAssessmentPage assessmentpage = new SelfAssessmentPage(driver);
             assessmentpage.DownloadPage.Click();
+            Actions.downloadFile(fileformat,driver);
             Thread.Sleep(20000);
         }
 
@@ -155,6 +156,17 @@ namespace SFB_Test_Automation.AutoFramework
             Thread.Sleep(200);
             FillSADForm(driver);
             Thread.Sleep(2000);
+
+        }
+
+        public static void customdashboardPage(IWebDriver driver)
+        {
+            SelfAssessmentPage assessmentpage = new SelfAssessmentPage(driver);
+            assessmentpage.SideBySideLink.Click();
+            SadEditPage editpage = new SadEditPage(driver);
+            editpage.YearOfScenarioField.Click();
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+            Thread.Sleep(300);
 
         }
         public static void cancelsidebysidecreation(String LAestab, IWebDriver driver)
@@ -334,7 +346,7 @@ namespace SFB_Test_Automation.AutoFramework
             popupName.Click();
             Thread.Sleep(2000);
         }
-
+        
 
     }
    

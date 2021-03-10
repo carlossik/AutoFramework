@@ -7,7 +7,8 @@ using AutoFramework.Pages.PageElements;
 using NUnit.Framework;
 using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
-using SFB_Test_Automation.AutoFramework;
+    using OpenQA.Selenium.Support.UI;
+    using SFB_Test_Automation.AutoFramework;
 using SFB_Test_Automation.AutoFramework.Pages;
 using System;
 using System.Collections.Generic;
@@ -209,14 +210,28 @@ using System.Text;
         }
 
         [Test]
+        public void TestDownloadSAD1() //Run this test with Chrome browser for now
+        {
+            //String[] filetypes = new string[] {"pdf","ppt"};
+            //foreach (String filetype in filetypes) {
+                Config.Credentials.Deleteallfiles(Config.downloadDirectory); // removes any files from previous test runs in the download folder
+                SelfAssessmentActions.createSideBySideScenario("2032028", driver);
+                SelfAssessmentActions.DownloadSad("pdf", driver);
+                SelfAssessmentPage assessmentpage = new SelfAssessmentPage(driver);
+                Assert.IsTrue(assessmentpage.IsFileInFolder("pdf"));
+            //}
+        }
+
+        [Test]
         public void TestDownloadSAD() //Run this test with Chrome browser for now
         {
-            Config.Credentials.deletefiles(@"C:\AutomationDownloads\Self-assessment-dashboard.pdf"); // removes any files from previous test runs in the download folder
-            SelfAssessmentActions.createSideBySideScenario("2032028",driver);
-            SelfAssessmentActions.DownloadSad(driver);
+            Config.Credentials.Deleteallfiles(Config.downloadDirectory); // removes any files from previous test runs in the download folder
+            SelfAssessmentActions.createSideBySideScenario("2032028", driver);
+            SelfAssessmentActions.DownloadSad("ppt", driver);
             SelfAssessmentPage assessmentpage = new SelfAssessmentPage(driver);
-            Assert.IsTrue(assessmentpage.IsFileInFolder());
+            Assert.IsTrue(assessmentpage.IsFileInFolder("ppt"));
         }
+
         //[Test]
         public void TestprintLayoutSAD()
         {
@@ -450,21 +465,7 @@ The teacher contact ratio will always be less than 1.0");
             
 
         }
-      //[Test]
-      //  public void Add_Data_Premises_costs()
-      //  {
-
-      //  }
-      //  [Test]
-      //  public void Add_Data_Teaching_resources()
-      //  {
-
-      //  }
-      //  [Test]
-      //  public void Add_Data_Energy()
-      //  {
-
-      //  }
+     
         [Test]
         [Ignore ("Ignore this test")]
         public void Add_Data_Average_teacher_cost()
@@ -513,8 +514,15 @@ The teacher contact ratio will always be less than 1.0");
         public void SAdYears()
         {
 
+            SelfAssessmentActions.navigateToSadPage("100000", driver);
+            SelfAssessmentActions.customdashboardPage(driver);
+            SelectElement dropDown = new SelectElement(driver.FindElement(By.Id("scenario-term")));
+            List<IWebElement> elementCount = dropDown.Options.ToList();
             
+            Console.WriteLine(elementCount.Count());
+            Assert.IsTrue(elementCount.Count()== 5);
             
+
 
 
         }

@@ -94,8 +94,19 @@ namespace AutoFramework.Pages.PageElements
 
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "js-modal-close")]
         public IWebElement closeLinkCopiedPopUp { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "radio-1")]
+        public IWebElement download_pdf_radio { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "radio-2")]
+        public IWebElement download_ppt_radio { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = ".next-button")]
+        public IWebElement download_Options_Next_Button { get; set; }
+        //.next-button
 
-        
+
+
+
+
+
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "button.link-button:nth-child(5)")]
          public IWebElement backToViewCharacteristicsUsed { get; set; }
         

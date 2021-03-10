@@ -93,7 +93,7 @@
         [Test]
         public void Trustcomparison()
         {
-            Actions.TrustComparison("Harvey Academy",driver);
+            TrustActions.ManualTrustComparison("Harvey Academy",driver);
             TrustBenchmarkChartsPage trustcharts = new TrustBenchmarkChartsPage(driver);
             Assert.IsTrue(trustcharts.BalanceTab.Displayed);
             Assert.IsTrue(trustcharts.ExpenditureTab.Displayed);
@@ -332,6 +332,12 @@
         }
 
         [Test]
+        public void CompareTrustViaCharacteristics()
+        {
+            TrustActions.SelectCharacteristicsToFindTrusts(" 5 Dimensions Trust", driver);
+        }
+
+        [Test]
         public void SearchForTrustWithNameUsingFirstSuggested()
         {
             TrustActions.TrustSearchWitNameUsingFirstSuggestedName("5 Dimensions Trust",driver);
@@ -342,17 +348,17 @@
             String CompaniesHouseNumber = driver.FindElement(By.CssSelector(".ml-05")).Text;
             Console.WriteLine(CompaniesHouseNumber);
             Console.WriteLine(driver.Url);
-            Console.WriteLine((Config.currentTestEnv + "/trust/index?companyNo=" + CompaniesHouseNumber));
+            Console.WriteLine(Config.currentTestEnv + "Trust?companyNo=" + CompaniesHouseNumber);
             Assert.IsTrue(driver.FindElement(By.CssSelector(".ml-05")).Displayed);
-            Assert.IsTrue((driver.Url) == (Config.currentTestEnv +"trust/index?companyNo="+CompaniesHouseNumber));
-           
+            Assert.IsTrue((driver.Url) == (Config.currentTestEnv + "Trust?companyNo=" + CompaniesHouseNumber));
 
+        //https://as-t1stg-sfb.azurewebsites.net/Trust?companyNo=
 
         }
         [Test]
         public void SelectSchoolsToCompare()
         {
-            Actions.TrustComparison("5 Dimensions Trust",driver);
+            TrustActions.ManualTrustComparison("5 Dimensions Trust",driver);
             //TrustActions.TrustSearchWitNameUsingFirstSuggestedName("5 Dimensions Trust");
             TrustHomePage trusthome = new TrustHomePage(driver);
         }
@@ -393,6 +399,24 @@
             SchoolDetailPage detailpage = new SchoolDetailPage(driver);
             Assert.IsTrue(detailpage.FinanceDropdown_Trust_Only.Displayed);
         }
+        [Test]
+        public void verifyTrustlinkWithCompanyNumber()
+        {
+            Actions.schoolSearchwithLaestab("137353", driver);
+            SchoolDetailPage detailpage = new SchoolDetailPage(driver);
+            Assert.IsTrue((detailpage.istrusttextDisplayed()));
+            Assert.IsTrue(detailpage.MatFinanceToggle.Displayed);
+        }
+
+        [Test]
+        public void verifyTrustlinkWithUID()
+        {
+            Actions.schoolSearchwithLaestab("3032073", driver);
+            SchoolDetailPage detailpage = new SchoolDetailPage(driver);
+            Assert.IsTrue(detailpage.istrusttextDisplayed());
+           // Assert.IsTrue(detailpage.MatFinanceToggle.Displayed);
+        }
+
         [TearDown]
         public void TeardownAfterEachTest()
         {

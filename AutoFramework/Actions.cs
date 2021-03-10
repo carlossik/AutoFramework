@@ -21,7 +21,18 @@
     {
         public static IWebDriver InitializeDriver(int second)
         {
-            IWebDriver driver = new ChromeDriver();
+            //("--use-fake-ui-for-media-stream")
+
+            var ChromeOptions = new ChromeOptions();
+            
+            ChromeOptions.AddArgument("profile.default_content_setting_values.notifications = 1");
+            //ChromeOptions.Add_experimental_option('prefs',{ 'profile.default_content_setting_values.notifications':1})
+            ChromeOptions.AddArgument("--use-fake-ui-for-media-stream");
+            ChromeOptions.AddArgument("--disable-user-media-security=true");
+            var downloadDirectory = (@"C:\AutomationDownloads");
+            ChromeOptions.AddUserProfilePreference("download.default_directory", downloadDirectory);
+            ChromeOptions.AddUserProfilePreference("download.prompt_for_download", false);
+            IWebDriver driver = new ChromeDriver(ChromeOptions);
             driver.Navigate().GoToUrl(Config.currentTestEnv);
             TimeSpan seconds = TimeSpan.FromSeconds(second);
             driver.Manage().Timeouts().ImplicitWait = seconds;
@@ -548,7 +559,7 @@
             homepage.SearchByLocationField.Click();
             homepage.SearchByLocationField.SendKeys(postcode);
             homepage.LocationSearchSubmitButton.Click();
-            //driver.FindElement(By.CssSelector("li.document:nth-child(1) > a:nth-child(1)")).Click();
+            driver.FindElement(By.CssSelector("li.document:nth-child(1) > a:nth-child(1)")).Click();
             Thread.Sleep(200);
             FiltersPage filters = new FiltersPage(driver);
             Thread.Sleep(200);
@@ -640,8 +651,9 @@
             homepage.TrustTab.Click();
             homepage.TrustLocationButton.Click();
             homepage.TrustLocationField.SendKeys(Config.Credentials.PostCode.Postcode);
-            homepage.TrustLocationSubmit.Click();
-            driver.FindElement(By.CssSelector("li.document:nth-child(1) > a:nth-child(1)")).Click();
+            homepage.TrustLocationField.SendKeys(Keys.Enter);
+            //homepage.TrustLocationSubmit.Click();
+           driver.FindElement(By.CssSelector("li.document:nth-child(1) > a:nth-child(1)")).Click();
             Thread.Sleep(10000);
         }
 
@@ -707,6 +719,28 @@
             Thread.Sleep(2000);
 
         }
+        public static void downloadFile(string fileType,IWebDriver driver)
+        {
+            driver.SwitchTo().ActiveElement();
+            if (fileType == "pdf")
+            {
+                driver.SwitchTo().ActiveElement();
+                
+                IWebElement download_pdf_radio = driver.FindElement(By.Id("pdf-format"));
+                IWebElement downloadButton = driver.FindElement(By.XPath("/html/body/modal-container/div/div/div[2]/div/button"));
+                download_pdf_radio.Click();
+                downloadButton.Click();
+            }
+            else if (fileType == "ppt")
+            {
+                driver.SwitchTo().ActiveElement();
+                IWebElement download_ppt_radio = driver.FindElement(By.Id("ppt-format"));
+                IWebElement downloadbutton = driver.FindElement(By.XPath("/html/body/modal-container/div/div/div[2]/div/button"));
+                download_ppt_radio.Click();
+               downloadbutton.Click();
+            }
+        }
+
         public static void downloadcsv(IWebDriver driver)
         {
             OnclickReportingTest(driver);
@@ -749,23 +783,38 @@
 
         }
 
-        public static void TrustComparison(String TrustName,IWebDriver driver)
-        {
+        //public static void ManualTrustComparison(String TrustName,IWebDriver driver)
+        //{
             
-            TrustActions.TrustSearchWitNameUsingFirstSuggestedName(TrustName,driver);
-            TrustComparisonPage trustComaprison = new TrustComparisonPage(driver);
-            Thread.Sleep(1000);
-            trustComaprison.Compare_withOtherTrusts.Click();
-            Thread.Sleep(500);
-            trustComaprison.EnterTrustForComparisonOption.Click();
-            Thread.Sleep(500);
-            trustComaprison.EnterTrustforCompareNameField.SendKeys("Ark Schools");
-           // trustComaprison.EnterTrustforCompareNameField.SendKeys(Keys.Enter);
-            driver.FindElement(By.CssSelector(".tt-suggestion > a:nth-child(1)")).Click();//select the first suggested 
-            Thread.Sleep(500);
-            trustComaprison.ViewBenchMarkingCharts.Click();
-            Thread.Sleep(500);
-        }
+        //    TrustActions.TrustSearchWitNameUsingFirstSuggestedName(TrustName,driver);
+        //    TrustComparisonPage trustComaprison = new TrustComparisonPage(driver);
+        //    Thread.Sleep(1000);
+        //    trustComaprison.Compare_withOtherTrusts.Click();
+        //    Thread.Sleep(500);
+        //    trustComaprison.ManuallyAddTrustsRadio.Click();
+        //    trustComaprison.TrustComparisonPageContinueButton.Click();
+        //    //trustComaprison.EnterTrustForComparisonOption.Click();
+        //    Thread.Sleep(500);
+        //    trustComaprison.EnterTrustforCompareNameField.SendKeys("Ark Schools");
+        //   // trustComaprison.EnterTrustforCompareNameField.SendKeys(Keys.Enter);
+        //    driver.FindElement(By.CssSelector(".tt-suggestion > a:nth-child(1)")).Click();//select the first suggested 
+        //    Thread.Sleep(500);
+        //    trustComaprison.ViewBenchMarkingCharts.Click();
+        //    Thread.Sleep(500);
+        //}
+
+        //public static void SelectCharacteristicsToFindTrusts(String TrustName,IWebDriver driver)
+        //{
+        //    TrustActions.TrustSearchWitNameUsingFirstSuggestedName(TrustName, driver);
+        //    TrustComparisonPage trustComaprison = new TrustComparisonPage(driver);
+        //    Thread.Sleep(1000);
+        //    trustComaprison.Compare_withOtherTrusts.Click();
+        //    Thread.Sleep(500);
+        //    trustComaprison.SelectTrustsByCharacteristicsRadioButton.Click();
+        //    trustComaprison.TrustComparisonPageContinueButton.Click();
+
+
+        //}
           
         public class CallingClass // This will have to be refactored in future when tests are stable
         {

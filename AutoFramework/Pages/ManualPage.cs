@@ -29,7 +29,23 @@ namespace SFB_Test_Automation.AutoFramework.Pages
 
         [FindsBy(How = How.CssSelector, Using = ".tt-suggestion")]
         public IWebElement FirstManualSuggestion { get; set; }
+        [FindsBy(How = How.Id,Using = "displayNew")]
+        public IWebElement AddAnotherSchoolLink { get; set; }
 
+        [FindsBy(How = How.XPath,Using = "//div[2]/button[@class='remove-school link-button font-small' and 1]")]
+        public IWebElement RemoveSchoolButton { get; set; }
+        [FindsBy(How = How.XPath, Using = "//div[1]/button[@class='remove-school link-button font-small' and 1]")]
+        public IWebElement RemoveSchoolButton2 { get; set; }
+
+        [FindsBy(How = How.Id,Using = "ExistingSchools")]
+        public IWebElement RemoveAll_SchoolButton { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//input[@id='NewSchoolName']")]
+        public IWebElement SecondSchoolAddField { get; set; }
+        [FindsBy(How = How.XPath, Using = "school_2")]
+        public IWebElement ThirdschoolAddField { get; set; }
+        [FindsBy(How = How.XPath, Using = "school_3")]
+        public IWebElement FourthSchoolAddField { get; set; }
 
 
     }

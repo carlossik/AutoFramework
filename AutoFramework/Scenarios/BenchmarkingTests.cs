@@ -52,14 +52,22 @@
 
         }
         [Test]
-        //[Ignore("Ignore a test")]
-        public void ManualBenchmarkViaLocation()
+        
+        public void ManualBenchmarkTest()
         {
-            BenchMarkActions.CreateManualBenchMarkViaLocation("100000",driver);
+            BenchMarkActions.CreateManualBenchMarkViaName("100000",driver);
             BenchMarkChartPage chartpage = new BenchMarkChartPage(driver);
 
             Assert.AreEqual(chartpage.PageTitle.Text, "Benchmarking charts");
         }
+        [Test]
+
+        public void RemoveSchool_From_ManualBenchmarkTest()
+        {
+            BenchMarkActions.removeSchoolFromManualList("100000", driver);
+            //BenchMarkChartPage chartpage = new BenchMarkChartPage(driver);
+        }
+
         [Test]
         public void ManualBenchmarkViaLACode()
         {

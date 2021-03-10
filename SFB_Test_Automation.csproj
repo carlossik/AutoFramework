@@ -295,6 +295,7 @@
     <Compile Include="AutoFramework\Pages\ManualPage.cs" />
     <Compile Include="AutoFramework\Pages\BenchmarkPageTabs.cs" />
     <Compile Include="AutoFramework\Pages\MyChartsPage.cs" />
+    <Compile Include="AutoFramework\Pages\NewComparisonPage.cs" />
     <Compile Include="AutoFramework\Pages\NoDefaultPage.cs" />
     <Compile Include="AutoFramework\Pages\PageElements\Helpers\Testhelpers.cs" />
     <Compile Include="AutoFramework\Pages\PageElements\Helpers\UrnHelper.cs" />
@@ -317,6 +318,7 @@
     <Compile Include="AutoFramework\Pages\SpecialElementsPage.cs" />
     <Compile Include="AutoFramework\Pages\ToolsToImproveEMPage.cs" />
     <Compile Include="AutoFramework\Pages\TrustBenchmarkChartsPage.cs" />
+    <Compile Include="AutoFramework\Pages\TrustCharacteristicsPage.cs" />
     <Compile Include="AutoFramework\Pages\TrustComparisonPage.cs" />
     <Compile Include="AutoFramework\Pages\TrustHomePage.cs" />
     <Compile Include="AutoFramework\Properties\AssemblyInfo.cs" />

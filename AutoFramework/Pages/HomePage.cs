@@ -46,7 +46,7 @@
         [FindsBy(How = How.CssSelector, Using = "#SearchByLaCodeNameFieldset > div:nth-child(3) > button")]
         public IWebElement LacodeSearchButton { get; set; }
 
-        [FindsBy(How = How.CssSelector, Using = "#SearchByTrustNameFieldset > button:nth-child(4)")]
+        [FindsBy(How = How.XPath, Using = "//div[@id='SearchByTrustNameFieldset']/button[@class='button search-button' and 1]")]
         public IWebElement TrustSubmitButton { get; set; }
 
         [FindsBy(How = How.CssSelector, Using = "#TrustSearchByTownFieldset > div:nth-child(3) > button")]
@@ -99,6 +99,8 @@
         [FindsBy(How = How.CssSelector, Using = ".view-benchmark-charts-wrapper > a:nth-child(1)")]
         public IWebElement ViewBenchMarkChartsButton { get; set; }
         
+        [FindsBy(How = How.XPath,Using = "//div[@class='footer-meta-inner']/ul[1]/li[3]/a[1]")]
+        public IWebElement AccessibilityLink { get; set; }
 
         public void ClickOnSearchButton()
         {

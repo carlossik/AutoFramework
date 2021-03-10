@@ -43,10 +43,48 @@
             
             Thread.Sleep(300);
 
+        }
 
+        public static void RemoveAllSchools(IWebDriver driver)
+        {
+           
+            String beforexpath = "//*[@id=\"ExistingSchools\"]/div[";
+            String afterxpath = "]/button";
+            for (int i = 1; i > 0; i++)
+            {
+                IWebElement RemoveButton = driver.FindElement(By.XPath(beforexpath + i + afterxpath));
+                RemoveButton.Click();
+
+
+            }
 
 
         }
+        public static void removeSchoolFromManualList(String urn, IWebDriver driver)
+        {
+            Actions.CallingClass.SearchViaSchoolurn(urn, driver);
+            SchoolDetailPage detailspage = new SchoolDetailPage(driver);
+            detailspage.CompareWithOtherSchools.Click();
+            BestInClass bestinclass = new BestInClass(driver);
+            bestinclass.ManualComaprisonButton.Click();
+            bestinclass.Continue.Click();
+            Thread.Sleep(200);
+            ManualPage manualaddition = new ManualPage(driver);
+            manualaddition.AddSchoolByNameRadio.Click();
+            manualaddition.ManualContinueButton.Click();
+            manualaddition.NewSchoolNameField.SendKeys("Plumcroft Primary School"); //+ OpenQA.Selenium.Keys.Enter);
+            Thread.Sleep(2000);
+            manualaddition.FirstManualSuggestion.Click();
+            manualaddition.AddAnotherSchoolLink.Click();
+            manualaddition.SecondSchoolAddField.SendKeys("Bannockburn Primary School");
+            manualaddition.FirstManualSuggestion.Click();
+            manualaddition.RemoveSchoolButton.Click();
+            Thread.Sleep(4000);
+            manualaddition.RemoveSchoolButton2.Click();
+            Thread.Sleep(400);
+            //need to refactor this to account for all selections in the future. Current architecture only allows for just two schools to be removed
+        }
+
         public static void CreateManualBenchMarkViaLocation(String urn, IWebDriver driver)
         {
             //Actions.GoHome();
@@ -195,10 +233,17 @@
         public static void PasteCopiedClipboardText(IWebDriver driver)
         {  
             string myURL = System.Windows.Forms.Clipboard.GetText(TextDataFormat.Text);
-           
+
+            ((IJavaScriptExecutor)driver).ExecuteScript("window.open();");
+            ((IJavaScriptExecutor)driver).ExecuteScript("window.open();");
+            driver.SwitchTo().Window("Untitled");
+
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(15);
+            driver.Navigate().GoToUrl(Config.currentTestEnv);
+
             ((IJavaScriptExecutor)driver).ExecuteScript("navigator.clipboard.readText().then(text => window.location.replace(text));");
             Console.WriteLine("This is the copied clipboard data"+myURL);
-            Thread.Sleep(500);
+            Thread.Sleep(5000000);
            
             
             Thread.Sleep(2000);

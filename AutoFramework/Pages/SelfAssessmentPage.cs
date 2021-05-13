@@ -109,6 +109,8 @@ namespace SFB_Test_Automation.AutoFramework.Pages
         public IWebElement download_ppt_radio { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = ".next-button")]
         public IWebElement download_Options_Next_Button { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath,Using = "//li[3]/a[@class='govuk-footer__link' and 1]")]
+        public IWebElement AccessibilityLink { get; set; }
 
         ////a[contains(@title,'List of Users')]
         //#charTable > tbody:nth-child(3) > tr:nth-child(5) > th:nth-child(1) //Average Class size
@@ -128,18 +130,23 @@ namespace SFB_Test_Automation.AutoFramework.Pages
                 String FinancialYear = driver.FindElement(By.CssSelector("div.charts-section__chart-container:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > span:nth-child(1)")).Text;
                 String FinancialYearFinal = Regex.Replace(FinancialYear, @"\s+","");
                 String Finalfinance = Regex.Replace(FinancialYearFinal, @"-","/");
-                String FinalFinanceFigure = Regex.Replace(Finalfinance,@" "," ");
+                String FinalFinanceFigure = Regex.Replace(Finalfinance,@" ","");
                 Console.WriteLine(Finalfinance);
-                detailspage.SADLink.Click();
+                detailspage.StartAComparison.Click();
+                TypeOfComparisonPage comparepage = new TypeOfComparisonPage(driver);
+                comparepage.SelfAssessMentDashboardButton.Click();
+                Actions.clearcookie(driver);
                 SelfAssessmentPage assessmentpage = new SelfAssessmentPage(driver);
                 Thread.Sleep(3000);
                 Actions.acceptCookie(driver);
                 String SadFinancialYearDisplayed = driver.FindElement(By.Id("scenarioYear")).Text;
                 Console.WriteLine("This is the raw Financial Year on SAD "+ SadFinancialYearDisplayed);
                 String SdFinalFinance = Regex.Replace(SadFinancialYearDisplayed,@"Dashboard year","");
-                Console.WriteLine("This is first of what we display"+SdFinalFinance);
+                Console.WriteLine("This is first of what we display"+""+SdFinalFinance);
                 Console.WriteLine("This is second of what we display"+Finalfinance);
-                Assert.AreEqual(SdFinalFinance, FinalFinanceFigure);
+               
+                Assert.AreEqual(SdFinalFinance,FinalFinanceFigure);
+                //Assert.AreEqual()
                 
             }
 

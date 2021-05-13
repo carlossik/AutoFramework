@@ -17,9 +17,9 @@ namespace SFB_Test_Automation.AutoFramework.Pages
         }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".heading-xlarge")]
         public IWebElement TrustName { get; set; }
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//*[contains(., 'Compare with other trusts')]")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//a[@class='button start-button hide-in-print']")]
         public IWebElement CompareWithOtherTrustsButton  {get; set;}
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".ml-05")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//dd[1]")]
         public IWebElement CompaniesHouseNumber  { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "a.trust-ext-link:nth-child(1)")]
         public IWebElement DataFromOtherServicesMat_Link  {get; set;}

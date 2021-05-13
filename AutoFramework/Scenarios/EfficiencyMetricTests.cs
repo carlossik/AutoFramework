@@ -14,6 +14,7 @@ namespace AutoFramework
     using AutoFramework.Pages.PageElements;
     using SFB_Test_Automation.AutoFramework;
     using System.Threading;
+    using System.Collections.Generic;
 
     public class EfficiencyMetricTests
     {
@@ -36,7 +37,9 @@ namespace AutoFramework
             Actions.schoolSearchwithLaestab("143085",driver);
             
             SchoolDetailPage DetailPage = new SchoolDetailPage(driver);
-            Assert.IsFalse(DetailPage.EfficiencyMetricLink.Displayed);
+            DetailPage.StartAComparison.Click();
+            TypeOfComparisonPage comparepage = new TypeOfComparisonPage(driver);
+            Assert.IsFalse(comparepage.EfficiencyMetrictButton.Displayed);
 
 
         }
@@ -47,7 +50,9 @@ namespace AutoFramework
             Actions.schoolSearchwithLaestab("3037004",driver);
 
             SchoolDetailPage DetailPage = new SchoolDetailPage(driver);
-            Assert.IsFalse(DetailPage.EfficiencyMetricLink.Displayed);
+            DetailPage.StartAComparison.Click();
+            TypeOfComparisonPage comparepage = new TypeOfComparisonPage(driver);
+            Assert.IsFalse(comparepage.EfficiencyMetrictButton.Displayed);
           
         }
         [Test]
@@ -56,7 +61,9 @@ namespace AutoFramework
             Actions.schoolSearchwithLaestab("2034717",driver);
 
             SchoolDetailPage DetailPage = new SchoolDetailPage(driver);
-            Assert.IsFalse(DetailPage.EfficiencyMetricLink.Displayed);
+            DetailPage.StartAComparison.Click();
+            TypeOfComparisonPage compare = new TypeOfComparisonPage(driver);
+            Assert.IsFalse(compare.EfficiencyMetrictButton.Displayed);
             //2034717
 
         }
@@ -67,7 +74,9 @@ namespace AutoFramework
             Actions.schoolSearchwithLaestab("2032471",driver);
            
             SchoolDetailPage DetailPage = new SchoolDetailPage(driver);
-            Assert.IsTrue(DetailPage.EfficiencyMetricLink.Displayed);
+            DetailPage.StartAComparison.Click();
+            TypeOfComparisonPage compare = new TypeOfComparisonPage(driver);
+            Assert.IsTrue(compare.EfficiencyMetrictButton.Displayed);
         }
         [Test]
         public void Verify_Items_on_EMpage()
@@ -83,6 +92,14 @@ namespace AutoFramework
             Assert.IsTrue(MetricPage.Contact_Details_Of_Schools.Displayed);
             Assert.IsTrue(MetricPage.How_Efficiency_Is_Calculated.Displayed);
         }
+
+        [Test]
+        public void verifyAllSchooLinksWork()
+        {
+            EfficiencyMetricActions.GotoSchholEfficiencyMetric("100000", driver);
+            EfficiencyMetricActions.clickonallLinks(driver);
+        }
+        
 
         [Test]
         public void Verify_School_Rank()
@@ -107,7 +124,7 @@ namespace AutoFramework
         public void Verify_school_contact_details()
         {
             EfficiencyMetricActions.ListSchoolDetails("100000",driver);
-            Assert.IsTrue(driver.Url == "https://as-t1stg-sfb-em.azurewebsites.net/efficiency-metric/contact-details/100000");
+            Assert.AreEqual(driver.Url , Config.currentTestEnv+"efficiency-metric/contact-details/100000");
         }
 
         [Test]
@@ -153,7 +170,20 @@ namespace AutoFramework
 
 
         }
-
+        [Test]
+        public void validateFSM( )
+        {
+            EfficiencyMetricActions.GotoSchholEfficiencyMetric("111286", driver);
+            EfficiencyMetricPage metricPage = new EfficiencyMetricPage(driver);
+            IWebElement defaultschool = driver.FindElement(By.XPath("//table[@id='emTableDesktop']/tbody[@class='govuk-table__body' and 49]/tr[@class='govuk-table__row table-row--default-school' and 1]/td[@class='govuk-table__cell em-table-name-cell' and 2]/a[@class='govuk-link table-cell-highlight' and 1]"));
+            Assert.IsTrue(defaultschool.Displayed);
+            IWebElement fsmSen = driver.FindElement(By.CssSelector("#emTableDesktop > tbody:nth-child(17) > tr:nth-child(1) > td:nth-child(4)"));
+            Console.WriteLine(fsmSen.Text);
+            Assert.AreEqual("34.7%", fsmSen.Text);
+            IWebElement Sen = driver.FindElement(By.CssSelector("#emTableDesktop > tbody:nth-child(17) > tr:nth-child(1) > td:nth-child(5)"));
+            Console.WriteLine(Sen.Text);
+            Assert.AreEqual("5.0%", Sen.Text);
+        }
 
         [Test]
         public void Verify_how_EfficiencyMetricCalculation()
@@ -165,7 +195,6 @@ namespace AutoFramework
             Assert.IsTrue(driver.FindElement(By.CssSelector(".govuk-heading-xl")).Text == "How the efficiency metric is calculated");
             Assert.IsTrue(driver.FindElement(By.CssSelector(".govuk-back-link")).Displayed);
 
-
         }
 
 
@@ -175,7 +204,6 @@ namespace AutoFramework
 
             EfficiencyMetricActions.createBenchMarkForEMVia30percent("2032471",driver);
             //Asserts to follow
-
 
         }
         [Test]
@@ -197,10 +225,10 @@ namespace AutoFramework
                 var screenshot = ((ITakesScreenshot)driver).GetScreenshot();
                 var testName = TestContext.CurrentContext.Test.FullName;
                 screenshot.SaveAsFile(@"C:\TEMP\" + testName + ".jpg");
-                //driver.Close();
+                driver.Close();
                 driver.Quit();
             }
-            //driver.Close();
+            driver.Close();
             driver.Quit();
         }
     }

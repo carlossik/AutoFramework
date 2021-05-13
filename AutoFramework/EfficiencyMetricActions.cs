@@ -22,7 +22,10 @@ namespace SFB_Test_Automation.AutoFramework
             Actions.schoolSearchwithLaestab(urn,driver);
             Thread.Sleep(2000);
             SchoolDetailPage detailspage = new SchoolDetailPage(driver);
-            detailspage.EfficiencyMetricLink.Click();
+            detailspage.StartAComparison.Click();
+            TypeOfComparisonPage comparisontype = new TypeOfComparisonPage(driver);
+            comparisontype.EfficiencyMetrictButton.Click();
+            //detailspage.EfficiencyMetricLink.Click();
             Thread.Sleep(2000);
             Actions.acceptCookie(driver);
             Thread.Sleep(2000);
@@ -124,6 +127,26 @@ namespace SFB_Test_Automation.AutoFramework
             ToolsToImproveEMPage emtoolspage = new ToolsToImproveEMPage(driver);
             emtoolspage.UseFinancial_PlanningCheckList_Link.Click();
             Thread.Sleep(30000);
+        }
+        public static void clickonallLinks(IWebDriver driver)
+        {
+           
+        IList<IWebElement> EMschools = driver.FindElements(By.XPath("//a[contains(@href, '/school/detail?urn=')]"));
+            foreach (IWebElement element in EMschools)
+            {
+                try
+
+                {
+                    element.Click();
+                    Thread.Sleep(1000);
+                    driver.Navigate().Back();
+                    driver.Navigate().Refresh();
+                    Thread.Sleep(1000);
+                    Console.WriteLine(element.Text);
+
+                }
+                catch (StaleElementReferenceException) { continue; }
+            }
         }
 
         public static void TestEMToolLinks_Top10FinancialPlanningChecks(String LAESTAB,IWebDriver driver)

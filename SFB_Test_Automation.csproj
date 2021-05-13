@@ -277,6 +277,7 @@
     <Compile Include="AutoFramework\BrowserToRunWith.cs" />
     <Compile Include="AutoFramework\DetailedComparisonActions.cs" />
     <Compile Include="AutoFramework\EfficiencyMetricActions.cs" />
+    <Compile Include="AutoFramework\FederatedActions.cs" />
     <Compile Include="AutoFramework\FilterActions.cs" />
     <Compile Include="AutoFramework\MyChartActions.cs" />
     <Compile Include="AutoFramework\NoDefaultSchoolActions.cs" />
@@ -295,7 +296,7 @@
     <Compile Include="AutoFramework\Pages\ManualPage.cs" />
     <Compile Include="AutoFramework\Pages\BenchmarkPageTabs.cs" />
     <Compile Include="AutoFramework\Pages\MyChartsPage.cs" />
-    <Compile Include="AutoFramework\Pages\NewComparisonPage.cs" />
+    <Compile Include="AutoFramework\Pages\WhatTypeOfComparisonPage.cs" />
     <Compile Include="AutoFramework\Pages\NoDefaultPage.cs" />
     <Compile Include="AutoFramework\Pages\PageElements\Helpers\Testhelpers.cs" />
     <Compile Include="AutoFramework\Pages\PageElements\Helpers\UrnHelper.cs" />
@@ -329,6 +330,7 @@
     <Compile Include="AutoFramework\Scenarios\ComparisonwithNoDefaultSchoolTests.cs" />
     <Compile Include="AutoFramework\Scenarios\EfficiencyMetricTests.cs" />
     <Compile Include="AutoFramework\Scenarios\ErrorMessages.cs" />
+    <Compile Include="AutoFramework\Scenarios\FederationTests.cs" />
     <Compile Include="AutoFramework\Scenarios\FiltersTest.cs" />
     <Compile Include="AutoFramework\Scenarios\MyChartTests.cs" />
     <Compile Include="AutoFramework\Scenarios\ReportsCreator.cs" />

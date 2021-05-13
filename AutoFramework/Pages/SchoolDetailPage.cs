@@ -22,8 +22,9 @@ namespace AutoFramework.Pages.PageElements
             SeleniumExtras.PageObjects.PageFactory.InitElements(driver, this);
         }
 
-
-
+        //a.button:nth-child(3)
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "a.button:nth-child(3)")]
+        public IWebElement StartAComparison { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "#benchmarkBasket > div > div > div")]
         [SeleniumExtras.PageObjects.CacheLookup]
         public IWebElement BenchmarkBasket { get; set; }
@@ -35,7 +36,7 @@ namespace AutoFramework.Pages.PageElements
         public IWebElement SetasDefaultSchool { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".compare-buttons-panel__button--compare")]
         public IWebElement CompareWithOtherSchools { get; set; }
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = " a.add-remove-js:nth-child(3)")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = " button.pl-0:nth-child(2) > div:nth-child(2) > span:nth-child(1)")]
         public IWebElement AddToBenchMarkBasket { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector,Using = "#\\31 44406desktop > button:nth-child(2)")]
         public IWebElement FirstSearchItem { get; set; }
@@ -92,7 +93,12 @@ namespace AutoFramework.Pages.PageElements
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//*[text()=\"Self-assessment dashboard\"]")]
         public IWebElement SADLink { get; set; }
         ///html/body/div/div[3]/div[7]/main/div[1]/div[2]/aside/ul/li[2]/a
+        [SeleniumExtras.PageObjects.FindsBy(How = How.XPath,Using = "//div[@class='combined-warnings']/p[1]")]
+        public IWebElement FederationWithoutFinance { get; set; }
 
+        [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = "dd.metadata-school-detail__dd:nth-child(32) > a:nth-child(1)")]
+        public IWebElement federationsLink { get; set; }
+        //dd.metadata-school-detail__dd:nth-child(32) > a:nth-child(1)
 
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = ".exp-total")]
 
@@ -126,6 +132,10 @@ namespace AutoFramework.Pages.PageElements
 
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector,Using = "dt.metadata-school-detail__dt:nth-child(31)")]
         public IWebElement trustText { get; set; }
+
+
+        [SeleniumExtras.PageObjects.FindsBy(How = How.XPath, Using = "//div[@class='footer-meta-inner']/ul[1]/li[2]/a[1]")]
+        public IWebElement AssessibilityLink { get; set; }
 
         //By.xpath("//*[text()='Academy trust']"));
         public bool  istrusttextDisplayed()

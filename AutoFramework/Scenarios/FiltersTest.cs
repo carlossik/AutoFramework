@@ -11,7 +11,7 @@ namespace AutoFramework
     using OpenQA.Selenium.Chrome;
     using OpenQA.Selenium.IE;
 
-    [Parallelizable]
+   // [Parallelizable]
 
     public class FiltersTest
     {

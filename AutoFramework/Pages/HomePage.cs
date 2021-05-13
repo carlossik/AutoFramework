@@ -37,13 +37,13 @@
         public IWebElement UseLocationLink { get; set; }
         [FindsBy(How = How.Id, Using = "openOnlyLocation")]
         public IWebElement OpenSchoolsOnly { get; set; }
-        [FindsBy(How = How.CssSelector, Using = "#SearchByTownFieldset > div:nth-child(4) > button:nth-child(3)")]
+        [FindsBy(How = How.XPath, Using = "//div[3]/button[@class='button search-button' and 1]")]
         public IWebElement LocationSearchSubmitButton { get; set; }
         [FindsBy(How = How.Id, Using = "TrustLaCodeName")]
         public IWebElement LocalAuthorityTrustSearchButton { get; set; }
         [FindsBy(How = How.CssSelector, Using = "#FindTrustByLaCodeName")]
         public IWebElement LacodeInputField { get; set; }
-        [FindsBy(How = How.CssSelector, Using = "#SearchByLaCodeNameFieldset > div:nth-child(3) > button")]
+        [FindsBy(How = How.XPath, Using = "//div[@id='SearchByLaCodeNameFieldset']/div[2]/button[@class='button search-button' and 1]")]
         public IWebElement LacodeSearchButton { get; set; }
 
         [FindsBy(How = How.XPath, Using = "//div[@id='SearchByTrustNameFieldset']/button[@class='button search-button' and 1]")]
@@ -69,12 +69,13 @@
         public IWebElement SchoolLacodeinputField { get; set; }
         [FindsBy(How = How.Id, Using = "LaCodeName")]
         public IWebElement SchoolLacodeButton { get; set; }
-
+        [FindsBy(How = How.XPath,Using = "//div[@id='SearchByLaCodeNameFieldset']/div[2]/button[@class='button search-button' and 1]")]
+        public IWebElement LAcodesearchSubmitButton { get; set; }
         [FindsBy(How = How.CssSelector, Using = ".tt-suggestion > a:nth-child(1)")]
         public IWebElement FirstIntellicenceSuggested { get; set; }
         [FindsBy(How = How.CssSelector, Using = "#NoDefaultTab > a:nth-child(1)")]
         public IWebElement NoDefaultSchoolTab { get; set; }
-        [FindsBy(How = How.CssSelector, Using = ".list > li:nth-child(6) > a:nth-child(1)")]
+        [FindsBy(How = How.XPath, Using = "//*[@id=\"content\"]/div/aside/nav/ul/li[3]/a")]
         public IWebElement SchoolorTrustDataQueryLink { get; set; }
         [FindsBy(How = How.CssSelector, Using = ".tt-suggestion")]
         public IWebElement FirstSelectionOption { get; set; }

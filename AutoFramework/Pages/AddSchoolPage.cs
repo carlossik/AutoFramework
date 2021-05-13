@@ -39,7 +39,7 @@ namespace SFB_Test_Automation.AutoFramework.Pages
             public IWebElement AddSchoolByLocalAuthority { get; set; }
             [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".back-button > a:nth-child(1)")]
             public IWebElement BackLink { get; set; }
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector,Using = "#SearchByLaCodeNameFieldset > div:nth-child(3) > button:nth-child(3)")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath,Using = "//div[@id='SearchByLaCodeNameFieldset']/div[2]/button[@class='button search-button' and 1]")]
         public IWebElement searchButton { get; set; }
 
         

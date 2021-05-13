@@ -155,8 +155,9 @@
             TrustComparisonPage trustComaprison = new TrustComparisonPage(driver);
             Thread.Sleep(1000);
             trustComaprison.Compare_withOtherTrusts.Click();
-            Thread.Sleep(500);
+            Thread.Sleep(50000);
             trustComaprison.SelectTrustsByCharacteristicsRadioButton.Click();
+            Thread.Sleep(5000);
             trustComaprison.TrustComparisonPageContinueButton.Click();
             TrustCharacteristicsPage tcompare = new TrustCharacteristicsPage(driver);
             tcompare.NumberOfPupilsCheckBox.Click();
@@ -170,7 +171,7 @@
 
 
         }
-
+        ////tr/td[1]/span[1]
 
         public String numberberofcharacteristicsDisplayed(IWebDriver driver)
         {

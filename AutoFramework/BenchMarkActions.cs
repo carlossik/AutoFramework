@@ -15,32 +15,30 @@
     using System;
     
     using System.Windows.Forms;
+    using System.Linq;
 
     public static class BenchMarkActions
     {
         public static void CreateManualBenchMarkViaName(String urn,IWebDriver driver)
         {
-            
 
-            Actions.CallingClass.SearchViaSchoolurn(urn,driver);
+            Actions.CallingClass.SearchViaSchoolurn(urn, driver);
             SchoolDetailPage detailspage = new SchoolDetailPage(driver);
-            detailspage.CompareWithOtherSchools.Click();
+            detailspage.StartAComparison.Click();
+            TypeOfComparisonPage comparisontype = new TypeOfComparisonPage(driver);
+            comparisontype.CreateabenchmarkComparisonButton.Click();
             BestInClass bestinclass = new BestInClass(driver);
             bestinclass.ManualComaprisonButton.Click();
             bestinclass.Continue.Click();
-            //bestinclass.NextButton.Click();
             Thread.Sleep(200);
             ManualPage manualaddition = new ManualPage(driver);
             manualaddition.AddSchoolByNameRadio.Click();
             manualaddition.ManualContinueButton.Click();
-
             manualaddition.NewSchoolNameField.SendKeys("Plumcroft Primary School"); //+ OpenQA.Selenium.Keys.Enter);
             Thread.Sleep(2000);
             manualaddition.FirstManualSuggestion.Click();
-            //manualaddition.NewSchoolNameField.SendKeys( OpenQA.Selenium.Keys.Enter);
             Thread.Sleep(200);
             manualaddition.ContinueToBenchMarkChartsButton.Click();
-            
             Thread.Sleep(300);
 
         }
@@ -64,7 +62,10 @@
         {
             Actions.CallingClass.SearchViaSchoolurn(urn, driver);
             SchoolDetailPage detailspage = new SchoolDetailPage(driver);
-            detailspage.CompareWithOtherSchools.Click();
+            detailspage.StartAComparison.Click();
+            TypeOfComparisonPage comparisontype = new TypeOfComparisonPage(driver);
+            comparisontype.CreateabenchmarkComparisonButton.Click();
+            //detailspage.CompareWithOtherSchools.Click();
             BestInClass bestinclass = new BestInClass(driver);
             bestinclass.ManualComaprisonButton.Click();
             bestinclass.Continue.Click();
@@ -111,8 +112,11 @@
             Actions.GoHome(driver);
 
             Actions.CallingClass.SearchViaSchoolurn("143592",driver);
+           
             SchoolDetailPage detailspage = new SchoolDetailPage(driver);
-            detailspage.CompareWithOtherSchools.Click();
+            detailspage.StartAComparison.Click();
+            TypeOfComparisonPage comparisontype = new TypeOfComparisonPage(driver);
+            comparisontype.CreateabenchmarkComparisonButton.Click();
             BestInClass bestinclass = new BestInClass(driver);
             bestinclass.ManualComaprisonButton.Click();
             bestinclass.Continue.Click();
@@ -131,7 +135,9 @@
         {
             Actions.CallingClass.SearchViaSchoolurn(urn,driver);
             SchoolDetailPage detailspage = new SchoolDetailPage(driver);
-            detailspage.CompareWithOtherSchools.Click();
+            detailspage.StartAComparison.Click();
+            TypeOfComparisonPage comparisontype = new TypeOfComparisonPage(driver);
+            comparisontype.CreateabenchmarkComparisonButton.Click();
             BestInClass bestinclass = new BestInClass(driver);
             bestinclass.DetailComparisonButton.Click();
             bestinclass.Continue.Click();
@@ -151,7 +157,9 @@
         {
             Actions.CallingClass.SearchViaSchoolurn(urn,driver);
             SchoolDetailPage detailspage = new SchoolDetailPage(driver);
-            detailspage.CompareWithOtherSchools.Click();
+            detailspage.StartAComparison.Click();
+            TypeOfComparisonPage comparisontype = new TypeOfComparisonPage(driver);
+            comparisontype.CreateabenchmarkComparisonButton.Click();
             BestInClass bestinclass = new BestInClass(driver);
             bestinclass.DetailComparisonButton.Click();
             Thread.Sleep(20);
@@ -175,7 +183,10 @@
         {
             Actions.CallingClass.SearchViaSchoolurn(urn,driver);
             SchoolDetailPage detailspage = new SchoolDetailPage(driver);
-            detailspage.CompareWithOtherSchools.Click();
+            detailspage.StartAComparison.Click();
+            TypeOfComparisonPage comparisontype = new TypeOfComparisonPage(driver);
+            comparisontype.CreateabenchmarkComparisonButton.Click();
+
             BestInClass bestinclass = new BestInClass(driver);
             bestinclass.DetailComparisonButton.Click();                  
             bestinclass.Continue.Click();
@@ -190,9 +201,11 @@
 
         public static void createbenchmarkviadefault(string urn, IWebDriver driver)
         {
-            Actions.CallingClass.SearchViaSchoolurn(urn,driver);
+            Actions.CallingClass.SearchViaSchoolurn(urn, driver);
             SchoolDetailPage detailspage = new SchoolDetailPage(driver);
-            detailspage.CompareWithOtherSchools.Click();
+            detailspage.StartAComparison.Click();
+            TypeOfComparisonPage comparisontype = new TypeOfComparisonPage(driver);
+            comparisontype.CreateabenchmarkComparisonButton.Click();
             BestInClass bestinclass = new BestInClass(driver);
             bestinclass.QuckComparisonButton.Click();
             bestinclass.Continue.Click();
@@ -234,16 +247,16 @@
         {  
             string myURL = System.Windows.Forms.Clipboard.GetText(TextDataFormat.Text);
 
+            ////((IJavaScriptExecutor)driver).ExecuteScript("window.open();");
             ((IJavaScriptExecutor)driver).ExecuteScript("window.open();");
-            ((IJavaScriptExecutor)driver).ExecuteScript("window.open();");
-            driver.SwitchTo().Window("Untitled");
+            driver.SwitchTo().Window(driver.WindowHandles.Last());
 
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(15);
             driver.Navigate().GoToUrl(Config.currentTestEnv);
 
             ((IJavaScriptExecutor)driver).ExecuteScript("navigator.clipboard.readText().then(text => window.location.replace(text));");
             Console.WriteLine("This is the copied clipboard data"+myURL);
-            Thread.Sleep(5000000);
+            Thread.Sleep(500);
            
             
             Thread.Sleep(2000);
@@ -255,6 +268,7 @@
         public static void addschoolvianameorlocationlink(IWebDriver driver)
         {
             BenchMarkChartPage benchchartpage = new BenchMarkChartPage(driver);
+            Thread.Sleep(5000);
             benchchartpage.AddanotherschoolLink.Click();
         }
 
@@ -262,25 +276,30 @@
         {
             Actions.CallingClass.SearchViaSchoolurn(specialSchool,driver);
             SchoolDetailPage detailspage = new SchoolDetailPage(driver);
-            detailspage.CompareWithOtherSchools.Click();
+            detailspage.StartAComparison.Click();
+            TypeOfComparisonPage comparisontype = new TypeOfComparisonPage(driver);
+            comparisontype.CreateabenchmarkComparisonButton.Click();
             BestInClass bestinclass = new BestInClass(driver);
             bestinclass.QuckComparison_For_Specials_Button.Click();
             bestinclass.Continue.Click();
-           // bestinclass.MaintainedSchoolsChoice.Click();
             bestinclass.ContinueForSpecials.Click();
-           // bestinclass.page2of2ContinueButton.Click();
             Thread.Sleep(2000);
         }
 
-        public static void CopyChart(IWebDriver driver)
+
+        public static void CopyAndPasteChart(IWebDriver driver)
         {
             BenchMarkChartPage benchchartpage = new BenchMarkChartPage(driver);
             benchchartpage.Savebenchmarkbasket.Click();
-            benchchartpage.CopyLinkToClipboard.Click();
-           string linkurl =  benchchartpage.CopyLinkToClipboard.GetAttribute("save-url-input");
-            Console.WriteLine(linkurl);
-            driver.FindElement(By.CssSelector("div.save-modal-js:nth-child(2) > a:nth-child(1)")).Click();
-            
+            IWebElement linktocopy = driver.FindElement(By.Id("saveUrl"));
+            string copiedchart = linktocopy.GetAttribute("value");
+            Console.WriteLine(copiedchart);
+            linktocopy.Click();
+            ((IJavaScriptExecutor)driver).ExecuteScript("window.open();");
+            driver.SwitchTo().Window(driver.WindowHandles.Last());
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(15);
+            driver.Navigate().GoToUrl(copiedchart);
+
         }
 
     }

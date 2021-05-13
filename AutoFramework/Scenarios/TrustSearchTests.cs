@@ -16,7 +16,7 @@
 
 
 
-    [Parallelizable]
+   // [Parallelizable]
     public class TrustSearchScenarios 
     {
 
@@ -343,13 +343,13 @@
             TrustActions.TrustSearchWitNameUsingFirstSuggestedName("5 Dimensions Trust",driver);
             String TrustName = driver.FindElement(By.CssSelector(".heading-xlarge")).Text;
             Assert.AreEqual(TrustName, "5 Dimensions Trust");
-            IWebElement CompareWithOtherTrustsButton = driver.FindElement(By.CssSelector(".page > div:nth-child(2) > div:nth-child(1) > a:nth-child(1)"));
+            IWebElement CompareWithOtherTrustsButton = driver.FindElement(By.XPath("//a[@class='button start-button hide-in-print']"));
             Assert.IsTrue(CompareWithOtherTrustsButton.Displayed);
-            String CompaniesHouseNumber = driver.FindElement(By.CssSelector(".ml-05")).Text;
+            String CompaniesHouseNumber = driver.FindElement(By.XPath("//dd[1]")).Text;
             Console.WriteLine(CompaniesHouseNumber);
             Console.WriteLine(driver.Url);
             Console.WriteLine(Config.currentTestEnv + "Trust?companyNo=" + CompaniesHouseNumber);
-            Assert.IsTrue(driver.FindElement(By.CssSelector(".ml-05")).Displayed);
+            Assert.IsTrue(driver.FindElement(By.XPath("//dd[1]")).Displayed);
             Assert.IsTrue((driver.Url) == (Config.currentTestEnv + "Trust?companyNo=" + CompaniesHouseNumber));
 
         //https://as-t1stg-sfb.azurewebsites.net/Trust?companyNo=
@@ -425,10 +425,10 @@
                 var screenshot = ((ITakesScreenshot)driver).GetScreenshot();
                 var testName = TestContext.CurrentContext.Test.FullName;
                 screenshot.SaveAsFile(@"C:\TEMP\" + testName + ".jpg");
-               // driver.Close();
+               driver.Close();
                 driver.Quit();
             }
-            //driver.Close();
+            driver.Close();
             driver.Quit();
         }
     }

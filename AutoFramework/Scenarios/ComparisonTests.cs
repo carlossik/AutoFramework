@@ -12,7 +12,7 @@
     using SFB_Test_Automation.AutoFramework.Pages;
 
     [TestFixture]
-    [Parallelizable]
+   // [Parallelizable]
     public class ComparisonTests
     {
         IAlert alert;
@@ -63,7 +63,8 @@
         public void TestIntepretingTheCharts()
         {
             Actions.CallingClass.InterpretingTheChartsTest(driver);
-            Assert.IsTrue(driver.Url == Config.currentTestEnv+ "Help/InterpretingCharts");
+            IWebElement intepretingthechartsLink = driver.FindElement(By.XPath("//ul[@class='list font-xsmall']/li[2]"));
+            Assert.IsTrue(intepretingthechartsLink.Displayed);
             //need to add some assertions on the links present and the order
         }
         [Test]
@@ -97,7 +98,7 @@
         [Test]
         public void CompareTrusts()
         {
-           TrustActions.ManualTrustComparison("Portswood Primary Academy Trust",driver);
+           TrustActions.ManualTrustComparison("Portico Academy Trust", driver);
         }
         [Test]
         public void VerifySchoolPhaseAndOverAllPhase()

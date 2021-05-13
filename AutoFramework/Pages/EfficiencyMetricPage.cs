@@ -39,6 +39,10 @@ namespace SFB_Test_Automation.AutoFramework.Pages
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "/html/body/app-root/app-gov-uk-layout/div[2]/div/main/app-home/div/div[2]/div/ul/li[3]/a")]//"//*[text()=News]")]
         public IWebElement Contact_Details_Of_Schools { get; set; }
 
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//li[3]/a[@class='govuk-footer__link' and 1]")]//"//*[text()=News]")]
+        public IWebElement AccessibilityLink { get; set; }
+        //*[@id="cookie-overlay-wrapper"]/app-footer/footer/div/div/div[1]/ul/li[3]/a
+
 
         //#emTableDesktop > tbody:nth-child(49) > tr:nth-child(2) > td:nth-child(1) > div:nth-child(1) > a:nth-child(1)//*[text()='match']
     }

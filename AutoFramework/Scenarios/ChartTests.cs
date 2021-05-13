@@ -10,7 +10,7 @@
     using NUnit.Framework.Interfaces;
     using System.Drawing.Imaging;
 
-    [Parallelizable]
+   // [Parallelizable]
 
     public class Charttests
     {
@@ -174,11 +174,11 @@
                 var screenshot = ((ITakesScreenshot)driver).GetScreenshot();
                 var testName = TestContext.CurrentContext.Test.FullName;
                 screenshot.SaveAsFile(@"C:\TEMP\"+testName +".jpg");
-                
+                driver.Close();
                 driver.Quit();
             }
-           
-              driver.Quit();
+            driver.Close();
+            driver.Quit();
         }
 
     }

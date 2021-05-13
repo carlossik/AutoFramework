@@ -15,7 +15,7 @@
     using OpenQA.Selenium.Chrome;
     using OpenQA.Selenium.Safari;
 
-    [Parallelizable]
+    //[Parallelizable]
 
     [TestFixture]
     
@@ -91,17 +91,18 @@
 
         }
         [Test]
+        //[Ignore("")]
         public  void PasteBasketLessThan30Schools()
         {
 
             Actions.OnclickReportingTest(driver);
-            BenchMarkActions.CopyChart(driver);
-            BenchMarkActions.PasteCopiedClipboardText(driver);
+            BenchMarkActions.CopyAndPasteChart(driver);
+           
             ComparingSimilarSchoolsPage similar = new ComparingSimilarSchoolsPage(driver);
             similar.AddToExistingBasket.Click();
             similar.ContinueButton.Click();
             Thread.Sleep(3);
-            Assert.AreEqual(driver.FindElement(By.CssSelector(".message")).Text, "Showing the 15 schools in your benchmark basket");
+            Assert.AreEqual(driver.FindElement(By.CssSelector(".message")).Text, "Showing the 15 schools in your benchmark set");
 
 
 
@@ -114,20 +115,20 @@
             ReplaceCurrentBenchmarkbasketPage replace = new ReplaceCurrentBenchmarkbasketPage(driver);
             replace.ReplaceBasket.Click();
             Thread.Sleep(200);
-            Assert.IsTrue(driver.FindElement(By.CssSelector(".message")).Text == "Showing the 30 schools in your benchmark basket");
+            Assert.AreEqual(driver.FindElement(By.CssSelector(".message")).Text , "Showing the 30 schools in your benchmark set");
 
         }
         [Test]
        public void PasteBasketLessThan30SchoolsCancell()
         {
-            //BenchMarkActions.CreateBenchmarkViaDetailComparison("125249");
+           
             Actions.OnclickReportingTest(driver);
-            BenchMarkActions.CopyChart(driver);
-            BenchMarkActions.PasteCopiedClipboardText(driver);
+            BenchMarkActions.CopyAndPasteChart(driver);
+           
             ComparingSimilarSchoolsPage similar = new ComparingSimilarSchoolsPage(driver);
             ReplaceCurrentBenchmarkbasketPage replace = new ReplaceCurrentBenchmarkbasketPage(driver);
             replace.Cancelt.Click();
-            Assert.IsTrue(driver.Url == Config.currentTestEnv);
+           Assert.IsTrue(driver.Url == Config.currentTestEnv);
 
         }
         [Test]
@@ -135,31 +136,33 @@
         {
             BenchMarkActions.createbenchmarkviadefault("100140", driver);//"125249"
 
-            BenchMarkActions.CopyChart(driver);
-            BenchMarkActions.PasteCopiedClipboardText(driver);
+            BenchMarkActions.CopyAndPasteChart(driver);
+            Assert.IsTrue(driver.Url.Contains("&default=100140"));
 
         }
 
         [Test]
        public void VerifyDefaulSchoolCopied_AdvancedCompare()
         {
-            DetailedComparisonActions.ExcludeschoolswithIncFinanceAcademiesAllEngland("141976", "239", "240", driver);
-            // BenchMarkActions.CreateBenchmarkViaDetailComparison("100140");//"125249"
-            BenchMarkActions.CopyChart(driver);
-            BenchMarkActions.PasteCopiedClipboardText(driver);
+            DetailedComparisonActions.ExcludeschoolswithIncFinanceAcademiesAllEngland("141976", "239", "239", driver);
+            
+            BenchMarkActions.CopyAndPasteChart(driver);
+            Assert.IsTrue(driver.Url.Contains("&default=141976" ));
+            
         }
 
         [Test]
        public void VerifyDefaulSchoolCopied_BestInClass()
         {
             Actions.CallingClass.BestInClassComparison(driver);
-            BenchMarkActions.CopyChart(driver);
-            BenchMarkActions.PasteCopiedClipboardText(driver);
+            BenchMarkActions.CopyAndPasteChart(driver);
+            Assert.IsTrue(driver.Url.Contains("&default=125271"));
 
         }
 
         [Test]
-       public void VerifyDefaulSchoolCopied_ManualCompare()
+        [Ignore("Ignore this test")]
+        public void VerifyDefaulSchoolCopied_ManualCompare()
         {
             throw new NotImplementedException();
         }
@@ -339,10 +342,10 @@
                 var screenshot = ((ITakesScreenshot)driver).GetScreenshot();
                 var testName = TestContext.CurrentContext.Test.FullName;
                 screenshot.SaveAsFile(@"C:\TEMP\" + testName + ".jpg");
-                
+                driver.Close();
                 driver.Quit();
             }
-           
+            driver.Close();
             driver.Quit();
         }
     }

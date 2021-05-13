@@ -16,7 +16,7 @@
         public IWebElement HideMessageLink { get; set; }
         [FindsBy(How = How.XPath, Using = "//*[text()=\"Help using this site\"]")]
         public IWebElement HelpUsingSiteLink { get; set; }
-        [FindsBy(How = How.CssSelector, Using = "[href*='Help/InterpretingCharts']")]//.list > li:nth-child(3) > a:nth-child(1)")]//"[href*='\Help/InterpretingCharts\']"
+        [FindsBy(How = How.XPath, Using = "//ul[@class='list font-xsmall']/li[2]")]//.list > li:nth-child(3) > a:nth-child(1)")]//"[href*='\Help/InterpretingCharts\']"
         public IWebElement IntepreTingTheChartsLinks { get; set; }
 
         [FindsBy(How = How.XPath, Using = "//*[text()=\"Data sources\"]")]

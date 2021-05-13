@@ -20,7 +20,10 @@ namespace SFB_Test_Automation.AutoFramework
         {
             Actions.schoolSearchwithLaestab(Laestab,driver);
             SchoolDetailPage detailspage = new SchoolDetailPage(driver);
-            detailspage.SADLink.Click();
+            detailspage.StartAComparison.Click();
+            
+            TypeOfComparisonPage comparisontype = new TypeOfComparisonPage(driver);
+            comparisontype.SelfAssessMentDashboardButton.Click();
             Thread.Sleep(200);
             Actions.acceptCookie(driver);
             Thread.Sleep(2000);
@@ -30,13 +33,15 @@ namespace SFB_Test_Automation.AutoFramework
         {
             Actions.schoolSearchwithLaestab(Laestab,driver);
             SchoolDetailPage detailspage = new SchoolDetailPage(driver);
-            String FinancialYear = driver.FindElement(By.CssSelector("div.charts-section__chart-container:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > span:nth-child(1)")).Text;
-            Console.WriteLine(FinancialYear);
+            detailspage.StartAComparison.Click();
+            TypeOfComparisonPage comparisonpage = new TypeOfComparisonPage(driver);
+            comparisonpage.SelfAssessMentDashboardButton.Click();
+            Actions.acceptCookie(driver);
+          
             SelfAssessmentPage assessmentpage = new SelfAssessmentPage(driver);
-            detailspage.SADLink.Click();
+           
             Thread.Sleep(3000);
-            String SadFinancialYearDisplayed = driver.FindElement(By.CssSelector(".govuk-heading-m")).Text;
-            Console.WriteLine(SadFinancialYearDisplayed);
+            
 
 
         }
@@ -58,7 +63,10 @@ namespace SFB_Test_Automation.AutoFramework
         {
             Actions.schoolSearchwithLaestab(Laestab,driver);
             SchoolDetailPage detailspage = new SchoolDetailPage(driver);
-            detailspage.SADLink.Click();
+            detailspage.StartAComparison.Click();
+            TypeOfComparisonPage comparepage = new TypeOfComparisonPage(driver);
+            comparepage.SelfAssessMentDashboardButton.Click();
+            //detailspage.SADLink.Click();
             Thread.Sleep(2000);
             SelfAssessmentPage SADpage = new SelfAssessmentPage(driver);
             Actions.acceptCookie(driver);
@@ -146,7 +154,10 @@ namespace SFB_Test_Automation.AutoFramework
             Actions.schoolSearchwithLaestab(LAestab,driver);
             SchoolDetailPage detailspage = new SchoolDetailPage(driver);
             Thread.Sleep(200);
-            detailspage.SADLink.Click();
+            detailspage.StartAComparison.Click();
+            TypeOfComparisonPage comparisontype = new TypeOfComparisonPage(driver);
+            comparisontype.SelfAssessMentDashboardButton.Click();
+            //detailspage.SADLink.Click();
              Thread.Sleep(2000);
             SelfAssessmentPage SadPage = new SelfAssessmentPage(driver);
             Thread.Sleep(200);
@@ -174,7 +185,9 @@ namespace SFB_Test_Automation.AutoFramework
             Actions.schoolSearchwithLaestab(LAestab,driver);
             SchoolDetailPage detailspage = new SchoolDetailPage(driver);
             Thread.Sleep(200);
-            detailspage.SADLink.Click();
+            detailspage.StartAComparison.Click();
+            TypeOfComparisonPage comparepage = new TypeOfComparisonPage(driver);
+            comparepage.SelfAssessMentDashboardButton.Click();
             Thread.Sleep(2000);
             SelfAssessmentPage SadPage = new SelfAssessmentPage(driver);
             Thread.Sleep(200);
@@ -196,8 +209,11 @@ namespace SFB_Test_Automation.AutoFramework
         public static void persist(IWebDriver driver)
         {
             gotohomepageviabreadcrumb(driver);
+
             SchoolDetailPage detailspage = new SchoolDetailPage(driver);
-            detailspage.SADLink.Click();
+            detailspage.StartAComparison.Click();
+            TypeOfComparisonPage comparepage = new TypeOfComparisonPage(driver);
+            comparepage.SelfAssessMentDashboardButton.Click();
             SelfAssessmentPage SadPage = new SelfAssessmentPage(driver);
             Thread.Sleep(2000);
         }
@@ -277,7 +293,10 @@ namespace SFB_Test_Automation.AutoFramework
         {
             Actions.schoolSearchwithLaestab(Laestab,driver);
             SchoolDetailPage detailspage = new SchoolDetailPage(driver);
-            detailspage.SADLink.Click();
+            detailspage.StartAComparison.Click();
+           
+            TypeOfComparisonPage comparisontype = new TypeOfComparisonPage(driver);
+            comparisontype.SelfAssessMentDashboardButton.Click();
             Thread.Sleep(300);
             SelfAssessmentPage SadPage = new SelfAssessmentPage(driver);
             Actions.acceptCookie(driver);
@@ -336,7 +355,10 @@ namespace SFB_Test_Automation.AutoFramework
             filters.schoolsdisplayedLinks.Click();
             Thread.Sleep(300);
             SchoolDetailPage detailpage = new SchoolDetailPage(driver);
-            detailpage.SADLink.Click();
+            detailpage.StartAComparison.Click();
+            TypeOfComparisonPage comparepage = new TypeOfComparisonPage(driver);
+            comparepage.SelfAssessMentDashboardButton.Click();
+            //detailpage.SADLink.Click();
             Actions.acceptCookie(driver);
             Thread.Sleep(2000);
         }

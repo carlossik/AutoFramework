@@ -16,8 +16,10 @@ namespace SFB_Test_Automation.AutoFramework.Scenarios
     using System.IO;
     using global::AutoFramework;
     using global::AutoFramework.Pages;
+    using global::AutoFramework.Pages.PageElements;
+    using SFB_Test_Automation.AutoFramework.Pages;
 
-    [Parallelizable]
+    //[Parallelizable]
 
     public class AssessibilityTests
 
@@ -100,14 +102,63 @@ namespace SFB_Test_Automation.AutoFramework.Scenarios
         }
 
         [Test]
-        public void verifyaccessibilityLink()
+        public void verifyaccessibilityLinkOnHomePage()
         {
             HomePage home = new HomePage(driver);
             Assert.IsTrue(home.AccessibilityLink.Displayed);
 
         }
+        [Test]
+        public void verifyaccessibilityLinkSAD()
+        {
+            HomePage home = new HomePage(driver);
+            Actions.CallingClass.SearchViaSchoolurn("100000", driver);
+            SchoolDetailPage detailspage = new SchoolDetailPage(driver);
+            detailspage.StartAComparison.Click();
+            TypeOfComparisonPage typeofcompare = new TypeOfComparisonPage(driver);
+            typeofcompare.SelfAssessMentDashboardButton.Click();
+            Actions.acceptCookie(driver);
+            SelfAssessmentPage sadpage = new SelfAssessmentPage(driver);
 
-    
+            Assert.IsTrue(sadpage.AccessibilityLink.Displayed);
+
+        }
+        [Test]
+        public void verifyaccessibilityLinkChartsPage()
+        {
+            HomePage home = new HomePage(driver);
+            Assert.IsTrue(home.AccessibilityLink.Displayed);
+
+        }
+        [Test]
+        public void verifyaccessibilityLinkonSchoolDetailPage()
+        {
+            HomePage home = new HomePage(driver);
+            Actions.CallingClass.SearchViaSchoolurn("100000", driver);
+            SchoolDetailPage detailspage = new SchoolDetailPage(driver);
+            Assert.IsTrue(detailspage.AssessibilityLink.Displayed);
+
+        }
+        [Test]
+        public void verifyaccessibilityLinkEMPage()
+        {
+            HomePage home = new HomePage(driver);
+            Actions.CallingClass.SearchViaSchoolurn("100000", driver);
+            SchoolDetailPage detailspage = new SchoolDetailPage(driver);
+            detailspage.StartAComparison.Click();
+            TypeOfComparisonPage typeofcompare = new TypeOfComparisonPage(driver);
+            typeofcompare.EfficiencyMetrictButton.Click();
+            EfficiencyMetricIntroPage emintropage = new EfficiencyMetricIntroPage(driver);
+            emintropage.ContinueToEfficiencyMetricButton.Click();
+            Actions.acceptCookie(driver);
+            EfficiencyMetricPage empage = new EfficiencyMetricPage(driver);
+            Assert.IsTrue(empage.AccessibilityLink.Displayed);
+
+
+
+
+        }
+
         [TearDown]
         public void TeardownAfterEachTest()
         {

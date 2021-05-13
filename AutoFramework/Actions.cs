@@ -23,16 +23,17 @@
         {
             //("--use-fake-ui-for-media-stream")
 
-            var ChromeOptions = new ChromeOptions();
+           var ChromeOptions = new ChromeOptions();
             
-            ChromeOptions.AddArgument("profile.default_content_setting_values.notifications = 1");
-            //ChromeOptions.Add_experimental_option('prefs',{ 'profile.default_content_setting_values.notifications':1})
-            ChromeOptions.AddArgument("--use-fake-ui-for-media-stream");
-            ChromeOptions.AddArgument("--disable-user-media-security=true");
-            var downloadDirectory = (@"C:\AutomationDownloads");
-            ChromeOptions.AddUserProfilePreference("download.default_directory", downloadDirectory);
-            ChromeOptions.AddUserProfilePreference("download.prompt_for_download", false);
-            IWebDriver driver = new ChromeDriver(ChromeOptions);
+           ChromeOptions.AddArgument("profile.default_content_setting_values.notifications = 1");
+           // ////ChromeOptions.Add_experimental_option('prefs',{ 'profile.default_content_setting_values.notifications':1})
+           ChromeOptions.AddArgument("--use-fake-ui-for-media-stream");
+           ChromeOptions.AddArgument("--disable-user-media-security=true");
+           var downloadDirectory = (@"C:\AutomationDownloads");
+           ChromeOptions.AddUserProfilePreference("download.default_directory", downloadDirectory);
+           ChromeOptions.AddUserProfilePreference("download.prompt_for_download", false);
+           //IWebDriver driver = new ChromeDriver(ChromeOptions);
+           IWebDriver driver = new FirefoxDriver();
             driver.Navigate().GoToUrl(Config.currentTestEnv);
             TimeSpan seconds = TimeSpan.FromSeconds(second);
             driver.Manage().Timeouts().ImplicitWait = seconds;
@@ -40,7 +41,7 @@
             if (driver.FindElement(By.Id("acceptAllCookies")).Displayed)
             {
                 driver.FindElement(By.Id("acceptAllCookies")).Click();
-                driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+                driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
                 Thread.Sleep(2000);
             }
             else
@@ -227,7 +228,9 @@
         {
             CallingClass.SearchViaSchoolurn(LAESTAB,driver);// must be a special school
             SchoolDetailPage detailpage = new SchoolDetailPage(driver);
-            detailpage.CompareWithOtherSchools.Click();
+            detailpage.StartAComparison.Click();
+            TypeOfComparisonPage comparisontype = new TypeOfComparisonPage(driver);
+            comparisontype.CreateabenchmarkComparisonButton.Click();
             BestInClass bestinclass = new BestInClass(driver);
             bestinclass.QuickcompareforspecialsSchools.Click();
             bestinclass.Continue.Click();
@@ -241,8 +244,11 @@
         {
             CallingClass.SearchViaSchoolurn(LAESTAB,driver);// must be a special school
             SchoolDetailPage detailpage = new SchoolDetailPage(driver);
-            detailpage.CompareWithOtherSchools.Click();
+            detailpage.StartAComparison.Click();
+            TypeOfComparisonPage comparisontype = new TypeOfComparisonPage(driver);
+            comparisontype.CreateabenchmarkComparisonButton.Click();
             BestInClass bestinclass = new BestInClass(driver);
+           
             bestinclass.QuickcompareforspecialsSchools.Click();
             bestinclass.Continue.Click();
             QuickComparisonPage2 specialspage2 = new QuickComparisonPage2(driver);
@@ -263,6 +269,7 @@
             //GoHome();
             CallingClass.SearchViaSchoolurn("119182",driver);
             SchoolDetailPage Schooldetails = new SchoolDetailPage(driver);
+            Schooldetails.StartAComparison.Click();
             Schooldetails.BasicComparisonReportLink.Click();
             //Thread.Sleep(2000);
         }
@@ -281,7 +288,9 @@
             GoHome( driver);
             CallingClass.SearchViaSchoolurn(LondonSchool,driver);
             SchoolDetailPage Schooldetails = new SchoolDetailPage(driver);
+            Schooldetails.StartAComparison.Click();
             Schooldetails.BasicComparisonReportLink.Click();
+            //Schooldetails.BasicComparisonReportLink.Click();
             Thread.Sleep(2000);
             BenchMarkChartPage oneclickpage = new BenchMarkChartPage(driver);
             oneclickpage.ViewCharacteristicsUsed.Click();
@@ -294,6 +303,8 @@
             
             CallingClass.SearchViaSchoolurn(NonLondonSchool,driver);
             SchoolDetailPage Schooldetails = new SchoolDetailPage(driver);
+            Schooldetails.StartAComparison.Click();
+            //Schooldetails.BasicComparisonReportLink.Click();
             Schooldetails.BasicComparisonReportLink.Click();
             BenchMarkChartPage oneclickpage = new BenchMarkChartPage(driver);
             oneclickpage.ViewCharacteristicsUsed.Click();
@@ -355,6 +366,7 @@
         {
             HomePage homepage = new HomePage(driver);
             homepage.SchoolorTrustDataQueryLink.Click();
+            Thread.Sleep(100);
             DataQueriesPage queriespage = new DataQueriesPage(driver);
             queriespage.NameField.SendKeys("Carl Fagan");
             queriespage.EmailField.SendKeys(emailaddress);
@@ -421,16 +433,25 @@
         }
         public static void clearPopup(IWebDriver driver)
         {
-            IWebElement closeButton = driver.FindElement(By.Id("js-modal-close"));
-
-            if (closeButton.Displayed)
+            try
             {
-                closeButton.Click();
+                IWebElement closeButton = driver.FindElement(By.Id("js-modal-close"));
+
+                if (closeButton.Displayed)
+                {
+                    closeButton.Click();
+                }
+                else
+                {
+                    Console.Write("modal not displayed here so moving on....");
+                }
             }
-            else
+            catch (NoSuchElementException e)
             {
                 Console.Write("modal not displayed here so moving on....");
             }
+
+
         }
         public static void clearcookie(IWebDriver driver)
         {
@@ -456,19 +477,28 @@
         }
         public static void acceptCookie(IWebDriver driver)
         {
-            IWebElement closeCookie = driver.FindElement(By.Id("acceptAllCookies"));
-            if (closeCookie.Displayed)
+            try
             {
-                closeCookie.Click();
-                Thread.Sleep(300);
-                //driver.Navigate().Refresh();
-                Thread.Sleep(300);
-               
-               
+
+                IWebElement closeCookie = driver.FindElement(By.Id("acceptAllCookies"));
+                if (closeCookie.Displayed)
+                {
+                    closeCookie.Click();
+                    Thread.Sleep(300);
+                    //driver.Navigate().Refresh();
+                    Thread.Sleep(300);
+                }
+            }
+            catch (NoSuchElementException)
+            {
+                
+            }
+           
+            
             }
 
-        }
-        public static void gotonewspagefrombanner(IWebDriver driver)
+
+            public static void gotonewspagefrombanner(IWebDriver driver)
         {
             driver.Close();
             driver = new ChromeDriver();
@@ -496,12 +526,19 @@
             homepage.TrustLaCodeButton.Click();
             homepage.SchoolLacodeinputField.SendKeys(LAname);
             homepage.FirstIntellicenceSuggested.Click();
+            homepage.LAcodesearchSubmitButton.Click();
             Thread.Sleep(300);
             SearchResultsPage resultspage = new SearchResultsPage(driver);
             resultspage.SelectAllThroughsCheckbox.Click();
             Thread.Sleep(30);
             resultspage.FirstScoolLinkOnPage.Click();
           
+        }
+        public static void NavigateToComparisonPage(IWebDriver driver)
+        {
+            SchoolDetailPage detailpage = new SchoolDetailPage(driver);
+            detailpage.StartAComparison.Click();
+            Thread.Sleep(3000);
         }
         public static void schoolSearchwithLaestab(string LAESTAB, IWebDriver driver)
         {
@@ -558,6 +595,7 @@
             homepage.LocationButton.Click();
             homepage.SearchByLocationField.Click();
             homepage.SearchByLocationField.SendKeys(postcode);
+            //homepage.FirstIntellicenceSuggested.Click();
             homepage.LocationSearchSubmitButton.Click();
             driver.FindElement(By.CssSelector("li.document:nth-child(1) > a:nth-child(1)")).Click();
             Thread.Sleep(200);
@@ -620,6 +658,10 @@
             Thread.Sleep(2000);
             basketpage.backButton.Click();
            
+        }
+        public static void calculateSpecialSchoolSenCharacteristics(IWebDriver driver)
+        {
+            IList sencharacteristics = driver.FindElements(By.XPath("//tr/td[1]/span[1]"));
         }
         public static void downloadpdf(IWebDriver driver)
         {
@@ -955,7 +997,10 @@
             {
               SearchViaSchoolurn(Laestab,driver);//"143592"
                 SchoolDetailPage detailspage = new SchoolDetailPage(driver);
-                detailspage.CompareWithOtherSchools.Click();
+                detailspage.StartAComparison.Click();
+               
+                TypeOfComparisonPage comparisontype = new TypeOfComparisonPage(driver);
+                comparisontype.CreateabenchmarkComparisonButton.Click();
                 BestInClass bestinclass = new BestInClass(driver);
                 Thread.Sleep(200);
                 bestinclass.QuckComparisonButton.Click();
@@ -963,6 +1008,7 @@
                 bestinclass.MaintainedSchoolsChoice.Click();
                 bestinclass.Continue.Click();
                 //bestinclass.MaintainedSchoolsChoice.Click();
+                //Thread.Sleep(50000);
                 bestinclass.page2of2ContinueButton.Click();
                 Thread.Sleep(100);
             }
@@ -970,7 +1016,12 @@
             {
                 SearchViaSchoolurn(Laestab,driver);//"143592"
                 SchoolDetailPage detailspage = new SchoolDetailPage(driver);
-                detailspage.CompareWithOtherSchools.Click();
+                //SchoolDetailPage detailspage = new SchoolDetailPage(driver);
+                detailspage.StartAComparison.Click();
+                //detailspage.CompareWithOtherSchools.Click();
+                TypeOfComparisonPage comparisontype = new TypeOfComparisonPage(driver);
+                comparisontype.CreateabenchmarkComparisonButton.Click();
+               // detailspage.CompareWithOtherSchools.Click();
                 BestInClass bestinclass = new BestInClass(driver);
                 Thread.Sleep(200);
                 bestinclass.QuckComparisonButton.Click();
@@ -1018,12 +1069,13 @@
                 Thread.Sleep(2000);
                 SchoolDetailPage detailspage = new SchoolDetailPage(driver);
                 Thread.Sleep(3);
-                detailspage.CompareWithOtherSchools.Click();
-                Thread.Sleep(3000);
+                detailspage.StartAComparison.Click();
+                TypeOfComparisonPage comparisontype = new TypeOfComparisonPage(driver);
+                comparisontype.HighestprogressSchoolsComparisonButton.Click();
+               
                 BestInClass bestinclass = new BestInClass(driver);
-                bestinclass.BestInClassComparisonButton.Click();
-                Thread.Sleep(3000);
-                bestinclass.Continue.Click();
+               
+               
                 Thread.Sleep(3000);
                 bestinclass.ContinueToHigherProgressSchoolBenchmark.Click();
                 Thread.Sleep(1000);

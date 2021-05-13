@@ -7,13 +7,10 @@ namespace AutoFramework
     using SFB_Test_Automation.AutoFramework.Pages;
     using SFB_Test_Automation.AutoFramework;
 
-    [Parallelizable]
+  
 
     public class MyChartTests
-    //[TestFixture(typeof(FirefoxDriver))]
-    //    [TestFixture(typeof(InternetExplorerDriver))]
-    //    [TestFixture(typeof(ChromeDriver))]
-
+   
 
     {
 

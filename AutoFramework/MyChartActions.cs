@@ -17,7 +17,7 @@ namespace SFB_Test_Automation.AutoFramework
     {
         public static void Gotomycharts(IWebDriver driver)
         {
-            DetailedComparisonActions.ExcludeschoolswithIncFinanceAcademiesAllEngland("141976", "239", "240",driver);
+            DetailedComparisonActions.ExcludeschoolswithIncFinanceAcademiesAllEngland("141976", "246", "247",driver);
             MyChartsPage chartspage = new MyChartsPage(driver);
             BenchMarkChartPage benchmarkpage = new BenchMarkChartPage(driver);
             benchmarkpage.YourChartsTab.Click();

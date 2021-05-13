@@ -18,7 +18,7 @@ namespace AutoFramework
     //using OpenQA.Selenium.Remote.DesiredCapabilities;
 
     [TestFixture]
-    [Parallelizable]
+   // [Parallelizable]
 
     public class ComparisonwithNoDefaultSchoolTests
 

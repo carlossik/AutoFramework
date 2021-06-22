@@ -25,15 +25,15 @@
 
            var ChromeOptions = new ChromeOptions();
             
-           ChromeOptions.AddArgument("profile.default_content_setting_values.notifications = 1");
+           //ChromeOptions.AddArgument("profile.default_content_setting_values.notifications = 1");
            // ////ChromeOptions.Add_experimental_option('prefs',{ 'profile.default_content_setting_values.notifications':1})
            ChromeOptions.AddArgument("--use-fake-ui-for-media-stream");
            ChromeOptions.AddArgument("--disable-user-media-security=true");
            var downloadDirectory = (@"C:\AutomationDownloads");
            ChromeOptions.AddUserProfilePreference("download.default_directory", downloadDirectory);
            ChromeOptions.AddUserProfilePreference("download.prompt_for_download", false);
-           //IWebDriver driver = new ChromeDriver(ChromeOptions);
-           IWebDriver driver = new FirefoxDriver();
+           IWebDriver driver = new ChromeDriver(ChromeOptions);
+           //IWebDriver driver = new FirefoxDriver();
             driver.Navigate().GoToUrl(Config.currentTestEnv);
             TimeSpan seconds = TimeSpan.FromSeconds(second);
             driver.Manage().Timeouts().ImplicitWait = seconds;
@@ -266,11 +266,11 @@
 
         public static void OnclickReportingTest(IWebDriver driver)
         {
-            //GoHome();
-            CallingClass.SearchViaSchoolurn("119182",driver);
+            
+            CallingClass.QuickCompareWithOtherSchools("119182",driver);
             SchoolDetailPage Schooldetails = new SchoolDetailPage(driver);
-            Schooldetails.StartAComparison.Click();
-            Schooldetails.BasicComparisonReportLink.Click();
+            //Schooldetails.StartAComparison.Click();
+            //Schooldetails.quick;
             //Thread.Sleep(2000);
         }
         public static void selectNursery(String LaCode, IWebDriver driver)
@@ -595,9 +595,9 @@
             homepage.LocationButton.Click();
             homepage.SearchByLocationField.Click();
             homepage.SearchByLocationField.SendKeys(postcode);
-            //homepage.FirstIntellicenceSuggested.Click();
+            
             homepage.LocationSearchSubmitButton.Click();
-            driver.FindElement(By.CssSelector("li.document:nth-child(1) > a:nth-child(1)")).Click();
+            
             Thread.Sleep(200);
             FiltersPage filters = new FiltersPage(driver);
             Thread.Sleep(200);
@@ -748,7 +748,7 @@
             //    resultspage.TrustSearchResultSortedByButton.SendKeys(OrderBy + Keys.Enter);
             //}
             resultspage.TrustSearchResultSortedByButton.SendKeys(OrderBy + Keys.Enter);
-            resultspage.TrustSearchResultSortedByButton.SendKeys(OrderBy + Keys.Enter);
+            //resultspage.TrustSearchResultSortedByButton.SendKeys(OrderBy + Keys.Enter);
             Thread.Sleep(2000);
 
         }
@@ -1074,7 +1074,7 @@
                 comparisontype.HighestprogressSchoolsComparisonButton.Click();
                
                 BestInClass bestinclass = new BestInClass(driver);
-               
+                acceptCookie(driver);
                
                 Thread.Sleep(3000);
                 bestinclass.ContinueToHigherProgressSchoolBenchmark.Click();

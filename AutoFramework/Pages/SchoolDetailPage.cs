@@ -99,6 +99,10 @@ namespace AutoFramework.Pages.PageElements
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = "dd.metadata-school-detail__dd:nth-child(32) > a:nth-child(1)")]
         public IWebElement federationsLink { get; set; }
         //dd.metadata-school-detail__dd:nth-child(32) > a:nth-child(1)
+        
+        [SeleniumExtras.PageObjects.FindsBy(How = How.XPath, Using = "/html/body/div/div[3]/div[6]/main/div[2]/div[1]/div/a")]
+
+        public IWebElement GoTo_SADButton_For_School_without_finance { get; set; }
 
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = ".exp-total")]
 

@@ -132,10 +132,10 @@ namespace SFB_Test_Automation.AutoFramework
             Thread.Sleep(100);
             detailpage.MaxNumberOfPupilsInputBox.SendKeys(maxpupils );
             Thread.Sleep(100);
-            //detailpage.MaxNumberOfPupilsInputBox.SendKeys(Keys.ENTER);
+            detailpage.MaxNumberOfPupilsInputBox.SendKeys(Keys.Enter);
             Thread.Sleep(4000);
             detailpage.ViewBenchMarkCharts.Click();
-            Thread.Sleep(4000);
+            
         }
         public static void IncludechoolswithIncFinanceAllSchoolsAllEngland(String urn, IWebDriver driver)
         {
@@ -211,7 +211,7 @@ namespace SFB_Test_Automation.AutoFramework
             detailpage.General_Header.Click();
             detailpage.NumberOfPupilsCheckBox.Click();
             detailpage.MinNumberOfPupilsInputField.SendKeys("64");
-            detailpage.MaxNumberOfPupilsInputBox.SendKeys("79");
+            detailpage.MaxNumberOfPupilsInputBox.SendKeys("200");
             Thread.Sleep(1000);
             detailpage.ViewBenchMarkCharts.Click();
         }

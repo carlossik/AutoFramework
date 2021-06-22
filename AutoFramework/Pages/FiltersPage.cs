@@ -103,7 +103,7 @@ namespace SFB_Test_Automation.AutoFramework.Pages
         [SeleniumExtras .PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector,Using = "div.pagination-container:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > span:nth-child(1) > span:nth-child(1)")]
         public IWebElement ResultsCount { get; set; }
 
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "/html/body/div/div[3]/div[7]/main/div[2]/div[2]/div/div/div[4]/div[1]/ul/li[1]/div/div[1]/a")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "li.school-document:nth-child(1) > div:nth-child(1) > div:nth-child(1) > a:nth-child(1)")]
         public IWebElement schoolsdisplayedLinks { get; set; }
 
 

@@ -111,6 +111,8 @@ namespace SFB_Test_Automation.AutoFramework.Pages
         public IWebElement download_Options_Next_Button { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath,Using = "//li[3]/a[@class='govuk-footer__link' and 1]")]
         public IWebElement AccessibilityLink { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath,Using = "/html/body/modal-container/div/div/div[2]/div/button")]
+        public IWebElement ConfirmResetButton { get; set; }
 
         ////a[contains(@title,'List of Users')]
         //#charTable > tbody:nth-child(3) > tr:nth-child(5) > th:nth-child(1) //Average Class size

@@ -39,7 +39,7 @@ namespace SFB_Test_Automation.AutoFramework.Scenarios
             Config.Credentials.deletefiles(@"C:\TEMP\" + testName + ".jpg");
            driver =  Actions.InitializeDriver(5);
         }
-
+        [Ignore ("Ignore this test")]
         [Test]
         public void AccessibilityTestHomePage()
         {
@@ -47,7 +47,7 @@ namespace SFB_Test_Automation.AutoFramework.Scenarios
             Console.WriteLine(axeResult.Violations);
             Assert.IsEmpty(axeResult.Violations);
         }
-
+        [Ignore("ignore this test")]
         [Test]
         public void AccessibilityTestForSchoolDetailPage()
         {
@@ -56,7 +56,7 @@ namespace SFB_Test_Automation.AutoFramework.Scenarios
             Selenium.Axe.AxeResult axeResult = new Selenium.Axe.AxeBuilder(driver).Analyze();
             Assert.IsEmpty(axeResult.Violations);
         }
-
+        [Ignore("ignore this test")]
         [Test]
         public void AccessibilityTestForTrustDetailPage()
         {
@@ -65,7 +65,7 @@ namespace SFB_Test_Automation.AutoFramework.Scenarios
             Selenium.Axe.AxeResult axeResult = new Selenium.Axe.AxeBuilder(driver).Analyze();
             Assert.IsEmpty(axeResult.Violations);
         }
-
+        [Ignore("ignore this test")]
         [Test]
         public void AccessibilityTestForComparisonPage()
         {
@@ -74,7 +74,7 @@ namespace SFB_Test_Automation.AutoFramework.Scenarios
             Selenium.Axe.AxeResult axeResult = new Selenium.Axe.AxeBuilder(driver).Analyze();
             Assert.IsEmpty(axeResult.Violations);
         }
-
+        [Ignore ("ignore this test")]
         [Test]
         public void AccessibilityTestBenchMarkPage()
         {
@@ -83,7 +83,7 @@ namespace SFB_Test_Automation.AutoFramework.Scenarios
             Selenium.Axe.AxeResult axeResult = new Selenium.Axe.AxeBuilder(driver).Analyze();
             Assert.IsEmpty(axeResult.Violations);
         }
-
+        [Ignore("ignore this test")]
         [Test]
         public void accessibilitytest2()
         {

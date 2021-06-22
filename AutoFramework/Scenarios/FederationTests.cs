@@ -105,17 +105,21 @@ namespace AutoFramework
             {
                 try
                 {
+                    Console.WriteLine("Testing this School  " + " " + urn);
                     Actions.SearchSchoolViaName(urn, driver);
                     SchoolDetailPage detailspage = new SchoolDetailPage(driver);
-                    Thread.Sleep(10000);
+                    Thread.Sleep(100);
                     IWebElement federationslink = driver.FindElement(By.XPath("//dt[14]"));
-                    federationslink.Click();
-                    string errorText = "Some schools don't have a complete set of financial data for this period";
-                    Assert.IsFalse(driver.PageSource.Contains(errorText));
+                    Assert.IsTrue(federationslink.Displayed);
+                    IWebElement financeText = driver.FindElement(By.XPath("//*[@id=\"content\"]/main/div[1]/div[2]/p"));
+                    string errorText = "This school's finance data is part of a federated budget, the combined federation finance can be seen on its federation page.";
+                    
+                    Assert.AreEqual(errorText,financeText.Text);
 
                 }
                 catch (NoSuchElementException)
-                { Console.WriteLine(urn); }
+                { Console.WriteLine("This Urn failed "+" "+ urn); }
+                //{ (TestContext.CurrentContext.Result.Outcome != ResultState.Failure); }
                 { continue; }
             }
         }

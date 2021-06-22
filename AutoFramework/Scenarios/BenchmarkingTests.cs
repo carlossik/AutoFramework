@@ -233,7 +233,7 @@
         [Test]
        public void ExcludeschoolswithIncFinanceMaintainedLaCode()
         {
-            DetailedComparisonActions.ExcludeschoolswithIncFinanceMaintainedLaCode("142974", driver);
+            DetailedComparisonActions.ExcludeschoolswithIncFinanceMaintainedLaCode("100000", driver);
             string errorText = "Some schools don't have a complete set of financial data for this period";
             Assert.IsFalse(driver.PageSource.Contains(errorText));
         }

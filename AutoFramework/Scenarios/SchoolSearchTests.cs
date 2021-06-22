@@ -89,8 +89,8 @@
            
             Actions.SearchClosedschoolLAEstab("101421",driver);//"Belmont Primary School"
             SchoolDetailPage detailspage = new SchoolDetailPage(driver);
-           // Assert.IsTrue(detailspage.Date_Of_Closure.Displayed);
-            Assert.IsFalse(detailspage.StartAComparison.Displayed);
+            Assert.IsTrue(detailspage.Date_Of_Closure.Displayed);
+            //Assert.IsFalse(detailspage.StartAComparison.Displayed);
             } catch (NoSuchElementException )
             {
                 
@@ -314,6 +314,7 @@
             Actions.CallingClass.SearchViaSchoolurn("144406",driver);
             Assert.That(driver.FindElement(By.CssSelector("dd.metadata-school-detail__dd:nth-child(16)")).Text, Does.Contain("Not rated"));
         }
+        [Ignore("Ignore this test as Basic reports have been removed")]
         [Test]
         public void BasicComparisonReportingTest()
         {
@@ -328,6 +329,7 @@
             //Assert.That(driver.FindElement(By.CssSelector("#benchmarkBasket > div > div > div")).Text, Does.Contain("Your benchmark basket contains 15 schools "));
 
         }
+        [Ignore("Ignore this test as Basic reports have been removed")]
         [Test]
         public void BasicComparisonReportingLondonTest()
         {
@@ -338,6 +340,7 @@
             Assert.AreEqual(londonweighting, "Outer");
            
         }
+        [Ignore ("Ignore this test as Basic reports have been removed")]
         [Test]
         public void BasicComparisonReportNotLondonTest()
         {

@@ -106,11 +106,14 @@ namespace SFB_Test_Automation.AutoFramework.Pages
             public IWebElement Spending_on_premises_costs_Popup { get; set; }
             [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "fieldset.govuk-fieldset:nth-child(4) > div:nth-child(8) > label:nth-child(1) > img:nth-child(1)")]
             public IWebElement Spending_on_teaching_resources_Popup { get; set; }
+        ////*[@id="scenario-term"]/option[2]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//*[@id=\"scenario - term\"]/option[2]")]
+            public IWebElement select_default_year_of_finance { get; set; }
 
-            [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "fieldset.govuk-fieldset:nth-child(4) > div:nth-child(9) > label:nth-child(1) > img:nth-child(1)")]
-            public IWebElement Spending_on_energy_Popup { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "fieldset.govuk-fieldset:nth-child(4) > div:nth-child(9) > label:nth-child(1) > img:nth-child(1)")]
+        public IWebElement Spending_on_energy_Popup { get; set; }
 
-            [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".pull-right > span:nth-child(1)")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".pull-right > span:nth-child(1)")]
             public IWebElement modalcloseButton { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".modal-body > div:nth-child(1) > p:nth-child(1)")]
         public IWebElement popupmessage { get; set; }

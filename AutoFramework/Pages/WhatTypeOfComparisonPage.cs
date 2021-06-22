@@ -31,7 +31,7 @@ namespace SFB_Test_Automation.AutoFramework.Pages
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "[href *= 'self-assessment']")]//".sfb_gtm_sad_from_Academies")]
         public IWebElement SelfAssessMentDashboardButton { get; set; }
 
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath,Using = "//li[2]/a[@class='font-xsmall' and 1]")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector,Using = "#progressColumn > ul:nth-child(4) > li:nth-child(1) > a:nth-child(1)")]
         public IWebElement HighestprogressSchoolsComparisonButton { get; set; }
 
 

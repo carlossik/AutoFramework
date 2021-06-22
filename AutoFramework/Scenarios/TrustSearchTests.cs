@@ -150,7 +150,7 @@
         {
             Actions.SearchTrustViaLocation(driver);
             Console.WriteLine(driver.FindElement(By.CssSelector(".heading-xlarge")).Text);
-            Assert.IsTrue(driver.FindElement(By.CssSelector(".heading-xlarge")).Text == "Academy trusts with schools operating in and near First Avenue, Bexleyheath, Kent");
+            Assert.AreEqual(driver.FindElement(By.CssSelector(".heading-xlarge")).Text , "Academy trusts with schools operating in and near First Avenue, Bexley, Bexleyheath, DA7, Kent");
         }
         [Test]
         public void trustsearchViaLA()

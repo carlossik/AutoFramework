@@ -3,6 +3,7 @@ using AutoFramework.Pages.PageElements;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.Support.UI;
 using SFB_Test_Automation.AutoFramework.Pages;
 using System;
 using System.Collections.Generic;
@@ -46,8 +47,29 @@ namespace SFB_Test_Automation.AutoFramework
 
         }
 
-        
+        public static void generate_For_School_Without_Data(String Laestab, IWebDriver driver)
+        {
+            Actions.schoolSearchwithLaestab(Laestab, driver);
+            SchoolDetailPage detailspage = new SchoolDetailPage(driver);
+            detailspage.GoTo_SADButton_For_School_without_finance.Click();
+            TypeOfComparisonPage comparisonpage = new TypeOfComparisonPage(driver);
+            Actions.acceptCookie(driver);
+            comparisonpage.SelfAssessMentDashboardButton.Click();
+            Actions.acceptCookie(driver);
+            SelfAssessmentPage assessmentpage = new SelfAssessmentPage(driver);
+           
+            FillSADForm(driver);
+            //EditSADForm(driver);
+            Thread.Sleep(10000);
 
+        }
+
+        public static void generate_side_by_side_for_school_without_finance(String Laestab, IWebDriver driver)
+        {
+            generate_For_School_Without_Data(Laestab,driver);
+            side_by_side_alone(driver);
+            Thread.Sleep(2000);
+        }
         public static void verifySADlinkforIncomplete_finance_Year(String Laestab, IWebDriver driver)
         {
             Actions.schoolSearchwithLaestab(Laestab,driver);
@@ -106,7 +128,11 @@ namespace SFB_Test_Automation.AutoFramework
         {
             SadEditPage editpage = new SadEditPage(driver);
             editpage.ScenarioNameField.SendKeys("Automated Test1 Scenario");
+            var selectElement = new SelectElement(editpage.YearOfScenarioField);
+            selectElement.SelectByValue("2019/2020");
+           
             editpage.YearOfScenarioField.Click();
+            //editpage.select_default_year_of_finance.Click();
             editpage.NumberOfPupils.SendKeys("33");
             editpage.NumberOfTeachers.SendKeys("45");
             editpage.SchoolWorkForce.SendKeys("26.4");
@@ -168,6 +194,17 @@ namespace SFB_Test_Automation.AutoFramework
             FillSADForm(driver);
             Thread.Sleep(2000);
 
+        }
+        public static void side_by_side_alone(IWebDriver driver)
+        {
+            SelfAssessmentPage SadPage = new SelfAssessmentPage(driver);
+            Thread.Sleep(200);
+            Actions.acceptCookie(driver);
+            Thread.Sleep(2000);
+            SadPage.SideBySideLink.Click();
+            Thread.Sleep(200);
+            FillSADForm(driver);
+            Thread.Sleep(2000);
         }
 
         public static void customdashboardPage(IWebDriver driver)
@@ -270,6 +307,8 @@ namespace SFB_Test_Automation.AutoFramework
         {
             SelfAssessmentPage SadPage = new SelfAssessmentPage(driver);
             SadPage.ResetDashboardButton.Click();
+            Thread.Sleep(1000);
+            SadPage.ConfirmResetButton.Click();
             Thread.Sleep(2000);
         }
 

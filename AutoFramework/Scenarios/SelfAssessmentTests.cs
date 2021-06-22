@@ -2,18 +2,18 @@
 {
 
     using AutoFramework;
-using AutoFramework.Pages;
-using AutoFramework.Pages.PageElements;
-using NUnit.Framework;
-using NUnit.Framework.Interfaces;
-using OpenQA.Selenium;
+    using AutoFramework.Pages;
+    using AutoFramework.Pages.PageElements;
+    using NUnit.Framework;
+    using NUnit.Framework.Interfaces;
+    using OpenQA.Selenium;
     using OpenQA.Selenium.Support.UI;
     using SFB_Test_Automation.AutoFramework;
-using SFB_Test_Automation.AutoFramework.Pages;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+    using SFB_Test_Automation.AutoFramework.Pages;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -30,14 +30,14 @@ using System.Text;
         {
             var testName = TestContext.CurrentContext.Test.FullName;
             Config.Credentials.deletefiles(@"C:\TEMP\" + testName + ".jpg");
-            driver =  Actions.InitializeDriver(1);
+            driver = Actions.InitializeDriver(1);
         }
-      
+
         [Test]
-       
+
         public void Verify_School_withfullyear_Finance_has_a_self_assessmentdashboard_link()
         {
-            SelfAssessmentActions.verifySADLink("2013614",driver);
+            SelfAssessmentActions.verifySADLink("2013614", driver);
             SelfAssessmentPage SADspage = new SelfAssessmentPage(driver);
             Assert.IsTrue(SADspage.SelfAssessmentBanner.Displayed);
         }
@@ -45,42 +45,43 @@ using System.Text;
         [Test]
         public void VerifyElementsOnSadPage()
         {
-            SelfAssessmentActions.verifySADLink("100000",driver);
+            SelfAssessmentActions.verifySADLink("100000", driver);
             SelfAssessmentPage SADspage = new SelfAssessmentPage(driver);
             Assert.IsTrue(SADspage.SelfAssessmentBanner.Displayed);
             Assert.IsTrue(SADspage.HomeBreadCrumb.Displayed);
             Assert.IsTrue(SADspage.SchoonameBreadCrumb.Displayed);
             Assert.IsTrue(SADspage.SideBySideLink.Displayed);
             Assert.IsTrue(SADspage.ViewCharacteristicsLink.Displayed);
+
         }
         [Test]
         public void verifyLatestFinanceYear()
         {
             SelfAssessmentPage assessmentpage = new SelfAssessmentPage(driver);
-            Assert.IsTrue(assessmentpage.verifyFinancialYear("141811",driver));
+            Assert.IsTrue(assessmentpage.verifyFinancialYear("141811", driver));
         }
         [Test]
         public void verifyFieldsHiddenForSchoolType()
         {
-            
-            
-            var Lacodes = new List<string> { "207", "208", "205", "209" };
+
+
+            var Lacodes = new List<string> { "208", "205", "209" };
             var random = new Random();
             int index = random.Next(Lacodes.Count);
             string randomLacode = Lacodes[index]; //select a random La code from the list of La codes for the test
-            SelfAssessmentActions.verifyHiddenFields(randomLacode,driver); //208 // why is 303 not displaying any nurseries
+            SelfAssessmentActions.verifyHiddenFields(randomLacode, driver); //208 // why is 303 not displaying any nurseries
             SelfAssessmentPage assessmentpage = new SelfAssessmentPage(driver);
             Assert.IsFalse(assessmentpage.IsElementDisplayed(assessmentpage.AverageClassSize));
             Assert.IsFalse(assessmentpage.IsElementDisplayed(assessmentpage.TeacherContactRatio));
-                
-            
-            
-            
+
+
+
+
         }
         [Test]
         public void TestPersistenceOfSADonSchool()
         {
-            SelfAssessmentActions.createSideBySideScenario("3032083",driver);
+            SelfAssessmentActions.createSideBySideScenario("3032083", driver);
             SelfAssessmentActions.persist(driver);
             SelfAssessmentPage assessmentpage = new SelfAssessmentPage(driver);
             Assert.IsTrue(assessmentpage.scenario1Name.Displayed);
@@ -93,42 +94,42 @@ using System.Text;
         public void test_non_persistence_when_cookie_cleared()
         {
             string laestab = "3032083";
-            SelfAssessmentActions.createSideBySideScenario(laestab,driver);
-            SelfAssessmentActions.non_persistence(laestab,driver);
+            SelfAssessmentActions.createSideBySideScenario(laestab, driver);
+            SelfAssessmentActions.non_persistence(laestab, driver);
             SelfAssessmentPage assessmentpage = new SelfAssessmentPage(driver);
             //Assert.IsTrue(assessmentpage.SideBySideLink.Displayed);
         }
         [Test]
         public void TestCreateSideBySideView()
         {
-            SelfAssessmentActions.createSideBySideScenario("2032028",driver);
+            SelfAssessmentActions.createSideBySideScenario("2032028", driver);
             SelfAssessmentPage assessmentpage = new SelfAssessmentPage(driver);
             Assert.IsTrue(assessmentpage.ResetDashboardButton.Displayed);
         }
         [Test]
         public void TestCancelCreateSideBySideView()
         {
-            SelfAssessmentActions.cancelsidebysidecreation("2032028",driver);
+            SelfAssessmentActions.cancelsidebysidecreation("2032028", driver);
             SelfAssessmentPage assessmentpage = new SelfAssessmentPage(driver);
             Assert.IsTrue(assessmentpage.SideBySideLink.Displayed);
         }
         [Test]
         public void TestEditSideBySideView()
         {
-            SelfAssessmentActions.createSideBySideScenario("100000",driver);
+            SelfAssessmentActions.createSideBySideScenario("100000", driver);
             SelfAssessmentActions.EditScenario1(driver);
             //throw new NotImplementedException();
         }
         [Test]
         public void testViewCharacteristicsLinkForSingleScenario()
         {
-            SelfAssessmentActions.ViewCharacteristics("2013614",driver);
-           
+            SelfAssessmentActions.ViewCharacteristics("2013614", driver);
+
         }
         [Test]
         public void testViewCharacteristicsLinkForSideBySideView()
         {
-            SelfAssessmentActions.ViewCharacteristicsSideBySide("2013614",driver);
+            SelfAssessmentActions.ViewCharacteristicsSideBySide("2013614", driver);
             SADSideBySidePage sidebysidepage = new SADSideBySidePage(driver);
             Assert.IsTrue(sidebysidepage.sadsidebysideLondonweighingRow.Displayed);
             Assert.IsTrue(sidebysidepage.sadsidebysideNumberOfPupilsRow.Displayed);
@@ -137,17 +138,25 @@ using System.Text;
         [Test]
         public void TestResetDashBoard()
         {
-            SelfAssessmentActions.createSideBySideScenario("2032028",driver);
+            SelfAssessmentActions.createSideBySideScenario("2032028", driver);
             SelfAssessmentActions.ResetDashBoard(driver);
             SelfAssessmentPage assessmentpage = new SelfAssessmentPage(driver);
             Assert.IsTrue(assessmentpage.SideBySideLink.Displayed);
 
         }
+        [Test]
+        public void test_reset_dashboard_for_school_with_no_finance()
+        {
+            SelfAssessmentActions.generate_side_by_side_for_school_without_finance("120911", driver);
+            SelfAssessmentActions.ResetDashBoard(driver);
+            SelfAssessmentPage assessmentpage = new SelfAssessmentPage(driver);
+            Assert.IsTrue(driver.Url.Contains("add-new"));
+        }
 
         [Test]
         public void TestRemoveScenario1()
         {
-            SelfAssessmentActions.createSideBySideScenario("2032028",driver);
+            SelfAssessmentActions.createSideBySideScenario("2032028", driver);
             SelfAssessmentActions.removeScenario1(driver);
             SelfAssessmentPage assesmentpage = new SelfAssessmentPage(driver);
             Assert.IsTrue(assesmentpage.SideBySideLink.Displayed);
@@ -158,7 +167,7 @@ using System.Text;
         [Test]
         public void TestRemoveScenario2()
         {
-            SelfAssessmentActions.createSideBySideScenario("2032028",driver);
+            SelfAssessmentActions.createSideBySideScenario("2032028", driver);
             SelfAssessmentActions.removeScenario2(driver);
             SelfAssessmentPage assesmentpage = new SelfAssessmentPage(driver);
             Assert.IsTrue(assesmentpage.SideBySideLink.Displayed);
@@ -176,34 +185,34 @@ using System.Text;
         [Test]
         public void EditScenario2()
         {
-            SelfAssessmentActions.createSideBySideScenario("2032028",driver);
+            SelfAssessmentActions.createSideBySideScenario("2032028", driver);
             SelfAssessmentActions.EditScenario2(driver);
-        
+
         }
         [Test]
         public void EditSideBySide()
         {
-            SelfAssessmentActions.EditSideBySideView("2032028",driver);
-            
+            SelfAssessmentActions.EditSideBySideView("2032028", driver);
+
 
         }
 
         [Test]
         public void Verify_ClosedSchool_Has_No_Sad_Link()
         {
-            SelfAssessmentActions.SADclosedSchool("134118",driver);
+            SelfAssessmentActions.SADclosedSchool("134118", driver);
             SchoolDetailPage detailspage = new SchoolDetailPage(driver);
-           Assert.IsFalse(detailspage.verifySADLink());
-                
+            Assert.IsFalse(detailspage.verifySADLink());
+
         }
         [Test]
         public void TestprintSAD()
         {
-            SelfAssessmentActions.createSideBySideScenario("2032028",driver);
+            SelfAssessmentActions.createSideBySideScenario("2032028", driver);
             //SelfAssessmentActions.PrintSad();
             SelfAssessmentPage assessmentpage = new SelfAssessmentPage(driver);
             Assert.IsTrue(assessmentpage.Printbutton.Displayed);
-           
+
 
 
 
@@ -214,11 +223,11 @@ using System.Text;
         {
             //String[] filetypes = new string[] {"pdf","ppt"};
             //foreach (String filetype in filetypes) {
-                Config.Credentials.Deleteallfiles(Config.downloadDirectory); // removes any files from previous test runs in the download folder
-                SelfAssessmentActions.createSideBySideScenario("2032028", driver);
-                SelfAssessmentActions.DownloadSad("pdf", driver);
-                SelfAssessmentPage assessmentpage = new SelfAssessmentPage(driver);
-                Assert.IsTrue(assessmentpage.IsFileInFolder("pdf"));
+            Config.Credentials.Deleteallfiles(Config.downloadDirectory); // removes any files from previous test runs in the download folder
+            SelfAssessmentActions.createSideBySideScenario("2032028", driver);
+            SelfAssessmentActions.DownloadSad("pdf", driver);
+            SelfAssessmentPage assessmentpage = new SelfAssessmentPage(driver);
+            Assert.IsTrue(assessmentpage.IsFileInFolder("pdf"));
             //}
         }
 
@@ -240,7 +249,7 @@ using System.Text;
         [Test]
         public void Verify_SADlink_Displayed_ForOpenSchool()
         {
-            SelfAssessmentActions.SADclosedSchool("100000",driver);
+            SelfAssessmentActions.SADclosedSchool("100000", driver);
             Actions.NavigateToComparisonPage(driver);
             TypeOfComparisonPage comparisonpage = new TypeOfComparisonPage(driver);
             Assert.IsTrue(comparisonpage.SelfAssessMentDashboardButton.Displayed);
@@ -253,7 +262,7 @@ using System.Text;
         [Test]
         public void Verify_SADlink_Displayed_ForClosedSchool()
         {
-            SelfAssessmentActions.SADclosedSchool("101449",driver);
+            SelfAssessmentActions.SADclosedSchool("101449", driver);
             SchoolDetailPage detailpage = new SchoolDetailPage(driver);
             Assert.IsFalse(detailpage.verifySADLink());
         }
@@ -266,7 +275,7 @@ using System.Text;
         [Test]
         public void navigateBackToschooldetailpage()
         {
-            SelfAssessmentActions.createSideBySideScenario("2032028",driver);
+            SelfAssessmentActions.createSideBySideScenario("2032028", driver);
             SelfAssessmentActions.navigatebacktoschooldetaipage(driver);
             SchoolDetailPage detailpage = new SchoolDetailPage(driver);
             Assert.IsTrue(detailpage.School_Name.Displayed);
@@ -275,20 +284,33 @@ using System.Text;
         [Test]
         public void navigateBackToHomePage()
         {
-            SelfAssessmentActions.createSideBySideScenario("2032028",driver);
+            SelfAssessmentActions.createSideBySideScenario("2032028", driver);
             SelfAssessmentActions.navigatebacktohomepage(driver);
             HomePage home = new HomePage(driver);
             Assert.IsTrue(home.TrustTab.Displayed);
         }
         [Test]
         public void verifySchoolwithPartialFinance()
+            
+       
         {
-            SelfAssessmentActions.verifySADLink("8792637",driver);//8792637
-            SelfAssessmentPage assesmentpage = new SelfAssessmentPage(driver);
-            String assessmentWarning = ((assesmentpage.FinancewarningMessage).Text);
-            Assert.IsNotEmpty(assessmentWarning);
-           
+            try
+            {
+                SelfAssessmentActions.verifySADLink("126249", driver);//8792637
+                SelfAssessmentPage assesmentpage = new SelfAssessmentPage(driver);
+                String assessmentWarning = ((assesmentpage.FinancewarningMessage).Text);
+                Assert.IsNotEmpty(assessmentWarning);
+            }
+            catch (NoSuchElementException e)
+            {
+                Assert.Fail();
+            }
+
         }
+
+    
+              
+            
 
         [Test]
         public void VerifyAverageClassSizePopUp()
@@ -551,6 +573,18 @@ The teacher contact ratio will always be less than 1.0");
             SelfAssessmentActions.createSideBySideScenario("100000",driver);
         }
 
+
+        [Test]
+        public void test_For_SelfAssessment_For_School_Without_Data()
+        {
+            SelfAssessmentActions.generate_For_School_Without_Data("120911", driver);
+        }
+
+        [Test]
+        public void test_for_sidebyside_for_school_without_Data()
+        {
+            SelfAssessmentActions.generate_side_by_side_for_school_without_finance("120911", driver);
+        }
 
         [TearDown]
         public void TeardownAfterEachTest()

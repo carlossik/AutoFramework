@@ -54,8 +54,8 @@ namespace SFB_Test_Automation.AutoFramework
             detailspage.GoTo_SADButton_For_School_without_finance.Click();
             TypeOfComparisonPage comparisonpage = new TypeOfComparisonPage(driver);
             Actions.acceptCookie(driver);
-            comparisonpage.SelfAssessMentDashboardButton.Click();
-            Actions.acceptCookie(driver);
+            //comparisonpage.SelfAssessMentDashboardButton.Click();
+            //Actions.acceptCookie(driver);
             SelfAssessmentPage assessmentpage = new SelfAssessmentPage(driver);
            
             FillSADForm(driver);
@@ -257,23 +257,24 @@ namespace SFB_Test_Automation.AutoFramework
         public static void non_persistence(String LAestab, IWebDriver driver)
         {
             gotohomepageviabreadcrumb(driver);
-            driver.Close();
-            driver = new ChromeDriver();
-            driver.Navigate().GoToUrl(Config.currentTestEnv);
-            driver.FindElement(By.Id("acceptAllCookies")).Click();
-            driver.FindElement(By.Id("acceptAllCookiesHide")).Click();
-            driver.Manage().Window.Maximize();
-            driver.Navigate().Refresh();
-            //Thread.Sleep(5000);
+            driver.Manage().Cookies.DeleteAllCookies();
+            
             Actions.clearPopup(driver);
+            SchoolDetailPage detailpage = new SchoolDetailPage(driver);
+            detailpage.HomepageButton.Click();
+            Thread.Sleep(100);
+            Actions.acceptCookie(driver);
+
             Actions.schoolSearchwithLaestab(LAestab,driver);
+            
             SchoolDetailPage detailspage = new SchoolDetailPage(driver);
-            detailspage.SADLink.Click();
+            detailspage.StartAComparison.Click();
+            TypeOfComparisonPage comparepage = new TypeOfComparisonPage(driver);
+            comparepage.SelfAssessMentDashboardButton.Click();
+            Thread.Sleep(200);
             TimeSpan seconds = TimeSpan.FromSeconds(5);
-            driver.Manage().Timeouts().ImplicitWait = (seconds);
-            driver.FindElement(By.Id("acceptAllCookies")).Click();
-            driver.FindElement(By.Id("acceptAllCookiesHide")).Click();
-            Thread.Sleep(2000);
+            Actions.acceptCookie(driver);
+            Thread.Sleep(200);
            
         }
 

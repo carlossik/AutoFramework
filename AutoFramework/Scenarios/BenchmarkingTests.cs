@@ -219,7 +219,7 @@
        public void IncludeschoolswithIncFinanceAcademiesAllEngland()
 
         {
-            DetailedComparisonActions.IncludeschoolswithIncFinanceAcademiesAllEngland("100028", "200", "200", driver);//("144407","64","64");//"145621", "879", "350","1003"
+            DetailedComparisonActions.IncludeschoolswithIncFinanceAcademiesAllEngland("100028", "199", "199.5", driver);//("144407","64","64");//"145621", "879", "350","1003"
             string errorText = "Some schools don't have a complete set of financial data for this period";
             Assert.IsTrue(driver.PageSource.Contains(errorText));
         }

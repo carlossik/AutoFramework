@@ -207,8 +207,8 @@
             SearchResultsPage resultsPage = new SearchResultsPage(driver);
             //Actions.selectFirstSchool();
             
-            Console.WriteLine("These are the results counted " + resultsPage.resultsfromLinksCount(driver));
-            int final_results = resultsPage.resultsfromLinksCount(driver);
+            Console.WriteLine("These are the results counted " + resultsPage.numberofschoolsdisplayedTrusts(driver));
+            int final_results = resultsPage.numberofschoolsdisplayedTrusts(driver);
             Console.WriteLine("These are the results displayed " + (resultsPage.Allresultsdisplayed.Text));
             Assert.IsTrue((resultsPage.Allresultsdisplayed.Text) == (final_results.ToString()));
         }

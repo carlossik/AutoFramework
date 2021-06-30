@@ -151,7 +151,8 @@
         {
             
             Actions.addtobasketviaresultspage("DA7 5SS",driver);
-            Assert.IsTrue(driver.Url.Contains(Config.currentTestEnv + "SchoolSearch/Search?searchtype=search"));
+            //Assert.IsTrue(driver.Url.Contains(Config.currentTestEnv + "SchoolSearch/Search?searchtype=search"));
+            Console.Write(driver.Title);
             
 
             
@@ -340,15 +341,17 @@
             Assert.AreEqual(londonweighting, "Outer");
            
         }
-        [Ignore ("Ignore this test as Basic reports have been removed")]
+       // [Ignore ("Ignore this test as Basic reports have been removed")]
         [Test]
-        public void BasicComparisonReportNotLondonTest()
+        public void TestcorrectLADisplayed()
         {
-            Actions.OnclickReportingNonLondonTest("143590",driver);
-            
-            BenchMarkChartPage quickreportpage = new BenchMarkChartPage(driver);
-            var londonweighting = quickreportpage.DefaultSchoolValueLondonweighting.Text;
-            Assert.AreEqual(londonweighting, "Neither");
+            Actions.searchschoolLaCode("303", driver);
+            SearchResultsPage resultsPage = new SearchResultsPage(driver);
+            Actions.clickonallelements(driver);
+
+            //Actions.verify_schools_after_search(driver, resultsPage.schoolsListed_On_resultspage(driver));
+
+
         }
         [Test]
         public void TestAddschoolVianameorlocationlink()

@@ -56,7 +56,7 @@ namespace AutoFramework.Pages
         public IWebElement TrustSearchResultSortedByButton { get; set; }
         [FindsBy(How = How.CssSelector, Using = "li.school-document:nth-child(1) > details:nth-child(3) > summary:nth-child(1) > span:nth-child(1)")]
         public IWebElement ViewTrustSchools { get; set; }
-        [FindsBy(How = How.CssSelector,Using = "li.school-document:nth-child(1) > div:nth-child(1) > div:nth-child(1) > a:nth-child(1)")]
+        [FindsBy(How = How.CssSelector, Using = "li.school-document:nth-child(1) > div:nth-child(1) > div:nth-child(1) > a:nth-child(1)")]
         public IWebElement FirstScoolLinkOnPage { get; set; }
         //public int numberofschoolsdisplayed = driver.FindElements(By.ClassName("schoolsInTrust")).Count;
         //public int ResultsfromLinksCount = driver.FindElements(By.XPath("//a[contains(@href,\"/trust/index?companyNo=\")]")).Count();
@@ -68,31 +68,72 @@ namespace AutoFramework.Pages
         public IWebElement EducationPhase_checkbox { get; set; }
         [FindsBy(How = How.CssSelector, Using = ".add-all")]
         public IWebElement AddAllToBasket_Button { get; set; }
-        [FindsBy(How = How.Id,Using = "schoollevel_Allthrough")]
+        [FindsBy(How = How.Id, Using = "schoollevel_Allthrough")]
         public IWebElement SelectAllThroughsCheckbox { get; set; }
-        [FindsBy(How = How.CssSelector,Using = "[href *= '/school/detail?urn=']")]
+        [FindsBy(How = How.CssSelector, Using = "[href *= '/school/detail?urn=']")]
         public IWebElement viewtrustschoolsFirstLink { get; set; }
-        [FindsBy(How =How.CssSelector,Using = ".view-benchmark-charts-wrapper > a:nth-child(1)")]
+        [FindsBy(How = How.CssSelector, Using = ".view-benchmark-charts-wrapper > a:nth-child(1)")]
         public IWebElement viewbenchmarkchartsResultsPage { get; set; }
-
+        [FindsBy(How = How.CssSelector, Using = "")]
+        public IWebElement schoolsDisplayed { get; set; }
 
         [FindsBy(How = How.ClassName, Using = "schoolsInTrust")]
         public IWebElement results { get; set; }
 
 
-        public int resultsfromLinksCount(IWebDriver driver)
+        public int resultsfromLinksCountTrusts(IWebDriver driver)
         {
             IList<IWebElement> elementList = driver.FindElements(By.XPath("//a[contains(@href,\"/trust/index?companyNo=\")]")); // note the FindElements, plural.
-           
+
             return elementList.Count;
         }
 
-        public int numberofschoolsdisplayed(IWebDriver driver)
+        public int numberofschoolsdisplayedTrusts(IWebDriver driver)
         {
-          IList numberofschools = (driver.FindElements(By.ClassName("schoolsInTrust"))); // note the FindElements, plural.
-           
+            IList numberofschools = (driver.FindElements(By.ClassName("schoolsInTrust"))); // note the FindElements, plural.
+
             return numberofschools.Count;
         }
-    }
-   
+
+        public IList schoolsListed_On_resultspage(IWebDriver driver)
+        {
+            IList numberofschools = (driver.FindElements(By.XPath("//a[contains(@href,\"/school/detail?urn=\")]")));
+           
+            Console.WriteLine(numberofschools);
+            return numberofschools;
+            
+        }
+        public static void clickonallelements(IWebDriver driver)
+        {
+            IList<IWebElement> all = driver.FindElements(By.XPath("//a[contains(@href,\"/school/detail?urn=\")]"));
+
+            String[] allText = new String[all.Count];
+            int i = 0;
+            foreach (IWebElement element in all)
+            {
+                allText[i++] = element.Text;
+                Console.WriteLine(allText);
+            }
+        }
+
+        
+
+
+    //public void LoopLink(IWebDriver driver)
+    //{
+    //    int count = LinkElements.Count;
+
+    //    for (int i = 0; i < count; i++)
+    //    {
+    //        //driver.FindElements(By.XPath("//a[contains(@href,\"/school/detail?urn=\")]"))[i].Click();
+    //        driver.FindElement(By.XPath("//a[@href='/school/detail?urn=']")).Click();
+    //        //some ways to come back to the previous page
+    //    }
+
+    //}
+
+
+
+}
+
 }

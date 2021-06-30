@@ -65,7 +65,7 @@ namespace AutoFramework
         [Test]
         public void FilterBy10miles()
         {
-            FilterActions.FilterBy10Miles("DA7 5SS",driver);
+            FilterActions.FilterBy10Miles("se18 3jl",driver);
             Assert.That(driver.Url, Does.Contain("/SchoolSearch/Search?radius=10"));
         }
         [Test]

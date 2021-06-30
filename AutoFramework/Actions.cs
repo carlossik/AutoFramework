@@ -21,12 +21,10 @@
     {
         public static IWebDriver InitializeDriver(int second)
         {
-            //("--use-fake-ui-for-media-stream")
+          
 
            var ChromeOptions = new ChromeOptions();
-            
-           //ChromeOptions.AddArgument("profile.default_content_setting_values.notifications = 1");
-           // ////ChromeOptions.Add_experimental_option('prefs',{ 'profile.default_content_setting_values.notifications':1})
+          
            ChromeOptions.AddArgument("--use-fake-ui-for-media-stream");
            ChromeOptions.AddArgument("--disable-user-media-security=true");
            var downloadDirectory = (@"C:\AutomationDownloads");
@@ -378,9 +376,41 @@
 
 
         }
-        public static void testmailfailure(IWebDriver driver)
-        {
 
+        public static void clickonallelements(IWebDriver driver)
+        {
+            //IList<IWebElement> all = driver.FindElements(By.XPath("//a[contains(@href,'/school/detail?urn=')]"));
+            List<IWebElement> schlist = new List<IWebElement>(driver.FindElements(By.XPath(("//a[contains(@href,'/school/detail?urn=')]"))));
+            foreach (IWebElement element in schlist)
+            {
+                element.Click();
+                driver.Navigate().Back();
+                Thread.Sleep(1000);
+                
+            }
+        }
+
+
+
+        public static void verify_schools_after_search(IWebDriver driver,IList resultlist)
+        {
+            IList schoollist = resultlist;
+            foreach (IWebElement school in schoollist)
+
+            {
+                try
+                {
+                    Console.WriteLine(school.Text);
+                    //Thread.Sleep(1000);
+                    SchoolDetailPage detailPage = new SchoolDetailPage(driver);
+                    //Assert.IsTrue(detailPage.School_Name.Displayed);
+                    //driver.Navigate().Back();
+                    //Thread.Sleep(1000);
+
+                }
+                catch (NoSuchElementException) { continue; }
+                //{ Assert.Fail }
+            }
         }
 
         public static void testExcludeIncludeCheckboxSchName(string urn, IWebDriver driver)
@@ -595,9 +625,23 @@
             homepage.LocationButton.Click();
             homepage.SearchByLocationField.Click();
             homepage.SearchByLocationField.SendKeys(postcode);
-            
-            homepage.LocationSearchSubmitButton.Click();
-            
+            try
+            {
+                if (homepage.FirstIntellicenceSuggested.Displayed)
+                {
+                    homepage.FirstIntellicenceSuggested.Click();
+                    homepage.LocationSearchSubmitButton.Click();
+                }
+                else
+                    homepage.LocationSearchSubmitButton.Click();
+            }
+            catch (NoSuchElementException)
+            {
+                homepage.LocationSearchSubmitButton.Click();
+            }
+            //homepage.FirstIntellicenceSuggested.Click();
+            //homepage.LocationSearchSubmitButton.Click();
+            //homepage.FirstSelectionOption.Click();
             Thread.Sleep(200);
             FiltersPage filters = new FiltersPage(driver);
             Thread.Sleep(200);
@@ -657,7 +701,8 @@
             basketpage.clear_basket.Click();
             Thread.Sleep(2000);
             basketpage.backButton.Click();
-           
+            //Console.WriteLine(driver.Title);
+
         }
         public static void calculateSpecialSchoolSenCharacteristics(IWebDriver driver)
         {
@@ -717,7 +762,7 @@
         public static void searchSchoolViaLaCode(string lacode, IWebDriver driver)
         {
             HomePage homepage = new HomePage(driver);
-            //homepage.LacodeSearchButton.Click();
+            homepage.LacodeSearchButton.Click();
             homepage.LacodeSearchButton.Click();
             homepage.LacodeInputField.SendKeys(lacode);
             Thread.Sleep(2000);

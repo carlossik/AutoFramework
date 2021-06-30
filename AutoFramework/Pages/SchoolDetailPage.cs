@@ -117,6 +117,9 @@ namespace AutoFramework.Pages.PageElements
 
         public IWebElement CurrentTrustLinkDisplayed2 { get; set; }
 
+        [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector,Using = ".govuk-breadcrumbs__link")]
+        public IWebElement HomepageButton { get; set; }
+
 
 
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector,Using = "dd.metadata-school-detail__dd:nth-child(6) > a:nth-child(1)")]

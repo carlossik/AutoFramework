@@ -147,7 +147,7 @@ namespace SFB_Test_Automation.AutoFramework.Pages
                 Console.WriteLine("This is first of what we display"+""+SdFinalFinance);
                 Console.WriteLine("This is second of what we display"+Finalfinance);
                
-                Assert.AreEqual(SdFinalFinance,FinalFinanceFigure);
+                Assert.AreEqual((SdFinalFinance),(" "+FinalFinanceFigure));
                 //Assert.AreEqual()
                 
             }

@@ -16,6 +16,7 @@
     using System;
     using OpenQA.Selenium.Remote;
     using System.Drawing;
+    using System.Linq;
 
     public  class Actions :BrowserToRunWith
     {
@@ -377,17 +378,26 @@
 
         }
 
-        public static void clickonallelements(IWebDriver driver)
+        public List<String>  collect_aLL_Elements(IWebDriver driver)
         {
-            //IList<IWebElement> all = driver.FindElements(By.XPath("//a[contains(@href,'/school/detail?urn=')]"));
+           
             List<IWebElement> schlist = new List<IWebElement>(driver.FindElements(By.XPath(("//a[contains(@href,'/school/detail?urn=')]"))));
+            List<string> AuthorList = new List<string>();
             foreach (IWebElement element in schlist)
             {
-                element.Click();
-                driver.Navigate().Back();
-                Thread.Sleep(1000);
+                //Console.WriteLine(element.GetAttribute("href"));
+                // element.Click();
+                //((IJavaScriptExecutor)driver).ExecuteScript("window.open();");
+                //driver.SwitchTo().Window(driver.WindowHandles.Last());
+                AuthorList.Add(element.GetAttribute("href"));
+                //driver.Navigate().GoToUrl(element.GetAttribute("href"));
+                //Thread.Sleep(10000000);
+                //SchoolDetailPage detailpage = new SchoolDetailPage(driver);
+                ////driver.Navigate().Back();
                 
             }
+            Console.WriteLine(AuthorList);
+            return AuthorList;
         }
 
 
@@ -401,7 +411,7 @@
                 try
                 {
                     Console.WriteLine(school.Text);
-                    //Thread.Sleep(1000);
+                   
                     SchoolDetailPage detailPage = new SchoolDetailPage(driver);
                     //Assert.IsTrue(detailPage.School_Name.Displayed);
                     //driver.Navigate().Back();
@@ -985,6 +995,39 @@
                     }
 
                 }
+
+
+            public static List<string> collectSchools (IWebDriver driver)
+            {
+                SchoolDetailPage Schooldetails = new SchoolDetailPage(driver);
+                SearchResultsPage resultspage = new SearchResultsPage(driver);
+                List<string> schoolurls = new List<string>();
+                List<IWebElement> schlist = new List<IWebElement>(driver.FindElements(By.XPath(("//a[contains(@href,'/school/detail?urn=')]"))));
+           
+                foreach (IWebElement schl in schlist)
+                {
+                    try
+                    {
+                        Console.WriteLine(schl.GetAttribute("href"));
+                        schoolurls.Add(schl.GetAttribute("href"));
+                        return schoolurls;
+                    }
+                    catch (NoSuchElementException) { continue; }
+
+                    
+                }
+                return schoolurls;
+            }
+
+            public static void verifyschoolLA(IWebDriver driver)
+            {
+                List<string> schoolurls = Actions.CallingClass.collectSchools(driver);
+                foreach (string url in schoolurls)
+                {
+                    driver.Navigate().GoToUrl(url);
+
+                }
+            }
 
 
             public static void sptlinkscheck(IWebDriver driver)

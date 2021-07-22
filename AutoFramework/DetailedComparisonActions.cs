@@ -217,7 +217,7 @@ namespace SFB_Test_Automation.AutoFramework
         {
             Actions.SearchByLocationUsingPostcode(postcode,driver); 
             SearchResultsPage resultspage = new SearchResultsPage(driver);
-            resultspage.FirstElementPresented.Click();
+            //resultspage.FirstElementPresented.Click();
             //resultspage.EducationPhase_checkbox.Click();
             resultspage.secondaryschool_checkbox.Click();
             resultspage.AddAllToBasket_Button.Click();
@@ -330,7 +330,7 @@ namespace SFB_Test_Automation.AutoFramework
             detailpage.NumberOfPupilsCheckBox.Click();
             detailpage.MinNumberOfPupilsInputField.SendKeys("100");
             Thread.Sleep(6000);
-            detailpage.MaxNumberOfPupilsInputBox.SendKeys("200");
+            detailpage.MaxNumberOfPupilsInputBox.SendKeys("300");
             Thread.Sleep(2000);
             detailpage.ViewBenchMarkCharts.Click();
         }

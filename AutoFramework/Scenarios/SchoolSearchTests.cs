@@ -341,13 +341,14 @@
             Assert.AreEqual(londonweighting, "Outer");
            
         }
-       // [Ignore ("Ignore this test as Basic reports have been removed")]
+       
         [Test]
         public void TestcorrectLADisplayed()
         {
             Actions.searchschoolLaCode("303", driver);
+            
             SearchResultsPage resultsPage = new SearchResultsPage(driver);
-            Actions.clickonallelements(driver);
+            Actions.CallingClass.verifyschoolLA(driver);
 
             //Actions.verify_schools_after_search(driver, resultsPage.schoolsListed_On_resultspage(driver));
 

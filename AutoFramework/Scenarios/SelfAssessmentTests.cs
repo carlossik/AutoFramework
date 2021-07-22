@@ -522,6 +522,14 @@ The teacher contact ratio will always be less than 1.0");
 
         }
         [Test]
+        public void verifySADfor_SpecialSchool()
+        {
+            SelfAssessmentActions.navigateToSadPage("144406", driver); //school has to be a special school
+            SelfAssessmentPage SadPage = new SelfAssessmentPage(driver);
+            Assert.True(SadPage.Dashboard_Year_Help_Icon.Displayed);
+        }
+
+        [Test]
         public void VerifySadForClosedSchool()
         {
             try
@@ -532,7 +540,7 @@ The teacher contact ratio will always be less than 1.0");
 
                 Assert.False(detailspage.StartAComparison.Displayed);
             }
-            catch (NoSuchElementException) { Assert.Fail() ; }
+            catch (NoSuchElementException) { Assert.Pass() ; }
             }
         
         [Test]

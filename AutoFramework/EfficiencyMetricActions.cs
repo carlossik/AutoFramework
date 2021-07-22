@@ -158,7 +158,9 @@ namespace SFB_Test_Automation.AutoFramework
             Thread.Sleep(500);
             ToolsToImproveEMPage emtoolspage = new ToolsToImproveEMPage(driver);
             emtoolspage.UseTheTop10PlanningChecksLink.Click();
-            driver.SwitchTo().Window(driver.WindowHandles.Last());
+            Thread.Sleep(1000);
+                
+            driver.SwitchTo().Window(driver.WindowHandles.First());
             Thread.Sleep(300);
         }
 

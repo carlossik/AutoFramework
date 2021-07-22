@@ -196,7 +196,7 @@
        public void veryifyP8Bandingforsecondariescolour()
         {
             //We test here to ensure that secondary schools have p8 banding background colour
-            DetailedComparisonActions.detailedComparisonOnlySecondarySchools("Da7 5ss", driver);
+            DetailedComparisonActions.detailedComparisonOnlySecondarySchools("se18 3jl", driver);
 
 
         }
@@ -266,7 +266,7 @@
         [Test]
        public void IncludeschoolswithIncFinanceAcademiesLaCode()
         {
-            DetailedComparisonActions.IncludeschoolswithIncFinanceAcademiesLaCode("145621", "879", "350", "1030", driver);
+            DetailedComparisonActions.IncludeschoolswithIncFinanceAcademiesLaCode("145621", "879", "350", "1000", driver);
             string errorText = "Some schools don't have a complete set of financial data for this period";
             Assert.IsTrue(driver.PageSource.Contains(errorText));
         }
@@ -310,7 +310,7 @@
         [Test]
        public void IncludeschoolswithIncFinanceAcademiesLaName()
         {
-            DetailedComparisonActions.IncludeschoolswithIncFinanceAcademiesLaName("3035200", "Bexley", "200", "509", driver);
+            DetailedComparisonActions.IncludeschoolswithIncFinanceAcademiesLaName("3035200", "Hackney", "300", "500", driver);
             string errorText = "Some schools don't have a complete set of financial data for this period";
             Assert.IsTrue(driver.PageSource.Contains(errorText));
         }

@@ -220,7 +220,9 @@ namespace AutoFramework.Pages.PageElements
         {
             var giasurl = "https://get-information-schools.service.gov.uk/Establishments/Establishment/Details/"+urn;
             var chromedriverpath = @"C:\Users\kwaku\OneDrive\Desktop\C#";
-            driver = new ChromeDriver(chromedriverpath);
+            var options = new ChromeOptions();
+            options.AddArgument("--headless");
+            driver = new ChromeDriver(chromedriverpath, options);
             driver.Navigate().GoToUrl(giasurl);
             IWebElement closemodal = driver.FindElement(By.Id("gias-modal-close"));
             closemodal.Click();

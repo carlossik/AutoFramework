@@ -330,16 +330,17 @@
             //Assert.That(driver.FindElement(By.CssSelector("#benchmarkBasket > div > div > div")).Text, Does.Contain("Your benchmark basket contains 15 schools "));
 
         }
-        [Ignore("Ignore this test as Basic reports have been removed")]
+        
         [Test]
-        public void BasicComparisonReportingLondonTest()
+        public void VerifyEncodingText()
         {
-            Actions.OnclickReportingLondonTest("100140",driver);
-            Assert.That(driver.FindElement(By.CssSelector("#benchmarkBasket > div > div > div")).Text, Does.Contain("Your benchmark set contains 15 schools "));
-            BenchMarkChartPage quickreportpage = new BenchMarkChartPage(driver);
-            var londonweighting = quickreportpage.DefaultSchoolValueLondonweighting.Text;
-            Assert.AreEqual(londonweighting, "Outer");
-           
+            SchoolDetailPage detailspage = new SchoolDetailPage(driver);
+            String GiasValue = detailspage.compareWithGiasData(driver,"126416");
+            Actions.CallingClass.SearchViaSchoolurn( "126416", driver);
+            // SchoolDetailPage detailspage = new SchoolDetailPage(driver);
+            //Assert.AreEqual("St Thomas à Becket Church of England Aided Primary School", detailspage.School_Name.Text);
+            Assert.AreEqual(GiasValue, detailspage.School_Name.Text);
+
         }
        
         [Test]

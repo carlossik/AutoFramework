@@ -265,6 +265,7 @@ namespace SFB_Test_Automation.AutoFramework.vs.AutoFramework.Helpers
 
         }
 
+
         private static IList TrustLinks = new List<string>
 {
   Config.currentTestEnv+"trust/index?companyNo=6625091",
@@ -273,31 +274,7 @@ Config.currentTestEnv+"trust/index?companyNo=9662313",
 Config.currentTestEnv+"trust/index?companyNo=7379768",
 Config.currentTestEnv+"trust/index?companyNo=7455732"};
             
-//"https://as-t1dv-sfb.azurewebsites.net/trust/index?companyNo=7974098",
-//"https://as-t1dv-sfb.azurewebsites.net/trust/index?companyNo=8603037",
-//"https://as-t1dv-sfb.azurewebsites.net/trust/index?companyNo=7654130",
-//"https://as-t1dv-sfb.azurewebsites.net/trust/index?companyNo=8916979",
-//"https://as-t1dv-sfb.azurewebsites.net/trust/index?companyNo=2535091",
-//"https://as-t1dv-sfb.azurewebsites.net/trust/index?companyNo=6228587",
-//"https://as-t1dv-sfb.azurewebsites.net/trust/index?companyNo=8657975",
-//"https://as-t1dv-sfb.azurewebsites.net/trust/index?companyNo=7654127",
-//"https://as-t1dv-sfb.azurewebsites.net/trust/index?companyNo=10512450",
-//"https://as-t1dv-sfb.azurewebsites.net/trust/index?companyNo=2336587",
-//"https://as-t1dv-sfb.azurewebsites.net/trust/index?companyNo=9028122",
-//"https://as-t1dv-sfb.azurewebsites.net/trust/index?companyNo=7963778",
-//"https://as-t1dv-sfb.azurewebsites.net/trust/index?companyNo=7844587",
-//"https://as-t1dv-sfb.azurewebsites.net/trust/index?companyNo=8439184",
-//"https://as-t1dv-sfb.azurewebsites.net/trust/index?companyNo=8452281",
-//"https://as-t1dv-sfb.azurewebsites.net/trust/index?companyNo=10385920",
-//"https://as-t1dv-sfb.azurewebsites.net/trust/index?companyNo=8792911",
-//"https://as-t1dv-sfb.azurewebsites.net/trust/index?companyNo=7694573",
-//"https://as-t1dv-sfb.azurewebsites.net/trust/index?companyNo=8088957",
-//"https://as-t1dv-sfb.azurewebsites.net/trust/index?companyNo=7348231",
-//"https://as-t1dv-sfb.azurewebsites.net/trust/index?companyNo=7691324",
-//"https://as-t1dv-sfb.azurewebsites.net/trust/index?companyNo=8738750",
-//"https://as-t1dv-sfb.azurewebsites.net/trust/index?companyNo=7694050",
-//"https://as-t1dv-sfb.azurewebsites.net/trust/index?companyNo=7554121",
-//"https://as-t1dv-sfb.azurewebsites.net/trust/index?companyNo=10363519" };
+
 
         public IList trustlinks
         {
@@ -305,6 +282,8 @@ Config.currentTestEnv+"trust/index?companyNo=7455732"};
 
         }
     }
+
+   
 }
 
     

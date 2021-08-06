@@ -231,8 +231,7 @@
         [Test]
         public void TestDownloadSAD1() //Run this test with Chrome browser for now
         {
-            //String[] filetypes = new string[] {"pdf","ppt"};
-            //foreach (String filetype in filetypes) {
+           
             Config.Credentials.Deleteallfiles(Config.downloadDirectory); // removes any files from previous test runs in the download folder
             SelfAssessmentActions.createSideBySideScenario("2032028", driver);
             SelfAssessmentActions.DownloadSad("pdf", driver);
@@ -264,9 +263,7 @@
             TypeOfComparisonPage comparisonpage = new TypeOfComparisonPage(driver);
             Assert.IsTrue(comparisonpage.SelfAssessMentDashboardButton.Displayed);
 
-            //SchoolDetailPage detailpage = new SchoolDetailPage(driver);
-            //detailpage.StartAComparison.Click();
-            //Assert.IsTrue(detailpage.verifySADLink());
+            
         }
 
         [Test]

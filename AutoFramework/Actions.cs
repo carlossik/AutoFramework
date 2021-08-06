@@ -29,9 +29,10 @@
            ChromeOptions.AddArgument("--use-fake-ui-for-media-stream");
            ChromeOptions.AddArgument("--disable-user-media-security=true");
            var downloadDirectory = (@"C:\AutomationDownloads");
+            var chromedriverpath = @"C:\Users\kwaku\OneDrive\Desktop\C#";
            ChromeOptions.AddUserProfilePreference("download.default_directory", downloadDirectory);
            ChromeOptions.AddUserProfilePreference("download.prompt_for_download", false);
-           IWebDriver driver = new ChromeDriver(ChromeOptions);
+           IWebDriver driver = new ChromeDriver(chromedriverpath,ChromeOptions);
            //IWebDriver driver = new FirefoxDriver();
             driver.Navigate().GoToUrl(Config.currentTestEnv);
             TimeSpan seconds = TimeSpan.FromSeconds(second);

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using AutoFramework.Pages;
 using How = SeleniumExtras.PageObjects.How;
 using System.Threading;
+using OpenQA.Selenium.Chrome;
 
 namespace AutoFramework.Pages.PageElements
 {
@@ -215,7 +216,25 @@ namespace AutoFramework.Pages.PageElements
 
         }
 
+        public  String compareWithGiasData(IWebDriver driver, string urn)
+        {
+            var giasurl = "https://get-information-schools.service.gov.uk/Establishments/Establishment/Details/"+urn;
+            var chromedriverpath = @"C:\Users\kwaku\OneDrive\Desktop\C#";
+            driver = new ChromeDriver(chromedriverpath);
+            driver.Navigate().GoToUrl(giasurl);
+            IWebElement closemodal = driver.FindElement(By.Id("gias-modal-close"));
+            closemodal.Click();
+            IWebElement acceptCookie = driver.FindElement(By.CssSelector("button.govuk-button:nth-child(1)"));
+            acceptCookie.Click();
+            IWebElement schoolname = driver.FindElement(By.CssSelector(".govuk-heading-l"));
+            var Fschoolname = (schoolname.Text).Replace("\n", "").Replace("\r", "").Replace("Establishment", "");
+            Console.WriteLine(Fschoolname);
+            driver.Close();
+            return Fschoolname;
+            
 
+
+        }
 
     }
 
@@ -223,5 +242,5 @@ namespace AutoFramework.Pages.PageElements
 
 
 
-}//button
+}//string cleaned = example.Replace("\n", "").Replace("\r", "");
 

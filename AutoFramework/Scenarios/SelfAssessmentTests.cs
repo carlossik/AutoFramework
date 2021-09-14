@@ -91,6 +91,7 @@
             Console.WriteLine(assessmentpage.scenario2Name.Text);
 
         }
+        [Ignore("AC's have changed")]
         [Test]
         public void test_non_persistence_when_cookie_cleared()
         {
@@ -154,6 +155,7 @@
             Assert.IsTrue(assessmentpage.SideBySideLink.Displayed);
 
         }
+        [Ignore("AC's have changed")]
         [Test]
         public void test_reset_dashboard_for_school_with_no_finance()
         {
@@ -466,14 +468,13 @@ It includes all the spend on the risk items plus the additional items not risk a
             SelfAssessmentPage assesmentpage = new SelfAssessmentPage(driver);
             SadEditPage editpage = new SadEditPage(driver);
             SelfAssessmentActions.ClickPopUp(editpage.Teacher_contact_ratio_Popup);
-            String popupmessage = driver.FindElement(By.CssSelector("body > modal-container > div > div > app-edit-data-info-modal > div.modal-body > div")).Text;
+            String popupmessage = driver.FindElement(By.CssSelector("body > modal-container > div > div > app-edit-data-info-modal > div.modal-body > div")).Text.Replace("\n", String.Empty);
             Console.WriteLine(popupmessage);
-            Assert.AreEqual(popupmessage , @"For secondary schools: Teacher contact ratio = total number of teaching periods timetabled for all teachers in the school ÷ total possible number of teaching periods
-The total possible number of teaching periods is equivalent to the number of teaching periods in the timetable cycle multiplied by the full time equivalent number of teachers.
-Full time equivalent number of teachers includes both classroom teachers and teachers in the leadership group. It excludes teaching assistants, non-classroom based school support staff, and auxiliary staff.
-For primary schools: Teacher contact ratio = total number of classes ÷ full time equivalent number of teachers
-Full time equivalent number of teachers includes both classroom teachers and teachers in the leadership group. It excludes teaching assistants, non-classroom based school support staff, and auxiliary staff.
-The teacher contact ratio will always be less than 1.0");
+            Assert.AreEqual(popupmessage , @"Teacher contact ratio = total amount of contact time (in hours) timetabled for all teachers in the school ÷ total possible teaching time for all teachers in the school. The contact ratio is the total time that all the teachers spend in planned teaching contact with pupils divided by the total time that the same teachers could spend in planned teaching contact if no teacher has any allocation of non-contact time on their timetable.For the purposes of this calculation we exclude teaching assistants, non-classroom based school support staff, and auxiliary staff. Time during the timetable sessions when teachers are not teaching children because they are involved in planning and preparation (PPA Time), in school management in the widest sense (Management Time, Headship Time, NQT time and other time that the school might define for its own purposes) should not be counted as contact time.");
+
+
+
+
 
 
         }
@@ -570,7 +571,7 @@ The teacher contact ratio will always be less than 1.0");
             List<IWebElement> elementCount = dropDown.Options.ToList();
             
             Console.WriteLine(elementCount.Count());
-            Assert.IsTrue(elementCount.Count()== 5);
+            Assert.IsTrue(elementCount.Count()== 6);
             
 
 
@@ -596,13 +597,13 @@ The teacher contact ratio will always be less than 1.0");
             SelfAssessmentActions.createSideBySideScenario("100000",driver);
         }
 
-
+        [Ignore("AC's have changed")]
         [Test]
         public void test_For_SelfAssessment_For_School_Without_Data()
         {
             SelfAssessmentActions.generate_For_School_Without_Data("120911", driver);
         }
-
+        [Ignore("AC's have changed")]
         [Test]
         public void test_for_sidebyside_for_school_without_Data()
         {
@@ -613,6 +614,7 @@ The teacher contact ratio will always be less than 1.0");
         public void TeardownAfterEachTest()
 
         {
+            Console.WriteLine(TestContext.CurrentContext.Result.Outcome);
             if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
             {
                 var screenshot = ((ITakesScreenshot)driver).GetScreenshot();

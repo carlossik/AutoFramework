@@ -249,8 +249,7 @@
             Assert.IsTrue(detatilscomparison.Sen_Header.Displayed);
             Assert.IsTrue(detatilscomparison.Performance_Header.Displayed);
             Assert.IsTrue(detatilscomparison.WorkForce_Header.Displayed);
-           // Assert.AreEqual(detatilscomparison.SchooNameLink.Text, detatilscomparison.ComparingToText.Text);
-            //Assert.AreEqual(detatilscomparison.BodyText1.Text, "Which characteristics would you like to use for your comparison?");
+          
         }
         [Test]
         public void IsmapDisplayed()
@@ -332,17 +331,27 @@
         }
         
         [Test]
-        public void VerifyEncodingText()
+        public void VerifyEncodingForSchoolNameText() //test school is 126416 but we can use any school to verify the script works
         {
             SchoolDetailPage detailspage = new SchoolDetailPage(driver);
-            String GiasValue = detailspage.compareWithGiasData(driver,"126416");
-            Actions.CallingClass.SearchViaSchoolurn( "126416", driver);
-            // SchoolDetailPage detailspage = new SchoolDetailPage(driver);
-            //Assert.AreEqual("St Thomas à Becket Church of England Aided Primary School", detailspage.School_Name.Text);
+            String GiasValue = detailspage.compareWithGiasData(driver, "126416");
+            Actions.CallingClass.SearchViaSchoolurn("126416", driver);
             Assert.AreEqual(GiasValue, detailspage.School_Name.Text);
 
         }
-       
+
+        [Test]
+        public void VerifyEncodingForHead_Teacher_NameText() //test school is 126416 but we can use any school to verify the script works
+        {
+            SchoolDetailPage detailspage = new SchoolDetailPage(driver);
+            String GiasValue = detailspage.compareWithGiasDataHeadTeacher_Name(driver, "103119");//
+            
+            Actions.CallingClass.SearchViaSchoolurn("103119", driver);
+            Assert.AreEqual(GiasValue, detailspage.HeadTeacher_Name.Text);
+
+        }
+
+
         [Test]
         public void TestcorrectLADisplayed()
         {
@@ -351,7 +360,6 @@
             SearchResultsPage resultsPage = new SearchResultsPage(driver);
             Actions.CallingClass.verifyschoolLA(driver);
 
-            //Actions.verify_schools_after_search(driver, resultsPage.schoolsListed_On_resultspage(driver));
 
 
         }
@@ -511,6 +519,21 @@
         }
 
         [Test]
+        public void test_contactUsPage()
+        {
+            HomePage home = new HomePage(driver);
+            home.contactUs_footer.Click();
+            ContactUsPage contactpage = new ContactUsPage(driver);
+            contactpage.Name.SendKeys("Carlos");
+            contactpage.EmailField.SendKeys("carlossik@gmail.com");
+            contactpage.Contactus_Message_field.SendKeys("This is a test so Please ignore");
+            contactpage.SubmitButton.Click();
+            Assert.IsTrue(contactpage.SubmitMessage.Displayed);
+
+
+        }
+
+        [Test]
         public void testSpecialSchoolPage()
         {
             string[] specialschools = { "8797066", "3037004", "8797063", "8797065", "8777001" };
@@ -536,11 +559,7 @@
                 Actions.schoolsearchforSpecialSchool(school,driver);//Should be a special School
                 IList sencharacteristics = driver.FindElements(By.XPath("//tr/td[1]/span[1]"));
                 Assert.IsTrue(sencharacteristics.Count > 0);
-                //TrustHomePage thome = new TrustHomePage(driver);
-                //TrustActions tactions = new TrustActions();
-                //Console.WriteLine(Int32.Parse(tactions.numberberofcharacteristicsDisplayed(driver)));
-                //Assert.IsTrue(Int32.Parse(tactions.numberberofcharacteristicsDisplayed(driver)) > 0);
-                //driver.Navigate().GoToUrl(Config.currentTestEnv);
+                
             }
 
         }
@@ -553,6 +572,7 @@
         public void TeardownAfterEachTest()
 
         {
+            Console.WriteLine(TestContext.CurrentContext.Result.Outcome);
             if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
             {
                 var screenshot = ((ITakesScreenshot)driver).GetScreenshot();

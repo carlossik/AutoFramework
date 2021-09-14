@@ -79,6 +79,10 @@ namespace AutoFramework.Pages.PageElements
         public IWebElement FirstOptionOnSchoolsearch { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = ".error-summary")]
         public IWebElement schooldetailnotfoundmessage { get; set; }
+
+        [SeleniumExtras.PageObjects.FindsBy(How = How.XPath, Using = "//*[@id=\"content\"]/main/div[1]/div[3]/div/dl/dd[11]")]
+        public IWebElement HeadTeacher_Name { get; set; }
+
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = ".message")]
         public IWebElement SchooldetailInfoPanel { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = "#Financing")]
@@ -218,8 +222,8 @@ namespace AutoFramework.Pages.PageElements
 
         public  String compareWithGiasData(IWebDriver driver, string urn)
         {
-            var giasurl = "https://get-information-schools.service.gov.uk/Establishments/Establishment/Details/"+urn;
-            var chromedriverpath = @"C:\Users\kwaku\OneDrive\Desktop\C#";
+            var giasurl = Config.giasurl + urn;
+            var chromedriverpath = Config.chrome_path;
             var options = new ChromeOptions();
             options.AddArgument("--headless");
             driver = new ChromeDriver(chromedriverpath, options);
@@ -234,6 +238,27 @@ namespace AutoFramework.Pages.PageElements
             driver.Close();
             return Fschoolname;
             
+
+
+        }
+        public String compareWithGiasDataHeadTeacher_Name(IWebDriver driver, string urn)
+        {
+            var giasurl = Config.giasurl + urn;
+            var chromedriverpath = Config.chrome_path;
+            var options = new ChromeOptions();
+            options.AddArgument("--headless");
+            driver = new ChromeDriver(chromedriverpath, options);
+            driver.Navigate().GoToUrl(giasurl);
+            IWebElement closemodal = driver.FindElement(By.Id("gias-modal-close"));
+            closemodal.Click();
+            IWebElement acceptCookie = driver.FindElement(By.CssSelector("button.govuk-button:nth-child(1)"));
+            acceptCookie.Click();
+            IWebElement headTeacherName = driver.FindElement(By.CssSelector("#details-summary > dl:nth-child(1) > div:nth-child(3) > dd:nth-child(2)"));
+            var FheadTeacherName = (headTeacherName.Text).Replace("\n", "").Replace("\r", "").Replace("Principal", "").Trim();
+            Console.WriteLine(FheadTeacherName);
+            driver.Close();
+            return FheadTeacherName;
+
 
 
         }

@@ -173,6 +173,7 @@
         [TearDown]
         public void TeardownAfterEachTest()
         {
+            Console.WriteLine(TestContext.CurrentContext.Result.Outcome);
             if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
             {
                 var screenshot = ((ITakesScreenshot)driver).GetScreenshot();

@@ -285,6 +285,7 @@
     <Compile Include="AutoFramework\Pages\BenchMarkBasketPage.cs" />
     <Compile Include="AutoFramework\Pages\BenchMarkChartPage.cs" />
     <Compile Include="AutoFramework\Pages\ComparingSimilarSchoolsPage.cs" />
+    <Compile Include="AutoFramework\Pages\ContactUsPage.cs" />
     <Compile Include="AutoFramework\Pages\DataQueriesPage.cs" />
     <Compile Include="AutoFramework\Pages\DetailComparisonPage.cs" />
     <Compile Include="AutoFramework\Pages\EfficiencyMetricIntroPage.cs" />

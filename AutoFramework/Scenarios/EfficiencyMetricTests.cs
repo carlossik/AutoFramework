@@ -167,7 +167,7 @@ namespace AutoFramework
 
         }
 
-
+        [Ignore("Ignore this test for now ")]
         [Test]
         public void Verify_tools_to_improve_Top10_PlanningChecks()
         {
@@ -198,6 +198,7 @@ namespace AutoFramework
 
 
         }
+        [Ignore("AC's have changed")]
         [Test]
         public void validateFSM( )
         {
@@ -248,6 +249,7 @@ namespace AutoFramework
         [TearDown]
         public void TeardownAfterEachTest()
         {
+            Console.WriteLine(TestContext.CurrentContext.Result.Outcome);
             if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
             {
                 var screenshot = ((ITakesScreenshot)driver).GetScreenshot();

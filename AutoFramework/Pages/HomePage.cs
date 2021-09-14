@@ -93,6 +93,11 @@
         public IWebElement SenSpecialCharacteristicsLink { get; set; }
         [FindsBy(How = How.Id, Using = "openOnlyName")]
         public IWebElement IncludeSchoolsCheckbox { get; set; }
+        [FindsBy(How = How.CssSelector,Using = ".footer-meta-inner > ul:nth-child(2) > li:nth-child(1) > a:nth-child(1)")]
+        public IWebElement cookies_footer { get; set; }
+
+        [FindsBy(How = How.CssSelector, Using = ".footer-meta-inner > ul:nth-child(2) > li:nth-child(3) > a:nth-child(1)")]
+        public IWebElement contactUs_footer { get; set; }
 
         [FindsBy(How = How.CssSelector, Using = ".error-summary-list > li:nth-child(1) > a:nth-child(1)")]
         public IWebElement schoolsearchErrormessage { get; set; }
@@ -120,16 +125,14 @@
             }
 
             catch (OpenQA.Selenium.NoSuchElementException e) { }
-
             return false;
         }
     
     
         public void emptybasketBeforeTesting(IWebDriver driver)
         {
-            //var editbasketLink = Driver.driver.FindElement(By.CssSelector(".banner__comparison-list-info-panel__edit-basket"));
-
-            if (CheckBasketEmpty(driver))//Driver.driver.FindElement(By.CssSelector(".banner__comparison-list-info-panel__edit-basket")).Displayed))
+           
+            if (CheckBasketEmpty(driver))
             {
                 var editbasketLink = driver.FindElement(By.CssSelector(".banner__comparison-list-info-panel__edit-basket"));
                 editbasketLink.Click();
@@ -137,7 +140,6 @@
                 clearBasket.Click();
                 var closeBasket = driver.FindElement(By.CssSelector(".back-link"));
                 closeBasket.Click();
-
             }
             else
             {
@@ -145,10 +147,6 @@
             }
             
         }
-
-
-
-        //.banner__comparison-list-info-panel__edit-basket
 
 
     }

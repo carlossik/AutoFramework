@@ -91,10 +91,70 @@ namespace AutoFramework
         }
 
         [Test]
-        public void TestLeadSchool()
+        public void VerifyCompare_LinkRemoved()
         {
+            URNHelper helpers = new URNHelper();
+            IList urns = helpers.fedswithFinance;
+            foreach (string urn in urns)
+            {
+                try
+                {
+                    Actions.SearchSchoolViaName(urn, driver);
+                    SchoolDetailPage detailspage = new SchoolDetailPage(driver);
+                    Thread.Sleep(10000);
+                    IWebElement federationslink = driver.FindElement(By.XPath("//dt[14]"));
+                    //Assert.IsTrue(detailspage.AddToBenchMarkBasket.Displayed);
+                    Assert.False(detailspage.StartAComparison.Displayed);
 
+                }
+                catch (NoSuchElementException)
+                { Console.WriteLine(urn); }
+                //{ Assert.Fail(string.Format("Comparison Link Displayed")); }
+
+
+
+
+
+
+
+
+                { continue; }
+            }
         }
+
+
+        [Test]
+        public void VerifyAdd_To_BenchMarkSet_LinkRemoved()
+        {
+            URNHelper helpers = new URNHelper();
+            IList urns = helpers.fedswithFinance;
+            foreach (string urn in urns)
+            {
+                try
+                {
+                    Actions.SearchSchoolViaName(urn, driver);
+                    SchoolDetailPage detailspage = new SchoolDetailPage(driver);
+                    Thread.Sleep(10000);
+                    IWebElement federationslink = driver.FindElement(By.XPath("//dt[14]"));
+                    Assert.False(detailspage.AddToBenchMarkBasket.Displayed);
+                   
+
+                }
+                catch (NoSuchElementException)
+                { Console.WriteLine(urn); }
+                //Assert.Fail(string.Format("Addtobenchmark  Link Displayed"));
+
+
+
+
+
+
+
+
+                { continue; }
+            }
+        }
+
 
         [Test]
         public void VerifyFinanceBannerForNonsubmission()
@@ -133,6 +193,7 @@ namespace AutoFramework
         [TearDown]
         public void TeardownAfterEachTest()
         {
+            Console.WriteLine(TestContext.CurrentContext.Result.Outcome);
             if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
             {
                 var screenshot = ((ITakesScreenshot)driver).GetScreenshot();

@@ -119,13 +119,14 @@ namespace SFB_Test_Automation.AutoFramework.Scenarios
             Assert.AreEqual(home.schoolsearchErrormessage.Text, "Enter a school name, URN or LAESTAB to start a search (minimum 3 characters)");
         }
 
-
+       
 
 
 
         [TearDown]
         public void TeardownAfterEachTest()
         {
+            Console.WriteLine(TestContext.CurrentContext.Result.Outcome);
             if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
             {
                 var screenshot = ((ITakesScreenshot)driver).GetScreenshot();

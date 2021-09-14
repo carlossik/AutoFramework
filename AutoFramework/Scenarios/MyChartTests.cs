@@ -6,8 +6,7 @@ namespace AutoFramework
     using OpenQA.Selenium;
     using SFB_Test_Automation.AutoFramework.Pages;
     using SFB_Test_Automation.AutoFramework;
-
-  
+    using System;
 
     public class MyChartTests
    
@@ -62,6 +61,7 @@ namespace AutoFramework
         [TearDown]
         public void TeardownAfterEachTest()
         {
+            Console.WriteLine(TestContext.CurrentContext.Result.Outcome);
             if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
             {
                 var screenshot = ((ITakesScreenshot)driver).GetScreenshot();

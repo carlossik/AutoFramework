@@ -26,7 +26,7 @@ namespace SFB_Test_Automation.AutoFramework.Scenarios
     {
         IAlert alert;
         IWebDriver driver;
-
+        
         public AssessibilityTests()
         {
         }
@@ -109,6 +109,16 @@ namespace SFB_Test_Automation.AutoFramework.Scenarios
 
         }
         [Test]
+        public void verifyCookiesBanner()
+        {
+            HomePage home = new HomePage(driver);
+            home.cookies_footer.Click();
+            Assert.Fail();//failing this until the issue in safari is fixed 48178
+
+        }
+
+
+        [Test]
         public void verifyaccessibilityLinkSAD()
         {
             HomePage home = new HomePage(driver);
@@ -162,6 +172,7 @@ namespace SFB_Test_Automation.AutoFramework.Scenarios
         [TearDown]
         public void TeardownAfterEachTest()
         {
+            Console.WriteLine(TestContext.CurrentContext.Result.Outcome);
             if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
             {
                 var screenshot = ((ITakesScreenshot)driver).GetScreenshot();

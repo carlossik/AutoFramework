@@ -47,9 +47,11 @@ namespace AutoFramework
             {
                 try
                 {
-                    Actions.SearchSchoolViaName(urn, driver);
+                    var fedurl = Config.currentTestEnv + "School/Detail?urn=" + urn;
+
+                    driver.Navigate().GoToUrl(fedurl);
                     SchoolDetailPage detailspage = new SchoolDetailPage(driver);
-                    Thread.Sleep(10000);
+                   
                     IWebElement federationslink = driver.FindElement(By.XPath("//dt[14]"));
                     Assert.IsTrue(federationslink.Displayed);
                     Assert.IsTrue(detailspage.FederationWithoutFinance.Text.Contains("This school's finance data is part of a federated budget, the combined federation finance can be seen on its federation page."));
@@ -76,9 +78,11 @@ namespace AutoFramework
             {
                 try
                 {
-                    Actions.SearchSchoolViaName(urn, driver);
+                    var fedurl = Config.currentTestEnv + "School/Detail?urn=" + urn;
+
+                    driver.Navigate().GoToUrl(fedurl);
                     SchoolDetailPage detailspage = new SchoolDetailPage(driver);
-                    Thread.Sleep(10000);
+                  
                     IWebElement federationslink = driver.FindElement(By.XPath("//dt[14]"));
                     Assert.IsTrue(federationslink.Displayed);
                    
@@ -99,17 +103,19 @@ namespace AutoFramework
             {
                 try
                 {
-                    Actions.SearchSchoolViaName(urn, driver);
+                    var fedurl = Config.currentTestEnv + "School/Detail?urn=" + urn;
+
+                    driver.Navigate().GoToUrl(fedurl);
                     SchoolDetailPage detailspage = new SchoolDetailPage(driver);
-                    Thread.Sleep(10000);
+                   
                     IWebElement federationslink = driver.FindElement(By.XPath("//dt[14]"));
-                    //Assert.IsTrue(detailspage.AddToBenchMarkBasket.Displayed);
+                   
                     Assert.False(detailspage.StartAComparison.Displayed);
 
                 }
                 catch (NoSuchElementException)
                 { Console.WriteLine(urn); }
-                //{ Assert.Fail(string.Format("Comparison Link Displayed")); }
+              
 
 
 
@@ -132,9 +138,11 @@ namespace AutoFramework
             {
                 try
                 {
-                    Actions.SearchSchoolViaName(urn, driver);
+                    var fedurl = Config.currentTestEnv + "School/Detail?urn=" + urn;
+                    
+                    driver.Navigate().GoToUrl(fedurl);
                     SchoolDetailPage detailspage = new SchoolDetailPage(driver);
-                    Thread.Sleep(10000);
+                    
                     IWebElement federationslink = driver.FindElement(By.XPath("//dt[14]"));
                     Assert.False(detailspage.AddToBenchMarkBasket.Displayed);
                    
@@ -142,7 +150,7 @@ namespace AutoFramework
                 }
                 catch (NoSuchElementException)
                 { Console.WriteLine(urn); }
-                //Assert.Fail(string.Format("Addtobenchmark  Link Displayed"));
+               
 
 
 

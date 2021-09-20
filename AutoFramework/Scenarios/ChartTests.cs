@@ -54,10 +54,6 @@
         {
 
             Actions.dealforswchools("2032471",driver);
-            //Assert.IsTrue(driver.FindElement(By.CssSelector("div.chart-container:nth-child(4) > div:nth-child(1) > div:nth-child(3) > a:nth-child(1)")).Displayed);
-            //Assert.IsTrue(driver.FindElement(By.CssSelector("div.chart-container:nth-child(3) > div:nth-child(1) > div:nth-child(3) > a:nth-child(1)")).Displayed);
-            //Assert.IsTrue(driver.FindElement(By.CssSelector("div.chart-container:nth-child(5) > div:nth-child(1) > div:nth-child(3) > a:nth-child(1)")).Displayed);
-            //Assert.IsTrue(driver.FindElement(By.CssSelector("div.chart-container:nth-child(6) > div:nth-child(1) > div:nth-child(3) > a:nth-child(1)")).Displayed);
             
         }
         [Test]
@@ -66,8 +62,7 @@
             Actions.CallingClass.QuickCompareWithOtherSchools("2032471",driver);
             BenchMarkActions.costoffinance(driver);
             Assert.IsTrue(driver.FindElement(By.CssSelector("div.chart-container:nth-child(3) > div:nth-child(1) > h2:nth-child(1) > a:nth-child(1) > span:nth-child(1)")).Displayed);
-            //Assert.IsFalse(driver.FindElement(By.CssSelector("div.chart-container:nth-child(3) > div:nth-child(1) > div:nth-child(3) > details:nth-child(2) > summary:nth-child(1) > span:nth-child(1)")).Displayed);
-            //testing that anyother below cost of finance should be in an accordion
+            
 
         }
 
@@ -77,8 +72,7 @@
             DetailedComparisonActions.IncludechoolswithIncFinanceAllSchoolsAllEngland("145789",driver);
             BenchMarkActions.costoffinance(driver);
             Assert.IsTrue(driver.FindElement(By.CssSelector("div.chart-container:nth-child(3) > div:nth-child(1) > h2:nth-child(1) > a:nth-child(1) > span:nth-child(1)")).Displayed);
-            //Assert.IsFalse(driver.FindElement(By.CssSelector("div.chart-container:nth-child(3) > div:nth-child(1) > div:nth-child(3) > details:nth-child(2) > summary:nth-child(1) > span:nth-child(1)")).Displayed);
-            //testing that anyother below cost of finance should be in an accordion
+           
         }
 
         [Test]
@@ -87,7 +81,7 @@
             Actions.CallingClass.BestInClassComparison(driver);
             BenchMarkActions.costoffinance(driver);
             Assert.IsTrue(driver.FindElement(By.CssSelector("div.chart-container:nth-child(3) > div:nth-child(1) > h2:nth-child(1) > a:nth-child(1) > span:nth-child(1)")).Displayed);
-            //testing that anyother below cost of finance should be in an accordion
+            
 
 
         }
@@ -118,8 +112,7 @@
             Assert.IsTrue(tabspage.SchoolTab.Displayed);
             Assert.IsTrue(tabspage.PhaseOfEducationTab.Displayed);
             Assert.IsTrue(tabspage.OfStedRatingTab.Displayed);
-            //Assert.IsTrue(tabspage.Progress8Tab.Displayed);
-            //Assert.IsTrue(tabspage.PupilsTab.Displayed);
+           
         }
         [Test]
         public void PercenTageOfTotal()

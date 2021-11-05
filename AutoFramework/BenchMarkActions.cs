@@ -246,8 +246,6 @@
         public static void PasteCopiedClipboardText(IWebDriver driver)
         {  
             string myURL = System.Windows.Forms.Clipboard.GetText(TextDataFormat.Text);
-
-            ////((IJavaScriptExecutor)driver).ExecuteScript("window.open();");
             ((IJavaScriptExecutor)driver).ExecuteScript("window.open();");
             driver.SwitchTo().Window(driver.WindowHandles.Last());
 

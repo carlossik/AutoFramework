@@ -15,7 +15,7 @@ namespace SFB_Test_Automation.AutoFramework.Pages
         {
             PageFactory.InitElements(driver, this);
         }
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "GeneralHeader")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "#accordion-general-heading")]
         public IWebElement General_Header{ get; set; }
 
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "SenHeader")]
@@ -60,12 +60,12 @@ namespace SFB_Test_Automation.AutoFramework.Pages
         public IWebElement LAcodeinputfield { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "#FindSchoolByLaCode")]
         public IWebElement LANameinputfield { get; set; }
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector,Using = "#AllFieldset > div > input[type=checkbox]")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id,Using = "excludePartialAll")]
         public IWebElement AllSchoolsExcludecheckbox { get; set; }
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "#MaintainedFieldset > div > input[type=checkbox]")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "excludePartialMaintained")]
 
         public IWebElement MaintainedExcludecheckbox { get; set; }
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "#AcademiesFieldset > div > input[type=checkbox]")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "excludePartialAcademies")]
         public IWebElement AcademiesExcludecheckbox { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id,Using = "checkbox-MinNoPupil")]
         public IWebElement NumberOfPupilsCheckBox { get; set; }

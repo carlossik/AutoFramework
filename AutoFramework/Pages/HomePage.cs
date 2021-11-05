@@ -37,16 +37,16 @@
         public IWebElement UseLocationLink { get; set; }
         [FindsBy(How = How.Id, Using = "openOnlyLocation")]
         public IWebElement OpenSchoolsOnly { get; set; }
-        [FindsBy(How = How.XPath, Using = "//div[3]/button[@class='button search-button' and 1]")]
+        [FindsBy(How = How.CssSelector, Using = "button.govuk-button:nth-child(7)")]
         public IWebElement LocationSearchSubmitButton { get; set; }
         [FindsBy(How = How.Id, Using = "TrustLaCodeName")]
         public IWebElement LocalAuthorityTrustSearchButton { get; set; }
-        [FindsBy(How = How.CssSelector, Using = "#FindTrustByLaCodeName")]
+        [FindsBy(How = How.XPath, Using = "//input[@id=\"FindSchoolByTown\"]")]
         public IWebElement LacodeInputField { get; set; }
-        [FindsBy(How = How.XPath, Using = "//div[@id='SearchByLaCodeNameFieldset']/div[2]/button[@class='button search-button' and 1]")]
+        [FindsBy(How = How.Id, Using = "LaCodeName")]
         public IWebElement LacodeSearchButton { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//div[@id='SearchByTrustNameFieldset']/button[@class='button search-button' and 1]")]
+        [FindsBy(How = How.CssSelector, Using = "#SearchByTrustNameFieldset > div:nth-child(1) > button:nth-child(5)")]
         public IWebElement TrustSubmitButton { get; set; }
 
         [FindsBy(How = How.CssSelector, Using = "#TrustSearchByTownFieldset > div:nth-child(3) > button")]
@@ -63,13 +63,13 @@
         public IWebElement TrustLaCodeButton { get; set; }
         [FindsBy(How = How.Id, Using = "FindTrustByLaCodeName")]
         public IWebElement TrustLaCodeInputField { get; set; }
-        [FindsBy(How = How.CssSelector, Using = "#TrustSearchByLaCodeNameFieldset > div > button")]
+        [FindsBy(How = How.CssSelector, Using = "#TrustSearchByLaCodeNameFieldset > div:nth-child(1) > div:nth-child(3) > button:nth-child(3)")]
         public IWebElement TrustLacodeSearchButton { get; set; }
         [FindsBy(How = How.CssSelector, Using = "#FindSchoolByLaCodeName")]
         public IWebElement SchoolLacodeinputField { get; set; }
         [FindsBy(How = How.Id, Using = "LaCodeName")]
         public IWebElement SchoolLacodeButton { get; set; }
-        [FindsBy(How = How.XPath,Using = "//div[@id='SearchByLaCodeNameFieldset']/div[2]/button[@class='button search-button' and 1]")]
+        [FindsBy(How = How.CssSelector,Using = "button.govuk-button:nth-child(6)")]
         public IWebElement LAcodesearchSubmitButton { get; set; }
         [FindsBy(How = How.CssSelector, Using = ".tt-suggestion > a:nth-child(1)")]
         public IWebElement FirstIntellicenceSuggested { get; set; }

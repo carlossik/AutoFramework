@@ -275,13 +275,21 @@
 
         }
         [Test]
-        public void testPagination()
+        public void testPaginationUsing_PostCode()
         {
             Actions.SearchByLocationUsingPostcode("Se18 3jl",driver);
             Actions.navigatepagination(driver);
 
         }
-            
+
+        [Test]
+        public void testPagination_UsingLA_Code()
+        {
+            Actions.searchSchoolViaLaCode("Manchester", driver);
+            Actions.navigatepagination(driver);
+
+        }
+
         [Test]
         [Category("QuickTests")]
         public void SearchViaLocationManualEntry()
@@ -525,7 +533,7 @@
             home.contactUs_footer.Click();
             ContactUsPage contactpage = new ContactUsPage(driver);
             contactpage.Name.SendKeys("Carlos");
-            contactpage.EmailField.SendKeys("carlossik@gmail.com");
+            contactpage.EmailField.SendKeys("carlossidfe@outlook.com");
             contactpage.Contactus_Message_field.SendKeys("This is a test so Please ignore");
             contactpage.SubmitButton.Click();
             Assert.IsTrue(contactpage.SubmitMessage.Displayed);

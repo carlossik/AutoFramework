@@ -22,17 +22,17 @@ namespace SFB_Test_Automation.AutoFramework.Pages
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//span[@class='bold-xsmall']")]
         //[SeleniumExtras.PageObjects.CacheLookup]
         public IWebElement ComparingTo_School { get; set; }
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "checkbox-MinNoPupil")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//input[@id='checkbox-MinNoPupil']")]
         public IWebElement NumberOfPupilsCheckBox { get; set; }
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "MinNoPupil")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//input[@id='MinNoPupil']")]
         public IWebElement NumberOfPupilsFromtextBox { get; set; }
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "MaxNoPupil")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//input[@id='MaxNoPupil']")]
         public IWebElement NumberOfPupilsTotextbox{ get; set; }
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "checkbox-MinNoSchools")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//input[@id='checkbox-MinNoSchools']")]
         public IWebElement NumberOfSchoolsCheckbox { get; set; }
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "MinNoSchools")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//input[@id='MinNoSchools']")]
         public IWebElement MinimumNumbewrOfSchoolsTextBox { get; set; }
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "MaxNoSchools")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "//input[@id='MaxNoSchools']")]
         public IWebElement MaxiMunNumberOfSchoolsTextBox { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "checkbox-MinTotalInc")]
         public IWebElement TotalIncomeCheckBox { get; set; }

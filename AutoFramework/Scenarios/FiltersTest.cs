@@ -111,7 +111,8 @@ namespace AutoFramework
         [Test]
         public void VerifySearchResultsWithSchoolType()
         {
-            FilterActions.selectAllSchoolType("DA7 5SS",driver);
+            FilterActions.selectAllSchoolType("camden",driver);
+            
 
 
             Assert.That(driver.FindElement(By.CssSelector("div.pagination-container:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)")).Text, Does.Contain("Showing 1 - 50 of"));

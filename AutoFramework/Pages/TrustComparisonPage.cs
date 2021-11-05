@@ -19,7 +19,7 @@ namespace SFB_Test_Automation.AutoFramework.Pages
         [SeleniumExtras.PageObjects.CacheLookup]
         public IWebElement Remove_button { get; set; }
 
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath,Using = "//a[@class='button start-button hide-in-print']")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector,Using = "a.govuk-button")] //a.govuk-button
         //[SeleniumExtras.PageObjects.CacheLookup]
         public IWebElement Compare_withOtherTrusts { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector,Using = ".result-list-summary > a:nth-child(2)")]
@@ -49,7 +49,7 @@ namespace SFB_Test_Automation.AutoFramework.Pages
         public IWebElement MaxNumofschools { get; set; }
 
 
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".heading-xlarge")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.TagName, Using = "h1")]
         public IWebElement TrustName { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id,Using = "EnterTrustManuallyAccordion")]
         public IWebElement EnterTrustForComparisonOption { get; set; }
@@ -59,10 +59,10 @@ namespace SFB_Test_Automation.AutoFramework.Pages
         public IWebElement ManuallyAddTrustsRadio { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "radio-2")]
         public IWebElement SelectTrustsByCharacteristicsRadioButton { get; set; }
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//button[@class='button']")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".column-one-third > button:nth-child(1)")]
         public IWebElement TrustComparisonPageContinueButton { get; set; }
 
-        //NewTrustName//button[@class='button']
+       
 
 
 

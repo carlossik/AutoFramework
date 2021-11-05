@@ -93,6 +93,8 @@ namespace AutoFramework
         {
             Actions.SearchByLocationUsingPostcode(postcode,driver);
             FiltersPage filters = new FiltersPage(driver);
+            //filters.Education_Phase_Expand.Click();
+           // filters.Education_Phase_Expand.Click();
             filters.EducationPhase_SecondaryCheckbox.Click();
             filters.EducationPhase_AllThroughCheckbox.Click();
             filters.EducationPhase_NurseryCheckbox.Click();
@@ -112,11 +114,12 @@ namespace AutoFramework
             filters.SchoolType_CommunitySchool.Click();
             filters.SchoolType_CommunitySpecialSchool.Click();
             filters.SchoolType_FoundationSchool.Click();
-            filters.SchoolType_FoundationSpecialSchool.Click();
             filters.SchoolType_FreeSchool.Click();
+            filters.SchoolType_FreeSchool_special.Click();
             filters.SchoolType_Nursery.Click();
             filters.SchoolType_PupilReferalUnit.Click();
             filters.SchoolType_VoluntaryAidedSchool.Click();
+           
 
         }
         public static void SortByAlpabeticalOrderAZ(string postcode, IWebDriver driver)

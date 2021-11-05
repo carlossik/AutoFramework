@@ -32,12 +32,12 @@
             var chromedriverpath = @"C:\Users\kwaku\OneDrive\Desktop\C#";
            ChromeOptions.AddUserProfilePreference("download.default_directory", downloadDirectory);
            ChromeOptions.AddUserProfilePreference("download.prompt_for_download", false);
-           IWebDriver driver = new ChromeDriver(chromedriverpath,ChromeOptions);
-           //IWebDriver driver = new FirefoxDriver();
+           //IWebDriver driver = new ChromeDriver(chromedriverpath,ChromeOptions);
+           IWebDriver driver = new FirefoxDriver();
             driver.Navigate().GoToUrl(Config.currentTestEnv);
             TimeSpan seconds = TimeSpan.FromSeconds(second);
             driver.Manage().Timeouts().ImplicitWait = seconds;
-            IWebElement AcceptCookies = driver.FindElement(By.Id("acceptAllCookies"));
+            IWebElement AcceptCookies = driver.FindElement(By.CssSelector("#acceptAllCookies"));
             if (driver.FindElement(By.Id("acceptAllCookies")).Displayed)
             {
                 driver.FindElement(By.Id("acceptAllCookies")).Click();
@@ -49,7 +49,7 @@
                 Console.Write("No cookies here....");
             }
 
-            IWebElement HideCookieBanner = driver.FindElement(By.Id("acceptAllCookiesHide"));
+            IWebElement HideCookieBanner = driver.FindElement(By.XPath("//body/div[1]/div[2]/div[2]/a[1]"));
             if (HideCookieBanner.Displayed)
             {
                 HideCookieBanner.Click();
@@ -570,6 +570,7 @@
             homepage.LAcodesearchSubmitButton.Click();
             Thread.Sleep(300);
             SearchResultsPage resultspage = new SearchResultsPage(driver);
+            Thread.Sleep(300);
             resultspage.SelectAllThroughsCheckbox.Click();
             Thread.Sleep(30);
             resultspage.FirstScoolLinkOnPage.Click();
@@ -736,7 +737,7 @@
             Thread.Sleep(10000);
             driver.SwitchTo().Window(driver.WindowHandles[0]);
             driver.SwitchTo().Window(driver.CurrentWindowHandle);
-            IWebElement element = driver.FindElement(By.CssSelector(".button"));
+            IWebElement element = driver.FindElement(By.ClassName("govuk-button"));
             IJavaScriptExecutor executor = (IJavaScriptExecutor)driver;
             executor.ExecuteScript("arguments[0].scrollIntoView()", element);
             executor.ExecuteScript("arguments[0].click()", element);
@@ -854,7 +855,7 @@
             benchmarkpage.DownloadPage.Click();
             Thread.Sleep(1000);
             benchmarkpage.PowerPointFormat.Click();
-            IWebElement element = driver.FindElement(By.CssSelector(".button"));
+            IWebElement element = driver.FindElement(By.ClassName("govuk-button"));
             IJavaScriptExecutor executor = (IJavaScriptExecutor)driver;
             executor.ExecuteScript("arguments[0].scrollIntoView()", element);
             Thread.Sleep(10000);

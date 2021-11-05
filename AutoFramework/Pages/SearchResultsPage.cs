@@ -58,9 +58,7 @@ namespace AutoFramework.Pages
         public IWebElement ViewTrustSchools { get; set; }
         [FindsBy(How = How.CssSelector, Using = "li.school-document:nth-child(1) > div:nth-child(1) > div:nth-child(1) > a:nth-child(1)")]
         public IWebElement FirstScoolLinkOnPage { get; set; }
-        //public int numberofschoolsdisplayed = driver.FindElements(By.ClassName("schoolsInTrust")).Count;
-        //public int ResultsfromLinksCount = driver.FindElements(By.XPath("//a[contains(@href,\"/trust/index?companyNo=\")]")).Count();
-        [FindsBy(How = How.CssSelector, Using = ".count-js")]//"/html/body/div/div[8]/main/div[2]/div[2]/div[1]/div/p/span")]
+        [FindsBy(How = How.CssSelector, Using = ".count-js")]
         public IWebElement Allresultsdisplayed { get; set; }
         [FindsBy(How = How.Id, Using = "schoollevel_Secondary")]
         public IWebElement secondaryschool_checkbox { get; set; }
@@ -68,11 +66,11 @@ namespace AutoFramework.Pages
         public IWebElement EducationPhase_checkbox { get; set; }
         [FindsBy(How = How.CssSelector, Using = ".add-all")]
         public IWebElement AddAllToBasket_Button { get; set; }
-        [FindsBy(How = How.Id, Using = "schoollevel_Allthrough")]
+        [FindsBy(How = How.XPath, Using = "//*[@id=\"schoollevel_Allthrough\"]")]
         public IWebElement SelectAllThroughsCheckbox { get; set; }
         [FindsBy(How = How.CssSelector, Using = "[href *= '/school/detail?urn=']")]
         public IWebElement viewtrustschoolsFirstLink { get; set; }
-        [FindsBy(How = How.CssSelector, Using = ".view-benchmark-charts-wrapper > a:nth-child(1)")]
+        [FindsBy(How = How.CssSelector, Using = ".view-benchmark-charts-wrapper > button:nth-child(1)")]
         public IWebElement viewbenchmarkchartsResultsPage { get; set; }
         [FindsBy(How = How.CssSelector, Using = "")]
         public IWebElement schoolsDisplayed { get; set; }

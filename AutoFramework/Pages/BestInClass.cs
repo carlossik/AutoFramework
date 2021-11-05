@@ -29,10 +29,10 @@ namespace AutoFramework.Pages
         [FindsBy(How = How.Id, Using = "radio-4")]
         public IWebElement ManualComaprisonButton { get; set; }
 
-        [FindsBy(How = How.CssSelector,Using = ".next-button > a:nth-child(1)")]
+        [FindsBy(How = How.CssSelector,Using = ".next-button")]
         public IWebElement ContinueToHigherProgressSchoolBenchmark { get; set; }
 
-        [FindsBy(How = How.CssSelector, Using = "div.column-one-third:nth-child(1) > button:nth-child(1)")]
+        [FindsBy(How = How.XPath, Using = "//button[contains(text(),'Continue')]")]
         public IWebElement Continue { get; set; }
 
         [FindsBy(How = How.CssSelector,Using = "div.grid-row:nth-child(2) > div:nth-child(1) > button:nth-child(1)")]

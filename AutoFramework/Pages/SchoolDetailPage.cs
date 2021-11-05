@@ -24,7 +24,7 @@ namespace AutoFramework.Pages.PageElements
         }
 
         //a.button:nth-child(3)
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "a.button:nth-child(3)")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "a.govuk-button:nth-child(3)")]
         public IWebElement StartAComparison { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "#benchmarkBasket > div > div > div")]
         [SeleniumExtras.PageObjects.CacheLookup]
@@ -37,7 +37,7 @@ namespace AutoFramework.Pages.PageElements
         public IWebElement SetasDefaultSchool { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".compare-buttons-panel__button--compare")]
         public IWebElement CompareWithOtherSchools { get; set; }
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = " button.pl-0:nth-child(2) > div:nth-child(2) > span:nth-child(1)")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "button.pl-0:nth-child(2) > div:nth-child(2) > span:nth-child(1)")]
         public IWebElement AddToBenchMarkBasket { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector,Using = "#\\31 44406desktop > button:nth-child(2)")]
         public IWebElement FirstSearchItem { get; set; }
@@ -77,7 +77,7 @@ namespace AutoFramework.Pages.PageElements
         //public IWebElement DealsForSchools_Link { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = "span.twitter-typeahead:nth-child(3) > div:nth-child(4)")]
         public IWebElement FirstOptionOnSchoolsearch { get; set; }
-        [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = ".error-summary")]
+        [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = ".govuk-list > li:nth-child(1) > a:nth-child(1)")]
         public IWebElement schooldetailnotfoundmessage { get; set; }
 
         [SeleniumExtras.PageObjects.FindsBy(How = How.XPath, Using = "//*[@id=\"content\"]/main/div[1]/div[3]/div/dl/dd[11]")]

@@ -155,9 +155,9 @@
             TrustComparisonPage trustComaprison = new TrustComparisonPage(driver);
             Thread.Sleep(1000);
             trustComaprison.Compare_withOtherTrusts.Click();
-            Thread.Sleep(50000);
+            Thread.Sleep(5);
             trustComaprison.SelectTrustsByCharacteristicsRadioButton.Click();
-            Thread.Sleep(5000);
+            Thread.Sleep(50);
             trustComaprison.TrustComparisonPageContinueButton.Click();
             TrustCharacteristicsPage tcompare = new TrustCharacteristicsPage(driver);
             tcompare.NumberOfPupilsCheckBox.Click();

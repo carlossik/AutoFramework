@@ -74,7 +74,7 @@ namespace AutoFramework.Pages.PageElements
         public IWebElement WorkForceTab { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "Custom")]
         public IWebElement YourChartsTab { get; set; }
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector,Using = ".add-schools > span:nth-child(2)")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath,Using = ".//span[contains(text(),'Add another school by name or location')]")]
         public IWebElement AddanotherschoolLink { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id,Using = "ChartGroup")]
         public IWebElement TotalExpenditureDropdown { get; set; }

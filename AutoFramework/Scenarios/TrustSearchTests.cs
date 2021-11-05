@@ -45,7 +45,7 @@
             TrustActions.TrustSearchWitNameUsingFirstSuggestedName("Kaleidoscope Learning Trust ",driver);
             TrustComparisonPage trustcomparison = new TrustComparisonPage(driver);
             string trustname = (trustcomparison.TrustName).Text;
-            string expectedName = driver.FindElement(By.CssSelector(".heading-xlarge")).Text;
+            string expectedName = driver.FindElement(By.TagName("h1")).Text;
             Assert.AreEqual(trustname, expectedName);
         }
         [Test]
@@ -159,7 +159,7 @@
             string numberOfSchools = driver.FindElement(By.CssSelector(".count-js")).Text;
             Console.WriteLine(driver.FindElement(By.CssSelector(".count-js")).Text);
             Assert.IsTrue(Convert.ToInt32(numberOfSchools) > 0);
-            Assert.IsTrue(driver.FindElement(By.CssSelector(".heading-xlarge")).Text == "Academy trusts with schools operating in Bexley");
+            Assert.IsTrue(driver.FindElement(By.TagName("h1")).Text == "Academy trusts with schools operating in Bexley");
             
         }
         [Test]
@@ -310,7 +310,7 @@
         public void SearchForTrustWithNameandSubmitButton()
         {
             TrustActions.TrustSearchWitNameUsingSubmitButton("5 Dimensions Trust",driver);
-            String TrustName = driver.FindElement(By.CssSelector(".heading-xlarge")).Text;
+            String TrustName = driver.FindElement(By.CssSelector("h1.govuk-heading-xl")).Text;
             Assert.IsTrue(TrustName.Contains("5 Dimensions Trust"));
             IWebElement ViewOnMapButton = driver.FindElement(By.CssSelector("div.litem:nth-child(1) > button:nth-child(1)"));
             Assert.IsTrue(ViewOnMapButton.Displayed);
@@ -341,9 +341,9 @@
         public void SearchForTrustWithNameUsingFirstSuggested()
         {
             TrustActions.TrustSearchWitNameUsingFirstSuggestedName("5 Dimensions Trust",driver);
-            String TrustName = driver.FindElement(By.CssSelector(".heading-xlarge")).Text;
+            String TrustName = driver.FindElement(By.CssSelector("h1.govuk-heading-xl")).Text;
             Assert.AreEqual(TrustName, "5 Dimensions Trust");
-            IWebElement CompareWithOtherTrustsButton = driver.FindElement(By.XPath("//a[@class='button start-button hide-in-print']"));
+            IWebElement CompareWithOtherTrustsButton = driver.FindElement(By.CssSelector("a.govuk-button"));
             Assert.IsTrue(CompareWithOtherTrustsButton.Displayed);
             String CompaniesHouseNumber = driver.FindElement(By.XPath("//dd[1]")).Text;
             Console.WriteLine(CompaniesHouseNumber);

@@ -115,14 +115,6 @@ namespace AutoFramework
                 }
                 catch (NoSuchElementException)
                 { Console.WriteLine(urn); }
-              
-
-
-
-
-
-
-
 
                 { continue; }
             }

@@ -41,7 +41,7 @@
         public IWebElement LocationSearchSubmitButton { get; set; }
         [FindsBy(How = How.Id, Using = "TrustLaCodeName")]
         public IWebElement LocalAuthorityTrustSearchButton { get; set; }
-        [FindsBy(How = How.XPath, Using = "//input[@id=\"FindSchoolByTown\"]")]
+        [FindsBy(How = How.XPath, Using = "//input[@id='FindSchoolByLaCodeName']")]
         public IWebElement LacodeInputField { get; set; }
         [FindsBy(How = How.Id, Using = "LaCodeName")]
         public IWebElement LacodeSearchButton { get; set; }
@@ -75,7 +75,7 @@
         public IWebElement FirstIntellicenceSuggested { get; set; }
         [FindsBy(How = How.CssSelector, Using = "#NoDefaultTab > a:nth-child(1)")]
         public IWebElement NoDefaultSchoolTab { get; set; }
-        [FindsBy(How = How.XPath, Using = "//*[@id=\"content\"]/div/aside/nav/ul/li[3]/a")]
+        [FindsBy(How = How.XPath, Using = "//a[contains(text(),'Do you have a school or trust data query?')]")]
         public IWebElement SchoolorTrustDataQueryLink { get; set; }
         [FindsBy(How = How.CssSelector, Using = ".tt-suggestion")]
         public IWebElement FirstSelectionOption { get; set; }
@@ -96,7 +96,7 @@
         [FindsBy(How = How.CssSelector,Using = ".footer-meta-inner > ul:nth-child(2) > li:nth-child(1) > a:nth-child(1)")]
         public IWebElement cookies_footer { get; set; }
 
-        [FindsBy(How = How.CssSelector, Using = ".footer-meta-inner > ul:nth-child(2) > li:nth-child(3) > a:nth-child(1)")]
+        [FindsBy(How = How.XPath, Using = "//a[contains(text(),'Contact')]")]
         public IWebElement contactUs_footer { get; set; }
 
         [FindsBy(How = How.CssSelector, Using = ".error-summary-list > li:nth-child(1) > a:nth-child(1)")]

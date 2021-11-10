@@ -698,6 +698,7 @@
         {
             SearchResultsPage resultspage = new SearchResultsPage(driver);
             resultspage.paginationSecondPage.Click();
+            resultspage.paginationNextButton.Click();
             resultspage.paginationPreviousButton.Click();
         }
         public static void addtobasketviaresultspage(string postcode, IWebDriver driver)
@@ -775,8 +776,9 @@
         {
             HomePage homepage = new HomePage(driver);
             homepage.LacodeSearchButton.Click();
-            homepage.LacodeSearchButton.Click();
+            //homepage.LacodeSearchButton.Click();
             homepage.LacodeInputField.SendKeys(lacode);
+            homepage.LAcodesearchSubmitButton.Click();
             Thread.Sleep(2000);
         }
         public static void SearchTrustViaLocalAuthority(String LAcode, IWebDriver driver)
@@ -960,7 +962,7 @@
                 Thread.Sleep(3000);
                 SchoolDetailPage Schooldetails = new SchoolDetailPage(driver);
                 SearchResultsPage resultspage = new SearchResultsPage(driver);
-                resultspage.FirstElementPresented.Click();
+                //resultspage.FirstElementPresented.Click();
                 Thread.Sleep(3000);
                 Schooldetails.AddToBenchMarkBasket.Click();
                 Thread.Sleep(300);
@@ -1233,7 +1235,7 @@
                 home.SearchSubmit.Click();
                 Thread.Sleep(1000);
                 SchoolDetailPage detailspage = new SchoolDetailPage(driver);
-                detailspage.AddToBenchMarkBasket.Click();
+                detailspage.AddToBenchMarkSetDetailspage.Click();
                 Thread.Sleep(1000);
             }
             public static void ClearSchools(IWebDriver driver)

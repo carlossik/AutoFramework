@@ -35,7 +35,7 @@ namespace SFB_Test_Automation.AutoFramework.Pages
         public IWebElement referencenumberConfirmation { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".bold")]
         public IWebElement queryreferencenumber { get; set; }
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".govuk-list > li:nth-child(1) > a:nth-child(1)")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//a[contains(text(),'The Email field is not a valid e-mail address.')]")]
         public IWebElement EmailErrorMessage { get; set; }
         //.error-summary-list > li:nth-child(1) > a:nth-child(1)
     }

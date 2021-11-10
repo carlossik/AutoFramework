@@ -42,7 +42,7 @@ namespace AutoFramework.Pages
         public IWebElement ViewBenchmarkChartsButton { get; set; }
         [FindsBy(How = How.CssSelector, Using = "#manualButton")]
         public IWebElement ManualChartsButton { get; set; }
-        [FindsBy(How = How.CssSelector, Using = "#schoolLevel > div:nth-child(1) > fieldset:nth-child(1) > label:nth-child(8)")]
+        [FindsBy(How = How.XPath, Using = "//label[contains(text(),'16 Plus')]")]
         public IWebElement Checkbox_16plus { get; set; }
         [FindsBy(How = How.CssSelector, Using = "div.pagination-container:nth-child(1) > div:nth-child(1) > div:nth-child(2) > button:nth-child(2)")]
         public IWebElement paginationSecondPage { get; set; }

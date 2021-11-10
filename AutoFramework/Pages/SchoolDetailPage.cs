@@ -37,13 +37,18 @@ namespace AutoFramework.Pages.PageElements
         public IWebElement SetasDefaultSchool { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".compare-buttons-panel__button--compare")]
         public IWebElement CompareWithOtherSchools { get; set; }
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "button.pl-0:nth-child(2) > div:nth-child(2) > span:nth-child(1)")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "button.desktop-button:nth-child(2)")]
         public IWebElement AddToBenchMarkBasket { get; set; }
+
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "button.pl-0:nth-child(2) > div:nth-child(2) > span:nth-child(1)")]
+        public IWebElement AddToBenchMarkSetDetailspage { get; set; }
+        //button.pl-0:nth-child(2) > div:nth-child(2) > span:nth-child(1)
+
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector,Using = "#\\31 44406desktop > button:nth-child(2)")]
         public IWebElement FirstSearchItem { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "dd.metadata-school-detail__dd:nth-child(14)")]
         public IWebElement OfstedRating { get; set; }
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".heading-xlarge")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "h1.govuk-heading-xl")]
         public IWebElement School_Name { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "SchoolLocationMap")]
         public IWebElement School_Location_Map { get; set; }

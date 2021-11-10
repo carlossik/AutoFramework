@@ -55,7 +55,7 @@
             Actions.schoolSearchwithLaestab("8782446",driver);
             SchoolDetailPage detailspage = new SchoolDetailPage(driver);
             Assert.IsTrue(detailspage.School_Name.Displayed);
-            Assert.AreEqual((detailspage.School_Name).Text, driver.FindElement(By.CssSelector(".heading-xlarge")).Text); //.heading-xlarge///html/body/div/div[9]/main/div[1]/div[1]/h1
+            Assert.AreEqual((detailspage.School_Name).Text, driver.FindElement(By.CssSelector("h1.govuk-heading-xl")).Text); //.heading-xlarge///html/body/div/div[9]/main/div[1]/div[1]/h1
             Assert.IsTrue(detailspage.Telephone_Number.Displayed);
             Assert.IsTrue(detailspage.OfstedRating.Displayed);
             Assert.IsTrue(detailspage.DataFromOtherSources.Displayed);
@@ -285,7 +285,7 @@
         [Test]
         public void testPagination_UsingLA_Code()
         {
-            Actions.searchSchoolViaLaCode("Manchester", driver);
+            Actions.searchSchoolViaLaCode("352", driver);
             Actions.navigatepagination(driver);
 
         }
@@ -295,7 +295,7 @@
         public void SearchViaLocationManualEntry()
         {
             Actions.SearchByLocationUsingPostcode("DA7 5SS",driver);
-            Assert.That(driver.FindElement(By.CssSelector(".heading-xlarge")).Text, Does.Contain("Schools in and near First Avenue"));
+            Assert.That(driver.FindElement(By.CssSelector("h1.govuk-heading-xl")).Text, Does.Contain("Schools in and near First Avenue"));
             //Assert.AreEqual(driver.FindElement(By.CssSelector("div.pagination-container:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > span:nth-child(1)")).Text, "109");
                    }
 
@@ -313,7 +313,7 @@
         public void SearchByLaCode()
         {
             Actions.CallingClass.SearchByLaCode("303",driver);
-            Assert.That(driver.FindElement(By.CssSelector(".heading-xlarge")).Text, Does.Contain("Academy trusts with schools operating in Bexley"));
+            Assert.That(driver.FindElement(By.CssSelector(".govuk-heading-xl")).Text, Does.Contain("Academy trusts with schools operating in Bexley"));
 
         }
         [Test]
@@ -512,8 +512,8 @@
             Actions.testmailSuccess("carl.fagan@education.gov.uk",driver);
             Assert.IsTrue((queriesPage.queryConfirmation).Text == "Your query has been sent");
             
-            Console.WriteLine((queriesPage.queryreferencenumber).Text);
-            Console.WriteLine((queriesPage.queryConfirmation).Text);
+            //Console.WriteLine((queriesPage.queryreferencenumber).Text);
+            //Console.WriteLine((queriesPage.queryConfirmation).Text);
 
         }
 

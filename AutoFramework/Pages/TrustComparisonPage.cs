@@ -19,7 +19,7 @@ namespace SFB_Test_Automation.AutoFramework.Pages
         [SeleniumExtras.PageObjects.CacheLookup]
         public IWebElement Remove_button { get; set; }
 
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector,Using = "a.govuk-button")] //a.govuk-button
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector,Using = "a.govuk-button:nth-child(3)")] //a.govuk-button
         //[SeleniumExtras.PageObjects.CacheLookup]
         public IWebElement Compare_withOtherTrusts { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector,Using = ".result-list-summary > a:nth-child(2)")]
@@ -59,7 +59,7 @@ namespace SFB_Test_Automation.AutoFramework.Pages
         public IWebElement ManuallyAddTrustsRadio { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "radio-2")]
         public IWebElement SelectTrustsByCharacteristicsRadioButton { get; set; }
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".column-one-third > button:nth-child(1)")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//button[contains(text(),'Continue')]")]
         public IWebElement TrustComparisonPageContinueButton { get; set; }
 
        

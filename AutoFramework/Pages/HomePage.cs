@@ -41,9 +41,9 @@
         public IWebElement LocationSearchSubmitButton { get; set; }
         [FindsBy(How = How.Id, Using = "TrustLaCodeName")]
         public IWebElement LocalAuthorityTrustSearchButton { get; set; }
-        [FindsBy(How = How.XPath, Using = "//input[@id='FindSchoolByLaCodeName']")]
+        [FindsBy(How = How.CssSelector, Using = "#FindTrustByTown")]
         public IWebElement LacodeInputField { get; set; }
-        [FindsBy(How = How.Id, Using = "LaCodeName")]
+        [FindsBy(How = How.XPath, Using = "/html[1]/body[1]/div[5]/div[1]/main[1]/div[1]/div[3]/div[1]/div[2]/form[1]/div[1]/fieldset[1]/div[1]/div[6]/div[1]/div[1]/span[1]/input[1]")]
         public IWebElement LacodeSearchButton { get; set; }
 
         [FindsBy(How = How.CssSelector, Using = "#SearchByTrustNameFieldset > div:nth-child(1) > button:nth-child(5)")]

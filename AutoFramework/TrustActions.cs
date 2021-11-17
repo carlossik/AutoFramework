@@ -87,8 +87,8 @@
             homepage.trustnameRadioButton.Click();
             homepage.TrustSearchInput.Click();
             homepage.TrustSearchInput.SendKeys(TrustNameSubmitted);
-            //homepage.TrustSearchInput.SendKeys(Keys.Enter);
-            driver.FindElement(By.CssSelector(".bold-small")).Click();
+           // homepage.TrustSearchInput.SendKeys(Keys.Enter);
+            driver.FindElement(By.XPath("//strong[contains(text(),'5 Dime')]")).Click();
             homepage.TrustSubmitButton.Click();
             
              //strong[@class='bold-small']
@@ -162,7 +162,7 @@
             TrustCharacteristicsPage tcompare = new TrustCharacteristicsPage(driver);
             tcompare.NumberOfPupilsCheckBox.Click();
             tcompare.NumberOfPupilsFromtextBox.SendKeys("5000");
-            tcompare.NumberOfPupilsTotextbox.SendKeys("5500");
+            tcompare.NumberOfPupilsTotextbox.SendKeys("5200");
             Thread.Sleep(5000);
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5000);
             tcompare.ViewBenchMarkChartsButton.Click();

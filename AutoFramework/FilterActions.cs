@@ -117,7 +117,7 @@ namespace AutoFramework
             filters.SchoolType_FreeSchool.Click();
             filters.SchoolType_FreeSchool_special.Click();
             filters.SchoolType_Nursery.Click();
-            filters.SchoolType_PupilReferalUnit.Click();
+            //filters.SchoolType_PupilReferalUnit.Click();
             filters.SchoolType_VoluntaryAidedSchool.Click();
            
 

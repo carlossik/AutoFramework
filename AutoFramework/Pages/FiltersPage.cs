@@ -64,10 +64,10 @@ namespace SFB_Test_Automation.AutoFramework.Pages
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//label[contains(text(),'Free school special')]")]
         public IWebElement SchoolType_FreeSchool_special { get; set; }
 
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//body/div[@id='js-modal-page']/div[@id='cookie-overlay-wrapper']/div[@id='content']/main[1]/div[2]/div[1]/div[1]/details[1]/div[1]/div[1]/form[1]/div[6]/div[2]/div[1]/fieldset[1]/div[1]/div[8]/label[1]")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "div.govuk-checkboxes__item:nth-child(9) > label:nth-child(2)")]
         public IWebElement SchoolType_Nursery { get; set; }
 
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "schoollevel_Nursery")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.TagName, Using = "label")]
         public IWebElement EducationPhase_Nursery { get; set; }
         //schoollevel_Nursery
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//body/div[@id='js-modal-page']/div[@id='cookie-overlay-wrapper']/div[@id='content']/main[1]/div[2]/div[1]/div[1]/details[1]/div[1]/div[1]/form[1]/div[6]/div[2]/div[1]/fieldset[1]/div[1]/div[9]/label[1]")]

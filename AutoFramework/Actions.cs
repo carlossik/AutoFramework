@@ -686,6 +686,18 @@
             Thread.Sleep(200);
 
         }
+        public static void verifyTrustPrePost16Value(IWebDriver driver)
+        {
+            driver.Navigate().GoToUrl("https://as-t1stg-sfb.azurewebsites.net/trust/index?code=0&companyNo=10192252&name=Connect%20Academy%20Trust&tab=Income&unit=AbsoluteMoney&financing=TrustAndAcademies&format=Charts#financialSummary");
+            driver.FindElement(By.CssSelector("#ChartGroup")).Click();
+           // driver.FindElement(By.CssSelector("GrantFunding")).Click();
+
+            var prepost16Funding = driver.FindElement(By.CssSelector("#accordion-chart-content-35 > div:nth-child(5) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > abbr:nth-child(1)"));
+
+            var finalvalue = prepost16Funding.Text.Replace("£", "").Replace("m", "");
+            Console.WriteLine(finalvalue);
+        }
+            
         public static void select16plus(IWebDriver driver)
         {
             SearchResultsPage resultspage = new SearchResultsPage(driver);
@@ -807,7 +819,7 @@
             //    resultspage.TrustSearchResultSortedByButton.SendKeys(OrderBy + Keys.Enter);
             //}
             resultspage.TrustSearchResultSortedByButton.SendKeys(OrderBy + Keys.Enter);
-            //resultspage.TrustSearchResultSortedByButton.SendKeys(OrderBy + Keys.Enter);
+            resultspage.TrustSearchResultSortedByButton.SendKeys(OrderBy + Keys.Enter);
             Thread.Sleep(2000);
 
         }
@@ -925,7 +937,7 @@
                 homepage.TrustTab.Click();
                 homepage.LocalAuthorityTrustSearchButton.Click();
                 Thread.Sleep(300);
-                homepage.LacodeInputField.SendKeys(lacode);
+                homepage.TrustLaCodeInputField.SendKeys(lacode);
                 homepage.TrustLacodeSearchButton.Click();
 
             }
@@ -991,9 +1003,11 @@
                     foreach (string urn in urns) {
                     try
                     {
-                        SearchSchoolViaName(urn,driver);                  
+                        var schoolurn = Config.currentTestEnv + "school/detail?urn=" + urn;
+                        driver.Navigate().GoToUrl(schoolurn);
+                        //SearchSchoolViaName(urn,driver);                  
                         Schooldetails.AddToBenchMarkBasket.Click();
-                        Thread.Sleep(10000);
+                        //Thread.Sleep(10000);
                     }
                     catch (NoSuchElementException ){ continue; }                       
                     }

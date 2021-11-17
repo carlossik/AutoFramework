@@ -10,6 +10,7 @@ using AutoFramework.Pages;
 using How = SeleniumExtras.PageObjects.How;
 using System.Threading;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Firefox;
 
 namespace AutoFramework.Pages.PageElements
 {
@@ -37,7 +38,7 @@ namespace AutoFramework.Pages.PageElements
         public IWebElement SetasDefaultSchool { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".compare-buttons-panel__button--compare")]
         public IWebElement CompareWithOtherSchools { get; set; }
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "button.desktop-button:nth-child(2)")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//span[contains(text(),'Add to benchmark set')]")]
         public IWebElement AddToBenchMarkBasket { get; set; }
 
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "button.pl-0:nth-child(2) > div:nth-child(2) > span:nth-child(1)")]
@@ -85,7 +86,7 @@ namespace AutoFramework.Pages.PageElements
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = ".govuk-list > li:nth-child(1) > a:nth-child(1)")]
         public IWebElement schooldetailnotfoundmessage { get; set; }
 
-        [SeleniumExtras.PageObjects.FindsBy(How = How.XPath, Using = "//*[@id=\"content\"]/main/div[1]/div[3]/div/dl/dd[11]")]
+        [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = "dd.metadata-school-detail__dd:nth-child(24)")]
         public IWebElement HeadTeacher_Name { get; set; }
 
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = ".message")]
@@ -252,7 +253,12 @@ namespace AutoFramework.Pages.PageElements
             var chromedriverpath = Config.chrome_path;
             var options = new ChromeOptions();
             options.AddArgument("--headless");
-            driver = new ChromeDriver(chromedriverpath, options);
+            var firefoxdriverpath = Config.firefoxlocation;
+            var firefoxOptions = new FirefoxOptions();
+            firefoxOptions.AddArguments("--headless");
+
+            //driver = new ChromeDriver(chromedriverpath, options);
+            driver = new FirefoxDriver(firefoxOptions);
             driver.Navigate().GoToUrl(giasurl);
             IWebElement closemodal = driver.FindElement(By.Id("gias-modal-close"));
             closemodal.Click();

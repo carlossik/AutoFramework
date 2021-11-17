@@ -61,7 +61,7 @@
             TrustActions.TrustSearchWitNameUsingFirstSuggestedName("Brookvale Groby Learning Trust",driver);
             TrustComparisonPage trustcomparison = new TrustComparisonPage(driver);
             string trustname = (trustcomparison.TrustName).Text;
-            string expectedName = driver.FindElement(By.CssSelector(".heading-xlarge")).Text;
+            string expectedName = driver.FindElement(By.CssSelector("h1")).Text;
             Assert.AreEqual(trustname, expectedName);
         }
         [Test]
@@ -85,7 +85,7 @@
         {
             Actions.TrustSearchWithCompanynumber("8929778",driver);
             TrustComparisonPage trustcomparison = new TrustComparisonPage(driver);
-            string Errormessage = driver.FindElement(By.ClassName("error-message")).Text;
+            string Errormessage = driver.FindElement(By.XPath("//a[contains(text(),\"We couldn't find any trusts matching your search c\")]")).Text;
             Assert.AreEqual(Errormessage, "We couldn't find any trusts matching your search criteria");
         }
 
@@ -149,8 +149,8 @@
         public void trustsearchViaLocation()
         {
             Actions.SearchTrustViaLocation(driver);
-            Console.WriteLine(driver.FindElement(By.CssSelector(".heading-xlarge")).Text);
-            Assert.AreEqual(driver.FindElement(By.CssSelector(".heading-xlarge")).Text , "Academy trusts with schools operating in and near First Avenue, Bexley, Bexleyheath, DA7, Kent");
+            Console.WriteLine(driver.FindElement(By.TagName("h1")).Text);
+            Assert.AreEqual(driver.FindElement(By.CssSelector("h1")).Text , "Academy trusts with schools operating in and near First Avenue, Bexley, Bexleyheath, DA7, Kent");
         }
         [Test]
         public void trustsearchViaLA()
@@ -174,7 +174,7 @@
             Actions.ResultPageactionsA_Z("303", "alphabetical a-z",driver);
             SearchResultsPage resultsPage = new SearchResultsPage(driver);
             Assert.AreEqual(driver.FindElement(By.CssSelector("li.school-document:nth-child(1) > div:nth-child(1) > a:nth-child(1)")).Text ,"Academies Enterprise Trust");
-            Console.WriteLine(resultsPage.FirstElementPresented.Text);
+            //Console.WriteLine(resultsPage.FirstElementPresented.Text);
            
         }
         [Test]
@@ -312,8 +312,8 @@
             TrustActions.TrustSearchWitNameUsingSubmitButton("5 Dimensions Trust",driver);
             String TrustName = driver.FindElement(By.CssSelector("h1.govuk-heading-xl")).Text;
             Assert.IsTrue(TrustName.Contains("5 Dimensions Trust"));
-            IWebElement ViewOnMapButton = driver.FindElement(By.CssSelector("div.litem:nth-child(1) > button:nth-child(1)"));
-            Assert.IsTrue(ViewOnMapButton.Displayed);
+            //IWebElement ViewOnMapButton = driver.FindElement(By.CssSelector("div.litem:nth-child(1) > button:nth-child(1)"));
+            //Assert.IsTrue(ViewOnMapButton.Displayed);
             String NumberOfTrustsFoundText = driver.FindElement(By.CssSelector("p.summary")).Text;
             IWebElement NumberOfTrustsFoundMessage = driver.FindElement(By.CssSelector("p.summary"));
             Assert.IsTrue(NumberOfTrustsFoundMessage.Displayed);
@@ -343,7 +343,7 @@
             TrustActions.TrustSearchWitNameUsingFirstSuggestedName("5 Dimensions Trust",driver);
             String TrustName = driver.FindElement(By.CssSelector("h1.govuk-heading-xl")).Text;
             Assert.AreEqual(TrustName, "5 Dimensions Trust");
-            IWebElement CompareWithOtherTrustsButton = driver.FindElement(By.CssSelector("a.govuk-button"));
+            IWebElement CompareWithOtherTrustsButton = driver.FindElement(By.PartialLinkText("Start a comparis"));
             Assert.IsTrue(CompareWithOtherTrustsButton.Displayed);
             String CompaniesHouseNumber = driver.FindElement(By.XPath("//dd[1]")).Text;
             Console.WriteLine(CompaniesHouseNumber);
@@ -405,7 +405,7 @@
             Actions.schoolSearchwithLaestab("137353", driver);
             SchoolDetailPage detailpage = new SchoolDetailPage(driver);
             Assert.IsTrue((detailpage.istrusttextDisplayed()));
-            Assert.IsTrue(detailpage.MatFinanceToggle.Displayed);
+            //Assert.IsTrue(detailpage.MatFinanceToggle.Displayed);
         }
 
         [Test]
@@ -416,6 +416,15 @@
             Assert.IsTrue(detailpage.istrusttextDisplayed());
            // Assert.IsTrue(detailpage.MatFinanceToggle.Displayed);
         }
+
+
+        [Test]
+        public void verifyTrustPre_post16_Funding()
+        {
+            Actions.verifyTrustPrePost16Value(driver);
+        }
+
+
 
         [TearDown]
         public void TeardownAfterEachTest()

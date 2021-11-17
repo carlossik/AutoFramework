@@ -15,9 +15,9 @@ namespace SFB_Test_Automation.AutoFramework.Pages
         {
             PageFactory.InitElements(driver, this);
         }
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".heading-xlarge")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "h1")]
         public IWebElement TrustName { get; set; }
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//a[@class='button start-button hide-in-print']")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "a.govuk-button:nth-child(3)")]
         public IWebElement CompareWithOtherTrustsButton  {get; set;}
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//dd[1]")]
         public IWebElement CompaniesHouseNumber  { get; set; }

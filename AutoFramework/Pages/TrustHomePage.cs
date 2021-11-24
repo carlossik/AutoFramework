@@ -49,7 +49,13 @@ namespace SFB_Test_Automation.AutoFramework.Pages
         public IWebElement TrustHistoryTab { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "span.bold:nth-child(3)")]
         public IWebElement NumberOfSchools1819 { get; set; }
-        
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "#IncomeTab > a:nth-child(1)")]
+        public IWebElement IncomeTab { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "button.view-charts-tables:nth-child(2) > span:nth-child(2)")]
+        public IWebElement ViewAschartsButton { get; set; }
+
+        ////button.view-charts-tables:nth-child(2) > span:nth-child(2)
+
         //span.bold:nth-child(3)
 
         //CurrentHeader

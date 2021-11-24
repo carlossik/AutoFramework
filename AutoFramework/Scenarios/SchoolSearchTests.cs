@@ -45,7 +45,12 @@
 
             //Assert.IsTrue(driver.Url.Contains ("https://www.compare-school-performance.service.gov.uk/school/"+ schoolUrn));
         }
-
+        [Test]
+        public void SearchSchoolLA_Code()
+        {
+            Actions.searchSchoolViaLaCode("303", driver);
+        }
+           
         [Test]
         [Category("QuickTests")]
         public void SearchSchool()
@@ -310,7 +315,7 @@
 
         [Test]
         [Category("QuickTests")]
-        public void SearchByLaCode()
+        public void TrustSearchByLaCode()
         {
             Actions.CallingClass.SearchByLaCode("303",driver);
             Assert.That(driver.FindElement(By.CssSelector(".govuk-heading-xl")).Text, Does.Contain("Academy trusts with schools operating in Bexley"));

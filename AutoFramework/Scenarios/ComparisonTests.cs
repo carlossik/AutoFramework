@@ -63,8 +63,8 @@
         public void TestIntepretingTheCharts()
         {
             Actions.CallingClass.InterpretingTheChartsTest(driver);
-            IWebElement intepretingthechartsLink = driver.FindElement(By.XPath("//ul[@class='list font-xsmall']/li[2]"));
-            Assert.IsTrue(intepretingthechartsLink.Displayed);
+           // IWebElement intepretingthechartsLink = driver.FindElement(By.XPath("//ul[@class='list font-xsmall']/li[2]"));
+            Assert.AreEqual(driver.Url, Config.currentTestEnv+ "Help/DataSources#interpret-data");
             //need to add some assertions on the links present and the order
         }
         [Test]
@@ -104,7 +104,7 @@
         public void VerifySchoolPhaseAndOverAllPhase()
         {
          DetailedComparisonActions.GeneralDetailedJourney("100008",driver);
-             String TestValue = driver.FindElement(By.CssSelector("div.accordion-section:nth-child(2) > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > span:nth-child(1) > span:nth-child(1)")).Text;
+             String TestValue = driver.FindElement(By.XPath("//body/div[@id='js-modal-page']/div[@id='content']/div[1]/main[1]/section[1]/div[1]/div[3]/div[1]/form[1]/div[1]/div[1]/div[2]/div[2]/div[2]/div[2]/div[1]/fieldset[1]/div[1]/span[1]/span[1]")).Text;
            SchoolDetailPage detailspage = new SchoolDetailPage(driver);
         
             Assert.AreEqual(TestValue, "Primary (Infant and junior)");//need to change this test to parameterize the test value

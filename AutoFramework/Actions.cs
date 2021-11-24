@@ -17,6 +17,8 @@
     using OpenQA.Selenium.Remote;
     using System.Drawing;
     using System.Linq;
+    using OpenQA.Selenium.Support.UI;
+    
 
     public  class Actions :BrowserToRunWith
     {
@@ -689,13 +691,17 @@
         public static void verifyTrustPrePost16Value(IWebDriver driver)
         {
             driver.Navigate().GoToUrl("https://as-t1stg-sfb.azurewebsites.net/trust/index?code=0&companyNo=10192252&name=Connect%20Academy%20Trust&tab=Income&unit=AbsoluteMoney&financing=TrustAndAcademies&format=Charts#financialSummary");
-            driver.FindElement(By.CssSelector("#ChartGroup")).Click();
-           // driver.FindElement(By.CssSelector("GrantFunding")).Click();
+            var options = driver.FindElement(By.CssSelector("#ChartGroup"));
+            var selectElement = new SelectElement(options);
+            //select by value
+            selectElement.SelectByValue("GrantFunding");
+            // select by text
+            //selectElement.SelectByText("GrantFunding");
+            Thread.Sleep(10000);
+            driver.FindElement(By.XPath("//body[1]/div[1]/div[5]/div[1]/main[1]/div[3]/div[1]/div[2]/div[1]/div[1]/div[1]/button[2]/span[1]")).Click();
+          
 
-            var prepost16Funding = driver.FindElement(By.CssSelector("#accordion-chart-content-35 > div:nth-child(5) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > abbr:nth-child(1)"));
-
-            var finalvalue = prepost16Funding.Text.Replace("£", "").Replace("m", "");
-            Console.WriteLine(finalvalue);
+           
         }
             
         public static void select16plus(IWebDriver driver)
@@ -763,9 +769,9 @@
             homepage.TrustTab.Click();
             homepage.TrustLocationButton.Click();
             homepage.TrustLocationField.SendKeys(Config.Credentials.PostCode.Postcode);
-            homepage.TrustLocationField.SendKeys(Keys.Enter);
+           // homepage.TrustLocationField.SendKeys(Keys.Enter);
             //homepage.TrustLocationSubmit.Click();
-           driver.FindElement(By.CssSelector("li.document:nth-child(1) > a:nth-child(1)")).Click();
+           driver.FindElement(By.CssSelector("#tt-e77b4e52-4acf-4041-d976-f0e9833ea221")).Click();
             Thread.Sleep(10000);
         }
 
@@ -888,8 +894,8 @@
         {
             HomePage homepage = new HomePage(driver);
            
-            homepage.School.Click();
-            homepage.SchoolLacodeButton.Click();
+           // homepage.School.Click();
+             homepage.SchoolLacodeButton.Click();
             homepage.SchoolLacodeinputField.SendKeys(Lacode);
             homepage.LacodeSearchButton.Click();
             Thread.Sleep(100);
@@ -958,7 +964,7 @@
             public static void TestIntepreTingTheChartsLinks(IWebDriver driver)
             {
                 SpecialElementsPage links = new SpecialElementsPage(driver);
-                links.IntepreTingTheChartsLinks.Click();
+                links.DataSourcesAndInterpretationLink.Click();
                 Thread.Sleep(1000);
             }
             
@@ -1184,7 +1190,7 @@
                
                 Thread.Sleep(3000);
                 bestinclass.ContinueToHigherProgressSchoolBenchmark.Click();
-                Thread.Sleep(1000);
+                Thread.Sleep(3000);
             }
             public static void SchoohSearchOfstedRating(IWebDriver driver)
             {
@@ -1229,7 +1235,8 @@
             {
                 SpecialElementsPage links = new SpecialElementsPage(driver);
                 GoHome(driver);
-                links.IntepreTingTheChartsLinks.Click();
+                links.DataSourcesAndInterpretationLink.Click();
+                links.IntepreTingTheDataLink.Click();
             }
             public static void AddSchools(IWebDriver driver)
             {

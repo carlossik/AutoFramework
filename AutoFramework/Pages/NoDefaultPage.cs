@@ -27,7 +27,7 @@ namespace SFB_Test_Automation.AutoFramework.Pages
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "radio-4")]
         public IWebElement ManualComparisonButton { get; set; }
 
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//button[@class='button']")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//button[contains(text(),'Continue')]")]
         public IWebElement ContinueButton { get; set; }
 
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "Maintained")]
@@ -51,7 +51,7 @@ namespace SFB_Test_Automation.AutoFramework.Pages
         public IWebElement addschoolsbyLocalAuthorityradio { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "FindCurrentPosition")]
         public IWebElement useLocationLink { get; set; }
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "#SearchByTownFieldset > div:nth-child(4) > button:nth-child(3)")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "button.govuk-button:nth-child(7)")]
         public IWebElement SearchSubmitButton { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "FindSchoolManuallyByTown")]
         public IWebElement AddSchoolsbyLocationTextField { get; set; }

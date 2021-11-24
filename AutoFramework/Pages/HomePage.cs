@@ -41,9 +41,9 @@
         public IWebElement LocationSearchSubmitButton { get; set; }
         [FindsBy(How = How.Id, Using = "TrustLaCodeName")]
         public IWebElement LocalAuthorityTrustSearchButton { get; set; }
-        [FindsBy(How = How.CssSelector, Using = "#FindTrustByTown")]
+        [FindsBy(How = How.XPath, Using = "//input[@id='FindSchoolByLaCodeName']")]
         public IWebElement LacodeInputField { get; set; }
-        [FindsBy(How = How.XPath, Using = "/html[1]/body[1]/div[5]/div[1]/main[1]/div[1]/div[3]/div[1]/div[2]/form[1]/div[1]/fieldset[1]/div[1]/div[6]/div[1]/div[1]/span[1]/input[1]")]
+        [FindsBy(How = How.XPath, Using = "//input[@id='LaCodeName']")]
         public IWebElement LacodeSearchButton { get; set; }
 
         [FindsBy(How = How.CssSelector, Using = "#SearchByTrustNameFieldset > div:nth-child(1) > button:nth-child(5)")]
@@ -65,9 +65,9 @@
         public IWebElement TrustLaCodeInputField { get; set; }
         [FindsBy(How = How.CssSelector, Using = "#TrustSearchByLaCodeNameFieldset > div:nth-child(1) > div:nth-child(3) > button:nth-child(3)")]
         public IWebElement TrustLacodeSearchButton { get; set; }
-        [FindsBy(How = How.CssSelector, Using = "#FindSchoolByLaCodeName")]
+        [FindsBy(How = How.XPath, Using = "//input[@id='FindSchoolByLaCodeName']")]
         public IWebElement SchoolLacodeinputField { get; set; }
-        [FindsBy(How = How.Id, Using = "LaCodeName")]
+        [FindsBy(How = How.XPath, Using = "//input[@id='LaCodeName']")]
         public IWebElement SchoolLacodeButton { get; set; }
         [FindsBy(How = How.CssSelector,Using = "button.govuk-button:nth-child(6)")]
         public IWebElement LAcodesearchSubmitButton { get; set; }

@@ -16,8 +16,11 @@
         public IWebElement HideMessageLink { get; set; }
         [FindsBy(How = How.XPath, Using = "//*[text()=\"Help using this site\"]")]
         public IWebElement HelpUsingSiteLink { get; set; }
-        [FindsBy(How = How.XPath, Using = "//ul[@class='list font-xsmall']/li[2]")]//.list > li:nth-child(3) > a:nth-child(1)")]//"[href*='\Help/InterpretingCharts\']"
-        public IWebElement IntepreTingTheChartsLinks { get; set; }
+        [FindsBy(How = How.XPath, Using = "//a[contains(text(),'Data Sources and Interpretation')]")]//.list > li:nth-child(3) > a:nth-child(1)")]//"[href*='\Help/InterpretingCharts\']"
+        public IWebElement DataSourcesAndInterpretationLink { get; set; }
+        [FindsBy(How = How.XPath, Using = "//a[contains(text(),'Interpreting the data')]")]//.list > li:nth-child(3) > a:nth-child(1)")]//"[href*='\Help/InterpretingCharts\']"
+        public IWebElement IntepreTingTheDataLink { get; set; }
+        //ul.govuk-list:nth-child(1) > li:nth-child(2) > a:nth-child(1)
 
         [FindsBy(How = How.XPath, Using = "//*[text()=\"Data sources\"]")]
         public IWebElement DataSources { get; set; }

@@ -22,7 +22,7 @@ namespace SFB_Test_Automation.AutoFramework.Pages
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "similarPupils")]
         public IWebElement SchoolswithSimilarAgedStudentscheckbox { get; set; }
 
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "div.grid-row:nth-child(2) > div:nth-child(1) > button:nth-child(1)")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//button[contains(text(),'Continue to benchmarking charts')]")]
         public IWebElement ContinueToBenchMarkingChartButton { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//*[@id=\"scForm\"]/div[2]/div[2]/a")]
         public IWebElement BackButton { get; set; }

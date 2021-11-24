@@ -87,8 +87,9 @@
             homepage.trustnameRadioButton.Click();
             homepage.TrustSearchInput.Click();
             homepage.TrustSearchInput.SendKeys(TrustNameSubmitted);
-           // homepage.TrustSearchInput.SendKeys(Keys.Enter);
-            driver.FindElement(By.XPath("//strong[contains(text(),'5 Dime')]")).Click();
+            homepage.TrustSearchInput.SendKeys(Keys.Enter);
+
+            driver.FindElement(By.XPath("//body/div[@id='content']/div[1]/main[1]/div[1]/div[2]/div[1]/div[2]/form[1]/div[1]/fieldset[1]/div[1]/div[2]/div[1]/span[1]/div[1]/div[1]/div[1]/a[1]")).Click();
             homepage.TrustSubmitButton.Click();
             
              //strong[@class='bold-small']
@@ -164,6 +165,38 @@
             tcompare.NumberOfPupilsFromtextBox.SendKeys("5000");
             tcompare.NumberOfPupilsTotextbox.SendKeys("5200");
             Thread.Sleep(5000);
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5000);
+            tcompare.ViewBenchMarkChartsButton.Click();
+            Thread.Sleep(5000);
+
+
+
+        }
+
+        public static void compareTotalIncome(String TrustName, IWebDriver driver)
+        {
+            TrustActions.TrustSearchWitNameUsingFirstSuggestedName(TrustName, driver);
+            Thread.Sleep(2000);
+            TrustHomePage trusthome = new TrustHomePage(driver);
+            trusthome.IncomeTab.Click();
+            trusthome.ViewAschartsButton.Click();
+            IWebElement totalincome20192020 = driver.FindElement(By.CssSelector("div.charts-section__chart-container:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > abbr:nth-child(1)"));
+            string totalIncome2019_2020 = totalincome20192020.Text;
+            Console.WriteLine("This is the total Income displayed on Trust home page " + totalIncome2019_2020);
+            TrustComparisonPage trustComaprison = new TrustComparisonPage(driver);
+            Thread.Sleep(1000);
+            trustComaprison.Compare_withOtherTrusts.Click();
+            Thread.Sleep(5);
+            trustComaprison.SelectTrustsByCharacteristicsRadioButton.Click();
+            Thread.Sleep(50);
+            trustComaprison.TrustComparisonPageContinueButton.Click();
+            TrustCharacteristicsPage tcompare = new TrustCharacteristicsPage(driver);
+           
+            tcompare.TotalIncomeCheckBox.Click();
+            Thread.Sleep(5000);
+            IWebElement trustTotalIncomeTocompare = driver.FindElement(By.CssSelector("#rc_TotalInc > div:nth-child(1) > fieldset:nth-child(1) > div:nth-child(1) > span:nth-child(2)"));
+            string figureToCompare = trustTotalIncomeTocompare.Text;
+            Console.WriteLine("This is the total Income displayed on Trust ComparisonPage " + figureToCompare);
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5000);
             tcompare.ViewBenchMarkChartsButton.Click();
             Thread.Sleep(5000);

@@ -25,6 +25,7 @@ namespace SFB_Test_Automation.AutoFramework
             SchoolDetailPage detailspage = new SchoolDetailPage(driver);
             detailspage.StartAComparison.Click();
             TypeOfComparisonPage comparisontype = new TypeOfComparisonPage(driver);
+            Thread.Sleep(2000);
             comparisontype.EfficiencyMetrictButton.Click();
             //detailspage.EfficiencyMetricLink.Click();
             Thread.Sleep(2000);

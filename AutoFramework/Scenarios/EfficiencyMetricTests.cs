@@ -182,6 +182,7 @@ namespace AutoFramework
         public void Verify_tools_to_improve_UseTheToolKit()
         {
             EfficiencyMetricActions.TestEMToolLinks_Use_The_ToolKit("2032471",driver);
+            Thread.Sleep(20000);
            
             Console.WriteLine(driver.Url);
             Assert.AreEqual(driver.Url, "https://educationendowmentfoundation.org.uk/evidence-summaries/teaching-learning-toolkit/");

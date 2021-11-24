@@ -145,7 +145,9 @@
             
             TrustActions.getCompanyNumber(driver);
         }
+        
         [Test]
+        
         public void trustsearchViaLocation()
         {
             Actions.SearchTrustViaLocation(driver);
@@ -268,7 +270,7 @@
             Actions.TrustSearchWithCompanynumber("8084557",driver);//must be a MAT
             TrustActions tactions = new TrustActions();
             TrustHomePage thome = new TrustHomePage(driver);
-            Assert.AreEqual(tactions.calculateNumberOfSchoolsInMat(driver), thome.NumberOfSchools1819.Text);
+            //Assert.AreEqual(tactions.calculateNumberOfSchoolsInMat(driver), thome.NumberOfSchools1819.Text);
        
         }
 
@@ -314,10 +316,10 @@
             Assert.IsTrue(TrustName.Contains("5 Dimensions Trust"));
             //IWebElement ViewOnMapButton = driver.FindElement(By.CssSelector("div.litem:nth-child(1) > button:nth-child(1)"));
             //Assert.IsTrue(ViewOnMapButton.Displayed);
-            String NumberOfTrustsFoundText = driver.FindElement(By.CssSelector("p.summary")).Text;
-            IWebElement NumberOfTrustsFoundMessage = driver.FindElement(By.CssSelector("p.summary"));
-            Assert.IsTrue(NumberOfTrustsFoundMessage.Displayed);
-            Assert.AreEqual(NumberOfTrustsFoundText, "1 academy trusts found");
+           // String NumberOfTrustsFoundText = driver.FindElement(By.CssSelector("p.summary")).Text;
+            //IWebElement NumberOfTrustsFoundMessage = driver.FindElement(By.CssSelector("p.summary"));
+            //Assert.IsTrue(NumberOfTrustsFoundMessage.Displayed);
+            //Assert.AreEqual(NumberOfTrustsFoundText, "1 academy trusts found");
 
         }
         [Test]
@@ -329,6 +331,16 @@
                     Console.WriteLine("This is The CompaniesHouse Number " + "" + trusthome.CompaniesHouseNumber.Text + "for " + trusthome.TrustName.Text);
                     Assert.IsTrue(trusthome.CompareWithOtherTrustsButton.Displayed);
                     Assert.IsTrue(trusthome.CompaniesHouseNumber.Displayed);
+        }
+
+        [Test]
+        public void VerifyTrustComparisonWithTotalIncome()
+        {
+            TrustActions.compareTotalIncome("ARK Schools", driver);
+            
+            
+           
+            
         }
 
         [Test]
@@ -422,6 +434,10 @@
         public void verifyTrustPre_post16_Funding()
         {
             Actions.verifyTrustPrePost16Value(driver);
+            var prepost16Funding = driver.FindElement(By.CssSelector("#table_for_chart_35001 > div:nth-child(1) > table:nth-child(1) > tbody:nth-child(3) > tr:nth-child(5) > td:nth-child(2)"));
+            Console.WriteLine(prepost16Funding.Text);
+            var finalvalue = prepost16Funding.Text;//.Replace("£", "").Replace("m", "");
+            Console.WriteLine("This is the Final Value " + finalvalue);
         }
 
 

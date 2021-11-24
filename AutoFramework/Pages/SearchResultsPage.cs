@@ -26,7 +26,7 @@ namespace AutoFramework.Pages
         public IWebElement ClearBasket { get; set; }
         [FindsBy(How = How.CssSelector, Using = "a.button")]
         public IWebElement ViewBenchMarkCharts { get; set; }
-        [FindsBy(How = How.CssSelector, Using = "a.bold-small")]
+        [FindsBy(How = How.XPath, Using = "//a[contains(text(),'First Avenue, Bexley, Bexleyheath, DA7, Kent')]")]
         public IWebElement FirstElementPresented { get; set; }
         [FindsBy(How = How.CssSelector, Using = "#\\31 42295desktop > button:nth-child(2)")]
         public IWebElement AddFirstResult { get; set; }
@@ -48,7 +48,7 @@ namespace AutoFramework.Pages
         public IWebElement paginationSecondPage { get; set; }
         [FindsBy(How = How.PartialLinkText, Using = "3")]
         public IWebElement paginationThirdPage { get; set; }
-        [FindsBy(How = How.CssSelector, Using = "div.pagination-container:nth-child(1) > div:nth-child(1) > div:nth-child(2) > button:nth-child(6)")]
+        [FindsBy(How = How.CssSelector, Using = "div.pagination-container:nth-child(1) > div:nth-child(1) > div:nth-child(2) > button:nth-child(5)")]
         public IWebElement paginationNextButton { get; set; }
         [FindsBy(How = How.CssSelector, Using = "div.pagination-container:nth-child(1) > div:nth-child(1) > div:nth-child(2) > button:nth-child(1)")]
         public IWebElement paginationPreviousButton { get; set; }
@@ -66,7 +66,7 @@ namespace AutoFramework.Pages
         public IWebElement EducationPhase_checkbox { get; set; }
         [FindsBy(How = How.CssSelector, Using = ".add-all")]
         public IWebElement AddAllToBasket_Button { get; set; }
-        [FindsBy(How = How.XPath, Using = "//*[@id=\"schoollevel_Allthrough\"]")]
+        [FindsBy(How = How.XPath, Using = "//label[contains(text(),'All-through')]")]
         public IWebElement SelectAllThroughsCheckbox { get; set; }
         [FindsBy(How = How.CssSelector, Using = "[href *= '/school/detail?urn=']")]
         public IWebElement viewtrustschoolsFirstLink { get; set; }

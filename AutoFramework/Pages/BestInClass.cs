@@ -18,7 +18,7 @@ namespace AutoFramework.Pages
         [FindsBy(How = How.Id, Using = "radio-5")]
         [CacheLookup]
         public IWebElement QuckComparison_For_Specials_Button { get; set; }
-        [FindsBy(How = How.Id,Using = "radio-5")]
+        [FindsBy(How = How.CssSelector,Using = "#radio-5")]
         public IWebElement QuickcompareforspecialsSchools { get; set; }
 
         [FindsBy(How = How.Id, Using = "radio-2")]

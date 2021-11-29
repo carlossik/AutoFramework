@@ -185,7 +185,8 @@ namespace AutoFramework
             Thread.Sleep(20000);
            
             Console.WriteLine(driver.Url);
-            Assert.AreEqual(driver.Url, "https://educationendowmentfoundation.org.uk/evidence-summaries/teaching-learning-toolkit/");
+            // Assert.AreEqual(driver.Url, "https://educationendowmentfoundation.org.uk/evidence-summaries/teaching-learning-toolkit/");
+            Assert.IsTrue((driver.Url).Contains("toolkit"));
            
         }
 

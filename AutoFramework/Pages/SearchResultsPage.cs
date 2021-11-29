@@ -60,7 +60,7 @@ namespace AutoFramework.Pages
         public IWebElement FirstScoolLinkOnPage { get; set; }
         [FindsBy(How = How.CssSelector, Using = ".count-js")]
         public IWebElement Allresultsdisplayed { get; set; }
-        [FindsBy(How = How.Id, Using = "schoollevel_Secondary")]
+        [FindsBy(How = How.XPath, Using = "//label[contains(text(),'Secondary')]")]
         public IWebElement secondaryschool_checkbox { get; set; }
         [FindsBy(How = How.CssSelector, Using = "div.govuk-option-select:nth-child(4) > div:nth-child(1) > div:nth-child(1)")]
         public IWebElement EducationPhase_checkbox { get; set; }

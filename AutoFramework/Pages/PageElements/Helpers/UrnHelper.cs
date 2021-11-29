@@ -22,7 +22,7 @@ namespace SFB_Test_Automation.AutoFramework.vs.AutoFramework.Helpers
         "100034",
         "100035",
         "100036",
-        "100037",
+       
        "100039",
        "131246",
        "131841",

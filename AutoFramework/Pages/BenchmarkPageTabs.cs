@@ -26,10 +26,10 @@ namespace AutoFramework.Pages.PageElements
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "th.numeric:nth-child(2) > div:nth-child(1)")]
         public IWebElement PupilsTab { get; set; }
 
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "th.numeric:nth-child(3) > div:nth-child(1)")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//div[contains(text(),'Phase of education')]")]
         public IWebElement PhaseOfEducationTab { get; set; }
 
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "th.numeric:nth-child(4) > div:nth-child(1)")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//div[contains(text(),'Ofsted rating')]")]
         public IWebElement OfStedRatingTab { get; set; }
 
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "/html/body/div/div[9]/main/div[4]/div/div/div[3]/div/div/table[1]/thead/tr/th[6]/div")]
@@ -48,7 +48,7 @@ namespace AutoFramework.Pages.PageElements
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "th.tablesorter-header:nth-child(7) > div:nth-child(1)")]
         public IWebElement BICUrbanRural  { get; set; }
 
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "th.numeric:nth-child(8) > div:nth-child(1)")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//thead/tr[1]/th[8]/div[1]")]
         public IWebElement BICProgress8 { get; set; }
 
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "#ProgressScoresTable > thead:nth-child(1) > tr:nth-child(1) > th:nth-child(1) > div:nth-child(1)")]

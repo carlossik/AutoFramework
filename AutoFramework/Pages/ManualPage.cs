@@ -32,9 +32,9 @@ namespace SFB_Test_Automation.AutoFramework.Pages
         [FindsBy(How = How.Id,Using = "displayNew")]
         public IWebElement AddAnotherSchoolLink { get; set; }
 
-        [FindsBy(How = How.XPath,Using = "//div[2]/button[@class='remove-school link-button font-small' and 1]")]
+        [FindsBy(How = How.CssSelector,Using = "div.govuk-grid-row:nth-child(2) > button:nth-child(3)")]
         public IWebElement RemoveSchoolButton { get; set; }
-        [FindsBy(How = How.XPath, Using = "//div[1]/button[@class='remove-school link-button font-small' and 1]")]
+        [FindsBy(How = How.CssSelector, Using = ".remove-school")]
         public IWebElement RemoveSchoolButton2 { get; set; }
 
         [FindsBy(How = How.Id,Using = "ExistingSchools")]

@@ -145,9 +145,9 @@ namespace SFB_Test_Automation.AutoFramework
             bestinclass.Continue.Click();
             detailpage.General_Header.Click();
             detailpage.NumberOfPupilsCheckBox.Click();
-            detailpage.MinNumberOfPupilsInputField.SendKeys("221.15");
+            detailpage.MinNumberOfPupilsInputField.SendKeys("238.2");
             Thread.Sleep(6000);
-            detailpage.MaxNumberOfPupilsInputBox.SendKeys("221.5");
+            detailpage.MaxNumberOfPupilsInputBox.SendKeys("238.5");
             Thread.Sleep(6000);
             detailpage.ViewBenchMarkCharts.Click();
             Thread.Sleep(5000);
@@ -301,13 +301,13 @@ namespace SFB_Test_Automation.AutoFramework
             detailpage.AllSchoolsExcludecheckbox.Click();
             bestinclass.Continue.Click();
             detailpage.LAcodeRadio.Click();
-            detailpage.Lacodefield.SendKeys("303");
+            detailpage.Lacodefield.SendKeys("879");
             bestinclass.Continue.Click();
             detailpage.General_Header.Click();
             detailpage.NumberOfPupilsCheckBox.Click();
-            detailpage.MinNumberOfPupilsInputField.SendKeys("100");
+            detailpage.MinNumberOfPupilsInputField.SendKeys("200");
             Thread.Sleep(6000);
-            detailpage.MaxNumberOfPupilsInputBox.SendKeys("300");
+            detailpage.MaxNumberOfPupilsInputBox.SendKeys("370");
             Thread.Sleep(2000);
             detailpage.ViewBenchMarkCharts.Click();
         }
@@ -366,6 +366,7 @@ namespace SFB_Test_Automation.AutoFramework
             SchoolDetailPage detailspage = new SchoolDetailPage(driver);
             detailspage.StartAComparison.Click();
             TypeOfComparisonPage comparisontype = new TypeOfComparisonPage(driver);
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             comparisontype.CreateabenchmarkComparisonButton.Click();
             BestInClass bestinclass = new BestInClass(driver);
             bestinclass.DetailComparisonButton.Click();

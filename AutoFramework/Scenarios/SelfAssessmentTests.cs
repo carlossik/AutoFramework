@@ -312,6 +312,7 @@
             }
             catch (NoSuchElementException e)
             {
+                Console.WriteLine(e);
                 Assert.Fail();
             }
 

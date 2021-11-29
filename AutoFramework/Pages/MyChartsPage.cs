@@ -22,7 +22,7 @@ namespace SFB_Test_Automation.AutoFramework.Pages
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "#Custom > a:nth-child(1) > span:nth-child(1)")]//"//*[contains(., 'Your charts')]")]
         //[SeleniumExtras.PageObjects.CacheLookup]
         public IWebElement YourChartsTab { get; set; }
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "#customTabSection > div > div > div > details > summary > span.summary.font-xsmall")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//span[contains(text(),'Add or remove charts')]")]
         public IWebElement AddOrRemoveChartsLink { get; set; }
 
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "#custom-report-accordion > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > label:nth-child(2)")]
@@ -36,7 +36,8 @@ namespace SFB_Test_Automation.AutoFramework.Pages
 
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "div.accordion-section:nth-child(3) > div:nth-child(2) > div:nth-child(4) > div:nth-child(2) > div:nth-child(1) > label:nth-child(2)")]
         public IWebElement EducationSupport_PerPupil { get; set; }
-
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "button[aria-label=\"Add Total Expenditure to Your Charts\"]")]
+        public IWebElement AddTotalExpenditureToCharts { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "#custom-report-accordion > div:nth-child(2) > h2:nth-child(1) > a:nth-child(1) > span:nth-child(1)")]
         public IWebElement TotalExpenditureaccordion { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "div.accordion-section:nth-child(3) > h2:nth-child(1) > a:nth-child(1) > span:nth-child(1)")]

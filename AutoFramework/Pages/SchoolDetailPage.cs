@@ -86,7 +86,7 @@ namespace AutoFramework.Pages.PageElements
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = ".govuk-list > li:nth-child(1) > a:nth-child(1)")]
         public IWebElement schooldetailnotfoundmessage { get; set; }
 
-        [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = "dd.metadata-school-detail__dd:nth-child(24)")]
+        [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = "dd.metadata-school-detail__dd:nth-child(22)")]
         public IWebElement HeadTeacher_Name { get; set; }
 
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = ".message")]
@@ -232,7 +232,7 @@ namespace AutoFramework.Pages.PageElements
             var chromedriverpath = Config.chrome_path;
             var options = new ChromeOptions();
             options.AddArgument("--headless");
-            driver = new ChromeDriver(chromedriverpath, options);
+            driver = new ChromeDriver( options);
             driver.Navigate().GoToUrl(giasurl);
             IWebElement closemodal = driver.FindElement(By.Id("gias-modal-close"));
             closemodal.Click();

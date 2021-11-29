@@ -74,13 +74,17 @@ namespace AutoFramework.Pages.PageElements
         public IWebElement WorkForceTab { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "Custom")]
         public IWebElement YourChartsTab { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "button[aria-label=\"Add Total Expenditure to Your Charts\"]")]
+        public IWebElement AddTotalExpenditureToCharts { get; set; }
+        // button[aria-label="Add Total Expenditure to Your Charts"]
+
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath,Using = ".//span[contains(text(),'Add another school by name or location')]")]
         public IWebElement AddanotherschoolLink { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id,Using = "ChartGroup")]
         public IWebElement TotalExpenditureDropdown { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "#ChartGroup > option:nth-child(7)")]
         public IWebElement costOfFinance { get; set; }
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector,Using = ".comp")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath,Using = "//a[@id='tab_bestInClassTabSection']")]
         public IWebElement BestInClassComparisonSchoolsTab { get; set; }
 
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "#ComparisonSchools > a:nth-child(1)")]

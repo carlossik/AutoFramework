@@ -31,11 +31,11 @@
            ChromeOptions.AddArgument("--use-fake-ui-for-media-stream");
            ChromeOptions.AddArgument("--disable-user-media-security=true");
            var downloadDirectory = (@"C:\AutomationDownloads");
-            var chromedriverpath = @"C:\Users\kwaku\OneDrive\Desktop\C#";
+            var chromedriverpath = @"C:\Users\kwaku\OneDrive\Desktop\C#\AutoFramework\bin\Debug\";
            ChromeOptions.AddUserProfilePreference("download.default_directory", downloadDirectory);
            ChromeOptions.AddUserProfilePreference("download.prompt_for_download", false);
            //IWebDriver driver = new ChromeDriver(chromedriverpath,ChromeOptions);
-           IWebDriver driver = new FirefoxDriver();
+           IWebDriver driver = new ChromeDriver(chromedriverpath, ChromeOptions);
             driver.Navigate().GoToUrl(Config.currentTestEnv);
             TimeSpan seconds = TimeSpan.FromSeconds(second);
             driver.Manage().Timeouts().ImplicitWait = seconds;
@@ -894,7 +894,7 @@
         {
             HomePage homepage = new HomePage(driver);
            
-           // homepage.School.Click();
+          
              homepage.SchoolLacodeButton.Click();
             homepage.SchoolLacodeinputField.SendKeys(Lacode);
             homepage.LacodeSearchButton.Click();
@@ -976,7 +976,7 @@
             public static void Verifybasket(IWebDriver driver)
             {
                 Thread.Sleep(3000);
-                SearchSchoolViaName("plumcroft ",driver);
+                SearchSchoolViaName("141163", driver);
                 Thread.Sleep(3000);
                 SchoolDetailPage Schooldetails = new SchoolDetailPage(driver);
                 SearchResultsPage resultspage = new SearchResultsPage(driver);
@@ -1015,7 +1015,7 @@
                         Schooldetails.AddToBenchMarkBasket.Click();
                         //Thread.Sleep(10000);
                     }
-                    catch (NoSuchElementException ){ continue; }                       
+                    catch (NoSuchElementException ){ Console.WriteLine(urn);{ continue; } }                       
                     }
 
                 }

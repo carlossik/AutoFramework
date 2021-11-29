@@ -79,13 +79,10 @@ namespace AutoFramework
                 try
                 {
                     var fedurl = Config.currentTestEnv + "School/Detail?urn=" + urn;
-
                     driver.Navigate().GoToUrl(fedurl);
                     SchoolDetailPage detailspage = new SchoolDetailPage(driver);
-                  
                     IWebElement federationslink = driver.FindElement(By.XPath("//dt[14]"));
                     Assert.IsTrue(federationslink.Displayed);
-                   
                 }
                 catch (NoSuchElementException)
                 { Console.WriteLine(urn); }

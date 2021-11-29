@@ -15,9 +15,10 @@ namespace AutoFramework
         public static string PreProd = "https://as-t1pr-sfb-preprod.azurewebsites.net/";
         public static string newenv = "https://as-t1-dv-sfb-govuk-frontend.azurewebsites.net/";
         //public static string HiddenLive = "https://as-t1pr-sfb-b.azurewebsites.net/";
-        public static string currentTestEnv = staging;
+        public static string currentTestEnv = Prodlive;
         public static string firefoxlocation = "C://Users//kwaku//OneDrive//Desktop//C#//AutoFramework//bin//Debug//firefox.exe";
         public static string downloadDirectory = @"C:\AutomationDownloads\";
+        public static string browserUnderTest = "chrome";
         public static string chrome_path = @"C:\Users\kwaku\OneDrive\Desktop\C#";
         public static string giasurl = "https://get-information-schools.service.gov.uk/Establishments/Establishment/Details/";
        

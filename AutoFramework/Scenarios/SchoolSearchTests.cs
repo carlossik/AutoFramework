@@ -296,6 +296,14 @@
         }
 
         [Test]
+        public void testPagination_UsingLA_Code_EducationPhase()
+        {
+            Actions.searchSchoolViaLaCode("352", driver);
+            Actions.testNumberOfResultsDisplayedForAllFilters(driver);
+
+        }
+
+        [Test]
         [Category("QuickTests")]
         public void SearchViaLocationManualEntry()
         {

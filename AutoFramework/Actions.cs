@@ -719,6 +719,31 @@
             resultspage.paginationNextButton.Click();
             resultspage.paginationPreviousButton.Click();
         }
+
+        public static void testNumberOfResultsDisplayedForAllFilters(IWebDriver driver)
+        {
+            SearchResultsPage resultspage = new SearchResultsPage(driver);
+            IWebElement result_Displayed = (driver.FindElement(By.CssSelector("span[class$='result-count count-js']")));
+            Console.WriteLine(result_Displayed.Text);
+            IList<string> FirstResultslist = new List<string>();
+            FirstResultslist.Add(result_Displayed.Text);
+            resultspage.EducationPhase_checkbox.Click();
+            resultspage.EducationPhasePrimaryCheckbox.Click();
+            IWebElement result_Displayed2 = (driver.FindElement(By.CssSelector("span[class$='result-count count-js']")));
+            Console.WriteLine(result_Displayed2.Text);
+            resultspage.EducationPhasePrimaryCheckbox.Click();
+            IWebElement result_Displayed3 = (driver.FindElement(By.CssSelector("span[class$='result-count count-js']")));
+            Console.WriteLine(result_Displayed3.Text);
+            Console.WriteLine("This is the last Result "+result_Displayed3.Text);
+            Console.WriteLine("This is the first result"+ FirstResultslist[0]);
+            Assert.AreEqual((FirstResultslist[0]),result_Displayed3.Text);
+            Console.WriteLine(result_Displayed3.Text);
+           
+
+
+        }
+
+
         public static void addtobasketviaresultspage(string postcode, IWebDriver driver)
         {
             SearchByLocationUsingPostcode(postcode,driver);

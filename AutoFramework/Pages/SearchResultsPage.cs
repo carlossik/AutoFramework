@@ -65,6 +65,7 @@ namespace AutoFramework.Pages
         [FindsBy(How = How.CssSelector, Using = "div.govuk-option-select:nth-child(4) > div:nth-child(1) > div:nth-child(1)")]
         public IWebElement EducationPhase_checkbox { get; set; }
         [FindsBy(How = How.CssSelector, Using = ".add-all")]
+        
         public IWebElement AddAllToBasket_Button { get; set; }
         [FindsBy(How = How.XPath, Using = "//label[contains(text(),'All-through')]")]
         public IWebElement SelectAllThroughsCheckbox { get; set; }
@@ -77,7 +78,8 @@ namespace AutoFramework.Pages
 
         [FindsBy(How = How.ClassName, Using = "schoolsInTrust")]
         public IWebElement results { get; set; }
-
+        [FindsBy(How = How.XPath, Using = "//label[contains(text(),'Primary')]")]
+        public IWebElement EducationPhasePrimaryCheckbox { get; set; }
 
         public int resultsfromLinksCountTrusts(IWebDriver driver)
         {

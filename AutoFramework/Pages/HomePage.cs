@@ -105,7 +105,7 @@
         [FindsBy(How = How.CssSelector, Using = ".view-benchmark-charts-wrapper > a:nth-child(1)")]
         public IWebElement ViewBenchMarkChartsButton { get; set; }
         
-        [FindsBy(How = How.XPath,Using = "//div[@class='footer-meta-inner']/ul[1]/li[3]/a[1]")]
+        [FindsBy(How = How.XPath,Using = "//a[contains(text(),'Accessibility')]")]
         public IWebElement AccessibilityLink { get; set; }
 
         public void ClickOnSearchButton()

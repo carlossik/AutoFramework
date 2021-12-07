@@ -101,6 +101,7 @@ namespace SFB_Test_Automation.AutoFramework.Scenarios
             driver.CreateAxeHtmlReport(axeResult,path);
         }
 
+      
         [Test]
         public void verifyaccessibilityLinkOnHomePage()
         {
@@ -108,6 +109,7 @@ namespace SFB_Test_Automation.AutoFramework.Scenarios
             Assert.IsTrue(home.AccessibilityLink.Displayed);
 
         }
+      
         [Test]
         public void verifyCookiesBanner()
         {
@@ -117,7 +119,7 @@ namespace SFB_Test_Automation.AutoFramework.Scenarios
 
         }
 
-
+        
         [Test]
         public void verifyaccessibilityLinkSAD()
         {
@@ -133,6 +135,7 @@ namespace SFB_Test_Automation.AutoFramework.Scenarios
             Assert.IsTrue(sadpage.AccessibilityLink.Displayed);
 
         }
+
         [Test]
         public void verifyaccessibilityLinkChartsPage()
         {

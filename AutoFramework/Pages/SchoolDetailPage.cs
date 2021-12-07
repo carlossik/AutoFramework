@@ -152,7 +152,7 @@ namespace AutoFramework.Pages.PageElements
         public IWebElement trustText { get; set; }
 
 
-        [SeleniumExtras.PageObjects.FindsBy(How = How.XPath, Using = "//div[@class='footer-meta-inner']/ul[1]/li[2]/a[1]")]
+        [SeleniumExtras.PageObjects.FindsBy(How = How.XPath, Using = "//a[contains(text(),'Accessibility')]")]
         public IWebElement AssessibilityLink { get; set; }
 
         //By.xpath("//*[text()='Academy trust']"));

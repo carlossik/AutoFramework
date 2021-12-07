@@ -20,13 +20,13 @@ namespace SFB_Test_Automation.AutoFramework.Pages
             SeleniumExtras.PageObjects.PageFactory.InitElements(driver, this);
         }
 
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "/html/body/app-root/app-gov-uk-layout/div[2]/div/main/app-ways-to-improve/div/div/ul/li[1]/a")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//a[contains(text(),'Use the financial planning checklist')]")]
         public IWebElement UseFinancial_PlanningCheckList_Link { get; set; }
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "/html/body/app-root/app-gov-uk-layout/div[2]/div/main/app-ways-to-improve/div/div/ul/li[2]/a")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//a[contains(text(),'Use the top 10 financial planning checks')]")]
         public IWebElement UseTheTop10PlanningChecksLink { get; set; }
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "/html/body/app-root/app-gov-uk-layout/div[2]/div/main/app-ways-to-improve/div/div/ul/li[3]/a")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//a[contains(text(),'Use the toolkit')]")]
         public IWebElement UseTheToolKitLink { get; set; }
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".govuk-back-link")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//a[contains(text(),'Back')]")]
         public IWebElement BackToEfficiencyMetricLink { get; set; }
     }
 }

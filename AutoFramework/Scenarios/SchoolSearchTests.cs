@@ -15,6 +15,7 @@
     using OpenQA.Selenium.IE;
     using OpenQA.Selenium.Chrome;
     using System.Collections;
+    using System.IO;
 
     public class Schoolsearchtests
     {
@@ -396,6 +397,8 @@
        public void TestDownloadPdf()
         {
             Actions.downloadpdf(driver);
+            //Assert.IsTrue(Actions.CheckFileDownloaded("sfb-benchmark-charts.pdf"));
+            FileAssert.Exists(Config.downloadDirectory+ "sfb-benchmark-charts.pdf");
         }
         [Test]
         public void TestDownloadCsv()
@@ -407,6 +410,11 @@
         public void TestDownloadPPT()
         {
             Actions.downloadppt(driver);
+            FileAssert.Exists(Config.downloadDirectory + "sfb-benchmark-charts.pptx");
+            FileInfo fi = new FileInfo(Config.downloadDirectory + "sfb-benchmark-charts.pptx");
+            long emptyOrNot = (fi.Length/1000);
+            Console.WriteLine("This is the size of the downloaded file in KiloBytes "+emptyOrNot);
+            Assert.IsTrue(emptyOrNot > 2);
         }
         [Test]
         public void Savebenchmarkbasket()

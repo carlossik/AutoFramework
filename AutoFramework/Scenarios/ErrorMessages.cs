@@ -12,7 +12,9 @@ using AutoFramework;
 
 namespace SFB_Test_Automation.AutoFramework.Scenarios
 {
+    [Ignore("AC's have changed")]
     [TestFixture]
+    
     public class ErrorMessagesTests
     {
         IAlert alert;

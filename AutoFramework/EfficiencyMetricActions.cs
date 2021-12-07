@@ -27,9 +27,9 @@ namespace SFB_Test_Automation.AutoFramework
             TypeOfComparisonPage comparisontype = new TypeOfComparisonPage(driver);
             Thread.Sleep(2000);
             comparisontype.EfficiencyMetrictButton.Click();
-            //detailspage.EfficiencyMetricLink.Click();
+            
             Thread.Sleep(2000);
-            Actions.acceptCookie(driver);
+            Actions.acceptEMCookie(driver);
             Thread.Sleep(2000);
             EfficiencyMetricIntroPage intropage = new EfficiencyMetricIntroPage(driver);
             intropage.ContinueToEfficiencyMetricButton.Click();

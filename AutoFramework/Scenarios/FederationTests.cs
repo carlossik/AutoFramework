@@ -133,12 +133,19 @@ namespace AutoFramework
                     SchoolDetailPage detailspage = new SchoolDetailPage(driver);
                     
                     IWebElement federationslink = driver.FindElement(By.XPath("//dt[14]"));
+                    if (detailspage.AddToBenchMarkBasket.Displayed)
+                    {
+                        Console.WriteLine( "This school failed the test  "+ urn);
+                        Assert.Fail();
+
+                       
+                    }
                     Assert.False(detailspage.AddToBenchMarkBasket.Displayed);
                    
 
                 }
                 catch (NoSuchElementException)
-                { Console.WriteLine(urn); }
+                //{ Console.WriteLine(urn); }
                
 
 

@@ -18,19 +18,19 @@
     using System.Drawing;
     using System.Linq;
     using OpenQA.Selenium.Support.UI;
-    
+    using System.IO;
 
     public  class Actions :BrowserToRunWith
     {
         public static IWebDriver InitializeDriver(int second)
         {
-          
 
-           var ChromeOptions = new ChromeOptions();
+            Config.Credentials.Deleteallfiles(Config.downloadDirectory);
+            var ChromeOptions = new ChromeOptions();
           
            ChromeOptions.AddArgument("--use-fake-ui-for-media-stream");
            ChromeOptions.AddArgument("--disable-user-media-security=true");
-           var downloadDirectory = (@"C:\AutomationDownloads");
+           var downloadDirectory = Config.downloadDirectory;
             var chromedriverpath = @"C:\Users\kwaku\OneDrive\Desktop\C#\AutoFramework\bin\Debug\";
            ChromeOptions.AddUserProfilePreference("download.default_directory", downloadDirectory);
            ChromeOptions.AddUserProfilePreference("download.prompt_for_download", false);
@@ -74,6 +74,7 @@
 
 
             return driver;
+            
         }
         //public static IWebDriver InitializeDriver(string browser)
         //{
@@ -541,7 +542,32 @@
             }
 
 
-            public static void gotonewspagefrombanner(IWebDriver driver)
+        public static void acceptEMCookie(IWebDriver driver)
+        {
+            try
+            {
+
+                IWebElement closeEMCookie = driver.FindElement(By.CssSelector(".govuk-button-group > button:nth-child(1)"));
+                if (closeEMCookie.Displayed)
+                {
+                    closeEMCookie.Click();
+                    IWebElement hideThisMessage = driver.FindElement(By.CssSelector("a.govuk-button"));
+                    hideThisMessage.Click();
+                    Thread.Sleep(300);
+                    //driver.Navigate().Refresh();
+                    Thread.Sleep(300);
+                }
+            }
+            catch (NoSuchElementException)
+            {
+
+            }
+
+
+        }
+
+
+        public static void gotonewspagefrombanner(IWebDriver driver)
         {
             driver.Close();
             driver = new ChromeDriver();
@@ -781,12 +807,31 @@
             Thread.Sleep(10000);
             driver.SwitchTo().Window(driver.WindowHandles[0]);
             driver.SwitchTo().Window(driver.CurrentWindowHandle);
-            IWebElement element = driver.FindElement(By.ClassName("govuk-button"));
+            IWebElement element = driver.FindElement(By.XPath("//button[contains(text(),'Download')]"));
             IJavaScriptExecutor executor = (IJavaScriptExecutor)driver;
             executor.ExecuteScript("arguments[0].scrollIntoView()", element);
-            executor.ExecuteScript("arguments[0].click()", element);
-            Thread.Sleep(10000);
+            //executor.ExecuteScript("arguments[0].click()", element);
+            //executor.ExecuteScript("arguments[0].click()", element);
+             element.Click();
+            Thread.Sleep(60000);
+           
         }
+        public  bool CheckFileDownloaded(string filename)
+        {
+            var firstFile = Directory
+                .GetFiles(Config.downloadDirectory)
+                .FirstOrDefault(fp => fp.Contains(filename));
+            if (firstFile.Length > 2)
+            {
+                //var fileInfo = new FileInfo(firstFile);
+                //var isFresh = DateTime.Now - fileInfo.LastWriteTime < TimeSpan.FromMinutes(3);
+                //File.Delete(firstFile);
+                //Check the file that are downloaded in the last 3 minutes
+                return true;
+            }
+            return false;
+        }
+
         public static void SearchTrustViaLocation(IWebDriver driver)
         {
             HomePage homepage = new HomePage(driver);
@@ -900,11 +945,11 @@
             benchmarkpage.DownloadPage.Click();
             Thread.Sleep(1000);
             benchmarkpage.PowerPointFormat.Click();
-            IWebElement element = driver.FindElement(By.ClassName("govuk-button"));
+            IWebElement element = driver.FindElement(By.XPath("//button[contains(text(),'Download')]"));
             IJavaScriptExecutor executor = (IJavaScriptExecutor)driver;
             executor.ExecuteScript("arguments[0].scrollIntoView()", element);
-            Thread.Sleep(10000);
-            executor.ExecuteScript("arguments[0].click()", element);
+            //Thread.Sleep(10000);
+            element.Click();
             Thread.Sleep(1000);
         }
         public static void savebenchmarkbasket(IWebDriver driver)

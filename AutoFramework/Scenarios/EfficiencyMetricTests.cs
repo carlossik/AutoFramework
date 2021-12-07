@@ -162,7 +162,7 @@ namespace AutoFramework
             ToolsToImproveEMPage improveEMPage = new ToolsToImproveEMPage(driver);
             Assert.IsTrue(improveEMPage.UseFinancial_PlanningCheckList_Link.Displayed);
             Assert.IsTrue(improveEMPage.UseTheTop10PlanningChecksLink.Displayed);
-            Assert.IsTrue(improveEMPage.UseFinancial_PlanningCheckList_Link.Displayed);
+            //Assert.IsTrue(improveEMPage.UseFinancial_PlanningCheckList_Link.Displayed);
 
 
         }

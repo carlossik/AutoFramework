@@ -53,7 +53,7 @@ namespace AutoFramework.Pages.PageElements
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//a[@id='tab_workforce']")]
         public IWebElement SchoolPageWorkForceTab { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//a[contains(text(),'Is there anything wrong with this page?')]")]
-        public IWebElement IsThereAnyThingWrongWithThisPageLink { get; set; }
+        public IWebElement IsThereAnyThingWrongWithThisPagelink { get; set; }
        
 
 

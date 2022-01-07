@@ -44,6 +44,19 @@ namespace AutoFramework.Pages.PageElements
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "button.pl-0:nth-child(2) > div:nth-child(2) > span:nth-child(1)")]
         public IWebElement AddToBenchMarkSetDetailspage { get; set; }
         //button.pl-0:nth-child(2) > div:nth-child(2) > span:nth-child(1)
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//a[@id='tab_dashboard']")]
+        public IWebElement SchoolPageDashBoardTab { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//a[@id='tab_details']")]
+        public IWebElement SchoolPageDetailsTab { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//a[@id='tab_finance']")]
+        public IWebElement SchoolPageFinanceTab { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//a[@id='tab_workforce']")]
+        public IWebElement SchoolPageWorkForceTab { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//a[contains(text(),'Is there anything wrong with this page?')]")]
+        public IWebElement IsThereAnyThingWrongWithThisPageLink { get; set; }
+       
+
+
 
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector,Using = "#\\31 44406desktop > button:nth-child(2)")]
         public IWebElement FirstSearchItem { get; set; }

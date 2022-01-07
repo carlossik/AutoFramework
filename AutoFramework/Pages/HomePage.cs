@@ -93,7 +93,7 @@
         public IWebElement SenSpecialCharacteristicsLink { get; set; }
         [FindsBy(How = How.Id, Using = "openOnlyName")]
         public IWebElement IncludeSchoolsCheckbox { get; set; }
-        [FindsBy(How = How.CssSelector,Using = ".footer-meta-inner > ul:nth-child(2) > li:nth-child(1) > a:nth-child(1)")]
+        [FindsBy(How = How.XPath,Using = "//a[contains(text(),'Cookies')]")]
         public IWebElement cookies_footer { get; set; }
 
         [FindsBy(How = How.XPath, Using = "//a[contains(text(),'Contact')]")]

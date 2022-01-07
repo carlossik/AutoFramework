@@ -31,10 +31,9 @@
            ChromeOptions.AddArgument("--use-fake-ui-for-media-stream");
            ChromeOptions.AddArgument("--disable-user-media-security=true");
            var downloadDirectory = Config.downloadDirectory;
-            var chromedriverpath = @"C:\Users\kwaku\OneDrive\Desktop\C#\AutoFramework\bin\Debug\";
+            var chromedriverpath = Config.chromedriverpath;
            ChromeOptions.AddUserProfilePreference("download.default_directory", downloadDirectory);
            ChromeOptions.AddUserProfilePreference("download.prompt_for_download", false);
-           //IWebDriver driver = new ChromeDriver(chromedriverpath,ChromeOptions);
            IWebDriver driver = new ChromeDriver(chromedriverpath, ChromeOptions);
             driver.Navigate().GoToUrl(Config.currentTestEnv);
             TimeSpan seconds = TimeSpan.FromSeconds(second);
@@ -839,9 +838,9 @@
             homepage.TrustTab.Click();
             homepage.TrustLocationButton.Click();
             homepage.TrustLocationField.SendKeys(Config.Credentials.PostCode.Postcode);
-           // homepage.TrustLocationField.SendKeys(Keys.Enter);
+           homepage.TrustLocationField.SendKeys(Keys.Enter);
+           driver.FindElement(By.XPath("/html[1]/body[1]/div[5]/div[1]/main[1]/div[1]/div[1]/ul[1]/li[1]/a[1]")).Click();
             //homepage.TrustLocationSubmit.Click();
-           driver.FindElement(By.CssSelector("#tt-e77b4e52-4acf-4041-d976-f0e9833ea221")).Click();
             Thread.Sleep(10000);
         }
 
@@ -895,7 +894,7 @@
             //    resultspage.TrustSearchResultSortedByButton.SendKeys(OrderBy + Keys.Enter);
             //}
             resultspage.TrustSearchResultSortedByButton.SendKeys(OrderBy + Keys.Enter);
-            resultspage.TrustSearchResultSortedByButton.SendKeys(OrderBy + Keys.Enter);
+            //resultspage.TrustSearchResultSortedByButton.SendKeys(OrderBy + Keys.Enter);
             Thread.Sleep(2000);
 
         }

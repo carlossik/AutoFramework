@@ -87,7 +87,7 @@
             homepage.trustnameRadioButton.Click();
             homepage.TrustSearchInput.Click();
             homepage.TrustSearchInput.SendKeys(TrustNameSubmitted);
-            homepage.TrustSearchInput.SendKeys(Keys.Enter);
+           // homepage.TrustSearchInput.SendKeys(Keys.Enter);
 
             driver.FindElement(By.XPath("//body/div[@id='content']/div[1]/main[1]/div[1]/div[2]/div[1]/div[2]/form[1]/div[1]/fieldset[1]/div[1]/div[2]/div[1]/span[1]/div[1]/div[1]/div[1]/a[1]")).Click();
             homepage.TrustSubmitButton.Click();

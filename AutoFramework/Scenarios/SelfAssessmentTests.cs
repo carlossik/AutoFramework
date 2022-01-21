@@ -66,7 +66,7 @@
         {
 
 
-            var Lacodes = new List<string> { "208", "205", "209" };
+            var Lacodes = new List<string> { "879", "341", "909" };
             var random = new Random();
             int index = random.Next(Lacodes.Count);
             string randomLacode = Lacodes[index]; //select a random La code from the list of La codes for the test

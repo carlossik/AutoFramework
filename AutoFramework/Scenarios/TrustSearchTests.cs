@@ -241,6 +241,7 @@
             Assert.IsTrue(detailpage.School_Name.Text == schooname);
         }
         [Test]
+        [Ignore("Ignore a test")]
         public void verifyTrustBelongsToLink()
         {
             Actions.SearchTrustViaLocalAuthority("890",driver);

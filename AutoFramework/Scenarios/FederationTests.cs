@@ -15,6 +15,8 @@ namespace AutoFramework
     using SFB_Test_Automation.AutoFramework.vs.AutoFramework.Helpers;
     using System.Collections;
     using System.Threading;
+    using System.Collections.Generic;
+    using System.Linq;
 
     // [Parallelizable]
 
@@ -96,6 +98,7 @@ namespace AutoFramework
         {
             URNHelper helpers = new URNHelper();
             IList urns = helpers.fedswithFinance;
+            var Columns = new List<string>();
             foreach (string urn in urns)
             {
                 try
@@ -106,15 +109,27 @@ namespace AutoFramework
                     SchoolDetailPage detailspage = new SchoolDetailPage(driver);
                    
                     IWebElement federationslink = driver.FindElement(By.XPath("//dt[14]"));
+                    if (detailspage.StartAComparison.Displayed)
+                    {
+                        Columns.Add(urn);
+                        Console.WriteLine("This School doesn't seem to be in a federation " + urn);
+
+                    }
                    
-                    Assert.False(detailspage.StartAComparison.Displayed);
+                    
 
                 }
                 catch (NoSuchElementException)
-                { Console.WriteLine(urn); }
-
                 { continue; }
+                
+               
             }
+            Console.WriteLine(Columns.Count);
+            if (Columns.Count == 0)
+            {
+                Assert.Pass();
+            }
+            else { Assert.Fail(); }
         }
 
 

@@ -43,7 +43,7 @@
         public IWebElement LocalAuthorityTrustSearchButton { get; set; }
         [FindsBy(How = How.XPath, Using = "//input[@id='FindSchoolByLaCodeName']")]
         public IWebElement LacodeInputField { get; set; }
-        [FindsBy(How = How.CssSelector, Using = "button.govuk-button:nth-child(6)")]
+        [FindsBy(How = How.Id, Using = "LaCodeName")]
         public IWebElement LacodeSearchButton { get; set; }//This has to be changed in next changes
 
         [FindsBy(How = How.CssSelector, Using = "#SearchByTrustNameFieldset > div:nth-child(1) > button:nth-child(5)")]

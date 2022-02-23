@@ -43,7 +43,10 @@ namespace SFB_Test_Automation.AutoFramework.vs.AutoFramework.Helpers
         "100176",
         "100177",
         "100178",
-        "100179" };
+        "100179" ,
+        "144406",
+        "100113",
+        "143686"};
 
 
         public IList Urns
@@ -209,18 +212,18 @@ namespace SFB_Test_Automation.AutoFramework.vs.AutoFramework.Helpers
 "113453",
 "118442",
 "118471",
-"118509",
+
 "115733",
 "117386",
 "138796",
 "120797",
 "120809",
-"120815",
+
 "120835",
 "120884",
 "121036",
 "121050",
-"121103",
+
 "121128",
 "121146",
 "121164",

@@ -113,9 +113,14 @@ namespace AutoFramework
                     {
                         Columns.Add(urn);
                         Console.WriteLine("This School doesn't seem to be in a federation " + urn);
+                        Assert.Fail();
 
                     }
-                   
+                    else
+                    {
+
+                        Assert.Pass();
+                    }
                     
 
                 }

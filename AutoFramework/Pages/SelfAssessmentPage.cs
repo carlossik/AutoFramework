@@ -56,7 +56,7 @@ namespace SFB_Test_Automation.AutoFramework.Pages
         public IWebElement PrintPage { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "a.a-button:nth-child(2) > span:nth-child(2)")]
         public IWebElement Printbutton { get; set; }
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".govuk-warning-text__assistive")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//body/div[@id='js-modal-page']/div[@id='content']/div[1]/main[1]/div[1]/div[1]/div[1]/strong[1]")]
         public IWebElement FinancewarningMessage { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "table.govuk-table:nth-child(3) > tbody:nth-child(3) > tr:nth-child(5) > td:nth-child(3) > span:nth-child(1) > a:nth-child(2)")]
         public IWebElement AddData_TeacherContactRatio { get; set; }

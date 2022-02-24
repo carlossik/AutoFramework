@@ -398,8 +398,9 @@
         {
             Actions.schoolSearchwithLaestab("137353",driver);
             SchoolDetailPage detailpage = new SchoolDetailPage(driver);
-            Assert.IsTrue(detailpage.previousTrustLink.Displayed);
-            Assert.IsTrue(detailpage.MatFinanceToggle.Displayed);
+            IWebElement SATstatement =  driver.FindElement(By.XPath("//dd[contains(text(),'Single academy trust')]"));
+            Assert.IsTrue(SATstatement.Displayed);
+            //Assert.IsTrue(detailpage.MatFinanceToggle.Displayed);
         }
 
         [Test]

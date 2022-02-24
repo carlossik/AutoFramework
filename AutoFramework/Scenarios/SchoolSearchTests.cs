@@ -120,7 +120,7 @@
        
         }
         
-       
+       [Ignore("Ignore this test")]
         [Test]
         public void SearchSchool_closed_schoolWithURN()
         {
@@ -370,7 +370,7 @@
             
             Actions.CallingClass.SearchViaSchoolurn("103119", driver);
             Assert.AreEqual(GiasValue, detailspage.HeadTeacher_Name.Text);
-
+            //Console.WriteLine(detailspage.HeadTeacher_Name.Text + ""+GiasValue);
         }
 
 

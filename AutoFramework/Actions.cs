@@ -720,10 +720,9 @@
             driver.Navigate().GoToUrl("https://as-t1stg-sfb.azurewebsites.net/trust/index?code=0&companyNo=10192252&name=Connect%20Academy%20Trust&tab=Income&unit=AbsoluteMoney&financing=TrustAndAcademies&format=Charts#financialSummary");
             var options = driver.FindElement(By.CssSelector("#ChartGroup"));
             var selectElement = new SelectElement(options);
-            //select by value
+           
             selectElement.SelectByValue("GrantFunding");
-            // select by text
-            //selectElement.SelectByText("GrantFunding");
+            
             Thread.Sleep(10000);
             driver.FindElement(By.XPath("//body[1]/div[1]/div[5]/div[1]/main[1]/div[3]/div[1]/div[2]/div[1]/div[1]/div[1]/button[2]/span[1]")).Click();
 
@@ -969,7 +968,7 @@
 
             homepage.SchoolLacodeButton.Click();
             homepage.SchoolLacodeinputField.SendKeys(Lacode);
-            homepage.LacodeSearchButton.Click();
+            homepage.LAcodesearchSubmitButton.Click();
             Thread.Sleep(100);
 
         }

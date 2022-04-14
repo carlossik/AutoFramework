@@ -71,6 +71,28 @@
 
         }
         [Test]
+        public void verifyQuickCompareOnSchoolPage()
+        {
+            Actions.SearchSchoolViaName("107431", driver);
+            SchoolDetailPage detailpage = new SchoolDetailPage(driver);
+            Assert.IsTrue(detailpage.QuickCompareView.Displayed);
+
+        }
+        [Test]
+          public void verifyQuickCompareOnViewCharacteristicsUsed()
+        {
+            Actions.SearchSchoolViaName("107431", driver);
+            SchoolDetailPage detailpage = new SchoolDetailPage(driver);
+            detailpage.QuickCompareView.Click();
+            Thread.Sleep(300);
+            IWebElement viewCharacteristicsUsed = driver.FindElement(By.Id("SadPanel"));
+            IWebElement viewCharateristicsButon = driver.FindElement(By.CssSelector("#quickCtrl > div:nth-child(1) > details:nth-child(2) > summary:nth-child(1) > span:nth-child(1)"));
+            viewCharateristicsButon.Click();
+            Thread.Sleep(300);
+            viewCharateristicsButon.Click();
+            Assert.IsTrue(viewCharacteristicsUsed.Displayed);
+        }
+        [Test]
         [Ignore("Ignore this test")]
         public void verifyNewsPage()
 
@@ -330,7 +352,7 @@
             Assert.That(driver.FindElement(By.CssSelector(".govuk-heading-xl")).Text, Does.Contain("Academy trusts with schools operating in Bexley"));
 
         }
-        [Test]
+        
         public void TestOfstedNotRated()
         {
             Actions.CallingClass.SearchViaSchoolurn("144406",driver);
@@ -507,6 +529,7 @@
         {
             Actions.schoolSearchwithLaestab("9362489",driver);
             SchoolDetailPage detailspage = new SchoolDetailPage(driver);
+            detailspage.SchoolPageDetailsTab.Click();
             Assert.IsTrue(detailspage.Telephone_Number.Displayed);
         }
 

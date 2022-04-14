@@ -229,6 +229,7 @@
             throw new NotImplementedException();
         }
         [Test]
+        [Ignore("Ignore a test")]
         public void verifyviewTrustSchoolsLinks()
         {
             Actions.SearchTrustViaLocalAuthority("890",driver);
@@ -351,6 +352,7 @@
         }
 
         [Test]
+        [Ignore("Ignore a test")]
         public void SearchForTrustWithNameUsingFirstSuggested()
         {
             TrustActions.TrustSearchWitNameUsingFirstSuggestedName("5 Dimensions Trust",driver);
@@ -383,7 +385,7 @@
             Actions.schoolSearchwithLaestab("137427",driver); 
             SchoolDetailPage detailpage = new SchoolDetailPage(driver);
             Assert.IsTrue(detailpage.FinanceDropdown_Trust_Only.Displayed);
-            Assert.IsTrue(detailpage.IntrustLink.Displayed);
+            Assert.IsTrue(detailpage.CurrentTrustLinkDisplayed.Displayed);
         }
 
         [Test]

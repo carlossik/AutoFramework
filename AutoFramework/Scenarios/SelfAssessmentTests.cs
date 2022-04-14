@@ -11,6 +11,7 @@
     using SFB_Test_Automation.AutoFramework;
     using SFB_Test_Automation.AutoFramework.Pages;
     using System;
+    using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
@@ -599,11 +600,20 @@ It includes all the spend on the risk items plus the additional items not risk a
             SelfAssessmentActions.createSideBySideScenario("100000",driver);
         }
 
-        [Ignore("AC's have changed")]
+        
         [Test]
-        public void test_For_SelfAssessment_For_School_Without_Data()
+        public void test_For_SelfAssessment_OnHome_Page_DisplayElements()
+        
         {
-            SelfAssessmentActions.generate_For_School_Without_Data("120911", driver);
+            ArrayList urns = new ArrayList  { "143432", "143474", "144933", "140737", "148403", "146673", "143891" };
+              foreach (String urn in urns)
+            {
+               var url = Config.currentTestEnv + "/School?urn=" + urn + "#dashboard";
+                driver.Navigate().GoToUrl(url);
+                SelfAssessmentActions.verifyElements_OnHomePage(urn, driver);
+            }
+
+           
         }
         [Ignore("AC's have changed")]
         [Test]

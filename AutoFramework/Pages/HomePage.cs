@@ -108,6 +108,17 @@
         [FindsBy(How = How.XPath,Using = "//a[contains(text(),'Accessibility')]")]
         public IWebElement AccessibilityLink { get; set; }
 
+        [FindsBy(How = How.XPath, Using = "//a[contains(text(),'View characteristics used')]")]
+        public IWebElement View_Characteristics_Used { get; set; }
+
+       
+
+
+
+
+
+
+
         public void ClickOnSearchButton()
         {
             SearchSubmit.Click();
@@ -146,8 +157,10 @@
                 Console.WriteLine("Nothig to clear here. Baskets are empty");
             }
             
+            
         }
 
+      
 
     }
 }

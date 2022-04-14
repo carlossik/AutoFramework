@@ -97,6 +97,34 @@ namespace SFB_Test_Automation.AutoFramework
             Thread.Sleep(2000);
 
         }
+        
+        public static void verifyElements_OnHomePage(String Laestab,IWebDriver driver)
+        {
+           
+            SchoolDetailPage detailspage = new SchoolDetailPage(driver);
+            Thread.Sleep(2000);
+            detailspage.SchoolPageDashBoardTab.Click();
+            Thread.Sleep(2000);
+            //detailspage.Detail_Page_SadEducationalSupplies.Click();
+            detailspage.Detail_Page_SadTeachingStaff.Click();
+            Thread.Sleep(2000);
+            detailspage.Detail_Page_SadTAdminClericalStaff.Click();
+            Thread.Sleep(2000);
+            detailspage.Detail_Page_SadTAdminClericalStaff.Click();
+            Thread.Sleep(2000);
+            detailspage.Detail_Page_SadSupplyStaff.Click();
+            Thread.Sleep(2000);
+            detailspage.Detail_Page_SadPremisesCosts.Click();
+            Thread.Sleep(2000);
+            detailspage.Detail_Page_SadOtherStaffCosts.Click();
+            Thread.Sleep(2000);
+            detailspage.Detail_Page_SadEnergy.Click();
+            Thread.Sleep(2000);
+            detailspage.Detail_Page_SadEducationSupportStaff.Click();
+           
+
+
+        }
       
         public static void ViewCharacteristicsSideBySide(String Laestab, IWebDriver driver)
         {

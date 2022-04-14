@@ -21,6 +21,8 @@
     using System.IO;
     using System.Net.Http;
     using System.Threading.Tasks;
+    //using OpenQA.Selenium.Edge;
+    using Microsoft.Edge.SeleniumTools;
 
     public class Actions : BrowserToRunWith
     {
@@ -34,9 +36,15 @@
             ChromeOptions.AddArgument("--disable-user-media-security=true");
             var downloadDirectory = Config.downloadDirectory;
             var chromedriverpath = Config.chromedriverpath;
+            var edgedriver = Config.edgeDriverPath;
             ChromeOptions.AddUserProfilePreference("download.default_directory", downloadDirectory);
             ChromeOptions.AddUserProfilePreference("download.prompt_for_download", false);
             IWebDriver driver = new ChromeDriver(chromedriverpath, ChromeOptions);
+            //IWebDriver driver = new InternetExplorerDriver();
+            var options = new EdgeOptions();
+            options.UseChromium = true;
+           // IWebDriver driver = new EdgeDriver(Config.edgeDriverPath);
+            
             driver.Navigate().GoToUrl(Config.currentTestEnv);
             TimeSpan seconds = TimeSpan.FromSeconds(second);
             driver.Manage().Timeouts().ImplicitWait = seconds;

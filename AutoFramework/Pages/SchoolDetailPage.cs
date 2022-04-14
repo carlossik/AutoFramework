@@ -92,8 +92,11 @@ namespace AutoFramework.Pages.PageElements
         public IWebElement Date_Of_Closure { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = "dd.metadata-school-detail__dd:nth-child(12)")]
         public IWebElement NumberOfPupils { get; set; }
-        //[SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = ".govuk-box-highlight__link")]
-        //public IWebElement DealsForSchools_Link { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = How.XPath, Using = "//body/div[@id='js-modal-page']/div[@id='content']/div[1]/main[1]/div[2]/div[4]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/details[1]")]
+        public IWebElement QuickCompareView { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = "#sadCtrl > div > details > summary > span")]
+        public IWebElement QuickCompareViewCharateristicsUsed { get; set; }
+       
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = "span.twitter-typeahead:nth-child(3) > div:nth-child(4)")]
         public IWebElement FirstOptionOnSchoolsearch { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = ".govuk-list > li:nth-child(1) > a:nth-child(1)")]
@@ -108,21 +111,19 @@ namespace AutoFramework.Pages.PageElements
         public IWebElement FinanceDropdown { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = "#Financing > option:nth-child(2)")]
         public IWebElement FinanceDropdown_Trust_Only { get; set; }
-        //[SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector,Using = "dd.metadata-school-detail__dd:nth-child(12)")]
-        //public IWebElement SchoolPhase { get; set; }
+       
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector,Using = "a.spt_link_js")]
         public IWebElement schoolPerformanceTableLink { get; set; }
-        //[SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = ".list > li:nth-child(2) > a:nth-child(1)")]
-        //public IWebElement SADLink { get; set; }
+       
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//*[text()=\"Self-assessment dashboard\"]")]
         public IWebElement SADLink { get; set; }
-        ///html/body/div/div[3]/div[7]/main/div[1]/div[2]/aside/ul/li[2]/a
+     
         [SeleniumExtras.PageObjects.FindsBy(How = How.XPath,Using = "//div[@class='combined-warnings']/p[1]")]
         public IWebElement FederationWithoutFinance { get; set; }
 
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = "dd.metadata-school-detail__dd:nth-child(32) > a:nth-child(1)")]
         public IWebElement federationsLink { get; set; }
-        //dd.metadata-school-detail__dd:nth-child(32) > a:nth-child(1)
+      
         
         [SeleniumExtras.PageObjects.FindsBy(How = How.XPath, Using = "/html/body/div/div[3]/div[6]/main/div[2]/div[1]/div/a")]
 
@@ -132,7 +133,7 @@ namespace AutoFramework.Pages.PageElements
 
         public IWebElement FinanceDisplayed { get; set; }
 
-        [SeleniumExtras.PageObjects.FindsBy(How = How.XPath, Using = ".//a[contains(@href, '/trust?uid=')]")]
+        [SeleniumExtras.PageObjects.FindsBy(How = How.XPath, Using = ".//a[contains(@href, '/trust/detail?uid=')]")]
 
         public IWebElement CurrentTrustLinkDisplayed { get; set; }  //"/trust?companyNo=7719620
 
@@ -168,7 +169,32 @@ namespace AutoFramework.Pages.PageElements
         [SeleniumExtras.PageObjects.FindsBy(How = How.XPath, Using = "//a[contains(text(),'Accessibility')]")]
         public IWebElement AssessibilityLink { get; set; }
 
-        //By.xpath("//*[text()='Academy trust']"));
+        [SeleniumExtras.PageObjects.FindsBy(How = How.XPath, Using = "//span[contains(text(),'Teaching staff')]")]
+        public IWebElement Detail_Page_SadTeachingStaff { get; set; }
+
+        [SeleniumExtras.PageObjects.FindsBy(How = How.XPath, Using = "//span[contains(text(),'Supply staff')]")]
+        public IWebElement Detail_Page_SadSupplyStaff { get; set; }
+
+        [SeleniumExtras.PageObjects.FindsBy(How = How.XPath, Using = "//span[contains(text(),'Education support staff')]")]
+        public IWebElement Detail_Page_SadEducationSupportStaff { get; set; }
+
+        [SeleniumExtras.PageObjects.FindsBy(How = How.XPath, Using = "//span[contains(text(),'Admin. and clerical staff')]")]
+        public IWebElement Detail_Page_SadTAdminClericalStaff { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = How.XPath, Using = "//span[contains(text(),'Other staff costs')]")]
+        public IWebElement Detail_Page_SadOtherStaffCosts { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = How.XPath, Using = "//span[contains(text(),'Premises costs')]")]
+        public IWebElement Detail_Page_SadPremisesCosts { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = How.XPath, Using = "//span[contains(text(),'Educational supplies')")]
+        public IWebElement Detail_Page_SadEducationalSupplies { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = How.XPath, Using = "//span[contains(text(),'Energy')]")]
+        public IWebElement Detail_Page_SadEnergy { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = How.XPath, Using = "//a[contains(text(),'self-assessment dashboard')]")]
+        public IWebElement Detail_Page__See_Self_Assessment_Board { get; set; }
+
+
+
+
+
         public bool  istrusttextDisplayed()
         {
             try
@@ -187,9 +213,7 @@ namespace AutoFramework.Pages.PageElements
 
             try
             {
-                //bool useduid = IntrustLink.Displayed;
-                //bool usedcompno = previousTrustLink.Displayed;
-                //bool result = useduid || usedcompno;
+             
                 if ((IntrustLink.Displayed ^ previousTrustLink.Displayed))
                 {
                     return true;
@@ -242,13 +266,11 @@ namespace AutoFramework.Pages.PageElements
         public  String compareWithGiasData(IWebDriver driver, string urn)
         {
             var giasurl = Config.giasurl + urn;
-            var chromedriverpath = Config.chrome_path;
+            var chromedriverpath = Config.chromedriverpath;
             var options = new ChromeOptions();
             options.AddArgument("--headless");
-            driver = new ChromeDriver( options);
+            driver = new ChromeDriver(chromedriverpath,options);
             driver.Navigate().GoToUrl(giasurl);
-            IWebElement closemodal = driver.FindElement(By.Id("gias-modal-close"));
-            closemodal.Click();
             IWebElement acceptCookie = driver.FindElement(By.CssSelector("button.govuk-button:nth-child(1)"));
             acceptCookie.Click();
             IWebElement schoolname = driver.FindElement(By.CssSelector(".govuk-heading-l"));
@@ -263,18 +285,15 @@ namespace AutoFramework.Pages.PageElements
         public String compareWithGiasDataHeadTeacher_Name(IWebDriver driver, string urn)
         {
             var giasurl = Config.giasurl + urn;
-            var chromedriverpath = Config.chrome_path;
+            var chromedriverpath = Config.chromedriverpath;
             var options = new ChromeOptions();
             options.AddArgument("--headless");
-            var firefoxdriverpath = Config.firefoxlocation;
-            var firefoxOptions = new FirefoxOptions();
-            firefoxOptions.AddArguments("--headless");
-
-            //driver = new ChromeDriver(chromedriverpath, options);
-            driver = new FirefoxDriver(firefoxOptions);
+          
+            driver = new ChromeDriver(chromedriverpath, options);
+          
             driver.Navigate().GoToUrl(giasurl);
-            IWebElement closemodal = driver.FindElement(By.Id("gias-modal-close"));
-            closemodal.Click();
+            //IWebElement closemodal = driver.FindElement(By.Id("gias-modal-close"));
+            //closemodal.Click();
             IWebElement acceptCookie = driver.FindElement(By.CssSelector("button.govuk-button:nth-child(1)"));
             acceptCookie.Click();
             IWebElement headTeacherName = driver.FindElement(By.CssSelector("#details-summary > dl:nth-child(1) > div:nth-child(3) > dd:nth-child(2)"));

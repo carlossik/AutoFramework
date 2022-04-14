@@ -75,19 +75,19 @@ namespace AutoFramework
         public void verifyfederationLinkDisplayedForSubmittedschools()
         {
             URNHelper helpers = new URNHelper();
-            IList urns = helpers.fedswithFinance;
+            IList urns = helpers.feds;
             foreach (string urn in urns)
             {
                 try
                 {
-                    var fedurl = Config.currentTestEnv + "School/Detail?urn=" + urn;
+                    var fedurl = Config.currentTestEnv + "school/detail?urn=" + urn;
                     driver.Navigate().GoToUrl(fedurl);
                     SchoolDetailPage detailspage = new SchoolDetailPage(driver);
                     IWebElement federationslink = driver.FindElement(By.XPath("//dt[14]"));
                     Assert.IsTrue(federationslink.Displayed);
                 }
                 catch (NoSuchElementException)
-                { Console.WriteLine(urn); }
+                { Console.WriteLine( "This school does not a federation" + urn); }
                 { continue; }
             }
 

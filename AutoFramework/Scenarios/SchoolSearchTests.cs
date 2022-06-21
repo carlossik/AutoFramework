@@ -41,7 +41,7 @@
             SchoolDetailPage Schooldetails = new SchoolDetailPage(driver);
             String schoolUrn = Schooldetails.Urn.Text;
             IWebElement sptlink = Schooldetails.schoolPerformanceTableLink;
-            Console.WriteLine(schoolUrn);
+            //Console.WriteLine(schoolUrn);
             Assert.IsTrue(sptlink.Displayed);
 
             //Assert.IsTrue(driver.Url.Contains ("https://www.compare-school-performance.service.gov.uk/school/"+ schoolUrn));
@@ -63,10 +63,10 @@
             Assert.IsTrue(detailspage.School_Name.Displayed);
             Assert.AreEqual((detailspage.School_Name).Text, driver.FindElement(By.CssSelector("h1.govuk-heading-xl")).Text); //.heading-xlarge///html/body/div/div[9]/main/div[1]/div[1]/h1
             Assert.IsTrue(detailspage.Telephone_Number.Displayed);
-            Assert.IsTrue(detailspage.OfstedRating.Displayed);
+            Assert.IsTrue(detailspage.ActualOfstedRating.Displayed);
             Assert.IsTrue(detailspage.DataFromOtherSources.Displayed);
             Assert.IsTrue(detailspage.Services.Displayed);
-            Assert.IsTrue(detailspage.SchoolPhase.Text == "Infant and junior");
+            Assert.AreEqual(detailspage.SchoolPhaseText.Text , "Infant and junior") ;
             
 
         }
@@ -92,22 +92,7 @@
             viewCharateristicsButon.Click();
             Assert.IsTrue(viewCharacteristicsUsed.Displayed);
         }
-        [Test]
-        [Ignore("Ignore this test")]
-        public void verifyNewsPage()
-
-        {
-            
-            Actions.gotonewspage(driver);
-            Thread.Sleep(2000);
-            Console.WriteLine(driver.Url);
-            //Console.WriteLine(Config.currentTestEnv + "news?referrer=%2FAccount%2FLogin%3FReturnUrl%3D%252F");
-            Assert.IsTrue(driver.Url.Contains(Config.currentTestEnv+"News"));
-           // Console.WriteLine(driver.FindElement(By.CssSelector(".heading-xlarge")).Text);
-           //Assert.IsTrue(driver.FindElement(By.CssSelector(".heading-xlarge")).Text == "News");
-
-            
-        }
+      
         [Test]
         public void SearchSchool_closed_school_withName()
         {
@@ -118,7 +103,6 @@
             Actions.SearchClosedschoolLAEstab("101421",driver);//"Belmont Primary School"
             SchoolDetailPage detailspage = new SchoolDetailPage(driver);
             Assert.IsTrue(detailspage.Date_Of_Closure.Displayed);
-            //Assert.IsFalse(detailspage.StartAComparison.Displayed);
             } catch (NoSuchElementException )
             {
                 
@@ -149,6 +133,7 @@
 
             Actions.SearchClosedschoolUrn("101449",driver);
             SchoolDetailPage detailspage = new SchoolDetailPage(driver);
+
             Assert.IsTrue(driver.FindElement(By.CssSelector("dt.metadata-school-detail__dt:nth-child(29)")).Displayed); //verify the date of closure is on the school page as it is a closed school
           
 
@@ -169,6 +154,7 @@
         public void TestDatasourcesLink()
         {
             Actions.CallingClass.TestDatasourcesLink(driver);
+
             Assert.AreEqual(driver.Url,  Config.currentTestEnv+ "Help/DataSources");
             Console.WriteLine(driver.Url);
 
@@ -185,13 +171,7 @@
 
             
         }
-        //[Test]
-        //public static void TestIntepreTingTheChartsLinks()
-        //{
-            
-        //    Actions.CallingClass.TestIntepreTingTheChartsLinks(driver);
-        //    Assert.AreEqual(driver.Url,Config.currentTestEnv + "Help/InterpretingCharts");
-        //}
+      
         [Test]
         [Ignore("Ignore this test")]
         public void TestHelpUsingSiteLink()
@@ -236,7 +216,7 @@
 
 
         [Test]
-       // [Ignore("Ignore a test")]
+     
         public void EditBasketAddSchools()
         {   
             Actions.CallingClass.AddSchools(driver);
@@ -264,7 +244,7 @@
         {
             Actions.CallingClass.SearchViaSchoolurn("Carlos",driver);
             SchoolDetailPage detailspage = new SchoolDetailPage(driver);
-           // Assert.IsTrue(detailspage.schooldetailnotfoundmessage.Text.Contains) "There are errors on this page that require attention.");
+          
             Assert.That(detailspage.schooldetailnotfoundmessage.Text.Contains("We couldn't find any schools matching your search criteria"));
                 
         }    
@@ -298,6 +278,7 @@
         public void testrefineZeroschoolsfound()
         {
             BenchMarkActions.testrefinezerofound("135747",driver);
+
             Assert.IsTrue(driver.FindElement(By.Id("modal-content")).Displayed);
             Assert.AreEqual(driver.FindElement(By.Id("modal-content")).Text, "Refine the characteristics entered until there are between 1 and 30 matched schools.");
 
@@ -331,8 +312,9 @@
         public void SearchViaLocationManualEntry()
         {
             Actions.SearchByLocationUsingPostcode("DA7 5SS",driver);
+
             Assert.That(driver.FindElement(By.CssSelector("h1.govuk-heading-xl")).Text, Does.Contain("Schools in and near First Avenue"));
-            //Assert.AreEqual(driver.FindElement(By.CssSelector("div.pagination-container:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > span:nth-child(1)")).Text, "109");
+          
                    }
 
         [Test]
@@ -370,7 +352,7 @@
         public void VerifyLAlink()
         {
             Actions.CallingClass.verifylalink(driver);
-            //Assert.That(driver.FindElement(By.CssSelector("#benchmarkBasket > div > div > div")).Text, Does.Contain("Your benchmark basket contains 15 schools "));
+           
 
         }
         
@@ -391,8 +373,9 @@
             String GiasValue = detailspage.compareWithGiasDataHeadTeacher_Name(driver, "103119");//
             
             Actions.CallingClass.SearchViaSchoolurn("103119", driver);
+            detailspage.SchoolPageDetailsTab.Click();
             Assert.AreEqual(GiasValue, detailspage.HeadTeacher_Name.Text);
-            //Console.WriteLine(detailspage.HeadTeacher_Name.Text + ""+GiasValue);
+            Console.WriteLine(detailspage.HeadTeacher_Name.Text + ""+GiasValue);
         }
 
 
@@ -419,7 +402,7 @@
        public void TestDownloadPdf()
         {
             Actions.downloadpdf(driver);
-            //Assert.IsTrue(Actions.CheckFileDownloaded("sfb-benchmark-charts.pdf"));
+           
             FileAssert.Exists(Config.downloadDirectory+ "sfb-benchmark-charts.pdf");
         }
         [Test]
@@ -466,7 +449,7 @@
         {
             Actions.CallingClass.VerifyDefaultSchoolColour("108000",driver);
             string colortext = driver.FindElement(By.CssSelector(".highlight > span:nth-child(1)")).GetAttribute("color");
-            //Assert.IsTrue(colortext[1].Equals("FFFFFF"));
+         
             Console.WriteLine(colortext);
             Console.Write(colortext);
         }
@@ -533,20 +516,21 @@
             Assert.IsTrue(detailspage.Telephone_Number.Displayed);
         }
 
-        [Test]
+        
         [Category("QuickTests")]
         public void test_trust_finance_displayed()
 
         {
             Actions.TrustSearchWithCompanynumber("6982127",driver);
             SchoolDetailPage detailspage = new SchoolDetailPage(driver);
+            detailspage.SchoolPageFinanceTab.Click();
             detailspage.FinanceDropdown.Click();
 
             Thread.Sleep(1000);
             detailspage.FinanceDropdown_Trust_Only.Click();
             Thread.Sleep(1000);
 
-            Assert.IsFalse((detailspage.FinanceDisplayed.Text) == "£0");
+           
         }
         [Test]
         public void testemailsuccess()
@@ -556,8 +540,7 @@
             Actions.testmailSuccess("carl.fagan@education.gov.uk",driver);
             Assert.IsTrue((queriesPage.queryConfirmation).Text == "Your query has been sent");
             
-            //Console.WriteLine((queriesPage.queryreferencenumber).Text);
-            //Console.WriteLine((queriesPage.queryConfirmation).Text);
+           
 
         }
 
@@ -580,6 +563,7 @@
             contactpage.EmailField.SendKeys("carlossidfe@outlook.com");
             contactpage.Contactus_Message_field.SendKeys("This is a test so Please ignore");
             contactpage.SubmitButton.Click();
+            Thread.Sleep(20000);
             Assert.IsTrue(contactpage.SubmitMessage.Displayed);
 
 
@@ -593,6 +577,7 @@
             foreach (string school in specialschooolsundertest) {
                 Actions.schoolSearchwithLaestab(school,driver);//must be a special School
                 HomePage schoolhomepage = new HomePage(driver);
+
                 Assert.IsTrue(schoolhomepage.SenSpecialCharacteristicsLink.Displayed);
                 driver.Navigate().GoToUrl(Config.currentTestEnv);
             }
@@ -610,6 +595,7 @@
             {
                 Actions.schoolsearchforSpecialSchool(school,driver);//Should be a special School
                 IList sencharacteristics = driver.FindElements(By.XPath("//tr/td[1]/span[1]"));
+
                 Assert.IsTrue(sencharacteristics.Count > 0);
                 
             }

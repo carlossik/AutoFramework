@@ -336,6 +336,7 @@
         }
 
         [Test]
+        [Ignore("Ignore a test")]
         public void VerifyTrustComparisonWithTotalIncome()
         {
             TrustActions.compareTotalIncome("ARK Schools", driver);
@@ -381,11 +382,14 @@
         [Test ]
         public void verify_School_in_SAT()
         {
-            //throw new NotImplementedException();// test school not available to test 
-            Actions.schoolSearchwithLaestab("137427",driver); 
+          
+            Actions.schoolSearchwithLaestab("137427",driver);
+           
             SchoolDetailPage detailpage = new SchoolDetailPage(driver);
-            Assert.IsTrue(detailpage.FinanceDropdown_Trust_Only.Displayed);
             Assert.IsTrue(detailpage.CurrentTrustLinkDisplayed.Displayed);
+            detailpage.SchoolPageFinanceTab.Click();
+            Assert.IsTrue(detailpage.FinanceDropdown_Trust_Only.Displayed);
+           
         }
 
         [Test]
@@ -400,9 +404,10 @@
         {
             Actions.schoolSearchwithLaestab("137353",driver);
             SchoolDetailPage detailpage = new SchoolDetailPage(driver);
-            IWebElement SATstatement =  driver.FindElement(By.XPath("//dd[contains(text(),'Single academy trust')]"));
-            Assert.IsTrue(SATstatement.Displayed);
-            //Assert.IsTrue(detailpage.MatFinanceToggle.Displayed);
+
+            IWebElement SATstatement = detailpage.trustText ;
+            Assert.IsTrue(SATstatement.Text == "Single academy trust");
+           
         }
 
         [Test]
@@ -435,6 +440,7 @@
 
 
         [Test]
+        [Ignore("This test requires example school which we dont have")]
         public void verifyTrustPre_post16_Funding()
         {
             Actions.verifyTrustPrePost16Value(driver);

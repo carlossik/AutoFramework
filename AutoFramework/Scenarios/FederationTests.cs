@@ -80,7 +80,7 @@ namespace AutoFramework
             {
                 try
                 {
-                    var fedurl = Config.currentTestEnv + "school/detail?urn=" + urn;
+                    var fedurl = Config.currentTestEnv + "School?urn=" + urn;
                     driver.Navigate().GoToUrl(fedurl);
                     SchoolDetailPage detailspage = new SchoolDetailPage(driver);
                     IWebElement federationslink = driver.FindElement(By.XPath("//dt[14]"));
@@ -147,7 +147,7 @@ namespace AutoFramework
             {
                 try
                 {
-                    var fedurl = Config.currentTestEnv + "School/Detail?urn=" + urn;
+                    var fedurl = Config.currentTestEnv + "School?urn=" + urn;
                     
                     driver.Navigate().GoToUrl(fedurl);
                     SchoolDetailPage detailspage = new SchoolDetailPage(driver);
@@ -161,24 +161,52 @@ namespace AutoFramework
                        
                     }
                     Assert.False(detailspage.AddToBenchMarkBasket.Displayed);
-                   
 
                 }
                 catch (NoSuchElementException)
                 //{ Console.WriteLine(urn); }
-               
-
-
-
-
-
-
-
-
                 { continue; }
             }
         }
+        [Test]
+        public void verifyNoDasboard()
+        {
+            URNHelper helpers = new URNHelper();
+            IList urns = helpers.feds;
+            IList<string> FailingFeds = new List<string>();
+            foreach (string urn in urns)
+            {
+                try
+                {
+                    var fedurl = Config.currentTestEnv + "School?urn=" + urn;
 
+                    driver.Navigate().GoToUrl(fedurl);
+                    SchoolDetailPage detailspage = new SchoolDetailPage(driver);
+                    if (detailspage.SchoolPageDashBoardTab.Enabled)
+                    {
+                        Console.WriteLine("This school has the dashboard displaying and enabled " + urn);
+                        FailingFeds.Add(urn);
+                    }                    
+                }
+                catch (NoSuchElementException e)
+
+                {
+                    continue;
+                }
+
+            }
+            if (FailingFeds.Count == 0)
+            {
+                Assert.Pass();
+            }
+            else
+            {
+                Console.WriteLine("These schools Failed the test" +(FailingFeds) );
+                Assert.Fail();
+            }
+        }
+
+            
 
         [Test]
         public void VerifyFinanceBannerForNonsubmission()
@@ -207,6 +235,7 @@ namespace AutoFramework
                 { continue; }
             }
         }
+
 
 
 

@@ -39,8 +39,13 @@ namespace SFB_Test_Automation.AutoFramework.Pages
 
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".govuk-panel")]
         public IWebElement SubmitMessage { get; set; }
-        
 
-        
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//input[@id='contactUs.SchoolTrustName']")]
+        public IWebElement SchoolOrLocalAuthorityt { get; set; }
+
+        //input[@id='contactUs.SchoolTrustName']
+
+
+
     }
 }

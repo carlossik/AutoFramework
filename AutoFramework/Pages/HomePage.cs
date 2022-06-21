@@ -89,7 +89,7 @@
         public IWebElement SearchLocationManually { get; set; }
         [FindsBy(How = How.CssSelector,Using = "[href *= 'News']")]
         public IWebElement NewsLink { get; set; }
-        [FindsBy(How = How.CssSelector,Using = "details.mb-1 > summary:nth-child(1) > span:nth-child(1)")]
+        [FindsBy(How = How.XPath,Using = "//span[contains(text(),\"This school's SEN characteristics\")]")]
         public IWebElement SenSpecialCharacteristicsLink { get; set; }
         [FindsBy(How = How.Id, Using = "openOnlyName")]
         public IWebElement IncludeSchoolsCheckbox { get; set; }

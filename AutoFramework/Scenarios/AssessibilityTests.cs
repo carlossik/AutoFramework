@@ -21,13 +21,13 @@ namespace SFB_Test_Automation.AutoFramework.Scenarios
 
     //[Parallelizable]
 
-    public class AssessibilityTests
+    public class SchoolDashboardTests
 
     {
         IAlert alert;
         IWebDriver driver;
         
-        public AssessibilityTests()
+        public SchoolDashboardTests()
         {
         }
 
@@ -39,49 +39,55 @@ namespace SFB_Test_Automation.AutoFramework.Scenarios
             Config.Credentials.deletefiles(@"C:\TEMP\" + testName + ".jpg");
            driver =  Actions.InitializeDriver(5);
         }
-        [Ignore ("Ignore this test")]
+       
         [Test]
-        public void AccessibilityTestHomePage()
+        public void VerifyDashboardTab()
         {
-            Selenium.Axe.AxeResult axeResult = new Selenium.Axe.AxeBuilder(driver).Analyze();
-            Console.WriteLine(axeResult.Violations);
-            Assert.IsEmpty(axeResult.Violations);
+            Actions.schoolSearchwithLaestab("113441", driver);
+            SchoolDetailPage detailpage = new SchoolDetailPage(driver);
+
+            Assert.IsTrue(detailpage.SchoolPageDashBoardTab.Enabled);
         }
-        [Ignore("ignore this test")]
+     
         [Test]
-        public void AccessibilityTestForSchoolDetailPage()
+        public void VerifyDetailsTab()
         {
-            driver.Navigate().GoToUrl("https://as-t1stg-sfb.azurewebsites.net/school/detail?urn=113650");
-            Actions.acceptCookie(driver);
-            Selenium.Axe.AxeResult axeResult = new Selenium.Axe.AxeBuilder(driver).Analyze();
-            Assert.IsEmpty(axeResult.Violations);
+            Actions.schoolSearchwithLaestab("113441", driver);
+            SchoolDetailPage detailpage = new SchoolDetailPage(driver);
+
+            Assert.IsTrue(detailpage.SchoolPageDetailsTab.Enabled);
         }
-        [Ignore("ignore this test")]
+      
         [Test]
-        public void AccessibilityTestForTrustDetailPage()
+        public void VerifyFinancetab()
         {
-            driver.Navigate().GoToUrl("https://as-t1stg-sfb.azurewebsites.net/trust/index?companyNo=10192252");
-            Actions.acceptCookie(driver);
-            Selenium.Axe.AxeResult axeResult = new Selenium.Axe.AxeBuilder(driver).Analyze();
-            Assert.IsEmpty(axeResult.Violations);
+            Actions.schoolSearchwithLaestab("113441", driver);
+            SchoolDetailPage detailpage = new SchoolDetailPage(driver);
+
+            Assert.IsTrue(detailpage.SchoolPageFinanceTab.Enabled);
         }
-        [Ignore("ignore this test")]
+      
         [Test]
-        public void AccessibilityTestForComparisonPage()
+        public void VerifyWorkForceTab()
         {
-            driver.Navigate().GoToUrl("https://as-t1stg-sfb.azurewebsites.net/BenchmarkCriteria/ComparisonStrategy?urn=143308");
-            Actions.acceptCookie(driver);
-            Selenium.Axe.AxeResult axeResult = new Selenium.Axe.AxeBuilder(driver).Analyze();
-            Assert.IsEmpty(axeResult.Violations);
+            Actions.schoolSearchwithLaestab("113441", driver);
+            SchoolDetailPage detailpage = new SchoolDetailPage(driver);
+
+            Assert.IsTrue(detailpage.SchoolPageWorkForceTab.Enabled);
         }
-        [Ignore ("ignore this test")]
+       
         [Test]
-        public void AccessibilityTestBenchMarkPage()
+        public void VerifyWorkForceDropDowns()
         {
-            driver.Navigate().GoToUrl("https://as-t1stg-sfb.azurewebsites.net/BenchmarkCharts/GenerateFromSimpleCriteria?SimpleCriteria.IncludeFsm=true&SimpleCriteria.IncludeSen=true&SimpleCriteria.IncludeEal=true&BasketSize=15&Urn=143308&ComparisonType=Basic&EstType=Academies");
-            Actions.acceptCookie(driver);
-            Selenium.Axe.AxeResult axeResult = new Selenium.Axe.AxeBuilder(driver).Analyze();
-            Assert.IsEmpty(axeResult.Violations);
+            Actions.schoolSearchwithLaestab("113441", driver);
+
+            SchoolDetailPage detailpage = new SchoolDetailPage(driver);
+            detailpage.SchoolPageWorkForceTab.Click();
+            detailpage.workForce_DropDownLink.Click();
+
+
+
+
         }
         [Ignore("ignore this test")]
         [Test]

@@ -60,8 +60,10 @@ namespace AutoFramework.Pages.PageElements
 
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector,Using = "#\\31 44406desktop > button:nth-child(2)")]
         public IWebElement FirstSearchItem { get; set; }
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "dd.metadata-school-detail__dd:nth-child(14)")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//th[contains(text(),'Ofsted rating:')]")]
         public IWebElement OfstedRating { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//th[contains(text(),'Ofsted rating:')]/following-sibling::td[1]")]
+        public IWebElement ActualOfstedRating { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "h1.govuk-heading-xl")]
         public IWebElement School_Name { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "SchoolLocationMap")]
@@ -72,8 +74,10 @@ namespace AutoFramework.Pages.PageElements
         public IWebElement ContinueToManualBenchMarkCharts { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "dd.metadata-school-detail__dd:nth-child(10)")]
         public IWebElement SchoolOverAllPhase { get; set; }
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "dd.metadata-school-detail__dd:nth-child(12)")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//th[contains(text(),'School phase:')]")]
         public IWebElement SchoolPhase { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//th[contains(text(),'School phase:')]/following-sibling::td[1]")]
+        public IWebElement SchoolPhaseText { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = "a.button:nth-child(1)")]
         public IWebElement Compare { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = ".sfb_gtm_auto_report")]
@@ -102,7 +106,7 @@ namespace AutoFramework.Pages.PageElements
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = ".govuk-list > li:nth-child(1) > a:nth-child(1)")]
         public IWebElement schooldetailnotfoundmessage { get; set; }
 
-        [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = "dd.metadata-school-detail__dd:nth-child(22)")]
+        [SeleniumExtras.PageObjects.FindsBy(How = How.XPath, Using = "//td[contains(text(),'Martin Serrão')]")]
         public IWebElement HeadTeacher_Name { get; set; }
 
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = ".message")]
@@ -162,9 +166,12 @@ namespace AutoFramework.Pages.PageElements
         [SeleniumExtras.PageObjects.FindsBy(How = How.XPath,Using = "//a[contains(@href, '/trust?companyNo=')]")]
         public IWebElement previousTrustLink { get; set; }
 
-        [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector,Using = "dt.metadata-school-detail__dt:nth-child(31)")]
-        public IWebElement trustText { get; set; }
+        
+        [SeleniumExtras.PageObjects.FindsBy(How = How.XPath,Using = "//th[contains(text(),'Academy trust:')]")]
+        public IWebElement trustField { get; set; }
 
+        [SeleniumExtras.PageObjects.FindsBy(How = How.XPath, Using = "//th[contains(text(),'Academy trust')]/following-sibling::td[1]")]
+        public IWebElement trustText { get; set; }
 
         [SeleniumExtras.PageObjects.FindsBy(How = How.XPath, Using = "//a[contains(text(),'Accessibility')]")]
         public IWebElement AssessibilityLink { get; set; }
@@ -191,6 +198,9 @@ namespace AutoFramework.Pages.PageElements
         [SeleniumExtras.PageObjects.FindsBy(How = How.XPath, Using = "//a[contains(text(),'self-assessment dashboard')]")]
         public IWebElement Detail_Page__See_Self_Assessment_Board { get; set; }
 
+        [SeleniumExtras.PageObjects.FindsBy(How = How.XPath, Using = "//select[@id='WShowValue']")]
+        public IWebElement workForce_DropDownLink { get; set; }
+
 
 
 
@@ -199,8 +209,11 @@ namespace AutoFramework.Pages.PageElements
         {
             try
             {
-                if (trustText.Text.Contains("Academy trust"))
+                if (trustField.Text.Contains("Academy trust"))
+                    if(trustText.Displayed)
                 {
+                    
+
                     return true;
                 }
             }

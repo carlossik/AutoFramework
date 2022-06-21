@@ -213,7 +213,7 @@
         [Test]
         public void Verify_ClosedSchool_Has_No_Sad_Link()
         {
-            SelfAssessmentActions.SADclosedSchool("134118", driver);
+            SelfAssessmentActions.SADclosedSchool("126585", driver);
             SchoolDetailPage detailspage = new SchoolDetailPage(driver);
             Assert.IsFalse(detailspage.verifySADLink());
 
@@ -272,7 +272,7 @@
         [Test]
         public void Verify_SADlink_Displayed_ForClosedSchool()
         {
-            SelfAssessmentActions.SADclosedSchool("101449", driver);
+            SelfAssessmentActions.SADclosedSchool("126585", driver);
             SchoolDetailPage detailpage = new SchoolDetailPage(driver);
             Assert.IsFalse(detailpage.verifySADLink());
         }
@@ -332,7 +332,7 @@
             SadEditPage editpage = new SadEditPage(driver);
             SelfAssessmentActions.ClickPopUp(editpage.Average_Class_size_Popup);
             String popupmessage = driver.FindElement(By.CssSelector("body > modal-container > div > div > app-edit-data-info-modal > div.modal-body > div")).Text;
-            Assert.AreEqual(popupmessage , "This is the FTE number of children in your school divided by the number of classes.");
+            Assert.AreEqual(popupmessage , "Average class sizes are a key determinant of the cost of running a school. It is calculated as: Average class size = FTE number of children in your school ÷ number of classes A relatively low average class size could imply that the per-pupil funding does not cover the cost of delivering the class and may not be an effective use of resources. A relatively large average class size may affect pupil outcomes and teacher workload and may contribute to higher costs in other areas of the budget.");
 
         }
         [Test]
@@ -473,7 +473,8 @@ It includes all the spend on the risk items plus the additional items not risk a
             SelfAssessmentActions.ClickPopUp(editpage.Teacher_contact_ratio_Popup);
             String popupmessage = driver.FindElement(By.CssSelector("body > modal-container > div > div > app-edit-data-info-modal > div.modal-body > div")).Text.Replace("\n", String.Empty);
             Console.WriteLine(popupmessage);
-            Assert.AreEqual(popupmessage , @"Teacher contact ratio = total amount of contact time (in hours) timetabled for all teachers in the school ÷ total possible teaching time for all teachers in the school. The contact ratio is the total time that all the teachers spend in planned teaching contact with pupils divided by the total time that the same teachers could spend in planned teaching contact if no teacher has any allocation of non-contact time on their timetable.For the purposes of this calculation we exclude teaching assistants, non-classroom based school support staff, and auxiliary staff. Time during the timetable sessions when teachers are not teaching children because they are involved in planning and preparation (PPA Time), in school management in the widest sense (Management Time, Headship Time, NQT time and other time that the school might define for its own purposes) should not be counted as contact time.");
+            Assert.AreEqual(popupmessage, "The teacher contact ratio will always be less than 1.0. It is calculated as:Teacher contact ratio = total amount of contact time (in hours) timetabled for all teachers in the school ÷ total possible teaching time for all teachers in the school.Thresholds for this indicator are set on the basis of Association of School and College Leaders (ASCL) aspirational target of 0.78. All teachers should have a guaranteed minimum of 10% timetabled planning, preparation and assessment (PPA) time.");
+
 
 
 
@@ -600,26 +601,18 @@ It includes all the spend on the risk items plus the additional items not risk a
             SelfAssessmentActions.createSideBySideScenario("100000",driver);
         }
 
-        
+    
         [Test]
         public void test_For_SelfAssessment_OnHome_Page_DisplayElements()
-        
         {
-            ArrayList urns = new ArrayList  { "143432", "143474", "144933", "140737", "148403", "146673", "143891" };
-              foreach (String urn in urns)
+            ArrayList urns = new ArrayList { "143432", "143474", "144933", "140737", "148403", "146673", "143891" };
+            foreach (String urn in urns)
             {
-               var url = Config.currentTestEnv + "/School?urn=" + urn + "#dashboard";
+                var url = Config.currentTestEnv + "/School?urn=" + urn + "#dashboard";
                 driver.Navigate().GoToUrl(url);
                 SelfAssessmentActions.verifyElements_OnHomePage(urn, driver);
             }
-
            
-        }
-        [Ignore("AC's have changed")]
-        [Test]
-        public void test_for_sidebyside_for_school_without_Data()
-        {
-            SelfAssessmentActions.generate_side_by_side_for_school_without_finance("120911", driver);
         }
 
         [TearDown]

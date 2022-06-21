@@ -151,13 +151,7 @@
             Assert.IsTrue(driver.PageSource.Contains(errorText));
         }
 
-        [Test]
-        
-        public void DisplayComparisonschoolsTab()
-        {
-            DetailedComparisonActions.IncludeschoolswithIncFinanceAcademiesAllEngland("144407", "64", "65",driver);
-            Assert.IsTrue(driver.FindElement(By.CssSelector("#ComparisonSchools > a:nth-child(1)")).Displayed);
-        }
+       
         [Test]
         public void detailedComparisonOptions()
         {

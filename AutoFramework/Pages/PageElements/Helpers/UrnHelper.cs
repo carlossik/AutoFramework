@@ -206,24 +206,20 @@ namespace SFB_Test_Automation.AutoFramework.vs.AutoFramework.Helpers
 
         private static IList FederationsWithFinance = new List<string>
         {
-            "113429",
+           
 "113433",
 "134171",
 "113453",
 "118442",
-"118471",
-
 "115733",
 "117386",
 "138796",
 "120797",
 "120809",
-
 "120835",
 "120884",
 "121036",
 "121050",
-
 "121128",
 "121146",
 "121164",
@@ -465,7 +461,6 @@ namespace SFB_Test_Automation.AutoFramework.vs.AutoFramework.Helpers
 "118442",
 "118477",
 "118472",
-"118471",
 "119505",
 "119092",
 "111003",

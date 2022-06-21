@@ -43,8 +43,9 @@
             //IWebDriver driver = new InternetExplorerDriver();
             var options = new EdgeOptions();
             options.UseChromium = true;
-           // IWebDriver driver = new EdgeDriver(Config.edgeDriverPath);
-            
+            //IWebDriver driver = new EdgeDriver(Config.edgeDriverPath);
+            //IWebDriver driver = new FirefoxDriver();
+
             driver.Navigate().GoToUrl(Config.currentTestEnv);
             TimeSpan seconds = TimeSpan.FromSeconds(second);
             driver.Manage().Timeouts().ImplicitWait = seconds;
@@ -628,6 +629,9 @@
             homepage.SchoolsearchField.SendKeys(LAESTAB);
             homepage.SearchSubmit.Click();
             Thread.Sleep(300);
+            SchoolDetailPage detailpage = new SchoolDetailPage(driver);
+            detailpage.SchoolPageDetailsTab.Click();
+
         }
 
         public static void schoolsearchforSpecialSchool(string LAESTAB, IWebDriver driver)
@@ -725,7 +729,7 @@
         }
         public static void verifyTrustPrePost16Value(IWebDriver driver)
         {
-            driver.Navigate().GoToUrl("https://as-t1stg-sfb.azurewebsites.net/trust/index?code=0&companyNo=10192252&name=Connect%20Academy%20Trust&tab=Income&unit=AbsoluteMoney&financing=TrustAndAcademies&format=Charts#financialSummary");
+            driver.Navigate().GoToUrl(Config.currentTestEnv+"trust/index?code=0&companyNo=10192252&name=Connect%20Academy%20Trust&tab=Income&unit=AbsoluteMoney&financing=TrustAndAcademies&format=Charts#financialSummary");
             var options = driver.FindElement(By.CssSelector("#ChartGroup"));
             var selectElement = new SelectElement(options);
            
@@ -1114,7 +1118,11 @@
                         //Console.WriteLine(urn);
                         SearchSchoolViaName(urn, driver);
                         Thread.Sleep(30);
-                        //Schooldetails.schoolPerformanceTableLink.Click();
+
+                        Schooldetails.SchoolPageDetailsTab.Click();
+
+                        Schooldetails.schoolPerformanceTableLink.Click();
+                        
                         Thread.Sleep(50);
 
                     }
@@ -1254,6 +1262,7 @@
                 GoHome(driver);
                 SearchViaSchoolurn("131030", driver);
                 SchoolDetailPage detailspage = new SchoolDetailPage(driver);
+                detailspage.SchoolPageDetailsTab.Click();
                 Assert.IsTrue(detailspage.School_Location_Map.Displayed);
             }
             public static void ViewBenchMarkChartsButton(IWebDriver driver)

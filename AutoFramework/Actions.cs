@@ -604,7 +604,7 @@
             HomePage homepage = new HomePage(driver);
             homepage.TrustLaCodeButton.Click();
             homepage.SchoolLacodeinputField.SendKeys(LAname);
-            homepage.FirstIntellicenceSuggested.Click();
+            homepage.FirstIntellicenceSuggestedLAcode.Click();
             homepage.LAcodesearchSubmitButton.Click();
             Thread.Sleep(300);
             SearchResultsPage resultspage = new SearchResultsPage(driver);
@@ -657,7 +657,7 @@
             homepage.trustnameRadioButton.Click();
             homepage.TrustSearchInput.Click();
             homepage.TrustSearchInput.SendKeys(TrustName);
-            homepage.FirstSelectionOption.Click();
+            homepage.TrustFirstSelectionOption.Click();
             driver.FindElement(By.CssSelector(".bold-small")).Click();
             Thread.Sleep(100);
         }
@@ -692,9 +692,7 @@
             {
                 homepage.LocationSearchSubmitButton.Click();
             }
-            //homepage.FirstIntellicenceSuggested.Click();
-            //homepage.LocationSearchSubmitButton.Click();
-            //homepage.FirstSelectionOption.Click();
+          
             Thread.Sleep(200);
             FiltersPage filters = new FiltersPage(driver);
             Thread.Sleep(200);
@@ -722,8 +720,28 @@
             HomePage homepage = new HomePage(driver);
             homepage.LocationButton.Click();
             homepage.UseLocationLink.Click();
-            Thread.Sleep(300);
-            homepage.LocationSearchSubmitButton.Click();
+            homepage.SearchByLocationField.Click();
+           
+            Thread.Sleep(3000);
+            homepage.SearchByLocationField.SendKeys(Keys.Space);
+            try
+            {
+                if (homepage.FirstIntellicenceSuggested.Displayed)
+                {
+                    homepage.FirstIntellicenceSuggested.Click();
+                    homepage.LocationSearchSubmitButton.Click();
+                }
+                
+            }
+            catch (NoSuchElementException)
+            {
+                homepage.SearchByLocationField.Click();
+                Thread.Sleep(3000);
+                driver.FindElement(By.XPath("/html[1]/body[1]/div[5]/div[1]/main[1]/div[1]/div[1]/ul[1]/li[1]/a[1]")).Click();
+
+                homepage.LocationSearchSubmitButton.Click();
+            }
+            //homepage.LocationSearchSubmitButton.Click();
             Thread.Sleep(200);
 
         }
@@ -849,12 +867,8 @@
             HomePage homepage = new HomePage(driver);
             Thread.Sleep(100);
             homepage.TrustTab.Click();
-            homepage.TrustLocationButton.Click();
-            homepage.TrustLocationField.SendKeys(Config.Credentials.PostCode.Postcode);
-            homepage.TrustLocationField.SendKeys(Keys.Enter);
-            driver.FindElement(By.XPath("/html[1]/body[1]/div[5]/div[1]/main[1]/div[1]/div[1]/ul[1]/li[1]/a[1]")).Click();
-            //homepage.TrustLocationSubmit.Click();
-            Thread.Sleep(10000);
+            driver.Navigate().GoToUrl(Config.currentTestEnv+"/TrustSearch/Search?trustnameid=&trustsuggestionUrn=&option=on&locationorpostcode=First+Avenue%2C+Bexley%2C+Bexleyheath%2C+DA7%2C+Kent&locationCoordinates=51.47711181640625%2C+0.12183000147342682&searchtype=search-by-trust-location&lacodename=&SelectedLocalAuthorityId=");
+            
         }
 
         public static void ViewSchoolsInTrust(IWebDriver driver)
@@ -1115,14 +1129,15 @@
                 {
                     try
                     {
+                        string url = Config.currentTestEnv+"/School?urn=" + urn + "#details";
                         //Console.WriteLine(urn);
-                        SearchSchoolViaName(urn, driver);
-                        Thread.Sleep(30);
+                        driver.Navigate().GoToUrl(url);                      
 
-                        Schooldetails.SchoolPageDetailsTab.Click();
+                        IWebElement sptlink = Schooldetails.schoolPerformanceTableLink;
 
-                        Schooldetails.schoolPerformanceTableLink.Click();
-                        
+                        Assert.IsTrue(sptlink.Displayed);
+
+
                         Thread.Sleep(50);
 
                     }

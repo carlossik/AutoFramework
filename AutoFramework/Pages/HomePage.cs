@@ -49,15 +49,15 @@
         [FindsBy(How = How.CssSelector, Using = "#SearchByTrustNameFieldset > div:nth-child(1) > button:nth-child(5)")]
         public IWebElement TrustSubmitButton { get; set; }
 
-        [FindsBy(How = How.CssSelector, Using = "#TrustSearchByTownFieldset > div:nth-child(3) > button")]
+        [FindsBy(How = How.XPath, Using = "//body/div[@id='content']/div[1]/main[1]/div[1]/div[3]/div[1]/div[2]/form[1]/div[1]/fieldset[1]/div[1]/div[4]/div[1]/div[2]/button[1]")]
         public IWebElement TrustLocationSubmit { get; set; }
         [FindsBy(How = How.Id, Using = "TrustTab")]
         public IWebElement TrustTab { get; set; }
         [FindsBy(How = How.Id, Using = "trustNameId")]
         public IWebElement trustnameRadioButton { get; set; }
-        [FindsBy(How = How.Id, Using = "TrustTownOrCity")]
+        [FindsBy(How = How.XPath, Using = "//input[@id='TrustTownOrCity']")]
         public IWebElement TrustLocationButton { get; set; }
-        [FindsBy(How = How.Id, Using = "FindTrustByTown")]
+        [FindsBy(How = How.XPath, Using = "//input[@id='FindTrustByTown']")]
         public IWebElement TrustLocationField { get; set; }
         [FindsBy(How = How.Id, Using = "LaCodeName")]
         public IWebElement TrustLaCodeButton { get; set; }
@@ -71,14 +71,16 @@
         public IWebElement SchoolLacodeButton { get; set; }
         [FindsBy(How = How.CssSelector,Using = "button.govuk-button:nth-child(6)")]
         public IWebElement LAcodesearchSubmitButton { get; set; }
-        [FindsBy(How = How.CssSelector, Using = ".tt-suggestion > a:nth-child(1)")]
+        [FindsBy(How = How.XPath, Using = "//li[@id='awesomplete_list_2_item_0']")]
         public IWebElement FirstIntellicenceSuggested { get; set; }
+        [FindsBy(How = How.XPath, Using = "//li[@id='awesomplete_list_3_item_0']")]
+        public IWebElement FirstIntellicenceSuggestedLAcode { get; set; }
         [FindsBy(How = How.CssSelector, Using = "#NoDefaultTab > a:nth-child(1)")]
         public IWebElement NoDefaultSchoolTab { get; set; }
         [FindsBy(How = How.XPath, Using = "//a[contains(text(),'Do you have a school or trust data query?')]")]
         public IWebElement SchoolorTrustDataQueryLink { get; set; }
-        [FindsBy(How = How.CssSelector, Using = ".tt-suggestion")]
-        public IWebElement FirstSelectionOption { get; set; }
+        [FindsBy(How = How.CssSelector, Using = "#awesomplete_list_4_item_0")]
+        public IWebElement TrustFirstSelectionOption { get; set; }
         [FindsBy(How = How.CssSelector,Using = "div.tt-suggestion:nth-child(2) > a:nth-child(1)")]
         public IWebElement secondSelectionOption { get; set; }
         [FindsBy(How = How.CssSelector, Using = "button.img-button:nth-child(2)")]

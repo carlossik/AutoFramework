@@ -27,8 +27,10 @@ namespace SFB_Test_Automation.AutoFramework.Pages
         public IWebElement ManualContinueButton { get; set; }
         //.tt-suggestion
 
-        [FindsBy(How = How.CssSelector, Using = ".tt-suggestion")]
+        [FindsBy(How = How.CssSelector, Using = "#awesomplete_list_1_item_0")]
         public IWebElement FirstManualSuggestion { get; set; }
+        [FindsBy(How = How.CssSelector, Using = "#awesomplete_list_2_item_0")]
+        public IWebElement SecondManualSuggestion { get; set; }
         [FindsBy(How = How.Id,Using = "displayNew")]
         public IWebElement AddAnotherSchoolLink { get; set; }
 

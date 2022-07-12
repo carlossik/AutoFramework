@@ -35,7 +35,7 @@
             manualaddition.AddSchoolByNameRadio.Click();
             manualaddition.ManualContinueButton.Click();
             manualaddition.NewSchoolNameField.SendKeys("Plumcroft Primary School"); //+ OpenQA.Selenium.Keys.Enter);
-            Thread.Sleep(2000);
+            Thread.Sleep(4000);
             manualaddition.FirstManualSuggestion.Click();
             Thread.Sleep(200);
             manualaddition.ContinueToBenchMarkChartsButton.Click();
@@ -78,7 +78,7 @@
             manualaddition.FirstManualSuggestion.Click();
             manualaddition.AddAnotherSchoolLink.Click();
             manualaddition.SecondSchoolAddField.SendKeys("Bannockburn Primary School");
-            manualaddition.FirstManualSuggestion.Click();
+            manualaddition.SecondManualSuggestion.Click();
             manualaddition.RemoveSchoolButton.Click();
             Thread.Sleep(4000);
             manualaddition.RemoveSchoolButton2.Click();

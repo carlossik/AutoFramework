@@ -38,11 +38,7 @@
         public void testschoolperformancetables()
         {
             Actions.CallingClass.sptlinkscheck(driver);
-            SchoolDetailPage Schooldetails = new SchoolDetailPage(driver);
-            String schoolUrn = Schooldetails.Urn.Text;
-            IWebElement sptlink = Schooldetails.schoolPerformanceTableLink;
-            //Console.WriteLine(schoolUrn);
-            Assert.IsTrue(sptlink.Displayed);
+            
 
             //Assert.IsTrue(driver.Url.Contains ("https://www.compare-school-performance.service.gov.uk/school/"+ schoolUrn));
         }

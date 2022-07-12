@@ -268,7 +268,7 @@
         [Test]
        public void IncludeschoolswithIncFinanceAcademiesLaCode()
         {
-            DetailedComparisonActions.IncludeschoolswithIncFinanceAcademiesLaCode("145621", "879", "350", "1000", driver);
+            DetailedComparisonActions.IncludeschoolswithIncFinanceAcademiesLaCode("100000", "879", "270", "500", driver);
             string errorText = "Some schools don't have a complete set of financial data for this period";
             Assert.IsTrue(driver.PageSource.Contains(errorText));
         }
@@ -312,7 +312,7 @@
         [Test]
        public void IncludeschoolswithIncFinanceAcademiesLaName()
         {
-            DetailedComparisonActions.IncludeschoolswithIncFinanceAcademiesLaName("3035200", "Hackney", "300", "500", driver);
+            DetailedComparisonActions.IncludeschoolswithIncFinanceAcademiesLaName("100000", "Bradford", "270", "400", driver);
             string errorText = "Some schools don't have a complete set of financial data for this period";
             Assert.IsTrue(driver.PageSource.Contains(errorText));
         }

@@ -16,7 +16,7 @@ namespace SFB_Test_Automation.AutoFramework.Pages
             PageFactory.InitElements(driver, this);
 
         }
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "DistanceRadius")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//select[@id='DistanceRadius']")]
         [SeleniumExtras.PageObjects.CacheLookup]
         public IWebElement Filter_ByMiles { get; set; }
 

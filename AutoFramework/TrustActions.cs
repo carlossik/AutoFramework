@@ -89,7 +89,7 @@
             homepage.TrustSearchInput.SendKeys(TrustNameSubmitted);
            // homepage.TrustSearchInput.SendKeys(Keys.Enter);
 
-            driver.FindElement(By.XPath("//body/div[@id='content']/div[1]/main[1]/div[1]/div[2]/div[1]/div[2]/form[1]/div[1]/fieldset[1]/div[1]/div[2]/div[1]/span[1]/div[1]/div[1]/div[1]/a[1]")).Click();
+            //driver.FindElement(By.XPath("//body/div[@id='content']/div[1]/main[1]/div[1]/div[2]/div[1]/div[2]/form[1]/div[1]/fieldset[1]/div[1]/div[2]/div[1]/span[1]/div[1]/div[1]/div[1]/a[1]")).Click();
             homepage.TrustSubmitButton.Click();
             
              //strong[@class='bold-small']
@@ -103,7 +103,9 @@
             homepage.trustnameRadioButton.Click();
             homepage.TrustSearchInput.Click();
             homepage.TrustSearchInput.SendKeys(TrustName);
-            homepage.FirstSelectionOption.Click();
+            Thread.Sleep(10000);
+            homepage.TrustFirstSelectionOption.Click();
+            Thread.Sleep(100);
             //driver.FindElement(By.CssSelector(".bold-small")).Click();
             homepage.TrustSubmitButton.Click();
             Thread.Sleep(100);
@@ -132,19 +134,22 @@
 
         public static void ManualTrustComparison(String TrustName, IWebDriver driver)
         {
-
-            TrustActions.TrustSearchWitNameUsingFirstSuggestedName(TrustName, driver);
+            driver.Navigate().GoToUrl("https://as-t1dv-sfb.azurewebsites.net/TrustComparison/SelectType?companyNo=9952066&matName=Portico%20Academy%20Trust");
+          
             TrustComparisonPage trustComaprison = new TrustComparisonPage(driver);
             Thread.Sleep(1000);
-            trustComaprison.Compare_withOtherTrusts.Click();
+          
             Thread.Sleep(500);
             trustComaprison.ManuallyAddTrustsRadio.Click();
             trustComaprison.TrustComparisonPageContinueButton.Click();
-            //trustComaprison.EnterTrustForComparisonOption.Click();
+           
             Thread.Sleep(500);
             trustComaprison.EnterTrustforCompareNameField.SendKeys("Ark Schools");
-            // trustComaprison.EnterTrustforCompareNameField.SendKeys(Keys.Enter);
-            driver.FindElement(By.CssSelector(".tt-suggestion > a:nth-child(1)")).Click();//select the first suggested 
+            HomePage homepage = new HomePage(driver);
+           // homepage.TrustSearchInput.SendKeys(Keys.Space);
+            //homepage
+          
+            driver.FindElement(By.XPath("//li[@id='awesomplete_list_1_item_0']")).Click();//select the first suggested 
             Thread.Sleep(500);
             trustComaprison.ViewBenchMarkingCharts.Click();
             Thread.Sleep(500);

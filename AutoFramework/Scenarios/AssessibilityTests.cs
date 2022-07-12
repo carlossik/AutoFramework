@@ -43,7 +43,7 @@ namespace SFB_Test_Automation.AutoFramework.Scenarios
         [Test]
         public void VerifyDashboardTab()
         {
-            Actions.schoolSearchwithLaestab("113441", driver);
+            Actions.schoolSearchwithLaestab("100000", driver);
             SchoolDetailPage detailpage = new SchoolDetailPage(driver);
 
             Assert.IsTrue(detailpage.SchoolPageDashBoardTab.Enabled);

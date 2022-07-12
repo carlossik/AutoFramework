@@ -468,6 +468,8 @@ namespace SFB_Test_Automation.AutoFramework
         public static void GeneralDetailedJourney(string urn, IWebDriver driver)
         {
             Actions.CallingClass.SearchViaSchoolurn(urn, driver);
+            SchoolDetailPage dashboardPage = new SchoolDetailPage(driver);
+            dashboardPage.SchoolPageDetailsTab.Click();
             SchoolDetailPage detailspage = new SchoolDetailPage(driver);
             string SchoolPhase = detailspage.SchoolPhase.Text;
             string OverallSchoolPhase = detailspage.SchoolOverAllPhase.Text;

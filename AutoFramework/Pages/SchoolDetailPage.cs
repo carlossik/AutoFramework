@@ -72,7 +72,7 @@ namespace AutoFramework.Pages.PageElements
         public IWebElement ViewBenchMarkCharts { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector,Using = "#manualButton")]
         public IWebElement ContinueToManualBenchMarkCharts { get; set; }
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "dd.metadata-school-detail__dd:nth-child(10)")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//body[1]/div[1]/div[5]/div[1]/main[1]/div[2]/div[4]/div[1]/div[2]/table[1]/tbody[1]/tr[5]/td[1]")]
         public IWebElement SchoolOverAllPhase { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//th[contains(text(),'School phase:')]")]
         public IWebElement SchoolPhase { get; set; }
@@ -116,7 +116,7 @@ namespace AutoFramework.Pages.PageElements
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = "#Financing > option:nth-child(2)")]
         public IWebElement FinanceDropdown_Trust_Only { get; set; }
        
-        [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector,Using = "a.spt_link_js")]
+        [SeleniumExtras.PageObjects.FindsBy(How = How.LinkText,Using = "Find and compare schools in England")]
         public IWebElement schoolPerformanceTableLink { get; set; }
        
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//*[text()=\"Self-assessment dashboard\"]")]

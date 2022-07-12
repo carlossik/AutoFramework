@@ -72,7 +72,7 @@
         {
             Actions.quickcompareSpecialSchoolWithSimilar("8797068",driver);
             BenchMarkChartPage chartpage = new BenchMarkChartPage(driver);
-            Assert.AreEqual(chartpage.NumberOfitemsInBasket.Text, "12 schools");
+            Assert.AreEqual("15 schools",chartpage.NumberOfitemsInBasket.Text);
             //add assertion to verify characteristics used
         }
 
@@ -81,8 +81,8 @@
         {
             Actions.quickcompareSpecialSchoolWithoutSimilar("8797068",driver);
             BenchMarkChartPage chartpage = new BenchMarkChartPage(driver);
-            Assert.AreEqual(chartpage.NumberOfitemsInBasket.Text, "16 schools");
-            //add assertion to verify characteristics used
+            Assert.AreEqual("15 schools",chartpage.NumberOfitemsInBasket.Text);
+            
         }
 
         [Test]
@@ -91,7 +91,7 @@
             Actions.quickcompareSpecialSchoolWithoutSimilar("8797068",driver);
             Actions.viewcharacteristicsOnChartPage(driver);
             BenchMarkChartPage chartpage = new BenchMarkChartPage(driver);
-            Assert.AreEqual(chartpage.NumberOfitemsInBasket.Text, "16 schools");
+            Assert.AreEqual("15 schools",chartpage.NumberOfitemsInBasket.Text);
             //add assertion to verify characteristics used
         }
 

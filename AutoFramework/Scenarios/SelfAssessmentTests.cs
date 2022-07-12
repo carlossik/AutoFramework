@@ -325,6 +325,7 @@
             
 
         [Test]
+        [Ignore("Ignore a test")]
         public void VerifyAverageClassSizePopUp()
         {
             SelfAssessmentActions.VerifyPopUps("8792637",driver);//8792637
@@ -465,6 +466,7 @@ It includes all the spend on the risk items plus the additional items not risk a
 
         }
         [Test]
+        [Ignore("Ignore a test")]
         public void Teacher_contact_ratioPopUp()
         {
             SelfAssessmentActions.VerifyPopUps("8792637",driver);//8792637

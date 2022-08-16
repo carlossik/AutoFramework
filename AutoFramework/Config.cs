@@ -15,7 +15,7 @@ namespace AutoFramework
         public static string PreProd = "https://as-t1pr-sfb-preprod.azurewebsites.net/";
         public static string newenv = "https://as-t1-dv-sfb-govuk-frontend.azurewebsites.net/";
         //public static string HiddenLive = "https://as-t1pr-sfb-b.azurewebsites.net/";
-        public static string currentTestEnv = Dev;
+        public static string currentTestEnv = PreProd;
         public static string firefoxlocation = "C://Users//kwaku//OneDrive//Desktop//C#//AutoFramework//bin//Debug//firefox.exe";
         public static string downloadDirectory = @"C:\AutomationDownloads\";
         public static string browserUnderTest = "IE";
@@ -49,9 +49,7 @@ namespace AutoFramework
 
 
             {
-               
-
-                 //IWebElement SearchResults = driver.FindElement(By.CssSelector("#js-search-results-info > div > p > span"));
+            
             }
 
             public static void Deleteallfiles(String myDirPath )

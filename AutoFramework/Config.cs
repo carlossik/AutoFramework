@@ -26,9 +26,6 @@ namespace AutoFramework
         public static string devapi = "https://aa-t1dv-sfb.azurewebsites.net/api/schoolstatus/";
         public static string stagingapi = " https://aa-t1stg-sfb.azurewebsites.net/api/schoolstatus/";
         public static string preprodapi = " https://as-t1pr-sfb-api-preprod.azurewebsites.net/api/schoolstatus/";
-        //public static string FirefoxDriverUnderTest = "firefox";
-        // public static string ChromeDriverUnderTest = "chrome";
-        // public static string IEDriverUnderTest = "IE";
         public static object AlertsTexts { get; internal set; }
 
     public static class Credentials
@@ -44,13 +41,6 @@ namespace AutoFramework
                 public  static string Postcode = "DA7 5SS";
             }
 
-
-            public  class ExpectedMessages
-
-
-            {
-            
-            }
 
             public static void Deleteallfiles(String myDirPath )
             {

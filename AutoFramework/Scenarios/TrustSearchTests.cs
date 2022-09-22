@@ -316,13 +316,7 @@
             TrustActions.TrustSearchWitNameUsingSubmitButton("5 Dimensions Trust",driver);
             String TrustName = driver.FindElement(By.CssSelector("h1.govuk-heading-xl")).Text;
             Assert.IsTrue(TrustName.Contains("5 Dimensions Trust"));
-            //IWebElement ViewOnMapButton = driver.FindElement(By.CssSelector("div.litem:nth-child(1) > button:nth-child(1)"));
-            //Assert.IsTrue(ViewOnMapButton.Displayed);
-           // String NumberOfTrustsFoundText = driver.FindElement(By.CssSelector("p.summary")).Text;
-            //IWebElement NumberOfTrustsFoundMessage = driver.FindElement(By.CssSelector("p.summary"));
-            //Assert.IsTrue(NumberOfTrustsFoundMessage.Displayed);
-            //Assert.AreEqual(NumberOfTrustsFoundText, "1 academy trusts found");
-
+           
         }
         [Test]
         public void VerifyTrustPageDetails()
@@ -388,6 +382,7 @@
             SchoolDetailPage detailpage = new SchoolDetailPage(driver);
             Assert.IsTrue(detailpage.CurrentTrustLinkDisplayed.Displayed);
             detailpage.SchoolPageFinanceTab.Click();
+            Thread.Sleep(2000);
             Assert.IsTrue(detailpage.FinanceDropdown_Trust_Only.Displayed);
            
         }
@@ -448,6 +443,15 @@
             Console.WriteLine(prepost16Funding.Text);
             var finalvalue = prepost16Funding.Text;//.Replace("£", "").Replace("m", "");
             Console.WriteLine("This is the Final Value " + finalvalue);
+        }
+
+        [Test]
+        public void MAT_with_1_or_moreSchls()
+        {
+            TrustActions.TrustSearchWithComPanyNum(driver);
+            Assert.IsTrue(driver.FindElement(By.XPath("//h1[contains(text(),'What type of comparison would you like?')]")).Displayed);
+
+
         }
 
 

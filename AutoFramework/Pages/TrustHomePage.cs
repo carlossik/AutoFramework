@@ -53,12 +53,20 @@ namespace SFB_Test_Automation.AutoFramework.Pages
         public IWebElement IncomeTab { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "button.view-charts-tables:nth-child(2) > span:nth-child(2)")]
         public IWebElement ViewAschartsButton { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "a[@id='tab_dashboard']")]
+        public IWebElement TrustDashboardTab { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "a[@id='tab_details']")]
+        public IWebElement TrustDetailsTab { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//a[@id='tab_finance']")]
+        public IWebElement TrustFinanceTab { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "span[contains(text(),'View characteristics used')]")]
+        public IWebElement ViewCharacteristicsUsed { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "a[contains(text(),'self-assessment dashboard')]")]
+        public IWebElement SeeSadDashboard { get; set; }
+        ////body/div[@id='js-modal-page']/div[@id='content']/div[1]/main[1]/div[2]/div[1]/div[1]/a[1]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector,Using = "a.govuk-button:nth-child(3)")]
+        public IWebElement TrustStartComparison { get; set; }
 
-        ////button.view-charts-tables:nth-child(2) > span:nth-child(2)
-
-        //span.bold:nth-child(3)
-
-        //CurrentHeader
 
     }
 }

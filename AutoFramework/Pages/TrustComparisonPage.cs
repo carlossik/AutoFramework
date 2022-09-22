@@ -61,8 +61,9 @@ namespace SFB_Test_Automation.AutoFramework.Pages
         public IWebElement SelectTrustsByCharacteristicsRadioButton { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//button[contains(text(),'Continue')]")]
         public IWebElement TrustComparisonPageContinueButton { get; set; }
-
-       
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//a[contains(text(),'Create a benchmark comparison')]")]
+        public IWebElement TrustComparisonBenchMark { get; set; }
+        ////a[contains(text(),'Create a benchmark comparison')]
 
 
 

@@ -56,6 +56,7 @@
             Thread.Sleep(1000);
           //  trustComaprison.Compare_withOtherTrusts.Click();
             Thread.Sleep(500);
+            trustComaprison.TrustComparisonBenchMark.Click();
             trustComaprison.SelectTrustsByCharacteristicsRadioButton.Click();
             trustComaprison.TrustComparisonPageContinueButton.Click();
             TrustCharacteristicsPage tcompare = new TrustCharacteristicsPage(driver);
@@ -162,6 +163,7 @@
             Thread.Sleep(1000);
             trustComaprison.Compare_withOtherTrusts.Click();
             Thread.Sleep(5);
+            trustComaprison.TrustComparisonBenchMark.Click();
             trustComaprison.SelectTrustsByCharacteristicsRadioButton.Click();
             Thread.Sleep(50);
             trustComaprison.TrustComparisonPageContinueButton.Click();
@@ -209,7 +211,12 @@
 
 
         }
-        ////tr/td[1]/span[1]
+        public static void TrustSearchWithComPanyNum(IWebDriver driver)
+        {
+            driver.Navigate().GoToUrl("https://as-t1dv-sfb.azurewebsites.net/Trust/Detail?companyNo=7564749");
+            TrustHomePage TrustHome = new TrustHomePage(driver);
+            TrustHome.TrustStartComparison.Click();
+        }
 
         public String numberberofcharacteristicsDisplayed(IWebDriver driver)
         {

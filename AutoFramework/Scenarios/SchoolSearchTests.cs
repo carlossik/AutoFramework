@@ -16,6 +16,7 @@
     using OpenQA.Selenium.Chrome;
     using System.Collections;
     using System.IO;
+    using SFB_Test_Automation.AutoFramework.vs.AutoFramework.Helpers;
 
     public class Schoolsearchtests
     {
@@ -63,9 +64,8 @@
             Assert.IsTrue(detailspage.DataFromOtherSources.Displayed);
             Assert.IsTrue(detailspage.Services.Displayed);
             Assert.AreEqual(detailspage.SchoolPhaseText.Text , "Infant and junior") ;
-            
-
         }
+
         [Test]
         public void verifyQuickCompareOnSchoolPage()
         {
@@ -74,6 +74,52 @@
             Assert.IsTrue(detailpage.QuickCompareView.Displayed);
 
         }
+        [Test]
+        public void verifyLinksToOtherServices()
+        {
+            URNHelper helpers = new URNHelper();
+            IList urns = helpers.Schools;
+            IList<string> FailingSchools = new List<string>();
+            foreach (string urn in urns)
+            {
+                try
+                {
+                    var schoolurl = Config.currentTestEnv + "School?urn=" + urn;
+
+                    driver.Navigate().GoToUrl(schoolurl);
+                    SchoolDetailPage detailspage = new SchoolDetailPage(driver);
+                    if (detailspage.SchoolPageDashBoardTab.Enabled)
+                    {
+                        Assert.IsTrue(driver.FindElement(By.XPath("//h3[contains(text(),'Related services')]")).Displayed);
+                        Assert.IsTrue(driver.FindElement(By.LinkText("Find and compare schools in England")).Displayed);
+                        Assert.IsTrue(driver.FindElement(By.LinkText("Get information about schools")).Displayed);
+                        Assert.IsTrue(driver.FindElement(By.LinkText("Statistics at DfE")).Displayed);
+                        Assert.IsTrue(driver.FindElement(By.LinkText("Explore education statistics")).Displayed);
+                        detailspage.SchoolPageDetailsTab.Click();
+                        Assert.IsTrue(driver.FindElement(By.XPath("//th[contains(text(),\"View this school's data from other services:\")]")).Displayed);
+                        ////th[contains(text(),"View this school's data from other services:")]
+
+                    }
+                }
+                catch (NoSuchElementException e)
+
+                {
+                    continue;
+                }
+
+            }
+            if (FailingSchools.Count == 0)
+            {
+                Assert.Pass();
+            }
+            else
+            {
+                Console.WriteLine("These schools Failed the test" + (FailingSchools));
+                Assert.Fail();
+            }
+        }
+            
+
         [Test]
           public void verifyQuickCompareOnViewCharacteristicsUsed()
         {

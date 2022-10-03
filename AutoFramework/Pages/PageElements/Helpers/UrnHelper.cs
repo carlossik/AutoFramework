@@ -260,7 +260,7 @@ namespace SFB_Test_Automation.AutoFramework.vs.AutoFramework.Helpers
 
         public IList Schools
         {
-            get { return Schools; }
+            get { return schools; }
 
         }
         private static IList Feds = new List<String>

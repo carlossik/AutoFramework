@@ -448,11 +448,34 @@
         [Test]
         public void MAT_with_1_or_moreSchls()
         {
-            TrustActions.TrustSearchWithComPanyNum(driver);
+            TrustActions.TrustCompareWithComPanyNum("5112090", driver);
             Assert.IsTrue(driver.FindElement(By.XPath("//h1[contains(text(),'What type of comparison would you like?')]")).Displayed);
 
 
         }
+
+        [Test]
+        public void MAT_with_0or_Schls()
+        {
+            TrustActions.TrustCompareWithComPanyNum("9702333", driver);
+            Assert.IsTrue(driver.FindElement(By.XPath("//h1[contains(text(),'Select comparison type')]")).Displayed);
+        }
+        [Test]
+        public void VerifyLinksToOtherServices()
+        {
+            TrustActions.TrustSearchWithComPanyNum("5112090", driver);
+            TrustHomePage trusthome = new TrustHomePage(driver);
+            Assert.IsTrue(driver.FindElement(By.XPath("//h3[contains(text(),'Related services')]")).Displayed);
+            Assert.IsTrue(driver.FindElement(By.LinkText("Find and compare schools in England")).Displayed);
+            Assert.IsTrue(driver.FindElement(By.LinkText("Get information about schools")).Displayed);
+            Assert.IsTrue(driver.FindElement(By.LinkText("Statistics at DfE")).Displayed);
+            Assert.IsTrue(driver.FindElement(By.LinkText("Explore education statistics")).Displayed);
+            Thread.Sleep(2000);
+            trusthome.TrustDetailsTab.Click();
+            Thread.Sleep(2000);
+            Assert.IsTrue(driver.FindElement(By.XPath("//dt[contains(text(),\"View this trust's data on other services:\")]")).Displayed);
+        }
+
 
 
 

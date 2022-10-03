@@ -211,12 +211,19 @@
 
 
         }
-        public static void TrustSearchWithComPanyNum(IWebDriver driver)
+        public static void TrustCompareWithComPanyNum(String TrustCompanyNo, IWebDriver driver)
         {
-            driver.Navigate().GoToUrl("https://as-t1dv-sfb.azurewebsites.net/Trust/Detail?companyNo=7564749");
+            driver.Navigate().GoToUrl(Config.currentTestEnv + "Trust/Detail?companyNo=" + TrustCompanyNo);
             TrustHomePage TrustHome = new TrustHomePage(driver);
             TrustHome.TrustStartComparison.Click();
         }
+        public static void TrustSearchWithComPanyNum(String TrustCompanyNo, IWebDriver driver)
+        {
+            driver.Navigate().GoToUrl(Config.currentTestEnv + "Trust/Detail?companyNo=" + TrustCompanyNo);
+            TrustHomePage TrustHome = new TrustHomePage(driver);
+            
+        }
+
 
         public String numberberofcharacteristicsDisplayed(IWebDriver driver)
         {

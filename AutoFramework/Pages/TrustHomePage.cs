@@ -55,7 +55,7 @@ namespace SFB_Test_Automation.AutoFramework.Pages
         public IWebElement ViewAschartsButton { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "a[@id='tab_dashboard']")]
         public IWebElement TrustDashboardTab { get; set; }
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "a[@id='tab_details']")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "#tab_details")]
         public IWebElement TrustDetailsTab { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//a[@id='tab_finance']")]
         public IWebElement TrustFinanceTab { get; set; }

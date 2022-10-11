@@ -261,7 +261,8 @@
         }
         public static void getclipboardTextmaximum(IWebDriver driver)
         {          
-            driver.Navigate().GoToUrl(Config.currentTestEnv +"BenchmarkCharts/GenerateFromSavedBasket?urns=123422-123445-119464-142078-139804-134117-139927-114033-122258-111668-114110-119534-139806-141358-117833-111393-143953-142014-111718-112806-116123-120492-114270-139511-111301-141121-140505-112705-120479-134214-145789");
+            driver.Navigate().GoToUrl(Config.currentTestEnv + "BenchmarkCharts/GenerateFromSavedBasket?urns=123422-123445-119464-142078-139804-134117-139927-114033-122258-111668-114110-119534-139806-141358-117833-111393-143953-142014-111718-112806-116123-120492-114270-139511-111301-141121-140505-112705-120479-134214-145789&default=141976");
+            Thread.Sleep(500000);
         }
         public static void addschoolvianameorlocationlink(IWebDriver driver)
         {

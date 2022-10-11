@@ -72,7 +72,7 @@ namespace AutoFramework.Pages.PageElements
         public IWebElement ViewBenchMarkCharts { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector,Using = "#manualButton")]
         public IWebElement ContinueToManualBenchMarkCharts { get; set; }
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//body[1]/div[1]/div[5]/div[1]/main[1]/div[2]/div[4]/div[1]/div[2]/table[1]/tbody[1]/tr[5]/td[1]")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//th[contains(text(),'School overall phase:')]")]
         public IWebElement SchoolOverAllPhase { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//th[contains(text(),'School phase:')]")]
         public IWebElement SchoolPhase { get; set; }

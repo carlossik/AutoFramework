@@ -85,6 +85,31 @@ namespace SFB_Test_Automation.AutoFramework.vs.AutoFramework.Helpers
         }
 
 
+        private static IList TrustUrns = new List<string>
+        {
+ "8604799",
+ "6228587",
+ "8142275",
+ "7730920",
+ "7567230",
+ "7907463",
+ "7980335",
+ "2387916",
+ "9078530",
+ "7492094",
+ "7655702",
+ "7956784",
+ "10163646",
+ "10269490",
+ "8320065",
+ "7846852"
+        };
+        public IList trustsUrns
+        {
+            get { return TrustUrns; }
+        }
+
+
         private static IList FederationsWithoutFinance = new List<string>
         {"100242",
 "131141",
@@ -260,7 +285,7 @@ namespace SFB_Test_Automation.AutoFramework.vs.AutoFramework.Helpers
 
         public IList Schools
         {
-            get { return Schools; }
+            get { return schools; }
 
         }
         private static IList Feds = new List<String>

@@ -46,7 +46,7 @@ namespace AutoFramework
             MyChartsPage chartspage = new MyChartsPage(driver);
             Assert.IsTrue(chartspage.AddOrRemoveChartsLink.Displayed);
          }
-        [Test]
+        //[Test]
         public void VeriFyChartPersists()
         {
             MyChartActions.AddCharts(driver);

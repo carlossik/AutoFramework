@@ -20,7 +20,7 @@ namespace SFB_Test_Automation.AutoFramework
             DetailedComparisonActions.ExcludeschoolswithIncFinanceAcademiesAllEngland("141976", "246", "247",driver);
             MyChartsPage chartspage = new MyChartsPage(driver);
             BenchMarkChartPage benchmarkpage = new BenchMarkChartPage(driver);
-
+            chartspage.AddTotalExpenditureToCharts.Click();
             benchmarkpage.YourChartsTab.Click();
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2); ;
         }
@@ -28,14 +28,14 @@ namespace SFB_Test_Automation.AutoFramework
         {
             Gotomycharts(driver);
             MyChartsPage chartspage = new MyChartsPage(driver);
-            chartspage.AddTotalExpenditureToCharts.Click();
+            
             chartspage.AddOrRemoveChartsLink.Click();
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
-            chartspage.TotalExpenditureaccordion.Click();
-            chartspage.Staffeaccordion.Click();
-            chartspage.Staff_PerPupil.Click();//add a few charts here
-            chartspage.TeachingStaff_PerPupil.Click();
-            chartspage.Tot_ExpenDiture_PerPupil.Click();
+           // chartspage.TotalExpenditureaccordion.Click();
+            //chartspage.Staffeaccordion.Click();
+            //chartspage.Staff_PerPupil.Click();//add a few charts here
+            //chartspage.TeachingStaff_PerPupil.Click();
+            //chartspage.Tot_ExpenDiture_PerPupil.Click();
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(15);
         }
 

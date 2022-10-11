@@ -121,7 +121,7 @@ namespace SFB_Test_Automation.AutoFramework.Scenarios
         {
             HomePage home = new HomePage(driver);
             home.cookies_footer.Click();
-            Assert.Fail();//failing this until the issue in safari is fixed 48178
+            Assert.AreEqual(driver.Url,(Config.currentTestEnv + "help/cookies"));//failing this until the issue in safari is fixed 48178
 
         }
 

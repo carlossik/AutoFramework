@@ -473,8 +473,8 @@ namespace SFB_Test_Automation.AutoFramework
             SchoolDetailPage detailspage = new SchoolDetailPage(driver);
             string SchoolPhase = detailspage.SchoolPhase.Text;
             string OverallSchoolPhase = detailspage.SchoolOverAllPhase.Text;
-            string newformed = OverallSchoolPhase +""+ "(" + SchoolPhase + ")";//Primary(Infant and junior)
-            Console.WriteLine(newformed);
+            //string newformed = OverallSchoolPhase +""+ "(" + SchoolPhase + ")";//Primary(Infant and junior)
+            //Console.WriteLine(newformed);
             detailspage.StartAComparison.Click();
             TypeOfComparisonPage comparisontype = new TypeOfComparisonPage(driver);
             comparisontype.CreateabenchmarkComparisonButton.Click();

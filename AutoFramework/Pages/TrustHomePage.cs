@@ -55,7 +55,7 @@ namespace SFB_Test_Automation.AutoFramework.Pages
         public IWebElement ViewAschartsButton { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "a[@id='tab_dashboard']")]
         public IWebElement TrustDashboardTab { get; set; }
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "#tab_details")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//a[@id='tab_details']")]
         public IWebElement TrustDetailsTab { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//a[@id='tab_finance']")]
         public IWebElement TrustFinanceTab { get; set; }
@@ -66,6 +66,23 @@ namespace SFB_Test_Automation.AutoFramework.Pages
         ////body/div[@id='js-modal-page']/div[@id='content']/div[1]/main[1]/div[2]/div[1]/div[1]/a[1]
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector,Using = "a.govuk-button:nth-child(3)")]
         public IWebElement TrustStartComparison { get; set; }
+
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//a[contains(text(),'Teaching staff')]")]
+        public IWebElement TeachinSgtaff { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//a[contains(text(),'Supply staff')])")]
+        public IWebElement TrustSupplyStaff { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//a[contains(text(),'Education support staff')]")]
+        public IWebElement TrustEducationSupportStaff { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.LinkText, Using = "Admin. and clerical staff")]
+        public IWebElement TrustAdminAndClerical { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//a[contains(text(),'Other staff costs')]")]
+        public IWebElement TrustOtherStaff { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//a[contains(text(),'Premises costs')]")]
+        public IWebElement TrustPremisesCost{ get; set; }
+            [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.LinkText,Using = "Educational supplies")]
+        public IWebElement TrustEducationalSupplies { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//a[contains(text(),'Energy')]")]
+        public IWebElement TrustEnergy { get; set; }
 
 
     }

@@ -51,16 +51,11 @@
             TrustSearchWitNameUsingFirstSuggestedName("Kaleidoscope Learning Trust ",driver);
             TrustComparisonPage trustComaprison = new TrustComparisonPage(driver);
             trustComaprison.Compare_withOtherTrusts.Click();
-            Thread.Sleep(100);
-            //TrustComparisonPage trustComaprison = new TrustComparisonPage(driver);
             Thread.Sleep(1000);
-          //  trustComaprison.Compare_withOtherTrusts.Click();
-            Thread.Sleep(500);
-            trustComaprison.TrustComparisonBenchMark.Click();
+            trustComaprison.SelectTrustsComparisonTypeRadioButton.Click();
             trustComaprison.SelectTrustsByCharacteristicsRadioButton.Click();
             trustComaprison.TrustComparisonPageContinueButton.Click();
             TrustCharacteristicsPage tcompare = new TrustCharacteristicsPage(driver);
-           // trustComaprison.SelectCharacteristicsButton.Click();
             trustComaprison.NumberOfSchoolscheckbox.Click();
             trustComaprison.MinNumOfScools.SendKeys("30");
             trustComaprison.MaxNumofschools.SendKeys("35");
@@ -79,6 +74,32 @@
             Thread.Sleep(200);
         }
 
+        public static void verifyTrustDashboardLinks(IWebDriver driver)
+        {
+            TrustHomePage homepage = new TrustHomePage(driver);
+            homepage.TeachinSgtaff.Click();
+            Thread.Sleep(1000);
+            //homepage.TrustSupplyStaff.Click();
+            Thread.Sleep(1000);
+            homepage.TrustEducationSupportStaff.Click();
+            Thread.Sleep(1000);
+            Thread.Sleep(1000);
+            homepage.TrustAdminAndClerical.Click();
+            Thread.Sleep(1000);
+            Thread.Sleep(1000);
+
+            homepage.TrustOtherStaff.Click();
+            Thread.Sleep(1000);
+            Thread.Sleep(1000);
+            homepage.TrustPremisesCost.Click();
+            Thread.Sleep(1000);
+            Thread.Sleep(1000);
+            homepage.TrustEducationalSupplies.Click();
+            Thread.Sleep(1000);
+            Thread.Sleep(1000);
+            homepage.TrustEnergy.Click();
+        }
+
         public static void TrustSearchWitNameUsingSubmitButton(String TrustNameSubmitted, IWebDriver driver)
         {
             Actions.GoHome(driver);
@@ -88,12 +109,8 @@
             homepage.trustnameRadioButton.Click();
             homepage.TrustSearchInput.Click();
             homepage.TrustSearchInput.SendKeys(TrustNameSubmitted);
-           // homepage.TrustSearchInput.SendKeys(Keys.Enter);
-
-            //driver.FindElement(By.XPath("//body/div[@id='content']/div[1]/main[1]/div[1]/div[2]/div[1]/div[2]/form[1]/div[1]/fieldset[1]/div[1]/div[2]/div[1]/span[1]/div[1]/div[1]/div[1]/a[1]")).Click();
             homepage.TrustSubmitButton.Click();
-            
-             //strong[@class='bold-small']
+         
             Thread.Sleep(100);
         }
         public static void TrustSearchWitNameUsingFirstSuggestedName(string TrustName, IWebDriver driver)
@@ -107,7 +124,6 @@
             Thread.Sleep(10000);
             homepage.TrustFirstSelectionOption.Click();
             Thread.Sleep(100);
-            //driver.FindElement(By.CssSelector(".bold-small")).Click();
             homepage.TrustSubmitButton.Click();
             Thread.Sleep(100);
         }
@@ -147,9 +163,6 @@
             Thread.Sleep(500);
             trustComaprison.EnterTrustforCompareNameField.SendKeys("Ark Schools");
             HomePage homepage = new HomePage(driver);
-           // homepage.TrustSearchInput.SendKeys(Keys.Space);
-            //homepage
-          
             driver.FindElement(By.XPath("//li[@id='awesomplete_list_1_item_0']")).Click();//select the first suggested 
             Thread.Sleep(500);
             trustComaprison.ViewBenchMarkingCharts.Click();
@@ -233,27 +246,20 @@
            
             for (int i = 1 ; i > 0; i++)
                 try
-                
                     {
                         Console.WriteLine(beforexpath + i + afterxpath);
                         IWebElement SenCharactristics = driver.FindElement(By.CssSelector(beforexpath + i + afterxpath));
                         numberofsenCharacteristics.Add(SenCharactristics.Text);
                         Console.WriteLine(SenCharactristics.Text);
-                   
                 }
-                   
                    catch (NoSuchElementException e)
                 {
                     Console.WriteLine(numberofsenCharacteristics.Count.ToString());
                     return numberofsenCharacteristics.Count.ToString();
-                    
                 }
             Console.WriteLine(numberofsenCharacteristics.Count.ToString());
             return numberofsenCharacteristics.Count.ToString();
         }
-
-
-
         public static void getCompanyNumber(IWebDriver driver) 
         {
             URNHelper helpers = new URNHelper();

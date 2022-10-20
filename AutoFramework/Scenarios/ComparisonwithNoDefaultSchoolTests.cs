@@ -117,6 +117,10 @@ namespace AutoFramework
                 screenshot.SaveAsFile(@"C:\Users\kwaku\OneDrive\Desktop\C#\AutoFramework\AutoFramework\Pages\screenshot" + testName + ".jpg");
                 driver.Close();
                 driver.Quit();
+                foreach (var process in System.Diagnostics.Process.GetProcessesByName("geckodriver"))
+                {
+                    process.Kill();
+                }
             }
             driver.Close();
             driver.Quit();

@@ -629,6 +629,10 @@ It includes all the spend on the risk items plus the additional items not risk a
                 screenshot.SaveAsFile(@"C:\TEMP\" + testName + ".jpg");
                 driver.Close();
                 driver.Quit();
+                foreach (var process in System.Diagnostics.Process.GetProcessesByName("geckodriver"))
+                {
+                    process.Kill();
+                }
             }
             driver.Close();
             driver.Quit();

@@ -482,12 +482,7 @@
                            Assert.IsTrue(driver.FindElement(By.LinkText("Statistics at DfE")).Displayed);
                            Assert.IsTrue(driver.FindElement(By.LinkText("Explore education statistics")).Displayed);
                             TrustHome.TrustDetailsTab.Click();
-                             Assert.IsTrue(driver.FindElement(By.XPath("//dt[contains(text(),\"View this trust's data on other services:\")]")).Displayed);
-                    //Thread.Sleep(2000);
-                    // TrustHome.TrustDetailsTab.Click();
-                    //Thread.Sleep(2000);
-                    //Assert.IsTrue(driver.FindElement(By.XPath("//dt[contains(text(),\"View this trust's data on other services:\")]")).Displayed);
-
+                             Assert.IsTrue(driver.FindElement(By.XPath("//dt[contains(text(),\"View this trust's data on other services:\")]")).Displayed);               
 
                 }
                 catch (NoSuchElementException e)
@@ -526,6 +521,11 @@
                 screenshot.SaveAsFile(@"C:\TEMP\" + testName + ".jpg");
                driver.Close();
                 driver.Quit();
+
+                foreach (var process in System.Diagnostics.Process.GetProcessesByName("geckodriver"))
+                {
+                    process.Kill();
+                }
             }
             driver.Close();
             driver.Quit();

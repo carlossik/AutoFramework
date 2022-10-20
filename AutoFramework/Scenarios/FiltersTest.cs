@@ -136,6 +136,10 @@ namespace AutoFramework
                 screenshot.SaveAsFile(@"C:\TEMP\" + testName + ".jpg");
                // driver.Close();
                 driver.Quit();
+                foreach (var process in System.Diagnostics.Process.GetProcessesByName("geckodriver"))
+                {
+                    process.Kill();
+                }
             }
            // driver.Close();
             driver.Quit();

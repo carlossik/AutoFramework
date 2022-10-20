@@ -67,8 +67,11 @@ namespace AutoFramework
                 var screenshot = ((ITakesScreenshot)driver).GetScreenshot();
                 var testName = TestContext.CurrentContext.Test.FullName;
                 screenshot.SaveAsFile(@"C:\TEMP\" + testName + ".jpg");
-               
                 driver.Quit();
+                foreach (var process in System.Diagnostics.Process.GetProcessesByName("geckodriver"))
+                {
+                    process.Kill();
+                }
             }
             
             driver.Quit();

@@ -660,6 +660,10 @@
                 screenshot.SaveAsFile(@"C:\TEMP\" + testName + ".jpg");
               
                 driver.Quit();
+                foreach (var process in System.Diagnostics.Process.GetProcessesByName("geckodriver"))
+                {
+                    process.Kill();
+                }
             }
           
             driver.Quit();

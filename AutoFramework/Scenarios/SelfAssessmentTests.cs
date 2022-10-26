@@ -489,7 +489,7 @@ It includes all the spend on the risk items plus the additional items not risk a
         public void Add_Data_Revenue_Reserve()
         {
             SADSideBySidePage SadPage = new SADSideBySidePage(driver);
-            SelfAssessmentActions.AddData("8792637", SadPage.AddData_Revenue_reserveSC2, "5000000.00",driver);
+            SelfAssessmentActions.AddData("8792637", SadPage.AddData_Revenue_reserveSC2, "50.00",driver);
             IWebElement revenueReserveC2 = driver.FindElement(By.XPath("//*[@id=\"reserveTable\"]/tr[4]/td[4]"));
             Console.WriteLine(revenueReserveC2.Text);
             Assert.AreEqual("£5,000,000.00", revenueReserveC2.Text);
@@ -616,6 +616,31 @@ It includes all the spend on the risk items plus the additional items not risk a
             }
            
         }
+
+        [Test]
+        public void verify_in_year_balance()
+        {
+            ArrayList urns = new ArrayList { "143432", "143474", "144933", "140737", "148403", "146673", "143891" };
+            foreach (String urn in urns)
+            {
+                var url = Config.currentTestEnv + "/School?urn=" + urn + "&tab=Balance&unit=AbsoluteMoney&financing=Include&format=Charts#finance";
+                driver.Navigate().GoToUrl(url);
+                SchoolDetailPage detailsPage = new SchoolDetailPage(driver);
+                var viewAsTable = driver.FindElement(By.XPath("//*[@id=\"appTabPanel\"]/div[2]/div[1]/div/div[1]/button[2]/span"));
+                viewAsTable.Click();
+                var inyearBalance202021 = (driver.FindElement(By.XPath("//*[@id=\"table_for_chart_48\"]/div/table/tbody/tr[5]/td[2]"))).Text;
+                Console.WriteLine(inyearBalance202021);
+                detailsPage.SchoolPageDashBoardTab.Click();
+                detailsPage.Detail_Page__See_Self_Assessment_Board.Click();
+                var SadInyearBalance = (driver.FindElement(By.XPath("//*[@id=\"reserveTable\"]/tbody/tr[1]/td[1]"))).Text;
+                Console.WriteLine(SadInyearBalance);
+
+            }
+
+        }
+
+
+
 
         [TearDown]
         public void TeardownAfterEachTest()

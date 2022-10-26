@@ -157,12 +157,12 @@ namespace SFB_Test_Automation.AutoFramework
             SadEditPage editpage = new SadEditPage(driver);
             editpage.ScenarioNameField.SendKeys("Automated Test1 Scenario");
             var selectElement = new SelectElement(editpage.YearOfScenarioField);
-            selectElement.SelectByValue("2019/2020");
+            selectElement.SelectByValue("2020/2021");
            
             editpage.YearOfScenarioField.Click();
             //editpage.select_default_year_of_finance.Click();
             editpage.NumberOfPupils.SendKeys("33");
-            editpage.NumberOfTeachers.SendKeys("45");
+            editpage.NumberOfTeachers.SendKeys("23");
             editpage.SchoolWorkForce.SendKeys("26.4");
             editpage.SeniorLeaderShip.SendKeys("26.1");
             editpage.PercenTageOfPupilsEligbleFSM.SendKeys("20");
@@ -394,25 +394,26 @@ namespace SFB_Test_Automation.AutoFramework
             activeField.Clear();
             activeField.SendKeys(editData);
             Thread.Sleep(4);
-            EditPage.SchoolWorkForce.Clear();
-            Thread.Sleep(4);
-            EditPage.SchoolWorkForce.SendKeys("50");
-            Thread.Sleep(4);
-            EditPage.NumberOfTeachers.Clear();
-            Thread.Sleep(4);
-            EditPage.NumberOfTeachers.SendKeys("50");
-            Thread.Sleep(4);
-            EditPage.Revenue_reserve.Clear();
-            Thread.Sleep(4);
-            EditPage.Revenue_reserve.SendKeys(editData);
-            EditPage.Teacher_contact_ratio.Clear();
-            EditPage.Teacher_contact_ratio.SendKeys(".5");
+           // EditPage.SchoolWorkForce.Clear();
+            //Thread.Sleep(4);
+           // EditPage.SchoolWorkForce.SendKeys("");
+           // Thread.Sleep(4);
+           // EditPage.NumberOfTeachers.Clear();
+           // Thread.Sleep(4);
+           // EditPage.NumberOfTeachers.Clear();
+           // EditPage.NumberOfTeachers.SendKeys("");
+           // Thread.Sleep(4);
+            //EditPage.Revenue_reserve.Clear();
+            //Thread.Sleep(4);
+            //EditPage.Revenue_reserve.SendKeys(editData);
+           // EditPage.Teacher_contact_ratio.Clear();
+            //EditPage.Teacher_contact_ratio.SendKeys(".5");
             Thread.Sleep(500);
             EditPage.Predicted_percentage_pupil_number_change_in_3_5_years.Clear();
             EditPage.Predicted_percentage_pupil_number_change_in_3_5_years.SendKeys(editData);
             EditPage.Spending_on_teaching_staff.SendKeys(editData);
             EditPage.Submit_Button.Click();
-            Thread.Sleep(40);
+            Thread.Sleep(400);
         }
         public static void verifyHiddenFields(String Lacode, IWebDriver driver)
         {

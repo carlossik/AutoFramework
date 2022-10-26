@@ -48,6 +48,7 @@ namespace AutoFramework
 
         }
         [Test]
+        [Ignore("Ignore a test")]
 
         public void CompareByDetailedComparisonMaintainedInclude()
         {

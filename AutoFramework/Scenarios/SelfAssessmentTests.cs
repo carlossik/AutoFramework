@@ -192,6 +192,7 @@
         {
             SelfAssessmentActions.createSideBySideScenario("8792637", driver);
             SelfAssessmentActions.EditScenario1(driver);
+            Assert.IsTrue(driver.Url.Contains("self-assessment/side-by-side"));
 
 
         }
@@ -201,11 +202,16 @@
             SelfAssessmentActions.createSideBySideScenario("2032028", driver);
             SelfAssessmentActions.EditScenario2(driver);
 
+            Assert.IsTrue(driver.Url.Contains("self-assessment/side-by-side"));
+
         }
         [Test]
         public void EditSideBySide()
         {
             SelfAssessmentActions.EditSideBySideView("2032028", driver);
+            Console.WriteLine(driver.Url);
+            Assert.IsTrue(driver.Url.Contains("self-assessment/side-by-side"));
+                   
 
 
         }
@@ -485,7 +491,7 @@ It includes all the spend on the risk items plus the additional items not risk a
 
         }
         
-        [Test]
+       
         public void Add_Data_Revenue_Reserve()
         {
             SADSideBySidePage SadPage = new SADSideBySidePage(driver);
@@ -551,11 +557,10 @@ It includes all the spend on the risk items plus the additional items not risk a
         public void Add_Data_Teacher_contact_ratio()
         {
             SelfAssessmentPage SadPage = new SelfAssessmentPage(driver);
-            SelfAssessmentActions.AddData("8792637", SadPage.AddData_TeacherContactRatioSecondForSideBySide,"0.80",driver);
-            IWebElement  teacherContaRatio = driver.FindElement(By.CssSelector("#charTable > tr:nth-child(10) > td:nth-child(4) > span:nth-child(1)"));
-            Console.WriteLine(teacherContaRatio.Text);
-            Thread.Sleep(200);
-            Assert.AreEqual(teacherContaRatio.Text , "0.50");
+            SelfAssessmentActions.AddData("8792637", SadPage.AddData_TeacherContactRatioSecondForSideBySide,"",driver);
+          
+            Thread.Sleep(20);
+         
         }
         [Test]
         public void VerifyCustomDashboardText()

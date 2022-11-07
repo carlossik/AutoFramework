@@ -164,10 +164,10 @@ namespace SFB_Test_Automation.AutoFramework
             editpage.NumberOfPupils.SendKeys("33");
             editpage.NumberOfTeachers.SendKeys("23");
             editpage.SchoolWorkForce.SendKeys("26.4");
-            editpage.SeniorLeaderShip.SendKeys("26.1");
+            editpage.SeniorLeaderShip.SendKeys("6.1");
             editpage.PercenTageOfPupilsEligbleFSM.SendKeys("20");
             editpage.SchoolWorkForce.SendKeys("50");
-            editpage.NumberOfTeachers.SendKeys("50");
+            //editpage.NumberOfTeachers.SendKeys("50");
             editpage.Total_income.SendKeys("5000000");
             editpage.Total_expenditure.SendKeys("8000000");
             
@@ -177,7 +177,7 @@ namespace SFB_Test_Automation.AutoFramework
         public static void EditSideBySideView(String LAestab, IWebDriver driver)
         {
             createSideBySideScenario(LAestab,driver);
-            Thread.Sleep(30000);
+            Thread.Sleep(30);
         }
 
         public static void EditSADForm(IWebDriver driver)
@@ -189,19 +189,21 @@ namespace SFB_Test_Automation.AutoFramework
             editpage.NumberOfPupils.Clear();
             editpage.NumberOfPupils.SendKeys("33");
             editpage.NumberOfTeachers.Clear();
-            editpage.NumberOfTeachers.SendKeys("45");
+            //editpage.NumberOfTeachers.SendKeys("45");
             editpage.SchoolWorkForce.Clear();
             editpage.SchoolWorkForce.SendKeys("26.4");
-            editpage.SeniorLeaderShip.Clear();
-            editpage.SeniorLeaderShip.SendKeys("26.1");
+           // editpage.SeniorLeaderShip.Clear();
+            //editpage.SeniorLeaderShip.Clear();
+           // editpage.SeniorLeaderShip.SendKeys("6");
             editpage.PercenTageOfPupilsEligbleFSM.Clear();
             editpage.PercenTageOfPupilsEligbleFSM.SendKeys("20");
             editpage.Total_income.Clear();
             editpage.Total_income.SendKeys("5000000");
             editpage.Total_expenditure.Clear();
             editpage.Total_expenditure.SendKeys("8000000");
+            Thread.Sleep(20);
             editpage.Submit_Button.Click();
-            Thread.Sleep(200);
+            Thread.Sleep(20);
         }
         public static void createSideBySideScenario(String LAestab, IWebDriver driver)
         {
@@ -330,6 +332,7 @@ namespace SFB_Test_Automation.AutoFramework
         {
             SelfAssessmentPage SadPage = new SelfAssessmentPage(driver);
             SadPage.EditScenario2Button.Click();
+            EditSADForm(driver);
             Thread.Sleep(2000);
         }
         public static void ResetDashBoard(IWebDriver driver)
@@ -394,20 +397,20 @@ namespace SFB_Test_Automation.AutoFramework
             activeField.Clear();
             activeField.SendKeys(editData);
             Thread.Sleep(4);
-           // EditPage.SchoolWorkForce.Clear();
-            //Thread.Sleep(4);
-           // EditPage.SchoolWorkForce.SendKeys("");
-           // Thread.Sleep(4);
-           // EditPage.NumberOfTeachers.Clear();
-           // Thread.Sleep(4);
-           // EditPage.NumberOfTeachers.Clear();
-           // EditPage.NumberOfTeachers.SendKeys("");
-           // Thread.Sleep(4);
-            //EditPage.Revenue_reserve.Clear();
-            //Thread.Sleep(4);
-            //EditPage.Revenue_reserve.SendKeys(editData);
-           // EditPage.Teacher_contact_ratio.Clear();
-            //EditPage.Teacher_contact_ratio.SendKeys(".5");
+            EditPage.SchoolWorkForce.Clear();
+            Thread.Sleep(4);
+            EditPage.SchoolWorkForce.SendKeys("");
+           Thread.Sleep(4);
+           EditPage.NumberOfTeachers.Clear();
+           Thread.Sleep(4);
+            EditPage.NumberOfTeachers.Clear();
+           EditPage.NumberOfTeachers.SendKeys("");
+           Thread.Sleep(4);
+           EditPage.Revenue_reserve.Clear();
+            Thread.Sleep(4);
+           EditPage.Revenue_reserve.SendKeys(editData);
+            EditPage.Teacher_contact_ratio.Clear();
+            EditPage.Teacher_contact_ratio.SendKeys(".5");
             Thread.Sleep(500);
             EditPage.Predicted_percentage_pupil_number_change_in_3_5_years.Clear();
             EditPage.Predicted_percentage_pupil_number_change_in_3_5_years.SendKeys(editData);

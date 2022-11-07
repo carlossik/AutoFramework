@@ -50,7 +50,7 @@ namespace SFB_Test_Automation.AutoFramework.Pages
         public IWebElement scenario1Name { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "div.govuk-table__header:nth-child(3) > span:nth-child(1)")]
         public IWebElement scenario2Name { get; set; }
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "a.a-button:nth-child(1) > span:nth-child(2)")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//span[@id='downloadPage']")]
         public IWebElement DownloadPage { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "a.a-button:nth-child(2) > span:nth-child(2)")]
         public IWebElement PrintPage { get; set; }

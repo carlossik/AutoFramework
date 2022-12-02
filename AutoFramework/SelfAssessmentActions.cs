@@ -35,8 +35,10 @@ namespace SFB_Test_Automation.AutoFramework
             Actions.schoolSearchwithLaestab(Laestab,driver);
             SchoolDetailPage detailspage = new SchoolDetailPage(driver);
             detailspage.StartAComparison.Click();
+            Thread.Sleep(3000);
             TypeOfComparisonPage comparisonpage = new TypeOfComparisonPage(driver);
             comparisonpage.SelfAssessMentDashboardButton.Click();
+            Thread.Sleep(3000);
             Actions.acceptCookie(driver);
           
             SelfAssessmentPage assessmentpage = new SelfAssessmentPage(driver);
@@ -100,7 +102,6 @@ namespace SFB_Test_Automation.AutoFramework
         
         public static void verifyElements_OnHomePage(String Laestab,IWebDriver driver)
         {
-           
             SchoolDetailPage detailspage = new SchoolDetailPage(driver);
             Thread.Sleep(2000);
             detailspage.SchoolPageDashBoardTab.Click();
@@ -121,8 +122,6 @@ namespace SFB_Test_Automation.AutoFramework
             detailspage.Detail_Page_SadEnergy.Click();
             Thread.Sleep(2000);
             detailspage.Detail_Page_SadEducationSupportStaff.Click();
-           
-
 
         }
       

@@ -201,6 +201,13 @@ namespace AutoFramework.Pages.PageElements
         [SeleniumExtras.PageObjects.FindsBy(How = How.XPath, Using = "//select[@id='WShowValue']")]
         public IWebElement workForce_DropDownLink { get; set; }
 
+        [SeleniumExtras.PageObjects.FindsBy(How = How.XPath, Using = "//dialog[@id='js-modal']")]
+        public IWebElement workForce_Help { get; set; }
+
+        public static string workForce_Help_text = "Show value This controls the chart value.To change it, select the relevant option from the dropdown.You can choose from the values listed below.Headcount per FTE is the number of staff employed per full time position.The higher the figure, the more part time staff and job sharing.Percentage of workforce is the percentage of the total workforce the chart grouping represents in the school. For example, teachers might make up 60% of the total school workforce.Pupils per staff role is the ratio of pupils to staff for that particular chart group – 22 pupils per total number of teachers, for example.";
+
+
+
 
 
 

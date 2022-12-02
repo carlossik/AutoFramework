@@ -500,7 +500,7 @@ It includes all the spend on the risk items plus the additional items not risk a
             Console.WriteLine(revenueReserveC2.Text);
             Assert.AreEqual("£5,000,000.00", revenueReserveC2.Text);
         }
-        [Test]
+     
         public void Add_Data_Teaching_Staff()
         {
             SADSideBySidePage SadPage = new SADSideBySidePage(driver);
@@ -590,7 +590,7 @@ It includes all the spend on the risk items plus the additional items not risk a
         }
 
 
-        [Test]
+        
         public void Add_Data_Predicted_percentage_pupil_number_change()
         {
             SelfAssessmentPage SadPage = new SelfAssessmentPage(driver);

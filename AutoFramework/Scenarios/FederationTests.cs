@@ -206,6 +206,18 @@ namespace AutoFramework
             }
         }
 
+        [Test]
+        public void verifyShowValueWorkForce()
+        {
+            Actions.SearchSchoolViaName("121203", driver);
+            SchoolDetailPage detailspage = new SchoolDetailPage(driver);
+            detailspage.SchoolPageWorkForceTab.Click();
+            IWebElement helpIcon = driver.FindElement(By.XPath("//a[@id='label_modal_1']"));
+            helpIcon.Click();
+            Assert.IsTrue(detailspage.workForce_Help.Displayed);
+            Thread.Sleep(30);
+
+        }
             
 
         [Test]

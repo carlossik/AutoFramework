@@ -19,10 +19,10 @@ namespace SFB_Test_Automation.AutoFramework
     {
         public static void navigateToSadPage(String Laestab, IWebDriver driver)
         {
-            Actions.schoolSearchwithLaestab(Laestab,driver);
+            Actions.schoolSearchwithLaestab(Laestab, driver);
             SchoolDetailPage detailspage = new SchoolDetailPage(driver);
             detailspage.StartAComparison.Click();
-            
+
             TypeOfComparisonPage comparisontype = new TypeOfComparisonPage(driver);
             comparisontype.SelfAssessMentDashboardButton.Click();
             Thread.Sleep(200);
@@ -32,7 +32,7 @@ namespace SFB_Test_Automation.AutoFramework
         }
         public static void verifySADLink(String Laestab, IWebDriver driver)
         {
-            Actions.schoolSearchwithLaestab(Laestab,driver);
+            Actions.schoolSearchwithLaestab(Laestab, driver);
             SchoolDetailPage detailspage = new SchoolDetailPage(driver);
             detailspage.StartAComparison.Click();
             Thread.Sleep(3000);
@@ -40,11 +40,11 @@ namespace SFB_Test_Automation.AutoFramework
             comparisonpage.SelfAssessMentDashboardButton.Click();
             Thread.Sleep(3000);
             Actions.acceptCookie(driver);
-          
+
             SelfAssessmentPage assessmentpage = new SelfAssessmentPage(driver);
-           
+
             Thread.Sleep(3000);
-            
+
 
 
         }
@@ -59,7 +59,7 @@ namespace SFB_Test_Automation.AutoFramework
             //comparisonpage.SelfAssessMentDashboardButton.Click();
             //Actions.acceptCookie(driver);
             SelfAssessmentPage assessmentpage = new SelfAssessmentPage(driver);
-           
+
             FillSADForm(driver);
             //EditSADForm(driver);
             Thread.Sleep(10000);
@@ -68,24 +68,24 @@ namespace SFB_Test_Automation.AutoFramework
 
         public static void generate_side_by_side_for_school_without_finance(String Laestab, IWebDriver driver)
         {
-            generate_For_School_Without_Data(Laestab,driver);
+            generate_For_School_Without_Data(Laestab, driver);
             side_by_side_alone(driver);
             Thread.Sleep(2000);
         }
         public static void verifySADlinkforIncomplete_finance_Year(String Laestab, IWebDriver driver)
         {
-            Actions.schoolSearchwithLaestab(Laestab,driver);
+            Actions.schoolSearchwithLaestab(Laestab, driver);
             SchoolDetailPage detailspage = new SchoolDetailPage(driver);
             String FinancialYear = driver.FindElement(By.CssSelector("div.charts-section__chart-container:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > span:nth-child(1)")).Text;
             Console.WriteLine(FinancialYear);
-           
+
             //detailspage.SADLink.Click();
             Thread.Sleep(3000);
         }
 
         public static void ViewCharacteristics(String Laestab, IWebDriver driver)
         {
-            Actions.schoolSearchwithLaestab(Laestab,driver);
+            Actions.schoolSearchwithLaestab(Laestab, driver);
             SchoolDetailPage detailspage = new SchoolDetailPage(driver);
             detailspage.StartAComparison.Click();
             TypeOfComparisonPage comparepage = new TypeOfComparisonPage(driver);
@@ -99,8 +99,8 @@ namespace SFB_Test_Automation.AutoFramework
             Thread.Sleep(2000);
 
         }
-        
-        public static void verifyElements_OnHomePage(String Laestab,IWebDriver driver)
+
+        public static void verifyElements_OnHomePage(String Laestab, IWebDriver driver)
         {
             SchoolDetailPage detailspage = new SchoolDetailPage(driver);
             Thread.Sleep(2000);
@@ -124,11 +124,11 @@ namespace SFB_Test_Automation.AutoFramework
             detailspage.Detail_Page_SadEducationSupportStaff.Click();
 
         }
-      
+
         public static void ViewCharacteristicsSideBySide(String Laestab, IWebDriver driver)
         {
-            
-            createSideBySideScenario(Laestab,driver);
+
+            createSideBySideScenario(Laestab, driver);
             SelfAssessmentPage SADpage = new SelfAssessmentPage(driver);
             SADpage.ViewCharacteristicsLink.Click();
             Thread.Sleep(2000);
@@ -147,7 +147,7 @@ namespace SFB_Test_Automation.AutoFramework
         {
             SelfAssessmentPage assessmentpage = new SelfAssessmentPage(driver);
             assessmentpage.DownloadPage.Click();
-            Actions.downloadFile(fileformat,driver);
+            Actions.downloadFile(fileformat, driver);
             Thread.Sleep(20000);
         }
 
@@ -157,7 +157,7 @@ namespace SFB_Test_Automation.AutoFramework
             editpage.ScenarioNameField.SendKeys("Automated Test1 Scenario");
             var selectElement = new SelectElement(editpage.YearOfScenarioField);
             selectElement.SelectByValue("2020/2021");
-           
+
             editpage.YearOfScenarioField.Click();
             //editpage.select_default_year_of_finance.Click();
             editpage.NumberOfPupils.SendKeys("33");
@@ -169,14 +169,33 @@ namespace SFB_Test_Automation.AutoFramework
             //editpage.NumberOfTeachers.SendKeys("50");
             editpage.Total_income.SendKeys("5000000");
             editpage.Total_expenditure.SendKeys("8000000");
-            
+
             editpage.Submit_Button.Click();
             Thread.Sleep(200);
         }
         public static void EditSideBySideView(String LAestab, IWebDriver driver)
         {
-            createSideBySideScenario(LAestab,driver);
+            createSideBySideScenario(LAestab, driver);
             Thread.Sleep(30);
+        }
+
+        public static void ClearFields(IWebElement elem)
+        {
+            elem.SendKeys(Keys.Control + "a");
+            elem.SendKeys("/b");
+        }
+        public static void editDashBoard(IWebDriver driver)
+        {
+            SadEditPage editpage = new SadEditPage(driver);
+            ClearFields(editpage.NumberOfPupils);
+            editpage.NumberOfPupils.SendKeys("300");
+            Thread.Sleep(300);
+            ClearFields(editpage.SchoolWorkForce);
+            editpage.SchoolWorkForce.SendKeys("28");
+            ClearFields(editpage.NumberOfTeachers);
+            editpage.NumberOfTeachers.SendKeys("25");
+            Thread.Sleep(3000);
+            editpage.Submit_Button.Click();
         }
 
         public static void EditSADForm(IWebDriver driver)
@@ -246,6 +265,28 @@ namespace SFB_Test_Automation.AutoFramework
             Thread.Sleep(300);
 
         }
+
+        public static void editCurrentDashboard( String LAestab ,IWebDriver driver)
+        {
+            Actions.SearchSchoolViaName(LAestab, driver);
+            SchoolDetailPage detailspage = new SchoolDetailPage(driver);
+            Thread.Sleep(200);
+            detailspage.StartAComparison.Click();
+            TypeOfComparisonPage comparisontype = new TypeOfComparisonPage(driver);
+            comparisontype.SelfAssessMentDashboardButton.Click();
+            Thread.Sleep(2000);
+            Actions.acceptCookie(driver);
+            Thread.Sleep(2000);
+            SelfAssessmentPage assessmentpage = new SelfAssessmentPage(driver);
+            assessmentpage.EditDataButton.Click();
+           // SadEditPage editpage = new SadEditPage(driver);
+           // editpage.YearOfScenarioField.Click();
+            //driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+            //Thread.Sleep(300);
+
+        }
+
+
         public static void cancelsidebysidecreation(String LAestab, IWebDriver driver)
         {
             Actions.schoolSearchwithLaestab(LAestab,driver);

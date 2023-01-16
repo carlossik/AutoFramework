@@ -514,13 +514,13 @@ It includes all the spend on the risk items plus the additional items not risk a
         }
      
         [Test]
-        [Ignore ("Ignore this test")]
-        public void Add_Data_Average_teacher_cost()
+        
+        public void edit_data()
         {
             SelfAssessmentPage SadPage = new SelfAssessmentPage(driver);
-            SelfAssessmentActions.AddData("138950", SadPage.AverageTeacherCost_add, "200000",driver);
-            IWebElement teacherContaRatio = driver.FindElement(By.CssSelector("#charTable > tr:nth-child(10) > td:nth-child(4) > span:nth-child(1)"));
-            Console.WriteLine(teacherContaRatio.Text);
+            SelfAssessmentActions.editCurrentDashboard("100000",driver);
+            SelfAssessmentActions.editDashBoard(driver);
+            
         }
         [Test]
         public  void verifyYearOfDashboard_Text()

@@ -30,7 +30,7 @@ namespace SFB_Test_Automation.AutoFramework.Pages
         public IWebElement ViewCharacteristicsLink { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "button.hide-in-print")]
         public IWebElement SideBySideLink { get; set; }
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "button.govuk-button:nth-child(2)")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//a[contains(text(),'Edit data')]")]
         public IWebElement EditDataButton { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".govuk-heading-xl")]
         public IWebElement SelfAssessmentBanner { get; set; }

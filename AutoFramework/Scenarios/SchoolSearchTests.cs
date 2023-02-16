@@ -621,10 +621,38 @@
                 HomePage schoolhomepage = new HomePage(driver);
 
                 Assert.IsTrue(schoolhomepage.SenSpecialCharacteristicsLink.Displayed);
+
                 driver.Navigate().GoToUrl(Config.currentTestEnv);
             }
         }
+        [Test]
+        public void testSpecialSchoolQC()
+        {
+            string[] specialschools = { "8797066", "3037004", "8797063", "8797065", "8777001" };
+            List<string> specialschooolsundertest = new List<string>(specialschools);
+            foreach (string school in specialschooolsundertest)
+            {
+                Actions.schoolSearchwithLaestab(school, driver);//must be a special School
+                HomePage schoolhomepage = new HomePage(driver);
+                schoolhomepage.dashboardTab.Click();
+                IWebElement viewCharacterIsticsLink = driver.FindElement(By.XPath("//body/div[@id='js-modal-page']/div[@id='content']" +
+                    "/div[1]/main[1]/div[2]/div[4]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/details[1]/summary[1]/span[1]"));
+                viewCharacterIsticsLink.Click();
+                IWebElement financeType = driver.FindElement(By.XPath("//td[contains(text(),'Finance type')]"));
+                Assert.IsTrue(financeType.Displayed);
+                IWebElement schoolPhase = driver.FindElement(By.XPath("//td[contains(text(),'School phase')]"));
+                Assert.IsTrue(schoolPhase.Displayed);
+                //IWebElement otherCharacteristicsUsed = driver.FindElement(By.XPath("//body[1]/div[1]/div[4]/div[1]/main[1]/div[1]/div[1]/details[1]/div[1]/table[1]/tbody[1]/tr[3]/td[1]"));
 
+                IWebElement seeFullQcVersion = driver.FindElement(By.XPath("//a[contains(text(),'full version')]"));
+                seeFullQcVersion.Click();
+                Assert.IsTrue(driver.Url.Contains("SpecialsComparison?"));
+                //Assert.IsTrue(driver.Url.Contains(school));
+
+                ////td[contains(text(),'School phase')]////body[1]/div[1]/div[4]/div[1]/main[1]/div[1]/div[1]/details[1]/div[1]/table[1]/tbody[1]/tr[3]/td[1]
+
+            }
+        }
 
 
         [Test]

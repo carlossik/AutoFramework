@@ -113,7 +113,8 @@
         [FindsBy(How = How.XPath, Using = "//a[contains(text(),'View characteristics used')]")]
         public IWebElement View_Characteristics_Used { get; set; }
 
-       
+        [FindsBy(How = How.XPath, Using = "//a[@id='tab_dashboard']")]
+        public IWebElement dashboardTab { get; set; }
 
 
 

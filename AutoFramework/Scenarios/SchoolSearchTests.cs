@@ -642,14 +642,12 @@
                 Assert.IsTrue(financeType.Displayed);
                 IWebElement schoolPhase = driver.FindElement(By.XPath("//td[contains(text(),'School phase')]"));
                 Assert.IsTrue(schoolPhase.Displayed);
-                //IWebElement otherCharacteristicsUsed = driver.FindElement(By.XPath("//body[1]/div[1]/div[4]/div[1]/main[1]/div[1]/div[1]/details[1]/div[1]/table[1]/tbody[1]/tr[3]/td[1]"));
-
                 IWebElement seeFullQcVersion = driver.FindElement(By.XPath("//a[contains(text(),'full version')]"));
                 seeFullQcVersion.Click();
                 Assert.IsTrue(driver.Url.Contains("SpecialsComparison?"));
-                //Assert.IsTrue(driver.Url.Contains(school));
 
-                ////td[contains(text(),'School phase')]////body[1]/div[1]/div[4]/div[1]/main[1]/div[1]/div[1]/details[1]/div[1]/table[1]/tbody[1]/tr[3]/td[1]
+                driver.Navigate().GoToUrl(Config.currentTestEnv);
+
 
             }
         }

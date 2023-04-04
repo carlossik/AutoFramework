@@ -104,7 +104,7 @@
         public void VerifySchoolPhaseAndOverAllPhase()
         {
          DetailedComparisonActions.GeneralDetailedJourney("100008",driver);
-             String TestValue = driver.FindElement(By.XPath("//body/div[@id='js-modal-page']/div[@id='content']/div[1]/main[1]/section[1]/div[1]/div[3]/div[1]/form[1]/div[1]/div[1]/div[2]/div[2]/div[2]/div[2]/div[1]/fieldset[1]/div[1]/span[1]/span[1]")).Text;
+             String TestValue = driver.FindElement(By.XPath("//*[@id=\"phc\"]/div/fieldset/div[1]/span/span")).Text;
            SchoolDetailPage detailspage = new SchoolDetailPage(driver);
         
             Assert.AreEqual(TestValue, "Primary (Infant and junior)");//need to change this test to parameterize the test value

@@ -61,12 +61,14 @@
                 Console.Write("No cookies here....");
             }
 
-            IWebElement HideCookieBanner = driver.FindElement(By.XPath("//body/div[1]/div[2]/div[2]/a[1]"));
+            IWebElement HideCookieBanner = driver.FindElement(By.XPath("//body/dialog[1]/div[1]/div[2]/div[2]/a[1]"));
             if (HideCookieBanner.Displayed)
             {
                 HideCookieBanner.Click();
                 Thread.Sleep(1000);
             }
+
+       
 
             driver.Manage().Window.Maximize();
             driver.Navigate().Refresh();

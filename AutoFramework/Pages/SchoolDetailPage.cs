@@ -96,7 +96,7 @@ namespace AutoFramework.Pages.PageElements
         public IWebElement Date_Of_Closure { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = "dd.metadata-school-detail__dd:nth-child(12)")]
         public IWebElement NumberOfPupils { get; set; }
-        [SeleniumExtras.PageObjects.FindsBy(How = How.XPath, Using = "//body/div[@id='js-modal-page']/div[@id='content']/div[1]/main[1]/div[2]/div[4]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/details[1]")]
+        [SeleniumExtras.PageObjects.FindsBy(How = How.XPath, Using = "//a[contains(text(),'full version')]")]
         public IWebElement QuickCompareView { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = "#sadCtrl > div > details > summary > span")]
         public IWebElement QuickCompareViewCharateristicsUsed { get; set; }
@@ -106,7 +106,7 @@ namespace AutoFramework.Pages.PageElements
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = ".govuk-list > li:nth-child(1) > a:nth-child(1)")]
         public IWebElement schooldetailnotfoundmessage { get; set; }
 
-        [SeleniumExtras.PageObjects.FindsBy(How = How.XPath, Using = "//td[contains(text(),'Martin Serrão')]")]
+        [SeleniumExtras.PageObjects.FindsBy(How = How.XPath, Using = "//th[contains(text(),\"Headteacher's name:\")]/following-sibling::td[1]")]
         public IWebElement HeadTeacher_Name { get; set; }
 
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = ".message")]
@@ -124,6 +124,11 @@ namespace AutoFramework.Pages.PageElements
      
         [SeleniumExtras.PageObjects.FindsBy(How = How.XPath,Using = "//div[@class='combined-warnings']/p[1]")]
         public IWebElement FederationWithoutFinance { get; set; }
+
+
+        [SeleniumExtras.PageObjects.FindsBy(How = How.XPath, Using = " //a[contains(text(),'Create a benchmark comparison')]")]
+        public IWebElement CreateBenchMarkComparison { get; set; }
+       
 
         [SeleniumExtras.PageObjects.FindsBy(How = How.CssSelector, Using = "dd.metadata-school-detail__dd:nth-child(32) > a:nth-child(1)")]
         public IWebElement federationsLink { get; set; }
@@ -317,7 +322,7 @@ namespace AutoFramework.Pages.PageElements
             IWebElement acceptCookie = driver.FindElement(By.CssSelector("button.govuk-button:nth-child(1)"));
             acceptCookie.Click();
             IWebElement headTeacherName = driver.FindElement(By.CssSelector("#details-summary > dl:nth-child(1) > div:nth-child(3) > dd:nth-child(2)"));
-            var FheadTeacherName = (headTeacherName.Text).Replace("\n", "").Replace("\r", "").Replace("Principal", "").Trim();
+            var FheadTeacherName = (headTeacherName.Text).Replace("\n", "").Replace("\r", "").Replace("Principal", "").Replace("Mrs","").Trim();
             Console.WriteLine(FheadTeacherName);
             driver.Close();
             return FheadTeacherName;

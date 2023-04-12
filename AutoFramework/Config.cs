@@ -16,7 +16,7 @@ namespace AutoFramework
         public static string newenv = "https://as-t1-dv-sfb-govuk-frontend.azurewebsites.net/";
         //public static string HiddenLive = "https://as-t1pr-sfb-b.azurewebsites.net/";
         public static string sadUrlPP = "https://as-t1pr-sfb-sa-preprod.azurewebsites.net";
-        public static string currentTestEnv = PreProd;
+        public static string currentTestEnv = Prodlive;
         public static string firefoxlocation = "C://Users//kwaku//OneDrive//Desktop//C#//AutoFramework//bin//Debug//firefox.exe";
         public static string downloadDirectory = @"C:\AutomationDownloads\";
         public static string browserUnderTest = "IE";
@@ -32,15 +32,15 @@ namespace AutoFramework
     public static class Credentials
         {
 
-            public static class QuickComparisonMessage
-            {
+            //public static class QuickComparisonMessage
+           // {
                 public static string ComapringToMessage = "Sir John Cass's Foundation Primary School";
-            }
+           // }
 
-            public static class PostCode
-            {
-                public  static string Postcode = "DA7 5SS";
-            }
+           // public static class PostCode
+            //{
+                //public  static string Postcode = "DA7 5SS";
+           // }
 
 
             public static void Deleteallfiles(String myDirPath )

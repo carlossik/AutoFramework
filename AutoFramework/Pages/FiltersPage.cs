@@ -67,9 +67,11 @@ namespace SFB_Test_Automation.AutoFramework.Pages
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = "div.govuk-checkboxes__item:nth-child(9) > label:nth-child(2)")]
         public IWebElement SchoolType_Nursery { get; set; }
 
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.TagName, Using = "label")]
+        //[SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.TagName, Using = "label")]
+        //public IWebElement EducationPhase_Nursery { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//*[@id=\"schoolLevel\"]/div/fieldset/div/div[2]/label")]
         public IWebElement EducationPhase_Nursery { get; set; }
-        //schoollevel_Nursery
+        ////label[contains(text(),'Nursery')]
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//body/div[@id='js-modal-page']/div[@id='cookie-overlay-wrapper']/div[@id='content']/main[1]/div[2]/div[1]/div[1]/details[1]/div[1]/div[1]/form[1]/div[6]/div[2]/div[1]/fieldset[1]/div[1]/div[9]/label[1]")]
         public IWebElement SchoolType_PupilReferalUnit { get; set; }
 
@@ -79,29 +81,29 @@ namespace SFB_Test_Automation.AutoFramework.Pages
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector,Using = "div.govuk-option-select:nth-child(8) > div:nth-child(1) > div:nth-child(1)")]
         public IWebElement OfstedSelector { get; set; }
 
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath,Using = "//*[@id=\"DistanceRadius\"]/option[2]")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath,Using = "//option[contains(text(),'3 miles')]")]
         public IWebElement FilterBy3Miles { get; set; }
 
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//*[@id=\"DistanceRadius\"]/option[1]")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//option[contains(text(),'1 mile')]")]
         public IWebElement FilterBy1Mile { get; set; }
 
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//*[@id=\"DistanceRadius\"]/option[3]")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//option[contains(text(),'5 miles')]")]
         public IWebElement FilterBy5Miles { get; set; }
 
 
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//*[@id=\"DistanceRadius\"]/option[4]")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//option[contains(text(),'10 miles')]")]
         public IWebElement FilterBy10Miles { get; set; }
 
 
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//*[@id=\"DistanceRadius\"]/option[5]")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//option[contains(text(),'15 miles')]")]
         public IWebElement FilterBy15Miles { get; set; }
 
 
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//*[@id=\"DistanceRadius\"]/option[6]")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//option[contains(text(),'20 miles')]")]
         public IWebElement FilterBy20Miles { get; set; }
 
 
-        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//*[@id=\"DistanceRadius\"]/option[7]")]
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//option[contains(text(),'25 miles')]")]
         public IWebElement FilterBy25Miles { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id,Using = "OrderByControl")]
         public IWebElement SortedBy { get; set; }

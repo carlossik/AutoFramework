@@ -101,7 +101,7 @@ namespace SFB_Test_Automation.AutoFramework.Pages
         public String Expected_CustomDashboard_Help_Text = "The custom dashboard allows schools to plan for hypothetical or projected changes to their financial situation and see a red, amber or green (RAG) rating against it.\r\nCustom dashboards are for personal use and only visible to you. Any changes you make will be viewable on subsequent visits to this school’s dashboard unless you choose to reset them.";
 
 
-        public String Expected_DashboardYear_Help_Text = "By choosing a different year banding figures are adjusted to align to that year. An 8.6% uplift has been applied to Teaching staff and average salary (including pensions) for 2019/20 and an 11.9% uplift on 2020/21 and future years.";
+        public String Expected_DashboardYear_Help_Text = "By choosing a different year banding figures are aligned to that year for published finance, Future years use the most recent bands and can have uplifts applied to specific expenditure areas where there is an expectation of significant expenditure changes such pending salary awards.";
 
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "radio-1")]
         public IWebElement download_pdf_radio { get; set; }
@@ -114,12 +114,11 @@ namespace SFB_Test_Automation.AutoFramework.Pages
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath,Using = "/html/body/modal-container/div/div/div[2]/div/button")]
         public IWebElement ConfirmResetButton { get; set; }
 
-        ////a[contains(@title,'List of Users')]
-        //#charTable > tbody:nth-child(3) > tr:nth-child(5) > th:nth-child(1) //Average Class size
-        //#charTable > tbody:nth-child(3) > tr:nth-child(7) > th:nth-child(1)
-        // [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.Id, Using = "acceptAllCookiesHide")]
-        // public IWebElement HideSADCookie { get; set; }
-        //acceptAllCookiesHide
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//button[contains(text(),'Accept additional cookies')]")]
+        public IWebElement AcceptAdditional_Cookies { get; set; }
+
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//a[contains(text(),'Hide this message')]")]
+        public IWebElement hideMessage { get; set; }
 
 
         public bool verifyFinancialYear(String laestab, IWebDriver driver)

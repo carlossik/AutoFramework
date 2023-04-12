@@ -57,6 +57,7 @@ namespace AutoFramework
             FiltersPage filters = new FiltersPage(driver);
             filters.Filter_ByMiles.Click();
             filters.FilterBy10Miles.Click();
+            Thread.Sleep(10000);
         }
 
         public static void FilterBy15Miles(string postcode, IWebDriver driver)

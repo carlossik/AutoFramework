@@ -151,12 +151,19 @@
 
         public static void ManualTrustComparison(String TrustName, IWebDriver driver)
         {
-            driver.Navigate().GoToUrl("https://as-t1dv-sfb.azurewebsites.net/TrustComparison/SelectType?companyNo=9952066&matName=Portico%20Academy%20Trust");
+            HomePage home = new HomePage(driver);
+            home.TrustTab.Click();
+            home.trustnameRadioButton.Click();
+            home.TrustSearchInput.SendKeys(TrustName);
+            home.TrustSubmitButton.Click();
           
             TrustComparisonPage trustComaprison = new TrustComparisonPage(driver);
             Thread.Sleep(1000);
-          
+            SchoolDetailPage detailPage = new SchoolDetailPage(driver);
+            //driver.FindElement(By.XPath("//li[@id='awesomplete_list_1_item_0']")).Click();
             Thread.Sleep(500);
+            detailPage.StartAComparison.Click();
+            detailPage.CreateBenchMarkComparison.Click();
             trustComaprison.ManuallyAddTrustsRadio.Click();
             trustComaprison.TrustComparisonPageContinueButton.Click();
            

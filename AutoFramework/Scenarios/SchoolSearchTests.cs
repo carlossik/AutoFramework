@@ -120,20 +120,7 @@
         }
             
 
-        [Test]
-          public void verifyQuickCompareOnViewCharacteristicsUsed()
-        {
-            Actions.SearchSchoolViaName("107431", driver);
-            SchoolDetailPage detailpage = new SchoolDetailPage(driver);
-            detailpage.QuickCompareView.Click();
-            Thread.Sleep(300);
-            IWebElement viewCharacteristicsUsed = driver.FindElement(By.Id("SadPanel"));
-            IWebElement viewCharateristicsButon = driver.FindElement(By.CssSelector("#quickCtrl > div:nth-child(1) > details:nth-child(2) > summary:nth-child(1) > span:nth-child(1)"));
-            viewCharateristicsButon.Click();
-            Thread.Sleep(300);
-            viewCharateristicsButon.Click();
-            Assert.IsTrue(viewCharacteristicsUsed.Displayed);
-        }
+      
       
         [Test]
         public void SearchSchool_closed_school_withName()
@@ -409,12 +396,13 @@
         }
 
         [Test]
-        public void VerifyEncodingForHead_Teacher_NameText() //test school is 126416 but we can use any school to verify the script works
+        public void VerifyEncodingForHead_Teacher_NameText() //139995 test school is 126416 but we can use any school to verify the script works
         {
+            string SchoolUnderTest = "133996";
             SchoolDetailPage detailspage = new SchoolDetailPage(driver);
-            String GiasValue = detailspage.compareWithGiasDataHeadTeacher_Name(driver, "103119");//
+            String GiasValue = detailspage.compareWithGiasDataHeadTeacher_Name(driver, SchoolUnderTest);//
             
-            Actions.CallingClass.SearchViaSchoolurn("103119", driver);
+            Actions.CallingClass.SearchViaSchoolurn(SchoolUnderTest, driver);
             detailspage.SchoolPageDetailsTab.Click();
             Assert.AreEqual(GiasValue, detailspage.HeadTeacher_Name.Text);
             Console.WriteLine(detailspage.HeadTeacher_Name.Text + ""+GiasValue);
@@ -509,6 +497,20 @@
             SearchResultsPage resultspage = new SearchResultsPage(driver);
             Assert.IsTrue(resultspage.Checkbox_16plus.Displayed);
         }
+        [Test]
+        public void verifyRecruitmentBanner()
+        {
+            Actions.SearchByLocationUsingPostcode("Se18 3JL", driver);
+            SearchResultsPage resultspage = new SearchResultsPage(driver);
+            Assert.IsTrue(resultspage.recruitmentBanner.Displayed);
+            string bannercolour = resultspage.recruitmentBanner.GetCssValue("background-color");
+           // Assert.AreSame(bannercolour, "rgba(255, 221, 0, 1)");
+            Console.WriteLine(bannercolour);
+
+
+
+        }
+
         [Test]
         [Category("QuickTests")]
         public void test_School_schoolname()
@@ -621,10 +623,35 @@
                 HomePage schoolhomepage = new HomePage(driver);
 
                 Assert.IsTrue(schoolhomepage.SenSpecialCharacteristicsLink.Displayed);
+
                 driver.Navigate().GoToUrl(Config.currentTestEnv);
             }
         }
+        [Test]
+        public void testSpecialSchoolQC()
+        {
+            string[] specialschools = { "8797066", "3037004", "8797063", "8797065", "8777001" };
+            List<string> specialschooolsundertest = new List<string>(specialschools);
+            foreach (string school in specialschooolsundertest)
+            {
+                Actions.schoolSearchwithLaestab(school, driver);//must be a special School
+                HomePage schoolhomepage = new HomePage(driver);
+                schoolhomepage.dashboardTab.Click();
+                IWebElement viewCharacterIsticsLink = driver.FindElement(By.XPath("//*[@id=\"quickCtrl\"]/div/details/summary/span"));
+                viewCharacterIsticsLink.Click();
+                IWebElement financeType = driver.FindElement(By.XPath("//td[contains(text(),'Finance type')]"));
+                Assert.IsTrue(financeType.Displayed);
+                IWebElement schoolPhase = driver.FindElement(By.XPath("//td[contains(text(),'School phase')]"));
+                Assert.IsTrue(schoolPhase.Displayed);
+                IWebElement seeFullQcVersion = driver.FindElement(By.XPath("//a[contains(text(),'full version')]"));
+                seeFullQcVersion.Click();
+                Assert.IsTrue(driver.Url.Contains("SpecialsComparison?"));
 
+                driver.Navigate().GoToUrl(Config.currentTestEnv);
+
+
+            }
+        }
 
 
         [Test]

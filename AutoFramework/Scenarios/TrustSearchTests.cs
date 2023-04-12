@@ -93,7 +93,7 @@
         [Test]
         public void Trustcomparison()
         {
-            TrustActions.ManualTrustComparison("Harvey Academy", driver);
+            TrustActions.ManualTrustComparison("8142275", driver);
             TrustBenchmarkChartsPage trustcharts = new TrustBenchmarkChartsPage(driver);
             Assert.IsTrue(trustcharts.BalanceTab.Displayed);
             Assert.IsTrue(trustcharts.ExpenditureTab.Displayed);

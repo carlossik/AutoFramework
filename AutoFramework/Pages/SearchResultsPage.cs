@@ -46,6 +46,9 @@ namespace AutoFramework.Pages
         public IWebElement Checkbox_16plus { get; set; }
         [FindsBy(How = How.CssSelector, Using = "div.pagination-container:nth-child(1) > div:nth-child(1) > div:nth-child(2) > button:nth-child(2)")]
         public IWebElement paginationSecondPage { get; set; }
+        
+        [FindsBy(How = How.Id, Using = "banner-header")]
+        public IWebElement recruitmentBanner { get; set; }
         [FindsBy(How = How.PartialLinkText, Using = "3")]
         public IWebElement paginationThirdPage { get; set; }
         [FindsBy(How = How.CssSelector, Using = "div.pagination-container:nth-child(1) > div:nth-child(1) > div:nth-child(2) > button:nth-child(5)")]

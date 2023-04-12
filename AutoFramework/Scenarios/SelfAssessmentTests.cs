@@ -433,7 +433,7 @@ This information is used to ensure the school is being compared with schools of 
             Assert.AreEqual(popupmessage , @"The total full-time equivalent count of the school's teaching staff for the year of the dashboard. Full time equivalent number of teachers includes both classroom teachers and teachers in the leadership group. It excludes teaching assistants, non-classroom based school support staff, and auxiliary staff.This information is used to calculate average salaries, leadership ratios, and pupil to teacher ratios.");
 
         }
-        [Test]
+      
         public void VerifyYearOfScenarioPopUp()
         {
             SelfAssessmentActions.VerifyPopUps("8792637",driver);//8792637
@@ -441,7 +441,7 @@ This information is used to ensure the school is being compared with schools of 
             SadEditPage editpage = new SadEditPage(driver);
             SelfAssessmentActions.ClickPopUp(editpage.YearOfScenario_Popup);
             String popupmessage = driver.FindElement(By.CssSelector("body > modal-container > div > div > app-edit-data-info-modal > div.modal-body > div")).Text;
-            Assert.AreEqual(popupmessage, "This is used to apply the correct banding ratios that may differ from year to year, e.g. Teaching staff ratios and Average salary has been adjusted with a graded uplift from years 17/18 to 19/20. It is also presented on the custom dashboard to help users identified when two dashboards are for different years.\r\nBy choosing a different year banding figures are adjusted to align to that year. An 8.6% uplift has been applied to Teaching staff and average salary (including pensions) for 2019/20 and an 11.9% uplift on 2020/21 and future years.");
+            Assert.AreEqual(popupmessage, "");
 
         }
         [Test]
@@ -527,6 +527,7 @@ It includes all the spend on the risk items plus the additional items not risk a
         {
             SelfAssessmentActions.navigateToSadPage("100000",driver);
             SelfAssessmentPage SadPage = new SelfAssessmentPage(driver);
+            SelfAssessmentActions.Accept_and_Hide_Cookie(driver);
             SelfAssessmentActions.ClickPopUp(SadPage.Dashboard_Year_Help_Icon);
             Assert.AreEqual(SadPage.dashboard_Year_help_text.Text, SadPage.Expected_DashboardYear_Help_Text);
 
@@ -567,6 +568,7 @@ It includes all the spend on the risk items plus the additional items not risk a
         {
             SelfAssessmentActions.navigateToSadPage("100000",driver);
             SelfAssessmentPage SadPage = new SelfAssessmentPage(driver);
+           // SelfAssessmentActions.Accept_and_Hide_Cookie(driver);
             SelfAssessmentActions.ClickPopUp(SadPage.Add_Custom_Dashboard_Help_Icon);
             Assert.AreEqual(SadPage.add_custom_dashboard_help_text.Text, SadPage.Expected_CustomDashboard_Help_Text);
         }

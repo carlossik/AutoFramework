@@ -25,7 +25,28 @@ namespace SFB_Test_Automation.AutoFramework.Pages
         public IWebElement ContinueToEfficiencyMetricButton { get; set; }
         [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.CssSelector, Using = ".govuk-link--no-visited-state")]
         public IWebElement BackButton { get; set; }
-       
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//button[contains(text(),'Accept additional cookies')]")]
+        public IWebElement AcceptCookie { get; set; }
+        [SeleniumExtras.PageObjects.FindsBy(How = SeleniumExtras.PageObjects.How.XPath, Using = "//a[contains(text(),'Hide this message')]")]
+        public IWebElement HideMessage { get; set; }
 
+       
+        public  void AcceptAndHide(IWebDriver driver)
+        {
+            try
+            {
+
+                if (AcceptCookie.Displayed)
+                {
+                    AcceptCookie.Click();
+                    //Thread.Sleep(200);
+                   // HideMessage.Click();
+                   // Thread.Sleep(200);
+
+                }
+            }
+            catch (OpenQA.Selenium.NoSuchElementException e) { }
+
+        }
     }
 }

@@ -46,7 +46,7 @@
         [FindsBy(How = How.Id, Using = "LaCodeName")]
         public IWebElement LacodeSearchButton { get; set; }//This has to be changed in next changes
 
-        [FindsBy(How = How.CssSelector, Using = "#SearchByTrustNameFieldset > div:nth-child(1) > button:nth-child(5)")]
+        [FindsBy(How = How.XPath, Using = "//*[@id=\"SearchByTrustNameFieldset\"]/div/button")]
         public IWebElement TrustSubmitButton { get; set; }
 
         [FindsBy(How = How.XPath, Using = "//body/div[@id='content']/div[1]/main[1]/div[1]/div[3]/div[1]/div[2]/form[1]/div[1]/fieldset[1]/div[1]/div[4]/div[1]/div[2]/button[1]")]
@@ -113,7 +113,8 @@
         [FindsBy(How = How.XPath, Using = "//a[contains(text(),'View characteristics used')]")]
         public IWebElement View_Characteristics_Used { get; set; }
 
-       
+        [FindsBy(How = How.XPath, Using = "//a[@id='tab_dashboard']")]
+        public IWebElement dashboardTab { get; set; }
 
 
 

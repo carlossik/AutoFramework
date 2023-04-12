@@ -61,7 +61,7 @@ namespace SFB_Test_Automation.AutoFramework.Scenarios
         [Test]
         public void VerifyFinancetab()
         {
-            Actions.schoolSearchwithLaestab("113441", driver);
+            Actions.schoolSearchwithLaestab("100000", driver);//113441
             SchoolDetailPage detailpage = new SchoolDetailPage(driver);
 
             Assert.IsTrue(detailpage.SchoolPageFinanceTab.Enabled);
@@ -168,8 +168,7 @@ namespace SFB_Test_Automation.AutoFramework.Scenarios
             TypeOfComparisonPage typeofcompare = new TypeOfComparisonPage(driver);
             typeofcompare.EfficiencyMetrictButton.Click();
             EfficiencyMetricIntroPage emintropage = new EfficiencyMetricIntroPage(driver);
-            emintropage.ContinueToEfficiencyMetricButton.Click();
-            Actions.acceptCookie(driver);
+            emintropage.AcceptAndHide(driver);
             EfficiencyMetricPage empage = new EfficiencyMetricPage(driver);
             Assert.IsTrue(empage.AccessibilityLink.Displayed);
 

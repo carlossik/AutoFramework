@@ -323,13 +323,7 @@
             string errorText = "Some schools don't have a complete set of financial data for this period";
             Assert.IsTrue(driver.PageSource.Contains(errorText));
         }
-        [Test]
-        [Ignore("")]
-       public void Include16plusSchoolsInComparison()
-        {
-            throw new NotImplementedException();
-
-        }
+        
         [Test]
        public void VerifyShowSENcharacteristicsonbenchmarkpageforspecialschools()
         {

@@ -349,6 +349,12 @@
         }
 
         [Test]
+        public void verifyTrustLinkUsingCompanyNumber()
+        {
+           
+        }
+
+        [Test]
         [Ignore("Ignore a test")]
         public void SearchForTrustWithNameUsingFirstSuggested()
         {
@@ -371,7 +377,7 @@
         public void SelectSchoolsToCompare()
         {
             TrustActions.ManualTrustComparison("5 Dimensions Trust", driver);
-            //TrustActions.TrustSearchWitNameUsingFirstSuggestedName("5 Dimensions Trust");
+ 
             TrustHomePage trusthome = new TrustHomePage(driver);
         }
 

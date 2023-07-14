@@ -32,15 +32,15 @@ namespace AutoFramework
     public static class Credentials
         {
 
-            //public static class QuickComparisonMessage
-           // {
+            public static class QuickComparisonMessage
+            {
                 public static string ComapringToMessage = "Sir John Cass's Foundation Primary School";
-           // }
+            }
 
-           // public static class PostCode
-            //{
-                //public  static string Postcode = "DA7 5SS";
-           // }
+            public static class PostCode
+            {
+                public  static string Postcode = "DA7 5SS";
+            }
 
 
             public static void Deleteallfiles(String myDirPath )

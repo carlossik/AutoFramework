@@ -1,6 +1,10 @@
 name: SFB Automated UI Tests
 
-on: [schedule]
+on:
+  workflow_dispatch:
+  schedule:
+     #Runs "every midnight" (see https://crontab.guru)
+    - cron: "0 0 * * *"
 
 jobs:
   build:

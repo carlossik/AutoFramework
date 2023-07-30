@@ -23,7 +23,7 @@ jobs:
       run: nuget restore SFB_Test_Automation.sln
 
     - name: Build and run tests
-      run: dotnet test SFB_Test_Automation.sln
+      run: dotnet test SFB_Test_Automation.sln --no-restore --verbosity normal
 
     - name: Upload test results
       uses: actions/upload-artifact@v2

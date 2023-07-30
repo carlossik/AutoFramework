@@ -23,7 +23,7 @@ jobs:
       run: nuget restore SFB_Test_Automation.sln
 
     - name: Build and run tests
-      run: dotnet test --logger "trx;LogFileName=test_results.trx"
+      run: dotnet test 
 
     - name: Upload test results
       uses: actions/upload-artifact@v2

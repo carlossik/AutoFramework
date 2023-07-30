@@ -20,7 +20,7 @@ jobs:
         dotnet-version: '5.0'  # Replace with your desired .NET version
 
     - name: Restore NuGet packages
-      run: nuget restore
+      run: nuget restore AutoFramework.sln
 
     - name: Build and run tests
       run: dotnet test --logger "trx;LogFileName=test_results.trx"

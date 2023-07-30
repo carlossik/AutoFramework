@@ -22,7 +22,7 @@ jobs:
         run:  nuget restore SFB_Test_Automation.sln
 
       - name: Build
-        run: dotnet build
+        run: dotnet build SFB_Test_Automation.sln
 
       - name: Run Windows-Selenium tests
         run: dotnet test SFB_Test_Automation.sln --no-restore --verbosity normal

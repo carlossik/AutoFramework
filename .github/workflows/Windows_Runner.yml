@@ -18,8 +18,8 @@ jobs:
         with:
           dotnet-version: '5.0'  # Change to your desired .NET version
           
-      - name: add dotnet source
-        run:  dotnet nuget add source https://api.nuget.org/v3/index.json 
+#       - name: add dotnet source
+#         run:  dotnet nuget add source https://api.nuget.org/v3/index.json 
 
 
       - name: Restore NuGet packages

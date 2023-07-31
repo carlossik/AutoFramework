@@ -20,8 +20,12 @@ jobs:
 
       - name: Restore NuGet packages
         run:  nuget restore SFB_Test_Automation.sln
+        
+      - name: add dotnet source
+         run:dotnet nuget add source https://api.nuget.org/v3/index.json -n nuget.org --configfile $env:APPDATA\NuGet\NuGet.Config
 
       - name: Build
+       
         run: dotnet build SFB_Test_Automation.sln --configuration Release --no-restore
 
       - name: Run Windows-Selenium tests

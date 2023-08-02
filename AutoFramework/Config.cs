@@ -18,11 +18,11 @@ namespace AutoFramework
         public static string sadUrlPP = "https://as-t1pr-sfb-sa-preprod.azurewebsites.net";
         public static string currentTestEnv = Prodlive;
         public static string firefoxlocation = "";
-        public static string downloadDirectory = @"";
+        public static string downloadDirectory = @"C:\AutomationDownloads";
         public static string browserUnderTest = "IE";
-        public static string edgeDriverPath = @"";
-        public static string chrome_path = @"";
-        public static string chromedriverpath = @"";
+        public static string edgeDriverPath = @"C:\Users\kwaku\OneDrive\Desktop\C#\EdgeDriver";
+        public static string chrome_path = @"C:\Users\kwaku\OneDrive\Desktop\C#\chromedriver";
+        public static string chromedriverpath = @"C:\Users\kwaku\OneDrive\Desktop\C#\chromedriver";
         public static string giasurl = "https://get-information-schools.service.gov.uk/Establishments/Establishment/Details/";
         public static string devapi = "https://aa-t1dv-sfb.azurewebsites.net/api/schoolstatus/";
         public static string stagingapi = " https://aa-t1stg-sfb.azurewebsites.net/api/schoolstatus/";

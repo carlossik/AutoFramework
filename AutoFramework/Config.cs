@@ -21,7 +21,6 @@ namespace AutoFramework
         public static string downloadDirectory = @"C:\AutomationDownloads";
         public static string browserUnderTest = "IE";
         public static string edgeDriverPath = @"C:\Users\kwaku\OneDrive\Desktop\C#\EdgeDriver";
-        public static string chrome_path = @"C:\Users\kwaku\OneDrive\Desktop\C#\chromedriver";
         public static string chromedriverpath = @"C:\Users\kwaku\OneDrive\Desktop\C#\chromedriver";
         public static string giasurl = "https://get-information-schools.service.gov.uk/Establishments/Establishment/Details/";
         public static string devapi = "https://aa-t1dv-sfb.azurewebsites.net/api/schoolstatus/";

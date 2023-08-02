@@ -16,6 +16,7 @@ namespace AutoFramework
         public static string newenv = "https://as-t1-dv-sfb-govuk-frontend.azurewebsites.net/";
         //public static string HiddenLive = "https://as-t1pr-sfb-b.azurewebsites.net/";
         public static string sadUrlPP = "https://as-t1pr-sfb-sa-preprod.azurewebsites.net";
+       public static string customChromeBinaryPath = @"C:\Program Files\Google\Chrome\Application\chrome.exe";
         public static string currentTestEnv = Prodlive;
         public static string firefoxlocation = "";
         public static string downloadDirectory = @"C:\AutomationDownloads";

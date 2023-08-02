@@ -38,11 +38,13 @@
             var downloadDirectory = Config.downloadDirectory;
             var chromedriverpath = Config.chromedriverpath;
             var edgedriver = Config.edgeDriverPath;
+           
             ChromeOptions.AddUserProfilePreference("download.default_directory", downloadDirectory);
             ChromeOptions.AddUserProfilePreference("download.prompt_for_download", false);
-            //IWebDriver driver = new ChromeDriver(chromedriverpath, ChromeOptions);
+            ChromeOptions.BinaryLocation = Config.customChromeBinaryPath;
+            IWebDriver driver = new ChromeDriver(chromedriverpath, ChromeOptions);
             //IWebDriver driver = new EdgeDriver(Config.edgeDriverPath);
-             IWebDriver driver = new FirefoxDriver();
+            //IWebDriver driver = new FirefoxDriver();
 
             driver.Navigate().GoToUrl(Config.currentTestEnv);
             TimeSpan seconds = TimeSpan.FromSeconds(second);

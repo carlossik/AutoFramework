@@ -439,7 +439,7 @@ namespace SFB_Test_Automation.AutoFramework
             Thread.Sleep(4000);
             detailpage.ViewBenchMarkCharts.Click();
             Thread.Sleep(4000);
-        
+        }
         public static void IncludechoolswithIncFinanceAllSchoolsLaName(String urn,String laname,String minpupils,String maxpupils, IWebDriver driver)
         {
             Actions.CallingClass.SearchViaSchoolurn(urn, driver);
